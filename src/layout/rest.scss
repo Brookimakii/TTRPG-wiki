@@ -1,0 +1,53 @@
+/* Every browser has its own default ‘user agent’ stylesheet, that it uses to make unstyled websites appear more legible.
+Using a CSS Reset, CSS authors can force every browser to have all its styles reset to null, thus avoiding cross-browser differences as much as possible.
+From the consistent base that you’ve set up via your reset, you can then go on to re-style your document,
+safe in the knowledge that the browsers’ differences in their default rendering of HTML can’t touch you! */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+address, cite, code, del, em, img, ins, q,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details,
+footer, header, menu, nav, section,
+time, mark, audio, video{margin:0; padding:0; border:0; font-size:100%; font:inherit; vertical-align:baseline}
+
+article, aside, footer, header, menu, nav, section{display:block}
+
+html{overflow-y:scroll}
+body{-webkit-text-size-adjust:none}
+
+.clear:before, .clear:after{content:"\0020"; display:block; height:0; overflow:hidden; }
+.clear:after {clear:both}
+.clear{zoom:1}
+
+sub, sup{font-size:75%; line-height:0; position:relative}
+sup{top:-0.5em}
+sub{bottom:-0.25em}
+
+pre {white-space:pre; white-space:pre-wrap; word-wrap:break-word; padding:15px}
+textarea {overflow:auto}
+input[type="radio"], input.radio {vertical-align:text-bottom}
+input[type="checkbox"], input.checkbox, .checkboxes input {vertical-align:bottom}
+label, input[type="button"], input[type="submit"], input[type="image"], button, .btn {cursor:pointer}
+button, input, select, textarea {margin:0}
+
+button {width:auto; overflow:visible}
+
+.hidden {display:none}
+.invisible {visibility:hidden}
+
+blockquote, q {quotes:none}
+blockquote:before, blockquote:after, q:before, q:after {content:''; content:none}
+ins {background-color:#ff9; color:#000; text-decoration:none}
+del {text-decoration:line-through; }
+hr {display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0}
+input, select {vertical-align:middle}
+
+a:hover, a:active {outline:none}
+.content ul, .content ol {margin-left:2em}
+ol {list-style-type:decimal}
+ul li {list-style-type:none}
+nav ul, nav li {margin:0; list-style:none; list-style-image:none}
+strong, b, th {font-weight:bold}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "elf",
+    "name": "Elf",
+    "content": [
+      {"title3": "Traits"},
+      {"paragraph": "**Amélioration de Caractéristique**."},
+      {"type": "", "text": ""},
+      {"type": "", "text": ""}
+    ]
+  },
+  {
+    "id": "dragonborn",
+    "name": "Dragonborn",
+    "content": [
+      {"type": "", "text": ""},
+      {"type": "", "text": ""},
+      {"type": "", "text": ""},
+      {"type": "", "text": ""}
+    ]
+  }
+]

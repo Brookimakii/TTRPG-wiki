@@ -1,0 +1,646 @@
+/** ----------------------------------------------------------
+ *
+ * Contains the main layout of the page and the individual styles.
+ * Acts as the main stylesheet for theme.
+ *
+ * ------------------------------------------------------- */
+
+.line, /* line - Groups units on one horizontal line. Note: for mobile layout units may be stacked to avoid horizontal scrolling. */
+.lastUnit {
+  overflow: hidden;
+  padding: 0 10px 0 10px;
+}
+
+.unit { /* unit - Base class which divides a line into sections (columns). */
+  float: left;
+  padding: 0 10px 0 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* box-sizing:border-box; creates a box-model where
+     padding and border are NOT added onto the width - they are included in the width,
+     so a 200px wide element with 20px padding will be 200px, NOT 240px wide */
+}
+
+/* sizeXofY - Extends unit. Indicates the fractional width of the unit, for example size3of4 would take up three quarters, or 75%, of the horizontal space.
+The following fractions are supported: 1, 1/2, 1/3, 2/3, 1/4, 3/4, 1/5, 2/5, 3/5, 4/5
+It is possible to add more columns if you wish you will just have to add the fractions that are missing eg: .size1of6 {width:16.66666%} */
+
+.size1of5 {
+  width: 20%;
+}
+
+.size2of5 {
+  width: 40%;
+}
+
+.size3of5 {
+  width: 60%;
+}
+
+.size4of5 {
+  width: 80%;
+}
+
+.lastUnit { /* lastUnit - Extends unit. Applied to the last child of every line. */
+  float: none;
+  width: auto;
+}
+
+/* MAIN LAYOUT */
+
+body {
+  background: #e8e8e8;
+  min-width: 240px;
+  -webkit-text-size-adjust: none; /* The text size is not adjusted for Safari on iPhone */
+}
+
+.main {
+  background: #fff;
+  padding: 0;
+  min-height: 300px;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.no-sidebar .content-container {
+  float: none;
+  width: 100%; /* makes content container full width when there is no sidebar */
+}
+
+.sidebar { /* this is the sidebar element */
+  margin-top: 12px;
+}
+
+.no-sidebar .sidebar {
+  display: none;
+}
+
+.content-container {
+  margin-top: 20px;
+}
+
+/* HEADER */
+
+.header {
+  background: #161616;
+
+  .inner {
+    position: relative;
+  }
+
+  /* Brand */
+  .brand {
+    float: left;
+    margin-top: 28px;
+    color: white;
+  }
+}
+
+.brand {
+  a { /* AideDD Nom du site */
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: bold;
+    color: white;
+  }
+
+  p { /* AideDD sous titre du site */
+    margin: 2px 0 7px 0;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    color: #BBB;
+  }
+}
+
+/* Search form */
+.search-bar {
+  position: absolute;
+  right: 4px;
+  top: 19px;
+  width: 300px;
+}
+
+.search-dropdown-icon {
+  display: none;
+}
+
+form.gsc-search-box {
+  margin-bottom: 0;
+}
+
+/* Google Search */
+table.gsc-search-box {
+  margin-bottom: 0;
+}
+
+.gsc-input-box {
+  padding-bottom: 2px !important;
+  border-radius: 8px;
+}
+
+.gsc-search-button, .gsc-search-button-v2 {
+  padding: 0 !important;
+  border-style: none !important;
+}
+
+.gsc-search-button-v2 svg {
+  width: 26px !important;
+  height: 26px !important;
+}
+
+/* NAVIGATION */
+
+/* Primary navigation */
+.header .primary {
+  ul {
+    position: absolute;
+    bottom: 5px;
+    right: 0; /* positions the main navigation */
+    line-height: 24px;
+  }
+
+  li {
+    position: relative; /* laisser pour position de la fleche */
+    float: left;
+    display: block;
+    margin: 0 5px;
+    padding: 0 6px;
+    font-family: Helvetica, Arial, sans-serif;
+    white-space: nowrap; /* forces text to never wrap onto a second line */
+    font-size: 15px;
+    font-weight: bold;
+
+    a {
+      color: #989898;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    &.current {
+      span.fa-caret-up {
+        visibility: visible;
+      }
+
+      a {
+        color: white;
+      }
+    }
+
+    span.fa-caret-up { /* fleche */
+      visibility: hidden;
+      display: block;
+      position: absolute;
+      left: 50%;
+      margin-left: -3px;
+      bottom: -10px;
+    }
+  }
+}
+
+.header .nav-open-button {
+  display: none;
+}
+
+/* Secondary navigation */
+.main .secondary h3 {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  font-family: Helvetica, Arial, sans-serif; /* Nom du menu a gauche */
+  font-weight: normal;
+}
+
+.main .secondary span.fa-angle-down {
+  font-size: 16px;
+  margin-right: 5px;
+  display: none;
+}
+
+.main .secondary span.fa-angle-up {
+  font-size: 16px;
+  margin-right: 5px;
+  display: inline;
+}
+
+.main .secondary {
+  border-bottom: 1px solid #e8e8e8;
+
+  ul {
+    display: inline;
+    padding: 0;
+    margin: 0;
+
+    ul li a {
+      padding-left: 10px;
+      /* Indent all sidebar navigation levels*/
+      ul li a {
+        padding-left: 20px;
+
+        ul ul li a {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+
+  li {
+    border-top: 1px solid #e8e8e8;
+    position: relative;
+    list-style-type: none;
+
+    a { /* side nav link styling */
+      padding: 4px;
+      display: block;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: #555;
+      line-height: 14px; /* Aidedd */
+      border-style: none;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    &.current a.current {
+      background: #D0D0D0;
+      color: black;
+      font-weight: bold;
+    }
+
+    &.section, &.current {
+      background: #e8e8e8; /* AideDD section selectionnÃ©e dans menu */
+    }
+
+    &.current ul, &.section ul { /* Only show child pages from selected parent */
+      display: block;
+    }
+
+    a:hover, &.section a:hover, &.current a:hover {
+      color: #B80000;
+    }
+  }
+}
+
+
+/* FOOTER */
+
+.footer {
+  padding: 6px 20px 72px 30px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  color: #555;
+}
+
+#Breadcrumbs ol {
+  list-style-type: none;
+
+  li {
+    display: inline;
+
+    & + li:before {
+      content: "\203A";
+    }
+  }
+}
+
+.footer {
+  a span {
+    color: black;
+    font-weight: bold;
+
+    &:hover {
+      color: #B80000;
+    }
+  }
+
+  .left {
+    display: inline-block;
+    width: 67%;
+    text-align: left;
+  }
+
+  .right {
+    display: inline-block;
+    width: 33%;
+    text-align: right;
+  }
+}
+
+/* STYLE PERSO */
+
+div.blocNews {
+  padding: 10px 10px 10px 10px;
+  margin: 8px 0 14px 0;
+  min-height: 170px;
+  border: 1px solid #f8f8f8;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+
+  &.blocTitre {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .blocDate {
+    font-size: 11px;
+    line-height: 15px;
+    color: #808080;
+  }
+
+  .photo {
+    float: right;
+    width: 140px;
+    height: 140px;
+    margin: 0 0 5px 10px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+}
+
+.video {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+
+  iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+}
+
+div.outils {
+  display: inline-block;
+  width: 24%;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: center;
+  vertical-align: top;
+  font-family: Verdana, Arial, sans-serif;
+  margin-bottom: 10px;
+
+  i {
+    font-size: 64px;
+  }
+
+  a {
+    color: #555;
+
+    &:hover {
+      border: none;
+      color: #808080;
+    }
+  }
+}
+
+div.tools {
+  i {
+    float: left;
+    font-size: 38px;
+    margin-right: 8px;
+  }
+
+  a {
+    color: #555;
+
+    &:hover {
+      border: none;
+      color: #808080;
+    }
+  }
+}
+
+div.calendar p {
+  background-color: #e8e8e8;
+  text-align: left;
+  margin: 6px 2px;
+  padding: 4px;
+  border-radius: 6px;
+  /* color same as body */
+  &.today {
+    background-color: #B80000;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+div.social {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+  a {
+    color: #555;
+    padding: 0 20px 0 20px;
+    &:hover {
+      border: none;
+      color: #808080;
+    }
+  }
+}
+
+div#pubaccueil {
+  img {
+    border-radius: 14px;
+    border: 5px solid #f8f8f8;
+  }
+  a:hover {
+    border: none;
+  }
+}
+
+div.guestbookHead {
+  background-color: #e8e8e8;
+  padding: 4px;
+}
+
+div.guestbookMsg {
+  padding: 0 8px 16px 8px;
+}
+
+/* BREAKPOINT 900px */
+
+@media only screen and (max-width:900px) {
+  body {max-width:900px}
+
+  /* Navigation*/
+
+  .tablet-nav .header .brand {
+    float:none;
+    display:inline-block;
+    margin-top:0; margin-bottom:6px}
+  .brand a {font-size:32px; line-height:32px; margin:0}
+  .brand p {margin:0; line-height:18px}
+
+  .tablet-nav .header {padding:0}
+  .tablet-nav .header .inner {
+    padding:20px 0 0 0;
+    min-height:0;
+  }
+  .tablet-nav .header .primary .nav-open-button { /* styling and positioning of the nav toggle button */
+    position:absolute; right:12px; top:26px;
+    display:block;
+    width:20px;	height:20px;
+    font-size:20px;	color:#e8e8e8;
+    cursor:pointer; z-index:100;
+  }
+  .tablet-nav .header .primary ul {
+    z-index:10;
+    position:relative;
+    display:none; /* initially hiding the navigation */
+    margin:15px 0 0 0;
+    width:100%;
+  }
+
+  .tablet-nav .header .primary ul li {float:none; position:relative; padding:5px 0}
+  .tablet-nav .header .primary ul li a,
+  .tablet-nav .header .primary ul li.current a,
+  .tablet-nav .header .primary ul li.section a { /* styling the top level nav links */
+    text-transform:uppercase;
+    font-weight:bold;
+    font-size:18px;
+  }
+  .tablet-nav .header .primary ul li a:hover {color:white}
+  .tablet-nav .header .primary span.fa-caret-up {display:none}
+  .tablet-nav .tablet-nav .header nav.primary ul li {padding:0}
+
+  /* Search Form */
+
+  .search-bar { /* adds new styling to mobile search bar */
+    width:100%;
+    position:relative; top:0px; right:0;
+    display:none; /* hides searchbar initially */
+    padding:0; margin:0;
+  }
+  .search-dropdown-icon { /* styling for search toggle button */
+    position:absolute; right:50px; top:26px;
+    display:block;
+    width:20px;	height:20px;
+    font-size:20px;
+    cursor:pointer;
+    color:white
+  }
+  .gsib_a {padding:0 6px 3px 6px !important}	/* Google Search */
+  .gsc-search-button button {margin:0 !important; padding:9px !important}
+
+  /* Main Content */
+  .main {padding:0} /* decrease padding so that more content can fit on screen */
+
+  .content-container,
+  .sidebar {
+    width:100%; /* sidenav is now shown above the page content */
+    margin-bottom:20px;
+  }
+
+  .main .inner {padding:0}
+
+  .main .secondary span.fa-angle-down {font-size:16px; margin-right:5px; display:inline}
+  .main .secondary span.fa-angle-up   {font-size:16px; margin-right:5px; display:none}
+  .main .secondary ul {display:none}
+
+  /* Secondary Nav */
+  .main .secondary li a {font-size:12px; line-height:18px; padding:8px 4px 4px 4px}
+
+  /* Footer */
+
+  .footer {padding:10px 10px 24px 10px; font-size:12px}
+
+  .footer .left  {width:100%}
+  .footer .right {display:none}
+
+  /* Perso */
+  div.blocNews p {font-size:15px; line-height:20px}
+  div.blocNews .blocDate {font-size:12px}
+
+  div.blocSite 	{display:none}
+
+  div.outils			{width:24%; font-size:12px; line-height:15px; margin-bottom:10px}
+  div.outils i		{font-size:60px}
+}
+
+/* PRINT STYLES */
+
+@media print {
+  * {
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  body {
+    background: #FFF;
+  }
+
+  .unit, .lastUnit, .inner {
+    padding: 0;
+    margin: 0;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+
+  .typography img {
+    display: none;
+  }
+
+  pre, blockquote {
+    border: 1px solid #808080;
+    page-break-inside: avoid;
+  }
+  p, h2, h3, h4 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  /* Simple theme custom print styles */
+  .header,
+  .footer,
+  .nav-open-button,
+  .search-bar,
+  .search-dropdown-icon,
+  nav.secondary, /* AideDD */
+  div#pubaccueil, /* AideDD */
+  p.auteur, /* AideDD */
+  nav.primary {
+    display: none;
+  }
+
+  .size1of5 {
+    width: 0%;
+  }
+; /* AideDD */
+  .size4of5 {
+    width: 100%;
+  }
+  /* AideDD */
+
+  #r89-desktop-billboard-low-1-0-wrapper {
+    display: none;
+  }
+}

@@ -1,0 +1,1120 @@
+/* CUSTOM FONTS */
+/* set 'swap' to fontawesome css */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Tienne:wght@700&display=swap');
+
+@font-face {
+  font-family: Solbera;
+  //src: url("../webfonts/Solbera.otf") format("opentype");
+  font-display: swap
+}
+
+@font-face {
+  font-family: Satisfy;
+  //src: url("../webfonts/Satisfy.ttf") format("opentype");
+  font-display: swap
+}
+
+/* BASE TYPOGRAPHY */
+body {
+  font-size: 14px;
+  line-height: 21px;
+  color: #000;
+  font-family: 'Lato', Arial, sans-serif
+}
+
+body a {
+  text-decoration: none;
+  color: #B80000
+}
+
+/* HEADERS */
+.typography h1,
+.typography h2,
+.typography h3,
+.typography h4,
+.typography h5,
+.typography h6 {
+  font-family: 'Tienne', sherif;
+  font-weight: bold;
+  color: #444
+}
+
+.typography h1 {
+  font-size: 36px;
+  line-height: 46px;
+  margin: 0 0 6px 0;
+  border-bottom: 1px solid #e0e0e0
+}
+
+.typography h1.accueil {
+  border-style: none
+}
+
+.typography h2 {
+  font-size: 30px;
+  line-height: 36px;
+  margin: 30px 0 4px 0;
+  border-bottom: 1px solid #e0e0e0
+}
+
+.typography .v24 h2 {
+  border-bottom: none
+}
+
+.typography h3 {
+  font-size: 22px;
+  line-height: 28px;
+  margin: 5px 0 2px 0
+}
+
+.typography .v24 h3 {
+  border-bottom: 1px solid #e0e0e0
+}
+
+.typography h4 {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 15px 0 0px 0;
+  color: #802040
+}
+
+.typography h5 {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 15px 0 0px 0
+}
+
+.typography h6 {
+  font-size: 16px;
+  line-height: 20px;
+  margin: 8px 0 8px 0;
+  background-color: #D0D0D0;
+  padding: 4px
+}
+
+/* AideDD titre avec background */
+.typography h2 + h4 {
+  margin-top: 0px
+}
+
+/* cas special de h4 juste apres h2 */
+.typography h3.band {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 8px 0 8px 0;
+  background-color: #D0D0D0;
+  padding: 4px
+}
+
+.typography .size2of5 h2:first-child {
+  margin-top: 10px
+}
+
+/* PARAGRAGHS */
+.typography p {
+  margin: 0 0 10px 0;
+  text-align: justify;
+  font-size: 14px;
+  line-height: 21px
+}
+
+.typography em {
+  font-style: italic
+}
+
+/* LINKS */
+.typography a {
+  text-decoration: none;
+  color: #B80000
+}
+
+.typography a:hover {
+  border-bottom-style: dashed;
+  border-bottom-width: 1px
+}
+
+/* LIST STYLES */
+.typography ul,
+.typography ol,
+.typography dl {
+  margin: 0 0 12px 18px;
+  font-size: 14px;
+  line-height: 21px
+}
+
+.typography ul li {
+  list-style-type: disc
+}
+
+/* adds disc style bullet to the list */
+
+/* TABLE STYLES */
+.typography table {
+  border-collapse: collapse;
+  margin: 0 0 20px 0;
+  text-align: left;
+  font-size: 13px
+}
+
+/* tableau un peu plus petit que le texte principal */
+.typography table tr:nth-child(even),
+.typography table tr.even,
+.typography thead td {
+  background-color: #D0D0D0
+}
+
+/* AideDD ligne paire des tableaux */
+.typography table th {
+  padding: 1px 8px;
+  background-color: #FFFFFF;
+  border-width: 0;
+  vertical-align: bottom
+}
+
+.typography table th:first-child {
+  min-width: 38px
+}
+
+.typography table td {
+  padding: 1px 8px;
+  border-width: 0;
+  vertical-align: top;
+  line-height: 19px
+}
+
+.typography table th {
+  font-weight: bold;
+  line-height: 16px
+}
+
+.typography table caption {
+  font-weight: bold;
+  text-align: left;
+  font-size: 15px
+}
+
+.typography .v24 table.core {
+  border-collapse: separate;
+  border: 6px #e6c897 solid;
+  border-radius: 10px;
+  border-spacing: 6px
+}
+
+.typography .v24 table.core th {
+  font-weight: bold;
+  font-size: 20px;
+  color: #8e6f3b;
+  font-variant: small-caps
+}
+
+.typography .v24 table tr:nth-child(even),
+.typography .v24 table tr.even {
+  background-color: #c2d9e6
+}
+
+.typography .v24 table.core tr:nth-child(even) td,
+.typography .v24 table.core tr.even td {
+  padding: 6px 8px
+}
+
+/* WYSIWYG EDITOR ALIGNMENT CLASSES */
+.typography .left {
+  text-align: left
+}
+
+.typography .center, .typography .text-center {
+  text-align: center
+}
+
+.typography .right {
+  text-align: right
+}
+
+/* IMAGES */
+.typography .captionImage.left {
+  float: left;
+  margin: 0px 15px 5px 0;
+  max-width: 49%
+}
+
+.typography .captionImage.right {
+  float: right;
+  margin: 0px 0 5px 15px;
+  max-width: 49%
+}
+
+.typography .captionImage.center {
+  float: none;
+  margin: 5px auto 15px auto;
+  max-width: 100%
+}
+
+.typography .captionImage.leftlite {
+  float: left;
+  margin: 0px 1% 5px 0;
+  max-width: 49%
+}
+
+.typography .captionImage.rightlite {
+  float: right;
+  margin: 0px 0 5px 1%;
+  max-width: 49%
+}
+
+.typography .captionImage.centerlite {
+  float: none;
+  margin: 5px auto 15px auto;
+  max-width: 100%
+}
+
+.typography .captionImage.left img,
+.typography .captionImage.right img,
+.typography .captionImage.center img {
+  float: none;
+  max-width: none;
+  width: 100%;
+  margin: 5px 0 0 0
+}
+
+.typography .captionImage.leftlite img,
+.typography .captionImage.rightlite img,
+.typography .captionImage.centerlite img {
+  float: none;
+  max-width: none;
+  width: 100%;
+  margin: 5px 0 0 0
+}
+
+.typography .captionImage p {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  color: #595959;
+  font-family: Verdana, Arial, sans-serif;
+  text-align: center;
+  font-size: 10px;
+  line-height: 15px
+}
+
+.typography img {
+  box-sizing: content-box;
+  border: 5px solid #e8e8e8;
+  height: auto
+}
+
+/* AideDD cadre image - resets the image height so that it maintains its aspect ratio when width is set */
+.typography .v24 img {
+  border: 6px #e6c897 solid;
+  border-radius: 10px
+}
+
+.typography img.left {
+  float: left;
+  max-width: 49%;
+  margin: 5px 10px 0px 0
+}
+
+.typography img.right {
+  float: right;
+  max-width: 49%;
+  margin: 5px 0 0px 10px
+}
+
+.typography img.center {
+  float: none;
+  max-width: 100%;
+  margin: 5px auto 5px auto;
+  display: block;
+  clear: both
+}
+
+.typography img.leftlite {
+  float: left;
+  border: 0;
+  max-width: 49%;
+  margin: 5px 1% 0px 0
+}
+
+.typography img.rightlite {
+  float: right;
+  border: 0;
+  max-width: 49%;
+  margin: 5px 0 0px 1%
+}
+
+.typography img.centerlite {
+  float: none;
+  border: 0;
+  max-width: 100%;
+  margin: 5px auto 5px auto;
+  display: block;
+  clear: both
+}
+
+.typography img.none {
+  border: 0;
+  background: none
+}
+
+
+/* BLOCKQUOTES */
+.typography blockquote {
+  //background: transparent url(../images/blockquote.png) no-repeat 0px 6px;
+  color: #777;
+  display: block;
+  font-style: italic;
+  margin: 0 0 4px;
+  float: right;
+  text-indent: 30px;
+  width: 50%;
+  margin-left: 3%;
+  clear: both
+}
+
+.typography blockquote p {
+  font-size: 18px;
+  line-height: 25px
+}
+
+.typography pre, .typography textarea.code {
+  width: 96%;
+  margin: 0px 2%;
+  background: #F7F7F7;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 8px;
+  border: 1px solid #E4E4E4;
+  font-family: Courier, monospace;
+  resize: none
+}
+
+/* GENERIC FORMS */
+div.field {
+  margin: 8px 0 8px
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0
+}
+
+form label {
+  margin-bottom: 2px
+}
+
+form label.left {
+  display: block;
+  font-weight: bold
+}
+
+form label.right {
+  font-size: 12px;
+  color: #888
+}
+
+form input.text,
+form textarea,
+form select {
+  width: 96%;
+  max-width: 400px;
+  padding: 6px 5px;
+  font-size: 15px;
+  background-color: #fff;
+  border: 1px solid #dad9d9
+}
+
+form input.text:focus,
+form textarea:focus,
+form .textajaxuniquetext:focus,
+form select:focus {
+  outline: none
+}
+
+form input[disabled], form textarea[disabled] {
+  background-color: #f7f7f7;
+  border: 1px solid #dad9d9
+}
+
+textarea {
+  resize: vertical
+}
+
+/* forces text area to be resized vertically only */
+
+/* Radio and Checkbox */
+.field .checkbox, .field .radio {
+  float: left;
+  width: 13px;
+  height: 13px;
+  margin-right: 6px;
+  margin-top: 3px;
+  padding: 0
+}
+
+.checkbox label.right,
+.radio label.right {
+  float: left
+}
+
+/* Messages */
+form .message, p.message {
+  background-color: #fef4ba;
+  padding: 5px 10px;
+  border: 1px solid #e8c805;
+  border-radius: 3px
+}
+
+form .good, p.good {
+  background-color: #ecf9d0;
+  border-color: #8fbe00
+}
+
+form .bad,
+form .required,
+form .error {
+  background-color: #f9d0d0;
+  border-color: #B80000;
+  color: #B80000
+}
+
+/* Actions */
+.Actions {
+  margin-bottom: 20px
+}
+
+a.btn, button, input[type="submit"], input[type="reset"], .Actions .action {
+  background: #B80000;
+  color: #fff;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 6px 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  font-size: 13px;
+  margin-right: 10px;
+  float: left
+}
+
+a.btn {
+  line-height: 18px;
+  margin-bottom: 10px
+}
+
+/* Login and Forgot Password */
+#Remember {
+  min-height: 20px
+}
+
+#ForgotPassword {
+  clear: left
+}
+
+#MemberLoginForm_LostPasswordForm .Actions:after {
+  display: none
+}
+
+/* Form module style */
+.FormHeading {
+  clear: both;
+  padding-top: 15px
+}
+
+form .date .middleColumn input {
+  width: 114px
+}
+
+.Actions input.resetformaction,
+.Actions input.action-minor {
+  float: left;
+  background-color: #888
+}
+
+.Actions input.resetformaction:hover,
+.Actions input.action-minor:hover {
+  background-color: #aaa
+}
+
+/* Labels */
+.checkbox label.right {
+  font-size: 13px;
+  color: #333
+}
+
+form .requiredField label.left:after { /* pseudo element adds an asterisk to a required fields label */
+  color: #B80000;
+  content: "*";
+  font-size: 14px;
+  font-weight: normal;
+  padding-left: 3px
+}
+
+/* Radio / Checkbox */
+form .checkboxset ul,
+form .optionset ul {
+  margin: 0
+}
+
+form .checkboxset li,
+form .optionset li {
+  margin-bottom: 5px;
+  list-style-type: none
+}
+
+form div.checkbox:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden
+}
+
+form .checkbox .checkbox {
+  clear: both
+}
+
+/* Messages */
+span.message {
+  margin: 10px 0;
+  display: block;
+  max-width: 390px;
+  clear: left
+}
+
+form input.holder-required {
+  border: 1px solid #B80000
+}
+
+/* Error messages */
+input:invalid,
+textarea:invalid {
+  border-radius: 1px;
+  -moz-box-shadow: 0px 0px 5px #B80000;
+  -webkit-box-shadow: 0px 0px 5px #B80000;
+  box-shadow: 0px 0px 5px #B80000
+}
+
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid {
+  background-color: #f0dddd
+}
+
+/*------------ */
+/* STYLE PERSO */
+/*------------ */
+
+hr {
+  clear: both;
+  height: 1px;
+  border: 0;
+  border-top: 0px solid #ccc;
+  margin: 1em 0;
+  padding: 0
+}
+
+.typography table.brut {
+  border: 0;
+  margin: auto
+}
+
+.typography table.brut tr {
+  background-color: #FFFFFF
+}
+
+.typography table.brut td {
+  padding: 1px;
+  border: 0
+}
+
+.typography table.brut img {
+  margin: 0;
+  padding: 0;
+  border: 0
+}
+
+a.ancre, a.ancre:hover {
+  color: #444
+}
+
+h4 a.ancre, h4 a.ancre:hover {
+  color: #802040
+}
+
+a.ancre::before {
+  content: "➥"
+}
+
+.typography .citation {
+  float: right;
+  width: 50%;
+  display: block;
+  clear: both;
+  //background: transparent url(../images/blockquote.png) no-repeat 0px 0px;
+  text-indent: 30px;
+  margin: 0 0 0 3%;
+  font-size: 16px;
+  line-height: 22px;
+  color: #777;
+  font-style: italic
+}
+
+.typography .citAuteur {
+  float: right;
+  width: 50%;
+  display: block;
+  clear: both;
+  background: none;
+  text-indent: 0px;
+  margin: 6px 0 0 3%;
+  font-size: 16px;
+  line-height: 22px;
+  color: #777;
+  font-style: normal;
+  text-align: right
+}
+
+.typography .dialogue {
+  background-color: #F2EEE0;
+  border-width: 8px;
+  border-style: solid;
+  //border-image: url(../images/dd-dialogue.png) 8;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 22px;
+  color: #000
+}
+
+.typography .encadre {
+  float: right;
+  width: 33%;
+  background-color: #DBE2C2;
+  border-width: 13px;
+  border-style: solid;
+  //border-image: url(../images/dd-encadre.png) 13;
+  padding: 6px 0 6px 0;
+  margin: 0px 0 4px 10px;
+  font-size: 11px;
+  line-height: 18px;
+  color: #000;
+  font-family: Verdana, Arial, sans-serif;
+  box-sizing: border-box
+}
+
+.typography p.encadre::first-letter {
+  font-size: 15px
+}
+
+.typography .encadre ul, .typography .encadre ol {
+  margin: 0 0 10px 10px
+}
+
+.typography .officiel {
+  float: right;
+  width: 33%;
+  background-color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 5px 0 0 10px;
+  font-size: 11px;
+  line-height: 18px;
+  color: #FFF;
+  font-family: Verdana, Arial, sans-serif;
+  box-sizing: border-box
+}
+
+.typography .new {
+  color: #c4191f
+}
+
+.typography .notes {
+  font-size: 10px;
+  line-height: 15px
+}
+
+.typography .auteur {
+  font-size: 11px;
+  color: #707070;
+  text-decoration: overline;
+  margin: 10px 0 5px 0;
+  font-family: Helvetica, Arial, sans-serif
+}
+
+.typography .ecriture {
+  font-size: 20px;
+  line-height: 26px;
+  color: #333;
+  font-family: 'Satisfy', cursive
+}
+
+.typography span.lettrine {
+  font-family: Solbera, "Times New Roman", Times, serif;
+  float: left;
+  font-size: 80px;
+  line-height: 58px;
+  margin-top: 4px;
+  margin-right: 4px;
+  color: #111
+}
+
+.typography .parchemin {
+  //background: #F5ECCE url('../images/fond-ph.jpg') repeat right top;
+  padding: 20px;
+  border: 2px solid #61380B
+}
+
+.typography .bulle {
+  border-bottom: dashed 1px #B80000
+}
+
+.typography .boutonLien {
+  width: 195px;
+  background: #B80000;
+  border-radius: 4px;
+  padding: 6px 6px;
+  margin: 10px auto;
+  border: none;
+  text-align: center
+}
+
+.typography .boutonLien.block {
+  margin: 5px 0 5px 8px;
+  display: inline-block
+}
+
+.typography .boutonLien a {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold
+}
+
+.typography .ficheBook {
+  border-top: 1px solid #bbb;
+  margin: 5px;
+  padding: 5px
+}
+
+.typography .ficheBook i.fas.fa-star {
+  color: orange
+}
+
+.typography .ficheBook i.far.fa-star {
+  color: #bbb
+}
+
+
+/* Bloc monstre */
+.blocMonstre {
+  width: 60%;
+  padding: 0px 8px 0px 8px
+}
+
+.blocMonstre .orange {
+  border: 1px black solid;
+  background-color: #e69a28;
+  width: 100%;
+  height: 3px
+}
+
+.blocMonstre .monstre {
+  //background: #fdf1dc url('../images/fond-ph.jpg') repeat;
+  padding: 5px 8px 5px 8px;
+  margin: 0 2px 0 4px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+  font-family: arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: left
+}
+
+.blocMonstre h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: bold
+}
+
+.blocMonstre h4:first-letter {
+  font-size: 22px
+}
+
+.blocMonstre svg {
+  width: 100%;
+  height: 5px
+}
+
+.blocMonstre .stat {
+  color: #802040
+}
+
+.blocMonstre .carac {
+  display: inline-block;
+  padding-left: 12px;
+  text-align: center
+}
+
+.blocMonstre .monstre p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  line-height: 18px
+}
+
+/* .blocMonstre .sep	{background-color:#802040; width:100%; height:4px; margin:5px 0 5px 0} */
+.blocMonstre .rub {
+  color: #802040;
+  margin: 10px 0 5px 0;
+  border-bottom: 1px solid #802040;
+  font-size: 14px;
+  font-weight: bold
+}
+
+.blocMonstre .rub:first-letter {
+  font-size: 16px
+}
+
+/* liste de sorts, monstres, om, ... */
+.content div.liste {
+  line-height: 34px
+}
+
+.content div.liste a {
+  border: 1px #888 solid;
+  padding: 4px 8px;
+  white-space: nowrap;
+  margin-right: 4px;
+  background-color: #F8F8F8
+}
+
+/* Enigme */
+div.question {
+  border: 1px solid #888888;
+  background-color: #BBBBBB;
+  padding: 4px
+}
+
+div.reponse {
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #888888;
+  padding: 4px
+}
+
+div.l100 {
+  width: 98%
+}
+
+div.l50 {
+  width: 46%
+}
+
+div.spoiler {
+  visibility: hidden
+}
+
+h4.result {
+  border: 5px solid #D0D0D0;
+  padding: 5px
+}
+
+.progress {
+  background-color: #015581;
+  line-height: 1em;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px
+}
+
+/* Responsive form styles */
+@media only screen and (max-width: 900px) {
+  body {
+    font-size: 16px;
+    line-height: 26px
+  }
+
+  .typography h1 {
+    font-size: 26px;
+    line-height: 32px
+  }
+  .typography h1.accueil {
+    font-size: 28px;
+  }
+  .typography h2 {
+    font-size: 24px;
+    line-height: 28px
+  }
+  .typography h3 {
+    font-size: 22px;
+    line-height: 24px
+  }
+  .typography h4 {
+    font-size: 20px;
+    line-height: 22px
+  }
+  .typography h5 {
+    font-size: 17px;
+    line-height: 20px
+  }
+  .typography h6 {
+    font-size: 18px;
+    line-height: 24px
+  }
+
+  .typography table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 15px
+  }
+  .typography table.hidden {
+    display: none
+  }
+  .typography .v24 table.core {
+    white-space: normal
+  }
+
+  .typography p {
+    font-size: 16px;
+    line-height: 24px
+  }
+  .typography p.citation,
+  .typography p.citAuteur {
+    float: none;
+    width: 100%;
+    font-size: 16px;
+    line-height: 26px;
+    text-indent: 0px;
+    margin: 0 0 10px 0;
+    background: none
+  }
+  .typography p.dialogue {
+    font-size: 14px;
+    line-height: 26px
+  }
+  .typography p.encadre {
+    float: none;
+    width: 100%;
+    margin: 8px 0 8px 0;
+    font-size: 14px;
+    line-height: 20px
+  }
+  .typography p.encadre::first-letter {
+    font-size: 18px
+  }
+  .typography p.officiel {
+    float: none;
+    width: 100%;
+    margin: 8px 0 8px 0;
+    font-size: 14px;
+    line-height: 20px
+  }
+  .typography .auteur {
+    display: none
+  }
+  .typography li {
+    font-size: 16px;
+    line-height: 24px
+  }
+
+  .typography .captionImage.left {
+    margin: 0px 4% 5px 0;
+    max-width: 46%
+  }
+  .typography .captionImage.right {
+    margin: 0px 0 5px 4%;
+    max-width: 46%
+  }
+  .typography .captionImage.leftlite {
+    margin: 0px 1% 5px 0;
+    max-width: 49%
+  }
+  .typography .captionImage.rightlite {
+    margin: 0px 0 5px 1%;
+    max-width: 49%
+  }
+
+  .typography img.center, .typography img.centerlite {
+    max-width: 97%
+  }
+
+  .blocMonstre {
+    width: 100%;
+    padding: 0px
+  }
+  .blocMonstre .monstre {
+    font-size: 14px;
+    line-height: 19px
+  }
+  .blocMonstre h4:first-letter {
+    font-size: 25px
+  }
+  .blocMonstre .carac {
+    padding-left: 6px
+  }
+  .blocMonstre .monstre p {
+    font-size: 14px;
+    line-height: 19px
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    font-size: 8pt;
+    line-height: 11pt
+  }
+
+  .typography h1 {
+    font-size: 14pt;
+    line-height: 22px
+  }
+  .typography h2 {
+    font-size: 12pt;
+    line-height: 20px
+  }
+  .typography h3 {
+    font-size: 11pt;
+    line-height: 18px
+  }
+  .typography h4 {
+    font-size: 10pt;
+    line-height: 15px
+  }
+  .typography h5 {
+    font-size: 9pt;
+    line-height: 14px
+  }
+  .typography h6 {
+    font-size: 9pt;
+    line-height: 14px
+  }
+
+  .typography p.encadre {
+    font-size: 7pt;
+    line-height: 11pt
+  }
+  .typography p.citation, .typography p.citAuteur {
+    font-size: 9pt;
+    line-height: 14pt
+  }
+  .typography p.ecriture {
+    font-size: 12pt;
+    line-height: 16pt
+  }
+  .typography p.ecriture .lettrine {
+    font-size: 36px;
+    margin-top: 12px;
+    margin-right: 2px
+  }
+
+  .typography table {
+    font-size: 7pt
+  }
+}
