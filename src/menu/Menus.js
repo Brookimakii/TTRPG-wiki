@@ -1,52 +1,59 @@
+export const BASED_URL = "/TTRPG-wiki"
+
+
+const dnd = BASED_URL + "/dnd"
+const player = dnd + "/player"
+
+
 export const SYSTEM_SELECTION = [
   {
-    href: "/dnd",
+    href: dnd,
     title: "Dungeons & Dragons",
     name: "D&D"
   },
   {
-    href: "/pf",
+    href: "pf",
     title: "Pathfinder",
     name: "Pathfinder"
   }
 ]
 export const DND_SELECTOR = [
   {
-    href: "/dnd/rules",
+    href: dnd + "/rules",
     title: "",
     name: "Rules"
   },
   {
-    href: "/dnd/player",
+    href: player,
     title: "",
     name: "Character Creation"
   },
   {
-    href: "/dnd/resources",
+    href: dnd + "/resources",
     title: "",
     name: "Resources"
   },
   {
-    href: "/dnd/tips",
+    href: dnd + "/tips",
     title: "",
     name: "Tips"
   },
   {
-    href: "/dnd/universes",
+    href: dnd + "/universes",
     title: "",
     name: "Universe"
   },
 ]
 
 
-function buildMenuFromJson(racesData): [] {
+function buildMenuFromJson(racesData, parentUrl): [] {
   let races = [];
   console.log(racesData)
   for (let race in racesData) {
     let obj = racesData[race]
     races.push({
       id: obj.id,
-      href: "/dnd/player/races/" + obj.id,
+      href: parentUrl + obj.id,
       name: obj.name,
       sublist: []
     })
@@ -54,56 +61,25 @@ function buildMenuFromJson(racesData): [] {
   return races
 }
 
-// {
-//   id: "race.elf",
-//     href: "/dnd/cc/race/elf",
-//   name: "Elf",
-//   sublist: []
-// },
-// {
-//   id: "race.human",
-//     href: "/dnd/cc/race/human",
-//   name: "Human",
-//   sublist: []
-// },
-// {
-//   id: "race.dragonborn",
-//     href: "/dnd/cc/race/dragonborn",
-//   name: "Dragonborn",
-//   sublist: []
-// },
-// {
-//   id: "race.aarakocra",
-//     href: "/dnd/cc/race/aarakocra",
-//   name: "Aarakocra",
-//   sublist: []
-// },
-// {
-//   id: "race.genasi",
-//     href: "/dnd/cc/race/genasi",
-//   name: "Génasi",
-//   sublist: []
-// },
-
 export const CHARACTER_CREATION = [
 
   {
     id: "intro",
-    href: "/dnd/player",
+    href: player,
     name: "Introduction",
     sublist: []
   },
   {
     id: "races",
-    href: "/dnd/player/races",
+    href: player + "/races",
     name: "Races",
-    sublist: buildMenuFromJson(require("../resources/races.json"))
+    sublist: buildMenuFromJson(require("../resources/races.json"), player + "/races/")
   },
   {
     id: "classes",
-    href: "/dnd/player/classes",
+    href: player + "/classes",
     name: "Classes",
-    sublist: buildMenuFromJson(require("../resources/classes.json"))
+    sublist: buildMenuFromJson(require("../resources/classes.json"), player + "/classes/")
   }
 ]
 

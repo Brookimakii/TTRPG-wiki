@@ -9,7 +9,7 @@ export const DnD = () => {
   // Header(DND_SELECTOR)
   return (
     <>
-      <PrimaryMenu links={DND_SELECTOR}/>
+      {/*<PrimaryMenu links={DND_SELECTOR}/>*/}
       {/*<Header primaryMenu={DND_SELECTOR}/>*/}
       {/*<Aside name="Character Creation">*/}
       {/*  <SecondaryMenu links={CHARACTER_CREATION}/>*/}

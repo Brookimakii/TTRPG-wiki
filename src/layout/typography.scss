@@ -74,14 +74,14 @@ body a {
 .typography h4 {
   font-size: 18px;
   line-height: 24px;
-  margin: 15px 0 0px 0;
+  margin: 15px 0 0 0;
   color: #802040
 }
 
 .typography h5 {
   font-size: 14px;
   line-height: 20px;
-  margin: 15px 0 0px 0
+  margin: 15px 0 0 0
 }
 
 .typography h6 {
@@ -94,7 +94,7 @@ body a {
 
 /* AideDD titre avec background */
 .typography h2 + h4 {
-  margin-top: 0px
+  margin-top: 0
 }
 
 /* cas special de h4 juste apres h2 */
@@ -233,13 +233,13 @@ body a {
 /* IMAGES */
 .typography .captionImage.left {
   float: left;
-  margin: 0px 15px 5px 0;
+  margin: 0 15px 5px 0;
   max-width: 49%
 }
 
 .typography .captionImage.right {
   float: right;
-  margin: 0px 0 5px 15px;
+  margin: 0 0 5px 15px;
   max-width: 49%
 }
 
@@ -251,13 +251,13 @@ body a {
 
 .typography .captionImage.leftlite {
   float: left;
-  margin: 0px 1% 5px 0;
+  margin: 0 1% 5px 0;
   max-width: 49%
 }
 
 .typography .captionImage.rightlite {
   float: right;
-  margin: 0px 0 5px 1%;
+  margin: 0 0 5px 1%;
   max-width: 49%
 }
 
@@ -311,13 +311,13 @@ body a {
 .typography img.left {
   float: left;
   max-width: 49%;
-  margin: 5px 10px 0px 0
+  margin: 5px 10px 0 0
 }
 
 .typography img.right {
   float: right;
   max-width: 49%;
-  margin: 5px 0 0px 10px
+  margin: 5px 0 0 10px
 }
 
 .typography img.center {
@@ -332,14 +332,14 @@ body a {
   float: left;
   border: 0;
   max-width: 49%;
-  margin: 5px 1% 0px 0
+  margin: 5px 1% 0 0
 }
 
 .typography img.rightlite {
   float: right;
   border: 0;
   max-width: 49%;
-  margin: 5px 0 0px 1%
+  margin: 5px 0 0 1%
 }
 
 .typography img.centerlite {
@@ -378,7 +378,7 @@ body a {
 
 .typography pre, .typography textarea.code {
   width: 96%;
-  margin: 0px 2%;
+  margin: 0 2%;
   background: #F7F7F7;
   font-size: 12px;
   line-height: 16px;
@@ -592,9 +592,9 @@ form input.holder-required {
 input:invalid,
 textarea:invalid {
   border-radius: 1px;
-  -moz-box-shadow: 0px 0px 5px #B80000;
-  -webkit-box-shadow: 0px 0px 5px #B80000;
-  box-shadow: 0px 0px 5px #B80000
+  -moz-box-shadow: 0 0 5px #B80000;
+  -webkit-box-shadow: 0 0 5px #B80000;
+  box-shadow: 0 0 5px #B80000
 }
 
 .no-boxshadow input:invalid,
@@ -610,7 +610,7 @@ hr {
   clear: both;
   height: 1px;
   border: 0;
-  border-top: 0px solid #ccc;
+  border-top: 0 solid #ccc;
   margin: 1em 0;
   padding: 0
 }
@@ -667,7 +667,7 @@ a.ancre::before {
   display: block;
   clear: both;
   background: none;
-  text-indent: 0px;
+  text-indent: 0;
   margin: 6px 0 0 3%;
   font-size: 16px;
   line-height: 22px;
@@ -697,7 +697,7 @@ a.ancre::before {
   border-style: solid;
   //border-image: url(../images/dd-encadre.png) 13;
   padding: 6px 0 6px 0;
-  margin: 0px 0 4px 10px;
+  margin: 0 0 4px 10px;
   font-size: 11px;
   line-height: 18px;
   color: #000;
@@ -811,7 +811,7 @@ a.ancre::before {
 /* Bloc monstre */
 .blocMonstre {
   width: 60%;
-  padding: 0px 8px 0px 8px
+  padding: 0 8px 0 8px
 }
 
 .blocMonstre .orange {
@@ -825,7 +825,7 @@ a.ancre::before {
   //background: #fdf1dc url('../images/fond-ph.jpg') repeat;
   padding: 5px 8px 5px 8px;
   margin: 0 2px 0 4px;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   font-family: arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -990,7 +990,7 @@ h4.result {
     width: 100%;
     font-size: 16px;
     line-height: 26px;
-    text-indent: 0px;
+    text-indent: 0;
     margin: 0 0 10px 0;
     background: none
   }
@@ -1024,19 +1024,19 @@ h4.result {
   }
 
   .typography .captionImage.left {
-    margin: 0px 4% 5px 0;
+    margin: 0 4% 5px 0;
     max-width: 46%
   }
   .typography .captionImage.right {
-    margin: 0px 0 5px 4%;
+    margin: 0 0 5px 4%;
     max-width: 46%
   }
   .typography .captionImage.leftlite {
-    margin: 0px 1% 5px 0;
+    margin: 0 1% 5px 0;
     max-width: 49%
   }
   .typography .captionImage.rightlite {
-    margin: 0px 0 5px 1%;
+    margin: 0 0 5px 1%;
     max-width: 49%
   }
 
@@ -1046,7 +1046,7 @@ h4.result {
 
   .blocMonstre {
     width: 100%;
-    padding: 0px
+    padding: 0
   }
   .blocMonstre .monstre {
     font-size: 14px;

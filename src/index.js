@@ -12,24 +12,13 @@ import "./layout/rest.scss"
 import Header from "./layout/Header";
 import {HashRouter} from "react-router-dom";
 
-const header = ReactDOM.createRoot(document.getElementById('header'));
-header.render(
-  <React.StrictMode>
-    <Header/>
-  </React.StrictMode>
-);
+// ReactDOM.createRoot(document.getElementById('header')).render(<React.StrictMode><Header/></React.StrictMode>)
+// ReactDOM.createRoot(document.getElementById('footer')).render(<React.StrictMode><Footer/></React.StrictMode>)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App/>
-  </React.StrictMode>
-);
-
-const footer = ReactDOM.createRoot(document.getElementById('footer'));
-footer.render(
-  <React.StrictMode>
-    <Footer/>
   </React.StrictMode>
 );
 

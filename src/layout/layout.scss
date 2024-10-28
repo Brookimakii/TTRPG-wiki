@@ -526,7 +526,7 @@ div.guestbookMsg {
 
   .search-bar { /* adds new styling to mobile search bar */
     width:100%;
-    position:relative; top:0px; right:0;
+    position:relative; top:0; right:0;
     display:none; /* hides searchbar initially */
     padding:0; margin:0;
   }
@@ -632,7 +632,7 @@ div.guestbookMsg {
   }
 
   .size1of5 {
-    width: 0%;
+    width: 0;
   }
 ; /* AideDD */
   .size4of5 {

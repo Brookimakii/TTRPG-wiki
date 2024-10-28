@@ -4,113 +4,133 @@ import {DnD, PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/D
 import {CharacterCreation, PlayerRaces} from "../pages/dnd/chara crea/CharacterCreation";
 import DnDHome from "../pages/dnd/DnDHome";
 import {RacesDetail} from "../pages/dnd/chara crea/Details";
+import ReactDOM from "react-dom/client";
+import React from "react";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 const routes = [
   {
-    id: "home",
-    path: "/",
-    element: <Home/>
-  },
-  {
-    id: "dnd-system",
-    path: "dnd",
-    element: <DnD/>,
-    redirect: "dnd",
+    id: "homepage",
+    path: "/TTRPG-wiki",
+    element: <>
+
+      <Header />
+      <div class="main">
+        <div className="inner typography line">
+          <Outlet/>
+        </div>
+      </div>
+      <Footer/>
+    </>,
     children: [
       {
-        id: "dnd-home",
+        id: "home",
         path: "",
-        element: <DnDHome/>
+        element: <Home/>
       },
       {
-        id: "rules",
-        path: "rules",
-        element: <Rules/>,
+        id: "dnd-system",
+        path: "dnd",
+        element: <DnD/>,
+        redirect: "dnd",
         children: [
           {
-            id: "rules.intro",
+            id: "dnd-home",
             path: "",
-            element: <></>
-          }
-        ]
-      },
-      {
-        id: "player-guide",
-        path: "player",
-        element: <PlayerGuide/>,
-        children: [
-          {
-            id: "player.intro",
-            path: "",
-            element: <CharacterCreation/>
+            element: <DnDHome/>
           },
           {
-            id: "races",
-            path: "races",
-            element: <Outlet/>,
+            id: "rules",
+            path: "rules",
+            element: <Rules/>,
             children: [
               {
-                id: "race-intro",
+                id: "rules.intro",
                 path: "",
-                element: <PlayerRaces/>,
-                children: []
-              },
-              {
-                id: "race-details",
-                path: "races/:raceId",
-                element: <RacesDetail/>,
-                children: []
-              },
-            ]
-          },
-          {
-            id: "class",
-            path: "class",
-            element: "",
-            children: [
-              {
-                id: "class-details",
-                path: "/dnd/player/class/:classId",
-                element: "",
-                children: []
+                element: <></>
               }
             ]
           },
-        ]
-      },
-      {
-        id: "resources",
-        path: "resources",
-        element: <Resources/>,
-        children: [
           {
-            id: "resources-intro",
-            path: "",
-            element: <></>
-          }
-        ]
-      },
-      {
-        id: "tips",
-        path: "tips",
-        element: <Tips/>,
-        children: [
+            id: "player-guide",
+            path: "player",
+            element: <PlayerGuide/>,
+            children: [
+              {
+                id: "player.intro",
+                path: "",
+                element: <CharacterCreation/>
+              },
+              {
+                id: "races",
+                path: "races",
+                element: <Outlet/>,
+                children: [
+                  {
+                    id: "race-intro",
+                    path: "",
+                    element: <PlayerRaces/>,
+                    children: []
+                  },
+                  {
+                    id: "race-details",
+                    path: ":raceId",
+                    element: <RacesDetail/>,
+                    children: []
+                  },
+                ]
+              },
+              {
+                id: "class",
+                path: "class",
+                element: "",
+                children: [
+                  {
+                    id: "class-details",
+                    path: ":classId",
+                    element: "",
+                    children: []
+                  }
+                ]
+              },
+            ]
+          },
           {
-            id: "tips-intro",
-            path: "",
-            element: <></>
-          }
-        ]
-      },
-      {
-        id: "universe",
-        path: "universes",
-        element: <Universe/>,
-        children: [
+            id: "resources",
+            path: "resources",
+            element: <Resources/>,
+            children: [
+              {
+                id: "resources-intro",
+                path: "",
+                element: <></>
+              }
+            ]
+          },
           {
-            id: "universe-intro",
-            path: "",
-            element: <></>
+            id: "tips",
+            path: "tips",
+            element: <Tips/>,
+            children: [
+              {
+                id: "tips-intro",
+                path: "",
+                element: <></>
+              }
+            ]
+          },
+          {
+            id: "universe",
+            path: "universes",
+            element: <Universe/>,
+            children: [
+              {
+                id: "universe-intro",
+                path: "",
+                element: <></>
+              }
+            ]
           }
         ]
       }
@@ -120,6 +140,7 @@ const routes = [
 
 ]
 
-export const router = createHashRouter(
+// export const router = createHashRouter(
+export const router = createBrowserRouter(
   routes
 )
