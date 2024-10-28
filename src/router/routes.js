@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet} from "react-router-dom";
+import {createBrowserRouter, createHashRouter, Outlet} from "react-router-dom";
 import Home from "../pages/Home";
 import {DnD, PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
 import {CharacterCreation, PlayerRaces} from "../pages/dnd/chara crea/CharacterCreation";
@@ -120,6 +120,6 @@ const routes = [
 
 ]
 
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   routes
 )
