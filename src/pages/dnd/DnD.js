@@ -1,26 +1,10 @@
-import PrimaryMenu from "../../menu/PrimaryMenu";
-import {CHARACTER_CREATION, DND_SELECTOR} from "../../menu/Menus";
+import {CHARACTER_CREATION} from "../../menu/Menus";
 
 import {Aside} from "../../layout/Layouts";
 import {Outlet} from "react-router-dom";
 import SecondaryMenu from "../../menu/SecondaryMenu";
 
-export const DnD = () => {
-  // Header(DND_SELECTOR)
-  return (
-    <>
-      {/*<PrimaryMenu links={DND_SELECTOR}/>*/}
-      {/*<Header primaryMenu={DND_SELECTOR}/>*/}
-      {/*<Aside name="Character Creation">*/}
-      {/*  <SecondaryMenu links={CHARACTER_CREATION}/>*/}
-      {/*</Aside>*/}
-      {/*<Main name={"Dungeon & Dragon"} lastUnit={true}>*/}
 
-      {/*</Main>*/}
-      <Outlet/>
-    </>
-  )
-}
 export const Rules = () => {
   return (
     <>
@@ -31,6 +15,7 @@ export const Rules = () => {
     </>
   )
 }
+
 export const PlayerGuide = () => {
   return (
     <>
@@ -41,6 +26,7 @@ export const PlayerGuide = () => {
     </>
   )
 }
+
 export const Resources = () => {
   return (
     <>
@@ -51,6 +37,7 @@ export const Resources = () => {
     </>
   )
 }
+
 export const Tips = () => {
   return (
     <>
@@ -61,6 +48,7 @@ export const Tips = () => {
     </>
   )
 }
+
 export const Universe = () => {
   return (
     <>

@@ -1,10 +1,9 @@
-import {createBrowserRouter, createHashRouter, Outlet} from "react-router-dom";
+import {createBrowserRouter, Outlet} from "react-router-dom";
 import Home from "../pages/Home";
-import {DnD, PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
+import {PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
 import {CharacterCreation, PlayerRaces} from "../pages/dnd/chara crea/CharacterCreation";
 import DnDHome from "../pages/dnd/DnDHome";
 import {RacesDetail} from "../pages/dnd/chara crea/Details";
-import ReactDOM from "react-dom/client";
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
@@ -15,8 +14,8 @@ const routes = [
     path: "/TTRPG-wiki",
     element: <>
 
-      <Header />
-      <div class="main">
+      <Header/>
+      <div className="main">
         <div className="inner typography line">
           <Outlet/>
         </div>
@@ -32,7 +31,7 @@ const routes = [
       {
         id: "dnd-system",
         path: "dnd",
-        element: <DnD/>,
+        element: <Outlet/>,
         redirect: "dnd",
         children: [
           {

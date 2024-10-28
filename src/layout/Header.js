@@ -1,18 +1,9 @@
 import {primaryResize, primaryToggle} from "../javascript/script";
-import {Link} from "react-router-dom";
 import PrimaryMenu from "../menu/PrimaryMenu";
-import {useState} from "react";
 
 export default function Header() {
-  // let location = useLocation()
-  // let primaryMenu
-  // if (location.pathname.startsWith("/dnd")) {
-  //   primaryMenu = DND_SELECTOR
-  // }
-  const [primaryMenu, setPrimaryMenu] = useState([])
-
   return (
-      <header id="header" className="header">
+    <header id="header" className="header">
       <div className="inner">
         <div className="unit lastUnit">
           <div className="brand">
@@ -84,11 +75,11 @@ export default function Header() {
             <span className="fa fa-bars fa-inverse"></span>
           </span>
             <ul id="primary-menu" onResize={primaryResize}>
-              <PrimaryMenu links={primaryMenu}/>
+              <PrimaryMenu/>
             </ul>
           </nav>
         </div>
       </div>
-      </header>
+    </header>
   )
 }

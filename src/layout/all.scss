@@ -5,7 +5,7 @@
  * Copyright 2023 Fonticons, Inc.
  */
 .fa {
-  font-family: var(--fa-style-family,"Font Awesome 6 Free");
+  font-family: var(--fa-style-family, "Font Awesome 6 Free"), serif;
   font-weight: var(--fa-style,900)
 }
 
@@ -20,11 +20,11 @@
 }
 
 .fa-classic,.fa-regular,.fa-solid,.far,.fas {
-  font-family: "Font Awesome 6 Free"
+  font-family: "Font Awesome 6 Free", serif
 }
 
 .fa-brands,.fab {
-  font-family: "Font Awesome 6 Brands"
+  font-family: "Font Awesome 6 Brands", serif
 }
 
 @for $i from 1 through 10 {

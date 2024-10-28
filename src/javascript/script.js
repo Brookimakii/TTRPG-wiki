@@ -113,31 +113,20 @@
 // // ---------------------------------------------------------
 //
 // }(jQuery));
-function start() {
-
-
-  menuButton.addEventListener("click", function (event) {
-    event.preventDefault()
-    console.log('here')
-  })
-
-
-}
-
-var searchBarButton = document.querySelector("span.search-dropdown-icon");
-var searchBar = document.querySelector('div.search-bar');
-var menuButton = document.querySelector("span.nav-open-button");
-var menu = document.querySelector('.header .primary ul');
-var sideNavButton = document.querySelector(".secondary h3");
-var sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
-var mobile = false;
+let searchBarButton = document.querySelector("span.search-dropdown-icon");
+let searchBar = document.querySelector('div.search-bar');
+let menuButton = document.querySelector("span.nav-open-button");
+let menu = document.querySelector('.header .primary ul');
+let sideNavButton = document.querySelector(".secondary h3");
+let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
+let mobile = false;
 
 let menuHeight = 0;
 let menuHeightChecked = false;
 let interval = null
 
 export const secondaryToggle = ()=> {
-  var sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
+  let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
   console.log(sideNav)
   // console.log(sideNav.style.display)
   if (sideNav.style.display === "block") {

@@ -3,17 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Footer from "./layout/Footer";
 import "./layout/layout.scss"
 import "./layout/all.scss"
 import "./layout/typography.scss"
 import "./layout/rest.scss"
 // import "./javascript/test.scss"
-import Header from "./layout/Header";
-import {HashRouter} from "react-router-dom";
-
-// ReactDOM.createRoot(document.getElementById('header')).render(<React.StrictMode><Header/></React.StrictMode>)
-// ReactDOM.createRoot(document.getElementById('footer')).render(<React.StrictMode><Footer/></React.StrictMode>)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

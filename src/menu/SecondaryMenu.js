@@ -10,9 +10,9 @@ function isChildrenSelected(location, links: []) {
   if (links.length === 0) {
     return false
   }
-  for (let i in links) {
-    console.log(links[i])
-    return links[i].href === location.pathname
+  for (const link of links) {
+    console.log(link)
+    return link.href === location.pathname
   }
   return false
 }

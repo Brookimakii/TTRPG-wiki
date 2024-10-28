@@ -49,20 +49,22 @@ function formatContent(contents: [{}]) {
         return <Markdown>{value}</Markdown>;
       case "table":
         let table = JSON.parse(value)
-        return <p>{value}</p>;
+        return <p>{table}</p>;
       case "ulist":
         let ulist = JSON.parse(value)
         return <ul>{ulist.map((el) => <li>{el}</li>)}</ul>;
       case "olist":
         let olist = JSON.parse(value)
         return <ol>{olist.map((el) => <li>{el}</li>)}</ol>;
+      default:
+        return ""
     }
   })
 }
 
 export const RacesDetail = () => {
   // const [params, setParams] = useState()
-  const [race, setRace] = useState(getResources(require("../../../resources/races.json"), useParams().raceId))
+  const race = getResources(require("../../../resources/races.json"), useParams().raceId)
   return (
     <Main name={race.name} lastUnit={true}>
       {formatContent(race.content)}
@@ -71,7 +73,7 @@ export const RacesDetail = () => {
 }
 export const ClassDetail = () => {
   // const [params, setParams] = useState()
-  const [clazz, setClazz] = useState(getResources(require("../../../resources/classes.json"), useParams().classId))
+  const clazz = useState(getResources(require("../../../resources/classes.json"), useParams().classId))
   return (
     <Main name={clazz.name} lastUnit={true}>
       {formatContent(clazz.content)}

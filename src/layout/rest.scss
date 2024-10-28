@@ -11,43 +11,149 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details,
 footer, header, menu, nav, section,
-time, mark, audio, video{margin:0; padding:0; border:0; font-size:100%; font:inherit; vertical-align:baseline}
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  //font-size: 100%;
+  //font: inherit;
+  vertical-align: baseline
+}
 
-article, aside, footer, header, menu, nav, section{display:block}
+article, aside, footer, header, menu, nav, section {
+  display: block
+}
 
-html{overflow-y:scroll}
-body{-webkit-text-size-adjust:none}
+html {
+  overflow-y: scroll
+}
 
-.clear:before, .clear:after{content:"\0020"; display:block; height:0; overflow:hidden; }
-.clear:after {clear:both}
-.clear{zoom:1}
+body {
+  -webkit-text-size-adjust: none
+}
 
-sub, sup{font-size:75%; line-height:0; position:relative}
-sup{top:-0.5em}
-sub{bottom:-0.25em}
+.clear:before, .clear:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
 
-pre {white-space:pre; white-space:pre-wrap; word-wrap:break-word; padding:15px}
-textarea {overflow:auto}
-input[type="radio"], input.radio {vertical-align:text-bottom}
-input[type="checkbox"], input.checkbox, .checkboxes input {vertical-align:bottom}
-label, input[type="button"], input[type="submit"], input[type="image"], button, .btn {cursor:pointer}
-button, input, select, textarea {margin:0}
+.clear:after {
+  clear: both
+}
 
-button {width:auto; overflow:visible}
+.clear {
+  zoom: 1
+}
 
-.hidden {display:none}
-.invisible {visibility:hidden}
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative
+}
 
-blockquote, q {quotes:none}
-blockquote:before, blockquote:after, q:before, q:after {content:''; content:none}
-ins {background-color:#ff9; color:#000; text-decoration:none}
-del {text-decoration:line-through; }
-hr {display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0}
-input, select {vertical-align:middle}
+sup {
+  top: -0.5em
+}
 
-a:hover, a:active {outline:none}
-.content ul, .content ol {margin-left:2em}
-ol {list-style-type:decimal}
-ul li {list-style-type:none}
-nav ul, nav li {margin:0; list-style:none; list-style-image:none}
-strong, b, th {font-weight:bold}
+sub {
+  bottom: -0.25em
+}
+
+pre {
+  //white-space: pre;
+  //white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px
+}
+
+textarea {
+  overflow: auto
+}
+
+input[type="radio"], input.radio {
+  vertical-align: text-bottom
+}
+
+input[type="checkbox"], input.checkbox, .checkboxes input {
+  vertical-align: bottom
+}
+
+label, input[type="button"], input[type="submit"], input[type="image"], button, .btn {
+  cursor: pointer
+}
+
+button, input, select, textarea {
+  margin: 0
+}
+
+button {
+  width: auto;
+  overflow: visible
+}
+
+.hidden {
+  display: none
+}
+
+.invisible {
+  visibility: hidden
+}
+
+blockquote, q {
+  quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  //content: '';
+  content: none
+}
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none
+}
+
+del {
+  text-decoration: line-through;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0
+}
+
+input, select {
+  vertical-align: middle
+}
+
+a:hover, a:active {
+  outline: none
+}
+
+.content ul, .content ol {
+  margin-left: 2em
+}
+
+ol {
+  list-style-type: decimal
+}
+
+ul li {
+  list-style-type: none
+}
+
+nav ul, nav li {
+  margin: 0;
+  list-style: none none;
+}
+
+strong, b, th {
+  font-weight: bold
+}
