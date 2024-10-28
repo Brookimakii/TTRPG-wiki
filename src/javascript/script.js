@@ -113,17 +113,17 @@
 // // ---------------------------------------------------------
 //
 // }(jQuery));
-let searchBarButton = document.querySelector("span.search-dropdown-icon");
-let searchBar = document.querySelector('div.search-bar');
-let menuButton = document.querySelector("span.nav-open-button");
+// let searchBarButton = document.querySelector("span.search-dropdown-icon");
+// let searchBar = document.querySelector('div.search-bar');
+// let menuButton = document.querySelector("span.nav-open-button");
 let menu = document.querySelector('.header .primary ul');
-let sideNavButton = document.querySelector(".secondary h3");
-let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
-let mobile = false;
+// let sideNavButton = document.querySelector(".secondary h3");
+// let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
+// let mobile = false;
 
-let menuHeight = 0;
-let menuHeightChecked = false;
-let interval = null
+// let menuHeight = 0;
+// let menuHeightChecked = false;
+// let interval = null
 
 export const secondaryToggle = ()=> {
   let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
