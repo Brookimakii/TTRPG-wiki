@@ -115,15 +115,6 @@ const routes = [
         ]
       }
     ]
-  },
-
-
-
-
-  {
-    id: "empty",
-    path: "",
-    element: ""
   }
 
 
