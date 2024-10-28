@@ -2,7 +2,7 @@
   "name": "ttrpg-wiki",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://brooki.alwaysdata.net",
+  "homepage": "https://brookimakii.github.io/TTRPG-wiki/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

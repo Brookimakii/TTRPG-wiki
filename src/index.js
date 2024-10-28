@@ -10,21 +10,30 @@ import "./layout/typography.scss"
 import "./layout/rest.scss"
 // import "./javascript/test.scss"
 import Header from "./layout/Header";
+import {HashRouter} from "react-router-dom";
 
 const header = ReactDOM.createRoot(document.getElementById('header'));
-header.render(<React.StrictMode>
-  <Header/>
-</React.StrictMode>);
+header.render(
+  <React.StrictMode>
+    <Header/>
+  </React.StrictMode>
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<React.StrictMode>
-  <App/>
-</React.StrictMode>);
+root.render(
+  <React.StrictMode>
+    <HashRouter>
+      <App/>
+    </HashRouter>
+  </React.StrictMode>
+);
 
 const footer = ReactDOM.createRoot(document.getElementById('footer'));
-footer.render(<React.StrictMode>
-  <Footer/>
-</React.StrictMode>);
+footer.render(
+  <React.StrictMode>
+    <Footer/>
+  </React.StrictMode>
+);
 
 
 // If you want to start measuring performance in your app, pass a function
