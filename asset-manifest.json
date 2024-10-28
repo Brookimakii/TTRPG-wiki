@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/wiki/static/css/main.018a840e.css",
-    "main.js": "/wiki/static/js/main.62d9f47a.js",
-    "static/js/453.11749e9c.chunk.js": "/wiki/static/js/453.11749e9c.chunk.js",
-    "index.html": "/wiki/index.html",
-    "main.018a840e.css.map": "/wiki/static/css/main.018a840e.css.map",
-    "main.62d9f47a.js.map": "/wiki/static/js/main.62d9f47a.js.map",
-    "453.11749e9c.chunk.js.map": "/wiki/static/js/453.11749e9c.chunk.js.map"
+    "main.css": "/TTRPG-wiki/static/css/main.018a840e.css",
+    "main.js": "/TTRPG-wiki/static/js/main.dddd28b8.js",
+    "static/js/453.11749e9c.chunk.js": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js",
+    "index.html": "/TTRPG-wiki/index.html",
+    "main.018a840e.css.map": "/TTRPG-wiki/static/css/main.018a840e.css.map",
+    "main.dddd28b8.js.map": "/TTRPG-wiki/static/js/main.dddd28b8.js.map",
+    "453.11749e9c.chunk.js.map": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.018a840e.css",
-    "static/js/main.62d9f47a.js"
+    "static/js/main.dddd28b8.js"
   ]
 }
