@@ -31,24 +31,19 @@ export const DND_SELECTOR = [
   {
     href: dnd + "/resources",
     title: "",
-    name: "Resources"
-  },
-  {
-    href: dnd + "/tips",
-    title: "",
-    name: "Tips"
-  },
-  {
-    href: dnd + "/universes",
-    title: "",
-    name: "Universe"
-  },
+    name: "Maître du Donjon"
+  }
 ]
 
 
 function buildMenuFromJson(racesData, parentUrl): [] {
+  racesData.sort(function (a, b) {
+    let textA = a.id.toUpperCase();
+    let textB = b.id.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+  })
   let races = [];
-  console.log(racesData)
+  // console.log(racesData)
   for (let race in racesData) {
     let obj = racesData[race]
     races.push({

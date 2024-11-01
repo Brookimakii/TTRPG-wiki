@@ -694,14 +694,18 @@ a.ancre::before {
   background-color: #DBE2C2;
   border-width: 13px;
   border-style: solid;
-  //border-image: url(../images/dd-encadre.png) 13;
+  border-image: url("../assets/images/dd-encadre.png") 13;
   padding: 6px 0 6px 0;
   margin: 0 0 4px 10px;
   font-size: 11px;
   line-height: 18px;
   color: #000;
   font-family: Verdana, Arial, sans-serif;
-  box-sizing: border-box
+  box-sizing: border-box;
+
+  p {
+    font-size: 11px
+  }
 }
 
 .typography p.encadre::first-letter {

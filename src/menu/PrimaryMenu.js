@@ -4,8 +4,8 @@ import {BASED_URL, DND_SELECTOR, SYSTEM_SELECTION} from "./Menus";
 export default function PrimaryMenu() {
   const location = useLocation()
   let links
-  console.log(BASED_URL + '/dnd')
-  console.log(location.pathname)
+  // console.log(BASED_URL + '/dnd')
+  // console.log(location.pathname)
   if (location.pathname.startsWith(BASED_URL + '/dnd')) {
     links = DND_SELECTOR
   } else {
@@ -13,7 +13,7 @@ export default function PrimaryMenu() {
   }
   // console.log(location.pathname)
   return links.map((elem) =>
-    <li className={location.pathname === elem.href ? "current" : "link"}>
+    <li className={location.pathname === elem.href ? "current" : "link"} key={elem.href}>
       <span className="fa fa-caret-up fa-inverse"></span>
       {/*{console.log(elem.href)}*/}
       <Link to={elem.href} title={elem.title}>{elem.name}</Link>

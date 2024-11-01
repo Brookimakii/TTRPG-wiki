@@ -21,44 +21,84 @@ function formatContent(contents: [{}]) {
   return contents.map((obj) => {
     const key = Object.keys(obj)[0];
     const value = obj[key]
-    console.log(obj)
+    let elem: JSX.IntrinsicElements
     switch (key) {
       case "title2":
-        return <h2>{value}</h2>;
+        elem = <h2>{value}</h2>;
+        break;
       case "title3":
-        return <h3>{value}</h3>;
+        elem = <h3>{value}</h3>;
+        break;
       case "title4":
-        return <h4>{value}</h4>;
+        elem = <h4>{value}</h4>;
+        break;
       case "title5":
-        return <h5>{value}</h5>;
+        elem = <h5>{value}</h5>;
+        break;
       case "title6":
-        return <h6>{value}</h6>;
+        elem = <h6>{value}</h6>;
+        break;
       case "dialogue":
-        return <Dialogue>{value}</Dialogue>;
+        elem = <Dialogue>{value}</Dialogue>;
+        break;
       case "encadre":
-        return <Encadre>{value}</Encadre>;
+        if (value.constructor.name === "Array") {
+          elem = <Encadre>{formatContent(value)}</Encadre>
+
+        } else {
+          elem = <Encadre><Markdown>{value}</Markdown></Encadre>;
+        }
+        break;
       case "citation": {
         let citation = JSON.parse(value);
-        return <Citation author={citation.author} location={citation.location}>{citation.content}</Citation>;
+        elem = <Citation author={citation.author} location={citation.location}>{citation.content}</Citation>;
       }
+        break;
       case "author":
-        return <Author>{value}</Author>;
+        elem = <Author>{value}</Author>;
+        break;
       case "officiel":
-        return <Officiel>{value}</Officiel>;
+        elem = <Officiel>{value}</Officiel>;
+        break;
       case "paragraph":
-        return <Markdown>{value}</Markdown>;
+        elem = <Markdown>{value}</Markdown>;
+        break;
       case "table":
-        let table = JSON.parse(value)
-        return <p>{table}</p>;
+        let head: [] = value.head
+        let body: [] = value.body
+
+        elem = <table>
+          {head ? <thead>
+          <tr>
+            {head.map(el => <td>{el}</td>)}
+          </tr>
+          </thead> : ''}
+          {body ? <tbody>
+          {body.map(el => <tr>{
+            el.map(e => {
+              return (<td>{
+                e.startsWith("**") && e.endsWith('**') ? <strong>{e.substring(2,e.length-2)}</strong> : e
+              }</td>)
+            })
+          }</tr>)}
+          </tbody> : ''}
+        </table>
+        break;
       case "ulist":
-        let ulist = JSON.parse(value)
-        return <ul>{ulist.map((el) => <li>{el}</li>)}</ul>;
+        elem = <ul>{value.map((el) => <li>{el}</li>)}</ul>;
+        break;
       case "olist":
-        let olist = JSON.parse(value)
-        return <ol>{olist.map((el) => <li>{el}</li>)}</ol>;
+        elem = <ol>{value.map((el) => <li>{el}</li>)}</ol>;
+        break;
       default:
-        return ""
+        elem = ""
+        break;
     }
+    if (obj.content) {
+      // console.log(elem)
+      return [elem, formatContent(obj.content)]
+    }
+    return elem
   })
 }
 
