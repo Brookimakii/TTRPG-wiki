@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/TTRPG-wiki/static/css/main.018a840e.css",
-    "main.js": "/TTRPG-wiki/static/js/main.291642f7.js",
+    "main.css": "/TTRPG-wiki/static/css/main.8e437890.css",
+    "main.js": "/TTRPG-wiki/static/js/main.9c9af640.js",
     "static/js/453.11749e9c.chunk.js": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js",
     "index.html": "/TTRPG-wiki/index.html",
-    "main.018a840e.css.map": "/TTRPG-wiki/static/css/main.018a840e.css.map",
-    "main.291642f7.js.map": "/TTRPG-wiki/static/js/main.291642f7.js.map",
+    "main.8e437890.css.map": "/TTRPG-wiki/static/css/main.8e437890.css.map",
+    "main.9c9af640.js.map": "/TTRPG-wiki/static/js/main.9c9af640.js.map",
     "453.11749e9c.chunk.js.map": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.018a840e.css",
-    "static/js/main.291642f7.js"
+    "static/css/main.8e437890.css",
+    "static/js/main.9c9af640.js"
   ]
 }
