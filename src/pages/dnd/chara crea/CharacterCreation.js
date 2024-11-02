@@ -14,3 +14,10 @@ export const PlayerRaces = () => {
     </Main>
   )
 }
+export const PlayerClasses = () => {
+  return (
+    <Main name={"Classes"} lastUnit={true}>
+      <h2>Classes</h2>
+    </Main>
+  )
+}

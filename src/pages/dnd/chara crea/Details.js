@@ -1,16 +1,16 @@
 import {useParams} from "react-router-dom";
-import {useState} from "react";
-import racesData from "../../../resources/races.json";
 import {Main} from "../../../layout/Layouts";
 import {Author, Citation, Dialogue, Encadre, Officiel} from "../../../layout/BoxesLayout";
 import Markdown from "react-markdown";
 
 
 function getResources(data, id) {
+  console.log(id);
+  console.log(data);
   for (let r in data) {
-    let obj = racesData[r]
+    let obj = data[r]
+    console.log(data[r])
     if (obj.id === id) {
-      // console.log(obj)
       return obj
     }
   }
@@ -113,7 +113,8 @@ export const RacesDetail = () => {
 }
 export const ClassDetail = () => {
   // const [params, setParams] = useState()
-  const clazz = useState(getResources(require("../../../resources/classes.json"), useParams().classId))
+  const clazz = getResources(require("../../../resources/classes.json"), useParams().classId)
+  // console.log(useParams())
   return (
     <Main name={clazz.name} lastUnit={true}>
       {formatContent(clazz.content)}

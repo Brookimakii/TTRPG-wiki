@@ -4,8 +4,8 @@
  * Copyright 2023 Fonticons, Inc.
  */
 .fa {
-  /*font-family: var(--fa-style-family, "Font Awesome 6 Free");*/
-  /*font-weight: var(--fa-style, 900);*/
+  /*fonts-family: var(--fa-style-family, "Font Awesome 6 Free");*/
+  /*fonts-weight: var(--fa-style, 900);*/
 }
 
 .fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {

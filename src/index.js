@@ -7,7 +7,9 @@ import "./layout/layout.scss"
 import "./layout/all.scss"
 import "./layout/typography.scss"
 import "./layout/rest.scss"
-// import "./javascript/test.scss"
+import "./javascript/test.scss"
+// import "./layout/5e/scss/import.scss"
+// import "./layout/5e/scss/bootstrap.scss"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

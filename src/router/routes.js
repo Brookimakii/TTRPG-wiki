@@ -1,12 +1,13 @@
 import {createBrowserRouter, Outlet} from "react-router-dom";
 import Home from "../pages/Home";
 import {PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
-import {CharacterCreation, PlayerRaces} from "../pages/dnd/chara crea/CharacterCreation";
+import {CharacterCreation, PlayerClasses, PlayerRaces} from "../pages/dnd/chara crea/CharacterCreation";
 import DnDHome from "../pages/dnd/DnDHome";
-import {RacesDetail} from "../pages/dnd/chara crea/Details";
+import {ClassDetail, RacesDetail} from "../pages/dnd/chara crea/Details";
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import {Layout5e} from "../layout/5eLayout";
 
 const routes = [
   {
@@ -82,13 +83,19 @@ const routes = [
               },
               {
                 id: "class",
-                path: "class",
-                element: "",
+                path: "classes",
+                element: <Outlet/>,
                 children: [
+                  {
+                    id: "class-intro",
+                    path: "",
+                    element: <PlayerClasses/>,
+                    children: []
+                  },
                   {
                     id: "class-details",
                     path: ":classId",
-                    element: "",
+                    element: <ClassDetail/>,
                     children: []
                   }
                 ]
@@ -106,36 +113,16 @@ const routes = [
                 element: <></>
               }
             ]
-          },
-          {
-            id: "tips",
-            path: "tips",
-            element: <Tips/>,
-            children: [
-              {
-                id: "tips-intro",
-                path: "",
-                element: <></>
-              }
-            ]
-          },
-          {
-            id: "universe",
-            path: "universes",
-            element: <Universe/>,
-            children: [
-              {
-                id: "universe-intro",
-                path: "",
-                element: <></>
-              }
-            ]
           }
         ]
       }
     ]
+  },
+  {
+    id: "tests",
+    path: "/tests",
+    element: <Layout5e/>
   }
-
 
 ]
 

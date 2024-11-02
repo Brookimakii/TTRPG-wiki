@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "artificer",
+    "name": "Artificier",
+    "content": [
+      {"title2": "Capacités de classe",
+        "content": [
+          {"title4": "Points de vie"},
+          {"paragraph": "**DV** : 1d par niveau de  \n**pv au niveau 1** : X + votre modificateur de Constitution  \n**pv au niveau supérieur** : 1d (ou ) + votre modificateur de Constitution"},
+          {"title4": "Maîtrises"},
+          {"paragraph": "**Armures**:  \n**Armes**:  \n**Outils**:  \n**Jets de sauvegarde**:  \n**Compétence**:"},
+          {"title4": "Équipement"},
+          {"paragraph": "Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre historique:"},
+          {"ulist":  [
+            ""
+          ]},
+          {"html": "<table>\n<tbody>\n<tr>\n<th style=\"text-align: center;\">Niv</th>\n<th style=\"text-align: center;\">Bonus de<br>maîtrise</th>\n<th>Capacités</th>\n<th style=\"text-align: center;\">Rages</th>\n<th style=\"text-align: center;\">Dégâts</th>\n</tr>\n<tr>\n<td style=\"text-align: center;\">1</td>\n<td style=\"text-align: center;\">+2</td>\n<td>Rage, Défense sans armure</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">+2</td>\n<td>Attaque téméraire, Sens du danger</td>\n<td style=\"text-align: center;\">2</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">+2</td>\n<td>Voie primitive</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+2</td>\n<td>Amélioration de caractéristiques</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">+3</td>\n<td>Attaque supplémentaire, Déplacement rapide</td>\n<td style=\"text-align: center;\">3</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">+3</td>\n<td>Capacité de voie</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">7</td>\n<td style=\"text-align: center;\">+3</td>\n<td>Instinct sauvage</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">8</td>\n<td style=\"text-align: center;\">+3</td>\n<td>Amélioration de caractéristiques</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+2</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">9</td>\n<td style=\"text-align: center;\">+4</td>\n<td>Critique brutal (1 dé)</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">10</td>\n<td style=\"text-align: center;\">+4</td>\n<td>Capacité de voie</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">11</td>\n<td style=\"text-align: center;\">+4</td>\n<td>Rage implacable</td>\n<td style=\"text-align: center;\">4</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">12</td>\n<td style=\"text-align: center;\">+4</td>\n<td>Amélioration de caractéristiques</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">13</td>\n<td style=\"text-align: center;\">+5</td>\n<td>Critique brutal (2 dés)</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">14</td>\n<td style=\"text-align: center;\">+5</td>\n<td>Capacité de voie</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">15</td>\n<td style=\"text-align: center;\">+5</td>\n<td>Rage persistante</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">+3</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">16</td>\n<td style=\"text-align: center;\">+5</td>\n<td>Amélioration de caractéristiques</td>\n<td style=\"text-align: center;\">5</td>\n<td style=\"text-align: center;\">+4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">17</td>\n<td style=\"text-align: center;\">+6</td>\n<td>Critique brutal (3 dés)</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">+4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">18</td>\n<td style=\"text-align: center;\">+6</td>\n<td>Puissance indomptable</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">+4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">19</td>\n<td style=\"text-align: center;\">+6</td>\n<td>Amélioration de caractéristiques</td>\n<td style=\"text-align: center;\">6</td>\n<td style=\"text-align: center;\">+4</td>\n</tr>\n<tr>\n<td style=\"text-align: center;\">20</td>\n<td style=\"text-align: center;\">+6</td>\n<td>Champion primitif</td>\n<td style=\"text-align: center;\">illimitées</td>\n<td style=\"text-align: center;\">+4</td>\n</tr>\n</tbody>\n</table>"},
+          {"":  "Features",
+            "content": [
+              {"title3": "",
+                "content": [
+                  {"paragraph":  ""}
+                ]
+              },
+              {"title3": "",
+                "content": [
+                  {"paragraph":  ""}
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
