@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import "./layout/layout.scss"
-import "./layout/all.scss"
-import "./layout/typography.scss"
-import "./layout/rest.scss"
+import "./assets/scss/layout.scss"
+import "./assets/scss/all.scss"
+import "./assets/scss/typography.scss"
+import "./assets/scss/rest.scss"
 import "./javascript/test.scss"
-// import "./layout/5e/scss/import.scss"
+import "./javascript/test.scss"
+import "./assets/scss/spells.scss"
 // import "./layout/5e/scss/bootstrap.scss"
+// import "./layout/5e/scss/import.scss"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

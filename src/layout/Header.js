@@ -1,5 +1,6 @@
 import {primaryResize, primaryToggle} from "../javascript/script";
 import PrimaryMenu from "../menu/PrimaryMenu";
+import {Link} from "react-router-dom";
 
 export default function Header() {
   return (
@@ -7,8 +8,8 @@ export default function Header() {
       <div className="inner">
         <div className="unit lastUnit">
           <div className="brand">
-            {/*<Link to="/">AideDD</Link>*/}
-            <a href="/TTRPG-wiki">AideDD</a>
+            <Link to="/">AideDD</Link>
+            {/*<a href="/TTRPG-wiki">AideDD</a>*/}
             <p>Un site sur le jeu de rôle Dungeons &amp; Dragons 5</p>
           </div>
           <span className="search-dropdown-icon" style={{display: "none"}}>

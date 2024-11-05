@@ -13,7 +13,7 @@ export default function PrimaryMenu() {
   }
   // console.log(location.pathname)
   return links.map((elem) =>
-    <li className={location.pathname === elem.href ? "current" : "link"} key={elem.href}>
+    <li className={location.pathname.startsWith(elem.href) ? "current" : "link"} key={elem.href}>
       <span className="fa fa-caret-up fa-inverse"></span>
       {/*{console.log(elem.href)}*/}
       <Link to={elem.href} title={elem.title}>{elem.name}</Link>

@@ -1,11 +1,174 @@
-import {Link} from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
+import {formatContent} from "../pages/dnd/chara crea/Details";
+
+function buildRace(elements) {
+  const newElems = structuredClone(elements)
+  const races = []
+  newElems.map((race) => {
+    if (race.subraces) {
+      let subraces = structuredClone(race.subraces)
+      subraces.map((subrace) => {
+
+        subrace["id"] = race.id + "-(" + subrace.id + ")"
+        subrace["name"] = race.name + " (" + subrace.name + ")"
+        if (subrace.bonus.startsWith(";")) {
+          subrace["bonus"] = race.bonus + "; " + subrace.bonus.replace(";", "")
+        }
+        subrace["size"] = race.size
+        subrace["creatureType"] = race.creatureType
+        if (!subrace.speed) {
+          subrace["speed"] = race.speed
+        }
+        subrace["common"] = race.common
+        subrace["traits"] = [...race.traits, ...subrace.traits]
+        subrace["info"] = race.info.toSpliced(0, 0, subrace.info)
+
+        races.push(subrace)
+      })
+      let newRace = structuredClone(race)
+      newRace.subraces = subraces.map((subrace) => {
+        return ({name: subrace.name, id: subrace.id})
+      })
+      // console.log(newRace)
+      races.push(newRace)
+      // delete races[newRace].subraces
+    } else {
+      races.push(race)
+    }
+  })
+  return races.sort(function (a, b) {
+    let textA = a.id.toUpperCase();
+    let textB = b.id.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+  })
+}
 
 export const Layout5e = () => {
+
+  const columns = [
+    {
+      id: "Name",
+      sortId: "name",
+      classSize: "ve-col-4"
+    },
+    {
+      id: "Ability",
+      sortId: "bonus",
+      classSize: "ve-col-4"
+    },
+    {
+      id: "Size",
+      sortId: "size",
+      classSize: "ve-col-2"
+    },
+    {
+      id: "Source",
+      sortId: "source",
+      classSize: "ve-grow"
+    }
+  ]
+
+  function getSourceName(source) {
+    switch (source) {
+      case "PHB'14":
+        return "Player's Handbook (2014)"
+      case "VGM":
+        return "Volo’s Guide to Monsters"
+      case "EEPC":
+        return "Elemental Evil Player’s Companion"
+      case "ERLW":
+        return "Eberron: Rising from the Last War"
+      default:
+        return ""
+    }
+  }
+
+  const races = require('./5e/resources/races.json')
+  // console.log(races)
+  const [elements, setElements] = useState(buildRace(races))
+  const [sorting, setSorting] = useState("")
+
+  const [selected, setSelected] = useState(setSelectFromHash())
+  // let selected ={};
+
+  const DetailsHeader = () => {
+    return <tr>
+      <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
+          data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
+        <div className="split-v-end">
+          <div className="ve-flex-v-center">
+            <h1 className="stats__h-name copyable m-0"
+              // onMouseDown="event.preventDefault()"
+              // onClick="Renderer.utils._pHandleNameClick(this)"
+            >{selected.name}</h1>
+          </div>
+          <div className="stats__wrp-h-source  ve-flex-v-baseline">
+            <a href={"book.html#" + selected.source + ",page:" + selected.page}
+               className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
+               title={getSourceName(selected.source)}>{selected.source}</a>
+            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
+               title={"Page" + selected.page}>p{selected.page}</a>
+          </div>
+        </div>
+      </th>
+    </tr>
+  }
+
+  const handleSort = (type) => {
+    const shouldReset = sorting === type + ".des"
+    const shouldAscend = !sorting.startsWith(type)
+    const shouldDescend = sorting === type + ".asc"
+
+    if (shouldAscend) {
+      // console.log("Should now ascend: " + type + ".asc")
+      setSorting(type + ".asc")
+    } else if (shouldDescend) {
+      setSorting(type + ".des")
+      // console.log("Should now descend: " + type + ".des")
+    } else if (shouldReset) {
+      setSorting("")
+      // console.log("Should reset.")
+      type = "id"
+    }
+
+    elements.sort(function (a, b) {
+      let textA = a[type].toUpperCase();
+      let textB = b[type].toUpperCase();
+      if (shouldAscend || shouldReset) {
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+      }
+      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
+    })
+  }
+
+  function setSelectFromHash() {
+    const filtered = elements.filter((e) => "#" + e.id === window.location.hash)
+    if (filtered.length > 0) {
+      return filtered[0]
+    } else {
+      return {}
+    }
+  }
+
+  const handleClick = elem => {
+    setSelected(elem)
+  };
+
+
+  function convertBonus(bonus: string) {
+    return bonus
+      .replace("For", "Force")
+      .replace("Dex", "Dextérité")
+      .replace("Con", "Constitution")
+      .replace("Int", "Intelligence")
+      .replace("Sag", "Sagesse")
+      .replace("Cha", "Charisme")
+  }
+
+  // console.log(elements)
   return (
     <>
-
       <script type="text/javascript" src="./5e/js/navigation.js"></script>
       <div className="viewport-wrapper">
         <div className="cancer__wrp-leaderboard cancer__anchor">
@@ -28,15 +191,17 @@ export const Layout5e = () => {
           <ul className="nav nav-pills page__nav-inner" id="navbar">
             <li role="presentation" data-page="index.html" className="page__nav-hidden-mobile page__btn-nav-root"><a
               href="index.html" className="nav__link">Home</a></li>
-            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root"><a
-              className="ve-dropdown-toggle" href="#" role="button">Rules <span className="caret "></span></a>
+            <li role="presentation"
+                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+              <a className="ve-dropdown-toggle" href="#" role="button">Rules <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation" data-page="variantrules.html"><a href="variantrules.html" className="nav__link">Rules
                   Glossary</a></li>
                 <li role="presentation" data-page="tables.html"><a href="tables.html" className="nav__link">Tables</a>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile" data-timer-id="2">
+                <li role="presentation"
+                    className="dropdown dropdown--navbar page__nav-hidden-mobile" data-timer-id="2">
                   <a className="ve-dropdown-toggle" href="#" role="button">Books <span
                     className="caret caret--right"></span></a>
                   <ul className="ve-dropdown-menu ve-dropdown-menu--side">
@@ -315,14 +480,14 @@ export const Layout5e = () => {
                   </ul>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="quickreference.html"><a href="quickreference.html"
-                                                                           className="nav__link">Quick Reference
-                  (2014)</a></li>
+                <li role="presentation" data-page="quickreference.html">
+                  <a href="quickreference.html" className="nav__link">Quick Reference (2014)</a>
+                </li>
               </ul>
             </li>
             <li role="presentation"
-                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root active"><a
-              className="ve-dropdown-toggle" href="#" role="button">Player <span className="caret "></span></a>
+                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+              <a className="ve-dropdown-toggle" href="#" role="button">Player <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation" data-page="classes.html"><a href="classes.html"
                                                                     className="nav__link">Classes</a></li>
@@ -347,15 +512,17 @@ export const Layout5e = () => {
                 <li role="presentation" data-page="names.html"><a href="names.html" className="nav__link">Names</a></li>
               </ul>
             </li>
-            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root"><a
-              className="ve-dropdown-toggle" href="#" role="button">Dungeon Master <span className="caret "></span></a>
+            <li role="presentation"
+                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+              <a className="ve-dropdown-toggle" href="#" role="button">Dungeon Master <span
+                className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation" data-page="dmscreen.html"><a href="dmscreen.html" className="nav__link">DM
                   Screen</a></li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile"><a
-                  className="ve-dropdown-toggle" href="#" role="button">Adventures <span
-                  className="caret caret--right"></span></a>
+                <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile">
+                  <a className="ve-dropdown-toggle" href="#" role="button">Adventures <span
+                    className="caret caret--right"></span></a>
                   <ul className="ve-dropdown-menu ve-dropdown-menu--side">
                     <li role="presentation" data-page="adventures.html"><a href="adventures.html" className="nav__link">View
                       All/Homebrew</a></li>
@@ -394,11 +561,12 @@ export const Layout5e = () => {
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2016</div>
                       <div className="nav2-list__disp-source source__CoS"></div>
                       Curse of Strahd</a></li>
-                    <li role="presentation" data-page="adventure.html#skt"><a href="adventure.html#skt"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__SKT"></div>
-                      Storm King's Thunder</a></li>
+                    <li role="presentation" data-page="adventure.html#skt">
+                      <a href="adventure.html#skt" className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__SKT"></div>
+                        Storm King's Thunder</a>
+                    </li>
                     <li className="nav2-accord__wrp">
                       <div className="nav2-accord__head split-v-center clickable">
                         <div>
@@ -841,13 +1009,14 @@ export const Layout5e = () => {
                       Scions of Elemental Evil</a></li>
                   </ul>
                 </li>
-                <li role="presentation" data-page="cultsboons.html"><a href="cultsboons.html"
-                                                                       className="nav__link">Cults &amp; Supernatural
-                  Boons</a></li>
-                <li role="presentation" data-page="objects.html"><a href="objects.html"
-                                                                    className="nav__link">Objects</a></li>
-                <li role="presentation" data-page="trapshazards.html"><a href="trapshazards.html"
-                                                                         className="nav__link">Traps &amp; Hazards</a>
+                <li role="presentation" data-page="cultsboons.html">
+                  <a href="cultsboons.html" className="nav__link">Cults &amp; Supernatural Boons</a>
+                </li>
+                <li role="presentation" data-page="objects.html">
+                  <a href="objects.html" className="nav__link">Objects</a>
+                </li>
+                <li role="presentation" data-page="trapshazards.html">
+                  <a href="trapshazards.html" className="nav__link">Traps &amp; Hazards</a>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
                 <li role="presentation" data-page="crcalculator.html"><a href="crcalculator.html" className="nav__link">CR
@@ -860,86 +1029,110 @@ export const Layout5e = () => {
                 <li role="presentation" data-page="maps.html"><a href="maps.html" className="nav__link">Maps</a></li>
               </ul>
             </li>
-            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root"><a
-              className="ve-dropdown-toggle" href="#" role="button">References <span className="caret "></span></a>
+            <li role="presentation"
+                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+              <a className="ve-dropdown-toggle" href="#" role="button">References <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
-                <li role="presentation" data-page="actions.html"><a href="actions.html"
-                                                                    className="nav__link">Actions</a></li>
-                <li role="presentation" data-page="bestiary.html"><a href="bestiary.html"
-                                                                     className="nav__link">Bestiary</a></li>
-                <li role="presentation" data-page="conditionsdiseases.html"><a href="conditionsdiseases.html"
-                                                                               className="nav__link">Conditions &amp; Diseases</a>
+                <li role="presentation" data-page="actions.html">
+                  <a href="actions.html" className="nav__link">Actions</a>
                 </li>
-                <li role="presentation" data-page="decks.html"><a href="decks.html" className="nav__link">Decks</a></li>
-                <li role="presentation" data-page="deities.html"><a href="deities.html"
-                                                                    className="nav__link">Deities</a></li>
-                <li role="presentation" data-page="items.html"><a href="items.html" className="nav__link">Items</a></li>
-                <li role="presentation" data-page="languages.html"><a href="languages.html"
-                                                                      className="nav__link">Languages</a></li>
-                <li role="presentation" data-page="rewards.html"><a href="rewards.html" className="nav__link">Supernatural
-                  Gifts &amp; Rewards</a></li>
-                <li role="presentation" data-page="psionics.html"><a href="psionics.html"
-                                                                     className="nav__link">Psionics</a></li>
-                <li role="presentation" data-page="spells.html"><a href="spells.html" className="nav__link">Spells</a>
+                <li role="presentation" data-page="bestiary.html">
+                  <a href="bestiary.html" className="nav__link">Bestiary</a>
                 </li>
-                <li role="presentation" data-page="vehicles.html"><a href="vehicles.html"
-                                                                     className="nav__link">Vehicles</a></li>
+                <li role="presentation" data-page="conditionsdiseases.html">
+                  <a href="conditionsdiseases.html" className="nav__link">Conditions &amp; Diseases</a>
+                </li>
+                <li role="presentation" data-page="decks.html">
+                  <a href="decks.html" className="nav__link">Decks</a></li>
+                <li role="presentation" data-page="deities.html">
+                  <a href="deities.html" className="nav__link">Deities</a></li>
+                <li role="presentation" data-page="items.html">
+                  <a href="items.html" className="nav__link">Items</a></li>
+                <li role="presentation" data-page="languages.html">
+                  <a href="languages.html" className="nav__link">Languages</a></li>
+                <li role="presentation" data-page="rewards.html">
+                  <a href="rewards.html" className="nav__link">Supernatural Gifts &amp; Rewards</a></li>
+                <li role="presentation" data-page="psionics.html">
+                  <a href="psionics.html" className="nav__link">Psionics</a></li>
+                <li role="presentation" data-page="spells.html">
+                  <a href="spells.html" className="nav__link">Spells</a>
+                </li>
+                <li role="presentation" data-page="vehicles.html">
+                  <a href="vehicles.html" className="nav__link">Vehicles</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="recipes.html"><a href="recipes.html"
-                                                                    className="nav__link">Recipes</a></li>
+                <li role="presentation" data-page="recipes.html">
+                  <a href="recipes.html" className="nav__link">Recipes</a>
+                </li>
               </ul>
             </li>
-            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root"><a
-              className="ve-dropdown-toggle" href="#" role="button">Utilities <span className="caret "></span></a>
+            <li role="presentation"
+                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+              <a className="ve-dropdown-toggle" href="#" role="button">Utilities <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation" data-page="search.html"><a href="search.html" className="nav__link">Search</a>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="blocklist.html"><a href="blocklist.html" className="nav__link">Content
-                  Blocklist</a></li>
-                <li role="presentation" data-page="manageprerelease.html"><a href="manageprerelease.html"
-                                                                             className="nav__link">Prerelease Content
-                  Manager</a></li>
-                <li role="presentation" data-page="managebrew.html"><a href="managebrew.html" className="nav__link">Homebrew
-                  Manager</a></li>
-                <li role="presentation" className="ve-flex-v-center"><span className="inline-block w-100 min-w-0">Load All Partnered Content</span><span
-                  className="inline-block" title="Export Prerelease Content/Homebrew List as URL"><span
-                  className="glyphicon glyphicon-link"></span></span></li>
+                <li role="presentation" data-page="blocklist.html">
+                  <a href="blocklist.html" className="nav__link">Content Blocklist</a>
+                </li>
+                <li role="presentation" data-page="manageprerelease.html">
+                  <a href="manageprerelease.html" className="nav__link">Prerelease Content Manager</a></li>
+                <li role="presentation" data-page="managebrew.html">
+                  <a href="managebrew.html" className="nav__link">Homebrew Manager</a>
+                </li>
+                <li role="presentation" className="ve-flex-v-center">
+                  <span className="inline-block w-100 min-w-0">Load All Partnered Content</span>
+                  <span className="inline-block" title="Export Prerelease Content/Homebrew List as URL">
+                    <span className="glyphicon glyphicon-link"></span>
+                  </span>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="inittrackerplayerview.html"><a href="inittrackerplayerview.html"
-                                                                                  className="nav__link">Initiative
-                  Tracker Player View</a></li>
+                <li role="presentation" data-page="inittrackerplayerview.html">
+                  <a href="inittrackerplayerview.html" className="nav__link">Initiative Tracker Player View</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="renderdemo.html"><a href="renderdemo.html" className="nav__link">Renderer
-                  Demo</a></li>
-                <li role="presentation" data-page="makebrew.html"><a href="makebrew.html" className="nav__link">Homebrew
-                  Builder</a></li>
-                <li role="presentation" data-page="makecards.html"><a href="makecards.html" className="nav__link">RPG
-                  Cards JSON Builder</a></li>
-                <li role="presentation" data-page="converter.html"><a href="converter.html" className="nav__link">Text
-                  Converter</a></li>
+                <li role="presentation" data-page="renderdemo.html">
+                  <a href="renderdemo.html" className="nav__link">Renderer Demo</a>
+                </li>
+                <li role="presentation" data-page="makebrew.html">
+                  <a href="makebrew.html" className="nav__link">Homebrew Builder</a>
+                </li>
+                <li role="presentation" data-page="makecards.html">
+                  <a href="makecards.html" className="nav__link">RPG Cards JSON Builder</a>
+                </li>
+                <li role="presentation" data-page="converter.html">
+                  <a href="converter.html" className="nav__link">Text Converter</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="plutonium.html"><a href="plutonium.html" className="nav__link">Plutonium
-                  (Foundry Module) Features</a></li>
+                <li role="presentation" data-page="plutonium.html">
+                  <a href="plutonium.html" className="nav__link">Plutonium (Foundry Module) Features</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="https://wiki.tercept.net/en/betteR20"><a
-                  href="https://wiki.tercept.net/en/betteR20" className="nav__link inline-split-v-center w-100"
-                  target="_blank"><span>Roll20 Script Help</span><span
-                  className="glyphicon glyphicon-new-window"></span></a></li>
+                <li role="presentation" data-page="https://wiki.tercept.net/en/betteR20">
+                  <a href="https://wiki.tercept.net/en/betteR20" className="nav__link inline-split-v-center w-100"
+                     target="_blank">
+                    <span>Roll20 Script Help</span><span className="glyphicon glyphicon-new-window"></span>
+                  </a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="changelog.html"><a href="changelog.html"
-                                                                      className="nav__link">Changelog</a></li>
-                <li role="presentation" data-page="https://wiki.tercept.net/en/5eTools/HelpPages/races"><a
-                  href="https://wiki.tercept.net/en/5eTools/HelpPages/races"
-                  className="nav__link inline-split-v-center w-100" target="_blank"><span>Help</span><span
-                  className="glyphicon glyphicon-new-window"></span></a></li>
+                <li role="presentation" data-page="changelog.html">
+                  <a href="changelog.html" className="nav__link">Changelog</a>
+                </li>
+                <li role="presentation" data-page="https://wiki.tercept.net/en/5eTools/HelpPages/races">
+                  <a href="https://wiki.tercept.net/en/5eTools/HelpPages/races"
+                     className="nav__link inline-split-v-center w-100" target="_blank">
+                    <span>Help</span><span className="glyphicon glyphicon-new-window"></span>
+                  </a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="privacy-policy.html"><a href="privacy-policy.html"
-                                                                           className="nav__link">Privacy Policy</a></li>
+                <li role="presentation" data-page="privacy-policy.html">
+                  <a href="privacy-policy.html" className="nav__link">Privacy Policy</a>
+                </li>
               </ul>
             </li>
-            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root"><a
-              className="ve-dropdown-toggle" href="#" role="button">Settings <span className="caret "></span></a>
+            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+              <a className="ve-dropdown-toggle" href="#" role="button">Settings <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation"><span>Preferences</span></li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
@@ -979,15 +1172,17 @@ export const Layout5e = () => {
                 </li>
               </ul>
             </li>
-            <div className="input-group omni__wrp-input"><input className="form-control search omni__input"
-                                                                title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution."
-                                                                type="search" placeholder="Search everywhere..."
-                                                                autoComplete="new-password" autoCapitalize="off"
-                                                                spellCheck="false"/><span
-              className="absolute glyphicon glyphicon-remove omni__btn-clear"></span>
+            <div className="input-group omni__wrp-input">
+              <input className="form-control search omni__input"
+                     title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution."
+                     type="search" placeholder="Search everywhere..."
+                     autoComplete="new-password" autoCapitalize="off"
+                     spellCheck="false"/>
+              <span className="absolute glyphicon glyphicon-remove omni__btn-clear"></span>
               <div className="input-group-btn">
-                <button className="ve-btn ve-btn-default omni__submit" tabIndex="-1"><span
-                  className="glyphicon glyphicon-search"></span></button>
+                <button className="ve-btn ve-btn-default omni__submit" tabIndex="-1">
+                  <span className="glyphicon glyphicon-search"></span>
+                </button>
               </div>
             </div>
           </ul>
@@ -999,1171 +1194,332 @@ export const Layout5e = () => {
           <div className="container view-col-wrapper view-col-wrapper--cancer">
             <div className="view-col" id="listcontainer">
               <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-                <button type="button" className="ve-col-4 sort ve-btn ve-btn-default ve-btn-xs" data-sort="name">
-                  Name<span className="lst__caret lst__caret--active lst__caret--reverse"></span>
-                </button>
-                <button type="button" className="ve-col-4 sort ve-btn ve-btn-default ve-btn-xs" data-sort="ability">
-                  Ability<span className="lst__caret"></span></button>
-                <button type="button" className="ve-col-2 sort ve-btn ve-btn-default ve-btn-xs" data-sort="size">
-                  Size<span className="lst__caret"></span></button>
-                <button type="button" className="sort ve-btn ve-btn-default ve-btn-xs ve-grow" data-sort="source">
-                  Source<span className="lst__caret"></span></button>
+                {columns.map((col) => {
+                  return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                                  onClick={() => handleSort(col.sortId)}>
+                    {col.id}<span
+                    className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+                  </button>)
+                })}
               </div>
               {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
               <div id="list" className="list list--stats">
-                <div className="lst__row ve-flex-col list-multi-selected">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
-                <div className="lst__row ve-flex-col">
-                  <a href="#aarakocra_mpmm" className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-4 pl-0 pr-1">Aarakocra</span>
-                    <span className="ve-col-4 px-1 italic">Lineage</span>
-                    <span className="ve-col-2 px-1 ve-text-center">Medium</span>
-                    <span className="ve-col-2 ve-text-center source__MPMM pl-1 pr-0"
-                          title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</span>
-                  </a>
-                </div>
+                {/*{console.log(elements)}*/}
+                {elements.map((elem) => {
+                  // console.log(elem)
+                  return <div
+                    className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+                    onClick={() => handleClick(elem)}>
+
+                    <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
+                      <span className="bold ve-col-4 pl-0 pr-1">{elem.name}</span>
+                      <span className="ve-col-4 px-1 italic">{elem.bonus}</span>
+                      <span className="ve-col-2 px-1 ve-text-center">{elem.size}</span>
+                      <span className={"ve-col-2 ve-text-center source__" + elem.source + " pl-1 pr-0"}
+                            title={getSourceName(elem.source)}>{elem.source}</span>
+                    </a>
+                  </div>
+                })}
               </div>
             </div>
             <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
             {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-            <Tabs className="view-col" id="contentwrapper">
-              <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0} style={{paddingLeft: "0px",marginBottom: "0px"}}>
-                <Tab
-                  className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
-                <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
-                <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
-                <li className="ml-auto ve-flex" id="tabs-right">
-                  <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                          title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
-                  </button>
-                  <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                          title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
-                    className="glyphicon glyphicon-new-window"></span></button>
-                  <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-                          title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
-                    className="glyphicon glyphicon-magnet"></span></button>
-                  <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                          title="Other Options"><span className="glyphicon glyphicon-option-vertical"></span></button>
-                </li>
-              </TabList>
+            {Object.keys(selected).length === 0 ?
+              <div className="view-col" id="contentwrapper">
+                <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+                  <table id="pagecontent" className="w-100 stats">
+                    <tbody>
+                    <tr>
+                      <th className="ve-tbl-border" colSpan="6"></th>
+                    </tr>
+                    <tr>
+                      <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                        view it here
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="ve-tbl-border" colSpan="6"></th>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div> :
+              <Tabs className="view-col" id="contentwrapper">
+                <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0}
+                         style={{paddingLeft: "0px", marginBottom: "0px"}}>
+                  <Tab
+                    className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
+                  <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
+                  {selected.images.length === 0 ?
+                    <Tab
+                      className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
+                    : <></>
+                  }
+                  <li className="ml-auto ve-flex" id="tabs-right">
+                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                            title="Pin (Toggle) (Hotkey: p/P)">
+                      <span className="glyphicon glyphicon-pushpin"></span>
+                    </button>
+                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                            title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)">
+                      <span className="glyphicon glyphicon-new-window"></span>
+                    </button>
+                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                            title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
+                      <span className="glyphicon glyphicon-magnet"></span>
+                    </button>
+                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                            title="Other Options">
+                      <span className="glyphicon glyphicon-option-vertical"></span>
+                    </button>
+                  </li>
+                </TabList>
                 <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
                   <table className="w-100 stats">
                     <tr>
                       <th className="ve-tbl-border" colSpan="6"></th>
                     </tr>
+                    <DetailsHeader/>
                     <tr>
-                      <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
-                          data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
-                        <div className="split-v-end">
-                          <div className="ve-flex-v-center">
-                            <h1 className="stats__h-name copyable m-0" onMouseDown="event.preventDefault()"
-                                onClick="Renderer.utils._pHandleNameClick(this)">Traits</h1>
+                      <td colSpan={6} className="pt-0">
+                        <ul className="rd__list rd__list-hang-notitle">
+                          <li className="rd__li">
+                            <p className="rd__p-list-item">
+                              <span className="bold rd__list-item-name">Score de capacité:</span>
+                              {" " + convertBonus(selected.bonus)}
+                            </p>
+                          </li>
+                          <li className="rd__li">
+                            <p className="rd__p-list-item">
+                              <span className="bold rd__list-item-name">Type de Créature:</span>
+                              {" " + selected.creatureType}
+                            </p>
+                          </li>
+                          <li className="rd__li">
+                            <p className="rd__p-list-item">
+                              <span className="bold rd__list-item-name">Taille:</span>
+                              {" " + selected.size}
+                            </p>
+                          </li>
+                          <li className="rd__li">
+                            <p className="rd__p-list-item">
+                              <span className="bold rd__list-item-name">Vitesse:</span>
+                              {" " + selected.speed}
+                            </p>
+                          </li>
+                        </ul>
+                        <div className="w-100 py-1"></div>
+                        <div className="rd__b rd__b--2">
+                          {selected.subraces ? <>
+                            <div className="rd__b  rd__b--0">
+                              <p>Cette race à plusieurs héritages comme listé ci-dessous</p>
+                              <ul className="rd__list">
+                                {selected.subraces.map((subrace) => <li className="rd__li">
+                                  <a href={"#" + subrace.id}>{subrace.name}</a>
+                                </li>)}
+                              </ul>
+                            </div>
+                            <hr className="rd__hr rd__hr--section"/>
+                          </> : <></>}
+                          <div className="rd__b  rd__b--3">
+                            <p>
+                              <span className="rd__h rd__h--3">
+                                <span className="entry-title-inner">Âge.</span>
+                              </span>
+                              {" " + selected.common.age}
+                            </p>
                           </div>
-                          <div className="stats__wrp-h-source  ve-flex-v-baseline">
-                            <a href="book.html#MPMM,page:20"
-                               className="help-subtle stats__h-source-abbreviation source__MPMM"
-                               title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</a>
-                            <a href="book.html#MPMM,page:20" className="rd__stats-name-page ml-1"
-                               title="Page 20">p20</a>
+                          <div className="rd__b  rd__b--3">
+                            <p>
+                              <span className="rd__h rd__h--3">
+                                <span className="entry-title-inner">Alignement.</span>
+                              </span>
+                              {" " + selected.common.alignment}
+                            </p>
+                          </div>
+                          <div className="rd__b  rd__b--3">
+                            <p>
+                              <span className="rd__h rd__h--3">
+                                <span className="entry-title-inner">Taille.</span>
+                              </span>
+                              {" " + selected.common.size}
+                            </p>
+                          </div>
+                          {selected.traits.map((trait) => {
+                            const key = Object.keys(trait)[0];
+                            const value = trait[key]
+
+                            if (typeof value === typeof []) {
+                              // console.log(value)
+                              return (<div className="rd__b rd__b--3">
+                                {value.map((elem) => {
+                                  if (typeof elem !== typeof "") {
+                                    const keySub = Object.keys(elem)[0];
+                                    const valueSub = elem[keySub]
+                                    switch (keySub) {
+                                      case "table":
+                                        return (<table className="w-100 rd__table stripe-odd-table">
+                                          <caption>{valueSub.caption}</caption>
+                                          <thead>
+                                          <tr>
+                                            {valueSub.head.map((head) => {
+                                              const idx = valueSub.head.indexOf(head)
+                                              return (<th className={"rd__th " + valueSub.style[idx]}>
+                                                {head}
+                                              </th>)
+                                            })}
+                                          </tr>
+                                          </thead>
+                                          <tbody>
+                                          {valueSub.body.map((body) => {
+                                            return (<tr>
+                                              {body.map((cell) => {
+                                                const idx = body.indexOf(cell)
+                                                return (<td className={"rd__th " + valueSub.style[idx]}>
+                                                  {cell}
+                                                </td>)
+                                              })}
+                                            </tr>)
+                                          })}
+                                          </tbody>
+                                        </table>)
+                                      case "ulist":
+                                        return (valueSub.map((list) => {
+                                          const keyList = Object.keys(list)[0];
+                                          const valueList = list[keyList]
+                                          console.log(list)
+                                          console.log(keyList)
+                                          console.log(valueList)
+                                          return (<div className="rd__b  rd__b--3">
+                                            <p>
+                                              <span className="rd__h rd__h--3">
+                                                <span className="entry-title-inner">{keyList}.</span>
+                                              </span>
+                                              {" " + valueList}
+                                            </p>
+                                          </div>)
+                                        }))
+                                      default:
+                                        return (<p>Not Implemented: {keySub}</p>)
+                                    }
+                                  }
+                                  return (<p>
+                                    {elem === value[0] ? <>
+                                      <span className="rd__h rd__h--3">
+                                        <span className="entry-title-inner">{key}.</span>
+                                      </span>
+                                      {" " + elem}
+                                    </> : elem}
+                                  </p>)
+                                })}
+                              </div>)
+                            }
+                            return (<div className="rd__b rd__b--3">
+                              <p>
+                                <span className="rd__h rd__h--3">
+                                  <span className="entry-title-inner">{key}.</span>
+                                </span>
+                                {" " + value}
+                              </p>
+                            </div>)
+                          })}
+                          <div className="rd__b  rd__b--3">
+                            <p>
+                            <span className="rd__h rd__h--3">
+                            <span className="entry-title-inner">Langues.</span>
+                            </span>
+                              {" " + selected.common.languages}
+                            </p>
                           </div>
                         </div>
-                      </th>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan={6} className="pt-3">
+                        <b>Source:</b>
+                        <i title={getSourceName(selected.source)}>{selected.source}</i>
+                        , page {selected.page}. {selected.reprinted}
+                      </td>
                     </tr>
                     <tr>
                       <th className="ve-tbl-border" colSpan="6"></th>
                     </tr>
                   </table>
                 </TabPanel>
-              <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-                <table className="w-100 stats">
-                  <tr>
-                    <th className="ve-tbl-border" colSpan="6"></th>
-                  </tr>
-                  <tr>
-                    <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
-                        data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
-                      <div className="split-v-end">
-                        <div className="ve-flex-v-center">
-                          <h1 className="stats__h-name copyable m-0" onMouseDown="event.preventDefault()"
-                              onClick="Renderer.utils._pHandleNameClick(this)">Info</h1>
+                <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+                  <table className="w-100 stats">
+                    <tr>
+                      <th className="ve-tbl-border" colSpan="6"></th>
+                    </tr>
+                    <DetailsHeader/>
+                    <tr>
+                      <td colSpan={6} className="pt-3">
+                        <div className="rd__b rd__b--1">
+                          <div className="rd__b rd__b--2">
+                            {selected.info.map((info) => {
+                              const key = Object.keys(info)[0];
+                              const value = info[key]
+                              if (key === "") {
+                                return (<p>{value}</p>)
+                              }
+                              if (typeof value === typeof []) {
+                                return (
+                                  <div className="rd__b rd__b--3">
+                                    {value.map((elem) => {
+                                      return (
+                                        <p>
+                                          {elem === value[0] ? <>
+                                            <span className="rd__h rd__b--3">
+                                              <span className="entry-title-inner">{key}</span>
+                                            </span>
+                                            {" " + key}
+                                          </> : key
+                                          }
+                                        </p>
+                                      )
+                                    })}
+                                  </div>
+                                )
+                              }
+                              if (typeof value === typeof {}) {
+                                return formatContent([value])
+                              }
+                              return (
+                                <div className="rd__b rd__b--3">
+                                  <p>
+                                      <span className="rd__h rd__b--3">
+                                        <span className="entry-title-inner">{key}</span>
+                                      </span>
+                                    {" " + key}
+                                  </p>
+                                </div>
+                              )
+                            })}
+                          </div>
                         </div>
-                        <div className="stats__wrp-h-source  ve-flex-v-baseline">
-                          <a href="book.html#MPMM,page:20"
-                             className="help-subtle stats__h-source-abbreviation source__MPMM"
-                             title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</a>
-                          <a href="book.html#MPMM,page:20" className="rd__stats-name-page ml-1"
-                             title="Page 20">p20</a>
-                        </div>
-                      </div>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th className="ve-tbl-border" colSpan="6"></th>
-                  </tr>
-                </table>
-              </TabPanel>
-              <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-                <table className="w-100 stats">
-                  <tr>
-                    <th className="ve-tbl-border" colSpan="6"></th>
-                  </tr>
-                  <tr>
-                    <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
-                        data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
-                      <div className="split-v-end">
-                        <div className="ve-flex-v-center">
-                          <h1 className="stats__h-name copyable m-0" onMouseDown="event.preventDefault()"
-                              onClick="Renderer.utils._pHandleNameClick(this)">Images</h1>
-                        </div>
-                        <div className="stats__wrp-h-source  ve-flex-v-baseline">
-                          <a href="book.html#MPMM,page:20"
-                             className="help-subtle stats__h-source-abbreviation source__MPMM"
-                             title="Mordenkainen Presents: Monsters of the Multiverse">MPMM</a>
-                          <a href="book.html#MPMM,page:20" className="rd__stats-name-page ml-1"
-                             title="Page 20">p20</a>
-                        </div>
-                      </div>
-                    </th>
-                  </tr>
-                  <tr>
-                    <th className="ve-tbl-border" colSpan="6"></th>
-                  </tr>
-                </table>
-              </TabPanel>
-            </Tabs>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="ve-tbl-border" colSpan="6"></th>
+                    </tr>
+                  </table>
+                </TabPanel>
+                {selected.images.length === 0 ?
+                  <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+                    <table className="w-100 stats">
+                      <tr>
+                        <th className="ve-tbl-border" colSpan="6"></th>
+                      </tr>
+                      <DetailsHeader/>
+                      <tr>
+                        <th className="ve-tbl-border" colSpan="6"></th>
+                      </tr>
+                    </table>
+                  </TabPanel>
+                  : <></>
+                }
+              </Tabs>
+            }
           </div>
         </div>
       </div>

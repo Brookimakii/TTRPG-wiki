@@ -1,4 +1,4 @@
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 export default function SecondaryMenu({links}) {
   const location = useLocation()
@@ -11,8 +11,9 @@ function isChildrenSelected(location, links: []) {
   if (links.length === 0) {
     return false
   }
-  let r = links.filter(obj => obj.href===location.pathname).map(e=>console.log(e))
-
+  let r = links.filter(obj => obj.href===location.pathname)
+  // r.map(e=>console.log(e))
+  // console.log(r + (r.length))
 
   return r.length>0
 }
@@ -27,10 +28,10 @@ function build_list(links: [], location, addUl = false) {
   // console.log(location.pathname)
   const menu = links.map((link) =>
     <li className={location.pathname === link.href ? "current" : isChildrenSelected(location, link.sublist) ? "section" : "link"} key={link.id}>
-      <a href={link.href} className={location.pathname === link.href ? "current" : location.pathname.startsWith(link.href) ? "section" : "link"}>{link.name}</a>
+      <Link to={link.href} className={location.pathname === link.href ? "current" : location.pathname.startsWith(link.href) ? "section" : "link"}>{link.name}</Link>
       {/*{console.log("-----------------------")}*/}
       {/*{console.log(link.href)}*/}
-      {location.pathname.startsWith(link.href) && link.sublist.length > 0 ? (build_list(link.sublist, location, true)) : ''}
+      {(location.pathname.startsWith(link.href)||isChildrenSelected(location, link.sublist)) && link.sublist.length > 0 ? (build_list(link.sublist, location, true)) : ''}
     </li>
   )
   if (addUl) {

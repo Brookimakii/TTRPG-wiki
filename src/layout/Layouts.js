@@ -5,7 +5,7 @@ export const Main = ({children, name, size=4, lastUnit=false}) => {
   return (
     <div className={"content-container unit size"+size+"of5"+lastUnit}>
       <article>
-        <h1>{name}</h1>
+        {}
         <div className="content">
           {children}
         </div>

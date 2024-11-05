@@ -1,0 +1,1015 @@
+[
+  {
+    "id": "aarakocra",
+    "name": "Aarakocra",
+    "bonus": "Dex +2; Sag +1",
+    "size": "Moyenne",
+    "source": "EPCC",
+    "creatureType": "Humainoïde",
+    "speed": "7,5m, vol 15m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun, l'aarakocra et l'aérien."
+    },
+    "traits": [
+      {
+        "Vol": "Vous avez une vitesse de vol de 15 mètres par round. Pour utiliser cette vitesse, vous ne devez pas porter d'armure moyenne ou lourde."
+      },
+      {
+        "Serre": "Vous maîtrisez vos armes naturelles, lesquelles infligent 1d4 de dégâts tranchants."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "aasimar",
+    "name": "Aasimar",
+    "bonus": "Cha +2",
+    "size": "Moyenne",
+    "source": "VGM",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le céleste."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Résistance céleste": "Vous avez une résistance aux dégâts nécrotiques et aux dégâts radieux."
+      },
+      {
+        "Guérir les mains": "En tant qu'action, vous pouvez toucher une créature et lui faire retrouver un nombre de points de vie égal à votre niveau. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un long repos."
+      },
+      {
+        "Porteur de lumière": "Vous connaissez le tour de magie Lumière. Le charisme est votre capacité de lancer de sorts pour cela."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "fallen",
+        "name": "Déchu",
+        "bonus": ":Con+1",
+        "source": "VGM",
+        "traits": [
+          {
+            "Consommation radiante": [
+              "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant une lumière brûlante qui rayonne de vous, se déverse de vos yeux et de votre bouche et menace de vous carboniser.",
+              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous projetez une lumière vive dans un rayon de 10 pieds et une faible lumière pendant 10 pieds supplémentaires, et à la fin de chacun de vos tours, vous et chaque créature à moins de 10 pieds de vous subissez des dégâts radieux égaux à la moitié de votre niveau (arrondi). De plus, une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
+              "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
+            ]
+          }
+        ],
+        "info": {
+          "": "Les fléaux aasimar sont imprégnés d'une énergie divine qui flambe intensément en eux. Il nourrit un puissant désir de détruire le mal - un désir qui est, à son meilleur, inébranlable et, au pire, dévorant. Beaucoup de fléaux aasimar portent des masques pour bloquer le monde et se concentrer sur la maîtrise de ce pouvoir, se démasquant uniquement au combat."
+        },
+        "images": []
+      },
+      {
+        "id": "protector",
+        "name": "Protecteur",
+        "bonus": ";Sag+1",
+        "source": "VGM",
+        "traits": [
+          {
+            "Âme rayonnante": [
+              "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, faisant briller vos yeux et faire jaillir deux ailes lumineuses et incorporelles de votre dos.",
+              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous avez une vitesse de vol de 30 pieds, et une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
+              "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
+            ]
+          }
+        ],
+        "info": {
+          "": "Les protecteurs aasimar sont chargés par les puissances du bien de garder les faibles, de frapper le mal partout où il surgit, et de rester vigilant contre les ténèbres. Dès son plus jeune âge, un protecteur aasimar reçoit des conseils et des directives qui l'incitent à s'opposer au mal."
+        },
+        "images": []
+      },
+      {
+        "id": "scourge",
+        "name": "Fléau",
+        "bonus": ";For +1",
+        "source": "",
+        "traits": [
+          {
+            "Suaire nécrotique": [
+              "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant la transformation de vos yeux en flaques d'obscurité et deux ailes squelettiques, fantomatiques et incapables de voler jaillir de votre dos. À l'instant où vous vous transformez, les autres créatures à moins de 10 pieds de vous qui peuvent vous voir doivent chacune réussir un lancer de sauvetage de charisme (DC 8 + votre bonus de compétence + votre modificateur de charisme) ou avoir peur de vous jusqu'à la fin de votre prochain tour.",
+              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, une fois à chacun de vos tours, vous pouvez infliger des dégâts nécrotiques supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts nécrotiques supplémentaires sont égaux à votre niveau.",
+              "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
+            ]
+          }
+        ],
+        "info": {
+          "": "Un aasimar qui a été touché par les puissances obscures dans sa jeunesse ou qui se tourne vers le mal au début de l'âge adulte peut devenir l'un des déchus - un groupe d'aasimar dont la lumière intérieure a été remplacée par l'ombre."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "changelin",
+    "name": "Changelin",
+    "bonus": "Cha +2; tout autre +1",
+    "size": "Moyenne",
+    "source": "ERLW",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et deux autre langue de votre choix."
+    },
+    "traits": [
+      {
+        "Changeur de forme": "En tant qu'action, vous pouvez changer votre apparence et votre voix. Vous déterminez les spécificités des changements, y compris votre coloration, la longueur de vos cheveux et votre sexe. Vous pouvez également ajuster votre taille et votre poids, mais pas au point que votre taille change. Vous pouvez vous faire apparaître comme un membre d'une autre race, bien qu'aucune de vos statistiques de jeu ne change. Vous ne pouvez pas reproduire l'apparence d'une créature que vous n'avez jamais vue, et vous devez adopter une forme qui a le même arrangement de base des membres que vous avez. Vos vêtements et votre équipement ne sont pas modifiés par ce trait.\n\nVous restez dans la nouvelle forme jusqu'à ce que vous utilisiez une action pour revenir à votre véritable forme ou jusqu'à ce que vous mouriez."
+      },
+      {
+        "Instincts changeants": "Vous maîtrisez deux des compétences suivantes de votre choix : tromperie, perspicacité, intimidation et persuasion."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "dragonborn",
+    "name": "Drakéïde",
+    "bonus": "For +2; Cha +1",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le draconique."
+    },
+    "traits": [
+      {
+        "Ascendance draconique": [
+          "Vous avez une ascendance draconique. Choisissez un type de dragon dans la table ci-dessous. Votre souffle et votre résistance aux dégâts sont déterminés par le type de dragon, comme indiqué dans la table.",
+          {
+            "table": {
+              "caption": "Ascendance Draconique",
+              "style": [
+                "ve-col-3 ve-text-center",
+                "ve-col-3 ve-text-center",
+                "ve-col-6"
+              ],
+              "head": [
+                "Dragon",
+                "Type de dégâts",
+                "Souffle"
+              ],
+              "body": [
+                [
+                  "Blanc",
+                  "Froid",
+                  "cône de 4,50 m (JdS de Con.)"
+                ],
+                [
+                  "Bleu",
+                  "Foudre",
+                  "ligne de 1,50 x 9 m (JdS de Dex.)"
+                ],
+                [
+                  "Noir",
+                  "Acide",
+                  "ligne de 1,50 x 9 m (JdS de Dex.)"
+                ],
+                [
+                  "Rouge",
+                  "Feu",
+                  "cône de 4,50 m (JdS de Dex.)"
+                ],
+                [
+                  "Vert",
+                  "Poison",
+                  "cône de 4,50 m (JdS de Con.)"
+                ],
+                [
+                  "Airain",
+                  "Feu",
+                  "ligne de 1,50 x 9 m (JdS de Dex.)"
+                ],
+                [
+                  "Argent",
+                  "Froid",
+                  "cône de 4,50 m (JdS de Con.)"
+                ],
+                [
+                  "Bronze",
+                  "Foudre",
+                  "ligne de 1,50 x 9 m (JdS de Dex.)"
+                ],
+                [
+                  "Cuivre",
+                  "Acide",
+                  "ligne de 1,50 x 9 m (JdS de Dex.)"
+                ],
+                [
+                  "Or",
+                  "Feu",
+                  "cône de 4,50 m (JdS de Dex.)"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Souffle": "Vous pouvez utiliser votre action pour libérer un souffle d'énergie destructrice. Votre ascendance draconique détermine la taille, la forme et le type de dégâts de votre souffle. Lorsque vous utilisez votre souffle, toute créature dans la zone de l'expiration doit faire un jet de sauvegarde, dont le type est déterminé par votre ascendance draconique. Le DD de ce jet de sauvegarde est égal à 8 + votre modificateur de Constitution + votre bonus de maîtrise. En cas d'échec, la créature subit 2d6 dégâts, ou la moitié de ces dégâts en cas de réussite. Les dégâts augmentent à 3d6 au niveau 6, 4d6 au niveau 11, et 5d6 au niveau 16. Après avoir utilisé votre souffle, vous devez terminer un repos court ou long pour pouvoir l'utiliser à nouveau."
+      },
+      {
+        "Résistance aux dégâts": "Vous obtenez la résistance au type de dégâts associé à votre ascendance draconique."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "dwarf",
+    "name": "Nain",
+    "bonus": "Con +2",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le nain."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Résistance naine": "Vous avez un avantage aux jets de sauvegarde contre le poison et obtenez la résistance contre les dégâts de poison."
+      },
+      {
+        "Entraînement aux armes naines": "Vous obtenez la maîtrise des hachettes, des haches d'armes, des marteaux légers et des marteaux de guerre."
+      },
+      {
+        "Maîtrise des outils": "Vous obtenez la maîtrise d'un des outils d'artisan suivant au choix : outils de forgeron, outils de brasseur ou outils de maçon."
+      },
+      {
+        "Connaissance de la pierre": "Chaque fois que vous effectuez un jet d'Intelligence (Histoire) en relation avec l'origine d'un travail lié à la pierre, considérez que vous maîtrisez la compétence Histoire et ajoutez le double de votre bonus de maîtrise au jet, au lieu du bonus de maîtrise normal."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "hills",
+        "name": "Collines",
+        "bonus": ";Sag +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Ténacité naine": "Votre maximum de points de vie augmente de 1 à chaque niveau."
+          }
+        ],
+        "info": {
+          "": "En tant que nain des collines, vous avez les sens aiguisés, une forte intuition et une résistance remarquable. Les nains d'or de Faerûn dans leur puissant royaume du sud sont des nains des collines."
+        },
+        "images": []
+      },
+      {
+        "id": "mountain",
+        "name": "Montagne",
+        "bonus": ";For +2",
+        "source": "PHB",
+        "traits": [
+          {
+            "Formation au port des armures naines": "Vous maîtrisez les armures légères et intermédiaires."
+          }
+        ],
+        "info": {
+          "": "En tant que nain des montagnes, vous êtes fort et robuste, et habitué à une vie difficile en terrain accidenté. Vous êtes probablement plus grand que la moyenne (pour un nain) et votre peau est plus claire. Les nains d'écu au nord de Faerûn sont des nains des montagnes."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "elf",
+    "name": "Elfe",
+    "bonus": "Dex +2",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et l'elfique."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Sens aiguisés": "Vous maîtrisez la compétence Perception."
+      },
+      {
+        "Ascendance féerique": "Vous avez un avantage aux jets de sauvegarde contre les effets de charme et la magie ne peut pas vous endormir."
+      },
+      {
+        "Transe": "Les elfes n'ont pas besoin de dormir. Au lieu de cela, ils méditent profondément, restant à demi conscients, 4 heures par jour (le mot commun pour désigner cette méditation est « transe »). En méditant, vous pouvez rêver, tant bien que mal ; ces rêves sont en fait des exercices mentaux qui deviennent un réflexe après des années de pratique. Après un repos de ce type, vous obtenez les mêmes avantages qu'un humain après 8 heures de sommeil."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "high",
+        "name": "Haut",
+        "bonus": "Int +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Entraînement aux armes elfiques": "Vous obtenez la maîtrise des épées (longues et courtes) et des arcs (longs et courts)."
+          },
+          {
+            "Sort mineur": "Vous connaissez un sort mineur de votre choix parmi la liste des sorts mineurs de magicien. L'Intelligence est votre caractéristique d'incantation pour ce sort."
+          },
+          {
+            "Langue supplémentaire": "Vous parlez, lisez et écrivez une langue supplémentaire de votre choix."
+          }
+        ],
+        "info": {
+          "": "En tant que haut-elfe, vous avez l'esprit vif et connaissez les rudiments de la magie. Notez qu'il existe deux sortes de hauts-elfes. Les premiers (les elfes du soleil) sont hautains et solitaires, se pensant supérieurs aux non-elfes et même aux autres elfes. Les seconds (les elfes de la lune), plus communs et plus conviviaux, sont souvent rencontrés chez les humains et les autres races. Les elfes du soleil ont la peau de couleur bronze et les cheveux de couleur cuivre, noir ou or. Leurs yeux sont de couleur or, d'argent ou noir. Les elfes de la lune sont beaucoup plus pâles. Ils ont souvent les cheveux blanc-argenté, noir ou bleu, mais diverses nuances de blond, brun et roux ne sont pas rares. Leurs yeux sont bleus ou verts et mouchetés d'or."
+        },
+        "images": []
+      },
+      {
+        "id": "Wood",
+        "name": "Bois",
+        "bonus": ";Sag +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Entraînement aux armes elfiques": "Vous obtenez la maîtrise des épées (longues et courtes) et des arcs (longs et courts)."
+          },
+          {
+            "Foulée légère": "Votre vitesse de base passe à 10,50 mètres."
+          },
+          {
+            "Cachette naturelle": "Vous pouvez tenter de vous cacher dans une zone à visibilité réduite, comme en présence de branchages, de forte pluie, de neige qui tombe, de brume ou autre phénomène naturel."
+          }
+        ],
+        "info": {
+          "": "En tant qu'elfe des bois, vous avez des sens aiguisés et une forte intuition. Vous vous déplacez rapidement et discrètement dans vos forêts. Les elfes des bois (également appelés elfes sauvages, elfes verts ou elfes des forêts) sont reclus et méfiants envers les non-elfes. La peau des elfes des bois tend à être cuivrée, parfois avec des traces de vert. Leurs cheveux tendent vers le brun et le noir, mais peuvent parfois aussi être blonds ou cuivrés. Leurs yeux sont verts, bruns ou noisette."
+        },
+        "images": []
+      },
+      {
+        "id": "drow",
+        "name": "Drow",
+        "bonus": ";Cha +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Vision dans le noir supérieure": "Votre vision dans le noir est étendue à 36 mètres."
+          },
+          {
+            "Sensibilité au soleil": "Vous avez un désavantage aux jets d'attaque et aux jets de Sagesse (Perception) basés sur la vue quand vous, la cible de l'attaque ou ce que vous essayez de détecter est exposé à la lumière du soleil."
+          },
+          {
+            "Magie drow": "Vous connaissez le sort mineur lumières dansantes. Lorsque vous atteignez le niveau 3, vous pouvez lancer le sort lueurs féeriques une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Lorsque vous atteignez le niveau 5, vous pouvez lancer le sort ténèbres une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."
+          },
+          {
+            "Entraînement aux armes drows": "Vous obtenez la maîtrise des rapières, des épées courtes et des arbalètes de poing."
+          }
+        ],
+        "info": {
+          "": "En tant que drow, vous êtes imprégné par la magie de l'Outreterre, un royaume souterrain fait de merveilles et d'horreurs que l'on voit rarement à la surface. Vous êtes chez vous dans les ombres et, grâce à votre magie innée, vous pouvez invoquer à la fois la lumière et les ténèbres. Les vôtres ont tendance à avoir les cheveux blancs et la peau grisâtre.\n\nLe culte de la déesse Lolth, la Reine des araignées, a corrompu certaines des plus anciennes cités drows, en particulier dans l'univers de Greyhawk et sur Toril. Eberron, Krynn et d'autres mondes échappent à l'influence du culte... pour l'instant. Mais partout où le culte est une menace, des héros drows se dressent contre lui, cherchant à briser la toile tentaculaire de Lolth."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "firbolg",
+    "name": "Firbolg",
+    "bonus": "Sag +2; For +1",
+    "size": "Moyenne",
+    "source": "VGM",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun, l'elfique et le géant."
+    },
+    "traits": [
+      {
+        "Magie Firbolg": "Vous pouvez lancer la magie et se déguiser avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 3 pieds plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."
+      },
+      {
+        "Étape cachée": "En tant qu'action bonus, vous pouvez magiquement devenir invisible jusqu'au début de votre prochain tour ou jusqu'à ce que vous attaquiez, fassiez un lancer de dégâts ou forciez quelqu'un à faire un lancer de sauvetage. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un repos court ou long."
+      },
+      {
+        "Construction puissante": "Vous comptez comme une taille plus grande pour déterminer votre capacité de charge et le poids que vous pouvez pousser, traîner ou soulever."
+      },
+      {
+        "Discours de la bête et de la feuille": "Vous avez la capacité de communiquer de manière limitée avec les bêtes et les plantes. Ils peuvent comprendre le sens de vos mots, bien que vous n'ayez aucune capacité particulière à les comprendre en retour. Vous avez un avantage sur tous les contrôles de charisme que vous faites pour les influencer."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "genasi",
+    "name": "Génasi",
+    "bonus": "Con +2",
+    "size": "Moyenne",
+    "source": "EPCC",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le primordial."
+    },
+    "traits": [
+      {
+        "": ""
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "air",
+        "name": "Air",
+        "bonus": ";Dex +1",
+        "source": "EPCC",
+        "traits": [
+          {
+            "Souffle sans fin": "Vous pouvez retenir votre respiration indéfiniment tant que vous n'êtes pas incapable d'agir."
+          },
+          {
+            "Se mêler au vent": "Vous pouvez lancer le sort lévitation une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+          }
+        ],
+        "info": {
+          "": "En tant que génasi de l'air, vous êtes le descendant d'un djinn. Aussi changeantes que la météo, vos humeurs passent du calme à la sauvagerie et à la violence sans avertissement, mais ces tempêtes ne durent jamais bien longtemps. Les génasis de l'air ont généralement la peau, les yeux et les cheveux de couleur bleue claire. Une faible mais constante brise les accompagne, ébouriffant leurs cheveux et agitant leurs vêtements. Certains génasis de l'air parlent avec une voix soufflée et marquée par un léger écho. Quelques-uns affichent d'étranges motifs sur leur peau ou produisent des cristaux sur leur crane."
+        },
+        "images": []
+      },
+      {
+        "id": "earth",
+        "name": "Terre",
+        "bonus": ";For +1",
+        "source": "EPCC",
+        "traits": [
+          {
+            "Marche de la terre": "Vous pouvez vous déplacer sur des terrains difficiles faits de pierre ou de terre sans dépenser de mouvement supplémentaire."
+          },
+          {
+            "Fusionner avec la pierre": "Vous pouvez lancer le sort passage sans trace une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+          }
+        ],
+        "info": {
+          "": "En tant que génasi de la terre, vous êtes le descendant du cruel et avide Dao, bien que vous ne soyez pas nécessairement mauvais. Vous avez hérité d'un certain contrôle sur la terre, d'une force supérieure et d'un pouvoir solide. Vous avez tendance à éviter les décisions irréfléchies, prenant le temps nécessaire pour considérer toutes les options avant de passer à l'action. L'élément de la terre se manifeste différemment d'un individu à l'autre. Certains génasis de la terre ont de la poussière qui émane constamment de leur corps et de la boue s'accroche à leur vêtement, n'arrivant jamais à être propre quelle que soit la fréquence de leurs bains. D'autres sont aussi brillants et polis que des gemmes, leur couleur de peau est brune foncée ou noire et leurs yeux ont l'éclat des agates. Les génasis de la terre peuvent aussi avoir une peau lisse comme le métal, de la couleur du fer terne avec des points de rouilles, de l'aspect de la pierre grossière ou recouverte de minuscules cristaux enchâssés. Les plus impressionnants ont des fissures sur le corps d'où luit une faible lueur."
+        },
+        "images": []
+      },
+      {
+        "id": "fire",
+        "name": "Feu",
+        "bonus": ";Int +1",
+        "source": "EPCC",
+        "traits": [
+          {
+            "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+          },
+          {
+            "Résistance au feu": "Vous avez la résistance aux dégâts de feu."
+          },
+          {
+            "Atteindre le brasier": "Vous pouvez lancer le sort mineur flammes. Une fois le niveau 3 atteint, vous pouvez lancer le sort mains brûlantes une fois comme un sort de niveau 1 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+          }
+        ],
+        "info": {
+          "": "En tant que génasi du feu, vous avez hérité de l'humeur instable et de l'esprit vif de l'efrit. Vous avez tendance à être impatient et impulsif. Plutôt que de cacher votre apparence particulière, vous exultez dans celle-ci. Quasiment tous les génasis du feu ont une température corporelle élevée, comme s'ils brulaient de l'intérieur. Cette impression est renforcée par leur couleur de peau dans les tons rouge flamme, noir comme le charbon ou gris comme la cendre. Les plus proches des humains physiquement auront des cheveux rouge vif, frémissant lors d'émotions extrêmes, alors que des spécimens plus atypiques arboreront de véritables flammes dansantes sur leur tête. La voix d'un génasi du feu peut sonner comme le crépitement d'un feu et leurs yeux flamboient lors qu'ils s'énervent. Certains émettront une légère odeur de souffre."
+        },
+        "images": []
+      },
+      {
+        "id": "water",
+        "name": "Eau",
+        "bonus": ";Sag +1",
+        "source": "EPCC",
+        "speed": "9m, nage 9m",
+        "traits": [
+          {
+            "Résistance à l'acide": "Vous avez la résistance aux dégâts d'acide."
+          },
+          {
+            "Amphibien": "Vous pouvez respirer aussi bien dans l'air que sous l'eau."
+          },
+          {
+            "Nage": "Votre vitesse de nage est de 9 mètres."
+          },
+          {
+            "Appeler la vague": "Vous pouvez lancer le sort mineur façonnage de l'eau. Une fois le niveau 3 atteint, vous pouvez lancer le sort création ou destruction d'eau une fois comme un sort de niveau 2 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+          }
+        ],
+        "info": {
+          "": "Le clapotis des vagues, les embruns de la mer portés par le vent, les profondeurs océaniques, toutes ces choses sont chères à votre cœur. Vous errez librement et êtes fier de votre indépendance, à tel point que certains vous considèrent comme égoïste. La plupart des génasis de l'eau semblent toujours être à peine sorti d'un bain, avec des perles d'humidités sur leur peau ou dans leurs cheveux. Ils sentent la pluie fraîche ou l'eau claire. Leur peau est communément bleue ou verte et leurs yeux sont souvent très grands et de couleur bleue ou noire. Les cheveux d'un génasi de l'eau flottent librement, se balançant et s'agitant comme s'ils étaient sous l'eau. Certains ont une voix avec des nuances évoquant le chant des baleines ou un ruissellement d'eau."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "gnome",
+    "name": "Gnome",
+    "bonus": "Int +2",
+    "size": "Petite",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le gnome."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Ruse gnome": "Vous avez un avantage aux jets de sauvegarde d'Intelligence, de Sagesse et de Charisme contre la magie."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "forest",
+        "name": "Forêt",
+        "bonus": ";Dex +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Illusionniste-né": "Vous connaissez le sort mineur illusion mineure. L'Intelligence est votre caractéristique d'incantation pour ce sort."
+          },
+          {
+            "Communication avec les petits animaux": "À l'aide de sons et de gestes, vous pouvez communiquer des idées simples à des bêtes de taille P ou plus petite. Les gnomes des forêts aiment les animaux et traitent de manière bienveillante comme un animal domestique tout animal qu'ils peuvent trouver (écureuils, blaireaux, lapins, taupes, picidés, etc.)."
+          }
+        ],
+        "info": {
+          "": "Les gnomes des forêts se réunissent dans des communautés cachées au sein des forêts, souvent loin des routes et des chemins de la civilisation. Timides et discrets, ces gnomes évitent la confrontation autant que possible en utilisant l'illusion et la ruse pour se cacher des menaces ou pour masquer leur fuite s'ils ont été débusqués. Les gnomes des forêts ont tendance à être amicaux avec les autres habitants des bois, et considèrent les elfes et les fées bonnes comme leurs alliés les plus importants. Ils se lient aussi d'amitié avec les petits animaux de la forêt, sur lesquels ils comptent pour obtenir des informations sur les menaces qui pourraient planer sur leurs terres."
+        },
+        "images": []
+      },
+      {
+        "id": "rock",
+        "name": "Roches",
+        "bonus": ";Con +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Connaissance en ingénierie": "Chaque fois que vous effectuez un jet d'Intelligence (Histoire) en relation avec l'alchimie, des objets magiques ou des dispositifs technologiques, ajoutez le double de votre bonus de maîtrise au jet, au lieu du bonus de maîtrise normal."
+          },
+          {
+            "Bricoleur": [
+              "Vous maîtrisez les outils de bricoleur. En utilisant ces outils, vous pouvez passer 1 heure et dépenser pour 10 po de matériaux pour construire un mécanisme de taille TP, de CA 5 et 1 pv. Le dispositif cesse de fonctionner après 24 heures (sauf si vous passez 1 heure à le réparer) ou si vous utilisez une action pour le démonter ; à ce moment, vous pouvez récupérer les matériaux que vous avez utilisés pour le créer. Vous pouvez avoir jusqu'à trois de ces dispositifs actifs à la fois. Lorsque vous créez un mécanisme, choisissez l'une des options suivantes :",
+              {
+                "ulist": [
+                  {
+                    "Allume feu": "Le mécanisme produit une toute petite flamme qui peut être utilisée pour allumer une bougie ou une torche au prix d'une action."
+                  },
+                  {
+                    "Boîte à musique": "Lorsqu'on l'ouvre, la boîte reproduit une chanson (toujours la même) à un volume modéré jusqu'à la fin du morceau ou avant si la boîte est refermée."
+                  },
+                  {
+                    "Jouet mécanique": "Le jouet représente un animal ou une personne, comme une grenouille, une souris, un oiseau ou un soldat, sur des roulettes. Lorsqu'il est placé sur le sol, il se déplace de 1,50 mètre chaque tour dans une direction aléatoire et fait des bruits en fonction de la créature qu'il représente."
+                  }                ]
+              }
+            ]
+          }
+        ],
+        "info": {
+          "": "Les gnomes des roches établissent leurs communautés dans les collines et les montagnes, là où ils peuvent avoir accès aux matériaux dont ils ont besoin pour construire et bricoler. Ces maîtres artisans sont inégalés lorsqu'on parle de tailler des gemmes ou de mécanique et autres merveilles technologiques. Leurs réalisations sont recherchées dans le monde entier."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "goliath",
+    "name": "Goliath",
+    "bonus": "For +2; Con +1",
+    "size": "Moyenne",
+    "source": "MPMM",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le géant."
+    },
+    "traits": [
+      {
+        "Athlète naturel": "Vous maîtrisez la compétence Athlétisme."
+      },
+      {
+        "Endurance de la pierre": "Vous pouvez vous concentrer pour éviter occasionnellement une blessure. Lorsque vous subissez des dégâts, vous pouvez utiliser votre réaction pour lancer un d12. Ajoutez votre modificateur de Constitution au nombre obtenu, et réduisez les dommages de ce total. Après avoir utilisé ce trait, vous devez terminer un repos court ou long avant de pouvoir le réutiliser."
+      },
+      {
+        "Puissamment bâti": "Vous comptez comme étant plus grand d'une taille pour déterminer votre capacité de charge et le poids que vous pouvez pousser, traîner ou soulever."
+      },
+      {
+        "Montagnard": "Vous obtenez la résistance au dégâts du froid. Vous êtes aussi habitué aux hautes altitudes, y compris des altitudes supérieures à 6000 mètres"
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "half-elf",
+    "name": "Demi-Elfe",
+    "bonus": "Cha +2; Deux autres +1",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun, l'elfique, et une langue supplémentaire de votre choix."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Ascendance féerique": "Vous avez un avantage aux jets de sauvegarde contre les effets de charme et la magie ne peut pas vous endormir.."
+      },
+      {
+        "Polyvalence": "Vous gagnez la maîtrise de deux compétences de votre choix."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "half-orc",
+    "name": "Demi-Orc",
+    "bonus": "For +2; Con +1",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et l'orc."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Menaçant": "Vous gagnez la maîtrise de la compétence Intimidation."
+      },
+      {
+        "Endurance implacable": "Lorsque vous tombez à 0 point de vie, mais que vous n'êtes pas tué sur le coup, vous pouvez passer à 1 point de vie à la place. Vous devez terminer un repos long avant de pouvoir utiliser cette capacité de nouveau."
+      },
+      {
+        "Attaques sauvages": "Lorsque vous réalisez un coup critique lors d'une attaque au corps à corps avec une arme, vous pouvez lancer l'un des dés de dégâts de l'arme une deuxième fois et l'ajouter aux dégâts supplémentaires du coup critique."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "halfling",
+    "name": "Halfelin",
+    "bonus": "Dex +2",
+    "size": "Petite",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et le halfelin."
+    },
+    "traits": [
+      {
+        "Chanceux": "Lorsque vous obtenez un 1 au dé d'un jet d'attaque, de caractéristique ou de sauvegarde, vous pouvez relancer le dé et devez alors utiliser ce nouveau résultat."
+      },
+      {
+        "Brave": "Vous avez un avantage aux jets de sauvegarde pour ne pas être effrayé."
+      },
+      {
+        "Agilité halfeline": "Vous pouvez passer dans l'espace de toute créature d'une taille supérieure à la vôtre."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "lightfoot",
+        "name": "Pied-léger",
+        "bonus": ";Cha +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Discrétion naturelle": "Vous pouvez tenter de vous cacher si vous vous trouvez derrière une créature d'une taille supérieure à la vôtre."
+          }
+        ],
+        "info": {
+          "": "En tant que halfelin pied-léger, vous pouvez facilement vous cacher, en utilisant même d'autres personnes comme abri. Vous avez tendance à être affable et à bien vous entendre avec les autres. Les halfelins pied-léger sont ceux qui ont le plus migré et sont donc la sous-race la plus commune. Ils sont les plus enclins à voyager de tous les halfelins, et vivent souvent avec d'autres races ou embrassent une vie de nomade."
+        },
+        "images": []
+      },
+      {
+        "id": "resiliant",
+        "name": "Robuste",
+        "bonus": ";Con +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Résistance des robustes": "Vous obtenez un avantage aux jets de sauvegarde contre le poison et la résistance contre les dégâts de poison."
+          }
+        ],
+        "info": {
+          "": "En tant que halfelin robuste, vous êtes plus costaud que la moyenne et possédez une certaine résistance au poison. Certains disent que les robustes ont du sang nain. Aussi appelés halfelins vaillants, ce sont les plus communs au sud des Royaumes Oubliés."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "human",
+    "name": "Humain",
+    "bonus": "Tous +1",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et une langue supplémentaire de votre choix."
+    },
+    "traits": [
+      {
+        "": ""
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": [],
+    "subraces": [
+      {
+        "id": "variant",
+        "name": "Variante",
+        "bonus": "Deux unique +1",
+        "source": "PHB",
+        "traits": [
+          {
+            "Compétence": "Vous gagnez la maîtrise d'une compétence de votre choix."
+          },
+          {
+            "Don": "Vous obtenez un don de votre choix."
+          }
+        ],
+        "info": {
+          "": "Si votre MD utilise la règle optionnelle des dons, il peut vous autoriser à utiliser cette variante des traits pour les humains, qui remplace le +1 à toutes les caractéristiques."
+        },
+        "images": []
+      }
+    ]
+  },
+  {
+    "id": "kenku",
+    "name": "Kenku",
+    "bonus": "Dex +2; Sag +1",
+    "size": "Moyenne",
+    "source": "VGM",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez lire et écrire Common et Aérien, mais vous ne pouvez parler qu'en utilisant votre trait Mimétisme."
+    },
+    "traits": [
+      {
+        "Falsification experte": "Vous pouvez dupliquer l'écriture et l'artisanat d'autres créatures. Vous avez un avantage sur toutes les vérifications effectuées pour produire des contrefaçons ou des doublons d'objets existants."
+      },
+      {
+        "Formation Kenku": "Vous maîtrisez le choix de deux des compétences suivantes: acrobatie, tromperie, furtivité et tour de passe-passe."
+      },
+      {
+        "Mimétisme": "Vous pouvez imiter les sons que vous avez entendus, y compris les voix. Une créature qui entend les sons que vous faites peut dire qu'ils sont des imitations avec une vérification réussie de la Sagesse (Insight) opposée à votre vérification du Charisme (Déception)."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "tiefflin",
+    "name": "Tieffelin",
+    "bonus": "Con +2; Int +1",
+    "size": "Moyenne",
+    "source": "PHB",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et l'infernale."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Résistance infernale": "Vous avez la résistance aux dégâts de feu."
+      },
+      {
+        "Ascendance infernale": "Vous connaissez le sort mineur thaumaturgie. Quand vous atteignez le niveau 3, vous pouvez lancer le sort représailles infernales comme un sort de niveau 2 une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Quand vous atteignez le niveau 5, vous pouvez lancer le sort ténèbres une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "warforged",
+    "name": "Forgelier",
+    "bonus": "Con +2; tout autre +1",
+    "size": "Moyenne",
+    "source": "ERLW",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun et une autre langue de votre choix."
+    },
+    "traits": [
+      {
+        "Résilience construite": [
+          "Vous avez été créé pour avoir un courage remarquable, représenté par les avantages suivants:",
+          {"ulist": [
+            "Vous avez l'avantage de sauver les lancers contre l'empoisonnement, et vous avez une résistance aux dommages causés par le poison.",
+            "Vous n'avez pas besoin de manger, de boire ou de respirer.",
+            "Vous êtes immunisé contre la maladie.",
+            "Vous n'avez pas besoin de dormir, et la magie ne peut pas vous endormir."
+          ]}
+        ]
+      },
+      {
+        "Repos de sentinelle": "Lorsque vous prenez un long repos, vous devez passer au moins six heures dans un état inactif et immobile, plutôt que de dormir. Dans cet état, vous semblez inerte, mais cela ne vous rend pas inconscient, et vous pouvez voir et entendre normalement."
+      },
+      {
+        "Protection intégrée": [
+          "Votre corps a des couches défensives intégrées, qui peuvent être améliorées avec une armure.",
+          {"ulist": [
+            "Vous gagnez un bonus +1 à la classe d'armure.",
+            "Vous ne pouvez revêtir que l'armure avec laquelle vous maîtrisez. Pour enfiler l'armure, vous devez l'incorporer dans votre corps pendant 1 heure, pendant laquelle vous devez rester en contact avec l'armure. Pour enlever l'armure, vous devez passer 1 heure à l'enlever. Vous pouvez vous reposer tout en enfilant ou en enlevant une armure de cette façon.",
+            "Tant que vous vivez, votre armure ne peut pas être retirée de votre corps contre votre volonté."
+          ]}
+        ]
+      },
+      {
+        "Conception spécialisée": "Vous acquérez une maîtrisez une compétence et un outil d'artisant de votre choix."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  },
+  {
+    "id": "yuan-ti-pureblood",
+    "name": "Yuan-ti Sang pure",
+    "bonus": "Cha +2; Int +1",
+    "size": "Moyenne",
+    "source": "VGM",
+    "creatureType": "Humainoïde",
+    "speed": "9m",
+    "common": {
+      "age": "",
+      "alignment": "",
+      "size": "",
+      "languages": "Vous pouvez parler, lire et écrire le commun, l'abyssal et le draconique."
+    },
+    "traits": [
+      {
+        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+      },
+      {
+        "Lanceur de sorts innés": "Vous connaissez le sort Mineur Poison Spray. Vous pouvez lancer Animal Friendship un nombre illimité de fois avec ce trait, mais vous ne pouvez cibler que les serpents avec lui. À partir du 3ème niveau, vous pouvez également lancer Suggestion avec ce trait. Une fois que vous l'avez lancé, vous ne pouvez pas le refaire tant que vous n'avez pas terminé un long repos. Le charisme est votre capacité de lancer de sorts pour ces sorts."
+      },
+      {
+        "Résistance magique": "Vous avez l'avantage de sauvegarder les lancers contre les sorts et autres effets magiques."
+      },
+      {
+        "Immunité aux poisons": "Vous êtes immunisé contre les dommages causés par le poison et la condition empoisonnée."
+      }
+    ],
+    "info": [
+      {
+        "": ""
+      }
+    ],
+    "images": []
+  }
+]

@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box
+}
+
+html {
+  font-size: 62.5%
+}
+
+.spellSheet {
+  //background-color: black;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  overflow-y: scroll
+}
+
+.col {
+  background: white url("../images/fond-ph.jpg") repeat;
+  margin-left: auto;
+  margin-right: auto;
+  //margin-top: 40px;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  width: 100%
+}
+
+.col1 {
+  display: inline-block;
+  width: 500px;
+  padding: 40px 20px 40px 40px;
+  vertical-align: top
+}
+
+.col2 {
+  display: inline-block;
+  width: 500px;
+  padding: 40px 40px 40px 20px;
+  vertical-align: top;
+  text-align: center
+}
+
+.spellSheet a {
+  color: #B80000;
+  text-decoration: none
+}
+
+a:hover {
+  color: #D80000;
+  border-bottom-style: dashed;
+  border-bottom-width: 1px
+}
+
+.spellSheet h1 {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  color: #6D0000;
+  font-size: 1.8rem;
+  line-height: 1;
+  break-after: avoid
+}
+
+.trad {
+  padding: 2px 0 0px 0;
+  font-size: 1.2rem
+}
+
+.ecole {
+  padding: 2px 0 6px 0;
+  text-align: left;
+  font-style: italic
+}
+
+.description {
+  padding: 6px 0 6px 0;
+  text-align: justify
+}
+
+.resume {
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 5px 0 0 0;
+  font-style: italic;
+  color: #909090
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5
+}
+
+ul {
+  list-style: square outside;
+  margin-left: 17px
+}
+
+li {
+  margin-top: 3px
+}
+
+.col1 table {
+  margin-top: 6px;
+  border-spacing: 0;
+  font-family: arial, sans-serif;
+  font-size: 1.1rem
+}
+
+.col1 table th {
+  font-weight: bold;
+  vertical-align: bottom
+}
+
+.col1 table td {
+  vertical-align: top
+}
+
+.col1 table th, .col1 table td {
+  min-width: 45px;
+  padding: 2px 4px 2px 4px;
+  text-align: left
+}
+
+.col1 table th.center, .col1 table td.center {
+  text-align: center
+}
+
+.col1 table td.center {
+  text-align: center
+}
+
+.col1 table tr:nth-child(even) {
+  background-color: #D6d0e0
+}
+
+.classe {
+  display: inline-block;
+  margin: 20px 4px 8px 0;
+  padding: 0 4px;
+  background-color: #6D0000;
+  font-family: arial, sans-serif;
+  font-size: 1.1rem;
+  color: white
+}
+
+.tcoe {
+  display: inline-block;
+  margin: 20px 4px 8px 0;
+  padding: 0 4px;
+  background-color: #DA801A;
+  font-family: arial, sans-serif;
+  font-size: 1.1rem;
+  color: white
+}
+
+.source {
+  display: inline-block;
+  margin: 0px 4px 8px 0;
+  padding: 0 4px;
+  background-color: white;
+  font-family: arial, sans-serif;
+  font-size: 1.1rem
+}
+
+ol {
+  padding: 20px 0 0 0;
+  font-family: arial, sans-serif;
+  font-size: 1.1rem;
+  list-style: none
+}
+
+span[itemprop="name"] {
+  font-weight: bold
+}
+
+.warning {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 5px 0 0 0;
+  font-style: italic
+}
+
+.r89-desktop-hpa-atf {
+  min-height: 600px
+}
+
+.col2 img {
+  border: 5px black solid
+}
+
+@media only screen and (max-width: 900px) {
+  html {
+    font-size: 75%
+  }
+  .col {
+    width: 100%;
+    margin: 0;
+    padding-bottom: 110px
+  }
+  .col1, .col2 {
+    width: 100%;
+    padding: 9px
+  }
+  .nocel {
+    display: none
+  }
+}
+
+@media print {
+  html {
+    font-size: 50%
+  }
+  body {
+    background-color: white;
+    line-height: 1.3
+  }
+  .col {
+    width: 100%;
+    margin: 0
+  }
+  .col1, .col2 {
+    width: 50%;
+    padding: 10px
+  }
+  a:link, a:visited, a:hover {
+    color: #000;
+    text-decoration: none
+  }
+  .source {
+    border: 1px solid grey
+  }
+  ol {
+    display: none
+  }
+  div#r89-desktop-billboard-low-0-wrapper, iframe {
+    display: none
+  }
+}

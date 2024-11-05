@@ -75,6 +75,72 @@ export const CHARACTER_CREATION = [
     href: player + "/classes",
     name: "Classes",
     sublist: buildMenuFromJson(require("../resources/classes.json"), player + "/classes/")
+  },
+  {
+    id: "backgrounds",
+    href: player + "/backgrounds",
+    name: "Backgrounds",
+    sublist: buildMenuFromJson(require("../resources/backgrounds.json"), player + "/backgrounds/")
+  },
+  {
+    id: "equipments",
+    href: player + "/equipments",
+    name: "Équipements",
+    sublist: buildMenuFromJson(require("../resources/equipments.json"), player + "/equipments/")
+  },
+  {
+    id: "personalize",
+    href: player + "/personalisation",
+    name: "Personalisation",
+    sublist: [
+      {
+        id: "multiclass",
+        href: player + "/personalisation/multiclassage",
+        name: "Multiclassage",
+        sublist: []
+      },
+      {
+        id: "feats",
+        href: player + "/personalisation/dons",
+        name: "Dons",
+        sublist: []
+      },
+    ]
+  },
+  {
+    id: "abilities",
+    href: player + "/caracteristique",
+    name: "Caractéristique",
+    sublist: []
+  },
+  {
+    id: "adventure",
+    href: player + "/aventure",
+    name: "Aventure",
+    sublist: []
+  },
+  {
+    id: "combat",
+    href: player + "/combat",
+    name: "Combat",
+    sublist: []
+  },
+  {
+    id: "spell",
+    href: player + "/incantation",
+    name: "Sorts",
+    sublist: [{
+      "id":"spells",
+      "href":player + "/spells",
+      "name":"Liste des Sorts",
+      "sublist":[],
+    }]
+  },
+  {
+    id: "conditions",
+    href: player + "/conditions",
+    name: "Conditions",
+    sublist: []
   }
 ]
 

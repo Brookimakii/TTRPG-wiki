@@ -1,13 +1,27 @@
 import {createBrowserRouter, Outlet} from "react-router-dom";
 import Home from "../pages/Home";
 import {PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
-import {CharacterCreation, PlayerClasses, PlayerRaces} from "../pages/dnd/chara crea/CharacterCreation";
 import DnDHome from "../pages/dnd/DnDHome";
-import {ClassDetail, RacesDetail} from "../pages/dnd/chara crea/Details";
+import {
+  BackgroundDetail,
+  ClassDetail,
+  EquipmentDetail,
+  FeatDetails,
+  RacesDetail,
+  Spells
+} from "../pages/dnd/chara crea/Details";
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import {Layout5e} from "../layout/5eLayout";
+import {
+  Aventure,
+  Caracteristique,
+  CharacterCreation, Combat, Conditions, FeatList, Incantation, Multiclass, Personalisation,
+  PlayerBackground,
+  PlayerClasses, PlayerEquipment,
+  PlayerRaces, SpellList
+} from "../pages/dnd/chara crea/CharacterCreation";
 
 const routes = [
   {
@@ -100,6 +114,132 @@ const routes = [
                   }
                 ]
               },
+              {
+                id: "backgrounds",
+                path: "backgrounds",
+                element: <Outlet/>,
+                children: [
+                  {
+                    id: "background-intro",
+                    path: "",
+                    element: <PlayerBackground/>,
+                    children: []
+                  },
+                  {
+                    id: "background-details",
+                    path: ":backgroundId",
+                    element: <BackgroundDetail/>,
+                    children: []
+                  }
+                ]
+              },
+              {
+                id: "equipments",
+                path: "equipments",
+                element: <Outlet/>,
+                children: [
+                  {
+                    id: "equipment-intro",
+                    path: "",
+                    element: <PlayerEquipment/>,
+                    children: []
+                  },
+                  {
+                    id: "equipment-details",
+                    path: ":equipementId",
+                    element: <EquipmentDetail/>,
+                    children: []
+                  }
+                ]
+              },
+              {
+                id: "incantation",
+                path: "incantation",
+                element: <Incantation/>,
+                children: []
+              },
+              {
+                id: "personalize",
+                path: "personalisation",
+                element: <Outlet/>,
+                children: [
+                  {
+                    id: "personalize-intro",
+                    path: "",
+                    element: <Personalisation/>,
+                    children: []
+                  },
+                  {
+                    id: "multiclass",
+                    path: "multiclassage",
+                    element: <Multiclass/>,
+                    children: []
+                  },
+                  {
+                    id: "feats",
+                    path: "dons",
+                    element: <Outlet/>,
+                    children: [
+                      {
+                        id: "feats-list",
+                        path: "",
+                        element: <FeatList/>,
+                        children: []
+                      },
+                      {
+                        id: "feats-details",
+                        path: ":featId",
+                        element: <FeatDetails/>,
+                        children: []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                id: "abilities",
+                path: "caracteristique",
+                element: <Caracteristique/>,
+                children: []
+              },
+              {
+                id: "adventure",
+                path: "aventure",
+                element: <Aventure/>,
+                children: []
+              },
+              {
+                id: "combat",
+                path: "combat",
+                element: <Combat/>,
+                children: []
+              },
+              {
+                id: "spells",
+                path: "spells",
+                element: <Outlet/>,
+                children: [
+                  {
+                    id: "spell-intro",
+                    path: "",
+                    element: <SpellList/>,
+                    children: []
+                  },
+                  {
+                    id: "spell-details",
+                    path: ":spellId",
+                    element: <Spells/>,
+                    children: []
+                  }
+                ]
+              },
+              {
+                id: "conditions",
+                path: "conditions",
+                element: <Conditions/>,
+                children: []
+              }
+
             ]
           },
           {

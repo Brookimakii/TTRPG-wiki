@@ -253,7 +253,8 @@
               {"paragraph": "**Illusionniste-né**. Vous connaissez le sort mineur illusion mineure. L'Intelligence est votre caractéristique d'incantation pour ce sort."},
               {"paragraph": "**Communication avec les petits animaux**. À l'aide de sons et de gestes, vous pouvez communiquer des idées simples à des bêtes de taille P ou plus petite. Les gnomes des forêts aiment les animaux et traitent de manière bienveillante comme un animal domestique tout animal qu'ils peuvent trouver (écureuils, blaireaux, lapins, taupes, picidés, etc.)."}
             ]
-          },{
+          },
+          {
             "title4": "Roches",
             "content": [
               {"paragraph": "Les gnomes des roches établissent leurs communautés dans les collines et les montagnes, là où ils peuvent avoir accès aux matériaux dont ils ont besoin pour construire et bricoler. Ces maîtres artisans sont inégalés lorsqu'on parle de tailler des gemmes ou de mécanique et autres merveilles technologiques. Leurs réalisations sont recherchées dans le monde entier."},
@@ -376,7 +377,7 @@
           {"paragraph": "**Falsification experte**. Vous pouvez dupliquer l'écriture et l'artisanat d'autres créatures. Vous avez un avantage sur toutes les vérifications effectuées pour produire des contrefaçons ou des doublons d'objets existants."},
           {"paragraph": "**Formation Kenku**. Vous maîtrisez le choix de deux des compétences suivantes: acrobatie, tromperie, furtivité et tour de passe-passe."},
           {"paragraph": "**Mimétisme**. Vous pouvez imiter les sons que vous avez entendus, y compris les voix. Une créature qui entend les sons que vous faites peut dire qu'ils sont des imitations avec une vérification réussie de la Sagesse (Insight) opposée à votre vérification du Charisme (Déception)."},
-          {"paragraph": "**Langues**. Vous pouvez lire et écrire Common et Aérien, mais vous ne pouvez parler qu'en utilisant votre trait Mimicry."}
+          {"paragraph": "**Langues**. Vous pouvez lire et écrire Common et Aérien, mais vous ne pouvez parler qu'en utilisant votre trait Mimétisme."}
         ]
       }
     ]
