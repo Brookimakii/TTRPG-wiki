@@ -1,6 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {formatContent} from "../pages/dnd/chara crea/Details";
+import {Outlet, useLocation} from "react-router-dom";
+import NavMenu, {MenuDivider, MenuLink, SubMenu} from "./5e/NavMenu";
 
 function buildRace(elements) {
   const newElems = structuredClone(elements)
@@ -44,129 +46,41 @@ function buildRace(elements) {
   })
 }
 
+
 export const Layout5e = () => {
+  const [activeMenu, setActiveMenu] = useState()
 
-  const columns = [
-    {
-      id: "Name",
-      sortId: "name",
-      classSize: "ve-col-4"
-    },
-    {
-      id: "Ability",
-      sortId: "bonus",
-      classSize: "ve-col-4"
-    },
-    {
-      id: "Size",
-      sortId: "size",
-      classSize: "ve-col-2"
-    },
-    {
-      id: "Source",
-      sortId: "source",
-      classSize: "ve-grow"
-    }
-  ]
-
-  function getSourceName(source) {
-    switch (source) {
-      case "PHB'14":
-        return "Player's Handbook (2014)"
-      case "VGM":
-        return "Volo’s Guide to Monsters"
-      case "EEPC":
-        return "Elemental Evil Player’s Companion"
-      case "ERLW":
-        return "Eberron: Rising from the Last War"
-      default:
-        return ""
-    }
+  const location = useLocation()
+  const localisation = {
+    "Rules": [],
+    "Player": ["races"],
+    "Dungeon Master": []
   }
 
-  const races = require('./5e/resources/races.json')
-  // console.log(races)
-  const [elements, setElements] = useState(buildRace(races))
-  const [sorting, setSorting] = useState("")
-
-  const [selected, setSelected] = useState(setSelectFromHash())
-  // let selected ={};
-
-  const DetailsHeader = () => {
-    return <tr>
-      <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
-          data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
-        <div className="split-v-end">
-          <div className="ve-flex-v-center">
-            <h1 className="stats__h-name copyable m-0"
-              // onMouseDown="event.preventDefault()"
-              // onClick="Renderer.utils._pHandleNameClick(this)"
-            >{selected.name}</h1>
-          </div>
-          <div className="stats__wrp-h-source  ve-flex-v-baseline">
-            <a href={"book.html#" + selected.source + ",page:" + selected.page}
-               className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
-               title={getSourceName(selected.source)}>{selected.source}</a>
-            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
-               title={"Page" + selected.page}>p{selected.page}</a>
-          </div>
-        </div>
-      </th>
-    </tr>
-  }
-
-  const handleSort = (type) => {
-    const shouldReset = sorting === type + ".des"
-    const shouldAscend = !sorting.startsWith(type)
-    const shouldDescend = sorting === type + ".asc"
-
-    if (shouldAscend) {
-      // console.log("Should now ascend: " + type + ".asc")
-      setSorting(type + ".asc")
-    } else if (shouldDescend) {
-      setSorting(type + ".des")
-      // console.log("Should now descend: " + type + ".des")
-    } else if (shouldReset) {
-      setSorting("")
-      // console.log("Should reset.")
-      type = "id"
+  function isCategoryActive(category): string {
+    if (location.pathname.endsWith(category)) {
+      return " active"
     }
 
-    elements.sort(function (a, b) {
-      let textA = a[type].toUpperCase();
-      let textB = b[type].toUpperCase();
-      if (shouldAscend || shouldReset) {
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+    for (const [key, value] of Object.entries(localisation)) {
+      if (key === category && value.some(s => location.pathname.endsWith(s))) {
+        return " active"
       }
-      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
-    })
+    }
+    return ""
   }
 
-  function setSelectFromHash() {
-    const filtered = elements.filter((e) => "#" + e.id === window.location.hash)
-    if (filtered.length > 0) {
-      return filtered[0]
+  function handleOpenMenu(menu) {
+    if (menu === "" && activeMenu === ""){
+      return
+    }
+    if (menu === activeMenu) {
+      setActiveMenu("")
     } else {
-      return {}
+      setActiveMenu(menu)
     }
   }
 
-  const handleClick = elem => {
-    setSelected(elem)
-  };
-
-
-  function convertBonus(bonus: string) {
-    return bonus
-      .replace("For", "Force")
-      .replace("Dex", "Dextérité")
-      .replace("Con", "Constitution")
-      .replace("Int", "Intelligence")
-      .replace("Sag", "Sagesse")
-      .replace("Cha", "Charisme")
-  }
-
-  // console.log(elements)
   return (
     <>
       <script type="text/javascript" src="./5e/js/navigation.js"></script>
@@ -189,15 +103,44 @@ export const Layout5e = () => {
         <nav className="container page__nav" id="navigation">
           <button className="ve-btn ve-btn-default page__btn-toggle-nav">Menu</button>
           <ul className="nav nav-pills page__nav-inner" id="navbar">
-            <li role="presentation" data-page="index.html" className="page__nav-hidden-mobile page__btn-nav-root"><a
-              href="index.html" className="nav__link">Home</a></li>
+            <NavMenu name="Home" href="#"/>
+            <NavMenu name="Rules" href="#" addCaret={true}>
+              <MenuLink name="Rules Glossary" link="variantrules" href=""/>
+              <MenuLink name="Tables" link="tables" href=""/>
+              <MenuDivider/>
+              <SubMenu name="Books">
+                <MenuLink name="Tables" link="tables" href="this"/>
+              </SubMenu>
+              <MenuDivider/>
+              <MenuLink name="Quick Reference (2014)" link="quickreference" href=""/>
+            </NavMenu>
+            <NavMenu name="Player" href="#" addCaret={true}>
+              <MenuLink name="Classes" link="classes" href="classes"/>
+              <MenuLink name="Backgrounds" link="backgrounds" href="backgrounds"/>
+              <MenuLink name="Feats" link="feats" href="feats"/>
+              <MenuLink name="Races" link="races" href="races"/>
+              <MenuLink name="Other Character Creation Options" link="charcreationoptions" href="charcreationoptions"/>
+              <MenuLink name="Other Options &amp; Features" link="optionalfeatures" href="optionalfeatures"/>
+              <MenuDivider/>
+              <MenuLink name="Stat Generator" link="statgen" href="statgen"/>
+              <MenuDivider/>
+              <MenuLink name="This Is Your Life" link="lifegen" href="lifegen"/>
+              <MenuLink name="Names" link="names" href="#"/>
+            </NavMenu>
+            {/*
+            <li role="presentation" data-page="index.html" className="page__nav-hidden-mobile page__btn-nav-root">
+              <a href="index.html" className="nav__link">Home</a></li>
             <li role="presentation"
-                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+                onClick={() => handleOpenMenu("Rules")}
+                className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Rules") + (activeMenu === "Rules" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Rules <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
-                <li role="presentation" data-page="variantrules.html"><a href="variantrules.html" className="nav__link">Rules
-                  Glossary</a></li>
-                <li role="presentation" data-page="tables.html"><a href="tables.html" className="nav__link">Tables</a>
+                <li role="presentation" data-page="variantrules.html">
+                  <a href="variantrules.html" className="nav__link">Rules
+                  Glossary</a>
+                </li>
+                <li role="presentation" data-page="tables.html">
+                  <a href="tables.html" className="nav__link">Tables</a>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
                 <li role="presentation"
@@ -205,8 +148,9 @@ export const Layout5e = () => {
                   <a className="ve-dropdown-toggle" href="#" role="button">Books <span
                     className="caret caret--right"></span></a>
                   <ul className="ve-dropdown-menu ve-dropdown-menu--side">
-                    <li role="presentation" data-page="books.html"><a href="books.html" className="nav__link">View
-                      All/Homebrew</a></li>
+                    <li role="presentation" data-page="books.html">
+                      <a href="books.html" className="nav__link">View All/Homebrew</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
@@ -486,34 +430,45 @@ export const Layout5e = () => {
               </ul>
             </li>
             <li role="presentation"
-                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+                onClick={() => handleOpenMenu("Player")}
+                className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Player") + (activeMenu === "Player" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Player <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
-                <li role="presentation" data-page="classes.html"><a href="classes.html"
-                                                                    className="nav__link">Classes</a></li>
-                <li role="presentation" data-page="backgrounds.html"><a href="backgrounds.html"
-                                                                        className="nav__link">Backgrounds</a></li>
-                <li role="presentation" data-page="feats.html"><a href="feats.html" className="nav__link">Feats</a></li>
-                <li role="presentation" data-page="races.html" className="active"><a href="races.html"
-                                                                                     className="nav__link">Species</a>
+                <li role="presentation" data-page="classes.html" className={isCategoryActive("classes")}>
+                  <a href="classes.html" className="nav__link">Classes</a>
                 </li>
-                <li role="presentation" data-page="charcreationoptions.html"><a href="charcreationoptions.html"
-                                                                                className="nav__link">Other Character
-                  Creation Options</a></li>
-                <li role="presentation" data-page="optionalfeatures.html"><a href="optionalfeatures.html"
-                                                                             className="nav__link">Other
-                  Options &amp; Features</a></li>
+                <li role="presentation" data-page="backgrounds.html" className={isCategoryActive("backgrounds")}>
+                  <a href="backgrounds.html" className="nav__link">Backgrounds</a>
+                </li>
+                <li role="presentation" data-page="feats.html" className={isCategoryActive("feats")}>
+                  <a href="feats.html" className="nav__link">Feats</a>
+                </li>
+                <li role="presentation" data-page="races.html" className={isCategoryActive("races")}>
+                  <a href="races.html" className="nav__link">Species</a>
+                </li>
+                <li role="presentation" data-page="charcreationoptions.html" className={isCategoryActive("charaOption")}>
+                  <a href="charcreationoptions.html" className="nav__link">Other Character Creation Options</a>
+                </li>
+                <li role="presentation" data-page="optionalfeatures.html" className={isCategoryActive("optionalFeature")}>
+                  <a href="optionalfeatures.html" className="nav__link">Other Options &amp; Features</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="statgen.html"><a href="statgen.html" className="nav__link">Stat
-                  Generator</a></li>
+                <li role="presentation" data-page="statgen.html" className={isCategoryActive("statGen")}>
+                  <a href="statgen.html" className="nav__link">Stat Generator</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="lifegen.html"><a href="lifegen.html" className="nav__link">This Is
-                  Your Life</a></li>
-                <li role="presentation" data-page="names.html"><a href="names.html" className="nav__link">Names</a></li>
+                <li role="presentation" data-page="lifegen.html" className={isCategoryActive("lifeGen")}>
+                  <a href="lifegen.html" className="nav__link">This Is Your Life</a>
+                </li>
+                <li role="presentation" data-page="names.html" className={isCategoryActive("name")}>
+                  <a href="names.html" className="nav__link">Names</a>
+                </li>
               </ul>
             </li>
+            */}
             <li role="presentation"
-                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+                onClick={() => handleOpenMenu("Dungeon Master")}
+                className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Dungeon Master") + (activeMenu === "Dungeon Master" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Dungeon Master <span
                 className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
@@ -1030,7 +985,8 @@ export const Layout5e = () => {
               </ul>
             </li>
             <li role="presentation"
-                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+                onClick={() => handleOpenMenu("References")}
+                className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("References") + (activeMenu === "References" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">References <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation" data-page="actions.html">
@@ -1067,7 +1023,8 @@ export const Layout5e = () => {
               </ul>
             </li>
             <li role="presentation"
-                className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+                onClick={() => handleOpenMenu("Utilities")}
+                className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Utilities") + (activeMenu === "Utilities" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Utilities <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation" data-page="search.html"><a href="search.html" className="nav__link">Search</a>
@@ -1131,7 +1088,9 @@ export const Layout5e = () => {
                 </li>
               </ul>
             </li>
-            <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root">
+            <li role="presentation"
+                onClick={() => handleOpenMenu("Settings")}
+                className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Settings") + (activeMenu === "Settings" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Settings <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
                 <li role="presentation"><span>Preferences</span></li>
@@ -1190,340 +1149,487 @@ export const Layout5e = () => {
             <div className="omni__output"></div>
           </div>
         </nav>
-        <div className="view-col-group--cancer h-100 mh-0">
-          <div className="container view-col-wrapper view-col-wrapper--cancer">
-            <div className="view-col" id="listcontainer">
-              <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-                {columns.map((col) => {
-                  return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-                                  onClick={() => handleSort(col.sortId)}>
-                    {col.id}<span
-                    className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-                  </button>)
-                })}
-              </div>
-              {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-              <div id="list" className="list list--stats">
-                {/*{console.log(elements)}*/}
-                {elements.map((elem) => {
-                  // console.log(elem)
-                  return <div
-                    className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-                    onClick={() => handleClick(elem)}>
+        <Outlet></Outlet>
+      </div>
+    </>
+  )
+}
 
-                    <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
-                      <span className="bold ve-col-4 pl-0 pr-1">{elem.name}</span>
-                      <span className="ve-col-4 px-1 italic">{elem.bonus}</span>
-                      <span className="ve-col-2 px-1 ve-text-center">{elem.size}</span>
-                      <span className={"ve-col-2 ve-text-center source__" + elem.source + " pl-1 pr-0"}
-                            title={getSourceName(elem.source)}>{elem.source}</span>
-                    </a>
-                  </div>
-                })}
+
+export const Layout5eRaces = () => {
+
+  const columns = [
+    {
+      id: "Name",
+      sortId: "name",
+      classSize: "ve-col-4"
+    },
+    {
+      id: "Ability",
+      sortId: "bonus",
+      classSize: "ve-col-4"
+    },
+    {
+      id: "Size",
+      sortId: "size",
+      classSize: "ve-col-2"
+    },
+    {
+      id: "Source",
+      sortId: "source",
+      classSize: "ve-grow"
+    }
+  ]
+
+  function getSourceName(source) {
+    switch (source) {
+      case "PHB'14":
+        return "Player's Handbook (2014)"
+      case "VGM":
+        return "Volo’s Guide to Monsters"
+      case "EEPC":
+        return "Elemental Evil Player’s Companion"
+      case "ERLW":
+        return "Eberron: Rising from the Last War"
+      default:
+        return ""
+    }
+  }
+
+  const races = require('./5e/resources/races.json')
+  // console.log(races)
+  const [elements, setElements] = useState(buildRace(races))
+  const [sorting, setSorting] = useState("")
+
+  const [selected, setSelected] = useState(setSelectFromHash())
+  // let selected ={};
+
+  const DetailsHeader = () => {
+    return <tr>
+      <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
+          data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
+        <div className="split-v-end">
+          <div className="ve-flex-v-center">
+            <h1 className="stats__h-name copyable m-0"
+              // onMouseDown="event.preventDefault()"
+              // onClick="Renderer.utils._pHandleNameClick(this)"
+            >{selected.name}</h1>
+          </div>
+          <div className="stats__wrp-h-source  ve-flex-v-baseline">
+            <a href={"book.html#" + selected.source + ",page:" + selected.page}
+               className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
+               title={getSourceName(selected.source)}>{selected.source}</a>
+            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
+               title={"Page" + selected.page}>p{selected.page}</a>
+          </div>
+        </div>
+      </th>
+    </tr>
+  }
+
+  const handleSort = (type) => {
+    const shouldReset = sorting === type + ".des"
+    const shouldAscend = !sorting.startsWith(type)
+    const shouldDescend = sorting === type + ".asc"
+
+    if (shouldAscend) {
+      // console.log("Should now ascend: " + type + ".asc")
+      setSorting(type + ".asc")
+    } else if (shouldDescend) {
+      setSorting(type + ".des")
+      // console.log("Should now descend: " + type + ".des")
+    } else if (shouldReset) {
+      setSorting("")
+      // console.log("Should reset.")
+      type = "id"
+    }
+
+    elements.sort(function (a, b) {
+      let textA = a[type].toUpperCase();
+      let textB = b[type].toUpperCase();
+      if (shouldAscend || shouldReset) {
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+      }
+      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
+    })
+  }
+
+  function setSelectFromHash() {
+    const filtered = elements.filter((e) => "#" + e.id === window.location.hash)
+    if (filtered.length > 0) {
+      return filtered[0]
+    } else {
+      return {}
+    }
+  }
+
+  const handleClick = elem => {
+    setSelected(elem)
+  };
+
+
+  function convertBonus(bonus: string) {
+    return bonus
+      .replace("For", "Force")
+      .replace("Dex", "Dextérité")
+      .replace("Con", "Constitution")
+      .replace("Int", "Intelligence")
+      .replace("Sag", "Sagesse")
+      .replace("Cha", "Charisme")
+  }
+
+  // console.log(elements)
+  return (
+    <div className="view-col-group--cancer h-100 mh-0">
+      <div className="container view-col-wrapper view-col-wrapper--cancer">
+        <div className="view-col" id="listcontainer">
+          <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+            {columns.map((col) => {
+              return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                              onClick={() => handleSort(col.sortId)}>
+                {col.id}<span
+                className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+              </button>)
+            })}
+          </div>
+          {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+          <div id="list" className="list list--stats">
+            {/*{console.log(elements)}*/}
+            {elements.map((elem) => {
+              // console.log(elem)
+              return <div
+                className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+                onClick={() => handleClick(elem)}>
+
+                <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
+                  <span className="bold ve-col-4 pl-0 pr-1">{elem.name}</span>
+                  <span className="ve-col-4 px-1 italic">{elem.bonus}</span>
+                  <span className="ve-col-2 px-1 ve-text-center">{elem.size}</span>
+                  <span className={"ve-col-2 ve-text-center source__" + elem.source + " pl-1 pr-0"}
+                        title={getSourceName(elem.source)}>{elem.source}</span>
+                </a>
               </div>
+            })}
+          </div>
+        </div>
+        <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+        {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+        {Object.keys(selected).length === 0 ?
+          <div className="view-col" id="contentwrapper">
+            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+              <table id="pagecontent" className="w-100 stats">
+                <tbody>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                    view it here
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                </tbody>
+              </table>
             </div>
-            <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
-            {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-            {Object.keys(selected).length === 0 ?
-              <div className="view-col" id="contentwrapper">
-                <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-                  <table id="pagecontent" className="w-100 stats">
-                    <tbody>
-                    <tr>
-                      <th className="ve-tbl-border" colSpan="6"></th>
-                    </tr>
-                    <tr>
-                      <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-                        view it here
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className="ve-tbl-border" colSpan="6"></th>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div> :
-              <Tabs className="view-col" id="contentwrapper">
-                <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0}
-                         style={{paddingLeft: "0px", marginBottom: "0px"}}>
-                  <Tab
-                    className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
-                  <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
-                  {selected.images.length === 0 ?
-                    <Tab
-                      className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
-                    : <></>
-                  }
-                  <li className="ml-auto ve-flex" id="tabs-right">
-                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                            title="Pin (Toggle) (Hotkey: p/P)">
-                      <span className="glyphicon glyphicon-pushpin"></span>
-                    </button>
-                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                            title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)">
-                      <span className="glyphicon glyphicon-new-window"></span>
-                    </button>
-                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-                            title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
-                      <span className="glyphicon glyphicon-magnet"></span>
-                    </button>
-                    <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                            title="Other Options">
-                      <span className="glyphicon glyphicon-option-vertical"></span>
-                    </button>
-                  </li>
-                </TabList>
-                <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-                  <table className="w-100 stats">
-                    <tr>
-                      <th className="ve-tbl-border" colSpan="6"></th>
-                    </tr>
-                    <DetailsHeader/>
-                    <tr>
-                      <td colSpan={6} className="pt-0">
-                        <ul className="rd__list rd__list-hang-notitle">
-                          <li className="rd__li">
-                            <p className="rd__p-list-item">
-                              <span className="bold rd__list-item-name">Score de capacité:</span>
-                              {" " + convertBonus(selected.bonus)}
-                            </p>
-                          </li>
-                          <li className="rd__li">
-                            <p className="rd__p-list-item">
-                              <span className="bold rd__list-item-name">Type de Créature:</span>
-                              {" " + selected.creatureType}
-                            </p>
-                          </li>
-                          <li className="rd__li">
-                            <p className="rd__p-list-item">
-                              <span className="bold rd__list-item-name">Taille:</span>
-                              {" " + selected.size}
-                            </p>
-                          </li>
-                          <li className="rd__li">
-                            <p className="rd__p-list-item">
-                              <span className="bold rd__list-item-name">Vitesse:</span>
-                              {" " + selected.speed}
-                            </p>
-                          </li>
-                        </ul>
-                        <div className="w-100 py-1"></div>
-                        <div className="rd__b rd__b--2">
-                          {selected.subraces ? <>
-                            <div className="rd__b  rd__b--0">
-                              <p>Cette race à plusieurs héritages comme listé ci-dessous</p>
-                              <ul className="rd__list">
-                                {selected.subraces.map((subrace) => <li className="rd__li">
-                                  <a href={"#" + subrace.id}>{subrace.name}</a>
-                                </li>)}
-                              </ul>
-                            </div>
-                            <hr className="rd__hr rd__hr--section"/>
-                          </> : <></>}
-                          <div className="rd__b  rd__b--3">
-                            <p>
+          </div> :
+          <Tabs className="view-col" id="contentwrapper">
+            <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0}
+                     style={{paddingLeft: "0px", marginBottom: "0px"}}>
+              <Tab
+                className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
+              <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
+              {selected.images.length === 0 ?
+                <Tab
+                  className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
+                : <></>
+              }
+              <li className="ml-auto ve-flex" id="tabs-right">
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Pin (Toggle) (Hotkey: p/P)">
+                  <span className="glyphicon glyphicon-pushpin"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)">
+                  <span className="glyphicon glyphicon-new-window"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                        title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
+                  <span className="glyphicon glyphicon-magnet"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Other Options">
+                  <span className="glyphicon glyphicon-option-vertical"></span>
+                </button>
+              </li>
+            </TabList>
+            <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+              <table className="w-100 stats">
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <DetailsHeader/>
+                <tr>
+                  <td colSpan={6} className="pt-0">
+                    <ul className="rd__list rd__list-hang-notitle">
+                      <li className="rd__li">
+                        <p className="rd__p-list-item">
+                          <span className="bold rd__list-item-name">Score de capacité:</span>
+                          {" " + convertBonus(selected.bonus)}
+                        </p>
+                      </li>
+                      <li className="rd__li">
+                        <p className="rd__p-list-item">
+                          <span className="bold rd__list-item-name">Type de Créature:</span>
+                          {" " + selected.creatureType}
+                        </p>
+                      </li>
+                      <li className="rd__li">
+                        <p className="rd__p-list-item">
+                          <span className="bold rd__list-item-name">Taille:</span>
+                          {" " + selected.size}
+                        </p>
+                      </li>
+                      <li className="rd__li">
+                        <p className="rd__p-list-item">
+                          <span className="bold rd__list-item-name">Vitesse:</span>
+                          {" " + selected.speed}
+                        </p>
+                      </li>
+                    </ul>
+                    <div className="w-100 py-1"></div>
+                    <div className="rd__b rd__b--2">
+                      {selected.subraces ? <>
+                        <div className="rd__b  rd__b--0">
+                          <p>Cette race à plusieurs héritages comme listé ci-dessous</p>
+                          <ul className="rd__list">
+                            {selected.subraces.map((subrace) => <li className="rd__li">
+                              <a href={"#" + subrace.id}>{subrace.name}</a>
+                            </li>)}
+                          </ul>
+                        </div>
+                        <hr className="rd__hr rd__hr--section"/>
+                      </> : <></>}
+                      <div className="rd__b  rd__b--3">
+                        <p>
                               <span className="rd__h rd__h--3">
                                 <span className="entry-title-inner">Âge.</span>
                               </span>
-                              {" " + selected.common.age}
-                            </p>
-                          </div>
-                          <div className="rd__b  rd__b--3">
-                            <p>
+                          {" " + selected.common.age}
+                        </p>
+                      </div>
+                      <div className="rd__b  rd__b--3">
+                        <p>
                               <span className="rd__h rd__h--3">
                                 <span className="entry-title-inner">Alignement.</span>
                               </span>
-                              {" " + selected.common.alignment}
-                            </p>
-                          </div>
-                          <div className="rd__b  rd__b--3">
-                            <p>
+                          {" " + selected.common.alignment}
+                        </p>
+                      </div>
+                      <div className="rd__b  rd__b--3">
+                        <p>
                               <span className="rd__h rd__h--3">
                                 <span className="entry-title-inner">Taille.</span>
                               </span>
-                              {" " + selected.common.size}
-                            </p>
-                          </div>
-                          {selected.traits.map((trait) => {
-                            const key = Object.keys(trait)[0];
-                            const value = trait[key]
+                          {" " + selected.common.size}
+                        </p>
+                      </div>
+                      {selected.traits.map((trait) => {
+                        const key = Object.keys(trait)[0];
+                        const value = trait[key]
 
-                            if (typeof value === typeof []) {
-                              // console.log(value)
-                              return (<div className="rd__b rd__b--3">
-                                {value.map((elem) => {
-                                  if (typeof elem !== typeof "") {
-                                    const keySub = Object.keys(elem)[0];
-                                    const valueSub = elem[keySub]
-                                    switch (keySub) {
-                                      case "table":
-                                        return (<table className="w-100 rd__table stripe-odd-table">
-                                          <caption>{valueSub.caption}</caption>
-                                          <thead>
-                                          <tr>
-                                            {valueSub.head.map((head) => {
-                                              const idx = valueSub.head.indexOf(head)
-                                              return (<th className={"rd__th " + valueSub.style[idx]}>
-                                                {head}
-                                              </th>)
-                                            })}
-                                          </tr>
-                                          </thead>
-                                          <tbody>
-                                          {valueSub.body.map((body) => {
-                                            return (<tr>
-                                              {body.map((cell) => {
-                                                const idx = body.indexOf(cell)
-                                                return (<td className={"rd__th " + valueSub.style[idx]}>
-                                                  {cell}
-                                                </td>)
-                                              })}
-                                            </tr>)
+                        if (typeof value === typeof []) {
+                          // console.log(value)
+                          return (<div className="rd__b rd__b--3">
+                            {value.map((elem) => {
+                              if (typeof elem !== typeof "") {
+                                const keySub = Object.keys(elem)[0];
+                                const valueSub = elem[keySub]
+                                switch (keySub) {
+                                  case "table":
+                                    return (<table className="w-100 rd__table stripe-odd-table">
+                                      <caption>{valueSub.caption}</caption>
+                                      <thead>
+                                      <tr>
+                                        {valueSub.head.map((head) => {
+                                          const idx = valueSub.head.indexOf(head)
+                                          return (<th className={"rd__th " + valueSub.style[idx]}>
+                                            {head}
+                                          </th>)
+                                        })}
+                                      </tr>
+                                      </thead>
+                                      <tbody>
+                                      {valueSub.body.map((body) => {
+                                        return (<tr>
+                                          {body.map((cell) => {
+                                            const idx = body.indexOf(cell)
+                                            return (<td className={"rd__th " + valueSub.style[idx]}>
+                                              {cell}
+                                            </td>)
                                           })}
-                                          </tbody>
-                                        </table>)
-                                      case "ulist":
-                                        return (valueSub.map((list) => {
-                                          const keyList = Object.keys(list)[0];
-                                          const valueList = list[keyList]
-                                          console.log(list)
-                                          console.log(keyList)
-                                          console.log(valueList)
-                                          return (<div className="rd__b  rd__b--3">
-                                            <p>
+                                        </tr>)
+                                      })}
+                                      </tbody>
+                                    </table>)
+                                  case "ulist":
+                                    return (valueSub.map((list) => {
+                                      const keyList = Object.keys(list)[0];
+                                      const valueList = list[keyList]
+                                      console.log(list)
+                                      console.log(keyList)
+                                      console.log(valueList)
+                                      return (<div className="rd__b  rd__b--3">
+                                        <p>
                                               <span className="rd__h rd__h--3">
                                                 <span className="entry-title-inner">{keyList}.</span>
                                               </span>
-                                              {" " + valueList}
-                                            </p>
-                                          </div>)
-                                        }))
-                                      default:
-                                        return (<p>Not Implemented: {keySub}</p>)
-                                    }
-                                  }
-                                  return (<p>
-                                    {elem === value[0] ? <>
+                                          {" " + valueList}
+                                        </p>
+                                      </div>)
+                                    }))
+                                  default:
+                                    return (<p>Not Implemented: {keySub}</p>)
+                                }
+                              }
+                              return (<p>
+                                {elem === value[0] ? <>
                                       <span className="rd__h rd__h--3">
                                         <span className="entry-title-inner">{key}.</span>
                                       </span>
-                                      {" " + elem}
-                                    </> : elem}
-                                  </p>)
-                                })}
-                              </div>)
-                            }
-                            return (<div className="rd__b rd__b--3">
-                              <p>
+                                  {" " + elem}
+                                </> : elem}
+                              </p>)
+                            })}
+                          </div>)
+                        }
+                        return (<div className="rd__b rd__b--3">
+                          <p>
                                 <span className="rd__h rd__h--3">
                                   <span className="entry-title-inner">{key}.</span>
                                 </span>
-                                {" " + value}
-                              </p>
-                            </div>)
-                          })}
-                          <div className="rd__b  rd__b--3">
-                            <p>
+                            {" " + value}
+                          </p>
+                        </div>)
+                      })}
+                      <div className="rd__b  rd__b--3">
+                        <p>
                             <span className="rd__h rd__h--3">
                             <span className="entry-title-inner">Langues.</span>
                             </span>
-                              {" " + selected.common.languages}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colSpan={6} className="pt-3">
-                        <b>Source:</b>
-                        <i title={getSourceName(selected.source)}>{selected.source}</i>
-                        , page {selected.page}. {selected.reprinted}
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className="ve-tbl-border" colSpan="6"></th>
-                    </tr>
-                  </table>
-                </TabPanel>
-                <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-                  <table className="w-100 stats">
-                    <tr>
-                      <th className="ve-tbl-border" colSpan="6"></th>
-                    </tr>
-                    <DetailsHeader/>
-                    <tr>
-                      <td colSpan={6} className="pt-3">
-                        <div className="rd__b rd__b--1">
-                          <div className="rd__b rd__b--2">
-                            {selected.info.map((info) => {
-                              const key = Object.keys(info)[0];
-                              const value = info[key]
-                              if (key === "") {
-                                return (<p>{value}</p>)
-                              }
-                              if (typeof value === typeof []) {
-                                return (
-                                  <div className="rd__b rd__b--3">
-                                    {value.map((elem) => {
-                                      return (
-                                        <p>
-                                          {elem === value[0] ? <>
+                          {" " + selected.common.languages}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={6} className="pt-3">
+                    <b>Source:</b>
+                    <i title={getSourceName(selected.source)}>{selected.source}</i>
+                    , page {selected.page}. {selected.reprinted}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+              </table>
+            </TabPanel>
+            <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+              <table className="w-100 stats">
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <DetailsHeader/>
+                <tr>
+                  <td colSpan={6} className="pt-3">
+                    <div className="rd__b rd__b--1">
+                      <div className="rd__b rd__b--2">
+                        {selected.info.map((info) => {
+                          const key = Object.keys(info)[0];
+                          const value = info[key]
+                          if (key === "") {
+                            return (<p>{value}</p>)
+                          }
+                          if (typeof value === typeof []) {
+                            return (
+                              <div className="rd__b rd__b--3">
+                                {value.map((elem) => {
+                                  return (
+                                    <p>
+                                      {elem === value[0] ? <>
                                             <span className="rd__h rd__b--3">
                                               <span className="entry-title-inner">{key}</span>
                                             </span>
-                                            {" " + key}
-                                          </> : key
-                                          }
-                                        </p>
-                                      )
-                                    })}
-                                  </div>
-                                )
-                              }
-                              if (typeof value === typeof {}) {
-                                return formatContent([value])
-                              }
-                              return (
-                                <div className="rd__b rd__b--3">
-                                  <p>
+                                        {" " + key}
+                                      </> : key
+                                      }
+                                    </p>
+                                  )
+                                })}
+                              </div>
+                            )
+                          }
+                          if (typeof value === typeof {}) {
+                            return formatContent([value])
+                          }
+                          return (
+                            <div className="rd__b rd__b--3">
+                              <p>
                                       <span className="rd__h rd__b--3">
                                         <span className="entry-title-inner">{key}</span>
                                       </span>
-                                    {" " + key}
-                                  </p>
-                                </div>
-                              )
-                            })}
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className="ve-tbl-border" colSpan="6"></th>
-                    </tr>
-                  </table>
-                </TabPanel>
-                {selected.images.length === 0 ?
-                  <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-                    <table className="w-100 stats">
-                      <tr>
-                        <th className="ve-tbl-border" colSpan="6"></th>
-                      </tr>
-                      <DetailsHeader/>
-                      <tr>
-                        <th className="ve-tbl-border" colSpan="6"></th>
-                      </tr>
-                    </table>
-                  </TabPanel>
-                  : <></>
-                }
-              </Tabs>
+                                {" " + key}
+                              </p>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+              </table>
+            </TabPanel>
+            {selected.images.length === 0 ?
+              <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+                <table className="w-100 stats">
+                  <tr>
+                    <th className="ve-tbl-border" colSpan="6"></th>
+                  </tr>
+                  <DetailsHeader/>
+                  <tr>
+                    <th className="ve-tbl-border" colSpan="6"></th>
+                  </tr>
+                </table>
+              </TabPanel>
+              : <></>
             }
-          </div>
-        </div>
+          </Tabs>
+        }
       </div>
-
-    </>
+    </div>
   )
+}
+
+export const Layout5eClasses = () => {
+}
+export const Layout5eFeats = () => {
+}
+export const Layout5eBackgrounds = () => {
+}
+export const Layout5eOptionFeaures = () => {
+}
+export const Layout5eItems = () => {
+}
+export const Layout5eSpells = () => {
+}
+export const Layout5eRules = () => {
+}
+export const Layout5eCondition = () => {
+}
+export const Layout5eBestiary = () => {
 }

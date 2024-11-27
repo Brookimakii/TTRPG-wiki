@@ -8,7 +8,7 @@ export default function Header() {
       <div className="inner">
         <div className="unit lastUnit">
           <div className="brand">
-            <Link to="/">AideDD</Link>
+            <Link to="/TTRPG-wiki">AideDD</Link>
             {/*<a href="/TTRPG-wiki">AideDD</a>*/}
             <p>Un site sur le jeu de rôle Dungeons &amp; Dragons 5</p>
           </div>

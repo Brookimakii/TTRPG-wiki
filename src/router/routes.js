@@ -13,6 +13,7 @@ import {
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import {Layout5eRaces} from "../layout/5eLayout";
 import {Layout5e} from "../layout/5eLayout";
 import {
   Aventure,
@@ -261,7 +262,14 @@ const routes = [
   {
     id: "tests",
     path: "/tests",
-    element: <Layout5e/>
+    element: <Layout5e/>,
+    children: [
+      {
+        id: "5eRaces",
+        path: "races",
+        element: <Layout5eRaces/>,
+      }
+    ]
   }
 
 ]
