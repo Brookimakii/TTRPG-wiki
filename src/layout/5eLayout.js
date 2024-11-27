@@ -71,7 +71,7 @@ export const Layout5e = () => {
   }
 
   function handleOpenMenu(menu) {
-    if (menu === "" && activeMenu === ""){
+    if (menu === "" && activeMenu === "") {
       return
     }
     if (menu === activeMenu) {
@@ -127,9 +127,45 @@ export const Layout5e = () => {
               <MenuLink name="This Is Your Life" link="lifegen" href="lifegen"/>
               <MenuLink name="Names" link="names" href="#"/>
             </NavMenu>
+            <NavMenu name="Dungeon Master" href="#" addCaret={true}>
+              <MenuLink name="DM Screen" link="dmscreen" href="dmscreen"/>
+              <MenuDivider/>
+              <SubMenu name="Adventures"></SubMenu>
+              <MenuLink name="Cults &amp; Supernatural Boons" link="cultsboons" href="cultsboons"/>
+              <MenuLink name="Objects" link="objects" href="objects"/>
+              <MenuLink name="Traps &amp; Hazards" link="trapshazards" href="trapshazards"/>
+              <MenuDivider/>
+              <MenuLink name="CR Calculator" link="crcalculator" href="crcalculator"/>
+              <MenuLink name="Encounter Generator" link="encountergen" href="encountergen"/>
+              <MenuLink name="Loot Generator" link="lootgen" href="lootgen"/>
+              <MenuDivider/>
+              <MenuLink name="Maps" link="maps" href="maps"/>
+            </NavMenu>
+            <NavMenu name="References" href="#" addCaret={true}>
+              <MenuLink name="Actions" link="actions" href="actions"/>
+              <MenuLink name="Bestiary" link="bestiary" href="bestiary"/>
+              <MenuLink name="Conditions &amp; Diseases" link="conditionsdiseases" href="conditionsdiseases"/>
+              <MenuLink name="Decks" link="decks" href="decks"/>
+              <MenuLink name="Deities" link="deities" href="deities"/>
+              <MenuLink name="Items" link="items" href="items"/>
+              <MenuLink name="Languages" link="languages" href="languages"/>
+              <MenuLink name="Supernatural Gifts &amp; Rewards" link="rewards" href="rewards"/>
+              <MenuLink name="Psionics" link="psionics" href="psionics"/>
+              <MenuLink name="Spells" link="spells" href="spells"/>
+              <MenuLink name="Vehicles" link="vehicles" href="vehicles"/>
+              <MenuDivider/>
+              <MenuLink name="Recipes" link="recipes" href="recipes"/>
+            </NavMenu>
+            <NavMenu name="Utilities" href="#" addCaret={true}>
+              <MenuLink name="" link="dfts<" href="zersq"/>
+            </NavMenu>
+            <NavMenu name="Settings" href="#" addCaret={true}>
+              <MenuLink name="" link="dfts<" href="zersq"/>
+            </NavMenu>
             {/*
             <li role="presentation" data-page="index.html" className="page__nav-hidden-mobile page__btn-nav-root">
-              <a href="index.html" className="nav__link">Home</a></li>
+              <a href="index.html" className="nav__link">Home</a>
+            </li>
             <li role="presentation"
                 onClick={() => handleOpenMenu("Rules")}
                 className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Rules") + (activeMenu === "Rules" ? " open" : "")}>
@@ -156,271 +192,377 @@ export const Layout5e = () => {
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Core
                     </li>
-                    <li role="presentation" data-page="book.html#phb"><a href="book.html#phb" className="nav__link">
+                    <li role="presentation" data-page="book.html#phb">
+                      <a>href="book.html#phb" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2014</div>
                       <div className="nav2-list__disp-source source__PHB"></div>
                       Player's Handbook (2014)<span
                       className="help-subtle ve-source-marker  ve-source-marker--legacy ml-1 nav2-list__disp-legacy-marker"
-                      title="Legacy Source">[ʟ]</span></a></li>
-                    <li role="presentation" data-page="book.html#mm"><a href="book.html#mm" className="nav__link">
+                      title="Legacy Source">[ʟ]</span></a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mm">
+                      <a>href="book.html#mm" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__MM"></div>
-                      Monster Manual (2014)</a></li>
-                    <li role="presentation" data-page="book.html#dmg"><a href="book.html#dmg" className="nav__link">
+                      Monster Manual (2014)</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#dmg">
+                      <a>href="book.html#dmg" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__DMG"></div>
-                      Dungeon Master's Guide (2014)</a></li>
-                    <li role="presentation" data-page="book.html#xphb"><a href="book.html#xphb" className="nav__link">
+                      Dungeon Master's Guide (2014)</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#xphb">
+                      <a>href="book.html#xphb" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
                       <div className="nav2-list__disp-source source__XPHB"></div>
-                      Player's Handbook (2024)</a></li>
-                    <li role="presentation" data-page="book.html#xdmg"><a href="book.html#xdmg" className="nav__link">
+                      Player's Handbook (2024)</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#xdmg">
+                      <a>href="book.html#xdmg" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__XDMG"></div>
-                      Dungeon Master's Guide (2024)</a></li>
-                    <li role="presentation" data-page="book.html#xmm"><a href="book.html#xmm" className="nav__link">
+                      Dungeon Master's Guide (2024)</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#xmm">
+                      <a>href="book.html#xmm" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2025</div>
                       <div className="nav2-list__disp-source source__XMM"></div>
-                      Monster Manual (2024)</a></li>
+                      Monster Manual (2024)</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Supplements
                     </li>
-                    <li role="presentation" data-page="book.html#vgm"><a href="book.html#vgm" className="nav__link">
+                    <li role="presentation" data-page="book.html#vgm">
+                      <a>href="book.html#vgm" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2016</div>
                       <div className="nav2-list__disp-source source__VGM"></div>
                       Volo's Guide to Monsters<span
                       className="help-subtle ve-source-marker  ve-source-marker--legacy ml-1 nav2-list__disp-legacy-marker"
-                      title="Legacy Source">[ʟ]</span></a></li>
-                    <li role="presentation" data-page="book.html#xge"><a href="book.html#xge" className="nav__link">
+                      title="Legacy Source">[ʟ]</span></a>
+                    </li>
+                    <li role="presentation" data-page="book.html#xge">
+                      <a>href="book.html#xge" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2017</div>
                       <div className="nav2-list__disp-source source__XGE"></div>
-                      Xanathar's Guide to Everything</a></li>
-                    <li role="presentation" data-page="book.html#mtf"><a href="book.html#mtf" className="nav__link">
+                      Xanathar's Guide to Everything</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mtf">
+                      <a>href="book.html#mtf" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
                       <div className="nav2-list__disp-source source__MTF"></div>
                       Mordenkainen's Tome of Foes<span
                       className="help-subtle ve-source-marker  ve-source-marker--legacy ml-1 nav2-list__disp-legacy-marker"
-                      title="Legacy Source">[ʟ]</span></a></li>
-                    <li role="presentation" data-page="book.html#ai"><a href="book.html#ai" className="nav__link">
+                      title="Legacy Source">[ʟ]</span></a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ai">
+                      <a>href="book.html#ai" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
                       <div className="nav2-list__disp-source source__AI"></div>
-                      Acquisitions Incorporated</a></li>
-                    <li role="presentation" data-page="book.html#tce"><a href="book.html#tce" className="nav__link">
+                      Acquisitions Incorporated</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#tce">
+                      <a>href="book.html#tce" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2020</div>
                       <div className="nav2-list__disp-source source__TCE"></div>
-                      Tasha's Cauldron of Everything</a></li>
-                    <li role="presentation" data-page="book.html#ftd"><a href="book.html#ftd" className="nav__link">
+                      Tasha's Cauldron of Everything</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ftd">
+                      <a>href="book.html#ftd" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
                       <div className="nav2-list__disp-source source__FTD"></div>
-                      Fizban's Treasury of Dragons</a></li>
-                    <li role="presentation" data-page="book.html#mpmm"><a href="book.html#mpmm" className="nav__link">
+                      Fizban's Treasury of Dragons</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mpmm">
+                      <a>href="book.html#mpmm" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
                       <div className="nav2-list__disp-source source__MPMM"></div>
-                      Mordenkainen Presents: Monsters of the Multiverse</a></li>
-                    <li role="presentation" data-page="book.html#aag"><a href="book.html#aag" className="nav__link">
+                      Mordenkainen Presents: Monsters of the Multiverse</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#aag">
+                      <a>href="book.html#aag" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__AAG"></div>
-                      Astral Adventurer's Guide</a></li>
-                    <li role="presentation" data-page="book.html#bam"><a href="book.html#bam" className="nav__link">
+                      Astral Adventurer's Guide</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#bam">
+                      <a>href="book.html#bam" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__BAM"></div>
-                      Boo's Astral Menagerie</a></li>
-                    <li role="presentation" data-page="book.html#bgg"><a href="book.html#bgg" className="nav__link">
+                      Boo's Astral Menagerie</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#bgg">
+                      <a>href="book.html#bgg" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
                       <div className="nav2-list__disp-source source__BGG"></div>
-                      Bigby Presents: Glory of the Giants</a></li>
-                    <li role="presentation" data-page="book.html#mpp"><a href="book.html#mpp" className="nav__link">
+                      Bigby Presents: Glory of the Giants</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mpp">
+                      <a>href="book.html#mpp" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__MPP"></div>
-                      Morte's Planar Parade</a></li>
-                    <li role="presentation" data-page="book.html#sato"><a href="book.html#sato" className="nav__link">
+                      Morte's Planar Parade</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#sato">
+                      <a>href="book.html#sato" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__SatO"></div>
-                      Sigil and the Outlands</a></li>
-                    <li role="presentation" data-page="book.html#bmt"><a href="book.html#bmt" className="nav__link">
+                      Sigil and the Outlands</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#bmt">
+                      <a>href="book.html#bmt" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__BMT"></div>
-                      The Book of Many Things</a></li>
-                    <li role="presentation" data-page="book.html#dmtcrg"><a href="book.html#dmtcrg"
+                      The Book of Many Things</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#dmtcrg">
+                      <a>href="book.html#dmtcrg"
                                                                             className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__DMTCRG"></div>
-                      The Deck of Many Things: Card Reference Guide</a></li>
+                      The Deck of Many Things: Card Reference Guide</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Settings
                     </li>
-                    <li role="presentation" data-page="book.html#scag"><a href="book.html#scag" className="nav__link">
+                    <li role="presentation" data-page="book.html#scag">
+                      <a>href="book.html#scag" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2015</div>
                       <div className="nav2-list__disp-source source__SCAG"></div>
-                      Sword Coast Adventurer's Guide</a></li>
-                    <li role="presentation" data-page="book.html#ggr"><a href="book.html#ggr" className="nav__link">
+                      Sword Coast Adventurer's Guide</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ggr">
+                      <a>href="book.html#ggr" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
                       <div className="nav2-list__disp-source source__GGR"></div>
-                      Guildmasters' Guide to Ravnica</a></li>
-                    <li role="presentation" data-page="book.html#erlw"><a href="book.html#erlw" className="nav__link">
+                      Guildmasters' Guide to Ravnica</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#erlw">
+                      <a>href="book.html#erlw" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
                       <div className="nav2-list__disp-source source__ERLW"></div>
-                      Eberron: Rising from the Last War</a></li>
-                    <li role="presentation" data-page="book.html#egw"><a href="book.html#egw" className="nav__link">
+                      Eberron: Rising from the Last War</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#egw">
+                      <a>href="book.html#egw" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2020</div>
                       <div className="nav2-list__disp-source source__EGW"></div>
-                      Explorer's Guide to Wildemount</a></li>
-                    <li role="presentation" data-page="book.html#mot"><a href="book.html#mot" className="nav__link">
+                      Explorer's Guide to Wildemount</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mot">
+                      <a>href="book.html#mot" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__MOT"></div>
-                      Mythic Odysseys of Theros</a></li>
-                    <li role="presentation" data-page="book.html#vrgr"><a href="book.html#vrgr" className="nav__link">
+                      Mythic Odysseys of Theros</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#vrgr">
+                      <a>href="book.html#vrgr" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
                       <div className="nav2-list__disp-source source__VRGR"></div>
-                      Van Richten's Guide to Ravenloft</a></li>
-                    <li role="presentation" data-page="book.html#scc"><a href="book.html#scc" className="nav__link">
+                      Van Richten's Guide to Ravenloft</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#scc">
+                      <a>href="book.html#scc" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__SCC"></div>
-                      Strixhaven: A Curriculum of Chaos</a></li>
-                    <li role="presentation" data-page="book.html#tdcsr"><a href="book.html#tdcsr" className="nav__link">
+                      Strixhaven: A Curriculum of Chaos</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#tdcsr">
+                      <a>href="book.html#tdcsr" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
                       <div className="nav2-list__disp-source source__TDCSR"></div>
-                      Tal'Dorei Campaign Setting Reborn</a></li>
+                      Tal'Dorei Campaign Setting Reborn</a>
+                      </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Extras
                     </li>
-                    <li role="presentation" data-page="book.html#ps-z"><a href="book.html#ps-z" className="nav__link">
+                    <li role="presentation" data-page="book.html#ps-z">
+                      <a>href="book.html#ps-z" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2016</div>
                       <div className="nav2-list__disp-source source__PSZ"></div>
-                      Plane Shift: Zendikar</a></li>
-                    <li role="presentation" data-page="book.html#ps-i"><a href="book.html#ps-i" className="nav__link">
+                      Plane Shift: Zendikar</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ps-i">
+                      <a>href="book.html#ps-i" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__PSI"></div>
-                      Plane Shift: Innistrad</a></li>
-                    <li role="presentation" data-page="book.html#ps-k"><a href="book.html#ps-k" className="nav__link">
+                      Plane Shift: Innistrad</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ps-k">
+                      <a>href="book.html#ps-k" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2017</div>
                       <div className="nav2-list__disp-source source__PSK"></div>
-                      Plane Shift: Kaladesh</a></li>
-                    <li role="presentation" data-page="book.html#ps-a"><a href="book.html#ps-a" className="nav__link">
+                      Plane Shift: Kaladesh</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ps-a">
+                      <a>href="book.html#ps-a" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__PSA"></div>
-                      Plane Shift: Amonkhet</a></li>
-                    <li role="presentation" data-page="book.html#oga"><a href="book.html#oga" className="nav__link">
+                      Plane Shift: Amonkhet</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#oga">
+                      <a>href="book.html#oga" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__OGA"></div>
-                      One Grung Above</a></li>
-                    <li role="presentation" data-page="book.html#ps-x"><a href="book.html#ps-x" className="nav__link">
+                      One Grung Above</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ps-x">
+                      <a>href="book.html#ps-x" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
                       <div className="nav2-list__disp-source source__PSX"></div>
-                      Plane Shift: Ixalan</a></li>
-                    <li role="presentation" data-page="book.html#ps-d"><a href="book.html#ps-d" className="nav__link">
+                      Plane Shift: Ixalan</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#ps-d">
+                      <a>href="book.html#ps-d" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__PSD"></div>
-                      Plane Shift: Dominaria</a></li>
-                    <li role="presentation" data-page="book.html#hwcs"><a href="book.html#hwcs" className="nav__link">
+                      Plane Shift: Dominaria</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#hwcs">
+                      <a>href="book.html#hwcs" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
                       <div className="nav2-list__disp-source source__HWCS"></div>
-                      Humblewood Campaign Setting</a></li>
-                    <li role="presentation" data-page="book.html#rmr"><a href="book.html#rmr" className="nav__link">
+                      Humblewood Campaign Setting</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#rmr">
+                      <a>href="book.html#rmr" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__RMR"></div>
-                      Dungeons &amp; Dragons vs. Rick and Morty: Basic Rules</a></li>
-                    <li role="presentation" data-page="book.html#dod"><a href="book.html#dod" className="nav__link">
+                      Dungeons &amp; Dragons vs. Rick and Morty: Basic Rules</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#dod">
+                      <a>href="book.html#dod" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
                       <div className="nav2-list__disp-source source__DoD"></div>
-                      Domains of Delight</a></li>
-                    <li role="presentation" data-page="book.html#mabjov"><a href="book.html#mabjov"
+                      Domains of Delight</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mabjov">
+                      <a>href="book.html#mabjov"
                                                                             className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__MaBJoV"></div>
-                      Minsc and Boo's Journal of Villainy</a></li>
-                    <li role="presentation" data-page="book.html#td"><a href="book.html#td" className="nav__link">
+                      Minsc and Boo's Journal of Villainy</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#td">
+                      <a>href="book.html#td" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
                       <div className="nav2-list__disp-source source__TD"></div>
-                      Tarot Deck</a></li>
-                    <li role="presentation" data-page="book.html#hat-tg"><a href="book.html#hat-tg"
+                      Tarot Deck</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#hat-tg">
+                      <a>href="book.html#hat-tg"
                                                                             className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
                       <div className="nav2-list__disp-source source__HAT-TG"></div>
-                      Thieves' Gallery</a></li>
-                    <li role="presentation" data-page="book.html#tob1-2023"><a href="book.html#tob1-2023"
+                      Thieves' Gallery</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#tob1-2023">
+                      <a>href="book.html#tob1-2023"
                                                                                className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__ToB1-2023"></div>
-                      Tome of Beasts 1 (2023 Edition)</a></li>
-                    <li role="presentation" data-page="book.html#mcv4ec"><a href="book.html#mcv4ec"
+                      Tome of Beasts 1 (2023 Edition)</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#mcv4ec">
+                      <a>href="book.html#mcv4ec"
                                                                             className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__MCV4EC"></div>
-                      Monstrous Compendium Volume 4: Eldraine Creatures</a></li>
-                    <li role="presentation" data-page="book.html#aatm"><a href="book.html#aatm" className="nav__link">
+                      Monstrous Compendium Volume 4: Eldraine Creatures</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#aatm">
+                      <a>href="book.html#aatm" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__AATM"></div>
-                      Adventure Atlas: The Mortuary</a></li>
+                      Adventure Atlas: The Mortuary</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Screens
                     </li>
-                    <li role="presentation" data-page="book.html#screen"><a href="book.html#screen"
+                    <li role="presentation" data-page="book.html#screen">
+                      <a>href="book.html#screen"
                                                                             className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2015</div>
                       <div className="nav2-list__disp-source source__Screen"></div>
                       Dungeon Master's Screen<span
                       className="help-subtle ve-source-marker  ve-source-marker--legacy ml-1 nav2-list__disp-legacy-marker"
-                      title="Legacy Source">[ʟ]</span></a></li>
-                    <li role="presentation" data-page="book.html#screendungeonkit"><a href="book.html#screendungeonkit"
+                      title="Legacy Source">[ʟ]</span></a>
+                    </li>
+                    <li role="presentation" data-page="book.html#screendungeonkit">
+                      <a>href="book.html#screendungeonkit"
                                                                                       className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2020</div>
                       <div className="nav2-list__disp-source source__ScreenDungeonKit"></div>
-                      Dungeon Master's Screen: Dungeon Kit</a></li>
+                      Dungeon Master's Screen: Dungeon Kit</a>
+                    </li>
                     <li role="presentation" data-page="book.html#screenwildernesskit"><a
                       href="book.html#screenwildernesskit" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       <div className="nav2-list__disp-source source__ScreenWildernessKit"></div>
-                      Dungeon Master's Screen: Wilderness Kit</a></li>
+                      Dungeon Master's Screen: Wilderness Kit</a>
+                    </li>
                     <li role="presentation" data-page="book.html#screenspelljammer"><a
                       href="book.html#screenspelljammer" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
                       <div className="nav2-list__disp-source source__ScreenSpelljammer"></div>
-                      Dungeon Master's Screen: Spelljammer</a></li>
-                    <li role="presentation" data-page="book.html#xscreen"><a href="book.html#xscreen"
+                      Dungeon Master's Screen: Spelljammer</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#xscreen">
+                      <a>href="book.html#xscreen"
                                                                              className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
                       <div className="nav2-list__disp-source source__XScreen"></div>
-                      Dungeon Master's Screen (2024)</a></li>
+                      Dungeon Master's Screen (2024)</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Recipes
                     </li>
-                    <li role="presentation" data-page="book.html#hf"><a href="book.html#hf" className="nav__link">
+                    <li role="presentation" data-page="book.html#hf">
+                      <a>href="book.html#hf" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2020</div>
                       <div className="nav2-list__disp-source source__HF"></div>
-                      Heroes' Feast</a></li>
-                    <li role="presentation" data-page="book.html#hffotm"><a href="book.html#hffotm"
+                      Heroes' Feast</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#hffotm">
+                      <a>href="book.html#hffotm"
                                                                             className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
                       <div className="nav2-list__disp-source source__HFFotM"></div>
-                      Heroes' Feast Flavors of the Multiverse</a></li>
-                    <li role="presentation" data-page="book.html#paf"><a href="book.html#paf" className="nav__link">
+                      Heroes' Feast Flavors of the Multiverse</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#paf">
+                      <a>href="book.html#paf" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
                       <div className="nav2-list__disp-source source__PaF"></div>
-                      Puncheons and Flagons</a></li>
+                      Puncheons and Flagons</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Miscellaneous
                     </li>
-                    <li role="presentation" data-page="book.html#al"><a href="book.html#al" className="nav__link">
+                    <li role="presentation" data-page="book.html#al">
+                      <a>href="book.html#al" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2016</div>
                       <div className="nav2-list__disp-source source__AL"></div>
-                      Adventurers League</a></li>
-                    <li role="presentation" data-page="book.html#sac"><a href="book.html#sac" className="nav__link">
+                      Adventurers League</a>
+                    </li>
+                    <li role="presentation" data-page="book.html#sac">
+                      <a>href="book.html#sac" className="nav__link">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
                       <div className="nav2-list__disp-source source__SAC"></div>
-                      Sage Advice Compendium</a></li>
+                      Sage Advice Compendium</a>
+                    </li>
                   </ul>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
@@ -465,57 +607,70 @@ export const Layout5e = () => {
                 </li>
               </ul>
             </li>
-            */}
             <li role="presentation"
                 onClick={() => handleOpenMenu("Dungeon Master")}
                 className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Dungeon Master") + (activeMenu === "Dungeon Master" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Dungeon Master <span
                 className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
-                <li role="presentation" data-page="dmscreen.html"><a href="dmscreen.html" className="nav__link">DM
-                  Screen</a></li>
+                <li role="presentation" data-page="dmscreen.html">
+                  <a href="dmscreen.html" className="nav__link">DM Screen</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
                 <li role="presentation" className="dropdown dropdown--navbar page__nav-hidden-mobile">
                   <a className="ve-dropdown-toggle" href="#" role="button">Adventures <span
                     className="caret caret--right"></span></a>
                   <ul className="ve-dropdown-menu ve-dropdown-menu--side">
-                    <li role="presentation" data-page="adventures.html"><a href="adventures.html" className="nav__link">View
-                      All/Homebrew</a></li>
+                    <li role="presentation" data-page="adventures.html">
+                      <a>href="adventures.html" className="nav__link">View All/Homebrew</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Supplements
                     </li>
-                    <li role="presentation" data-page="adventure.html#lmop"><a href="adventure.html#lmop"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2014</div>
-                      <div className="nav2-list__disp-source source__LMoP"></div>
-                      Lost Mine of Phandelver</a></li>
-                    <li role="presentation" data-page="adventure.html#hotdq"><a href="adventure.html#hotdq"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__HotDQ"></div>
-                      Hoard of the Dragon Queen</a></li>
-                    <li role="presentation" data-page="adventure.html#rot"><a href="adventure.html#rot"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__RoT"></div>
-                      Rise of Tiamat</a></li>
-                    <li role="presentation" data-page="adventure.html#pota"><a href="adventure.html#pota"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2015</div>
-                      <div className="nav2-list__disp-source source__PotA"></div>
-                      Princes of the Apocalypse</a></li>
-                    <li role="presentation" data-page="adventure.html#oota"><a href="adventure.html#oota"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__OotA"></div>
-                      Out of the Abyss</a></li>
-                    <li role="presentation" data-page="adventure.html#cos"><a href="adventure.html#cos"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2016</div>
-                      <div className="nav2-list__disp-source source__CoS"></div>
-                      Curse of Strahd</a></li>
+                    <li role="presentation" data-page="adventure.html#lmop">
+                      <a>href="adventure.html#lmop"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2014</div>
+                        <div className="nav2-list__disp-source source__LMoP"></div>
+                        Lost Mine of Phandelver</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#hotdq">
+                      <a>href="adventure.html#hotdq"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__HotDQ"></div>
+                        Hoard of the Dragon Queen</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#rot">
+                      <a>href="adventure.html#rot"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__RoT"></div>
+                        Rise of Tiamat</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#pota">
+                      <a>href="adventure.html#pota"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2015</div>
+                        <div className="nav2-list__disp-source source__PotA"></div>
+                        Princes of the Apocalypse</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#oota">
+                      <a>href="adventure.html#oota"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__OotA"></div>
+                        Out of the Abyss</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#cos">
+                      <a>href="adventure.html#cos"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2016</div>
+                        <div className="nav2-list__disp-source source__CoS"></div>
+                        Curse of Strahd</a>
+                    </li>
                     <li role="presentation" data-page="adventure.html#skt">
                       <a href="adventure.html#skt" className="nav__link">
                         <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
@@ -533,63 +688,85 @@ export const Layout5e = () => {
                         <div>[+]</div>
                       </div>
                       <div className="nav2-accord__body ve-hidden">
-                        <li role="presentation" data-page="adventure.html#tftyp-tsc"><a href="adventure.html#tftyp-tsc"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          The Sunless Citadel</a></li>
+                        <li role="presentation" data-page="adventure.html#tftyp-tsc">
+                          <a>href="adventure.html#tftyp-tsc"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            The Sunless Citadel</a>
+                        </li>
                         <li role="presentation" data-page="adventure.html#tftyp-tfof"><a
                           href="adventure.html#tftyp-tfof"
                           className="nav__link nav2-accord__lnk-item inline-block w-100">
                           <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          The Forge of Fury</a></li>
+                          The Forge of Fury</a>
+                        </li>
                         <li role="presentation" data-page="adventure.html#tftyp-thsot"><a
                           href="adventure.html#tftyp-thsot"
                           className="nav__link nav2-accord__lnk-item inline-block w-100">
                           <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          The Hidden Shrine of Tamoachan</a></li>
-                        <li role="presentation" data-page="adventure.html#tftyp-wpm"><a href="adventure.html#tftyp-wpm"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          White Plume Mountain</a></li>
-                        <li role="presentation" data-page="adventure.html#tftyp-dit"><a href="adventure.html#tftyp-dit"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Dead in Thay</a></li>
-                        <li role="presentation" data-page="adventure.html#tftyp-atg"><a href="adventure.html#tftyp-atg"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Against the Giants</a></li>
-                        <li role="presentation" data-page="adventure.html#tftyp-toh"><a href="adventure.html#tftyp-toh"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Tomb of Horrors</a></li>
+                          The Hidden Shrine of Tamoachan</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#tftyp-wpm">
+                          <a>href="adventure.html#tftyp-wpm"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            White Plume Mountain</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#tftyp-dit">
+                          <a>href="adventure.html#tftyp-dit"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Dead in Thay</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#tftyp-atg">
+                          <a>href="adventure.html#tftyp-atg"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Against the Giants</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#tftyp-toh">
+                          <a>href="adventure.html#tftyp-toh"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Tomb of Horrors</a>
+                        </li>
                       </div>
                     </li>
-                    <li role="presentation" data-page="adventure.html#toa"><a href="adventure.html#toa"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__ToA"></div>
-                      Tomb of Annihilation</a></li>
-                    <li role="presentation" data-page="adventure.html#wdh"><a href="adventure.html#wdh"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
-                      <div className="nav2-list__disp-source source__WDH"></div>
-                      Waterdeep: Dragon Heist</a></li>
-                    <li role="presentation" data-page="adventure.html#wdmm"><a href="adventure.html#wdmm"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__WDMM"></div>
-                      Waterdeep: Dungeon of the Mad Mage</a></li>
-                    <li role="presentation" data-page="adventure.html#gos"><a href="adventure.html#gos"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
-                      <div className="nav2-list__disp-source source__GoS"></div>
-                      Ghosts of Saltmarsh</a></li>
-                    <li role="presentation" data-page="adventure.html#oow"><a href="adventure.html#oow"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__OoW"></div>
-                      The Orrery of the Wanderer</a></li>
+                    <li role="presentation" data-page="adventure.html#toa">
+                      <a>href="adventure.html#toa"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__ToA"></div>
+                        Tomb of Annihilation</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#wdh">
+                      <a>href="adventure.html#wdh"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
+                        <div className="nav2-list__disp-source source__WDH"></div>
+                        Waterdeep: Dragon Heist</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#wdmm">
+                      <a>href="adventure.html#wdmm"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__WDMM"></div>
+                        Waterdeep: Dungeon of the Mad Mage</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#gos">
+                      <a>href="adventure.html#gos"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
+                        <div className="nav2-list__disp-source source__GoS"></div>
+                        Ghosts of Saltmarsh</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#oow">
+                      <a>href="adventure.html#oow"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__OoW"></div>
+                        The Orrery of the Wanderer</a>
+                    </li>
                     <li className="nav2-accord__wrp">
                       <div className="nav2-accord__head split-v-center clickable">
                         <div>
@@ -600,59 +777,81 @@ export const Layout5e = () => {
                         <div>[+]</div>
                       </div>
                       <div className="nav2-accord__body ve-hidden">
-                        <li role="presentation" data-page="adventure.html#dip"><a href="adventure.html#dip"
-                                                                                  className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Dragon of Icespire Peak</a></li>
-                        <li role="presentation" data-page="adventure.html#slw"><a href="adventure.html#slw"
-                                                                                  className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Storm Lord's Wrath</a></li>
-                        <li role="presentation" data-page="adventure.html#sdw"><a href="adventure.html#sdw"
-                                                                                  className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Sleeping Dragon's Wake</a></li>
-                        <li role="presentation" data-page="adventure.html#dc"><a href="adventure.html#dc"
-                                                                                 className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Divine Contention</a></li>
+                        <li role="presentation" data-page="adventure.html#dip">
+                          <a>href="adventure.html#dip"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Dragon of Icespire Peak</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#slw">
+                          <a>href="adventure.html#slw"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Storm Lord's Wrath</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#sdw">
+                          <a>href="adventure.html#sdw"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Sleeping Dragon's Wake</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#dc">
+                          <a>href="adventure.html#dc"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Divine Contention</a>
+                        </li>
                       </div>
                     </li>
-                    <li role="presentation" data-page="adventure.html#bgdia"><a href="adventure.html#bgdia"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__BGDIA"></div>
-                      Baldur's Gate: Descent Into Avernus</a></li>
-                    <li role="presentation" data-page="adventure.html#efr"><a href="adventure.html#efr"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__EFR"></div>
-                      Eberron: Forgotten Relics</a></li>
-                    <li role="presentation" data-page="adventure.html#mot-nss"><a href="adventure.html#mot-nss"
-                                                                                  className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2020</div>
-                      <div className="nav2-list__disp-source source__MOT"></div>
-                      Theros: No Silent Secret</a></li>
-                    <li role="presentation" data-page="adventure.html#idrotf"><a href="adventure.html#idrotf"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__IDRotF"></div>
-                      Icewind Dale: Rime of the Frostmaiden</a></li>
-                    <li role="presentation" data-page="adventure.html#cm"><a href="adventure.html#cm"
-                                                                             className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
-                      <div className="nav2-list__disp-source source__CM"></div>
-                      Candlekeep Mysteries</a></li>
-                    <li role="presentation" data-page="adventure.html#hol"><a href="adventure.html#hol"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__HoL"></div>
-                      Ravenloft: The House of Lament</a></li>
-                    <li role="presentation" data-page="adventure.html#wbtw"><a href="adventure.html#wbtw"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__WBtW"></div>
-                      The Wild Beyond the Witchlight</a></li>
+                    <li role="presentation" data-page="adventure.html#bgdia">
+                      <a>href="adventure.html#bgdia"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__BGDIA"></div>
+                        Baldur's Gate: Descent Into Avernus</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#efr">
+                      <a>href="adventure.html#efr"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__EFR"></div>
+                        Eberron: Forgotten Relics</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#mot-nss">
+                      <a>href="adventure.html#mot-nss"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2020</div>
+                        <div className="nav2-list__disp-source source__MOT"></div>
+                        Theros: No Silent Secret</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#idrotf">
+                      <a>href="adventure.html#idrotf"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__IDRotF"></div>
+                        Icewind Dale: Rime of the Frostmaiden</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#cm">
+                      <a>href="adventure.html#cm"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
+                        <div className="nav2-list__disp-source source__CM"></div>
+                        Candlekeep Mysteries</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#hol">
+                      <a>href="adventure.html#hol"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__HoL"></div>
+                        Ravenloft: The House of Lament</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#wbtw">
+                      <a>href="adventure.html#wbtw"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__WBtW"></div>
+                        The Wild Beyond the Witchlight</a>
+                    </li>
                     <li className="nav2-accord__wrp">
                       <div className="nav2-accord__head split-v-center clickable">
                         <div>
@@ -663,139 +862,191 @@ export const Layout5e = () => {
                         <div>[+]</div>
                       </div>
                       <div className="nav2-accord__body ve-hidden">
-                        <li role="presentation" data-page="adventure.html#scc-ck"><a href="adventure.html#scc-ck"
-                                                                                     className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Strixhaven: Campus Kerfuffle</a></li>
-                        <li role="presentation" data-page="adventure.html#scc-hfmt"><a href="adventure.html#scc-hfmt"
-                                                                                       className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Strixhaven: Hunt for Mage Tower</a></li>
-                        <li role="presentation" data-page="adventure.html#scc-tmm"><a href="adventure.html#scc-tmm"
-                                                                                      className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Strixhaven: The Magister's Masquerade</a></li>
-                        <li role="presentation" data-page="adventure.html#scc-arir"><a href="adventure.html#scc-arir"
-                                                                                       className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Strixhaven: A Reckoning in Ruins</a></li>
+                        <li role="presentation" data-page="adventure.html#scc-ck">
+                          <a>href="adventure.html#scc-ck"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Strixhaven: Campus Kerfuffle</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#scc-hfmt">
+                          <a>href="adventure.html#scc-hfmt"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Strixhaven: Hunt for Mage Tower</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#scc-tmm">
+                          <a>href="adventure.html#scc-tmm"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Strixhaven: The Magister's Masquerade</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#scc-arir">
+                          <a>href="adventure.html#scc-arir"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Strixhaven: A Reckoning in Ruins</a>
+                        </li>
                       </div>
                     </li>
-                    <li role="presentation" data-page="adventure.html#jttrc"><a href="adventure.html#jttrc"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
-                      <div className="nav2-list__disp-source source__JttRC"></div>
-                      Journeys through the Radiant Citadel</a></li>
-                    <li role="presentation" data-page="adventure.html#dosi"><a href="adventure.html#dosi"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__DoSI"></div>
-                      Dragons of Stormwreck Isle</a></li>
-                    <li role="presentation" data-page="adventure.html#lox"><a href="adventure.html#lox"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__LoX"></div>
-                      Light of Xaryxis</a></li>
-                    <li role="presentation" data-page="adventure.html#dsotdq"><a href="adventure.html#dsotdq"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__DSotDQ"></div>
-                      Dragonlance: Shadow of the Dragon Queen</a></li>
-                    <li role="presentation" data-page="adventure.html#kftgv"><a href="adventure.html#kftgv"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
-                      <div className="nav2-list__disp-source source__KftGV"></div>
-                      Keys from the Golden Vault</a></li>
-                    <li role="presentation" data-page="adventure.html#pabtso"><a href="adventure.html#pabtso"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__PaBTSO"></div>
-                      Phandelver and Below: The Shattered Obelisk</a></li>
-                    <li role="presentation" data-page="adventure.html#tofw"><a href="adventure.html#tofw"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__ToFW"></div>
-                      Turn of Fortune's Wheel</a></li>
-                    <li role="presentation" data-page="adventure.html#ditlcot"><a href="adventure.html#ditlcot"
-                                                                                  className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
-                      <div className="nav2-list__disp-source source__DitLCoT"></div>
-                      Descent into the Lost Caverns of Tsojcanth</a></li>
-                    <li role="presentation" data-page="adventure.html#vnotee"><a href="adventure.html#vnotee"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__VNotEE"></div>
-                      Vecna: Nest of the Eldritch Eye</a></li>
-                    <li role="presentation" data-page="adventure.html#veor"><a href="adventure.html#veor"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__VEoR"></div>
-                      Vecna: Eve of Ruin</a></li>
-                    <li role="presentation" data-page="adventure.html#qftis"><a href="adventure.html#qftis"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__QftIS"></div>
-                      Quests from the Infinite Staircase</a></li>
+                    <li role="presentation" data-page="adventure.html#jttrc">
+                      <a>href="adventure.html#jttrc"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
+                        <div className="nav2-list__disp-source source__JttRC"></div>
+                        Journeys through the Radiant Citadel</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#dosi">
+                      <a>href="adventure.html#dosi"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__DoSI"></div>
+                        Dragons of Stormwreck Isle</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#lox">
+                      <a>href="adventure.html#lox"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__LoX"></div>
+                        Light of Xaryxis</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#dsotdq">
+                      <a>href="adventure.html#dsotdq"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__DSotDQ"></div>
+                        Dragonlance: Shadow of the Dragon Queen</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#kftgv">
+                      <a>href="adventure.html#kftgv"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
+                        <div className="nav2-list__disp-source source__KftGV"></div>
+                        Keys from the Golden Vault</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#pabtso">
+                      <a>href="adventure.html#pabtso"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__PaBTSO"></div>
+                        Phandelver and Below: The Shattered Obelisk</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#tofw">
+                      <a>href="adventure.html#tofw"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__ToFW"></div>
+                        Turn of Fortune's Wheel</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#ditlcot">
+                      <a>href="adventure.html#ditlcot"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
+                        <div className="nav2-list__disp-source source__DitLCoT"></div>
+                        Descent into the Lost Caverns of Tsojcanth</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#vnotee">
+                      <a>href="adventure.html#vnotee"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__VNotEE"></div>
+                        Vecna: Nest of the Eldritch Eye</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#veor">
+                      <a>href="adventure.html#veor"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__VEoR"></div>
+                        Vecna: Eve of Ruin</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#qftis">
+                      <a>href="adventure.html#qftis"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__QftIS"></div>
+                        Quests from the Infinite Staircase</a>
+                    </li>
                     <li role="presentation" className="ve-dropdown-divider"></li>
                     <li role="presentation" className="italic ve-muted ve-small nav2-list__label">
                       <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
                       Extras
                     </li>
-                    <li role="presentation" data-page="adventure.html#ttp"><a href="adventure.html#ttp"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2017</div>
-                      <div className="nav2-list__disp-source source__TTP"></div>
-                      The Tortle Package</a></li>
-                    <li role="presentation" data-page="adventure.html#tlk"><a href="adventure.html#tlk"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__TLK"></div>
-                      The Lost Kenku</a></li>
-                    <li role="presentation" data-page="adventure.html#xmts"><a href="adventure.html#xmts"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__XMtS"></div>
-                      X Marks the Spot</a></li>
-                    <li role="presentation" data-page="adventure.html#llk"><a href="adventure.html#llk"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
-                      <div className="nav2-list__disp-source source__LLK"></div>
-                      Lost Laboratory of Kwalish</a></li>
-                    <li role="presentation" data-page="adventure.html#kkw"><a href="adventure.html#kkw"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__KKW"></div>
-                      Krenko's Way</a></li>
-                    <li role="presentation" data-page="adventure.html#azfyt"><a href="adventure.html#azfyt"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
-                      <div className="nav2-list__disp-source source__AZfyT"></div>
-                      A Zib for Your Thoughts</a></li>
-                    <li role="presentation" data-page="adventure.html#hftt"><a href="adventure.html#hftt"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__HftT"></div>
-                      Hunt for the Thessalhydra</a></li>
-                    <li role="presentation" data-page="adventure.html#hwaitw"><a href="adventure.html#hwaitw"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__HWAitW"></div>
-                      Humblewood: Adventure in the Wood</a></li>
-                    <li role="presentation" data-page="adventure.html#lr"><a href="adventure.html#lr"
-                                                                             className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__LR"></div>
-                      Locathah Rising</a></li>
-                    <li role="presentation" data-page="adventure.html#imr"><a href="adventure.html#imr"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__IMR"></div>
-                      Infernal Machine Rebuild</a></li>
-                    <li role="presentation" data-page="adventure.html#rmbre"><a href="adventure.html#rmbre"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__RMBRE"></div>
-                      The Lost Dungeon of Rickedness: Big Rick Energy</a></li>
+                    <li role="presentation" data-page="adventure.html#ttp">
+                      <a>href="adventure.html#ttp"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2017</div>
+                        <div className="nav2-list__disp-source source__TTP"></div>
+                        The Tortle Package</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#tlk">
+                      <a>href="adventure.html#tlk"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__TLK"></div>
+                        The Lost Kenku</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#xmts">
+                      <a>href="adventure.html#xmts"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__XMtS"></div>
+                        X Marks the Spot</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#llk">
+                      <a>href="adventure.html#llk"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2018</div>
+                        <div className="nav2-list__disp-source source__LLK"></div>
+                        Lost Laboratory of Kwalish</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#kkw">
+                      <a>href="adventure.html#kkw"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__KKW"></div>
+                        Krenko's Way</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#azfyt">
+                      <a>href="adventure.html#azfyt"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2019</div>
+                        <div className="nav2-list__disp-source source__AZfyT"></div>
+                        A Zib for Your Thoughts</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#hftt">
+                      <a>href="adventure.html#hftt"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__HftT"></div>
+                        Hunt for the Thessalhydra</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#hwaitw">
+                      <a>href="adventure.html#hwaitw"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__HWAitW"></div>
+                        Humblewood: Adventure in the Wood</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#lr">
+                      <a>href="adventure.html#lr"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__LR"></div>
+                        Locathah Rising</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#imr">
+                      <a>href="adventure.html#imr"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__IMR"></div>
+                        Infernal Machine Rebuild</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#rmbre">
+                      <a>href="adventure.html#rmbre"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__RMBRE"></div>
+                        The Lost Dungeon of Rickedness: Big Rick Energy</a>
+                    </li>
                     <li className="nav2-accord__wrp">
                       <div className="nav2-accord__head split-v-center clickable">
                         <div>
@@ -807,29 +1058,39 @@ export const Layout5e = () => {
                         <div>[+]</div>
                       </div>
                       <div className="nav2-accord__body ve-hidden">
-                        <li role="presentation" data-page="adventure.html#tor"><a href="adventure.html#tor"
-                                                                                  className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Wildemount: Tide of Retribution</a></li>
-                        <li role="presentation" data-page="adventure.html#dd"><a href="adventure.html#dd"
-                                                                                 className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Wildemount: Dangerous Designs</a></li>
-                        <li role="presentation" data-page="adventure.html#fs"><a href="adventure.html#fs"
-                                                                                 className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Wildemount: Frozen Sick</a></li>
-                        <li role="presentation" data-page="adventure.html#us"><a href="adventure.html#us"
-                                                                                 className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Wildemount: Unwelcome Spirits</a></li>
+                        <li role="presentation" data-page="adventure.html#tor">
+                          <a>href="adventure.html#tor"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Wildemount: Tide of Retribution</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#dd">
+                          <a>href="adventure.html#dd"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Wildemount: Dangerous Designs</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#fs">
+                          <a>href="adventure.html#fs"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Wildemount: Frozen Sick</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#us">
+                          <a>href="adventure.html#us"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Wildemount: Unwelcome Spirits</a>
+                        </li>
                       </div>
                     </li>
-                    <li role="presentation" data-page="adventure.html#rtg"><a href="adventure.html#rtg"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
-                      <div className="nav2-list__disp-source source__RtG"></div>
-                      Return to the Glory</a></li>
+                    <li role="presentation" data-page="adventure.html#rtg">
+                      <a>href="adventure.html#rtg"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2021</div>
+                        <div className="nav2-list__disp-source source__RtG"></div>
+                        Return to the Glory</a>
+                    </li>
                     <li className="nav2-accord__wrp">
                       <div className="nav2-accord__head split-v-center clickable">
                         <div>
@@ -840,26 +1101,36 @@ export const Layout5e = () => {
                         <div>[+]</div>
                       </div>
                       <div className="nav2-accord__body ve-hidden">
-                        <li role="presentation" data-page="adventure.html#aitfr-isf"><a href="adventure.html#aitfr-isf"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          In Scarlet Flames</a></li>
-                        <li role="presentation" data-page="adventure.html#aitfr-thp"><a href="adventure.html#aitfr-thp"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          The Hidden Page</a></li>
-                        <li role="presentation" data-page="adventure.html#aitfr-avt"><a href="adventure.html#aitfr-avt"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          A Verdant Tomb</a></li>
-                        <li role="presentation" data-page="adventure.html#aitfr-dn"><a href="adventure.html#aitfr-dn"
-                                                                                       className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Deepest Night</a></li>
-                        <li role="presentation" data-page="adventure.html#aitfr-fcd"><a href="adventure.html#aitfr-fcd"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          From Cyan Depths</a></li>
+                        <li role="presentation" data-page="adventure.html#aitfr-isf">
+                          <a>href="adventure.html#aitfr-isf"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            In Scarlet Flames</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#aitfr-thp">
+                          <a>href="adventure.html#aitfr-thp"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            The Hidden Page</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#aitfr-avt">
+                          <a>href="adventure.html#aitfr-avt"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            A Verdant Tomb</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#aitfr-dn">
+                          <a>href="adventure.html#aitfr-dn"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Deepest Night</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#aitfr-fcd">
+                          <a>href="adventure.html#aitfr-fcd"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            From Cyan Depths</a>
+                        </li>
                       </div>
                     </li>
                     <li className="nav2-accord__wrp">
@@ -872,96 +1143,134 @@ export const Layout5e = () => {
                         <div>[+]</div>
                       </div>
                       <div className="nav2-accord__body ve-hidden">
-                        <li role="presentation" data-page="adventure.html#nrh-tcmc"><a href="adventure.html#nrh-tcmc"
-                                                                                       className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          The Candy Mountain Caper</a></li>
-                        <li role="presentation" data-page="adventure.html#nrh-avitw"><a href="adventure.html#nrh-avitw"
-                                                                                        className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          A Voice in the Wilderness</a></li>
-                        <li role="presentation" data-page="adventure.html#nrh-ass"><a href="adventure.html#nrh-ass"
-                                                                                      className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          A Sticky Situation</a></li>
-                        <li role="presentation" data-page="adventure.html#nrh-coi"><a href="adventure.html#nrh-coi"
-                                                                                      className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Circus of Illusion</a></li>
-                        <li role="presentation" data-page="adventure.html#nrh-tlt"><a href="adventure.html#nrh-tlt"
-                                                                                      className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          The Lost Tomb</a></li>
-                        <li role="presentation" data-page="adventure.html#nrh-awol"><a href="adventure.html#nrh-awol"
-                                                                                       className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          A Web of Lies</a></li>
-                        <li role="presentation" data-page="adventure.html#nrh-at"><a href="adventure.html#nrh-at"
-                                                                                     className="nav__link nav2-accord__lnk-item inline-block w-100">
-                          <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                          Adventure Together</a></li>
+                        <li role="presentation" data-page="adventure.html#nrh-tcmc">
+                          <a>href="adventure.html#nrh-tcmc"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            The Candy Mountain Caper</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#nrh-avitw">
+                          <a>href="adventure.html#nrh-avitw"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            A Voice in the Wilderness</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#nrh-ass">
+                          <a>href="adventure.html#nrh-ass"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            A Sticky Situation</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#nrh-coi">
+                          <a>href="adventure.html#nrh-coi"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Circus of Illusion</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#nrh-tlt">
+                          <a>href="adventure.html#nrh-tlt"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            The Lost Tomb</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#nrh-awol">
+                          <a>href="adventure.html#nrh-awol"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            A Web of Lies</a>
+                        </li>
+                        <li role="presentation" data-page="adventure.html#nrh-at">
+                          <a>href="adventure.html#nrh-at"
+                            className="nav__link nav2-accord__lnk-item inline-block w-100">
+                            <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                            Adventure Together</a>
+                        </li>
                       </div>
                     </li>
-                    <li role="presentation" data-page="adventure.html#crcotn"><a href="adventure.html#crcotn"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
-                      <div className="nav2-list__disp-source source__CRCotN"></div>
-                      Critical Role: Call of the Netherdeep</a></li>
-                    <li role="presentation" data-page="adventure.html#sja"><a href="adventure.html#sja"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__SjA"></div>
-                      Spelljammer Academy</a></li>
-                    <li role="presentation" data-page="adventure.html#gotsf"><a href="adventure.html#gotsf"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
-                      <div className="nav2-list__disp-source source__GotSF"></div>
-                      Giants of the Star Forge</a></li>
-                    <li role="presentation" data-page="adventure.html#lk"><a href="adventure.html#lk"
-                                                                             className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__LK"></div>
-                      Lightning Keep</a></li>
-                    <li role="presentation" data-page="adventure.html#coa"><a href="adventure.html#coa"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__CoA"></div>
-                      Chains of Asmodeus</a></li>
-                    <li role="presentation" data-page="adventure.html#pip"><a href="adventure.html#pip"
-                                                                              className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__PiP"></div>
-                      Peril in Pinebrook</a></li>
-                    <li role="presentation" data-page="adventure.html#hfstcm"><a href="adventure.html#hfstcm"
-                                                                                 className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__HFStCM"></div>
-                      Heroes' Feast: Saving the Childrens Menu</a></li>
-                    <li role="presentation" data-page="adventure.html#ghloe"><a href="adventure.html#ghloe"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__GHLoE"></div>
-                      Grim Hollow: Lairs of Etharis</a></li>
-                    <li role="presentation" data-page="adventure.html#dodk"><a href="adventure.html#dodk"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__DoDk"></div>
-                      Dungeons of Drakkenheim</a></li>
-                    <li role="presentation" data-page="adventure.html#lrdt"><a href="adventure.html#lrdt"
-                                                                               className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
-                      <div className="nav2-list__disp-source source__LRDT"></div>
-                      Red Dragon's Tale: A LEGO Adventure</a></li>
-                    <li role="presentation" data-page="adventure.html#uthftlh"><a href="adventure.html#uthftlh"
-                                                                                  className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__UtHftLH"></div>
-                      Uni and the Hunt for the Lost Horn</a></li>
-                    <li role="presentation" data-page="adventure.html#scoee"><a href="adventure.html#scoee"
-                                                                                className="nav__link">
-                      <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
-                      <div className="nav2-list__disp-source source__ScoEE"></div>
-                      Scions of Elemental Evil</a></li>
+                    <li role="presentation" data-page="adventure.html#crcotn">
+                      <a>href="adventure.html#crcotn"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2022</div>
+                        <div className="nav2-list__disp-source source__CRCotN"></div>
+                        Critical Role: Call of the Netherdeep</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#sja">
+                      <a>href="adventure.html#sja"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__SjA"></div>
+                        Spelljammer Academy</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#gotsf">
+                      <a>href="adventure.html#gotsf"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2023</div>
+                        <div className="nav2-list__disp-source source__GotSF"></div>
+                        Giants of the Star Forge</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#lk">
+                      <a>href="adventure.html#lk"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__LK"></div>
+                        Lightning Keep</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#coa">
+                      <a>href="adventure.html#coa"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__CoA"></div>
+                        Chains of Asmodeus</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#pip">
+                      <a>href="adventure.html#pip"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__PiP"></div>
+                        Peril in Pinebrook</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#hfstcm">
+                      <a>href="adventure.html#hfstcm"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__HFStCM"></div>
+                        Heroes' Feast: Saving the Childrens Menu</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#ghloe">
+                      <a>href="adventure.html#ghloe"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__GHLoE"></div>
+                        Grim Hollow: Lairs of Etharis</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#dodk">
+                      <a>href="adventure.html#dodk"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__DoDk"></div>
+                        Dungeons of Drakkenheim</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#lrdt">
+                      <a>href="adventure.html#lrdt"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">2024</div>
+                        <div className="nav2-list__disp-source source__LRDT"></div>
+                        Red Dragon's Tale: A LEGO Adventure</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#uthftlh">
+                      <a>href="adventure.html#uthftlh"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__UtHftLH"></div>
+                        Uni and the Hunt for the Lost Horn</a>
+                    </li>
+                    <li role="presentation" data-page="adventure.html#scoee">
+                      <a>href="adventure.html#scoee"
+                        className="nav__link">
+                        <div className="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block"></div>
+                        <div className="nav2-list__disp-source source__ScoEE"></div>
+                        Scions of Elemental Evil</a>
+                    </li>
                   </ul>
                 </li>
                 <li role="presentation" data-page="cultsboons.html">
@@ -974,14 +1283,19 @@ export const Layout5e = () => {
                   <a href="trapshazards.html" className="nav__link">Traps &amp; Hazards</a>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="crcalculator.html"><a href="crcalculator.html" className="nav__link">CR
-                  Calculator</a></li>
-                <li role="presentation" data-page="encountergen.html"><a href="encountergen.html" className="nav__link">Encounter
-                  Generator</a></li>
-                <li role="presentation" data-page="lootgen.html"><a href="lootgen.html" className="nav__link">Loot
-                  Generator</a></li>
+                <li role="presentation" data-page="crcalculator.html">
+                  <a href="crcalculator.html" className="nav__link">CR Calculator</a>
+                </li>
+                <li role="presentation" data-page="encountergen.html">
+                  <a href="encountergen.html" className="nav__link">Encounter Generator</a>
+                </li>
+                <li role="presentation" data-page="lootgen.html">
+                  <a href="lootgen.html" className="nav__link">Loot Generator</a>
+                </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
-                <li role="presentation" data-page="maps.html"><a href="maps.html" className="nav__link">Maps</a></li>
+                <li role="presentation" data-page="maps.html">
+                  <a href="maps.html" className="nav__link">Maps</a>
+                </li>
               </ul>
             </li>
             <li role="presentation"
@@ -999,17 +1313,23 @@ export const Layout5e = () => {
                   <a href="conditionsdiseases.html" className="nav__link">Conditions &amp; Diseases</a>
                 </li>
                 <li role="presentation" data-page="decks.html">
-                  <a href="decks.html" className="nav__link">Decks</a></li>
+                  <a href="decks.html" className="nav__link">Decks</a>
+                </li>
                 <li role="presentation" data-page="deities.html">
-                  <a href="deities.html" className="nav__link">Deities</a></li>
+                  <a href="deities.html" className="nav__link">Deities</a>
+                </li>
                 <li role="presentation" data-page="items.html">
-                  <a href="items.html" className="nav__link">Items</a></li>
+                  <a href="items.html" className="nav__link">Items</a>
+                </li>
                 <li role="presentation" data-page="languages.html">
-                  <a href="languages.html" className="nav__link">Languages</a></li>
+                  <a href="languages.html" className="nav__link">Languages</a>
+                </li>
                 <li role="presentation" data-page="rewards.html">
-                  <a href="rewards.html" className="nav__link">Supernatural Gifts &amp; Rewards</a></li>
+                  <a href="rewards.html" className="nav__link">Supernatural Gifts &amp; Rewards</a>
+                </li>
                 <li role="presentation" data-page="psionics.html">
-                  <a href="psionics.html" className="nav__link">Psionics</a></li>
+                  <a href="psionics.html" className="nav__link">Psionics</a>
+                </li>
                 <li role="presentation" data-page="spells.html">
                   <a href="spells.html" className="nav__link">Spells</a>
                 </li>
@@ -1027,14 +1347,16 @@ export const Layout5e = () => {
                 className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive("Utilities") + (activeMenu === "Utilities" ? " open" : "")}>
               <a className="ve-dropdown-toggle" href="#" role="button">Utilities <span className="caret "></span></a>
               <ul className="ve-dropdown-menu ve-dropdown-menu--top">
-                <li role="presentation" data-page="search.html"><a href="search.html" className="nav__link">Search</a>
+                <li role="presentation" data-page="search.html">
+                  <a>href="search.html" className="nav__link">Search</a>
                 </li>
                 <li role="presentation" className="ve-dropdown-divider"></li>
                 <li role="presentation" data-page="blocklist.html">
                   <a href="blocklist.html" className="nav__link">Content Blocklist</a>
                 </li>
                 <li role="presentation" data-page="manageprerelease.html">
-                  <a href="manageprerelease.html" className="nav__link">Prerelease Content Manager</a></li>
+                  <a href="manageprerelease.html" className="nav__link">Prerelease Content Manager</a>
+                </li>
                 <li role="presentation" data-page="managebrew.html">
                   <a href="managebrew.html" className="nav__link">Homebrew Manager</a>
                 </li>
@@ -1131,6 +1453,7 @@ export const Layout5e = () => {
                 </li>
               </ul>
             </li>
+            */}
             <div className="input-group omni__wrp-input">
               <input className="form-control search omni__input"
                      title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution."
