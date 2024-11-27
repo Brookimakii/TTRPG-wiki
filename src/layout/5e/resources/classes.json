@@ -1,0 +1,39 @@
+[
+  {
+    "id": "artificer",
+    "name": "Artificier",
+    "source": "TCE",
+    "table": {
+      "title": ["Imprégnations connues", "Objets imprégnés", "Sorts mineurs connus"],
+      "spellcaster": "Half",
+      "content": [
+        [["Incantation", "Bricolage magique"], "", "", 2, 2],
+        [["Imprégnation d'objet"], 4, 2, 2, 2],
+        [["Spécialité d'artificier", "Outil de circonstance"], 4, 2, 2, 3],
+        [["Amélioration de caractéristiques"], 4, 2, 2, 3],
+        [["Capacité de la spécialité d'artificier"], 4, 2, 2, 4, 2],
+        [["Expertise de l'outillage"], 6, 3, 2, 4, 2],
+        [["Trait de génie"], 6, 3, 2, 4, 3],
+        [["Amélioration de caractéristiques"], 6, 3, 2, 4, 3],
+        [["Capacité de la spécialité d'artificier"], 6, 3, 2, 4, 3, 2],
+        [["Adepte des objets magiques"], 8, 4, 3, 4, 3, 2],
+        [["Objet de stockage de sort"], 8, 4, 3, 4, 3, 3],
+        [["Amélioration de caractéristiques"], 8, 4, 3, 4, 3, 3],
+        ["", 8, 4, 3, 4, 3, 3, 1],
+        [["Érudit des objets magiques"], 10, 5, 4, 4, 3, 3, 1],
+        [["Capacité de la spécialité d'artificier"], 10, 5, 4, 4, 3, 3, 2],
+        [["Amélioration de caractéristiques"], 10, 5, 4, 4, 3, 3, 2],
+        ["", 10, 5, 4, 4, 3, 3, 3, 1],
+        [["Maître des objets magiques"], 12, 6, 4, 4, 3, 3, 3, 1],
+        [["Amélioration de caractéristiques"], 12, 6, 4, 4, 3, 3, 3, 2],
+        [["Âme de l'artifice"], 12, 6, 4, 4, 3, 3, 3, 2]
+      ]
+    },
+    "traits": [
+    ],
+    "info": [
+    ],
+    "images": [
+    ]
+  }
+]
