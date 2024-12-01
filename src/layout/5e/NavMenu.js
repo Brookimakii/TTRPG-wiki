@@ -3,69 +3,53 @@ import React, {forwardRef, useState} from "react";
 import withClickOutside from "./withClickOutside";
 
 
-const NavMenu = forwardRef(({open, setOpen, props}, ref) => {
-  const {name, href, addCaret} = props
-
-  const location = useLocation()
-  const localisation = {
-    "Rules": [],
-    "Player": ["races"],
-    "Dungeon Master": []
+const localisation = {
+  "Rules": [],
+  "Player": ["races"],
+  "Dungeon Master": []
+}
+function isCategoryActive(category, location): string {
+  if (location.pathname.endsWith(category)) {
+    return " active"
   }
 
-  function isCategoryActive(category): string {
-    if (location.pathname.endsWith(category)) {
+  for (const [key, value] of Object.entries(localisation)) {
+    if (key === category && value.some(s => location.pathname.endsWith(s))) {
       return " active"
     }
-
-    for (const [key, value] of Object.entries(localisation)) {
-      if (key === category && value.some(s => location.pathname.endsWith(s))) {
-        return " active"
-      }
-    }
-    return ""
   }
+  return ""
+}
+
+const NavMenu = forwardRef(({open, setOpen, props}, ref) => {
+  const {name, href, addCaret, showMenu} = props
+
+  const location = useLocation()
 
   return (
     <li ref={ref}
-        className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive(name) + (open ? " open" : "")}>
-      <a href={href} className="nav__link" onClick={() => setOpen(!open)}>
+        className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive(name, location) + (open ? " open" : "") + (showMenu ? " block" : "")}>
+      <Link to={href} className="nav__link" onClick={() => setOpen(!open)}>
         {name}{addCaret ? (<span className="caret "></span>) : ""}
-      </a>
+      </Link>
 
-      {open && (
+      {props.children?<>{open && (
         <ul className="ve-dropdown-menu ve-dropdown-menu--top">
           {props.children}
         </ul>
-      )}
+      )}</>:""}
     </li>
   );
 });
 
-export const MenuLink = ({name, link, href}) => {
+export default withClickOutside(NavMenu)
+
+export const MenuLink = ({name, link}) => {
   const location = useLocation()
-  const localisation = {
-    "Rules": [],
-    "Player": ["races"],
-    "Dungeon Master": []
-  }
-
-  function isCategoryActive(category): string {
-    if (location.pathname.endsWith(category)) {
-      return " active"
-    }
-
-    for (const [key, value] of Object.entries(localisation)) {
-      if (key === category && value.some(s => location.pathname.endsWith(s))) {
-        return " active"
-      }
-    }
-    return ""
-  }
 
   return (
-    <li className={isCategoryActive(link)}>
-      <Link to={href}>{name}</Link>
+    <li className={isCategoryActive(link, location)}>
+      <Link to={link}>{name}</Link>
     </li>
   )
 }
@@ -74,42 +58,18 @@ export const MenuDivider = () => {
   return <li role="presentation" className="ve-dropdown-divider"></li>
 }
 
-export const SubMenu = ({children, name}) => {
+export const SubMenu = ({children, name, showMenu}) => {
   const [subOpen, setSubOpen] = useState(false)
   const location = useLocation()
-  const localisation = {
-    "Rules": [],
-    "Player": ["races"],
-    "Dungeon Master": []
-  }
 
-  function isCategoryActive(category): string {
-    if (location.pathname.endsWith(category)) {
-      return " active"
-    }
-
-    for (const [key, value] of Object.entries(localisation)) {
-      if (key === category && value.some(s => location.pathname.endsWith(s))) {
-        return " active"
-      }
-    }
-    return ""
-  }
-
+  // TODO: FIX: The children menu shouldn't disappear when hovering it
   return (
-    <li onMouseEnter={() => {
-      console.log('Enter')
-      setSubOpen(true)
-      console.log(subOpen)
-    }} onMouseLeave={() => {
-      console.log('Leave')
-      setSubOpen(false)
-      console.log(subOpen)
-    }}
-        className={"dropdown dropdown--navbar page__nav-hidden-mobile open" + isCategoryActive(name) + (subOpen ? " open" : "")}>
-      <a href="#">
+    <li onMouseEnter={() => setSubOpen(true)
+    } onMouseLeave={() => setSubOpen(false)}
+        className={"dropdown dropdown--navbar page__nav-hidden-mobile open" + isCategoryActive(name, location) + (subOpen ? " open" : "") + (showMenu?" block":"")}>
+      <Link to="#">
         {name} <span className="caret caret--right"></span>
-      </a>
+      </Link>
       {subOpen && (
         <ul className="ve-dropdown-menu ve-dropdown-menu--side">
           {children}
@@ -118,5 +78,3 @@ export const SubMenu = ({children, name}) => {
     </li>
   )
 }
-
-export default withClickOutside(NavMenu)

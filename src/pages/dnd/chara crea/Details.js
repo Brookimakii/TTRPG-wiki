@@ -133,7 +133,7 @@ export const BackgroundDetail = () => {
   // console.log(useParams())
   return (
     <Main name={background.name} lastUnit={true}>
-      {formatContent(background.content)}
+      <div dangerouslySetInnerHTML={{__html:formatContent(background.content[0].html)}}></div>
     </Main>
   )
 }

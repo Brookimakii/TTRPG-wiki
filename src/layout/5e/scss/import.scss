@@ -1,3 +1,5 @@
+
+
 @import "./include/bootstrap-custom";
 @import "./include/expose-vars";
 @import "./include/filter";
@@ -42,12 +44,16 @@
 @import "./include/util-spacing";
 @import "./include/util-spacing-night";
 
-.wrp-stats-table{
-  display: none;
-}
-.placeholder{
-  display: block;
-}
-.react-tabs__tab-panel--selected{
-  display: block;
-}
+
+
+@import "../css/classes.css";
+
+//.wrp-stats-table{
+//  display: none;
+//}
+//.placeholder{
+//  display: block;
+//}
+//.react-tabs__tab-panel--selected{
+//  display: block;
+//}

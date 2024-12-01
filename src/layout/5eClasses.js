@@ -1,0 +1,1000 @@
+import React, {createRef, useEffect, useRef, useState} from "react";
+import classes from "./5e/resources/classes.json";
+import {Link, useLocation} from "react-router-dom";
+import {TableHeader} from "./5eLayout";
+import {Toggle} from "./5e/LayoutPurks"
+import {Parser} from "./5e/js/parser"
+
+
+export const Layout5eClasses = () => {
+
+  const columns = [{
+    id: "Name", sortId: "name", classSize: "ve-col-8"
+  }, {
+    id: "Source", sortId: "source", classSize: "ve-grow"
+  }]
+  //
+  const classes: [PlayerClass] = require('./5e/resources/classes.json')
+  // console.log(require('./5e/resources/classes.json'))
+  const [elements, setElements] = useState(classes)
+  const [toggleStates, setToggleStates] = useState({})
+  // const [sorting, setSorting] = useState("")
+  const [selected: PlayerClass, setSelected] = useState(setSelectFromHash())
+  // const [subclassSelected, setSubclassSelected] = useState({})
+  //
+  // const scrollRefs = useRef([])
+  //
+  // scrollRefs.current = [...Array(90).keys()].map((_, i) => scrollRefs.current[i] ?? createRef())
+  // const scrollSmoothHandler = (index) => () => {
+  //   scrollRefs.current[index].current.scrollIntoView({behavior: "smooth"});
+  // }
+  //
+  // const location = useLocation()
+  // useEffect(() => {
+  //   const UpdateLocation = () => {
+  //     const hash = location.hash.substring(1);
+  //     if (!hash) return;
+  //     const [mainSection, ...subAnchors] = hash.split(",")
+  //     if (mainSection) {
+  //       const mainElement: [Clazz] = elements.filter((e) => e.id === mainSection)
+  //       if (mainElement) {
+  //         setSelected(mainElement[0])
+  //         const scrolls = []
+  //         let idx = 0
+  //         let previousLevel = 0
+  //         mainElement[0].classFeature.map((feature) => {
+  //           idx = previousLevel === feature.level ? idx + 1 : 0
+  //           scrolls.push(`${feature.level - 1}-${idx}`)
+  //           previousLevel = feature.level
+  //         })
+  //         scrollRefs.current = [...Array(scrolls.length).keys()].map((_, i) => scrollRefs.current[scrolls[i]] ?? createRef())
+  //         // let subClassToggle = {}
+  //         // console.log(mainElement[0].s)
+  //         // mainElement[0].subclasses.map((subClass) => {
+  //         //   subClassToggle[subClass.name] = subClass.selectedByDefault ?? false
+  //         // })
+  //         // setSubclassSelected(subClassToggle)
+  //       }
+  //     }
+  //     subAnchors.forEach((subAnchor) => {
+  //       const [typeAndName, value] = subAnchor.split("=")
+  //       const [type, name] = typeAndName.split(":")
+  //       if (type === "state" && name === "feature") {
+  //         const targetElement = document.querySelectorAll(`[data-scroll-id="${value}"]`)
+  //         if (targetElement) {
+  //           scrollSmoothHandler(value)
+  //         }
+  //       }
+  //
+  //     })
+  //   }
+  //   UpdateLocation()
+  // }, [location])
+  //
+  function setSelectFromHash() {
+    const filtered = elements.find((e) => "#" + e.id === window.location.hash)
+    if (filtered) {
+      return filtered
+    } else {
+      return {}
+    }
+  }
+
+
+  //
+  // const handleSort = (type) => {
+  //   const shouldReset = sorting === type + ".des"
+  //   const shouldAscend = !sorting.startsWith(type)
+  //   const shouldDescend = sorting === type + ".asc"
+  //
+  //   if (shouldAscend) {
+  //     // console.log("Should now ascend: " + type + ".asc")
+  //     setSorting(type + ".asc")
+  //   } else if (shouldDescend) {
+  //     setSorting(type + ".des")
+  //     // console.log("Should now descend: " + type + ".des")
+  //   } else if (shouldReset) {
+  //     setSorting("")
+  //     // console.log("Should reset.")
+  //     type = "id"
+  //   }
+  //
+  //   elements.sort(function (a, b) {
+  //     let textA = a[type].toUpperCase();
+  //     let textB = b[type].toUpperCase();
+  //     if (shouldAscend || shouldReset) {
+  //       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+  //     }
+  //     return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
+  //   })
+  // }
+  //
+  // const DetailsHeader = () => {
+  //   return <tr>
+  //     <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
+  //         data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
+  //       <div className="split-v-end">
+  //         <div className="ve-flex-v-center">
+  //           <h1 className="stats__h-name copyable m-0"
+  //             // onMouseDown="event.preventDefault()"
+  //             // onClick="Renderer.utils._pHandleNameClick(this)"
+  //           >{selected.name}</h1>
+  //         </div>
+  //         <div className="stats__wrp-h-source  ve-flex-v-baseline">
+  //           <a href={"book.html#" + selected.source + ",page:" + selected.page}
+  //              className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
+  //              title={getSourceName(selected.source)}>{selected.source}</a>
+  //           <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
+  //              title={"Page" + selected.page}>p{selected.page}</a>
+  //         </div>
+  //       </div>
+  //     </th>
+  //   </tr>
+  // }
+  //
+  // function setSelectFromHash() {
+  //   const filtered = elements.filter((e) => "#" + e.id === window.location.hash.split(",")[0])
+  //   if (filtered.length > 0) {
+  //     // console.log("filtered", filtered[0])
+  //     return filtered[0]
+  //   } else {
+  //     return elements[0]
+  //   }
+  // }
+  //
+  // function getSourceName(source) {
+  //   switch (source) {
+  //     case "PHB'14":
+  //       return "Player's Handbook (2014)"
+  //     case "VGM":
+  //       return "Volo’s Guide to Monsters"
+  //     case "EEPC":
+  //       return "Elemental Evil Player’s Companion"
+  //     case "ERLW":
+  //       return "Eberron: Rising from the Last War"
+  //     case "TCE":
+  //       return "Tasha’s Cauldron of Everything"
+  //     default:
+  //       return ""
+  //   }
+  // }
+  //
+  // const buildSpells = (maxSpellLevel) => {
+  //   const obj = [];
+  //   for (let i = 1; i <= maxSpellLevel; i++) {
+  //     obj.push(<th className="cls-tbl__col-generic-center">
+  //       <Link to={"spell#blankhash,lvl:" + i + "=1,class:" + selected.id + "=1"}>{i}</Link>
+  //     </th>)
+  //   }
+  //   return obj
+  // }
+  //
+  // const tableContent = (table, columns) => {
+  //   while (table.length < 20) {
+  //     table.push([])
+  //   }
+  //   return table.map((line, lineIdx) => {
+  //     while (line.length < columns) {
+  //       line.push("")
+  //     }
+  //     return <tr className="cls-tbl__stripe-odd">
+  //       <td className="cls-tbl__col-level">{lineIdx === 0 ? (lineIdx + 1) + "er" : (lineIdx + 1) + "e"}</td>
+  //       <td className="cls-tbl__col-level">{"+" + Math.ceil(1 + (lineIdx + 1) / 4)}</td>
+  //
+  //       {line.map((cell, nb) => {
+  //         if (!cell) {
+  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>—</td>
+  //         } else if (typeof (cell) === typeof ("") || typeof (cell) === typeof (0)) {
+  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>{cell}</td>
+  //         } else if (typeof (cell) === typeof ([])) {
+  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>{cell.map((link, idx) => {
+  //             return <>
+  //               <div className="inline-block">
+  //                 <Link to={"#" + selected.id + ",state:s" + lineIdx + "-" + idx}>{link}</Link>
+  //               </div>
+  //               {idx === cell.length - 1 ? "" : ", "}
+  //             </>
+  //           })}</td>
+  //         } else {
+  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>
+  //             <Link to={"#" + selected.id + ",state:s" + lineIdx + "-0"}>{cell}</Link>
+  //           </td>
+  //         }
+  //       })}
+  //     </tr>
+  //   })
+  // }
+  //
+  //
+  // function getClassFeatures(withSubClass: boolean = false) {
+  //   const entries: [Feature] = []
+  //   const features = []
+  //   selected.class[0].classFeatures.map((feature) => {
+  //     if (feature.gainSubclassFeature) {
+  //       const [featureName, className, classSource, level] = feature.classFeature.split("|")
+  //       entries.push(findFeatureInClass(feature.classFeature))
+  //       if (withSubClass) {
+  //         selected.subclass.map((subclass) => {
+  //           const subFeature = subclass.subclassFeatures.find((subFeature) => subFeature.endsWith(feature.classFeature.replace(/\D+/g, "")))
+  //           entries.push(findFeatureInClass(subFeature))
+  //         })
+  //       }
+  //     } else {
+  //       entries.push(findFeatureInClass(feature))
+  //     }
+  //   })
+  //   return entries
+  // }
+  //
+  function findFeatureInClass(values: string): Feature | undefined {
+    values = values.split("|")
+    if (values.length === 4) {
+      const [featureName, className, classSource, level] = values
+      return selected.classFeature.find((feature) => {
+        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.level === Number(level))
+      })
+    } else if (values.length === 6) {
+      const [featureName, className, classSource, subClassName, subClassSource, level] = values
+      return selected.subclassFeature.find((feature) => {
+        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.subclassShortName === subClassName && feature.subclassSource === subClassSource && feature.level === Number(level))
+      })
+    }
+  }
+
+  //
+  // function renderFeatureTable(){
+  //   const features = []
+  //   return features
+  // }
+  //
+  // function renderFeaturesTOC() {
+  //   const features = getClassFeatures(true)
+  //   const elements = []
+  //   features.map((feature) => {
+  //     let style = `cls-nav__item cls-nav__item--depth-${feature.header ?? 1}${feature.subclassShortName ? " cls-nav__item--feature-subclass" : ""}`
+  //     elements.push(<div className={style}>{feature.name}</div>)
+  //     feature.entries.map((entry) => {
+  //       if (!entry.type) return
+  //       // console.log(entry)
+  //       switch (entry.type) {
+  //         case "entries": {
+  //           if (feature.subclassShortName) return
+  //           style = `cls-nav__item cls-nav__item--depth-2${feature.subclassShortName ? " cls-nav__item--feature-subclass" : ""}`
+  //           elements.push(<div className={style}>{entry.name}</div>)
+  //           break
+  //         }
+  //         case "refClassFeature": {
+  //           const subFeature = findFeatureInClass(entry.classFeature)
+  //           style = `cls-nav__item cls-nav__item--depth-2`
+  //           elements.push(<div className={style}>{subFeature.name}</div>)
+  //           break
+  //         }
+  //         case "refSubclassFeature": {
+  //           const subFeature = findFeatureInClass(entry.subclassFeature)
+  //           style = `cls-nav__item cls-nav__item--depth-2 cls-nav__item--feature-subclass`
+  //           elements.push(<div className={style}>{subFeature.name}</div>)
+  //           break
+  //         }
+  //       }
+  //     })
+  //   })
+  //   return elements
+  // }
+  // function featureDetails() {
+  //   const features = getClassFeatures(true)
+  //   let firstSubClassLevel = 20
+  //   features.map((feature) => {
+  //     if (feature.subclassShortName && feature.level < firstSubClassLevel) firstSubClassLevel = feature.level
+  //   })
+  //   const elements = []
+  //   features.map((feature) => {
+  //     if (feature.subclassShortName) {
+  //       elements.push(<tr className="cls-main__linked-titles">
+  //         <td colSpan={6}>
+  //           <div className="rd__b rd__b--1 cls__feature-subclass">
+  //             <Toggle>
+  //               <h2 className="rd__h rd__h--1">
+  //                   <span
+  //                     className="entry-title-inner">{firstSubClassLevel !== feature.level ? <>{feature.subclassShortName}:
+  //                     Niveau {feature.level}: </> : ""}{feature.name}</span>
+  //                 <span className="ve-flex-vh-center">
+  //                   <span className="rd__title-link ">
+  //                     <span className="help-subtle" title={getSourceName(feature.source)}>
+  //                       {feature.source}
+  //                     </span>
+  //                     {feature.page}
+  //                   </span>
+  //                 <span className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
+  //                       data-rd-h-toggle-button="true">[–]</span>
+  //               </span>
+  //               </h2>
+  //               {formatEntries(feature.entries)}
+  //             </Toggle>
+  //           </div>
+  //         </td>
+  //       </tr>)
+  //     } else {
+  //       elements.push(<tr className="cls-main__sc-feature">
+  //         <td colSpan={6}>
+  //           <div className="rd__b rd__b--1">
+  //             <Toggle>
+  //               <h2 className="rd__h rd__h--1">
+  //                 <span className="entry-title-inner">Niveau {feature.level}: {feature.name}</span>
+  //                 <span className="ve-flex-vh-center"> <span className="rd__title-link ">
+  //                 <span className="help-subtle"
+  //                       title={getSourceName(feature.source)}>{feature.source}</span> {feature.page}</span>
+  //                 <span className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
+  //                       data-rd-h-toggle-button="true">[–]</span>
+  //               </span>
+  //               </h2>
+  //               {formatEntries(feature.entries)}
+  //             </Toggle>
+  //           </div>
+  //         </td>
+  //       </tr>)
+  //     }
+  //     // feature.entries.map((entry) => {
+  //     //   if (!entry.type) return
+  //     //   // console.log(entry)
+  //     //   switch (entry.type) {
+  //     //     case "entries": {
+  //     //       if (feature.subclassShortName) return
+  //     //       style = `cls-nav__item cls-nav__item--depth-2${feature.subclassShortName ? " cls-nav__item--feature-subclass" : ""}`
+  //     //       elements.push(<div className={style}>{entry.name}</div>)
+  //     //       break
+  //     //     }
+  //     //     case "refClassFeature": {
+  //     //       const subFeature = findFeatureInClass(entry.classFeature)
+  //     //       style = `cls-nav__item cls-nav__item--depth-2`
+  //     //       elements.push(<div className={style}>{subFeature.name}</div>)
+  //     //       break
+  //     //     }
+  //     //     case "refSubclassFeature": {
+  //     //       const subFeature = findFeatureInClass(entry.subclassFeature)
+  //     //       style = `cls-nav__item cls-nav__item--depth-2 cls-nav__item--feature-subclass`
+  //     //       elements.push(<div className={style}>{subFeature.name}</div>)
+  //     //       break
+  //     //     }
+  //     //   }
+  //     // })
+  //   })
+  //   return elements
+  // }
+
+  // function renderFeature(){
+  //   const features = getClassFeatures(true)
+  //   const element = []
+  //   let oldLevel = -1
+  //   let idSameLevel = 0
+  //   features.map((feature, idx)=>{
+  //     if (oldLevel===feature.level){
+  //       idSameLevel++
+  //     }else{
+  //       oldLevel=feature.level
+  //       idSameLevel = 0
+  //     }
+  //     element.push(<tr data-scroll-id={feature.level-1+"-"+idSameLevel} className="cls-main__linked-titles">
+  //       <td colSpan={6}>
+  //         <div className="rd__b rd__b--1">
+  //           <h2 className="rd__h rd__h--1">{feature.name}</h2>
+  //         </div>
+  //       </td>
+  //     </tr>)
+  //   })
+  //   return element
+  // }
+  // console.log(elements)
+
+  //TODO:
+  // [x] Liste de selection de classe,
+  // [x] Table des capacités de classe,
+  // [ ] Ajouter les Capacités de classe dans la table
+  // [ ] Bande des traits de classe,
+  // [ ] TOC des capacites de classe,
+  // [ ] Description des capacités de classe
+
+  const toggleStateChange = (id) => {
+    setToggleStates((prevStates) => ({
+      ...prevStates, [id]: prevStates[id] !== undefined ? !prevStates[id] : false,
+    }));
+    console.log(toggleStates)
+  }
+  const getToggleState = (id) => {
+    // console.log(id, toggleStates[id])
+    return toggleStates[id] || toggleStates[id] === undefined
+  }
+  const addToggleableState = (id) => {
+    if (toggleStates[id] === undefined) {
+      setToggleStates((prevStates) => ({
+        ...prevStates, [id]: true, // Default state for the new child
+      }));
+    }
+  }
+
+  return (<main className="container classes">
+      <div className="row">
+        <div className="col-md-3" id="listcontainer">
+          <div className="night__shadow-big">
+            <TableHeader/>
+            <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+              {columns.map((col) => {
+                return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                  // onClick={() => handleSort(col.sortId)}
+                >
+                  {col.id}<span
+                  className={"lst__caret"
+                    // + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "")
+                    // + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")
+                  }></span>
+                </button>)
+              })}
+            </div>
+            {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+            <div id="list" className="list list--stats">
+              {/*{console.log(elements)}*/}
+              {elements.map((elem) => {
+                // console.log(elem)
+                return <div
+                  className={"lst__row ve-flex-col" + (selected.id === elem.id ? " list-multi-selected" : "")}
+                  onClick={() => setSelected(elem)}
+                >
+                  <Link to={"#" + elem.id} className="lst__row-border lst__row-inner">
+                    <span className="bold ve-col-8 pl-0 pr-1">{elem.info.name}</span>
+                    <span className={"ve-col-4 ve-text-center source__" + elem.info.source + " pl-1 pr-0 pr-1"}
+                          title={Parser.getSourceName(elem.info.source)}
+                    >{elem.info.source}
+                    </span>
+                  </Link>
+                </div>
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="col-md-9" id="classtable">
+          {!selected ? <div className="view-col" id="contentwrapper">
+            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+              <table id="pagecontent" className="w-100 stats">
+                <tbody>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                    view it here
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> : <table className="cls-tbl shadow-big w-100 mb-2">
+            <tbody>
+            <tr>
+              <th className="ve-tbl-border" colSpan="15"></th>
+            </tr>
+            <tr>
+              <th className="ve-text-left cls-tbl__disp-name" colSpan="15">{selected.info.name}</th>
+            </tr>
+            <tr>
+              <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
+              <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
+              <th className="ve-text-left" rowSpan="2">Capacité</th>
+              {selected.info.tableGroup?.map((groups) => {
+                if (!groups.title) {
+                  return groups.colLabels.map((title) => {
+                    return <th className="cls-tbl__col-generic-center" rowSpan={2}>
+                      <div className="cls__squash_header">{title}</div>
+                    </th>
+                  })
+                } else {
+                  return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{groups.title}</th>
+                }
+              })}
+            </tr>
+            <tr>
+              {selected.info.tableGroup?.map((groups) => {
+                if (groups.title) {
+                  return groups.colLabels.map((label) => {
+                    return <th className="cls-tbl__col-generic-center">{label}</th>
+                  })
+                }
+              })}
+            </tr>
+            {[...Array(20).keys()].map((idx) => {
+              return <tr className="cls-tbl__stripe-odd">
+                <td className="cls-tbl__col-level">{idx + 1}e{idx + 1 === 1 ? "r" : ""}</td>
+                <td className="cls-tbl__col-prof-bonus">+{Math.floor(2 + (idx) / 4)}</td>
+                <td>—</td>
+                {selected.info.tableGroup?.map((group) => {
+                  return group.rows[idx].map(cell => {
+                    return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : cell}</td>
+                  })
+                })}
+              </tr>
+            })}
+            </tbody>
+          </table>}
+        </div>
+      </div>
+      <hr className="mt-0"/>
+      <div className="row ve-flex mobile-md__ve-flex-col">
+        <div className="col-md-3">
+          <div className="ve-flex-vh-center ve-text-center wrp-btn-readmode mb-3">
+            <button disabled className="ve-btn ve-btn-default ve-btn-xs no-print mr-1" id="btn-comparemode"
+                    title="A pop-up table which can be used to compare subclass features.">
+              Subclass Comparison
+            </button>
+            <button disabled className="ve-btn ve-btn-default ve-btn-xs no-print mr-1" id="btn-readmode"
+                    title="A pop-up reading mode with a layout and content order matching that of the books.">
+              Book View
+            </button>
+            <div className=" ve-flex-v-center ve-btn-group">
+              <button disabled className="ve-btn ve-btn-default ve-btn-xs ve-btn-copy-effect" id="btn-link-export"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
+                <span className="glyphicon glyphicon-magnet"></span>
+              </button>
+              <button disabled className="ve-btn ve-btn-default ve-btn-xs" id="btn-sidebar-settings" title="Settings">
+                <span className="glyphicon glyphicon-cog"></span>
+              </button>
+            </div>
+          </div>
+          <div id="statsprof">
+            <table className="w-100 stats shadow-big cls__stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <th colSpan="6" className="ve-text-left">
+                  <div className="split-v-center pr-1" data-page="classes.html" data-source="TCE"
+                       data-hash="artificer_tce">
+                    <div className="cls-side__name">{selected.info.name}</div>
+                    <div className="ve-flex-v-center">
+                      <div className="cls-side__btn-toggle no-select" onClick={() => toggleStateChange("prof")}>
+                        [{getToggleState("prof") ? "-" : "+"}]
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+              {getToggleState("prof") && <>
+                <tr>
+                  <td colSpan={6} className="cls-side__section">
+                    <h5 className="cls-side__section-head">Traits Principaux</h5>
+                    <div>
+                      <strong>Dé de Vie: </strong>
+                      {selected.info.hitDice.amount}D{selected.info.hitDice.faces} par niveau
+                      d{"aeiouy".includes(selected.info.name.at(0).toLowerCase()) ? "'" : "e "}
+                      {selected.info.name}
+                    </div>
+                    <div>
+                      <strong>PV au niveau 1: </strong>
+                      {selected.info.hitDice.faces} + votre modificateur de Constitution
+                    </div>
+                    <div>
+                      <strong>PV aux niveaux suivants: </strong>
+                      <span className="roller render-roller">
+                      {selected.info.hitDice.amount}D{selected.info.hitDice.faces}
+                    </span> + votre modificateur de Constitution, ou, {Math.ceil(selected.info.hitDice.faces / 2) + 1} +
+                      votre modificateur de Constitution
+                    </div>
+                    <div className="py-2 w-100"></div>
+                    <div>
+                      <b>Armures: </b>
+                      <span>
+                      {selected.info.proficiencies.armor?.length > 1 ?
+                        (selected.info.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selected.info.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")) +
+                        (selected.info.proficiencies.armor.includes("shield") ? ", boucliers" : "")
+                        : "Aucune"}
+                    </span>
+                    </div>
+                    {(selected.info.proficiencies.weapon) ? <>
+                      <div className="py-2 w-100"></div>
+                      <div>
+                        <b>Armes: </b>
+                        <span>
+                        {Array.isArray(selected.info.proficiencies.weapon) ? selected.info.proficiencies.weapon.map((weapon, idx) => {
+                          return <>{weapon.replace("simple", "armes courantes")}{idx !== selected.info.proficiencies.weapon.length - 1 ? ", " : ""}</>
+                        }) : "armes courantes" + (selected.info.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
+                      </span>
+                      </div>
+                    </> : ""}
+                    <div className="py-2 w-100"></div>
+                    <div>
+                      <b>Outils: </b>
+                      <span>
+                        {selected.info.proficiencies.tools?.length > 1 ?
+                          selected.info.proficiencies.tools.map((tool, idx) => {
+                            return <>{tool}{idx !== selected.info.proficiencies.tools.length - 1 ? ", " : "."}</>
+                          }) : "Aucun"}
+                    </span>
+                    </div>
+                    {(selected.info.proficiencies.saves) ? <>
+                      <div className="py-2 w-100"></div>
+                      <div>
+                        <b>Jets de sauvegardes: </b>
+                        {selected.info.proficiencies.saves.map((save, idx) => {
+                          return <>{Parser.attAbvToFull(save)}{idx !== selected.info.proficiencies.saves.length - 1 ? ", " : "."}</>
+                        })}
+                      </div>
+                    </> : ""}
+                    {(selected.info.proficiencies.skills) ? <>
+                      <div className="py-2 w-100"></div>
+                      <div><b>Compétences :</b>
+                        <span>
+                        {selected.info.proficiencies.skills.any ?
+                          <i>Choisissez {selected.info.proficiencies.skills.any} compétences.</i> :
+                          <>
+                            <i>Choisissez {selected.info.proficiencies.skills.count} compétences parmi: </i>
+                            {selected.info.proficiencies.skills.pool.map((skill, idx) => {
+                              return <>
+                                <span>{skill}</span>
+                                {idx === selected.info.proficiencies.skills.pool.length - 1 ? "." : idx === selected.info.proficiencies.skills.pool.length - 2 ? " ou " : ", "}
+                              </>
+                            })}
+                          </>
+                        }
+                      </span>
+                      </div>
+                    </> : ""}
+                    <div className="py-2 w-100"></div>
+                    <p>Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre
+                      historique:</p>
+                    <ul className="pl-4">
+                      {selected.info.startingEquipment.equipement.map((items, idx) => {
+                        return <li>{items}</li>
+                      })}
+                    </ul>
+                    <p>
+                      Si vous renoncez à cet équipement de départ ainsi qu'à celui accordé par votre historique, vous
+                      commencez avec
+                      <span className="roller render-roller">
+                        {" " + selected.info.startingEquipment.goldAlternative + " "}
+                      </span>
+                      po pour acheter votre équipement.
+                    </p>
+                  </td>
+                </tr>
+                <tr className="">
+                  <td className="cls-side__section" colSpan="6">
+                    <h5 className="cls-side__section-head">Multiclassage</h5>
+                    <div>
+                      <div className="rd__b  rd__b--0">
+                        <p>
+                          <b>Score de capacité Minium:</b>
+                          {selected.info.multiclass.requirements.or ?
+                            Object.entries(selected.info.multiclass.requirements.or).map(([ability, amount], idx) => {
+                              return <>
+                                {" "}{Parser.attAbvToFull(ability)} {amount}
+                                {Object.entries(selected.info.multiclass.requirements.or).length - 1 === idx ? "" : " or"}
+                              </>
+                            })
+                            :
+                            Object.entries(selected.info.multiclass.requirements).map(([ability, amount], idx) => {
+                              return <>
+                                {" "}{Parser.attAbvToFull(ability)} {amount}
+                                {Object.entries(selected.info.multiclass.requirements).length - 1 === idx ? "" : ","}
+                              </>
+                            })
+                          }
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      When you gain a level in a class other than your first, you gain only some of that class's
+                      starting proficiencies?.
+                    </div>
+                    {selected.info.multiclass.proficiencies?.armor ? <div>
+                      <b>Maîtrise d'Armures: </b>
+                      {selected.info.multiclass.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selected.info.multiclass.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")}
+                      {selected.info.multiclass.proficiencies.armor.includes("shield") ? ", boucliers" : ""}
+                    </div> : ""}
+                    {selected.info.multiclass.proficiencies?.weapon ? <div>
+                      <b>Maîtrise d'Armes: </b>
+                      {Array.isArray(selected.info.multiclass.proficiencies.weapon) ? selected.info.multiclass.proficiencies.weapon.map((weapon, idx) => {
+                        return <>{weapon.replace("simple", "armes courantes")}{idx !== selected.info.multiclass.proficiencies.weapon.length - 1 ? ", " : ""}</>
+                      }) : "armes courantes" + (selected.info.multiclass.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
+                    </div> : ""}
+                    {selected.info.multiclass.proficiencies?.tools ? <div>
+                      <b>Maîtrise d'Outils: </b>
+                      {selected.info.multiclass.proficiencies.tools.map((tool, idx) => {
+                        return <>
+                          {tool}
+                          {idx === selected.info.multiclass.proficiencies.tools.length - 1 ? "." : idx === selected.info.multiclass.proficiencies.tools.length - 2 ? " et " : ", "}
+                        </>
+                      })}
+                    </div> : ""}
+                    {selected.info.multiclass.proficiencies?.skills ? <div>
+                      <b>Maîtrise de Compétences: </b>
+                      {selected.info.multiclass.proficiencies.skills.any ?
+                        <i>Choisissez {selected.info.multiclass.proficiencies.skills.any} compétences.</i> :
+                        <>
+                          <i>Choisissez {selected.info.multiclass.proficiencies.skills.count} compétences parmi: </i>
+                          {selected.info.multiclass.proficiencies.skills.pool.map((skill, idx) => {
+                            return <>
+                              <span>{skill}</span>
+                              {idx === selected.info.multiclass.proficiencies.skills.pool.length - 1 ? "." : idx === selected.info.multiclass.proficiencies.skills.pool.length - 2 ? " ou " : ", "}
+                            </>
+                          })}
+                        </>
+                      }
+                    </div> : ""}
+                  </td>
+                </tr>
+              </>}
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="sticky-nav" className="cls-nav">
+            {/*TODO: Change the div after "Outline" to be disable.*/}
+            <div className="cls-nav__head cls-nav__head--active">
+              <div className="cls-nav__head-inner split">
+                <div>Outline</div>
+                <div className={"cls-nav__disp-toggle" + (getToggleState("TOC") ? " cls-nav__disp-toggle--active" : "")}
+                     onClick={() => toggleStateChange("TOC")}></div>
+              </div>
+              <hr className="cls-nav__hr"/>
+            </div>
+            <div className="nav-body">
+              {selected.info.classFeatures?.map((feature) => {
+                if (typeof feature === "string"){
+                  return <div className="cls-nav__item cls-nav__item--depth-1">{feature}</div>
+                }
+                return <div className="cls-nav__item cls-nav__item--depth-1">{feature.classFeature}</div>
+              })}
+            </div>
+          </div>
+        </div>
+        <div className="col-md-9">
+          <div id="subclasstabs" className="w-100 ve-flex mb-2 cls-tabs__wrp">
+            <div className="ve-flex-v-center m-1 ve-btn-group mr-3 no-shrink">
+              <button disabled className="ve-btn ve-btn-xs ve-btn-default cls__btn-cf--active"
+                      title="Toggle Class Features">
+                Features
+              </button>
+              <button disabled className="ve-btn ve-btn-xs ve-btn-default"
+                      title="Toggle Class Feature Options/Variants">
+                Variants
+              </button>
+              <button disabled className="ve-btn ve-btn-xs ve-btn-default" title="Toggle Class Info">
+                Info
+              </button>
+            </div>
+            <div className="ve-flex-v-center ve-flex-wrap mr-2 w-100">
+              {selected.subclasses.map((subclass) => {
+                addToggleableState(selected.id+"-subclass-"+subclass.shortName)
+                return (
+                  <button onClick={()=>toggleStateChange(selected.id+"-subclass-"+subclass.shortName)}
+                    className="ve-btn ve-btn-default ve-btn-xs ve-flex-v-center m-1 cls__btn-sc--active-fresh">
+                    <div>{subclass.shortName}</div>
+                    <div>({subclass.source})</div>
+                  </button>
+                )
+              })}
+              <div className="ve-muted m-1 cls-tabs__sc-not-shown ve-flex-vh-center"></div>
+            </div>
+            <div className="ve-flex-v-center m-1 no-shrink">
+              <select disabled className="input-xs form-control cls-tabs__sel-preset">
+                <option value="-1" disabled="">Filter...</option>
+                <option value="0">View Default</option>
+                <option value="1">View Standard Plus Partnered</option>
+                <option value="2">View Standard Plus Homebrew</option>
+                <option value="3">View Most Recent</option>
+                <option value="4">View All</option>
+              </select>
+            </div>
+            <div className="ve-flex-v-center m-1 ve-btn-group no-shrink">
+              <button disabled className="ve-btn ve-btn-xs ve-btn-default"
+                      title="Select All (SHIFT to filter for and include most recent; CTRL to select official plus homebrew)">
+                <span className="glyphicon glyphicon-check"></span>
+              </button>
+              <button disabled title="Feeling Lucky?" className="ve-btn ve-btn-xs ve-btn-default ve-flex-1">
+                <span className="glyphicon glyphicon-random"></span>
+              </button>
+              <button disabled className="ve-btn ve-btn-xs ve-btn-default" title="Reset Selection">
+                <span className="glyphicon glyphicon-refresh"></span>
+              </button>
+              <button disabled className="ve-btn ve-btn-xs ve-btn-default ve-flex-1 active"
+                      title="Show Subclass Sources">
+                <span className="glyphicon glyphicon-book"></span>
+              </button>
+            </div>
+          </div>
+          <table id="pagecontent" className="w-100 stats shadow-big cls__stats">
+            <tr>
+              <th className="ve-tbl-border" colSpan="6"></th>
+            </tr>
+            {/*{renderFeature()}*/}
+            {/*{featureDetails()}*/}
+            {/*{formatSubFeature()}*/}
+            <tr>
+              <th className="ve-tbl-border" colSpan="6"></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </main>
+    // <div className="view-col-group--cancer h-100 mh-0">
+    //   <div className="container view-col-wrapper view-col-wrapper--cancer">
+    //     <div className="view-col" id="listcontainer">
+    //       <TableHeader/>
+    //       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+    //         {columns.map((col) => {
+    //           return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+    //                           onClick={() => handleSort(col.sortId)}>
+    //             {col.id}<span
+    //             className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+    //           </button>)
+    //         })}
+    //       </div>
+    //       {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+    //       <div id="list" className="list list--stats">
+    //         {/*{console.log(elements)}*/}
+    //         {elements.map((elem) => {
+    //           // console.log(elem)
+    //           return <div
+    //             className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+    //             onClick={() => handleClick(elem)}>
+    //
+    //             <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
+    //               <span className="bold ve-col-8 pl-0 pr-1">{elem.name}</span>
+    //               <span className={"ve-col-4 ve-text-center source__" + elem.source + " pl-1 pr-0 pr-1"}
+    //                     title={getSourceName(elem.source)}>{elem.source}</span>
+    //             </a>
+    //           </div>
+    //         })}
+    //       </div>
+    //     </div>
+    //     <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+    //     {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+    //     {Object.keys(selected).length === 0 ?
+    //       <div className="view-col" id="contentwrapper">
+    //         <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+    //           <table id="pagecontent" className="w-100 stats">
+    //             <tbody>
+    //             <tr>
+    //               <th className="ve-tbl-border" colSpan="6"></th>
+    //             </tr>
+    //             <tr>
+    //               <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+    //                 view it here
+    //               </td>
+    //             </tr>
+    //             <tr>
+    //               <th className="ve-tbl-border" colSpan="6"></th>
+    //             </tr>
+    //             </tbody>
+    //           </table>
+    //         </div>
+    //       </div> :
+    //       <Tabs className="view-col" id="contentwrapper">
+    //         <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0}
+    //                  style={{paddingLeft: "0px", marginBottom: "0px"}}>
+    //           <Tab
+    //             className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
+    //           <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
+    //           {selected.images.length === 0 ?
+    //             <Tab
+    //               className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
+    //             : <></>
+    //           }
+    //           <li className="ml-auto ve-flex" id="tabs-right">
+    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+    //                     title="Pin (Toggle) (Hotkey: p/P)">
+    //               <span className="glyphicon glyphicon-pushpin"></span>
+    //             </button>
+    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+    //                     title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)">
+    //               <span className="glyphicon glyphicon-new-window"></span>
+    //             </button>
+    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+    //                     title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
+    //               <span className="glyphicon glyphicon-magnet"></span>
+    //             </button>
+    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+    //                     title="Other Options">
+    //               <span className="glyphicon glyphicon-option-vertical"></span>
+    //             </button>
+    //           </li>
+    //         </TabList>
+    //         <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+    //           <table className="w-100 stats">
+    //             <tr>
+    //               <th className="ve-tbl-border" colSpan="6"></th>
+    //             </tr>
+    //             <DetailsHeader/>
+    //             <tr>
+    //               <td colSpan={6} className="pt-3">
+    //                 <b>Source:</b>
+    //                 <i title={getSourceName(selected.source)}>{selected.source}</i>
+    //                 , page {selected.page}. {selected.reprinted}
+    //               </td>
+    //             </tr>
+    //             <tr>
+    //               <th className="ve-tbl-border" colSpan="6"></th>
+    //             </tr>
+    //           </table>
+    //         </TabPanel>
+    //         <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+    //           <table className="w-100 stats">
+    //             <tr>
+    //               <th className="ve-tbl-border" colSpan="6"></th>
+    //             </tr>
+    //             <DetailsHeader/>
+    //             <tr>
+    //               <td colSpan={6} className="pt-3">
+    //                 <div className="rd__b rd__b--1">
+    //                   <div className="rd__b rd__b--2">
+    //                     {selected.info.map((info) => {
+    //                       const key = Object.keys(info)[0];
+    //                       const value = info[key]
+    //                       if (key === "") {
+    //                         return (<p>{value}</p>)
+    //                       }
+    //                       if (typeof value === typeof []) {
+    //                         return (
+    //                           <div className="rd__b rd__b--3">
+    //                             {value.map((elem) => {
+    //                               return (
+    //                                 <p>
+    //                                   {elem === value[0] ? <>
+    //                                         <span className="rd__h rd__b--3">
+    //                                           <span className="entry-title-inner">{key}</span>
+    //                                         </span>
+    //                                     {" " + key}
+    //                                   </> : key
+    //                                   }
+    //                                 </p>
+    //                               )
+    //                             })}
+    //                           </div>
+    //                         )
+    //                       }
+    //                       if (typeof value === typeof {}) {
+    //                         return formatContent([value])
+    //                       }
+    //                       return (
+    //                         <div className="rd__b rd__b--3">
+    //                           <p>
+    //                                   <span className="rd__h rd__b--3">
+    //                                     <span className="entry-title-inner">{key}</span>
+    //                                   </span>
+    //                             {" " + key}
+    //                           </p>
+    //                         </div>
+    //                       )
+    //                     })}
+    //                   </div>
+    //                 </div>
+    //               </td>
+    //             </tr>
+    //             <tr>
+    //               <th className="ve-tbl-border" colSpan="6"></th>
+    //             </tr>
+    //           </table>
+    //         </TabPanel>
+    //         {selected.images.length === 0 ?
+    //           <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+    //             <table className="w-100 stats">
+    //               <tr>
+    //                 <th className="ve-tbl-border" colSpan="6"></th>
+    //               </tr>
+    //               <DetailsHeader/>
+    //               <tr>
+    //                 <th className="ve-tbl-border" colSpan="6"></th>
+    //               </tr>
+    //             </table>
+    //           </TabPanel>
+    //           : <></>
+    //         }
+    //       </Tabs>
+    //     }
+    //   </div>
+    // </div>
+  )
+}

@@ -13,7 +13,14 @@ import {
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
-import {Layout5e, Layout5eClasses, Layout5eRaces} from "../layout/5eLayout";
+import {
+  Layout5e, Layout5eBackgrounds,
+  Layout5eBestiary, Layout5eCondition,
+  Layout5eFeats,
+  Layout5eHome, Layout5eItems,
+  Layout5eOptionFeaures,
+  Layout5eRaces, Layout5eRules, Layout5eSpells
+} from "../layout/5eLayout";
 import {
   Aventure,
   Caracteristique,
@@ -22,21 +29,14 @@ import {
   PlayerClasses, PlayerEquipment,
   PlayerRaces, SpellList
 } from "../pages/dnd/chara crea/CharacterCreation";
+import {Layout5eClasses} from "../layout/5eClasses";
+import AideDD from "../pages/AideDD";
 
 const routes = [
   {
     id: "homepage",
     path: "/TTRPG-wiki",
-    element: <>
-
-      <Header/>
-      <div className="main">
-        <div className="inner typography line">
-          <Outlet/>
-        </div>
-      </div>
-      <Footer/>
-    </>,
+    element: <AideDD/>,
     children: [
       {
         id: "home",
@@ -264,6 +264,11 @@ const routes = [
     element: <Layout5e/>,
     children: [
       {
+        id: "5eHome",
+        path: "",
+        element: <Layout5eHome/>
+      },
+      {
         id: "5eRaces",
         path: "races",
         element: <Layout5eRaces/>,
@@ -272,6 +277,46 @@ const routes = [
         id: "5eClasses",
         path: "classes",
         element: <Layout5eClasses/>,
+      },
+      {
+        id: "5eFeat",
+        path: "feats",
+        element: <Layout5eFeats/>,
+      },
+      {
+        id: "5eFeaturesOptions",
+        path: "optionsFeatures",
+        element: <Layout5eOptionFeaures/>,
+      },
+      {
+        id: "5eBackgrounds",
+        path: "backgrounds",
+        element: <Layout5eBackgrounds/>,
+      },
+      {
+        id: "5eItems",
+        path: "items",
+        element: <Layout5eItems/>,
+      },
+      {
+        id: "5eSpells",
+        path: "spells",
+        element: <Layout5eSpells/>,
+      },
+      {
+        id: "5eRules",
+        path: "rules",
+        element: <Layout5eRules/>,
+      },
+      {
+        id: "5eConditions",
+        path: "conditions",
+        element: <Layout5eCondition/>,
+      },
+      {
+        id: "5eBestiary",
+        path: "bestiary",
+        element: <Layout5eBestiary/>,
       }
     ]
   }

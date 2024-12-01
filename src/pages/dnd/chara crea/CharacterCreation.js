@@ -770,6 +770,17 @@ export const PlayerRaces = () => {
 export const PlayerClasses = () => {
   return (
     <Main name={"Classes"} lastUnit={true}>
+      <div style={{background:"red",border:"solid 1px black",color:"white",textAlign:"center",fontWeight:"bold"}}>
+        Attention les options de classes et de sous-classes ne sont pas complète. Afin d'avoir accès à toutes les
+        options. Veuillez copier la feuille de calcule google suivante:
+        <br/>
+        <Link style={{color:"black"}}
+          to="https://docs.google.com/spreadsheets/d/1m4IoWYuterc7BhqYoGxg3w90uehZtaxyqQQKeAKpECA/edit?gid=1272470153#gid=1272470153">
+          https://docs.google.com/spreadsheets/d/1m4IoWYuterc7BhqYoGxg3w90uehZtaxyqQQKeAKpECA
+        </Link>
+        <br/>
+        Veuillez m'excusez pour cela.
+      </div>
       <p>
         Les aventuriers sont des personnes extraordinaires poussées par la soif de l'excitation vers une vie que
         d'autres n'oseraient jamais imaginer. Ce sont des héros, contraints d'explorer les endroits les plus sombres et

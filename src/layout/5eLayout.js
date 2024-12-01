@@ -3,8 +3,16 @@ import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {formatContent} from "../pages/dnd/chara crea/Details";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import NavMenu, {MenuDivider, MenuLink, SubMenu} from "./5e/NavMenu";
+import Race from "./5e/Models"
 import races from "./5e/resources/races.json";
-import "./5e/css/classes.css"
+import "./5e/css/fontawesome.css"
+import "./5e/scss/import.scss"
+import "./5e/scss/bootstrap.scss"
+import "./5e/css/index.css"
+import background from "./5e/resources/backgrounds.json";
+import spells from "./5e/resources/spells.json";
+
+// TODO: Create a Render and Parser classes and Complete All datasets.
 
 function buildRace(elements) {
   const newElems = structuredClone(elements)
@@ -50,6 +58,7 @@ function buildRace(elements) {
 
 
 export const Layout5e = () => {
+  const [showMenu, setShowMenu] = useState(false)
   return (
     <>
       <script type="text/javascript" src="./5e/js/navigation.js"></script>
@@ -71,65 +80,67 @@ export const Layout5e = () => {
         </header>
         <nav className="container page__nav" id="navigation">
           {/*TODO: Add in small mod a way to display following navs*/}
-          <button className="ve-btn ve-btn-default page__btn-toggle-nav">Menu</button>
+          <button onClick={() => setShowMenu(!showMenu)}
+                  className={"ve-btn ve-btn-default page__btn-toggle-nav" + (showMenu ? " active" : "")}>Menu
+          </button>
           <ul className="nav nav-pills page__nav-inner" id="navbar">
-            <NavMenu name="Home" href="#"/>
-            <NavMenu name="Rules" href="#" addCaret={true}>
-              <MenuLink name="Rules Glossary" link="variantrules" href=""/>
-              <MenuLink name="Tables" link="tables" href=""/>
+            <NavMenu name="Home" href="/tests" showMenu={showMenu}/>
+            <NavMenu name="Rules" href="#" addCaret={true} showMenu={showMenu}>
+              <MenuLink name="Rules Glossary" link="rules"/>
+              <MenuLink name="Tables" link="#Unknown"/>
               <MenuDivider/>
-              <SubMenu name="Books">
-                <MenuLink name="Tables" link="tables" href="this"/>
+              <SubMenu name="Books" showMenu={showMenu}>
+                <MenuLink name="Books" link="#Unknown"/>
               </SubMenu>
               <MenuDivider/>
-              <MenuLink name="Quick Reference (2014)" link="quickreference" href=""/>
+              <MenuLink name="Quick Reference (2014)" link="#Unknown" href=""/>
             </NavMenu>
-            <NavMenu name="Player" href="#" addCaret={true}>
-              <MenuLink name="Classes" link="classes" href="classes"/>
-              <MenuLink name="Backgrounds" link="backgrounds" href="backgrounds"/>
-              <MenuLink name="Feats" link="feats" href="feats"/>
-              <MenuLink name="Races" link="races" href="races"/>
-              <MenuLink name="Other Character Creation Options" link="charcreationoptions" href="charcreationoptions"/>
-              <MenuLink name="Other Options &amp; Features" link="optionalfeatures" href="optionalfeatures"/>
+            <NavMenu name="Player" href="#" addCaret={true} showMenu={showMenu}>
+              <MenuLink name="Classes" link="classes"/>
+              <MenuLink name="Backgrounds" link="backgrounds"/>
+              <MenuLink name="Feats" link="feats"/>
+              <MenuLink name="Races" link="races"/>
+              <MenuLink name="Other Character Creation Options" link="#Unknown"/>
+              <MenuLink name="Other Options &amp; Features" link="optionsFeatures"/>
               <MenuDivider/>
-              <MenuLink name="Stat Generator" link="statgen" href="statgen"/>
+              <MenuLink name="Stat Generator" link="#Unknown"/>
               <MenuDivider/>
-              <MenuLink name="This Is Your Life" link="lifegen" href="lifegen"/>
-              <MenuLink name="Names" link="names" href="#"/>
+              <MenuLink name="This Is Your Life" link="#Unknown"/>
+              <MenuLink name="Names" link="#Unknown"/>
             </NavMenu>
-            <NavMenu name="Dungeon Master" href="#" addCaret={true}>
+            <NavMenu name="Dungeon Master" href="#" addCaret={true} showMenu={showMenu}>
               <MenuLink name="DM Screen" link="dmscreen" href="dmscreen"/>
               <MenuDivider/>
-              <SubMenu name="Adventures"></SubMenu>
-              <MenuLink name="Cults &amp; Supernatural Boons" link="cultsboons" href="cultsboons"/>
-              <MenuLink name="Objects" link="objects" href="objects"/>
-              <MenuLink name="Traps &amp; Hazards" link="trapshazards" href="trapshazards"/>
+              <SubMenu name="Adventures" showMenu={showMenu}></SubMenu>
+              <MenuLink name="Cults &amp; Supernatural Boons" link="#Unknown"/>
+              <MenuLink name="Objects" link="#Unknown"/>
+              <MenuLink name="Traps &amp; Hazards" link="#Unknown"/>
               <MenuDivider/>
-              <MenuLink name="CR Calculator" link="crcalculator" href="crcalculator"/>
-              <MenuLink name="Encounter Generator" link="encountergen" href="encountergen"/>
-              <MenuLink name="Loot Generator" link="lootgen" href="lootgen"/>
+              <MenuLink name="CR Calculator" link="#Unknown"/>
+              <MenuLink name="Encounter Generator" link="#Unknown"/>
+              <MenuLink name="Loot Generator" link="#Unknown"/>
               <MenuDivider/>
-              <MenuLink name="Maps" link="maps" href="maps"/>
+              <MenuLink name="Maps" link="#Unknown"/>
             </NavMenu>
-            <NavMenu name="References" href="#" addCaret={true}>
-              <MenuLink name="Actions" link="actions" href="actions"/>
-              <MenuLink name="Bestiary" link="bestiary" href="bestiary"/>
-              <MenuLink name="Conditions &amp; Diseases" link="conditionsdiseases" href="conditionsdiseases"/>
-              <MenuLink name="Decks" link="decks" href="decks"/>
-              <MenuLink name="Deities" link="deities" href="deities"/>
-              <MenuLink name="Items" link="items" href="items"/>
-              <MenuLink name="Languages" link="languages" href="languages"/>
-              <MenuLink name="Supernatural Gifts &amp; Rewards" link="rewards" href="rewards"/>
-              <MenuLink name="Psionics" link="psionics" href="psionics"/>
-              <MenuLink name="Spells" link="spells" href="spells"/>
-              <MenuLink name="Vehicles" link="vehicles" href="vehicles"/>
+            <NavMenu name="References" href="#" addCaret={true} showMenu={showMenu}>
+              <MenuLink name="Actions" link="#Unknown"/>
+              <MenuLink name="Bestiary" link="bestiary"/>
+              <MenuLink name="Conditions &amp; Diseases" link="conditions"/>
+              <MenuLink name="Decks" link="#Unknown"/>
+              <MenuLink name="Deities" link="#Unknown"/>
+              <MenuLink name="Items" link="items"/>
+              <MenuLink name="Languages" link="#Unknown"/>
+              <MenuLink name="Supernatural Gifts &amp; Rewards" link="#Unknown"/>
+              <MenuLink name="Psionics" link="#Unknown"/>
+              <MenuLink name="Spells" link="spells"/>
+              <MenuLink name="Vehicles" link="#Unknown"/>
               <MenuDivider/>
-              <MenuLink name="Recipes" link="recipes" href="recipes"/>
+              <MenuLink name="Recipes" link="#Unknown"/>
             </NavMenu>
-            <NavMenu name="Utilities" href="#" addCaret={true}>
+            <NavMenu name="Utilities" href="#" addCaret={true} showMenu={showMenu}>
               <MenuLink name="" link="dfts<" href="zersq"/>
             </NavMenu>
-            <NavMenu name="Settings" href="#" addCaret={true}>
+            <NavMenu name="Settings" href="#" addCaret={true} showMenu={showMenu}>
               <MenuLink name="" link="dfts<" href="zersq"/>
             </NavMenu>
             <div className="input-group omni__wrp-input">
@@ -154,6 +165,119 @@ export const Layout5e = () => {
       </div>
     </>
   )
+}
+
+export const Layout5eHome = () => {
+  return (<div className="home__stripe">
+    <div className="home__split relative">
+      <div className="home__stripe-header ve-text-right home__h-player">
+        <div className="w-100 ve-text-left mobile__text-center">Joueurs</div>
+      </div>
+      <div
+        className="ve-flex ve-flex-wrap relative home__split-spaced home__split-spaced--gutter home__split-spaced--no-header home__wrp-buttons">
+        <Link to="races" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-users home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Races</h4>
+        </Link>
+        <Link to="classes" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-hat-wizard home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Classes</h4>
+        </Link>
+        <Link to="feats" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-award home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Dons</h4>
+        </Link>
+        <Link to="optionsFeatures" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-drafting-compass home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Options <br/>& Capacités</h4>
+        </Link>
+        <Link to="backgrounds" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-portrait home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Historique</h4>
+        </Link>
+        <Link to="items" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-helmet-battle home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Items</h4>
+        </Link>
+        <Link to="spells" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-book-spells home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Sorts</h4>
+        </Link>
+        <Link to="" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-tally-5 home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Généraeur<br/>de Stats</h4>
+        </Link>
+      </div>
+      <div className="ve-flex ve-flex-wrap home__wrp-buttons home__narrow-hidden">
+        <Link to="backgrounds" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-portrait home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Historiques</h4>
+        </Link>
+        <Link to="items" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-helmet-battle home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Items</h4>
+        </Link>
+        <Link to="spells" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-book-spells home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Sorts</h4>
+        </Link>
+        <Link to="" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-tally-5 home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Généraeur<br/>de Stats</h4>
+        </Link>
+      </div>
+    </div>
+    <div className="my-4 home__mobile-hidden home__narrow-hidden"></div>
+    <div className="my-4 home__mobile-hidden home__narrow-visible"></div>
+    <div className="my-4 home__mobile-hidden"></div>
+    <div className="home__split">
+      <div className="ve-flex ve-flex-wrap relative home__split-spaced home__split-spaced--gutter home__wrp-buttons">
+        <div className="home__stripe-header home__h-rule">
+          <div className="w-100 ve-text-left mobile__text-center">Règles</div>
+        </div>
+        <Link className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-rule">
+          <div className="fal fa-dungeon home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Aventures</h4>
+        </Link>
+        <Link className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-rule">
+          <div className="fal fa-books home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Livres</h4>
+        </Link>
+        <Link to="rules" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-rule">
+          <div className="fal fa-info-square home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Glossaire<br/>de Règles</h4>
+        </Link>
+        <Link to="conditions" className="home__btn-page ve-btn ve-btn-default home__btn-rule">
+          <div className="fal fa-skull-crossbones home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Conditions</h4>
+        </Link>
+      </div>
+      <div className="my-4 home__mobile-visible"></div>
+      <div className="ve-flex ve-flex-wrap relative home__wrp-buttons">
+        <div className="home__stripe-header home__h-dm">
+          <div className="w-100 ve-text-left mobile__text-center">Maître du Donjon</div>
+        </div>
+        <Link to="bestiary" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-dm">
+          <div className="fal fa-dragon home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Bestiaire</h4>
+        </Link>
+        <Link className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-dm">
+          <div className="fal fa-map home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Écran de MJ</h4>
+        </Link>
+        <Link className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-dm">
+          <div className="fal fa-treasure-chest home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Générateur<br/>de Butin</h4>
+        </Link>
+        <Link className="disabled home__btn-page ve-btn ve-btn-default home__btn-dm">
+          <div className="fal fa-abacus home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Calculateur<br/>de FP</h4>
+        </Link>
+      </div>
+    </div>
+    <div className="my-4"></div>
+    <hr className="no-shrink w-100 my-0"/>
+  </div>)
 }
 
 const playerRaces = buildRace(require('./5e/resources/races.json'))
@@ -306,6 +430,109 @@ export const TableHeader = () => {
   )
 }
 
+function getSourceName(source) {
+  switch (source) {
+    case "PHB'14":
+      return "Player's Handbook (2014)"
+    case "VGM":
+      return "Volo’s Guide to Monsters"
+    case "EEPC":
+      return "Elemental Evil Player’s Companion"
+    case "ERLW":
+      return "Eberron: Rising from the Last War"
+    case "TCE":
+      return "Tasha’s Cauldron of Everything"
+    default:
+      return ""
+  }
+}
+
+function convertBonus(bonus: string) {
+  return bonus
+    .replace("For", "Force")
+    .replace("Dex", "Dextérité")
+    .replace("Con", "Constitution")
+    .replace("Int", "Intelligence")
+    .replace("Sag", "Sagesse")
+    .replace("Cha", "Charisme")
+}
+
+function convertSchool(school: string) {
+  switch (school) {
+    case "A":
+      return "Abjuration"
+    case "C":
+      return "Conjuration"
+    case "D":
+      return "Divination"
+    case "E":
+      return "Enchantement"
+    case "V":
+      return "Evocation"
+    case "I":
+      return "Illusion"
+    case "N":
+      return "Nécromancie"
+    case "T":
+      return "Transmutation"
+  }
+}
+
+function convertSchoolShort(school: string) {
+  switch (school) {
+    case "A":
+      return "Abj"
+    case "C":
+      return "Conj"
+    case "D":
+      return "Divin"
+    case "E":
+      return "Ench"
+    case "V":
+      return "Evo"
+    case "I":
+      return "Ill"
+    case "N":
+      return "Nécro"
+    case "T":
+      return "Trans"
+  }
+}
+
+const DetailsHeader = ({selected}) => {
+  return <tr>
+    <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
+        data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
+      <div className="split-v-end">
+        <div className="ve-flex-v-center">
+          <h1 className="stats__h-name copyable m-0"
+            // onMouseDown="event.preventDefault()"
+            // onClick="Renderer.utils._pHandleNameClick(this)"
+          >{selected.name}</h1>
+        </div>
+        <div className="stats__wrp-h-source  ve-flex-v-baseline">
+          <a href={"book.html#" + selected.source + ",page:" + selected.page}
+             className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
+             title={getSourceName(selected.source)}>{selected.source}</a>
+          <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
+             title={"Page" + selected.page}>p{selected.page}</a>
+        </div>
+      </div>
+    </th>
+  </tr>
+}
+
+function setSelectFromHash(elements, hash) {
+  const filtered = elements.find((e) => "#" + e.id === hash)
+  console.log("selected", filtered)
+  if (filtered) {
+    return filtered
+  } else {
+    return {}
+  }
+}
+
+
 export const Layout5eRaces = () => {
 
   const columns = [
@@ -331,27 +558,13 @@ export const Layout5eRaces = () => {
     }
   ]
 
-  function getSourceName(source) {
-    switch (source) {
-      case "PHB'14":
-        return "Player's Handbook (2014)"
-      case "VGM":
-        return "Volo’s Guide to Monsters"
-      case "EEPC":
-        return "Elemental Evil Player’s Companion"
-      case "ERLW":
-        return "Eberron: Rising from the Last War"
-      default:
-        return ""
-    }
-  }
 
   const races = require('./5e/resources/races.json')
   // console.log(races)
   const [elements, setElements] = useState(buildRace(races))
   const [sorting, setSorting] = useState("")
 
-  const [selected, setSelected] = useState(setSelectFromHash())
+  const [selected, setSelected] = useState(setSelectFromHash([...buildRace(races)], useLocation().hash))
   // let selected ={};
 
   const DetailsHeader = () => {
@@ -376,6 +589,10 @@ export const Layout5eRaces = () => {
       </th>
     </tr>
   }
+
+  useEffect(() => {
+    setSelected(setSelectFromHash())
+  }, []);
 
   const handleSort = (type) => {
     const shouldReset = sorting === type + ".des"
@@ -404,29 +621,9 @@ export const Layout5eRaces = () => {
     })
   }
 
-  function setSelectFromHash() {
-    const filtered = elements.filter((e) => "#" + e.id === window.location.hash)
-    if (filtered.length > 0) {
-      return filtered[0]
-    } else {
-      return {}
-    }
-  }
-
   const handleClick = elem => {
     setSelected(elem)
   };
-
-
-  function convertBonus(bonus: string) {
-    return bonus
-      .replace("For", "Force")
-      .replace("Dex", "Dextérité")
-      .replace("Con", "Constitution")
-      .replace("Int", "Intelligence")
-      .replace("Sag", "Sagesse")
-      .replace("Cha", "Charisme")
-  }
 
   // console.log(elements)
   return (
@@ -452,13 +649,13 @@ export const Layout5eRaces = () => {
                 className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
                 onClick={() => handleClick(elem)}>
 
-                <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
+                <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
                   <span className="bold ve-col-4 pl-0 pr-1">{elem.name}</span>
                   <span className="ve-col-4 px-1 italic">{elem.bonus}</span>
                   <span className="ve-col-2 px-1 ve-text-center">{elem.size}</span>
                   <span className={"ve-col-2 ve-text-center source__" + elem.source + " pl-1 pr-0"}
                         title={getSourceName(elem.source)}>{elem.source}</span>
-                </a>
+                </Link>
               </div>
             })}
           </div>
@@ -556,7 +753,9 @@ export const Layout5eRaces = () => {
                           <p>Cette race à plusieurs héritages comme listé ci-dessous</p>
                           <ul className="rd__list">
                             {selected.subraces.map((subrace) => <li className="rd__li">
-                              <a href={"#" + subrace.id}>{subrace.name}</a>
+                              <Link to={"#" + subrace.id} replace
+                                    onClick={() => handleClick(elements.find((e) => e.id === subrace.id))}
+                              >{subrace.name}</Link>
                             </li>)}
                           </ul>
                         </div>
@@ -766,13 +965,30 @@ export const Layout5eRaces = () => {
   )
 }
 
-export const Layout5eClasses = () => {
+
+export const Layout5eFeats = () => {
+  // TODO: Finish Data Set.
 
   const columns = [
     {
-      id: "Name",
+      id: "Nom",
       sortId: "name",
-      classSize: "ve-col-8"
+      classSize: "ve-col-3-2"
+    },
+    {
+      id: "Catégorie",
+      sortId: "cat",
+      classSize: "ve-col-1-3"
+    },
+    {
+      id: "Capacité",
+      sortId: "ability",
+      classSize: "ve-col-2-5"
+    },
+    {
+      id: "Prérequis",
+      sortId: "prerequisite",
+      classSize: "ve-col-3"
     },
     {
       id: "Source",
@@ -780,56 +996,31 @@ export const Layout5eClasses = () => {
       classSize: "ve-grow"
     }
   ]
-
-  const classes = require('./5e/resources/classes.json')
-  const [elements, setElements] = useState(classes)
+  const feat = require('./5e/resources/feats.json')
+  // console.log(races)
+  const [elements, setElements] = useState([...feat])
   const [sorting, setSorting] = useState("")
+
   const [selected, setSelected] = useState(setSelectFromHash())
 
-  const [scrollRefs, setScrollRefs] = useState(useRef([]))
-
-  scrollRefs.current = [...Array(90).keys()].map(
-    (_, i) => scrollRefs.current[i] ?? createRef()
-  )
-  const scrollSmoothHandler = (index) => ()=>{
-    scrollRefs.current[index].current.scrollIntoView({behavior: "smooth"});
-  }
-
-  const location = useLocation()
   useEffect(() => {
-    const UpdateLocation = () => {
-      const hash = location.hash.substring(1);
-      if (!hash) return;
-      const [mainSection, ...subAnchors] = hash.split(",")
-      if (mainSection) {
-        const mainElement = elements.filter((e) => e.id === mainSection)
-        if (mainElement) {
-          setSelected(mainElement[0])
-        }
-      }
-      subAnchors.forEach((subAnchor) => {
-        const [typeAndName, value] = subAnchor.split("=")
-        const [type, name] = typeAndName.split(":")
-        if (type === "state" && name === "feature") {
-          const targetElement = document.querySelectorAll(`[data-scroll-id="${value}"]`)
-          if (targetElement) {
-            scrollSmoothHandler(value)
-          }
-        }
-
-      })
-    }
-    UpdateLocation()
-  }, [location])
+    setSelected(setSelectFromHash())
+  }, []);
 
   function setSelectFromHash() {
-    const filtered = elements.filter((e) => "#" + e.id === window.location.hash)
-    if (filtered.length > 0) {
-      return filtered[0]
+    const filtered = elements.find((e) => "#" + e.id === window.location.hash)
+    console.log(filtered)
+    if (filtered) {
+      return filtered
     } else {
       return {}
     }
   }
+
+  const handleClick = elem => {
+    setSelected(elem)
+  };
+
 
   const handleSort = (type) => {
     const shouldReset = sorting === type + ".des"
@@ -858,381 +1049,688 @@ export const Layout5eClasses = () => {
     })
   }
 
-  const DetailsHeader = () => {
-    return <tr>
-      <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
-          data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
-        <div className="split-v-end">
-          <div className="ve-flex-v-center">
-            <h1 className="stats__h-name copyable m-0"
-              // onMouseDown="event.preventDefault()"
-              // onClick="Renderer.utils._pHandleNameClick(this)"
-            >{selected.name}</h1>
-          </div>
-          <div className="stats__wrp-h-source  ve-flex-v-baseline">
-            <a href={"book.html#" + selected.source + ",page:" + selected.page}
-               className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
-               title={getSourceName(selected.source)}>{selected.source}</a>
-            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
-               title={"Page" + selected.page}>p{selected.page}</a>
-          </div>
-        </div>
-      </th>
-    </tr>
-  }
-
-  function setSelectFromHash() {
-    const filtered = elements.filter((e) => "#" + e.id === window.location.hash.split(",")[0])
-    if (filtered.length > 0) {
-      console.log("filtered", filtered[0])
-      return filtered[0]
-    } else {
-      return elements[0]
-    }
-  }
-
-  function getSourceName(source) {
-    switch (source) {
-      case "PHB'14":
-        return "Player's Handbook (2014)"
-      case "VGM":
-        return "Volo’s Guide to Monsters"
-      case "EEPC":
-        return "Elemental Evil Player’s Companion"
-      case "ERLW":
-        return "Eberron: Rising from the Last War"
-      default:
-        return ""
-    }
-  }
-
-  const buildSpells = (maxSpellLevel) => {
-    const obj = [];
-    for (let i = 1; i <= maxSpellLevel; i++) {
-      obj.push(
-        <th className="cls-tbl__col-generic-center">
-          <Link to={"spell#blankhash,lvl:" + i + "=1,class:" + selected.id + "=1"}>{i}</Link>
-        </th>
-      )
-    }
-    return obj
-  }
-
-  const tableContent = (table, columns) => {
-    while (table.length < 20) {
-      table.push([])
-    }
-    return table.map((line, lineIdx) => {
-      while (line.length < columns) {
-        line.push("")
-      }
-      return <tr className="cls-tbl__stripe-odd">
-        <td className="cls-tbl__col-level">{lineIdx === 0 ? (lineIdx + 1) + "er" : (lineIdx + 1) + "e"}</td>
-        <td className="cls-tbl__col-level">{"+" + Math.ceil(1 + (lineIdx + 1) / 4)}</td>
-
-        {line.map((cell, nb) => {
-          if (!cell) {
-            return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>—</td>
-          } else if (typeof (cell) === typeof ("") || typeof (cell) === typeof (0)) {
-            return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>{cell}</td>
-          } else if (typeof (cell) === typeof ([])) {
-            return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>{cell.map((link, idx) => {
-              return <>
-                <div className="inline-block">
-                  <Link to={"#" + selected.id + ",state:s" + lineIdx + "-" + idx}>{link}</Link>
-                </div>
-                {idx === cell.length - 1 ? "" : ", "}
-              </>
-            })}</td>
-          } else {
-            return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>
-              <Link to={"#" + selected.id + ",state:s" + lineIdx + "-0"}>{cell}</Link>
-            </td>
-          }
-        })}
-      </tr>
-    })
-  }
-
   return (
-    <main className="container classes">
-      <div className="row">
-        <div className="col-md-3" id="listcontainer">
-          <div className="night__shadow-big">
-            <TableHeader/>
-            <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-              {columns.map((col) => {
-                return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-                                onClick={() => handleSort(col.sortId)}>
-                  {col.id}<span
-                  className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-                </button>)
-              })}
-            </div>
-            {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-            <div id="list" className="list list--stats">
-              {/*{console.log(elements)}*/}
-              {elements.map((elem) => {
-                // console.log(elem)
-                return <div
-                  className={"lst__row ve-flex-col" + (selected.id === elem.id ? " list-multi-selected" : "")}
-                  // onClick={() => handleClick(elem)}
-                >
-                  <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-8 pl-0 pr-1">{elem.name}</span>
-                    <span className={"ve-col-4 ve-text-center source__" + elem.source + " pl-1 pr-0 pr-1"}
-                          title={getSourceName(elem.source)}>{elem.source}</span>
-                  </a>
-                </div>
-              })}
-            </div>
+    <div className="view-col-group--cancer h-100 mh-0">
+      <div className="container view-col-wrapper view-col-wrapper--cancer">
+        <div className="view-col" id="listcontainer">
+          <TableHeader/>
+          <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+            {columns.map((col) => {
+              return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                              onClick={() => handleSort(col.sortId)}>
+                {col.id}<span
+                className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+              </button>)
+            })}
+          </div>
+          {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+          <div id="list" className="list list--stats">
+            {/*{console.log(elements)}*/}
+            {elements.map((elem) => {
+              // console.log(elem)
+              return <div
+                className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+                onClick={() => handleClick(elem)}>
+
+                <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
+                  {columns.map(column => {
+                    // console.log(column.sortId, elem[column.sortId])
+                    if (column.sortId === "source") {
+                      return <span
+                        className={"source ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
+                    }
+                    return <span
+                      className={column.classSize + " px-1"}>{elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}</span>
+                  })}
+                </Link>
+              </div>
+            })}
           </div>
         </div>
-        <div className="col-md-9" id="classtable">
-          {!selected ?
-            <div className="view-col" id="contentwrapper">
-              <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-                <table id="pagecontent" className="w-100 stats">
-                  <tbody>
-                  <tr>
-                    <th className="ve-tbl-border" colSpan="6"></th>
-                  </tr>
-                  <tr>
-                    <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-                      view it here
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="ve-tbl-border" colSpan="6"></th>
-                  </tr>
-                  </tbody>
-                </table>
+        <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+        {Object.keys(selected).length === 0 ?
+          <div className="view-col" id="contentwrapper">
+            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+              <table id="pagecontent" className="w-100 stats">
+                <tbody>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                    view it here
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> :
+          <div className="view-col" id="contentwrapper">
+            <div className="w-100 ve-flex" id="stat-tabs">
+              <div className="ml-auto ve-flex" id="tabs-right">
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                  className="glyphicon glyphicon-new-window"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                        title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                  className="glyphicon glyphicon-magnet"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                  <span className="glyphicon glyphicon-option-vertical"></span></button>
               </div>
-            </div> :
-            <table className="cls-tbl shadow-big w-100 mb-2">
-              <tbody>
-              <tr>
-                <th className="ve-tbl-border" colSpan="15"></th>
-              </tr>
-              <tr>
-                <th className="ve-text-left cls-tbl__disp-name" colSpan="15">{selected.name}</th>
-              </tr>
-              <tr>
-                <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
-                <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
-                <th className="ve-text-left" rowSpan="2">Capacité</th>
-                {selected.table.title.map((title) => {
-                  return <th className="cls-tbl__col-generic-center" rowSpan="2">
-                    <div className="cls__squash_header">
-                      {typeof (title) === typeof ("") ? title : <a href={title.href}>{title.name}</a>}
+            </div>
+            <div id="wrp-pagecontent" className="relative wrp-stats-table">
+              <table className="w-100 stats">
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <DetailsHeader selected={selected}/>
+                {selected.prerequisite ? <tr>
+                  <td colSpan={6} className="pb-2 pt-0">
+                    <i>Prérequis: {selected.prerequisite}</i>
+                  </td>
+                </tr> : ""}
+                <tr>
+                  <td colSpan="6">
+                    <div className="rd__b rd__b--2">
+                      {selected.shortDesc}
                     </div>
-                  </th>
-                })}
-                {selected.table.spellcaster ?
-                  <th className="cls-tbl__col-group" colSpan={selected.table.spellcaster === "Full" ? 9 : 5}>-
-                    Emplacements de sorts -</th>
-                  : ""}
-              </tr>
-              {selected.table.spellcaster ? <tr>{buildSpells(selected.table.spellcaster === "Full" ? 9 : 5)}</tr> : ""}
-              {tableContent(selected.table.content, 1 + selected.table.title.length + (selected.table.spellcaster === "Full" ? 9 : 5))}
-              </tbody>
-            </table>
-          }
-        </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="pt-3">
+                    <b>Source:</b>
+                    <i title={getSourceName(selected.source)}>{selected.source}</i>, page
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        }
       </div>
-      <hr className="mt-0"/>
-      <div className="row ve-flex mobile-md__ve-flex-col">
-        <div></div>
-      </div>
-    </main>
-    // <div className="view-col-group--cancer h-100 mh-0">
-    //   <div className="container view-col-wrapper view-col-wrapper--cancer">
-    //     <div className="view-col" id="listcontainer">
-    //       <TableHeader/>
-    //       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-    //         {columns.map((col) => {
-    //           return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-    //                           onClick={() => handleSort(col.sortId)}>
-    //             {col.id}<span
-    //             className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-    //           </button>)
-    //         })}
-    //       </div>
-    //       {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-    //       <div id="list" className="list list--stats">
-    //         {/*{console.log(elements)}*/}
-    //         {elements.map((elem) => {
-    //           // console.log(elem)
-    //           return <div
-    //             className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-    //             onClick={() => handleClick(elem)}>
-    //
-    //             <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
-    //               <span className="bold ve-col-8 pl-0 pr-1">{elem.name}</span>
-    //               <span className={"ve-col-4 ve-text-center source__" + elem.source + " pl-1 pr-0 pr-1"}
-    //                     title={getSourceName(elem.source)}>{elem.source}</span>
-    //             </a>
-    //           </div>
-    //         })}
-    //       </div>
-    //     </div>
-    //     <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
-    //     {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-    //     {Object.keys(selected).length === 0 ?
-    //       <div className="view-col" id="contentwrapper">
-    //         <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-    //           <table id="pagecontent" className="w-100 stats">
-    //             <tbody>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             <tr>
-    //               <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-    //                 view it here
-    //               </td>
-    //             </tr>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             </tbody>
-    //           </table>
-    //         </div>
-    //       </div> :
-    //       <Tabs className="view-col" id="contentwrapper">
-    //         <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0}
-    //                  style={{paddingLeft: "0px", marginBottom: "0px"}}>
-    //           <Tab
-    //             className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
-    //           <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
-    //           {selected.images.length === 0 ?
-    //             <Tab
-    //               className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
-    //             : <></>
-    //           }
-    //           <li className="ml-auto ve-flex" id="tabs-right">
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-    //                     title="Pin (Toggle) (Hotkey: p/P)">
-    //               <span className="glyphicon glyphicon-pushpin"></span>
-    //             </button>
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-    //                     title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)">
-    //               <span className="glyphicon glyphicon-new-window"></span>
-    //             </button>
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-    //                     title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
-    //               <span className="glyphicon glyphicon-magnet"></span>
-    //             </button>
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-    //                     title="Other Options">
-    //               <span className="glyphicon glyphicon-option-vertical"></span>
-    //             </button>
-    //           </li>
-    //         </TabList>
-    //         <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-    //           <table className="w-100 stats">
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             <DetailsHeader/>
-    //             <tr>
-    //               <td colSpan={6} className="pt-3">
-    //                 <b>Source:</b>
-    //                 <i title={getSourceName(selected.source)}>{selected.source}</i>
-    //                 , page {selected.page}. {selected.reprinted}
-    //               </td>
-    //             </tr>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //           </table>
-    //         </TabPanel>
-    //         <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-    //           <table className="w-100 stats">
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             <DetailsHeader/>
-    //             <tr>
-    //               <td colSpan={6} className="pt-3">
-    //                 <div className="rd__b rd__b--1">
-    //                   <div className="rd__b rd__b--2">
-    //                     {selected.info.map((info) => {
-    //                       const key = Object.keys(info)[0];
-    //                       const value = info[key]
-    //                       if (key === "") {
-    //                         return (<p>{value}</p>)
-    //                       }
-    //                       if (typeof value === typeof []) {
-    //                         return (
-    //                           <div className="rd__b rd__b--3">
-    //                             {value.map((elem) => {
-    //                               return (
-    //                                 <p>
-    //                                   {elem === value[0] ? <>
-    //                                         <span className="rd__h rd__b--3">
-    //                                           <span className="entry-title-inner">{key}</span>
-    //                                         </span>
-    //                                     {" " + key}
-    //                                   </> : key
-    //                                   }
-    //                                 </p>
-    //                               )
-    //                             })}
-    //                           </div>
-    //                         )
-    //                       }
-    //                       if (typeof value === typeof {}) {
-    //                         return formatContent([value])
-    //                       }
-    //                       return (
-    //                         <div className="rd__b rd__b--3">
-    //                           <p>
-    //                                   <span className="rd__h rd__b--3">
-    //                                     <span className="entry-title-inner">{key}</span>
-    //                                   </span>
-    //                             {" " + key}
-    //                           </p>
-    //                         </div>
-    //                       )
-    //                     })}
-    //                   </div>
-    //                 </div>
-    //               </td>
-    //             </tr>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //           </table>
-    //         </TabPanel>
-    //         {selected.images.length === 0 ?
-    //           <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-    //             <table className="w-100 stats">
-    //               <tr>
-    //                 <th className="ve-tbl-border" colSpan="6"></th>
-    //               </tr>
-    //               <DetailsHeader/>
-    //               <tr>
-    //                 <th className="ve-tbl-border" colSpan="6"></th>
-    //               </tr>
-    //             </table>
-    //           </TabPanel>
-    //           : <></>
-    //         }
-    //       </Tabs>
-    //     }
-    //   </div>
-    // </div>
+    </div>
   )
 }
-export const Layout5eFeats = () => {
-}
+
 export const Layout5eBackgrounds = () => {
+
+  const columns = [
+    {
+      id: "Nom",
+      sortId: "name",
+      classSize: "ve-col-2-5"
+    },
+    {
+      id: "Ability",
+      sortId: "bonus",
+      classSize: "ve-col-3-5"
+    },
+    {
+      id: "Maîtrise de compétences",
+      sortId: "skills",
+      classSize: "ve-col-4"
+    },
+    {
+      id: "Source",
+      sortId: "source",
+      classSize: "ve-grow"
+    }
+  ]
+
+  const background = require('./5e/resources/backgrounds.json')
+  const [elements, setElements] = useState(buildRace(background))
+  const [sorting, setSorting] = useState("")
+  const [selected, setSelected] = useState(setSelectFromHash([...background], useLocation().hash))
+
+
+  const handleSort = (type) => {
+    const shouldReset = sorting === type + ".des"
+    const shouldAscend = !sorting.startsWith(type)
+    const shouldDescend = sorting === type + ".asc"
+
+    if (shouldAscend) {
+      // console.log("Should now ascend: " + type + ".asc")
+      setSorting(type + ".asc")
+    } else if (shouldDescend) {
+      setSorting(type + ".des")
+      // console.log("Should now descend: " + type + ".des")
+    } else if (shouldReset) {
+      setSorting("")
+      // console.log("Should reset.")
+      type = "id"
+    }
+
+    elements.sort(function (a, b) {
+      let textA = a[type].toUpperCase();
+      let textB = b[type].toUpperCase();
+      if (shouldAscend || shouldReset) {
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+      }
+      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
+    })
+  }
+  const handleClick = elem => {
+    setSelected(elem)
+  };
+
+  return (
+    <div className="view-col-group--cancer h-100 mh-0">
+      <div className="container view-col-wrapper view-col-wrapper--cancer">
+        <div className="view-col" id="listcontainer">
+          <TableHeader/>
+          <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+            {columns.map((col) => {
+              return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                              onClick={() => handleSort(col.sortId)}>
+                {col.id}<span
+                className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+              </button>)
+            })}
+          </div>
+          {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+          <div id="list" className="list list--stats">
+            {/*{console.log(elements)}*/}
+            {elements.map((elem) => {
+              // console.log(elem)
+              return <div
+                className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+                onClick={() => handleClick(elem)}>
+
+                <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
+                  {columns.map(column => {
+                    // console.log(column.sortId, elem[column.sortId])
+                    if (column.sortId === "source") {
+                      return <span
+                        className={"source ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
+                    }
+                    return <span
+                      className={column.classSize + " px-1"}>{elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}</span>
+                  })}
+                </Link>
+              </div>
+            })}
+          </div>
+        </div>
+        <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+        {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+        {Object.keys(selected).length === 0 ?
+          <div className="view-col" id="contentwrapper">
+            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+              <table id="pagecontent" className="w-100 stats">
+                <tbody>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                    view it here
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> :
+          <div className="view-col" id="contentwrapper">
+            <div className="w-100 ve-flex" id="stat-tabs">
+              <div className="ml-auto ve-flex" id="tabs-right">
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                  className="glyphicon glyphicon-new-window"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                        title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                  className="glyphicon glyphicon-magnet"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                  <span className="glyphicon glyphicon-option-vertical"></span></button>
+              </div>
+            </div>
+            <div id="wrp-pagecontent" className="relative wrp-stats-table">
+              <table className="w-100 stats">
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <DetailsHeader selected={selected}/>
+                {selected.prerequisite ? <tr>
+                  <td colSpan={6} className="pb-2 pt-0">
+                    <i>Prérequis: {selected.prerequisite}</i>
+                  </td>
+                </tr> : ""}
+                <tr>
+                  <td colSpan="6">
+                    <div className="rd__b rd__b--2" dangerouslySetInnerHTML={{__html: selected.content[0].html}}></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="pt-3">
+                    <b>Source:</b>
+                    <i title={getSourceName(selected.source)}>{selected.source}</i>, page
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  )
 }
 export const Layout5eOptionFeaures = () => {
 }
 export const Layout5eItems = () => {
+
+  const columns = [
+    {
+      id: "Nom",
+      sortId: "name",
+      classSize: "ve-col-2-5"
+    },
+    {
+      id: "Ability",
+      sortId: "bonus",
+      classSize: "ve-col-3-5"
+    },
+    {
+      id: "Maîtrise de compétences",
+      sortId: "skills",
+      classSize: "ve-col-4"
+    },
+    {
+      id: "Source",
+      sortId: "source",
+      classSize: "ve-grow"
+    }
+  ]
+
+  const spells = require('./5e/resources/spells.json')
+  const [elements, setElements] = useState(buildRace(spells))
+  const [sorting, setSorting] = useState("")
+  const [selected, setSelected] = useState(setSelectFromHash([...spells], useLocation().hash))
+
+
+  const handleSort = (type) => {
+    const shouldReset = sorting === type + ".des"
+    const shouldAscend = !sorting.startsWith(type)
+    const shouldDescend = sorting === type + ".asc"
+
+    if (shouldAscend) {
+      // console.log("Should now ascend: " + type + ".asc")
+      setSorting(type + ".asc")
+    } else if (shouldDescend) {
+      setSorting(type + ".des")
+      // console.log("Should now descend: " + type + ".des")
+    } else if (shouldReset) {
+      setSorting("")
+      // console.log("Should reset.")
+      type = "id"
+    }
+
+    elements.sort(function (a, b) {
+      let textA = a[type].toUpperCase();
+      let textB = b[type].toUpperCase();
+      if (shouldAscend || shouldReset) {
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+      }
+      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
+    })
+  }
+  const handleClick = elem => {
+    setSelected(elem)
+  };
+
+  return (
+    <div className="view-col-group--cancer h-100 mh-0">
+      <div className="container view-col-wrapper view-col-wrapper--cancer">
+        <div className="view-col" id="listcontainer">
+          <TableHeader/>
+          <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+            {columns.map((col) => {
+              return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                              onClick={() => handleSort(col.sortId)}>
+                {col.id}<span
+                className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+              </button>)
+            })}
+          </div>
+          {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+          <div id="list" className="list list--stats">
+            {/*{console.log(elements)}*/}
+            {elements.map((elem) => {
+              // console.log(elem)
+              return <div
+                className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+                onClick={() => handleClick(elem)}>
+
+                <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
+                  {columns.map(column => {
+                    // console.log(column.sortId, elem[column.sortId])
+                    if (column.sortId === "source") {
+                      return <span
+                        className={"source ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
+                    }
+                    return <span
+                      className={column.classSize + " px-1"}>{elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}</span>
+                  })}
+                </Link>
+              </div>
+            })}
+          </div>
+        </div>
+        <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+        {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+        {Object.keys(selected).length === 0 ?
+          <div className="view-col" id="contentwrapper">
+            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+              <table id="pagecontent" className="w-100 stats">
+                <tbody>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                    view it here
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> :
+          <div className="view-col" id="contentwrapper">
+            <div className="w-100 ve-flex" id="stat-tabs">
+              <div className="ml-auto ve-flex" id="tabs-right">
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                  className="glyphicon glyphicon-new-window"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                        title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                  className="glyphicon glyphicon-magnet"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                  <span className="glyphicon glyphicon-option-vertical"></span></button>
+              </div>
+            </div>
+            <div id="wrp-pagecontent" className="relative wrp-stats-table">
+              <table className="w-100 stats">
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <DetailsHeader selected={selected}/>
+                {selected.prerequisite ? <tr>
+                  <td colSpan={6} className="pb-2 pt-0">
+                    <i>Prérequis: {selected.prerequisite}</i>
+                  </td>
+                </tr> : ""}
+                <tr>
+                  <td colSpan="6">
+                    <div className="rd__b rd__b--2" dangerouslySetInnerHTML={{__html: selected.content[0].html}}></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="pt-3">
+                    <b>Source:</b>
+                    <i title={getSourceName(selected.source)}>{selected.source}</i>, page
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  )
 }
+
+
 export const Layout5eSpells = () => {
+
+  const columns = [
+    {
+      id: "Nom",
+      sortId: "name",
+      classSize: "ve-col-2-9"
+    },
+    {
+      id: "Niveau",
+      sortId: "level",
+      classSize: "ve-col-1-5"
+    },
+    {
+      id: "Incantation",
+      sortId: "castingTime",
+      classSize: "ve-col-1-7"
+    },
+    {
+      id: "School",
+      sortId: "school",
+      classSize: "ve-col-1-2"
+    },
+    {
+      id: "C",
+      sortId: "concentration",
+      classSize: "ve-col-0-6"
+    },
+    {
+      id: "Range",
+      sortId: "range",
+      classSize: "ve-col-2-4"
+    },
+    {
+      id: "Source",
+      sortId: "source",
+      classSize: "ve-grow"
+    }
+  ]
+
+  const spells = require('./5e/resources/spells.json')
+  const [elements, setElements] = useState(buildRace(spells))
+  const [sorting, setSorting] = useState("")
+  const [selected, setSelected] = useState(setSelectFromHash([...spells], useLocation().hash))
+
+
+  const handleSort = (type) => {
+    const shouldReset = sorting === type + ".des"
+    const shouldAscend = !sorting.startsWith(type)
+    const shouldDescend = sorting === type + ".asc"
+
+    if (shouldAscend) {
+      // console.log("Should now ascend: " + type + ".asc")
+      setSorting(type + ".asc")
+    } else if (shouldDescend) {
+      setSorting(type + ".des")
+      // console.log("Should now descend: " + type + ".des")
+    } else if (shouldReset) {
+      setSorting("")
+      // console.log("Should reset.")
+      type = "id"
+    }
+
+    elements.sort(function (a, b) {
+      let textA = a[type].toUpperCase();
+      let textB = b[type].toUpperCase();
+      if (shouldAscend || shouldReset) {
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+      }
+      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
+    })
+  }
+  const handleClick = elem => {
+    setSelected(elem)
+  };
+
+  return (
+    <div className="view-col-group--cancer h-100 mh-0">
+      <div className="container view-col-wrapper view-col-wrapper--cancer">
+        <div className="view-col" id="listcontainer">
+          <TableHeader/>
+          <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
+            {columns.map((col) => {
+              return (
+                <button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
+                        onClick={() => handleSort(col.sortId)}
+                        title={col.sortId === "concentration" ? "Concentration" : ""}
+                >
+                  {col.id}<span
+                  className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
+                </button>
+              )
+            })}
+          </div>
+          {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
+          <div id="list" className="list list--stats">
+            {/*{console.log(elements)}*/}
+            {elements.map((elem) => {
+              // console.log(elem)
+              return <div
+                className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+                onClick={() => handleClick(elem)}>
+
+                <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
+                  {columns.map(column => {
+                    const center = ["level", "castingTime", "school"]
+                    const right = ["range"]
+                    // console.log(column.sortId, elem[column.sortId])
+                    if (column.sortId === "source") {
+                      return <span
+                        className={"ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
+                    } else if (column.sortId === "concentration") {
+                      return <span className={"ve-col-0-6 px-1 ve-text-center"}
+                                   title="Cencentration">{elem.concentration ? "×" : ""}</span>
+                    } else if (column.sortId === "school") {
+                      return <span
+                        className={"ve-col-1-2 px-1 ve-text-center sp__school-" + elem.school}>{convertSchoolShort(elem.school)}</span>
+                    }
+                    return <span
+                      className={column.classSize + (center.includes(column.sortId) ? " ve-text-center" : "") + (right.includes(column.sortId) ? " ve-text-right" : "") + (column.sortId === "name" ? " bold" : "") + " px-1"}>
+                      {elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}
+                      {column.sortId === "level" && elem.ritual ? " (rit.)" : ""}
+                    </span>
+                  })}
+                </Link>
+              </div>
+            })}
+          </div>
+        </div>
+        <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+        {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+        {Object.keys(selected).length === 0 ?
+          <div className="view-col" id="contentwrapper">
+            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+              <table id="pagecontent" className="w-100 stats">
+                <tbody>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                    view it here
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> :
+          <div className="view-col" id="contentwrapper">
+            <div className="w-100 ve-flex" id="stat-tabs">
+              <div className="ml-auto ve-flex" id="tabs-right">
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+                </button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                        title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                  className="glyphicon glyphicon-new-window"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                        title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                  className="glyphicon glyphicon-magnet"></span></button>
+                <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                  <span className="glyphicon glyphicon-option-vertical"></span></button>
+              </div>
+            </div>
+            <div id="wrp-pagecontent" className="relative wrp-stats-table">
+              <table className="w-100 stats">
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+                <DetailsHeader selected={selected}/>
+                <tr>
+                  <td colSpan="6"><i>{convertSchool(selected.school)} de Niveau {selected.level} </i></td>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="pt-2"><b>Casting
+                    Time:</b> {selected.castingTime}{selected.ritual ? " ou en rituel" : ""}</td>
+                </tr>
+                <tr>
+                  <td colSpan="6"><b>Range:</b> {selected.range}</td>
+                </tr>
+                <tr>
+                  <td colSpan="6"><b>Components:</b> {selected.component}</td>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="pb-2"><b>Duration:</b> {selected.duration ?? ""}</td>
+                </tr>
+                <tr>
+                  <td colSpan="6">
+                    <div className="rd__b  rd__b--2">
+                      {selected.shortDesc}
+                    </div>
+                    {selected.upCast ? <div className="rd__b  rd__b--3">
+                        <p></p>
+                        <div data-roll-name-ancestor="Using a Higher-Level Spell Slot" className="rd__b  rd__b--3">
+                          <p>
+                        <span className="rd__h rd__h--3" data-title-index="6">
+                          <span className="entry-title-inner">Using a Higher-Level Spell Slot.</span>
+                        </span>
+                            The spell's duration increases by 48 hours for
+                            each spell slot level above 2.
+                          </p>
+                        </div>
+                      </div>: ""}
+                    {/*TODO: Put caster here.*/}
+                    <div></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan="6" className="pt-3">
+                    <b>Source:</b>
+                    <i title={getSourceName(selected.source)}>{selected.source}</i>, page.
+                  </td>
+                </tr>
+                <tr>
+                  <th className="ve-tbl-border" colSpan="6"></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  )
+
 }
 export const Layout5eRules = () => {
 }

@@ -251,7 +251,7 @@
 //         const fromBrew = MiscUtil.copyFast(brew?.[prop] || []);
 //         const mutParentName = (it) => {
 //             if (it.parentSource)
-//               it.parentName = Parser.sourceJsonToFull(it.parentSource);
+//               it.parentName = Parser.js.sourceJsonToFull(it.parentSource);
 //           }
 //         ;
 //         fromPrerelease.forEach(mutParentName);
@@ -410,12 +410,12 @@
 //     return `${(date != null || isAddDateSpacer) ? `<div class="ve-small mr-2 page__nav-date inline-block ve-text-right inline-block">${date || ""}</div>` : ""}`;
 //   }
 //   static _addElement_getSourcePrefix({source}) {
-//     return `${source != null ? `<div class="nav2-list__disp-source ${Parser.sourceJsonToSourceClassname(source)}" ${Parser.sourceJsonToStyle(source)}></div>` : ""}`;
+//     return `${source != null ? `<div class="nav2-list__disp-source ${Parser.js.sourceJsonToSourceClassname(source)}" ${Parser.js.sourceJsonToStyle(source)}></div>` : ""}`;
 //   }
 //   static _addElement_getSourceSuffix({source}) {
 //     if (source == null)
 //       return "";
-//     return Parser.sourceJsonToMarkerHtml(source, {
+//     return Parser.js.sourceJsonToMarkerHtml(source, {
 //       isList: false,
 //       additionalStyles: "ml-1 nav2-list__disp-legacy-marker"
 //     });
