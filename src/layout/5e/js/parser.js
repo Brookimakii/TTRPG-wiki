@@ -1,13 +1,4 @@
 export class Parser {
-
-
-  static getSourceName(source: string) {
-    switch (source) {
-      case "PHB": return "Player's Handbook"
-      case "TCE": return "Tasha's Caldron to Everything"
-    }
-  }
-
 }
 Parser.attAbvToFull = function (abv) {
   return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
@@ -44,6 +35,62 @@ Parser.ATB_ABV_TO_FULL = {
   "sag": "Sagesse",
   "cha": "Charisme",
 };
+
+// region School
+Parser.SKL_ABV_ABJ = "A";
+Parser.SKL_ABV_EVO = "V";
+Parser.SKL_ABV_ENC = "E";
+Parser.SKL_ABV_ILL = "I";
+Parser.SKL_ABV_DIV = "D";
+Parser.SKL_ABV_NEC = "N";
+Parser.SKL_ABV_TRA = "T";
+Parser.SKL_ABV_CON = "C";
+Parser.SKL_ABV_PSI = "P";
+Parser.SKL_ABVS = [
+  Parser.SKL_ABV_ABJ,
+  Parser.SKL_ABV_CON,
+  Parser.SKL_ABV_DIV,
+  Parser.SKL_ABV_ENC,
+  Parser.SKL_ABV_EVO,
+  Parser.SKL_ABV_ILL,
+  Parser.SKL_ABV_NEC,
+  Parser.SKL_ABV_PSI,
+  Parser.SKL_ABV_TRA,
+];
+
+Parser.SKL_ABJ = "Abjuration";
+Parser.SKL_EVO = "Evocation";
+Parser.SKL_ENC = "Enchantment";
+Parser.SKL_ILL = "Illusion";
+Parser.SKL_DIV = "Divination";
+Parser.SKL_NEC = "Necromancy";
+Parser.SKL_TRA = "Transmutation";
+Parser.SKL_CON = "Conjuration";
+Parser.SKL_PSI = "Psionic";
+
+Parser.SP_SCHOOL_ABV_TO_FULL = {};
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_ABJ] = Parser.SKL_ABJ;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_EVO] = Parser.SKL_EVO;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_ENC] = Parser.SKL_ENC;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_ILL] = Parser.SKL_ILL;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_DIV] = Parser.SKL_DIV;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_NEC] = Parser.SKL_NEC;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_TRA] = Parser.SKL_TRA;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_CON] = Parser.SKL_CON;
+Parser.SP_SCHOOL_ABV_TO_FULL[Parser.SKL_ABV_PSI] = Parser.SKL_PSI;
+
+Parser.SP_SCHOOL_ABV_TO_SHORT = {};
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_ABJ] = "Abj.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_EVO] = "Evoc.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_ENC] = "Ench.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_ILL] = "Illu.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_DIV] = "Divin.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_NEC] = "Necro.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_TRA] = "Trans.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_CON] = "Conj.";
+Parser.SP_SCHOOL_ABV_TO_SHORT[Parser.SKL_ABV_PSI] = "Psi.";
+// endregion
+
 
 // region Source
 

@@ -4,22 +4,25 @@ import {Link, useLocation} from "react-router-dom";
 import {TableHeader} from "./5eLayout";
 import {Toggle} from "./5e/LayoutPurks"
 import {Parser} from "./5e/js/parser"
+import {Selector5e, ToggleState} from "./5eModules";
+import races from "./5e/resources/races.json";
+import type {PlayerClass} from "./5e/Models";
+import {Feature} from "./5e/Models";
 
 
 export const Layout5eClasses = () => {
 
   const columns = [{
-    id: "Name", sortId: "name", classSize: "ve-col-8"
+    id: "Name", sortId: "info.name", classSize: "ve-col-8", colClass: "bold ve-col-8 pl-0 pr-1"
   }, {
-    id: "Source", sortId: "source", classSize: "ve-grow"
+    id: "Source", sortId: "info.source", classSize: "ve-grow", colClass: "bold ve-grow ve-text-center pl-0 pr-1"
   }]
   //
   const classes: [PlayerClass] = require('./5e/resources/classes.json')
   // console.log(require('./5e/resources/classes.json'))
-  const [elements, setElements] = useState(classes)
-  const [toggleStates, setToggleStates] = useState({})
+  // const [elements, setElements] = useState(classes)
   // const [sorting, setSorting] = useState("")
-  const [selected: PlayerClass, setSelected] = useState(setSelectFromHash())
+  // const [selected: PlayerClass, setSelected] = useState(setSelectFromHash())
   // const [subclassSelected, setSubclassSelected] = useState({})
   //
   // const scrollRefs = useRef([])
@@ -71,43 +74,27 @@ export const Layout5eClasses = () => {
   //   UpdateLocation()
   // }, [location])
   //
-  function setSelectFromHash() {
-    const filtered = elements.find((e) => "#" + e.id === window.location.hash)
-    if (filtered) {
-      return filtered
-    } else {
-      return {}
-    }
-  }
-
-
-  //
-  // const handleSort = (type) => {
-  //   const shouldReset = sorting === type + ".des"
-  //   const shouldAscend = !sorting.startsWith(type)
-  //   const shouldDescend = sorting === type + ".asc"
-  //
-  //   if (shouldAscend) {
-  //     // console.log("Should now ascend: " + type + ".asc")
-  //     setSorting(type + ".asc")
-  //   } else if (shouldDescend) {
-  //     setSorting(type + ".des")
-  //     // console.log("Should now descend: " + type + ".des")
-  //   } else if (shouldReset) {
-  //     setSorting("")
-  //     // console.log("Should reset.")
-  //     type = "id"
+  // function setSelectFromHash() {
+  //   const filtered = elements.find((e) => "#" + e.id === window.location.hash)
+  //   if (filtered) {
+  //     return filtered
+  //   } else {
+  //     return {}
   //   }
-  //
-  //   elements.sort(function (a, b) {
-  //     let textA = a[type].toUpperCase();
-  //     let textB = b[type].toUpperCase();
-  //     if (shouldAscend || shouldReset) {
-  //       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
-  //     }
-  //     return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
-  //   })
   // }
+
+
+  const {
+    selected, setSelected,
+    elements, setElements,
+    sorting, setSorting,
+    handleClickSelection, sortElements, DisplayList
+  } = Selector5e(classes, columns);
+  // console.log("classes", elements)
+
+  const {toggleStateChange, getToggleState, addToggleableState} = ToggleState()
+
+  //
   //
   // const DetailsHeader = () => {
   //   return <tr>
@@ -226,20 +213,6 @@ export const Layout5eClasses = () => {
   //   return entries
   // }
   //
-  function findFeatureInClass(values: string): Feature | undefined {
-    values = values.split("|")
-    if (values.length === 4) {
-      const [featureName, className, classSource, level] = values
-      return selected.classFeature.find((feature) => {
-        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.level === Number(level))
-      })
-    } else if (values.length === 6) {
-      const [featureName, className, classSource, subClassName, subClassSource, level] = values
-      return selected.subclassFeature.find((feature) => {
-        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.subclassShortName === subClassName && feature.subclassSource === subClassSource && feature.level === Number(level))
-      })
-    }
-  }
 
   //
   // function renderFeatureTable(){
@@ -388,436 +361,426 @@ export const Layout5eClasses = () => {
   //TODO:
   // [x] Liste de selection de classe,
   // [x] Table des capacités de classe,
-  // [ ] Ajouter les Capacités de classe dans la table
+  // [x] Ajouter les Capacités de classe dans la table
   // [ ] Bande des traits de classe,
   // [ ] TOC des capacites de classe,
   // [ ] Description des capacités de classe
 
-  const toggleStateChange = (id) => {
-    setToggleStates((prevStates) => ({
-      ...prevStates, [id]: prevStates[id] !== undefined ? !prevStates[id] : false,
-    }));
-    console.log(toggleStates)
-  }
-  const getToggleState = (id) => {
-    // console.log(id, toggleStates[id])
-    return toggleStates[id] || toggleStates[id] === undefined
-  }
-  const addToggleableState = (id) => {
-    if (toggleStates[id] === undefined) {
-      setToggleStates((prevStates) => ({
-        ...prevStates, [id]: true, // Default state for the new child
-      }));
+  const selectedClass: PlayerClass = {...selected}
+  const features: [] = selectedClass?.info?.classFeatures.map(feature => {
+    if (typeof feature === "string") return feature.split("|");
+    return feature.classFeature.split("|")
+  })
+
+  function findFeatureInClass(values: string): Feature | undefined {
+    values = values.split("|")
+    if (values.length === 4) {
+      const [featureName, className, classSource, level] = values
+      return selectedClass.classFeatures.find((feature) => {
+        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.level === Number(level))
+      })
+    } else if (values.length === 6) {
+      const [featureName, className, classSource, subClassName, subClassSource, level] = values
+      return selectedClass.subclassFeatures.find((feature) => {
+        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.subclassShortName === subClassName && feature.subclassSource === subClassSource && feature.level === Number(level))
+      })
     }
   }
 
+  // console.log('class',selectedClass)
   return (<main className="container classes">
       <div className="row">
         <div className="col-md-3" id="listcontainer">
           <div className="night__shadow-big">
             <TableHeader/>
-            <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-              {columns.map((col) => {
-                return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-                  // onClick={() => handleSort(col.sortId)}
-                >
-                  {col.id}<span
-                  className={"lst__caret"
-                    // + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "")
-                    // + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")
-                  }></span>
-                </button>)
-              })}
-            </div>
-            {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-            <div id="list" className="list list--stats">
-              {/*{console.log(elements)}*/}
-              {elements.map((elem) => {
-                // console.log(elem)
-                return <div
-                  className={"lst__row ve-flex-col" + (selected.id === elem.id ? " list-multi-selected" : "")}
-                  onClick={() => setSelected(elem)}
-                >
-                  <Link to={"#" + elem.id} className="lst__row-border lst__row-inner">
-                    <span className="bold ve-col-8 pl-0 pr-1">{elem.info.name}</span>
-                    <span className={"ve-col-4 ve-text-center source__" + elem.info.source + " pl-1 pr-0 pr-1"}
-                          title={Parser.getSourceName(elem.info.source)}
-                    >{elem.info.source}
-                    </span>
-                  </Link>
-                </div>
-              })}
-            </div>
+            <DisplayList/>
           </div>
         </div>
         <div className="col-md-9" id="classtable">
-          {!selected ? <div className="view-col" id="contentwrapper">
-            <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-              <table id="pagecontent" className="w-100 stats">
+          {!selectedClass || Object.entries(selectedClass).length === 0 ?
+            <div className="view-col" id="contentwrapper">
+              <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+                <table id="pagecontent" className="w-100 stats">
+                  <tbody>
+                  <tr>
+                    <th className="ve-tbl-border" colSpan="6"></th>
+                  </tr>
+                  <tr>
+                    <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                      view it here
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="ve-tbl-border" colSpan="6"></th>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div> :
+            <table className="cls-tbl shadow-big w-100 mb-2">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="15"></th>
+              </tr>
+              <tr>
+                <th className="ve-text-left cls-tbl__disp-name" colSpan="15">{selectedClass.info.name}</th>
+              </tr>
+              <tr>
+                <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
+                <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
+                <th className="ve-text-left" rowSpan="2">Capacité</th>
+                {selectedClass.info.tableGroup?.map((groups) => {
+                  if (!groups.title) {
+                    return groups.colLabels.map((title) => {
+                      return <th className="cls-tbl__col-generic-center" rowSpan={2}>
+                        <div className="cls__squash_header">{title}</div>
+                      </th>
+                    })
+                  } else {
+                    return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{groups.title}</th>
+                  }
+                })}
+              </tr>
+              <tr>
+                {selectedClass.info.tableGroup?.map((groups) => {
+                  if (groups.title) {
+                    return groups.colLabels.map((label) => {
+                      return <th className="cls-tbl__col-generic-center">{label}</th>
+                    })
+                  }
+                })}
+              </tr>
+              {/*TODO: SPAGHETTI FOR EVERYONE. To clean up.*/}
+              {[...Array(20).keys()].map((level) => {
+                const featurePerLevel = features.filter(f => Number(f[3]) === level + 1)
+                return <tr className="cls-tbl__stripe-odd">
+                  <td className="cls-tbl__col-level">{level + 1}e{level + 1 === 1 ? "r" : ""}</td>
+                  <td className="cls-tbl__col-prof-bonus">+{Math.floor(2 + (level) / 4)}</td>
+                  <td>
+
+                    {featurePerLevel.length === 0 ? "—" : selectedClass.info.classFeatures.map((feature, idx) => {
+                      const [featureName, className, sourceName, featureLevel] = (typeof feature === "string") ? feature.split("|") : feature.classFeature.split("|")
+                      const currentFeature = featurePerLevel.indexOf(featurePerLevel.find(f=>featureName===f[0]))
+                      // console.log("feature", featureName, "|", Number(featureLevel), Number(featureLevel) === level + 1, featureLevel)
+                      if (Number(featureLevel) === level + 1) {
+                        return <><span>{featureName}</span>{featurePerLevel.length>1?(currentFeature+1 !== featurePerLevel.length?", ":""):""}</>
+                      }
+                    })}
+                  </td>
+                  {selectedClass.info.tableGroup?.map((group) => {
+                    return group.rows[level].map(cell => {
+                      return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : cell}</td>
+                    })
+                  })}
+                </tr>
+              })}
+              </tbody>
+            </table>}
+        </div>
+      </div>
+      <hr className="mt-0"/>
+      {!selectedClass || Object.entries(selectedClass).length === 0 ? "" :
+        <div className="row ve-flex mobile-md__ve-flex-col">
+          <div className="col-md-3">
+            <div className="ve-flex-vh-center ve-text-center wrp-btn-readmode mb-3">
+              <button disabled className="ve-btn ve-btn-default ve-btn-xs no-print mr-1" id="btn-comparemode"
+                      title="A pop-up table which can be used to compare subclass features.">
+                Subclass Comparison
+              </button>
+              <button disabled className="ve-btn ve-btn-default ve-btn-xs no-print mr-1" id="btn-readmode"
+                      title="A pop-up reading mode with a layout and content order matching that of the books.">
+                Book View
+              </button>
+              <div className=" ve-flex-v-center ve-btn-group">
+                <button disabled className="ve-btn ve-btn-default ve-btn-xs ve-btn-copy-effect" id="btn-link-export"
+                        title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
+                  <span className="glyphicon glyphicon-magnet"></span>
+                </button>
+                <button disabled className="ve-btn ve-btn-default ve-btn-xs" id="btn-sidebar-settings" title="Settings">
+                  <span className="glyphicon glyphicon-cog"></span>
+                </button>
+              </div>
+            </div>
+            <div id="statsprof">
+              <table className="w-100 stats shadow-big cls__stats">
                 <tbody>
                 <tr>
                   <th className="ve-tbl-border" colSpan="6"></th>
                 </tr>
                 <tr>
-                  <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-                    view it here
-                  </td>
+                  <th colSpan="6" className="ve-text-left">
+                    <div className="split-v-center pr-1" data-page="classes.html" data-source="TCE"
+                         data-hash="artificer_tce">
+                      <div className="cls-side__name">{selectedClass.info.name}</div>
+                      <div className="ve-flex-v-center">
+                        <div className="cls-side__btn-toggle no-select" onClick={() => toggleStateChange("prof")}>
+                          [{getToggleState("prof") ? "-" : "+"}]
+                        </div>
+                      </div>
+                    </div>
+                  </th>
                 </tr>
+                {getToggleState("prof") && <>
+                  <tr>
+                    <td colSpan={6} className="cls-side__section">
+                      <h5 className="cls-side__section-head">Traits Principaux</h5>
+                      <div>
+                        <strong>Dé de Vie: </strong>
+                        {selectedClass.info.hitDice.amount}D{selectedClass.info.hitDice.faces} par niveau
+                        d{"aeiouy".includes(selectedClass.info.name.at(0).toLowerCase()) ? "'" : "e "}
+                        {selectedClass.info.name}
+                      </div>
+                      <div>
+                        <strong>PV au niveau 1: </strong>
+                        {selectedClass.info.hitDice.faces} + votre modificateur de Constitution
+                      </div>
+                      <div>
+                        <strong>PV aux niveaux suivants: </strong>
+                        <span className="roller render-roller">
+                      {selectedClass.info.hitDice.amount}D{selectedClass.info.hitDice.faces}
+                    </span> + votre modificateur de Constitution, ou, {Math.ceil(selectedClass.info.hitDice.faces / 2) + 1} +
+                        votre modificateur de Constitution
+                      </div>
+                      <div className="py-2 w-100"></div>
+                      <div>
+                        <b>Armures: </b>
+                        <span>
+                      {selectedClass.info.proficiencies.armor?.length > 1 ?
+                        (selectedClass.info.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selectedClass.info.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")) +
+                        (selectedClass.info.proficiencies.armor.includes("shield") ? ", boucliers" : "")
+                        : "Aucune"}
+                    </span>
+                      </div>
+                      {(selectedClass.info.proficiencies.weapon) ? <>
+                        <div className="py-2 w-100"></div>
+                        <div>
+                          <b>Armes: </b>
+                          <span>
+                        {Array.isArray(selectedClass.info.proficiencies.weapon) ? selectedClass.info.proficiencies.weapon.map((weapon, idx) => {
+                          return <>{weapon.replace("simple", "armes courantes")}{idx !== selectedClass.info.proficiencies.weapon.length - 1 ? ", " : ""}</>
+                        }) : "armes courantes" + (selectedClass.info.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
+                      </span>
+                        </div>
+                      </> : ""}
+                      <div className="py-2 w-100"></div>
+                      <div>
+                        <b>Outils: </b>
+                        <span>
+                        {selectedClass.info.proficiencies.tools?.length > 1 ?
+                          selectedClass.info.proficiencies.tools.map((tool, idx) => {
+                            return <>{tool}{idx !== selectedClass.info.proficiencies.tools.length - 1 ? ", " : "."}</>
+                          }) : "Aucun"}
+                    </span>
+                      </div>
+                      {(selectedClass.info.proficiencies.saves) ? <>
+                        <div className="py-2 w-100"></div>
+                        <div>
+                          <b>Jets de sauvegardes: </b>
+                          {selectedClass.info.proficiencies.saves.map((save, idx) => {
+                            return <>{Parser.attAbvToFull(save)}{idx !== selectedClass.info.proficiencies.saves.length - 1 ? ", " : "."}</>
+                          })}
+                        </div>
+                      </> : ""}
+                      {(selectedClass.info.proficiencies.skills) ? <>
+                        <div className="py-2 w-100"></div>
+                        <div><b>Compétences :</b>
+                          <span>
+                        {selectedClass.info.proficiencies.skills.any ?
+                          <i>Choisissez {selectedClass.info.proficiencies.skills.any} compétences.</i> :
+                          <>
+                            <i>Choisissez {selectedClass.info.proficiencies.skills.count} compétences parmi: </i>
+                            {selectedClass.info.proficiencies.skills.pool.map((skill, idx) => {
+                              return <>
+                                <span>{skill}</span>
+                                {idx === selectedClass.info.proficiencies.skills.pool.length - 1 ? "." : idx === selectedClass.info.proficiencies.skills.pool.length - 2 ? " ou " : ", "}
+                              </>
+                            })}
+                          </>
+                        }
+                      </span>
+                        </div>
+                      </> : ""}
+                      <div className="py-2 w-100"></div>
+                      <p>Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre
+                        historique:</p>
+                      <ul className="pl-4">
+                        {selectedClass.info.startingEquipment.equipement.map((items, idx) => {
+                          return <li>{items}</li>
+                        })}
+                      </ul>
+                      <p>
+                        Si vous renoncez à cet équipement de départ ainsi qu'à celui accordé par votre historique, vous
+                        commencez avec
+                        <span className="roller render-roller">
+                        {" " + selectedClass.info.startingEquipment.goldAlternative + " "}
+                      </span>
+                        po pour acheter votre équipement.
+                      </p>
+                    </td>
+                  </tr>
+                  <tr className="">
+                    <td className="cls-side__section" colSpan="6">
+                      <h5 className="cls-side__section-head">Multiclassage</h5>
+                      <div>
+                        <div className="rd__b  rd__b--0">
+                          <p>
+                            <b>Score de capacité Minium:</b>
+                            {selectedClass.info.multiclass.requirements.or ?
+                              Object.entries(selectedClass.info.multiclass.requirements.or).map(([ability, amount], idx) => {
+                                return <>
+                                  {" "}{Parser.attAbvToFull(ability)} {amount}
+                                  {Object.entries(selectedClass.info.multiclass.requirements.or).length - 1 === idx ? "" : " or"}
+                                </>
+                              })
+                              :
+                              Object.entries(selectedClass.info.multiclass.requirements).map(([ability, amount], idx) => {
+                                return <>
+                                  {" "}{Parser.attAbvToFull(ability)} {amount}
+                                  {Object.entries(selectedClass.info.multiclass.requirements).length - 1 === idx ? "" : ","}
+                                </>
+                              })
+                            }
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        When you gain a level in a class other than your first, you gain only some of that class's
+                        starting proficiencies?.
+                      </div>
+                      {selectedClass.info.multiclass.proficiencies?.armor ? <div>
+                        <b>Maîtrise d'Armures: </b>
+                        {selectedClass.info.multiclass.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selectedClass.info.multiclass.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")}
+                        {selectedClass.info.multiclass.proficiencies.armor.includes("shield") ? ", boucliers" : ""}
+                      </div> : ""}
+                      {selectedClass.info.multiclass.proficiencies?.weapon ? <div>
+                        <b>Maîtrise d'Armes: </b>
+                        {Array.isArray(selectedClass.info.multiclass.proficiencies.weapon) ? selectedClass.info.multiclass.proficiencies.weapon.map((weapon, idx) => {
+                          return <>{weapon.replace("simple", "armes courantes")}{idx !== selectedClass.info.multiclass.proficiencies.weapon.length - 1 ? ", " : ""}</>
+                        }) : "armes courantes" + (selectedClass.info.multiclass.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
+                      </div> : ""}
+                      {selectedClass.info.multiclass.proficiencies?.tools ? <div>
+                        <b>Maîtrise d'Outils: </b>
+                        {selectedClass.info.multiclass.proficiencies.tools.map((tool, idx) => {
+                          return <>
+                            {tool}
+                            {idx === selectedClass.info.multiclass.proficiencies.tools.length - 1 ? "." : idx === selectedClass.info.multiclass.proficiencies.tools.length - 2 ? " et " : ", "}
+                          </>
+                        })}
+                      </div> : ""}
+                      {selectedClass.info.multiclass.proficiencies?.skills ? <div>
+                        <b>Maîtrise de Compétences: </b>
+                        {selectedClass.info.multiclass.proficiencies.skills.any ?
+                          <i>Choisissez {selectedClass.info.multiclass.proficiencies.skills.any} compétences.</i> :
+                          <>
+                            <i>Choisissez {selectedClass.info.multiclass.proficiencies.skills.count} compétences parmi: </i>
+                            {selectedClass.info.multiclass.proficiencies.skills.pool.map((skill, idx) => {
+                              return <>
+                                <span>{skill}</span>
+                                {idx === selectedClass.info.multiclass.proficiencies.skills.pool.length - 1 ? "." : idx === selectedClass.info.multiclass.proficiencies.skills.pool.length - 2 ? " ou " : ", "}
+                              </>
+                            })}
+                          </>
+                        }
+                      </div> : ""}
+                    </td>
+                  </tr>
+                </>}
                 <tr>
                   <th className="ve-tbl-border" colSpan="6"></th>
                 </tr>
                 </tbody>
               </table>
             </div>
-          </div> : <table className="cls-tbl shadow-big w-100 mb-2">
-            <tbody>
-            <tr>
-              <th className="ve-tbl-border" colSpan="15"></th>
-            </tr>
-            <tr>
-              <th className="ve-text-left cls-tbl__disp-name" colSpan="15">{selected.info.name}</th>
-            </tr>
-            <tr>
-              <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
-              <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
-              <th className="ve-text-left" rowSpan="2">Capacité</th>
-              {selected.info.tableGroup?.map((groups) => {
-                if (!groups.title) {
-                  return groups.colLabels.map((title) => {
-                    return <th className="cls-tbl__col-generic-center" rowSpan={2}>
-                      <div className="cls__squash_header">{title}</div>
-                    </th>
-                  })
-                } else {
-                  return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{groups.title}</th>
-                }
-              })}
-            </tr>
-            <tr>
-              {selected.info.tableGroup?.map((groups) => {
-                if (groups.title) {
-                  return groups.colLabels.map((label) => {
-                    return <th className="cls-tbl__col-generic-center">{label}</th>
-                  })
-                }
-              })}
-            </tr>
-            {[...Array(20).keys()].map((idx) => {
-              return <tr className="cls-tbl__stripe-odd">
-                <td className="cls-tbl__col-level">{idx + 1}e{idx + 1 === 1 ? "r" : ""}</td>
-                <td className="cls-tbl__col-prof-bonus">+{Math.floor(2 + (idx) / 4)}</td>
-                <td>—</td>
-                {selected.info.tableGroup?.map((group) => {
-                  return group.rows[idx].map(cell => {
-                    return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : cell}</td>
-                  })
+            <div id="sticky-nav" className="cls-nav">
+              {/*TODO: Change the div after "Outline" to be disable.*/}
+              <div className="cls-nav__head cls-nav__head--active">
+                <div className="cls-nav__head-inner split">
+                  <div>Outline</div>
+                  <div
+                    className={"cls-nav__disp-toggle" + (getToggleState("TOC") ? " cls-nav__disp-toggle--active" : "")}
+                    onClick={() => toggleStateChange("TOC")}></div>
+                </div>
+                <hr className="cls-nav__hr"/>
+              </div>
+              <div className="nav-body">
+                {selectedClass.info.classFeatures?.map((feature) => {
+                  if (typeof feature === "string") {
+                    return <div className="cls-nav__item cls-nav__item--depth-1">{feature}</div>
+                  }
+                  return <div className="cls-nav__item cls-nav__item--depth-1">{feature.classFeature}</div>
                 })}
-              </tr>
-            })}
-            </tbody>
-          </table>}
-        </div>
-      </div>
-      <hr className="mt-0"/>
-      <div className="row ve-flex mobile-md__ve-flex-col">
-        <div className="col-md-3">
-          <div className="ve-flex-vh-center ve-text-center wrp-btn-readmode mb-3">
-            <button disabled className="ve-btn ve-btn-default ve-btn-xs no-print mr-1" id="btn-comparemode"
-                    title="A pop-up table which can be used to compare subclass features.">
-              Subclass Comparison
-            </button>
-            <button disabled className="ve-btn ve-btn-default ve-btn-xs no-print mr-1" id="btn-readmode"
-                    title="A pop-up reading mode with a layout and content order matching that of the books.">
-              Book View
-            </button>
-            <div className=" ve-flex-v-center ve-btn-group">
-              <button disabled className="ve-btn ve-btn-default ve-btn-xs ve-btn-copy-effect" id="btn-link-export"
-                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
-                <span className="glyphicon glyphicon-magnet"></span>
-              </button>
-              <button disabled className="ve-btn ve-btn-default ve-btn-xs" id="btn-sidebar-settings" title="Settings">
-                <span className="glyphicon glyphicon-cog"></span>
-              </button>
+              </div>
             </div>
           </div>
-          <div id="statsprof">
-            <table className="w-100 stats shadow-big cls__stats">
-              <tbody>
+          <div className="col-md-9">
+            <div id="subclasstabs" className="w-100 ve-flex mb-2 cls-tabs__wrp">
+              <div className="ve-flex-v-center m-1 ve-btn-group mr-3 no-shrink">
+                <button disabled className="ve-btn ve-btn-xs ve-btn-default cls__btn-cf--active"
+                        title="Toggle Class Features">
+                  Features
+                </button>
+                <button disabled className="ve-btn ve-btn-xs ve-btn-default"
+                        title="Toggle Class Feature Options/Variants">
+                  Variants
+                </button>
+                <button disabled className="ve-btn ve-btn-xs ve-btn-default" title="Toggle Class Info">
+                  Info
+                </button>
+              </div>
+              <div className="ve-flex-v-center ve-flex-wrap mr-2 w-100">
+                {selectedClass.subclasses.map((subclass) => {
+                  addToggleableState(selectedClass.id + "-subclass-" + subclass.shortName)
+                  return (
+                    <button onClick={() => toggleStateChange(selectedClass.id + "-subclass-" + subclass.shortName)}
+                            className="ve-btn ve-btn-default ve-btn-xs ve-flex-v-center m-1 cls__btn-sc--active-fresh">
+                      <div>{subclass.shortName}</div>
+                      <div>({subclass.source})</div>
+                    </button>
+                  )
+                })}
+                <div className="ve-muted m-1 cls-tabs__sc-not-shown ve-flex-vh-center"></div>
+              </div>
+              <div className="ve-flex-v-center m-1 no-shrink">
+                <select disabled className="input-xs form-control cls-tabs__sel-preset">
+                  <option value="-1" disabled="">Filter...</option>
+                  <option value="0">View Default</option>
+                  <option value="1">View Standard Plus Partnered</option>
+                  <option value="2">View Standard Plus Homebrew</option>
+                  <option value="3">View Most Recent</option>
+                  <option value="4">View All</option>
+                </select>
+              </div>
+              <div className="ve-flex-v-center m-1 ve-btn-group no-shrink">
+                <button disabled className="ve-btn ve-btn-xs ve-btn-default"
+                        title="Select All (SHIFT to filter for and include most recent; CTRL to select official plus homebrew)">
+                  <span className="glyphicon glyphicon-check"></span>
+                </button>
+                <button disabled title="Feeling Lucky?" className="ve-btn ve-btn-xs ve-btn-default ve-flex-1">
+                  <span className="glyphicon glyphicon-random"></span>
+                </button>
+                <button disabled className="ve-btn ve-btn-xs ve-btn-default" title="Reset Selection">
+                  <span className="glyphicon glyphicon-refresh"></span>
+                </button>
+                <button disabled className="ve-btn ve-btn-xs ve-btn-default ve-flex-1 active"
+                        title="Show Subclass Sources">
+                  <span className="glyphicon glyphicon-book"></span>
+                </button>
+              </div>
+            </div>
+            <table id="pagecontent" className="w-100 stats shadow-big cls__stats">
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <tr>
-                <th colSpan="6" className="ve-text-left">
-                  <div className="split-v-center pr-1" data-page="classes.html" data-source="TCE"
-                       data-hash="artificer_tce">
-                    <div className="cls-side__name">{selected.info.name}</div>
-                    <div className="ve-flex-v-center">
-                      <div className="cls-side__btn-toggle no-select" onClick={() => toggleStateChange("prof")}>
-                        [{getToggleState("prof") ? "-" : "+"}]
-                      </div>
-                    </div>
-                  </div>
-                </th>
-              </tr>
-              {getToggleState("prof") && <>
-                <tr>
-                  <td colSpan={6} className="cls-side__section">
-                    <h5 className="cls-side__section-head">Traits Principaux</h5>
-                    <div>
-                      <strong>Dé de Vie: </strong>
-                      {selected.info.hitDice.amount}D{selected.info.hitDice.faces} par niveau
-                      d{"aeiouy".includes(selected.info.name.at(0).toLowerCase()) ? "'" : "e "}
-                      {selected.info.name}
-                    </div>
-                    <div>
-                      <strong>PV au niveau 1: </strong>
-                      {selected.info.hitDice.faces} + votre modificateur de Constitution
-                    </div>
-                    <div>
-                      <strong>PV aux niveaux suivants: </strong>
-                      <span className="roller render-roller">
-                      {selected.info.hitDice.amount}D{selected.info.hitDice.faces}
-                    </span> + votre modificateur de Constitution, ou, {Math.ceil(selected.info.hitDice.faces / 2) + 1} +
-                      votre modificateur de Constitution
-                    </div>
-                    <div className="py-2 w-100"></div>
-                    <div>
-                      <b>Armures: </b>
-                      <span>
-                      {selected.info.proficiencies.armor?.length > 1 ?
-                        (selected.info.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selected.info.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")) +
-                        (selected.info.proficiencies.armor.includes("shield") ? ", boucliers" : "")
-                        : "Aucune"}
-                    </span>
-                    </div>
-                    {(selected.info.proficiencies.weapon) ? <>
-                      <div className="py-2 w-100"></div>
-                      <div>
-                        <b>Armes: </b>
-                        <span>
-                        {Array.isArray(selected.info.proficiencies.weapon) ? selected.info.proficiencies.weapon.map((weapon, idx) => {
-                          return <>{weapon.replace("simple", "armes courantes")}{idx !== selected.info.proficiencies.weapon.length - 1 ? ", " : ""}</>
-                        }) : "armes courantes" + (selected.info.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
-                      </span>
-                      </div>
-                    </> : ""}
-                    <div className="py-2 w-100"></div>
-                    <div>
-                      <b>Outils: </b>
-                      <span>
-                        {selected.info.proficiencies.tools?.length > 1 ?
-                          selected.info.proficiencies.tools.map((tool, idx) => {
-                            return <>{tool}{idx !== selected.info.proficiencies.tools.length - 1 ? ", " : "."}</>
-                          }) : "Aucun"}
-                    </span>
-                    </div>
-                    {(selected.info.proficiencies.saves) ? <>
-                      <div className="py-2 w-100"></div>
-                      <div>
-                        <b>Jets de sauvegardes: </b>
-                        {selected.info.proficiencies.saves.map((save, idx) => {
-                          return <>{Parser.attAbvToFull(save)}{idx !== selected.info.proficiencies.saves.length - 1 ? ", " : "."}</>
-                        })}
-                      </div>
-                    </> : ""}
-                    {(selected.info.proficiencies.skills) ? <>
-                      <div className="py-2 w-100"></div>
-                      <div><b>Compétences :</b>
-                        <span>
-                        {selected.info.proficiencies.skills.any ?
-                          <i>Choisissez {selected.info.proficiencies.skills.any} compétences.</i> :
-                          <>
-                            <i>Choisissez {selected.info.proficiencies.skills.count} compétences parmi: </i>
-                            {selected.info.proficiencies.skills.pool.map((skill, idx) => {
-                              return <>
-                                <span>{skill}</span>
-                                {idx === selected.info.proficiencies.skills.pool.length - 1 ? "." : idx === selected.info.proficiencies.skills.pool.length - 2 ? " ou " : ", "}
-                              </>
-                            })}
-                          </>
-                        }
-                      </span>
-                      </div>
-                    </> : ""}
-                    <div className="py-2 w-100"></div>
-                    <p>Vous commencez avec l'équipement suivant, en plus de l'équipement accordé par votre
-                      historique:</p>
-                    <ul className="pl-4">
-                      {selected.info.startingEquipment.equipement.map((items, idx) => {
-                        return <li>{items}</li>
-                      })}
-                    </ul>
-                    <p>
-                      Si vous renoncez à cet équipement de départ ainsi qu'à celui accordé par votre historique, vous
-                      commencez avec
-                      <span className="roller render-roller">
-                        {" " + selected.info.startingEquipment.goldAlternative + " "}
-                      </span>
-                      po pour acheter votre équipement.
-                    </p>
-                  </td>
-                </tr>
-                <tr className="">
-                  <td className="cls-side__section" colSpan="6">
-                    <h5 className="cls-side__section-head">Multiclassage</h5>
-                    <div>
-                      <div className="rd__b  rd__b--0">
-                        <p>
-                          <b>Score de capacité Minium:</b>
-                          {selected.info.multiclass.requirements.or ?
-                            Object.entries(selected.info.multiclass.requirements.or).map(([ability, amount], idx) => {
-                              return <>
-                                {" "}{Parser.attAbvToFull(ability)} {amount}
-                                {Object.entries(selected.info.multiclass.requirements.or).length - 1 === idx ? "" : " or"}
-                              </>
-                            })
-                            :
-                            Object.entries(selected.info.multiclass.requirements).map(([ability, amount], idx) => {
-                              return <>
-                                {" "}{Parser.attAbvToFull(ability)} {amount}
-                                {Object.entries(selected.info.multiclass.requirements).length - 1 === idx ? "" : ","}
-                              </>
-                            })
-                          }
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      When you gain a level in a class other than your first, you gain only some of that class's
-                      starting proficiencies?.
-                    </div>
-                    {selected.info.multiclass.proficiencies?.armor ? <div>
-                      <b>Maîtrise d'Armures: </b>
-                      {selected.info.multiclass.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selected.info.multiclass.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")}
-                      {selected.info.multiclass.proficiencies.armor.includes("shield") ? ", boucliers" : ""}
-                    </div> : ""}
-                    {selected.info.multiclass.proficiencies?.weapon ? <div>
-                      <b>Maîtrise d'Armes: </b>
-                      {Array.isArray(selected.info.multiclass.proficiencies.weapon) ? selected.info.multiclass.proficiencies.weapon.map((weapon, idx) => {
-                        return <>{weapon.replace("simple", "armes courantes")}{idx !== selected.info.multiclass.proficiencies.weapon.length - 1 ? ", " : ""}</>
-                      }) : "armes courantes" + (selected.info.multiclass.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
-                    </div> : ""}
-                    {selected.info.multiclass.proficiencies?.tools ? <div>
-                      <b>Maîtrise d'Outils: </b>
-                      {selected.info.multiclass.proficiencies.tools.map((tool, idx) => {
-                        return <>
-                          {tool}
-                          {idx === selected.info.multiclass.proficiencies.tools.length - 1 ? "." : idx === selected.info.multiclass.proficiencies.tools.length - 2 ? " et " : ", "}
-                        </>
-                      })}
-                    </div> : ""}
-                    {selected.info.multiclass.proficiencies?.skills ? <div>
-                      <b>Maîtrise de Compétences: </b>
-                      {selected.info.multiclass.proficiencies.skills.any ?
-                        <i>Choisissez {selected.info.multiclass.proficiencies.skills.any} compétences.</i> :
-                        <>
-                          <i>Choisissez {selected.info.multiclass.proficiencies.skills.count} compétences parmi: </i>
-                          {selected.info.multiclass.proficiencies.skills.pool.map((skill, idx) => {
-                            return <>
-                              <span>{skill}</span>
-                              {idx === selected.info.multiclass.proficiencies.skills.pool.length - 1 ? "." : idx === selected.info.multiclass.proficiencies.skills.pool.length - 2 ? " ou " : ", "}
-                            </>
-                          })}
-                        </>
-                      }
-                    </div> : ""}
-                  </td>
-                </tr>
-              </>}
+              {/*{renderFeature()}*/}
+              {/*{featureDetails()}*/}
+              {/*{formatSubFeature()}*/}
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              </tbody>
             </table>
           </div>
-          <div id="sticky-nav" className="cls-nav">
-            {/*TODO: Change the div after "Outline" to be disable.*/}
-            <div className="cls-nav__head cls-nav__head--active">
-              <div className="cls-nav__head-inner split">
-                <div>Outline</div>
-                <div className={"cls-nav__disp-toggle" + (getToggleState("TOC") ? " cls-nav__disp-toggle--active" : "")}
-                     onClick={() => toggleStateChange("TOC")}></div>
-              </div>
-              <hr className="cls-nav__hr"/>
-            </div>
-            <div className="nav-body">
-              {selected.info.classFeatures?.map((feature) => {
-                if (typeof feature === "string"){
-                  return <div className="cls-nav__item cls-nav__item--depth-1">{feature}</div>
-                }
-                return <div className="cls-nav__item cls-nav__item--depth-1">{feature.classFeature}</div>
-              })}
-            </div>
-          </div>
         </div>
-        <div className="col-md-9">
-          <div id="subclasstabs" className="w-100 ve-flex mb-2 cls-tabs__wrp">
-            <div className="ve-flex-v-center m-1 ve-btn-group mr-3 no-shrink">
-              <button disabled className="ve-btn ve-btn-xs ve-btn-default cls__btn-cf--active"
-                      title="Toggle Class Features">
-                Features
-              </button>
-              <button disabled className="ve-btn ve-btn-xs ve-btn-default"
-                      title="Toggle Class Feature Options/Variants">
-                Variants
-              </button>
-              <button disabled className="ve-btn ve-btn-xs ve-btn-default" title="Toggle Class Info">
-                Info
-              </button>
-            </div>
-            <div className="ve-flex-v-center ve-flex-wrap mr-2 w-100">
-              {selected.subclasses.map((subclass) => {
-                addToggleableState(selected.id+"-subclass-"+subclass.shortName)
-                return (
-                  <button onClick={()=>toggleStateChange(selected.id+"-subclass-"+subclass.shortName)}
-                    className="ve-btn ve-btn-default ve-btn-xs ve-flex-v-center m-1 cls__btn-sc--active-fresh">
-                    <div>{subclass.shortName}</div>
-                    <div>({subclass.source})</div>
-                  </button>
-                )
-              })}
-              <div className="ve-muted m-1 cls-tabs__sc-not-shown ve-flex-vh-center"></div>
-            </div>
-            <div className="ve-flex-v-center m-1 no-shrink">
-              <select disabled className="input-xs form-control cls-tabs__sel-preset">
-                <option value="-1" disabled="">Filter...</option>
-                <option value="0">View Default</option>
-                <option value="1">View Standard Plus Partnered</option>
-                <option value="2">View Standard Plus Homebrew</option>
-                <option value="3">View Most Recent</option>
-                <option value="4">View All</option>
-              </select>
-            </div>
-            <div className="ve-flex-v-center m-1 ve-btn-group no-shrink">
-              <button disabled className="ve-btn ve-btn-xs ve-btn-default"
-                      title="Select All (SHIFT to filter for and include most recent; CTRL to select official plus homebrew)">
-                <span className="glyphicon glyphicon-check"></span>
-              </button>
-              <button disabled title="Feeling Lucky?" className="ve-btn ve-btn-xs ve-btn-default ve-flex-1">
-                <span className="glyphicon glyphicon-random"></span>
-              </button>
-              <button disabled className="ve-btn ve-btn-xs ve-btn-default" title="Reset Selection">
-                <span className="glyphicon glyphicon-refresh"></span>
-              </button>
-              <button disabled className="ve-btn ve-btn-xs ve-btn-default ve-flex-1 active"
-                      title="Show Subclass Sources">
-                <span className="glyphicon glyphicon-book"></span>
-              </button>
-            </div>
-          </div>
-          <table id="pagecontent" className="w-100 stats shadow-big cls__stats">
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            {/*{renderFeature()}*/}
-            {/*{featureDetails()}*/}
-            {/*{formatSubFeature()}*/}
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-          </table>
-        </div>
-      </div>
+      }
     </main>
     // <div className="view-col-group--cancer h-100 mh-0">
     //   <div className="container view-col-wrapper view-col-wrapper--cancer">

@@ -779,7 +779,7 @@ export const PlayerClasses = () => {
           https://docs.google.com/spreadsheets/d/1m4IoWYuterc7BhqYoGxg3w90uehZtaxyqQQKeAKpECA
         </Link>
         <br/>
-        Veuillez m'excusez pour cela.
+        Veuillez m'excusez pour la gaine occasionnée.
       </div>
       <p>
         Les aventuriers sont des personnes extraordinaires poussées par la soif de l'excitation vers une vie que

@@ -1,4 +1,4 @@
-class PlayerClass {
+export class PlayerClass {
   id: string
   info: {
     name: string,
@@ -54,7 +54,7 @@ class PlayerClass {
   subclassFeatures: [Feature]
 }
 
-class Feature {
+export class Feature {
   name: string
   source: string
   page: number
@@ -66,26 +66,52 @@ class Feature {
   entries: [string]
 }
 
-class PlayerRace {
+export class PlayerRace {
+  "id": string
+  "name": string
+  "bonus": string
+  "size": string
+  "source": string
+  "creatureType": string
+  "speed": string
+  "common": {
+    "age": string,
+    "alignment": string,
+    "size": string,
+    "languages": string
+  }
+  "traits": [{}]
+  "info": [{}]
+  "images": []
+  "subraces": [{
+      "id": string,
+      "name": string,
+      "bonus": string,
+      "source": string,
+      "traits": [{}],
+      "info": {},
+      "images": []
+    }]
+}
+
+export class PlayerFeat {
 
 }
 
-class PlayerFeat {
+export class PlayerBackground {
 
 }
 
-class PlayerBackground {
+export class Spell {
 
 }
 
-class Spell {
+export class Monster {
 
 }
 
-class Monster {
+export class Item {
 
 }
 
-class Item {
-
-}
+export default class Clazz {}

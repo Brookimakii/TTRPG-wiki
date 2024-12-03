@@ -4,7 +4,7 @@
     "name": "Aarakocra",
     "bonus": "Dex +2; Sag +1",
     "size": "Moyenne",
-    "source": "EPCC",
+    "source": "EEPC",
     "creatureType": "Humainoïde",
     "speed": "7,5m, vol 15m",
     "common": {
@@ -66,7 +66,7 @@
       {
         "id": "fallen",
         "name": "Déchu",
-        "bonus": ":Con+1",
+        "bonus": ";Con+1",
         "source": "VGM",
         "traits": [
           {
@@ -105,7 +105,7 @@
         "id": "scourge",
         "name": "Fléau",
         "bonus": ";For +1",
-        "source": "",
+        "source": "VGM",
         "traits": [
           {
             "Suaire nécrotique": [
@@ -465,7 +465,7 @@
     "name": "Génasi",
     "bonus": "Con +2",
     "size": "Moyenne",
-    "source": "EPCC",
+    "source": "EEPC",
     "creatureType": "Humainoïde",
     "speed": "9m",
     "common": {
@@ -490,7 +490,7 @@
         "id": "air",
         "name": "Air",
         "bonus": ";Dex +1",
-        "source": "EPCC",
+        "source": "EEPC",
         "traits": [
           {
             "Souffle sans fin": "Vous pouvez retenir votre respiration indéfiniment tant que vous n'êtes pas incapable d'agir."
@@ -508,7 +508,7 @@
         "id": "earth",
         "name": "Terre",
         "bonus": ";For +1",
-        "source": "EPCC",
+        "source": "EEPC",
         "traits": [
           {
             "Marche de la terre": "Vous pouvez vous déplacer sur des terrains difficiles faits de pierre ou de terre sans dépenser de mouvement supplémentaire."
@@ -526,7 +526,7 @@
         "id": "fire",
         "name": "Feu",
         "bonus": ";Int +1",
-        "source": "EPCC",
+        "source": "EEPC",
         "traits": [
           {
             "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
@@ -547,7 +547,7 @@
         "id": "water",
         "name": "Eau",
         "bonus": ";Sag +1",
-        "source": "EPCC",
+        "source": "EEPC",
         "speed": "9m, nage 9m",
         "traits": [
           {
