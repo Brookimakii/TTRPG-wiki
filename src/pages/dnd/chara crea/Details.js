@@ -108,7 +108,7 @@ export const formatContent = (contents: [{}]) => {
 
 export const RacesDetail = () => {
   // const [params, setParams] = useState()
-  const race = getResources(require("../../../resources/races.json"), useParams().raceId)
+  const race = getResources(require("../../../resources/.races.json"), useParams().raceId)
   return (
     <Main name={race.name} lastUnit={true}>
       {formatContent(race.content)}
@@ -118,7 +118,7 @@ export const RacesDetail = () => {
 
 export const ClassDetail = () => {
   // const [params, setParams] = useState()
-  const clazz = getResources(require("../../../resources/classes.json"), useParams().classId)
+  const clazz = getResources(require("../../../resources/.classes.json"), useParams().classId)
   // console.log(useParams())
   return (
     <Main name={clazz.name} lastUnit={true}>
@@ -129,7 +129,7 @@ export const ClassDetail = () => {
 
 export const BackgroundDetail = () => {
   // const [params, setParams] = useState()
-  const background = getResources(require("../../../resources/backgrounds.json"), useParams().backgroundId)
+  const background = getResources(require("../../../resources/.backgrounds.json"), useParams().backgroundId)
   // console.log(useParams())
   return (
     <Main name={background.name} lastUnit={true}>
@@ -140,7 +140,7 @@ export const BackgroundDetail = () => {
 
 export const EquipmentDetail = () => {
   // const [params, setParams] = useState()
-  const equipment = getResources(require("../../../resources/equipments.json"), useParams().equipementId)
+  const equipment = getResources(require("../../../resources/.equipments.json"), useParams().equipementId)
   // console.log(useParams())
   return (
     <Main name={equipment.name} lastUnit={true}>
@@ -151,7 +151,7 @@ export const EquipmentDetail = () => {
 
 export const Spells = () => {
   // const [params, setParams] = useState()
-  const spell = getResources(require("../../../resources/spells.json"), useParams().spellId)
+  const spell = getResources(require("../../../resources/.spells.json"), useParams().spellId)
   // console.log(useParams())
   return (
     <div className="content-container unit size4of5 lastUnit spellSheet">
@@ -174,7 +174,7 @@ export const Spells = () => {
 
 export const FeatDetails = () => {
   // const [params, setParams] = useState()
-  const feat = getResources(require("../../../resources/feats.json"), useParams().featId)
+  const feat = getResources(require("../../../resources/.feats.json"), useParams().featId)
   // console.log(useParams())
   return (
     <div className="content-container unit size4of5 lastUnit spellSheet">

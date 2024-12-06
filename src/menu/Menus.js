@@ -68,25 +68,25 @@ export const CHARACTER_CREATION = [
     id: "races",
     href: player + "/races",
     name: "Races",
-    sublist: buildMenuFromJson(require("../resources/races.json"), player + "/races/")
+    sublist: buildMenuFromJson(require("../resources/.races.json"), player + "/races/")
   },
   {
     id: "classes",
     href: player + "/classes",
     name: "Classes",
-    sublist: buildMenuFromJson(require("../resources/classes.json"), player + "/classes/")
+    sublist: buildMenuFromJson(require("../resources/.classes.json"), player + "/classes/")
   },
   {
     id: "backgrounds",
     href: player + "/backgrounds",
     name: "Backgrounds",
-    sublist: buildMenuFromJson(require("../resources/backgrounds.json"), player + "/backgrounds/")
+    sublist: buildMenuFromJson(require("../resources/.backgrounds.json"), player + "/backgrounds/")
   },
   {
     id: "equipments",
     href: player + "/equipments",
     name: "Équipements",
-    sublist: buildMenuFromJson(require("../resources/equipments.json"), player + "/equipments/")
+    sublist: buildMenuFromJson(require("../resources/.equipments.json"), player + "/equipments/")
   },
   {
     id: "personalize",

@@ -9,6 +9,7 @@ import "./5e/scss/import.scss"
 import "./5e/css/index.css"
 import {FilterManager, Selector5e} from "./5eModules";
 import {Parser} from "./5e/js/parser";
+import {getResource, Resources} from "../ResourcesFetch";
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
 
@@ -283,7 +284,7 @@ export const Layout5eHome = () => {
 }
 
 export const Layout5e2 = () => {
-  const playerRaces = buildRace(require('./5e/resources/races.json'))
+  const playerRaces = buildRace(require('../resources/races.json'))
   const emptyFilters = {
     sources: []
   }
@@ -451,7 +452,7 @@ export function Layout5eRaces() {
     id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-2 ve-text-center pl-1 pr-0"
   }]
 
-  const races = require('./5e/resources/races.json')
+  const races = getResource(Resources.race)
   const {
     selected, setSelected,
     elements, setElements,
@@ -786,7 +787,7 @@ export const Layout5eFeats = () => {
   }, {
     id: "Source", sortId: "source", classSize: "ve-grow"
   }]
-  const feat = require('./5e/resources/feats.json')
+  const feat = getResource(Resources.feat)
   // console.log(races)
   const [elements, setElements] = useState([...feat])
   const [sorting, setSorting] = useState("")
@@ -959,7 +960,7 @@ export const Layout5eBackgrounds = () => {
     id: "Source", sortId: "source", classSize: "ve-grow", colClass: "bold ve-col-2-9 pl-0 pr-1"
   }]
 
-  const background = require('./5e/resources/backgrounds.json')
+  const background = getResource(Resources.background)
   // const [elements, setElements] = useState(buildRace(background))
   // const [sorting, setSorting] = useState("")
   // const [selected, setSelected] = useState(
@@ -1045,8 +1046,6 @@ export const Layout5eBackgrounds = () => {
     </div>
   </div>)
 }
-
-
 export const Layout5eOptionFeatures = () => {
 
   function tableDisplayOption(column, string, element) {
@@ -1088,7 +1087,7 @@ export const Layout5eOptionFeatures = () => {
       id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-1-5 ve-text-center pl-1 pr-0"
     }
   ]
-  const features = require('./5e/resources/features.json')
+  const features = getResource(Resources.feature)
 
   const {
     selected, _,
@@ -1231,7 +1230,7 @@ export const Layout5eItems = () => {
   }
   ]
 
-  const items = require('./5e/resources/items.json')
+  const items = getResource(Resources.item)
   // const [elements, setElements] = useState(buildRace(spells))
   // const [sorting, setSorting] = useState("")
   // const [selected, setSelected] = useState(
@@ -1250,7 +1249,6 @@ export const Layout5eItems = () => {
   const casterObj = {
     "type": []
   }
-
 
   Object.entries(casterObj).map(([path, list], idx) => {
     list.map(element => casters[element] = path)
@@ -1347,7 +1345,7 @@ export const Layout5eRules = () => {
     id: "Source", sortId: "source", classSize: "ve-grow"
   }]
 
-  const rules = require('./5e/resources/rules.json')
+  const rules = getResource(Resources.rule)
   const {
     selected, setSelected,
     elements, setElements,
@@ -1447,7 +1445,7 @@ export const Layout5eCondition = () => {
     id: "Source", sortId: "source", classSize: "ve-grow"
   }]
 
-  const conditions = require('./5e/resources/conditions.json')
+  const conditions = getResource(Resources.condition)
   const {
     selected, setSelected,
     elements, setElements,
@@ -1548,7 +1546,7 @@ export const Layout5eBestiary = () => {
     id: "Source", sortId: "source", classSize: "ve-grow"
   }]
 
-  const bestiary = require('./5e/resources/bestiary.json')
+  const bestiary = getResource(Resources.bestiary)
   const {
     selected, setSelected,
     elements, setElements,

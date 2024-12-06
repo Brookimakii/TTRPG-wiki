@@ -49,7 +49,7 @@ function defaultTableDisplayOption(column, string, element) {
 }
 
 export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function = defaultTableDisplayOption) => {
-  console.log("defaultElements", defaultElements)
+  // console.log("defaultElements", defaultElements)
   const [selected: {} | undefined, setSelected] = useState();
   const [elements: [{}], setElements] = useState(defaultElements ?? []);
   const [sorting: string, setSorting] = useState("");
@@ -116,7 +116,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
   }
 
   function DisplayList() {
-    console.log(selected)
+    // console.log(selected)
     return <>
       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
         {columns.map((column) => {
@@ -153,7 +153,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
                       </span>
                     )
                   default:
-                    tableDisplayOption(column, string, elem)
+                    return tableDisplayOption(column, string, elem) ?? <span className={column.colClass}>{string}</span>
                 }
               })}
             </Link>
@@ -206,7 +206,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
   }, [location]);
 
   // console.log("selected", selected)
-  console.log("elements", elements)
+  // console.log("elements", elements)
   // console.log("sorting", sorting)
   return {
     selected,

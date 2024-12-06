@@ -1,8 +1,39 @@
-import spells from "./5e/resources/spells.json";
 import {FilterManager, Selector5e} from "./5eModules";
-import React, {useEffect} from "react";
+import React from "react";
 import {Parser} from "./5e/js/parser";
 import {TableHeader} from "./5eLayout";
+import {getResource, Resources} from "../ResourcesFetch";
+
+
+function tableDisplayOption(column, string, element) {
+  switch (column.sortId) {
+    case "school": {
+      return (
+        <span
+          className={column.colClass + " sp__school-" + string}
+          title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
+          {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
+        </span>
+      )
+    }
+    case "concentration": {
+      return (
+        <span className={column.colClass} title="Concentration">
+          {element.concentration ? "×" : ""}
+        </span>
+      )
+    }
+    case "level": {
+      return (
+        <span className={column.colClass}>
+          {string + (element.ritual ? " (rit.)" : "")}
+        </span>
+      )
+    }
+    default:
+      return undefined
+  }
+}
 
 export const Layout5eSpells = () => {
 
@@ -30,7 +61,7 @@ export const Layout5eSpells = () => {
     }
   ]
 
-  const spells: [] = require('./5e/resources/spells.json')
+  const spells: [] = getResource(Resources.spell)
   // const [elements, setElements] = useState(spells)
   // const [sorting, setSorting] = useState("")
   // const [selected, setSelected] = useState(
@@ -41,49 +72,49 @@ export const Layout5eSpells = () => {
     elements, setElements,
     sorting, setSorting,
     handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
-  } = Selector5e(spells, columns, "name");
+  } = Selector5e(spells, columns, "name", tableDisplayOption);
 
-  const {filters, toggleFilter} = FilterManager()
+  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)
 
-  function extractNestedValue(obj, path) {
-    return path.split('.').reduce((o, i) => o?.[i], obj)
-  }
-
-  function doFilter(key, element, state) {
-    const [nestedKey, expectedValue] = key.split("-");
-
-    // console.log(key, nestedKey, expectedValue, element)
-
-    const nestedValue = extractNestedValue(element, nestedKey);
-    // console.log(nestedKey, expectedValue, nestedValue)
-
-    if (state === 'positive') {
-      return Array.isArray(nestedValue)
-        ? nestedValue.includes(expectedValue)
-        : nestedValue === expectedValue;
-    } else if (state === 'negative') {
-      return Array.isArray(nestedValue)
-        ? !nestedValue.includes(expectedValue)
-        : nestedValue !== expectedValue;
-    }
-    return true;
-  }
-
-  useEffect(() => {
-    const activeFilters = Object.entries(filters).filter(
-      ([, state]) => state !== 'disabled'
-    );
-    // console.log("activeFilters", activeFilters)
-    let updatedElements = [...spells]
-    if (activeFilters.length > 0) {
-      updatedElements = [...spells].filter((element) => {
-        return activeFilters.some(([key, state]) => doFilter(key, element, state));
-      });
-    }
-    // console.log(sorting)
-    updatedElements = updateSortElementsState(sorting, updatedElements, false); // Pass a flag to prevent state updates
-    setElements(updatedElements)
-  }, [filters, setElements]);
+  // function extractNestedValue(obj, path) {
+  //   return path.split('.').reduce((o, i) => o?.[i], obj)
+  // }
+  //
+  // function doFilter(key, element, state) {
+  //   const [nestedKey, expectedValue] = key.split("-");
+  //
+  //   // console.log(key, nestedKey, expectedValue, element)
+  //
+  //   const nestedValue = extractNestedValue(element, nestedKey);
+  //   // console.log(nestedKey, expectedValue, nestedValue)
+  //
+  //   if (state === 'positive') {
+  //     return Array.isArray(nestedValue)
+  //       ? nestedValue.includes(expectedValue)
+  //       : nestedValue === expectedValue;
+  //   } else if (state === 'negative') {
+  //     return Array.isArray(nestedValue)
+  //       ? !nestedValue.includes(expectedValue)
+  //       : nestedValue !== expectedValue;
+  //   }
+  //   return true;
+  // }
+  //
+  // useEffect(() => {
+  //   const activeFilters = Object.entries(filters).filter(
+  //     ([, state]) => state !== 'disabled'
+  //   );
+  //   // console.log("activeFilters", activeFilters)
+  //   let updatedElements = [...spells]
+  //   if (activeFilters.length > 0) {
+  //     updatedElements = [...spells].filter((element) => {
+  //       return activeFilters.some(([key, state]) => doFilter(key, element, state));
+  //     });
+  //   }
+  //   // console.log(sorting)
+  //   updatedElements = updateSortElementsState(sorting, updatedElements, false); // Pass a flag to prevent state updates
+  //   setElements(updatedElements)
+  // }, [filters, setElements]);
 
   const casters = {}
   const casterObj = {
@@ -170,7 +201,7 @@ export const Layout5eSpells = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <DetailsHeader />
+              <DetailsHeader/>
               <tr>
                 <td colSpan="6"><i>{selected.school} de Niveau {selected.level} </i></td>
               </tr>

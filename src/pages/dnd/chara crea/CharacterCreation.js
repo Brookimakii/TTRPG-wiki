@@ -2057,7 +2057,7 @@ export const Multiclass = () => {
 }
 
 export const FeatList = () => {
-  const [feats, setFeats] = useState(require("../../../resources/feats.json"))
+  const [feats, setFeats] = useState(require("../../../resources/.feats.json"))
   const [sorting, setSorting] = useState("")
   const [categories, setCategories] = useState([])
 
@@ -4986,7 +4986,7 @@ export const Incantation = () => {
 }
 
 export const SpellList = () => {
-  const [spells, setSpells] = useState(require("../../../resources/spells.json"))
+  const [spells, setSpells] = useState(require("../../../resources/.spells.json"))
   const [sorting, setSorting] = useState("")
   const [categories, setCategories] = useState([])
 

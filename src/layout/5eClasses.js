@@ -1,11 +1,11 @@
 import React, {createRef, useEffect, useRef, useState} from "react";
-import classes from "./5e/resources/classes.json";
+import classes from "../resources/classes.json";
 import {Link, useLocation} from "react-router-dom";
 import {TableHeader} from "./5eLayout";
 import {Toggle} from "./5e/LayoutPurks"
 import {Parser} from "./5e/js/parser"
 import {Selector5e, ToggleState} from "./5eModules";
-import races from "./5e/resources/races.json";
+import races from "../resources/races.json";
 import type {PlayerClass} from "./5e/Models";
 import {Feature} from "./5e/Models";
 import "./5e/css/classes.css"
@@ -20,8 +20,8 @@ export const Layout5eClasses = () => {
     id: "Source", sortId: "info.source", classSize: "ve-grow", colClass: "bold ve-grow ve-text-center pl-0 pr-1"
   }]
   //
-  const classes: [PlayerClass] = require('./5e/resources/classes.json')
-  // console.log(require('./5e/resources/classes.json'))
+  const classes: [PlayerClass] = require('../resources/classes.json')
+  // console.log(require('./5e/resources/.classes.json'))
   // const [elements, setElements] = useState(classes)
   // const [sorting, setSorting] = useState("")
   // const [selected: PlayerClass, setSelected] = useState(setSelectFromHash())
