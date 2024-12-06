@@ -8,6 +8,8 @@ import {Selector5e, ToggleState} from "./5eModules";
 import races from "./5e/resources/races.json";
 import type {PlayerClass} from "./5e/Models";
 import {Feature} from "./5e/Models";
+import "./5e/css/classes.css"
+import {Renderer} from "./5e/js/render";
 
 
 export const Layout5eClasses = () => {
@@ -362,8 +364,8 @@ export const Layout5eClasses = () => {
   // [x] Liste de selection de classe,
   // [x] Table des capacités de classe,
   // [x] Ajouter les Capacités de classe dans la table
-  // [ ] Bande des traits de classe,
-  // [ ] TOC des capacites de classe,
+  // [x] Bande des traits & maîtrises de classe,
+  // [x] TOC des capacites de classe,
   // [ ] Description des capacités de classe
 
   const selectedClass: PlayerClass = {...selected}
@@ -381,10 +383,196 @@ export const Layout5eClasses = () => {
       })
     } else if (values.length === 6) {
       const [featureName, className, classSource, subClassName, subClassSource, level] = values
+      // console.log("-------------------------------------------------------------")
+      // console.log(featureName, className, classSource, subClassName, subClassSource, level)
+      // console.log(selectedClass.subclassFeatures)
       return selectedClass.subclassFeatures.find((feature) => {
-        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.subclassShortName === subClassName && feature.subclassSource === subClassSource && feature.level === Number(level))
+        return (
+          feature.name === featureName &&
+          feature.className === className &&
+          feature.classSource === classSource &&
+          feature.subclassShortName === subClassName &&
+          feature.subclassSource === subClassSource &&
+          feature.level === Number(level)
+        )
       })
     }
+  }
+
+
+  function renderContent(entry, depth:number = 1, toggle:string="") {
+    if (!entry) return;
+    else if (Array.isArray(entry)) return entry.map(item => renderContent(item, depth, toggle));
+    else if (entry.type) {
+      switch (entry.type) {
+        case "subFeature": {
+          return renderFeature(entry.subFeature, 2)
+        }
+        case "entries": {
+          if (depth > 1){
+            return <div></div>
+          }
+          toggle = toggle + "-sub-" + entry.name??""
+          addToggleableState(toggle)
+          // console.log(entry, entry.entries)
+          return <div className="rd__b rd__b--2">
+            <h3 className="rd__h rd__h--2">
+              <span className="entry-title-inner">{entry.name}</span>
+              <span className="ve-flex-vh-center" onClick={() => toggleStateChange(toggle)}>
+                <span className="">[{getToggleState(toggle)?"–":"+"}]</span>
+              </span>
+            </h3>
+            {getToggleState(toggle)?renderContent(entry.entries, depth++, toggle):""}
+          </div>
+        }
+        case "list": {
+          // console.log(entry)
+          return <ul className={"rd__list " + entry.style??""}>
+            {entry.entries.map(item=>{
+              return <li className="rd__li">{renderContent(item, depth++, toggle)}</li>
+            })}
+          </ul>
+        }
+        default:
+          return <><br/>Not yet implemented: "{entry.type}".</>
+      }
+    }
+    else if (typeof entry === "string") {
+      return <p>{entry}</p>
+    }
+    else return false;
+  }
+
+  function renderFeature(featureStringId: string, header: number = 1) {
+    const featureObject = findFeatureInClass(featureStringId)
+    let featureName, className, featureSource, featureLevel
+    let subclassClassName, subclassClassSource, subclassName
+    let toggleName
+    if (featureObject?.subclassShortName) {
+      [featureName, subclassClassName, subclassClassSource, subclassName, featureSource, featureLevel] = featureStringId.split("|")
+      toggleName = selectedClass.id + "-subclass-" + (featureObject?.subclassShortName??"Unknown") + "-feature-" + featureName
+    } else {
+      [featureName, className, featureSource, featureLevel] = featureStringId.split("|")
+      toggleName = selectedClass.id + "-feature-" + featureName
+    }
+
+    addToggleableState(toggleName)
+    return <tr className="cls-main__linked-titles">
+      <td colSpan={6}>
+        <div className={"rd__b rd__b--" + (featureObject?.header ?? header) + (featureObject?.subclassShortName?" cls__feature-subclass":"")}>
+          <h2 className={"rd__h rd__h--" + (featureObject?.header ?? header)}>
+            <span className="entry-title-inner">
+              {featureObject?.subclassShortName ?
+                (
+                  featureObject.header ?
+                  subclassName + ": Niveau " + featureLevel + ": " + featureName :
+                  featureName
+                ) : "Niveau " + featureLevel + ": " + featureName
+              }
+            </span>
+            <span className="ve-flex-vh-center">
+              <span className="rd__title-link ">
+                <span className="help-subtle"
+                      title={Parser.SOURCE_JSON_TO_FULL[featureSource]}>
+                {featureSource}
+              </span> p{0}
+              </span>
+              <span
+                className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
+                onClick={() => toggleStateChange(toggleName)}
+              >
+                [{getToggleState(toggleName) ? "–" : "+"}]
+              </span>
+            </span>
+          </h2>
+          {featureObject ? "" : <p>Unable to find {featureStringId}</p>}
+          {getToggleState(toggleName) && renderContent(featureObject?.entries, header, toggleName)}
+        </div>
+      </td>
+    </tr>
+
+  }
+
+  function renderFeatures() {
+    return selectedClass.info.classFeatures.map(feature => {
+      const featureLevel = (feature.classFeature ?? feature).split("|").pop()
+      // addToggleableState(selectedClass.id + "-feature-" + featureName)
+      let detailsList = [];
+      // const featureObject = findFeatureInClass(feature.classFeature ?? feature)
+      // detailsList.push(<tr className="cls-main__linked-titles">
+      // <td colSpan={6}>
+      //     <div className="rd__b rd__b--1">
+      //       <h2 className="rd__h rd__h--1">
+      //         <span className="entry-title-inner">Niveau {featureLevel}: {featureName}</span>
+      //         <span className="ve-flex-vh-center">
+      //                     <span className="rd__title-link ">
+      //                     <span className="help-subtle" title={Parser.SOURCE_JSON_TO_FULL[sourceName]}>
+      //                       {sourceName}
+      //                     </span> p{0}
+      //                   </span>
+      //                     <span
+      //                       className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
+      //                       onClick={() => toggleStateChange(selectedClass.id + "-feature-" + featureName)}
+      //                     >
+      //                       [{getToggleState(selectedClass.id + "-feature-" + featureName) ? "–" : "+"}]
+      //                     </span>
+      //                   </span>
+      //       </h2>
+      //       {featureObject ? "" : <p>Unable to find {feature.classFeature ?? feature}</p>}
+      //       {getToggleState(selectedClass.id + "-feature-" + featureName) && renderContent(featureObject?.entries)}
+      //     </div>
+      //   </td>*/
+      // </tr>)
+      detailsList.push(renderFeature(feature.classFeature ?? feature))
+
+      if (feature.gainSubClassFeature) {
+        selectedClass.subclasses.map((subclass) => {
+          if (!getToggleState(selectedClass.id + "-subclass-" + subclass.shortName)) return
+          subclass.subclassFeatures.map((subclassFeature) => {
+            const subclassfeatureLevel = subclassFeature.split("|").pop()
+            if (featureLevel === subclassfeatureLevel) {
+              detailsList.push(renderFeature(subclassFeature))
+              // let subclassFeatureToggle = selectedClass.id + "-subclass-" + subclass.shortName + "-feature-" + featureName;
+              // addToggleableState(subclassFeatureToggle)
+              // const featureObject = findFeatureInClass(subclassFeature)
+              // detailsList.push(
+              //   <tr className="cls-main__linked-titles">
+              //     <td colSpan={6}>
+              //       <div className={"rd__b rd__b--" + (featureObject.header ?? 1) + " cls__feature-subclass"}>
+              //         <h2 className={"rd__h rd__h--" + (featureObject.header ?? 1)}>
+              //                     <span className="entry-title-inner">
+              //                       {featureObject.header ?
+              //                         subclass.name + ": Niveau " + subclassfeatureLevel + ": " + subclassFeatureName :
+              //                         subclassFeatureName
+              //                       }
+              //                     </span>
+              //           <span className="ve-flex-vh-center">
+              //                       <span className="rd__title-link ">
+              //                         <span className="help-subtle" title={Parser.SOURCE_JSON_TO_FULL[subclassSource]}>
+              //                         {subclassSource}
+              //                       </span> p{0}
+              //                       </span>
+              //                       <span
+              //                         className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
+              //                         onClick={() => toggleStateChange(subclassFeatureToggle)}
+              //                       >
+              //                         [{getToggleState(subclassFeatureToggle) ? "–" : "+"}]
+              //                       </span>
+              //                     </span>
+              //         </h2>
+              //         {featureObject ? "" : <p>Unable to find {subclassFeature}</p>}
+              //         {getToggleState(subclassFeatureToggle) && renderContent(featureObject?.entries)}
+              //       </div>
+              //     </td>
+              //   </tr>
+              // )
+            }
+          })
+        })
+      }
+
+      return detailsList
+    })
   }
 
   // console.log('class',selectedClass)
@@ -459,11 +647,12 @@ export const Layout5eClasses = () => {
                   <td>
 
                     {featurePerLevel.length === 0 ? "—" : selectedClass.info.classFeatures.map((feature, idx) => {
-                      const [featureName, className, sourceName, featureLevel] = (typeof feature === "string") ? feature.split("|") : feature.classFeature.split("|")
-                      const currentFeature = featurePerLevel.indexOf(featurePerLevel.find(f=>featureName===f[0]))
+                      const [featureName, className, sourceName, featureLevel] = (feature.classFeature ?? feature).split("|")
+                      const currentFeature = featurePerLevel.indexOf(featurePerLevel.find(f => featureName === f[0]))
                       // console.log("feature", featureName, "|", Number(featureLevel), Number(featureLevel) === level + 1, featureLevel)
                       if (Number(featureLevel) === level + 1) {
-                        return <><span>{featureName}</span>{featurePerLevel.length>1?(currentFeature+1 !== featurePerLevel.length?", ":""):""}</>
+                        return <>
+                          <span>{featureName}</span>{featurePerLevel.length > 1 ? (currentFeature + 1 !== featurePerLevel.length ? ", " : "") : ""}</>
                       }
                     })}
                   </td>
@@ -538,7 +727,8 @@ export const Layout5eClasses = () => {
                         <strong>PV aux niveaux suivants: </strong>
                         <span className="roller render-roller">
                       {selectedClass.info.hitDice.amount}D{selectedClass.info.hitDice.faces}
-                    </span> + votre modificateur de Constitution, ou, {Math.ceil(selectedClass.info.hitDice.faces / 2) + 1} +
+                    </span> + votre modificateur de Constitution,
+                        ou, {Math.ceil(selectedClass.info.hitDice.faces / 2) + 1} +
                         votre modificateur de Constitution
                       </div>
                       <div className="py-2 w-100"></div>
@@ -672,7 +862,8 @@ export const Layout5eClasses = () => {
                         {selectedClass.info.multiclass.proficiencies.skills.any ?
                           <i>Choisissez {selectedClass.info.multiclass.proficiencies.skills.any} compétences.</i> :
                           <>
-                            <i>Choisissez {selectedClass.info.multiclass.proficiencies.skills.count} compétences parmi: </i>
+                            <i>Choisissez {selectedClass.info.multiclass.proficiencies.skills.count} compétences
+                              parmi: </i>
                             {selectedClass.info.multiclass.proficiencies.skills.pool.map((skill, idx) => {
                               return <>
                                 <span>{skill}</span>
@@ -703,11 +894,31 @@ export const Layout5eClasses = () => {
                 <hr className="cls-nav__hr"/>
               </div>
               <div className="nav-body">
-                {selectedClass.info.classFeatures?.map((feature) => {
-                  if (typeof feature === "string") {
-                    return <div className="cls-nav__item cls-nav__item--depth-1">{feature}</div>
+                {getToggleState("TOC") && selectedClass.info.classFeatures?.map((feature) => {
+                  const [featureName, className, sourceName, featureLevel] = (feature.classFeature ?? feature).split("|")
+                  const featureList = []
+                  featureList.push(<div className="cls-nav__item cls-nav__item--depth-1">{featureName}</div>)
+                  // console.log(feature,feature.gainSubClassFeature)
+                  if (feature.gainSubClassFeature) {
+                    selectedClass.subclasses.map((subclass) => {
+                      if (!getToggleState(selectedClass.id + "-subclass-" + subclass.shortName)) return
+                      subclass.subclassFeatures.map((subclassFeature) => {
+                        const [subclassFeatureName, subclassClassName, subclassSourceName, subclassName, subclassSource, subclassfeatureLevel] = subclassFeature.split("|")
+                        // console.log(subclassFeature, featureLevel === subclassfeatureLevel)
+                        if (featureLevel === subclassfeatureLevel) {
+                          featureList.push(
+                            <div className={"cls-nav__item cls-nav__item--depth-"
+                              + (findFeatureInClass(subclassFeature)?.header ?? 1)
+                              + " cls-nav__item--feature-subclass"
+                            }>
+                              {subclassFeatureName}
+                            </div>)
+                        }
+                      })
+                    })
                   }
-                  return <div className="cls-nav__item cls-nav__item--depth-1">{feature.classFeature}</div>
+                  // console.log(feature, featureList)
+                  return featureList
                 })}
               </div>
             </div>
@@ -732,7 +943,9 @@ export const Layout5eClasses = () => {
                   addToggleableState(selectedClass.id + "-subclass-" + subclass.shortName)
                   return (
                     <button onClick={() => toggleStateChange(selectedClass.id + "-subclass-" + subclass.shortName)}
-                            className="ve-btn ve-btn-default ve-btn-xs ve-flex-v-center m-1 cls__btn-sc--active-fresh">
+                            className={"ve-btn ve-btn-default ve-btn-xs ve-flex-v-center m-1" +
+                              (getToggleState(selectedClass.id + "-subclass-" + subclass.shortName) ? " cls__btn-sc--active-fresh" : "")
+                            }>
                       <div>{subclass.shortName}</div>
                       <div>({subclass.source})</div>
                     </button>
@@ -771,7 +984,7 @@ export const Layout5eClasses = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              {/*{renderFeature()}*/}
+              {renderFeatures()}
               {/*{featureDetails()}*/}
               {/*{formatSubFeature()}*/}
               <tr>

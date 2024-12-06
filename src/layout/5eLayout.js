@@ -4,14 +4,11 @@ import {formatContent} from "../pages/dnd/chara crea/Details";
 import {Link, Outlet} from "react-router-dom";
 import NavMenu, {MenuDivider, MenuLink, SubMenu} from "./5e/NavMenu";
 import "./5e/css/fontawesome.css"
-import "./5e/scss/import.scss"
 import "./5e/scss/bootstrap.scss"
+import "./5e/scss/import.scss"
 import "./5e/css/index.css"
-import {Selector5e} from "./5eModules";
+import {FilterManager, Selector5e} from "./5eModules";
 import {Parser} from "./5e/js/parser";
-import {PlayerRace} from "./5e/Models";
-import races from "./5e/resources/races.json";
-console.log("PlayerRace",PlayerRace)
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
 
@@ -61,7 +58,11 @@ function buildRace(elements) {
 
 
 export const Layout5e = () => {
+  const base = "TTRPG-wiki"
+  // const base = "tests"
+
   const [showMenu, setShowMenu] = useState(false)
+
   return (<>
     <script type="text/javascript" src="./5e/js/navigation.js"></script>
     <div className="viewport-wrapper">
@@ -86,64 +87,64 @@ export const Layout5e = () => {
                 className={"ve-btn ve-btn-default page__btn-toggle-nav" + (showMenu ? " active" : "")}>Menu
         </button>
         <ul className="nav nav-pills page__nav-inner" id="navbar">
-          <NavMenu name="Home" href="/tests" showMenu={showMenu}/>
-          <NavMenu name="Rules" href="#" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="Rules Glossary" link="rules"/>
-            <MenuLink name="Tables" link="#Unknown"/>
+          <NavMenu name="Home" href={"/" + base} showMenu={showMenu}/>
+          <NavMenu name="Rules" href="" addCaret={true} showMenu={showMenu}>
+            <MenuLink name="Rules Glossary" link="rules" callback={setShowMenu}/>
+            <MenuLink name="Tables" link="#Unknown" callback={setShowMenu}/>
             <MenuDivider/>
             <SubMenu name="Books" showMenu={showMenu}>
-              <MenuLink name="Books" link="#Unknown"/>
+              <MenuLink name="Books" link="#Unknown" callback={setShowMenu}/>
             </SubMenu>
             <MenuDivider/>
-            <MenuLink name="Quick Reference (2014)" link="#Unknown" href=""/>
+            <MenuLink name="Quick Reference (2014)" link="#Unknown" href="" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Player" href="#" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="Classes" link="classes"/>
-            <MenuLink name="Backgrounds" link="backgrounds"/>
-            <MenuLink name="Feats" link="feats"/>
-            <MenuLink name="Races" link="races"/>
-            <MenuLink name="Other Character Creation Options" link="#Unknown"/>
-            <MenuLink name="Other Options &amp; Features" link="optionsFeatures"/>
+          <NavMenu name="Player" href="" addCaret={true} showMenu={showMenu}>
+            <MenuLink name="Classes" link="classes" callback={setShowMenu}/>
+            <MenuLink name="Backgrounds" link="backgrounds" callback={setShowMenu}/>
+            <MenuLink name="Feats" link="feats" callback={setShowMenu}/>
+            <MenuLink name="Races" link="races" callback={setShowMenu}/>
+            <MenuLink name="Other Character Creation Options" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Other Options &amp; Features" link="optionsFeatures" callback={setShowMenu}/>
             <MenuDivider/>
-            <MenuLink name="Stat Generator" link="#Unknown"/>
+            <MenuLink name="Stat Generator" link="#Unknown" callback={setShowMenu}/>
             <MenuDivider/>
-            <MenuLink name="This Is Your Life" link="#Unknown"/>
-            <MenuLink name="Names" link="#Unknown"/>
+            <MenuLink name="This Is Your Life" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Names" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Dungeon Master" href="#" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="DM Screen" link="dmscreen" href="dmscreen"/>
+          <NavMenu name="Dungeon Master" href="" addCaret={true} showMenu={showMenu}>
+            <MenuLink name="DM Screen" link="dmscreen" href="dmscreen" callback={setShowMenu}/>
             <MenuDivider/>
             <SubMenu name="Adventures" showMenu={showMenu}></SubMenu>
-            <MenuLink name="Cults &amp; Supernatural Boons" link="#Unknown"/>
-            <MenuLink name="Objects" link="#Unknown"/>
-            <MenuLink name="Traps &amp; Hazards" link="#Unknown"/>
+            <MenuLink name="Cults &amp; Supernatural Boons" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Objects" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Traps &amp; Hazards" link="#Unknown" callback={setShowMenu}/>
             <MenuDivider/>
-            <MenuLink name="CR Calculator" link="#Unknown"/>
-            <MenuLink name="Encounter Generator" link="#Unknown"/>
-            <MenuLink name="Loot Generator" link="#Unknown"/>
+            <MenuLink name="CR Calculator" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Encounter Generator" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Loot Generator" link="#Unknown" callback={setShowMenu}/>
             <MenuDivider/>
-            <MenuLink name="Maps" link="#Unknown"/>
+            <MenuLink name="Maps" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="References" href="#" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="Actions" link="#Unknown"/>
-            <MenuLink name="Bestiary" link="bestiary"/>
-            <MenuLink name="Conditions &amp; Diseases" link="conditions"/>
-            <MenuLink name="Decks" link="#Unknown"/>
-            <MenuLink name="Deities" link="#Unknown"/>
-            <MenuLink name="Items" link="items"/>
-            <MenuLink name="Languages" link="#Unknown"/>
-            <MenuLink name="Supernatural Gifts &amp; Rewards" link="#Unknown"/>
-            <MenuLink name="Psionics" link="#Unknown"/>
-            <MenuLink name="Spells" link="spells"/>
-            <MenuLink name="Vehicles" link="#Unknown"/>
+          <NavMenu name="References" href="" addCaret={true} showMenu={showMenu}>
+            <MenuLink name="Actions" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Bestiary" link="bestiary" callback={setShowMenu}/>
+            <MenuLink name="Conditions &amp; Diseases" link="conditions" callback={setShowMenu}/>
+            <MenuLink name="Decks" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Deities" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Items" link="items" callback={setShowMenu}/>
+            <MenuLink name="Languages" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Supernatural Gifts &amp; Rewards" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Psionics" link="#Unknown" callback={setShowMenu}/>
+            <MenuLink name="Spells" link="spells" callback={setShowMenu}/>
+            <MenuLink name="Vehicles" link="#Unknown" callback={setShowMenu}/>
             <MenuDivider/>
-            <MenuLink name="Recipes" link="#Unknown"/>
+            <MenuLink name="Recipes" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Utilities" href="#" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="" link="dfts<" href="zersq"/>
+          <NavMenu name="Utilities" href="" addCaret={true} showMenu={showMenu}>
+            <MenuLink name="" link="dfts<" href="zersq" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Settings" href="#" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="" link="dfts<" href="zersq"/>
+          <NavMenu name="Settings" href="" addCaret={true} showMenu={showMenu}>
+            <MenuLink name="" link="dfts<" href="zersq" callback={setShowMenu}/>
           </NavMenu>
           <div className="input-group omni__wrp-input">
             <input disabled className="form-control search omni__input"
@@ -281,9 +282,8 @@ export const Layout5eHome = () => {
   </div>)
 }
 
-const playerRaces = buildRace(require('./5e/resources/races.json'))
-
 export const Layout5e2 = () => {
+  const playerRaces = buildRace(require('./5e/resources/races.json'))
   const emptyFilters = {
     sources: []
   }
@@ -412,13 +412,7 @@ export const TableHeader = () => {
         Reset
       </button>
     </div>
-    <div className="fltr__mini-view ve-btn-group">
-      {/*TODO: List of all possible filters and change the data-state from "ignore" to "yes" or "no" to enable them*/}
-      <div className="fltr__mini-pill fltr__mini-pill--default-sel"
-           title="Acquisitions Incorporated (Filter: Source)" data-state="ignore">
-        <span className="glyphicon glyphicon-book"></span> AI
-      </div>
-    </div>
+
     {/*TODO: add class "ve-hidden" to hide*/}
   </>)
 }
@@ -462,7 +456,7 @@ export function Layout5eRaces() {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, sortElements, DisplayList
+    handleClickSelection, sortElements, DisplayList, DetailsHeader
   } = Selector5e(buildRace(races), columns);
 
   // console.log(races)
@@ -649,9 +643,9 @@ export function Layout5eRaces() {
                                   return (valueSub.map((list) => {
                                     const keyList = Object.keys(list)[0];
                                     const valueList = list[keyList]
-                                    console.log(list)
-                                    console.log(keyList)
-                                    console.log(valueList)
+                                    // console.log(list)
+                                    // console.log(keyList)
+                                    // console.log(valueList)
                                     return (<div className="rd__b  rd__b--3">
                                       <p>
                                               <span className="rd__h rd__h--3">
@@ -805,7 +799,7 @@ export const Layout5eFeats = () => {
 
   function setSelectFromHash() {
     const filtered = elements.find((e) => "#" + e.id === window.location.hash)
-    console.log(filtered)
+    // console.log(filtered)
     if (filtered) {
       return filtered
     } else {
@@ -883,163 +877,110 @@ export const Layout5eFeats = () => {
         </div>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
-      {Object.keys(selected).length === 0 ? <div className="view-col" id="contentwrapper">
-        <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-          <table id="pagecontent" className="w-100 stats">
-            <tbody>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            <tr>
-              <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-                view it here
-              </td>
-            </tr>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> : <div className="view-col" id="contentwrapper">
-        <div className="w-100 ve-flex" id="stat-tabs">
-          <div className="ml-auto ve-flex" id="tabs-right">
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                    title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
-            </button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                    title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
-              className="glyphicon glyphicon-new-window"></span></button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-                    title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
-              className="glyphicon glyphicon-magnet"></span></button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
-              <span className="glyphicon glyphicon-option-vertical"></span></button>
+      {Object.keys(selected).length === 0 ?
+        <div className="view-col" id="contentwrapper">
+          <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+            <table id="pagecontent" className="w-100 stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                  view it here
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> :
+        <div className="view-col" id="contentwrapper">
+          <div className="w-100 ve-flex" id="stat-tabs">
+            <div className="ml-auto ve-flex" id="tabs-right">
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+              </button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                className="glyphicon glyphicon-new-window"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                className="glyphicon glyphicon-magnet"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                <span className="glyphicon glyphicon-option-vertical"></span></button>
+            </div>
+          </div>
+          <div id="wrp-pagecontent" className="relative wrp-stats-table">
+            <table className="w-100 stats">
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <DetailsHeader selected={selected}/>
+              {selected.prerequisite ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <i>Prérequis: {selected.prerequisite}</i>
+                </td>
+              </tr> : ""}
+              <tr>
+                <td colSpan="6">
+                  <div className="rd__b rd__b--2">
+                    {selected.shortDesc}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6" className="pt-3">
+                  <b>Source:</b>
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+            </table>
           </div>
         </div>
-        <div id="wrp-pagecontent" className="relative wrp-stats-table">
-          <table className="w-100 stats">
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            <DetailsHeader selected={selected}/>
-            {selected.prerequisite ? <tr>
-              <td colSpan={6} className="pb-2 pt-0">
-                <i>Prérequis: {selected.prerequisite}</i>
-              </td>
-            </tr> : ""}
-            <tr>
-              <td colSpan="6">
-                <div className="rd__b rd__b--2">
-                  {selected.shortDesc}
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="6" className="pt-3">
-                <b>Source:</b>
-                <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
-              </td>
-            </tr>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-          </table>
-        </div>
-      </div>}
+      }
     </div>
   </div>)
 }
 export const Layout5eBackgrounds = () => {
 
   const columns = [{
-    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
+    id: "Nom", sortId: "name", classSize: "ve-col-2-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
   }, {
-    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
+    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
   }, {
-    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
+    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4", colClass: "bold ve-col-2-9 pl-0 pr-1"
   }, {
-    id: "Source", sortId: "source", classSize: "ve-grow"
+    id: "Source", sortId: "source", classSize: "ve-grow", colClass: "bold ve-col-2-9 pl-0 pr-1"
   }]
 
   const background = require('./5e/resources/backgrounds.json')
-  const [elements, setElements] = useState(buildRace(background))
-  const [sorting, setSorting] = useState("")
-  const [selected, setSelected] = useState(
-    // setSelectFromHash([...background], useLocation().hash)
-  )
-
-
-  const handleSort = (type) => {
-    const shouldReset = sorting === type + ".des"
-    const shouldAscend = !sorting.startsWith(type)
-    const shouldDescend = sorting === type + ".asc"
-
-    if (shouldAscend) {
-      // console.log("Should now ascend: " + type + ".asc")
-      setSorting(type + ".asc")
-    } else if (shouldDescend) {
-      setSorting(type + ".des")
-      // console.log("Should now descend: " + type + ".des")
-    } else if (shouldReset) {
-      setSorting("")
-      // console.log("Should reset.")
-      type = "id"
-    }
-
-    elements.sort(function (a, b) {
-      let textA = a[type].toUpperCase();
-      let textB = b[type].toUpperCase();
-      if (shouldAscend || shouldReset) {
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
-      }
-      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
-    })
-  }
-  const handleClick = elem => {
-    setSelected(elem)
-  };
+  // const [elements, setElements] = useState(buildRace(background))
+  // const [sorting, setSorting] = useState("")
+  // const [selected, setSelected] = useState(
+  //   // setSelectFromHash([...background], useLocation().hash)
+  // )
+  const {
+    selected, setSelected,
+    elements, setElements,
+    sorting, setSorting,
+    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
+  } = Selector5e(background, columns, "name");
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-          {columns.map((col) => {
-            return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-                            onClick={() => handleSort(col.sortId)}>
-              {col.id}<span
-              className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-            </button>)
-          })}
-        </div>
-        {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-        <div id="list" className="list list--stats">
-          {/*{console.log(elements)}*/}
-          {elements.map((elem) => {
-            // console.log(elem)
-            return <div
-              className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-              onClick={() => handleClick(elem)}>
-
-              <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
-                {columns.map(column => {
-                  // console.log(column.sortId, elem[column.sortId])
-                  if (column.sortId === "source") {
-                    return <span
-                      className={"source ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
-                  }
-                  return <span
-                    className={column.classSize + " px-1"}>{elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}</span>
-                })}
-              </Link>
-            </div>
-          })}
-        </div>
+        <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {Object.keys(selected).length === 0 ? <div className="view-col" id="contentwrapper">
+      {!selected || Object.keys(selected).length === 0 ? <div className="view-col" id="contentwrapper">
         <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
           <table id="pagecontent" className="w-100 stats">
             <tbody>
@@ -1086,7 +1027,7 @@ export const Layout5eBackgrounds = () => {
             </tr> : ""}
             <tr>
               <td colSpan="6">
-                <div className="rd__b rd__b--2" dangerouslySetInnerHTML={{__html: selected.content[0].html}}></div>
+                <div className="rd__b rd__b--2" dangerouslySetInnerHTML={{__html: selected.content?.[0].html}}></div>
               </td>
             </tr>
             <tr>
@@ -1104,9 +1045,297 @@ export const Layout5eBackgrounds = () => {
     </div>
   </div>)
 }
-export const Layout5eOptionFeaures = () => {
+
+
+export const Layout5eOptionFeatures = () => {
+
+  function tableDisplayOption(column, string, element) {
+    switch (column.sortId) {
+      case "school": {
+        return (
+          <span
+            className={column.colClass + " sp__school-" + string}
+            title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
+          {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
+        </span>
+        )
+      }
+      case "prerequisite":
+      case "level": {
+        return (
+          <span className={column.colClass}>{string ?? "—"}</span>
+        )
+      }
+      default:
+        return <span className={column.colClass}>{string}</span>
+    }
+  }
+
+  const columns = [
+    {
+      id: "Nom", sortId: "name", classSize: "ve-col-3", colClass: "bold ve-col-3 px-1"
+    },
+    {
+      id: "Type", sortId: "type", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
+    },
+    {
+      id: "Prérequis", sortId: "prerequisite", classSize: "ve-col-4-7", colClass: "ve-col-4-7 px-1"
+    },
+    {
+      id: "Niveau", sortId: "level", classSize: "ve-col-1", colClass: "ve-col-1 px-1 ve-text-center"
+    },
+    {
+      id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-1-5 ve-text-center pl-1 pr-0"
+    }
+  ]
+  const features = require('./5e/resources/features.json')
+
+  const {
+    selected, _,
+    elements, setElements,
+    __, ___,
+    ____, updateSortElementsState, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(features, columns, "name", tableDisplayOption);
+
+  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, elements)
+
+  const casters = {}
+  const casterObj = {
+    "type": ["Infusion d'Artificier", "Invocation Occulte"]
+  }
+
+  Object.entries(casterObj).map(([path, list]) => {
+    list.map(element => casters[element] = path)
+  })
+
+  return (<div className="view-col-group--cancer h-100 mh-0">
+    <div className="container view-col-wrapper view-col-wrapper--cancer">
+      <div className="view-col" id="listcontainer">
+        <TableHeader/>
+        <TempFilters filters={casters} toggleFilter={toggleFilter}/>
+        <DisplayList/>
+      </div>
+      <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+      {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+      {!selected || Object.keys(selected).length === 0 ?
+        <div className="view-col" id="contentwrapper">
+          <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+            <table id="pagecontent" className="w-100 stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                  view it here
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> :
+        <div className="view-col" id="contentwrapper">
+          <div className="w-100 ve-flex" id="stat-tabs">
+            <div className="ml-auto ve-flex" id="tabs-right">
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+              </button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                className="glyphicon glyphicon-new-window"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                className="glyphicon glyphicon-magnet"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                <span className="glyphicon glyphicon-option-vertical"></span></button>
+            </div>
+          </div>
+          <div id="wrp-pagecontent" className="relative wrp-stats-table">
+            <table className="w-100 stats">
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <DetailsHeader selected={selected}/>
+              {(selected.prerequisite || selected.level) ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <i>
+                    Prérequis: {selected.level}{(selected.prerequisite && selected.level) ? ", " : ""}{selected.prerequisite}
+                  </i>
+                </td>
+              </tr> : ""}
+              <tr>
+                <td colSpan="6">
+                  <div className="rd__b rd__b--2">
+                    {selected.shortDesc}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6" className="pt-3">
+                  <b>Source:</b>
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      }
+    </div>
+  </div>)
 }
 export const Layout5eItems = () => {
+
+  function tableDisplayOption(column, string, element) {
+    switch (column.sortId) {
+      case "school": {
+        return (
+          <span
+            className={column.colClass + " sp__school-" + string}
+            title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
+          {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
+        </span>
+        )
+      }
+      case "prerequisite":
+      case "level": {
+        return (
+          <span className={column.colClass}>{string ?? "—"}</span>
+        )
+      }
+      default:
+        return <span className={column.colClass}>{string}</span>
+    }
+  }
+
+  const columns = [
+    {
+    id: "Nom", sortId: "name", classSize: "ve-col-3-5", colClass: "ve-col-3-5 pl-0 pr-1 bold"
+  },
+    {
+    id: "Type", sortId: "bonus", classSize: "ve-col-4-5", colClass: "ve-col-4-5 px-1"
+  },
+    {
+    id: "Coût", sortId: "skills", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
+  },
+    {
+    id: "Poids", sortId: "skills", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
+  },
+    {
+    id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-1 ve-text-center pl-1 pr-0"
+  }
+  ]
+
+  const items = require('./5e/resources/items.json')
+  // const [elements, setElements] = useState(buildRace(spells))
+  // const [sorting, setSorting] = useState("")
+  // const [selected, setSelected] = useState(
+  //   // setSelectFromHash([...spells], useLocation().hash)
+  // )
+  const {
+    selected, setSelected,
+    elements, setElements,
+    sorting, setSorting,
+    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(items, columns, "name");
+
+  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, items)
+
+  const casters = {}
+  const casterObj = {
+    "type": []
+  }
+
+
+  Object.entries(casterObj).map(([path, list], idx) => {
+    list.map(element => casters[element] = path)
+  })
+
+  return (<div className="view-col-group--cancer h-100 mh-0">
+    <div className="container view-col-wrapper view-col-wrapper--cancer">
+      <div className="view-col" id="listcontainer">
+        <TableHeader/>
+        <TempFilters filters={casters} toggleFilter={toggleFilter}/>
+        <DisplayList/>
+      </div>
+      <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+      {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+      {!selected || Object.keys(selected).length === 0 ?
+        <div className="view-col" id="contentwrapper">
+          <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+            <table id="pagecontent" className="w-100 stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                  view it here
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> :
+        <div className="view-col" id="contentwrapper">
+          <div className="w-100 ve-flex" id="stat-tabs">
+            <div className="ml-auto ve-flex" id="tabs-right">
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+              </button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                className="glyphicon glyphicon-new-window"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                className="glyphicon glyphicon-magnet"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                <span className="glyphicon glyphicon-option-vertical"></span></button>
+            </div>
+          </div>
+          <div id="wrp-pagecontent" className="relative wrp-stats-table">
+            <table className="w-100 stats">
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <DetailsHeader selected={selected}/>
+              {selected.prerequisite ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <i>Prérequis: {selected.prerequisite}</i>
+                </td>
+              </tr> : ""}
+              <tr>
+                <td colSpan="6">
+                  <div className="rd__b rd__b--2">
+                    {selected.shortDesc}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6" className="pt-3">
+                  <b>Source:</b>
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      }
+    </div>
+  </div>)
+}
+export const Layout5eRules = () => {
 
   const columns = [{
     id: "Nom", sortId: "name", classSize: "ve-col-2-5"
@@ -1118,352 +1347,293 @@ export const Layout5eItems = () => {
     id: "Source", sortId: "source", classSize: "ve-grow"
   }]
 
-  const spells = require('./5e/resources/spells.json')
-  const [elements, setElements] = useState(buildRace(spells))
-  const [sorting, setSorting] = useState("")
-  const [selected, setSelected] = useState(
-    // setSelectFromHash([...spells], useLocation().hash)
-  )
-
-
-  const handleSort = (type) => {
-    const shouldReset = sorting === type + ".des"
-    const shouldAscend = !sorting.startsWith(type)
-    const shouldDescend = sorting === type + ".asc"
-
-    if (shouldAscend) {
-      // console.log("Should now ascend: " + type + ".asc")
-      setSorting(type + ".asc")
-    } else if (shouldDescend) {
-      setSorting(type + ".des")
-      // console.log("Should now descend: " + type + ".des")
-    } else if (shouldReset) {
-      setSorting("")
-      // console.log("Should reset.")
-      type = "id"
-    }
-
-    elements.sort(function (a, b) {
-      let textA = a[type].toUpperCase();
-      let textB = b[type].toUpperCase();
-      if (shouldAscend || shouldReset) {
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
-      }
-      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
-    })
-  }
-  const handleClick = elem => {
-    setSelected(elem)
-  };
+  const rules = require('./5e/resources/rules.json')
+  const {
+    selected, setSelected,
+    elements, setElements,
+    sorting, setSorting,
+    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
+  } = Selector5e(rules, columns, "name");
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-          {columns.map((col) => {
-            return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-                            onClick={() => handleSort(col.sortId)}>
-              {col.id}<span
-              className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-            </button>)
-          })}
+        <div className="fltr__mini-view ve-btn-group">
         </div>
-        {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-        <div id="list" className="list list--stats">
-          {/*{console.log(elements)}*/}
-          {elements.map((elem) => {
-            // console.log(elem)
-            return <div
-              className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-              onClick={() => handleClick(elem)}>
-
-              <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
-                {columns.map(column => {
-                  // console.log(column.sortId, elem[column.sortId])
-                  if (column.sortId === "source") {
-                    return <span
-                      className={"source ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
-                  }
-                  return <span
-                    className={column.classSize + " px-1"}>{elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}</span>
-                })}
-              </Link>
-            </div>
-          })}
-        </div>
+        <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {Object.keys(selected).length === 0 ? <div className="view-col" id="contentwrapper">
-        <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-          <table id="pagecontent" className="w-100 stats">
-            <tbody>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            <tr>
-              <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-                view it here
-              </td>
-            </tr>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> : <div className="view-col" id="contentwrapper">
-        <div className="w-100 ve-flex" id="stat-tabs">
-          <div className="ml-auto ve-flex" id="tabs-right">
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                    title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
-            </button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                    title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
-              className="glyphicon glyphicon-new-window"></span></button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-                    title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
-              className="glyphicon glyphicon-magnet"></span></button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
-              <span className="glyphicon glyphicon-option-vertical"></span></button>
+      {!selected || Object.keys(selected).length === 0 ?
+        <div className="view-col" id="contentwrapper">
+          <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+            <table id="pagecontent" className="w-100 stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                  view it here
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> :
+        <div className="view-col" id="contentwrapper">
+          <div className="w-100 ve-flex" id="stat-tabs">
+            <div className="ml-auto ve-flex" id="tabs-right">
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+              </button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                className="glyphicon glyphicon-new-window"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                className="glyphicon glyphicon-magnet"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                <span className="glyphicon glyphicon-option-vertical"></span></button>
+            </div>
+          </div>
+          <div id="wrp-pagecontent" className="relative wrp-stats-table">
+            <table className="w-100 stats">
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <DetailsHeader selected={selected}/>
+              {selected.prerequisite ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <i>Prérequis: {selected.prerequisite}</i>
+                </td>
+              </tr> : ""}
+              <tr>
+                <td colSpan="6">
+                  <div className="rd__b rd__b--2">
+                    {selected.shortDesc}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6" className="pt-3">
+                  <b>Source:</b>
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+            </table>
           </div>
         </div>
-        <div id="wrp-pagecontent" className="relative wrp-stats-table">
-          <table className="w-100 stats">
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            <DetailsHeader selected={selected}/>
-            {selected.prerequisite ? <tr>
-              <td colSpan={6} className="pb-2 pt-0">
-                <i>Prérequis: {selected.prerequisite}</i>
-              </td>
-            </tr> : ""}
-            <tr>
-              <td colSpan="6">
-                <div className="rd__b rd__b--2" dangerouslySetInnerHTML={{__html: selected.content[0].html}}></div>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="6" className="pt-3">
-                <b>Source:</b>
-                <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
-              </td>
-            </tr>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-          </table>
-        </div>
-      </div>}
+      }
     </div>
   </div>)
 }
-export const Layout5eSpells = () => {
+export const Layout5eCondition = () => {
 
   const columns = [{
-    id: "Nom", sortId: "name", classSize: "ve-col-2-9"
+    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
   }, {
-    id: "Niveau", sortId: "level", classSize: "ve-col-1-5"
+    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
   }, {
-    id: "Incantation", sortId: "castingTime", classSize: "ve-col-1-7"
-  }, {
-    id: "School", sortId: "school", classSize: "ve-col-1-2"
-  }, {
-    id: "C", sortId: "concentration", classSize: "ve-col-0-6"
-  }, {
-    id: "Range", sortId: "range", classSize: "ve-col-2-4"
+    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
   }, {
     id: "Source", sortId: "source", classSize: "ve-grow"
   }]
 
-  const spells = require('./5e/resources/spells.json')
-  const [elements, setElements] = useState(buildRace(spells))
-  const [sorting, setSorting] = useState("")
-  const [selected, setSelected] = useState(
-    // setSelectFromHash([...spells], useLocation().hash)
-  )
+  const conditions = require('./5e/resources/conditions.json')
+  const {
+    selected, setSelected,
+    elements, setElements,
+    sorting, setSorting,
+    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
+  } = Selector5e(conditions, columns, "name");
 
-
-  const handleSort = (type) => {
-    const shouldReset = sorting === type + ".des"
-    const shouldAscend = !sorting.startsWith(type)
-    const shouldDescend = sorting === type + ".asc"
-
-    if (shouldAscend) {
-      // console.log("Should now ascend: " + type + ".asc")
-      setSorting(type + ".asc")
-    } else if (shouldDescend) {
-      setSorting(type + ".des")
-      // console.log("Should now descend: " + type + ".des")
-    } else if (shouldReset) {
-      setSorting("")
-      // console.log("Should reset.")
-      type = "id"
-    }
-
-    elements.sort(function (a, b) {
-      let textA = a[type].toUpperCase();
-      let textB = b[type].toUpperCase();
-      if (shouldAscend || shouldReset) {
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
-      }
-      return (textA < textB) ? 1 : (textA > textB) ? -1 : 0
-    })
-  }
-  const handleClick = elem => {
-    setSelected(elem)
-  };
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-          {columns.map((col) => {
-            return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-                            onClick={() => handleSort(col.sortId)}
-                            title={col.sortId === "concentration" ? "Concentration" : ""}
-            >
-              {col.id}<span
-              className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-            </button>)
-          })}
+        <div className="fltr__mini-view ve-btn-group">
         </div>
-        {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-        <div id="list" className="list list--stats">
-          {/*{console.log(elements)}*/}
-          {elements.map((elem) => {
-            // console.log(elem)
-            return <div
-              className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-              onClick={() => handleClick(elem)}>
-
-              <Link to={"#" + elem.id} replace className="lst__row-border lst__row-inner">
-                {columns.map(column => {
-                  const center = ["level", "castingTime", "school"]
-                  const right = ["range"]
-                  // console.log(column.sortId, elem[column.sortId])
-                  if (column.sortId === "source") {
-                    return <span
-                      className={"ve-col-1-7 ve-text-center source__" + elem.source + " pl-1 pr-0"}>{elem.source}</span>
-                  } else if (column.sortId === "concentration") {
-                    return <span className={"ve-col-0-6 px-1 ve-text-center"}
-                                 title="Cencentration">{elem.concentration ? "×" : ""}</span>
-                  } else if (column.sortId === "school") {
-                    return <span
-                      className={"ve-col-1-2 px-1 ve-text-center sp__school-" + elem.school}>{Parser.SP_SCHOOL_ABV_TO_SHORT(elem.school)}</span>
-                  }
-                  return <span
-                    className={column.classSize + (center.includes(column.sortId) ? " ve-text-center" : "") + (right.includes(column.sortId) ? " ve-text-right" : "") + (column.sortId === "name" ? " bold" : "") + " px-1"}>
-                      {elem[column.sortId] === "" ? "—" : elem[column.sortId] ?? "—"}
-                    {column.sortId === "level" && elem.ritual ? " (rit.)" : ""}
-                    </span>
-                })}
-              </Link>
-            </div>
-          })}
-        </div>
+        <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {Object.keys(selected).length === 0 ? <div className="view-col" id="contentwrapper">
-        <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-          <table id="pagecontent" className="w-100 stats">
-            <tbody>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            <tr>
-              <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-                view it here
-              </td>
-            </tr>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> : <div className="view-col" id="contentwrapper">
-        <div className="w-100 ve-flex" id="stat-tabs">
-          <div className="ml-auto ve-flex" id="tabs-right">
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                    title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
-            </button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                    title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
-              className="glyphicon glyphicon-new-window"></span></button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-                    title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
-              className="glyphicon glyphicon-magnet"></span></button>
-            <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
-              <span className="glyphicon glyphicon-option-vertical"></span></button>
+      {!selected || Object.keys(selected).length === 0 ?
+        <div className="view-col" id="contentwrapper">
+          <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+            <table id="pagecontent" className="w-100 stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                  view it here
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> :
+        <div className="view-col" id="contentwrapper">
+          <div className="w-100 ve-flex" id="stat-tabs">
+            <div className="ml-auto ve-flex" id="tabs-right">
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+              </button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                className="glyphicon glyphicon-new-window"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                className="glyphicon glyphicon-magnet"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                <span className="glyphicon glyphicon-option-vertical"></span></button>
+            </div>
+          </div>
+          <div id="wrp-pagecontent" className="relative wrp-stats-table">
+            <table className="w-100 stats">
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <DetailsHeader selected={selected}/>
+              {selected.prerequisite ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <i>Prérequis: {selected.prerequisite}</i>
+                </td>
+              </tr> : ""}
+              <tr>
+                <td colSpan="6">
+                  <div className="rd__b rd__b--2">
+                    {selected.shortDesc}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6" className="pt-3">
+                  <b>Source:</b>
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+            </table>
           </div>
         </div>
-        <div id="wrp-pagecontent" className="relative wrp-stats-table">
-          <table className="w-100 stats">
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-            <DetailsHeader selected={selected}/>
-            <tr>
-              <td colSpan="6"><i>{Parser.SP_SCHOOL_ABV_TO_FULL(selected.school)} de Niveau {selected.level} </i></td>
-            </tr>
-            <tr>
-              <td colSpan="6" className="pt-2"><b>Casting
-                Time:</b> {selected.castingTime}{selected.ritual ? " ou en rituel" : ""}</td>
-            </tr>
-            <tr>
-              <td colSpan="6"><b>Range:</b> {selected.range}</td>
-            </tr>
-            <tr>
-              <td colSpan="6"><b>Components:</b> {selected.component}</td>
-            </tr>
-            <tr>
-              <td colSpan="6" className="pb-2"><b>Duration:</b> {selected.duration ?? ""}</td>
-            </tr>
-            <tr>
-              <td colSpan="6">
-                <div className="rd__b  rd__b--2">
-                  {selected.shortDesc}
-                </div>
-                {selected.upCast ? <div className="rd__b  rd__b--3">
-                  <p></p>
-                  <div data-roll-name-ancestor="Using a Higher-Level Spell Slot" className="rd__b  rd__b--3">
-                    <p>
-                        <span className="rd__h rd__h--3" data-title-index="6">
-                          <span className="entry-title-inner">Using a Higher-Level Spell Slot.</span>
-                        </span>
-                      The spell's duration increases by 48 hours for
-                      each spell slot level above 2.
-                    </p>
-                  </div>
-                </div> : ""}
-                {/*TODO: Put caster here.*/}
-                <div></div>
-              </td>
-            </tr>
-            <tr>
-              <td colSpan="6" className="pt-3">
-                <b>Source:</b>
-                <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page.
-              </td>
-            </tr>
-            <tr>
-              <th className="ve-tbl-border" colSpan="6"></th>
-            </tr>
-          </table>
-        </div>
-      </div>}
+      }
     </div>
   </div>)
-
-}
-export const Layout5eRules = () => {
-}
-export const Layout5eCondition = () => {
 }
 export const Layout5eBestiary = () => {
+
+  const columns = [{
+    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
+  }, {
+    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
+  }, {
+    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
+  }, {
+    id: "Source", sortId: "source", classSize: "ve-grow"
+  }]
+
+  const bestiary = require('./5e/resources/bestiary.json')
+  const {
+    selected, setSelected,
+    elements, setElements,
+    sorting, setSorting,
+    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
+  } = Selector5e(bestiary, columns, "name");
+
+
+  return (<div className="view-col-group--cancer h-100 mh-0">
+    <div className="container view-col-wrapper view-col-wrapper--cancer">
+      <div className="view-col" id="listcontainer">
+        <TableHeader/>
+        <div className="fltr__mini-view ve-btn-group">
+        </div>
+        <DisplayList/>
+      </div>
+      <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
+      {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+      {!selected || Object.keys(selected).length === 0 ?
+        <div className="view-col" id="contentwrapper">
+          <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
+            <table id="pagecontent" className="w-100 stats">
+              <tbody>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <tr>
+                <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
+                  view it here
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> :
+        <div className="view-col" id="contentwrapper">
+          <div className="w-100 ve-flex" id="stat-tabs">
+            <div className="ml-auto ve-flex" id="tabs-right">
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+              </button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
+                      title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span
+                className="glyphicon glyphicon-new-window"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
+                      title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)"><span
+                className="glyphicon glyphicon-magnet"></span></button>
+              <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0" title="Other Options">
+                <span className="glyphicon glyphicon-option-vertical"></span></button>
+            </div>
+          </div>
+          <div id="wrp-pagecontent" className="relative wrp-stats-table">
+            <table className="w-100 stats">
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+              <DetailsHeader selected={selected}/>
+              {selected.prerequisite ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <i>Prérequis: {selected.prerequisite}</i>
+                </td>
+              </tr> : ""}
+              <tr>
+                <td colSpan="6">
+                  <div className="rd__b rd__b--2">
+                    {selected.shortDesc}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="6" className="pt-3">
+                  <b>Source:</b>
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page
+                </td>
+              </tr>
+              <tr>
+                <th className="ve-tbl-border" colSpan="6"></th>
+              </tr>
+            </table>
+          </div>
+        </div>
+      }
+    </div>
+  </div>)
 }

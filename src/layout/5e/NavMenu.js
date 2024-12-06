@@ -44,12 +44,14 @@ const NavMenu = forwardRef(({open, setOpen, props}, ref) => {
 
 export default withClickOutside(NavMenu)
 
-export const MenuLink = ({name, link}) => {
+export const MenuLink = ({name, link, callback}) => {
   const location = useLocation()
 
   return (
     <li className={isCategoryActive(link, location)}>
-      <Link to={link}>{name}</Link>
+      <Link to={link}
+            // onClick={callback(false)}
+      >{name}</Link>
     </li>
   )
 }

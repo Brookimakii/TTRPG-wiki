@@ -310,6 +310,7 @@ $flt-ignore--hover: #e6e6e6;
 				background-color: color.adjust($flt-ignore, $lightness: - 7%);
 				color: color.adjust(vars.$rgb-font--muted, $lightness: 7%);
 
+				&[data-state="disable"],
 				&[data-state="yes"],
 				&[data-state="no"] {
 					color: #fff;
@@ -375,7 +376,7 @@ $flt-ignore--hover: #e6e6e6;
 			display: none;
 
 			&:hover {
-				text-decoration: #f00 line-through;
+				//text-decoration: #f00 line-through;
 			}
 
 			&[data-state="yes"] {
@@ -395,6 +396,35 @@ $flt-ignore--hover: #e6e6e6;
 			}
 
 			&--default-desel[data-state="no"] {
+				background: #7a564f;
+			}
+
+			&[data-state="positive"] {
+				background: vars.$rgb-active-blue;
+				color: #fff;
+				display: block;
+			}
+
+			&--default-sel[data-state="positive"] {
+				background: #48637a;
+			}
+
+			&[data-state="negative"] {
+				background: vars.$rgb-name-red;
+				color: #fff;
+				display: block;
+			}
+
+			&--default-desel[data-state="negative"] {
+				background: #7a564f;
+			}
+			&[data-state="disabled"] {
+				background: vars.$rgb-border-grey--trans-muted;
+				color: #000;
+				display: block;
+			}
+
+			&--default-desel[data-state="disabled"] {
 				background: #7a564f;
 			}
 		}

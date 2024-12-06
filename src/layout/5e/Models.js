@@ -63,6 +63,7 @@ export class Feature {
   subclassShortName: string
   subclassSource: string
   level: number
+  header: number
   entries: [string]
 }
 

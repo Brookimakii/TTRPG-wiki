@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet} from "react-router-dom";
+import {createBrowserRouter, Link, Outlet} from "react-router-dom";
 import Home from "../pages/Home";
 import {PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
 import DnDHome from "../pages/dnd/DnDHome";
@@ -18,8 +18,8 @@ import {
   Layout5eBestiary, Layout5eCondition,
   Layout5eFeats,
   Layout5eHome, Layout5eItems,
-  Layout5eOptionFeaures,
-  Layout5eRaces, Layout5eRules, Layout5eSpells
+  Layout5eOptionFeatures,
+  Layout5eRaces, Layout5eRules
 } from "../layout/5eLayout";
 import {
   Aventure,
@@ -31,11 +31,22 @@ import {
 } from "../pages/dnd/chara crea/CharacterCreation";
 import {Layout5eClasses} from "../layout/5eClasses";
 import AideDD from "../pages/AideDD";
+import {Layout5eSpells} from "../layout/5eSpells";
 
 const routes = [
   {
+    id: "base",
+    path: "",
+    element: <>
+      <Link to="old">To AideDD Layout</Link><br/>
+      <Link to="TTRPG-wiki">To 5e Layout</Link><br/>
+      <Link to="tests">To test Layout</Link>
+    </>,
+    children: []
+  },
+  {
     id: "homepage",
-    path: "/TTRPG-wiki",
+    path: "/old",
     element: <AideDD/>,
     children: [
       {
@@ -260,7 +271,7 @@ const routes = [
   },
   {
     id: "tests",
-    path: "/tests",
+    path: "/TTRPG-wiki",
     element: <Layout5e/>,
     children: [
       {
@@ -286,7 +297,7 @@ const routes = [
       {
         id: "5eFeaturesOptions",
         path: "optionsFeatures",
-        element: <Layout5eOptionFeaures/>,
+        element: <Layout5eOptionFeatures/>,
       },
       {
         id: "5eBackgrounds",
