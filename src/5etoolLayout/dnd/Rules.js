@@ -1,88 +1,43 @@
-import {Parser} from "./5e/js/parser";
-import {getResource, Resources} from "../ResourcesFetch";
-import {FilterManager, RenderModule, Selector5e} from "./5eModules";
+import {getResource, Resources} from "../../ResourcesFetch";
+import {RenderModule, Selector5e} from "../5eLayoutModules";
+import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
-import {TableHeader} from "./5eLayout";
-import type {Item} from "./5e/Models";
+import type {Rule} from "../../layout/5e/Models";
 
-export const Layout5eItems = () => {
+export const Dnd5eRules = () => {
 
-  function tableDisplayOption(column, string, element) {
-    switch (column.sortId) {
-      case "school": {
-        return (
-          <span
-            className={column.colClass + " sp__school-" + string}
-            title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
-          {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
-        </span>
-        )
-      }
-      case "prerequisite":
-      case "level": {
-        return (
-          <span className={column.colClass}>{string ?? "—"}</span>
-        )
-      }
-      default:
-        return <span className={column.colClass}>{string}</span>
-    }
-  }
+  const columns = [{
+    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
+  }, {
+    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
+  }, {
+    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
+  }, {
+    id: "Source", sortId: "source", classSize: "ve-grow"
+  }]
 
-  const columns = [
-    {
-      id: "Nom", sortId: "name", classSize: "ve-col-3-5", colClass: "ve-col-3-5 pl-0 pr-1 bold"
-    },
-    {
-      id: "Type", sortId: "bonus", classSize: "ve-col-4-5", colClass: "ve-col-4-5 px-1"
-    },
-    {
-      id: "Coût", sortId: "skills", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
-    },
-    {
-      id: "Poids", sortId: "skills", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
-    },
-    {
-      id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-1 ve-text-center pl-1 pr-0"
-    }
-  ]
-
-  const items = getResource(Resources.item)
-  // const [elements, setElements] = useState(buildRace(spells))
-  // const [sorting, setSorting] = useState("")
-  // const [selectedItem, setSelected] = useState(
-  //   // setSelectFromHash([...spells], useLocation().hash)
-  // )
+  const rules = getResource(Resources.rule)
   const {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader, TempFilters
-  } = Selector5e(items, columns, "name");
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(rules, columns, "name");
 
-  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, items)
-
-  const casters = {}
-  const casterObj = {
-    "type": []
-  }
-
-  Object.entries(casterObj).map(([path, list], idx) => {
-    list.map(element => casters[element] = path)
-  })
-
-  const selectedItem: Item = {...selected}
+  const selectedRule: Rule = {...selected}
   
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <TempFilters filters={casters} toggleFilter={toggleFilter}/>
+        <div className="fltr__mini-view ve-btn-group">
+        </div>
         <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {!selectedItem || Object.keys(selectedItem).length === 0 ?
+      {!selectedRule || Object.keys(selectedRule).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
@@ -123,23 +78,23 @@ export const Layout5eItems = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <DetailsHeader selectedItem={selectedItem}/>
-              {selectedItem.prerequisite ? <tr>
+              <DetailsHeader selectedRule={selectedRule}/>
+              {selectedRule.prerequisite ? <tr>
                 <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedItem.prerequisite}</i>
+                  <i>Prérequis: {selectedRule.prerequisite}</i>
                 </td>
               </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedItem.shortDesc)}
+                    {RenderModule().render(selectedRule.shortDesc)}
                   </div>
                 </td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-3">
                   <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedItem.source]}>{selectedItem.source}</i>, page
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedRule.source]}>{selectedRule.source}</i>, page
                 </td>
               </tr>
               <tr>

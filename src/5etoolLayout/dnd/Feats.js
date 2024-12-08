@@ -1,43 +1,51 @@
-import {getResource, Resources} from "../ResourcesFetch";
-import {RenderModule, Selector5e} from "./5eModules";
-import {Parser} from "./5e/js/parser";
+import {getResource, Resources} from "../../ResourcesFetch";
 import React from "react";
-import {TableHeader} from "./5eLayout";
-import type {Rule} from "./5e/Models";
+import {RenderModule, Selector5e} from "../5eLayoutModules";
+import {Parser} from "../../layout/5e/js/parser";
+import {PlayerFeat} from "../../layout/5e/Models";
 
-export const Layout5eRules = () => {
+export const Dnd5eFeats = () => {
+  // TODO: Finish Data Set.
 
-  const columns = [{
-    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
-  }, {
-    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
-  }, {
-    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
-  }, {
-    id: "Source", sortId: "source", classSize: "ve-grow"
-  }]
+  const columns = [
+    {
+      id: "Nom", sortId: "name", classSize: "ve-col-3-2"
+    },
+    {
+      id: "Catégorie", sortId: "cat", classSize: "ve-col-1-3"
+    },
+    {
+      id: "Capacité", sortId: "ability", classSize: "ve-col-2-5"
+    },
+    {
+      id: "Prérequis", sortId: "prerequisite", classSize: "ve-col-3"
+    },
+    {
+      id: "Source", sortId: "source", classSize: "ve-grow"
+    }
+  ]
+  const feat = getResource(Resources.feat)
 
-  const rules = getResource(Resources.rule)
   const {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
-  } = Selector5e(rules, columns, "name");
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e([...feat], columns);
 
-  const selectedRule: Rule = {...selected}
-  
+
+  const selectedFeat: PlayerFeat = {...selected}
+
+
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <div className="fltr__mini-view ve-btn-group">
-        </div>
         <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
-      {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {!selectedRule || Object.keys(selectedRule).length === 0 ?
+      {Object.keys(selectedFeat).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
@@ -78,23 +86,23 @@ export const Layout5eRules = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <DetailsHeader selectedRule={selectedRule}/>
-              {selectedRule.prerequisite ? <tr>
+              <DetailsHeader selected={selectedFeat}/>
+              {selectedFeat.prerequisite ? <tr>
                 <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedRule.prerequisite}</i>
+                  <i>Prérequis: {selectedFeat.prerequisite}</i>
                 </td>
               </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedRule.shortDesc)}
+                    {RenderModule().render(selectedFeat.shortDesc)}
                   </div>
                 </td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-3">
                   <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedRule.source]}>{selectedRule.source}</i>, page
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedFeat.source]}>{selectedFeat.source}</i>, page
                 </td>
               </tr>
               <tr>

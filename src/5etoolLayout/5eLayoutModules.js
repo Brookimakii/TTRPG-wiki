@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {Link, replace, useLocation} from "react-router-dom";
-import {Parser} from "./5e/js/parser";
+import {Link, useLocation} from "react-router-dom";
+import {Parser} from "../layout/5e/js/parser";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
@@ -115,6 +115,38 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     }
   }
 
+  const TableHeader = () => {
+    return (<>
+      <div className="lst__form-top" id="filter-search-group">
+        <button disabled className="ve-btn ve-btn-default">Filter</button>
+        {/*TODO: add class "active" when hiding the filters div*/}
+        <button disabled className="ve-btn ve-btn-default" title="Toggle Filter Summary">
+          <span className="glyphicon glyphicon-resize-small"></span>
+        </button>
+        <div className="w-100 relative">
+          <input disabled type="search" id="lst__search" autoComplete="off" autoCapitalize="off" spellCheck="false"
+                 className="search form-control lst__search lst__search--no-border-h"
+                 title="Hotkey: f. &quot;stats:<text>&quot; (&quot;/text/&quot; for regex) to search within stat blocks. &quot;info:<text>&quot; (&quot;/text/&quot; for regex) to search within info. &quot;text:<text>&quot; (&quot;/text/&quot; for regex) to search within stat blocks plus info."/>
+          <div id="lst__search-glass" className="lst__wrp-search-glass ve-flex-vh-center no-events">
+            <span className="glyphicon glyphicon-search"></span>
+          </div>
+          {/*TODO: Shown entries / Total Entries*/}
+          <div className="lst__wrp-search-visible no-events ve-flex-vh-center">101/264</div>
+        </div>
+        <button disabled className="ve-btn ve-btn-default" title="Feeling Lucky?">
+          <span className="glyphicon glyphicon-random"></span>
+        </button>
+        <button disabled className="ve-btn ve-btn-default" title="Hide Search Bar and Entry List">Hide</button>
+        <button disabled type="button" className="ve-btn ve-btn-default" id="reset"
+                title="Reset filters. SHIFT to reset everything.">
+          Reset
+        </button>
+      </div>
+
+      {/*TODO: add class "ve-hidden" to hide*/}
+    </>)
+  }
+
   function DisplayList() {
     // console.log(selected)
     return <>
@@ -189,8 +221,11 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
             >{selected.name}</h1>
           </div>
           <div className="stats__wrp-h-source  ve-flex-v-baseline">
-            <a href={"book.html#" + selected.source + ",page:" + selected.page} className={"help-subtle stats__h-source-abbreviation source__" + selected.source} title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</a>
-            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1" title={"Page" + selected.page}>p{selected.page}</a>
+            <a href={"book.html#" + selected.source + ",page:" + selected.page}
+               className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
+               title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</a>
+            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
+               title={"Page" + selected.page}>p{selected.page}</a>
           </div>
         </div>
       </th>
@@ -214,6 +249,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     setSorting,
     handleClickSelection,
     updateSortElementsState,
+    TableHeader,
     DisplayList,
     DetailsHeader,
     TempFilters
@@ -342,11 +378,9 @@ export const RenderModule = (props: {}) => {
         default:
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
-    }
-    else if (typeof entry === "string") {
+    } else if (typeof entry === "string") {
       return <p>{entry}</p>
-    }
-    else return false;
+    } else return false;
   }
 
   return {render}

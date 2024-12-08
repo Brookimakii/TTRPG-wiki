@@ -1,14 +1,13 @@
-import {getResource, Resources} from "../ResourcesFetch";
-import {Selector5e} from "./5eModules";
+import {getResource, Resources} from "../../ResourcesFetch";
+import {Selector5e} from "../5eLayoutModules";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
-import {Parser} from "./5e/js/parser";
+import {Parser} from "../../layout/5e/js/parser";
 import {Link} from "react-router-dom";
-import {formatContent} from "../pages/dnd/chara crea/Details";
+import {formatContent} from "../../pages/dnd/chara crea/Details";
 import React from "react";
-import {TableHeader} from "./5eLayout";
-import type {PlayerRace} from "./5e/Models";
+import type {PlayerRace} from "../../layout/5e/Models";
 
-export function Layout5eRaces() {
+export function Dnd5eRaces() {
 
   function buildRace(elements) {
     const newElems = structuredClone(elements)
@@ -72,7 +71,8 @@ export function Layout5eRaces() {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, sortElements, DisplayList, DetailsHeader
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
   } = Selector5e(buildRace(races), columns);
 
   // console.log(races)

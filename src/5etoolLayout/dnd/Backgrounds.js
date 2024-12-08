@@ -1,43 +1,50 @@
-import {getResource, Resources} from "../ResourcesFetch";
-import {RenderModule, Selector5e} from "./5eModules";
-import {Parser} from "./5e/js/parser";
+import {getResource, Resources} from "../../ResourcesFetch";
+import {Selector5e} from "../5eLayoutModules";
+import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
-import {TableHeader} from "./5eLayout";
-import {Condition} from "./5e/Models";
+import type {PlayerBackground} from "../../layout/5e/Models";
 
-export const Layout5eCondition = () => {
+export const Dnd5eBackgrounds = () => {
 
-  const columns = [{
-    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
-  }, {
-    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
-  }, {
-    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
-  }, {
-    id: "Source", sortId: "source", classSize: "ve-grow"
-  }]
+  const columns = [
+    {
+      id: "Nom", sortId: "name", classSize: "ve-col-2-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
+    },
+    {
+      id: "Ability", sortId: "bonus", classSize: "ve-col-3-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
+    },
+    {
+      id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4", colClass: "bold ve-col-2-9 pl-0 pr-1"
+    },
+    {
+      id: "Source", sortId: "source", classSize: "ve-grow", colClass: "bold ve-col-2-9 pl-0 pr-1"
+    }
+  ]
 
-  const conditions = getResource(Resources.condition)
+  const background = getResource(Resources.background)
+  // const [elements, setElements] = useState(buildRace(background))
+  // const [sorting, setSorting] = useState("")
+  // const [selectedBackground, setSelected] = useState(
+  //   // setSelectFromHash([...background], useLocation().hash)
+  // )
   const {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
-  } = Selector5e(conditions, columns, "name");
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(background, columns, "name");
 
-  const selectedCondition: Condition = {...selected}
-
+  const selectedBackground: PlayerBackground = {...selected}
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <div className="fltr__mini-view ve-btn-group">
-        </div>
         <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {!selectedCondition || Object.keys(selectedCondition).length === 0 ?
+      {!selectedBackground || Object.keys(selectedBackground).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
@@ -56,8 +63,7 @@ export const Layout5eCondition = () => {
               </tbody>
             </table>
           </div>
-        </div> :
-        <div className="view-col" id="contentwrapper">
+        </div> : <div className="view-col" id="contentwrapper">
           <div className="w-100 ve-flex" id="stat-tabs">
             <div className="ml-auto ve-flex" id="tabs-right">
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
@@ -78,23 +84,22 @@ export const Layout5eCondition = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <DetailsHeader selectedCondition={selectedCondition}/>
-              {selectedCondition.prerequisite ? <tr>
+              <DetailsHeader selectedBackground={selectedBackground}/>
+              {selectedBackground.prerequisite ? <tr>
                 <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedCondition.prerequisite}</i>
+                  <i>Prérequis: {selectedBackground.prerequisite}</i>
                 </td>
               </tr> : ""}
               <tr>
                 <td colSpan="6">
-                  <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedCondition.shortDesc)}
-                  </div>
+                  <div className="rd__b rd__b--2"
+                       dangerouslySetInnerHTML={{__html: selectedBackground.content?.[0].html}}></div>
                 </td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-3">
                   <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedCondition.source]}>{selectedCondition.source}</i>, page
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedBackground.source]}>{selectedBackground.source}</i>, page
                 </td>
               </tr>
               <tr>
@@ -102,8 +107,7 @@ export const Layout5eCondition = () => {
               </tr>
             </table>
           </div>
-        </div>
-      }
+        </div>}
     </div>
   </div>)
 }

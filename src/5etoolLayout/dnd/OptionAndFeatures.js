@@ -1,53 +1,83 @@
-import {getResource, Resources} from "../ResourcesFetch";
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {RenderModule, Selector5e} from "./5eModules";
-import {Parser} from "./5e/js/parser";
-import {TableHeader} from "./5eLayout";
-import type {PlayerRace} from "./5e/Models";
-import {PlayerFeat} from "./5e/Models";
+import {Parser} from "../../layout/5e/js/parser";
+import {getResource, Resources} from "../../ResourcesFetch";
+import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
+import React from "react";
+import type {PlayerOptionNFeature} from "../../layout/5e/Models";
 
-export const Layout5eFeats = () => {
-  // TODO: Finish Data Set.
+export const Dnd5eOptionFeatures = () => {
+
+  function tableDisplayOption(column, string, element) {
+    switch (column.sortId) {
+      case "school": {
+        return (
+          <span
+            className={column.colClass + " sp__school-" + string}
+            title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
+          {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
+        </span>
+        )
+      }
+      case "prerequisite":
+      case "level": {
+        return (
+          <span className={column.colClass}>{string ?? "—"}</span>
+        )
+      }
+      default:
+        return <span className={column.colClass}>{string}</span>
+    }
+  }
 
   const columns = [
     {
-      id: "Nom", sortId: "name", classSize: "ve-col-3-2"
+      id: "Nom", sortId: "name", classSize: "ve-col-3", colClass: "bold ve-col-3 px-1"
     },
     {
-      id: "Catégorie", sortId: "cat", classSize: "ve-col-1-3"
+      id: "Type", sortId: "type", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
     },
     {
-      id: "Capacité", sortId: "ability", classSize: "ve-col-2-5"
+      id: "Prérequis", sortId: "prerequisite", classSize: "ve-col-4-7", colClass: "ve-col-4-7 px-1"
     },
     {
-      id: "Prérequis", sortId: "prerequisite", classSize: "ve-col-3"
+      id: "Niveau", sortId: "level", classSize: "ve-col-1", colClass: "ve-col-1 px-1 ve-text-center"
     },
     {
-      id: "Source", sortId: "source", classSize: "ve-grow"
+      id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-1-5 ve-text-center pl-1 pr-0"
     }
   ]
-  const feat = getResource(Resources.feat)
+  const features = getResource(Resources.feature)
 
   const {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, sortElements, DisplayList, DetailsHeader
-  } = Selector5e([...feat], columns);
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(features, columns, "name", tableDisplayOption);
 
+  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, elements)
 
-  const selectedFeat: PlayerFeat = {...selected}
+  const casters = {}
+  const casterObj = {
+    "type": ["Infusion d'Artificier", "Invocation Occulte"]
+  }
 
+  Object.entries(casterObj).map(([path, list]) => {
+    list.map(element => casters[element] = path)
+  })
+
+  const selectedOptionFeature: PlayerOptionNFeature = {...selected}
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <DisplayList />
+        <TempFilters filters={casters} toggleFilter={toggleFilter}/>
+        <DisplayList/>
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
-      {Object.keys(selectedFeat).length === 0 ?
+      {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
+      {!selectedOptionFeature || Object.keys(selectedOptionFeature).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
@@ -88,23 +118,26 @@ export const Layout5eFeats = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <DetailsHeader selected={selectedFeat}/>
-              {selectedFeat.prerequisite ? <tr>
+              <DetailsHeader selectedOptionFeature={selectedOptionFeature}/>
+              {(selectedOptionFeature.prerequisite || selectedOptionFeature.level) ? <tr>
                 <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedFeat.prerequisite}</i>
+                  <i>
+                    Prérequis: {selectedOptionFeature.level}{(selectedOptionFeature.prerequisite && selectedOptionFeature.level) ? ", " : ""}{selectedOptionFeature.prerequisite}
+                  </i>
                 </td>
               </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedFeat.shortDesc)}
+                    {RenderModule().render(selectedOptionFeature.shortDesc)}
                   </div>
                 </td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-3">
                   <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedFeat.source]}>{selectedFeat.source}</i>, page
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedOptionFeature.source]}>{selectedOptionFeature.source}</i>,
+                  page
                 </td>
               </tr>
               <tr>

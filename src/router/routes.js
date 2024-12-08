@@ -15,7 +15,7 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import {
   Layout5e, Layout5eHome
-} from "../layout/5eLayout";
+} from "../5etoolLayout/5eLayout";
 import {
   Aventure,
   Caracteristique,
@@ -24,17 +24,17 @@ import {
   PlayerClasses, PlayerEquipment,
   PlayerRaces, SpellList
 } from "../pages/dnd/chara crea/CharacterCreation";
-import {Layout5eClasses} from "../layout/5eClasses";
+import {Dnd5eClasses} from "../5etoolLayout/dnd/Classes";
 import AideDD from "../pages/AideDD";
-import {Layout5eSpells} from "../layout/5eSpells";
-import {Layout5eRaces} from "../layout/layout5eRaces";
-import {Layout5eFeats} from "../layout/layout5eFeats";
-import {Layout5eBackgrounds} from "../layout/layout5eBackgrounds";
-import {Layout5eOptionFeatures} from "../layout/layout5eOptionFeatures";
-import {Layout5eItems} from "../layout/layout5eItems";
-import {Layout5eRules} from "../layout/layout5eRules";
-import {Layout5eCondition} from "../layout/layout5eCondition";
-import {Layout5eBestiary} from "../layout/layout5eBestiary";
+import {Dnd5eSpells} from "../5etoolLayout/dnd/Spells";
+import {Dnd5eRaces} from "../5etoolLayout/dnd/Races";
+import {Dnd5eFeats} from "../5etoolLayout/dnd/Feats";
+import {Dnd5eBackgrounds} from "../5etoolLayout/dnd/Backgrounds";
+import {Dnd5eOptionFeatures} from "../5etoolLayout/dnd/OptionAndFeatures";
+import {Dnd5eItems} from "../5etoolLayout/dnd/Items";
+import {Dnd5eRules} from "../5etoolLayout/dnd/Rules";
+import {Dnd5eCondition} from "../5etoolLayout/dnd/Condition";
+import {Dnd5eBestiary} from "../5etoolLayout/dnd/Bestiary";
 
 const routes = [
   {
@@ -285,52 +285,52 @@ const routes = [
       {
         id: "5eRaces",
         path: "races",
-        element: <Layout5eRaces/>,
+        element: <Dnd5eRaces/>,
       },
       {
         id: "5eClasses",
         path: "classes",
-        element: <Layout5eClasses/>,
+        element: <Dnd5eClasses/>,
       },
       {
         id: "5eFeat",
         path: "feats",
-        element: <Layout5eFeats/>,
+        element: <Dnd5eFeats/>,
       },
       {
         id: "5eFeaturesOptions",
         path: "optionsFeatures",
-        element: <Layout5eOptionFeatures/>,
+        element: <Dnd5eOptionFeatures/>,
       },
       {
         id: "5eBackgrounds",
         path: "backgrounds",
-        element: <Layout5eBackgrounds/>,
+        element: <Dnd5eBackgrounds/>,
       },
       {
         id: "5eItems",
         path: "items",
-        element: <Layout5eItems/>,
+        element: <Dnd5eItems/>,
       },
       {
         id: "5eSpells",
         path: "spells",
-        element: <Layout5eSpells/>,
+        element: <Dnd5eSpells/>,
       },
       {
         id: "5eRules",
         path: "rules",
-        element: <Layout5eRules/>,
+        element: <Dnd5eRules/>,
       },
       {
         id: "5eConditions",
         path: "conditions",
-        element: <Layout5eCondition/>,
+        element: <Dnd5eCondition/>,
       },
       {
         id: "5eBestiary",
         path: "bestiary",
-        element: <Layout5eBestiary/>,
+        element: <Dnd5eBestiary/>,
       }
     ]
   }

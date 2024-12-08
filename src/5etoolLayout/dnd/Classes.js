@@ -1,18 +1,12 @@
-import React, {createRef, useEffect, useRef, useState} from "react";
-import classes from "../resources/classes.json";
-import {Link, useLocation} from "react-router-dom";
-import {TableHeader} from "./5eLayout";
-import {Toggle} from "./5e/LayoutPurks"
-import {Parser} from "./5e/js/parser"
-import {RenderModule, Selector5e, ToggleState} from "./5eModules";
-import races from "../resources/races.json";
-import type {PlayerClass} from "./5e/Models";
-import {Feature} from "./5e/Models";
-import "./5e/css/classes.css"
-import {Renderer} from "./5e/js/render";
+import React from "react";
+import {Parser} from "../../layout/5e/js/parser"
+import {RenderModule, Selector5e, ToggleState} from "../5eLayoutModules";
+import type {PlayerClass} from "../../layout/5e/Models";
+import {Feature} from "../../layout/5e/Models";
+import "../css/classes.css"
 
 
-export const Layout5eClasses = () => {
+export const Dnd5eClasses = () => {
 
   const columns = [{
     id: "Name", sortId: "info.name", classSize: "ve-col-8", colClass: "bold ve-col-8 pl-0 pr-1"
@@ -20,7 +14,7 @@ export const Layout5eClasses = () => {
     id: "Source", sortId: "info.source", classSize: "ve-grow", colClass: "bold ve-grow ve-text-center pl-0 pr-1"
   }]
   //
-  const classes: [PlayerClass] = require('../resources/classes.json')
+  const classes: [PlayerClass] = require('../../resources/classes.json')
   // console.log(require('./5e/resources/.classes.json'))
   // const [elements, setElements] = useState(classes)
   // const [sorting, setSorting] = useState("")
@@ -90,7 +84,8 @@ export const Layout5eClasses = () => {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, sortElements, DisplayList
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
   } = Selector5e(classes, columns);
   // console.log("classes", elements)
 
@@ -400,7 +395,7 @@ export const Layout5eClasses = () => {
   }
 
 
-  function renderContent(entry, depth:number = 1, toggle:string="") {
+  function renderContent(entry, depth: number = 1, toggle: string = "") {
     if (!entry) return;
     else if (Array.isArray(entry)) return entry.map(item => renderContent(item, depth, toggle));
     else if (entry.type) {
@@ -409,26 +404,26 @@ export const Layout5eClasses = () => {
           return renderFeature(entry.subFeature, 2)
         }
         case "entries": {
-          if (depth > 1){
+          if (depth > 1) {
             return <div></div>
           }
-          toggle = toggle + "-sub-" + entry.name??""
+          toggle = toggle + "-sub-" + entry.name ?? ""
           addToggleableState(toggle)
           // console.log(entry, entry.entries)
           return <div className="rd__b rd__b--2">
             <h3 className="rd__h rd__h--2">
               <span className="entry-title-inner">{entry.name}</span>
               <span className="ve-flex-vh-center" onClick={() => toggleStateChange(toggle)}>
-                <span className="">[{getToggleState(toggle)?"–":"+"}]</span>
+                <span className="">[{getToggleState(toggle) ? "–" : "+"}]</span>
               </span>
             </h3>
-            {getToggleState(toggle)?renderContent(entry.entries, depth++, toggle):""}
+            {getToggleState(toggle) ? renderContent(entry.entries, depth++, toggle) : ""}
           </div>
         }
         case "list": {
           // console.log(entry)
-          return <ul className={"rd__list " + entry.style??""}>
-            {entry.entries.map(item=>{
+          return <ul className={"rd__list " + entry.style ?? ""}>
+            {entry.entries.map(item => {
               return <li className="rd__li">{renderContent(item, depth++, toggle)}</li>
             })}
           </ul>
@@ -436,11 +431,9 @@ export const Layout5eClasses = () => {
         default:
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
-    }
-    else if (typeof entry === "string") {
+    } else if (typeof entry === "string") {
       return <p>{entry}</p>
-    }
-    else return false;
+    } else return false;
   }
 
   function renderFeature(featureStringId: string, header: number = 1) {
@@ -450,7 +443,7 @@ export const Layout5eClasses = () => {
     let toggleName
     if (featureObject?.subclassShortName) {
       [featureName, subclassClassName, subclassClassSource, subclassName, featureSource, featureLevel] = featureStringId.split("|")
-      toggleName = selectedClass.id + "-subclass-" + (featureObject?.subclassShortName??"Unknown") + "-feature-" + featureName
+      toggleName = selectedClass.id + "-subclass-" + (featureObject?.subclassShortName ?? "Unknown") + "-feature-" + featureName
     } else {
       [featureName, className, featureSource, featureLevel] = featureStringId.split("|")
       toggleName = selectedClass.id + "-feature-" + featureName
@@ -459,14 +452,15 @@ export const Layout5eClasses = () => {
     addToggleableState(toggleName)
     return <tr className="cls-main__linked-titles">
       <td colSpan={6}>
-        <div className={"rd__b rd__b--" + (featureObject?.header ?? header) + (featureObject?.subclassShortName?" cls__feature-subclass":"")}>
+        <div
+          className={"rd__b rd__b--" + (featureObject?.header ?? header) + (featureObject?.subclassShortName ? " cls__feature-subclass" : "")}>
           <h2 className={"rd__h rd__h--" + (featureObject?.header ?? header)}>
             <span className="entry-title-inner">
               {featureObject?.subclassShortName ?
                 (
                   featureObject.header ?
-                  subclassName + ": Niveau " + featureLevel + ": " + featureName :
-                  featureName
+                    subclassName + ": Niveau " + featureLevel + ": " + featureName :
+                    featureName
                 ) : "Niveau " + featureLevel + ": " + featureName
               }
             </span>

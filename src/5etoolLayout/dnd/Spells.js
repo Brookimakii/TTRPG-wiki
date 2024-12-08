@@ -1,11 +1,9 @@
-import {FilterManager, RenderModule, Selector5e} from "./5eModules";
+import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
-import {Parser} from "./5e/js/parser";
-import {TableHeader} from "./5eLayout";
-import {getResource, Resources} from "../ResourcesFetch";
-import type {PlayerClass} from "./5e/Models";
-import {Spell} from "./5e/Models";
-
+import {Parser} from "../../layout/5e/js/parser";
+import {getResource, Resources} from "../../ResourcesFetch";
+import type {PlayerClass} from "../../layout/5e/Models";
+import {Spell} from "../../layout/5e/Models";
 
 function tableDisplayOption(column, string, element) {
   switch (column.sortId) {
@@ -37,7 +35,7 @@ function tableDisplayOption(column, string, element) {
   }
 }
 
-export const Layout5eSpells = () => {
+export const Dnd5eSpells = () => {
 
   const columns = [
     {
@@ -73,7 +71,8 @@ export const Layout5eSpells = () => {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
   } = Selector5e(spells, columns, "name", tableDisplayOption);
 
   const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)

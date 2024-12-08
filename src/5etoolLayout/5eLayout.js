@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Link, Outlet} from "react-router-dom";
-import NavMenu, {MenuDivider, MenuLink, SubMenu} from "./5e/NavMenu";
-import "./5e/css/fontawesome.css"
-import "./5e/scss/bootstrap.scss"
-import "./5e/scss/import.scss"
-import "./5e/css/index.css"
-import {Parser} from "./5e/js/parser";
+import NavMenu, {MenuDivider, MenuLink, SubMenu} from "../layout/5e/NavMenu";
+import "./css/fontawesome.css"
+import "../layout/5e/scss/bootstrap.scss"
+import "../layout/5e/scss/import.scss"
+import "./css/index.css"
+import {Parser} from "../layout/5e/js/parser";
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
 
@@ -18,7 +18,7 @@ export const Layout5e = () => {
   const [showMenu, setShowMenu] = useState(false)
 
   return (<>
-    <script type="text/javascript" src="./5e/js/navigation.js"></script>
+    <script type="text/javascript" src="../layout/5e/js/navigation.js"></script>
     <div className="viewport-wrapper">
       <div className="cancer__wrp-leaderboard cancer__anchor">
         <div className="cancer__disp-cancer"></div>
@@ -339,4 +339,5 @@ export const Layout5e2 = () => {
     </div>
   </div>)
 }
+
 

@@ -1,31 +1,37 @@
-import {getResource, Resources} from "../ResourcesFetch";
-import {RenderModule, Selector5e} from "./5eModules";
-import {Parser} from "./5e/js/parser";
+import {getResource, Resources} from "../../ResourcesFetch";
+import {RenderModule, Selector5e} from "../5eLayoutModules";
+import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
-import {TableHeader} from "./5eLayout";
-import type {Monster} from "./5e/Models";
+import {TableHeader} from "../5eLayout";
+import {Condition} from "../../layout/5e/Models";
 
-export const Layout5eBestiary = () => {
+export const Dnd5eCondition = () => {
 
-  const columns = [{
-    id: "Nom", sortId: "name", classSize: "ve-col-2-5"
-  }, {
-    id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
-  }, {
-    id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
-  }, {
-    id: "Source", sortId: "source", classSize: "ve-grow"
-  }]
+  const columns = [
+    {
+      id: "Nom", sortId: "name", classSize: "ve-col-2-5"
+    },
+    {
+      id: "Ability", sortId: "bonus", classSize: "ve-col-3-5"
+    },
+    {
+      id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4"
+    },
+    {
+      id: "Source", sortId: "source", classSize: "ve-grow"
+    }
+  ]
 
-  const bestiary = getResource(Resources.bestiary)
+  const conditions = getResource(Resources.condition)
   const {
     selected, setSelected,
     elements, setElements,
     sorting, setSorting,
-    handleClickSelection, updateSortElementsState, DisplayList, DetailsHeader
-  } = Selector5e(bestiary, columns, "name");
+    handleClickSelection, updateSortElementsState,
+    TableHeader, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(conditions, columns, "name");
 
-  const selectedMonster: Monster = {...selected}
+  const selectedCondition: Condition = {...selected}
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
@@ -37,7 +43,7 @@ export const Layout5eBestiary = () => {
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {!selectedMonster || Object.keys(selectedMonster).length === 0 ?
+      {!selectedCondition || Object.keys(selectedCondition).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
@@ -78,23 +84,23 @@ export const Layout5eBestiary = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
-              <DetailsHeader selectedMonster={selectedMonster}/>
-              {selectedMonster.prerequisite ? <tr>
+              <DetailsHeader selectedCondition={selectedCondition}/>
+              {selectedCondition.prerequisite ? <tr>
                 <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedMonster.prerequisite}</i>
+                  <i>Prérequis: {selectedCondition.prerequisite}</i>
                 </td>
               </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedMonster.shortDesc)}
+                    {RenderModule().render(selectedCondition.shortDesc)}
                   </div>
                 </td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-3">
                   <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedMonster.source]}>{selectedMonster.source}</i>, page
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedCondition.source]}>{selectedCondition.source}</i>, page
                 </td>
               </tr>
               <tr>
