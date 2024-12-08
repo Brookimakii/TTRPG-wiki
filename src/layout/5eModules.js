@@ -189,11 +189,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
             >{selected.name}</h1>
           </div>
           <div className="stats__wrp-h-source  ve-flex-v-baseline">
-            <a href={"book.html#" + selected.source + ",page:" + selected.page}
-               className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
-               title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</a>
-            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
-               title={"Page" + selected.page}>p{selected.page}</a>
+            <a href={"book.html#" + selected.source + ",page:" + selected.page} className={"help-subtle stats__h-source-abbreviation source__" + selected.source} title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</a>
+            <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1" title={"Page" + selected.page}>p{selected.page}</a>
           </div>
         </div>
       </th>

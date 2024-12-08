@@ -13,11 +13,9 @@ export function Layout5eRaces() {
   function buildRace(elements) {
     const newElems = structuredClone(elements)
     const races = []
-    // eslint-disable-next-line array-callback-return
     newElems.map((race) => {
       if (race.subraces) {
         let subraces = structuredClone(race.subraces)
-        // eslint-disable-next-line array-callback-return
         subraces.map((subrace) => {
 
           subrace["id"] = race.id + "-(" + subrace.id + ")"

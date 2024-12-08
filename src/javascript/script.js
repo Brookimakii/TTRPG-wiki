@@ -118,7 +118,7 @@
 // let menuButton = document.querySelector("span.nav-open-button");
 let menu = document.querySelector('.header .primary ul');
 // let sideNavButton = document.querySelector(".secondary h3");
-// let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
+// let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l’ul du sous menu */
 // let mobile = false;
 
 // let menuHeight = 0;
@@ -126,7 +126,7 @@ let menu = document.querySelector('.header .primary ul');
 // let interval = null
 
 export const secondaryToggle = ()=> {
-  let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l'ul du sous menu */
+  let sideNav = document.querySelector('.secondary > ul');	/* > important pour ne pas affecter l’ul du sous menu */
   console.log(sideNav)
   // console.log(sideNav.style.display)
   if (sideNav.style.display === "block") {
