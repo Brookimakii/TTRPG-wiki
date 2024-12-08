@@ -9,8 +9,9 @@ import feat from "./resources/feats.json"
 import condition from "./resources/conditions.json"
 import rule from "./resources/rules.json"
 
-export class Resources{
+export class Resources {
 }
+
 Resources.race = {
   dev: race,
   prod: "https://raw.githubusercontent.com/Brookimakii/TTRPG-wiki/refs/heads/master/src/resources/races.json?token=GHSAT0AAAAAACZTRR2NDY4MX2YGFB5CKGKCZ2TMQ4A"
@@ -52,7 +53,24 @@ Resources.bestiary = {
   prod: "https://raw.githubusercontent.com/Brookimakii/TTRPG-wiki/refs/heads/master/src/resources/bestiary.json?token=GHSAT0AAAAAACZTRR2NZ5JFMX3I7PH3CY3KZ2TMQUQ"
 }
 
-export const getResource = (resources:{dev:[],prod:""}) => {
+
+async function fetching (page){
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", "token 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");
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow"
+  };
+
+  const response = await fetch(`https://api.github.com/repos/Brookimakii/TTRPG-wiki/contentssrc/resources/${page}`, requestOptions)
+  return await response.json()["content"]
+}
+
+export const getResource = (resources: { dev: [], prod: "" }) => {
   const env = !process.env.NODE_ENV || process.env.NODE_ENV === "development"
-  return env ? resources.dev : fetch(resources.prod).then((response)=> response.json());
+
+  console.log(fetching("spells.json"))
+  return env ? resources.dev : fetch(resources.prod).then((response) => response.json());
 }
