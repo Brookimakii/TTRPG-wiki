@@ -2,7 +2,6 @@ import {useParams} from "react-router-dom";
 import {Main} from "../../../layout/Layouts";
 import {Author, Citation, Dialogue, Encadre, Officiel} from "../../../layout/BoxesLayout";
 import Markdown from "react-markdown";
-import {SpellsIncantation} from "./CharacterCreation";
 
 
 function getResources(data, id) {
@@ -133,7 +132,7 @@ export const BackgroundDetail = () => {
   // console.log(useParams())
   return (
     <Main name={background.name} lastUnit={true}>
-      <div dangerouslySetInnerHTML={{__html:formatContent(background.content[0].html)}}></div>
+      <div dangerouslySetInnerHTML={{__html: formatContent(background.content[0].html)}}></div>
     </Main>
   )
 }
@@ -163,8 +162,8 @@ export const Spells = () => {
           <div className="r"><strong>Portée</strong>: {spell.range}</div>
           <div className="c"><strong>Composantes</strong>: {spell.component}</div>
           <div className="d"><strong>Durée</strong>: {spell.duration}</div>
-          <div className="description">{spell.shortDesc}</div>
-          {spell.caster?spell.caster.map((e)=><div className="classe">{e}</div>):<></>}
+          <div className="description">{spell.entries}</div>
+          {spell.caster ? spell.caster.map((e) => <div className="classe">{e}</div>) : <></>}
           <div className="source">{spell.source}</div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
 import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../ResourcesFetch";
-import type {PlayerClass} from "../../layout/5e/Models";
 import {Spell} from "../../layout/5e/Models";
 
 function tableDisplayOption(column, string, element) {
@@ -226,7 +225,7 @@ export const Dnd5eSpells = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b  rd__b--2">
-                    {RenderModule().render(selectedSpell.longDesc ?? selectedSpell.shortDesc)}
+                    {RenderModule().render(selectedSpell.entries ?? selectedSpell.shortDesc)}
                   </div>
                   {selectedSpell.upCast ? <div className="rd__b  rd__b--3">
                     <p></p>

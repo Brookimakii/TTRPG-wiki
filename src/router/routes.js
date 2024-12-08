@@ -1,6 +1,6 @@
 import {createBrowserRouter, Link, Outlet} from "react-router-dom";
 import Home from "../pages/Home";
-import {PlayerGuide, Resources, Rules, Tips, Universe} from "../pages/dnd/DnD";
+import {PlayerGuide, Resources, Rules} from "../pages/dnd/DnD";
 import DnDHome from "../pages/dnd/DnDHome";
 import {
   BackgroundDetail,
@@ -11,18 +11,22 @@ import {
   Spells
 } from "../pages/dnd/chara crea/Details";
 import React from "react";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
-import {
-  Layout5e, Layout5eHome
-} from "../5etoolLayout/5eLayout";
+import {Layout5e, Layout5eHome} from "../5etoolLayout/5eLayout";
 import {
   Aventure,
   Caracteristique,
-  CharacterCreation, Combat, Conditions, FeatList, Incantation, Multiclass, Personalisation,
+  CharacterCreation,
+  Combat,
+  Conditions,
+  FeatList,
+  Incantation,
+  Multiclass,
+  Personalisation,
   PlayerBackground,
-  PlayerClasses, PlayerEquipment,
-  PlayerRaces, SpellList
+  PlayerClasses,
+  PlayerEquipment,
+  PlayerRaces,
+  SpellList
 } from "../pages/dnd/chara crea/CharacterCreation";
 import {Dnd5eClasses} from "../5etoolLayout/dnd/Classes";
 import AideDD from "../pages/AideDD";

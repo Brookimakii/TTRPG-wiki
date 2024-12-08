@@ -3,11 +3,11 @@ import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
 
 Object.byString = function (o, s) {
-  s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+  s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
   s = s.replace(/^\./, '');           // strip a leading dot
-  var a = s.split('.');
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i];
+  const a = s.split('.');
+  for (let i = 0, n = a.length; i < n; ++i) {
+    let k = a[i];
     if (k in o) {
       o = o[k];
     } else {
@@ -18,37 +18,8 @@ Object.byString = function (o, s) {
   return o;
 }
 
-function defaultTableDisplayOption(column, string, element) {
-  switch (column.sortId) {
-    case"school": {
-      return (
-        <span
-          className={column.colClass + " sp__school-" + string}
-          title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
-          {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
-        </span>
-      )
-    }
-    case "concentration": {
-      return (
-        <span className={column.colClass} title="Concentration">
-          {element.concentration ? "×" : ""}
-        </span>
-      )
-    }
-    case "level": {
-      return (
-        <span className={column.colClass}>
-          {string + (element.ritual ? " (rit.)" : "")}
-        </span>
-      )
-    }
-    default:
-      return <span className={column.colClass}>{string}</span>
-  }
-}
 
-export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function = defaultTableDisplayOption) => {
+export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function) => {
   // console.log("defaultElements", defaultElements)
   const [selected: {} | undefined, setSelected] = useState();
   const [elements: [{}], setElements] = useState(defaultElements ?? []);
@@ -340,11 +311,21 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   };
 }
 
+class Entry extends {} {
+  type: string
+  subFeature: string
+  style: string
+  name: string
+  entries: [string | {}]
+}
+
+
 export const RenderModule = (props: {}) => {
 
-  const render = (entry, depth: number = 1, toggle: string = "") => {
+  const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
     if (!entry) return;
-    else if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
+
+    if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
     else if (entry.type) {
       switch (entry.type) {
         case "subFeature": {

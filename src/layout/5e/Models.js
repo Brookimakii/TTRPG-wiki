@@ -90,71 +90,113 @@ export class PlayerClass {
       })
     }
   }
-
-  constructor() {
-  }
-
 }
 
 export class PlayerRace {
-  "id": string
-  "name": string
-  "bonus": string
-  "size": string
-  "source": string
-  "creatureType": string
-  "speed": string
-  "common": {
-    "age": string,
-    "alignment": string,
-    "size": string,
-    "languages": string
+  id: string
+  name: string
+  bonus: string
+  size: string
+  page: number
+  reprinted: {}
+  source: string
+  creatureType: string
+  speed: string
+  common: {
+    age: string,
+    alignment: string,
+    size: string,
+    languages: string
   }
-  "traits": [{}]
-  "info": [{}]
-  "images": []
-  "subraces": [{
-    "id": string,
-    "name": string,
-    "bonus": string,
-    "source": string,
-    "traits": [{}],
-    "info": {},
-    "images": []
+  traits: [{}]
+  info: [{}]
+  images: []
+  subraces: [{
+    id: string,
+    name: string,
+    bonus: string,
+    source: string,
+    traits: [{}],
+    info: {}, 
+    images: []
   }]
 }
 
 export class PlayerFeat {
-
+  id: string
+  name: string
+  prerequisite: string
+  entries: [string]
+  source: string
 }
 
 export class PlayerBackground {
-
+  id: string
+  name: string
+  entries: [string]
+  source: string
 }
 
 export class Spell {
+  id: string
+  name: string
+  level: string
+  school: string
+  source: string
   castingTime: string
+  range: string
+  duration: string
+  component: string
+  materialComponent:{
+    material: string,
+    cost: string
+  }
+  concentration: boolean
+  ritual: boolean
 
+  shortDesc: string
+  entries: [string]
+  upCast: string
+  casters: {
+    classes: [string]
+  }
 }
 
 export class Monster {
-
+  id: string
+  name: string
+  entries: [string]
+  source: string
 }
 
 export class Item {
-
+  id: string
+  name: string
+  entries: [string]
+  source: string
 }
 
 export class Condition {
-
+  id: string
+  name: string
+  entries: [string]
+  source: string
 }
 
 export class Rule {
-
+  id: string
+  name: string
+  entries: [string]
+  source: string
 }
 
 export class PlayerOptionNFeature {
-
+  id: string
+  name: string
+  prerequisite: string
+  level: string
+  entries: [string]
+  source: string
 }
 
 export default class Clazz {

@@ -2,7 +2,6 @@ import {getResource, Resources} from "../../ResourcesFetch";
 import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
-import {TableHeader} from "../5eLayout";
 import {Condition} from "../../layout/5e/Models";
 
 export const Dnd5eCondition = () => {
@@ -85,15 +84,10 @@ export const Dnd5eCondition = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               <DetailsHeader selectedCondition={selectedCondition}/>
-              {selectedCondition.prerequisite ? <tr>
-                <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedCondition.prerequisite}</i>
-                </td>
-              </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedCondition.shortDesc)}
+                    {RenderModule().render(selectedCondition.entries)}
                   </div>
                 </td>
               </tr>

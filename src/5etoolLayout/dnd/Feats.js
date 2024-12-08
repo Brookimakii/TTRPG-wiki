@@ -95,7 +95,7 @@ export const Dnd5eFeats = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedFeat.shortDesc)}
+                    {RenderModule().render(selectedFeat.entries)}
                   </div>
                 </td>
               </tr>

@@ -124,15 +124,10 @@ export const Dnd5eItems = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               <DetailsHeader selectedItem={selectedItem}/>
-              {selectedItem.prerequisite ? <tr>
-                <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedItem.prerequisite}</i>
-                </td>
-              </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedItem.shortDesc)}
+                    {RenderModule().render(selectedItem.entries)}
                   </div>
                 </td>
               </tr>

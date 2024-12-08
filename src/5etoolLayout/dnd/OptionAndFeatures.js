@@ -129,7 +129,7 @@ export const Dnd5eOptionFeatures = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedOptionFeature.shortDesc)}
+                    {RenderModule().render(selectedOptionFeature.entries)}
                   </div>
                 </td>
               </tr>

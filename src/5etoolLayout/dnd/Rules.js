@@ -79,15 +79,10 @@ export const Dnd5eRules = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               <DetailsHeader selectedRule={selectedRule}/>
-              {selectedRule.prerequisite ? <tr>
-                <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedRule.prerequisite}</i>
-                </td>
-              </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedRule.shortDesc)}
+                    {RenderModule().render(selectedRule.entries)}
                   </div>
                 </td>
               </tr>

@@ -5,7 +5,6 @@ import "./css/fontawesome.css"
 import "../layout/5e/scss/bootstrap.scss"
 import "../layout/5e/scss/import.scss"
 import "./css/index.css"
-import {Parser} from "../layout/5e/js/parser";
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
 

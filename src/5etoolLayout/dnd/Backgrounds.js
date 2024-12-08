@@ -1,5 +1,5 @@
 import {getResource, Resources} from "../../ResourcesFetch";
-import {Selector5e} from "../5eLayoutModules";
+import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
 import type {PlayerBackground} from "../../layout/5e/Models";
@@ -85,15 +85,11 @@ export const Dnd5eBackgrounds = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               <DetailsHeader selectedBackground={selectedBackground}/>
-              {selectedBackground.prerequisite ? <tr>
-                <td colSpan={6} className="pb-2 pt-0">
-                  <i>Prérequis: {selectedBackground.prerequisite}</i>
-                </td>
-              </tr> : ""}
               <tr>
                 <td colSpan="6">
-                  <div className="rd__b rd__b--2"
-                       dangerouslySetInnerHTML={{__html: selectedBackground.content?.[0].html}}></div>
+                  <div className="rd__b rd__b--2">
+                    {RenderModule().render(selectedBackground.entries)}
+                  </div>
                 </td>
               </tr>
               <tr>

@@ -54,19 +54,19 @@ Resources.bestiary = {
 }
 
 
-async function fetching (page){
-  const myHeaders = new Headers();
-  myHeaders.append("Authorization", "token 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");
-
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow"
-  };
-
-  const response = await fetch(`https://api.github.com/repos/Brookimakii/TTRPG-wiki/contentssrc/resources/${page}`, requestOptions)
-  return await response.json()["content"]
-}
+// async function fetching (page){
+//   const myHeaders = new Headers();
+//   myHeaders.append("Authorization", "token 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");
+//
+//   const requestOptions = {
+//     method: "GET",
+//     headers: myHeaders,
+//     redirect: "follow"
+//   };
+//
+//   const response = await fetch(`https://api.github.com/repos/Brookimakii/TTRPG-wiki/contentssrc/resources/${page}`, requestOptions)
+//   return await await response.json()["content"]
+// }
 
 export const getResource = (resources: { dev: [], prod: "" }) => {
   const env = !process.env.NODE_ENV || process.env.NODE_ENV === "development"
