@@ -163,7 +163,7 @@ export const Spells = () => {
           <div className="c"><strong>Composantes</strong>: {spell.component}</div>
           <div className="d"><strong>Durée</strong>: {spell.duration}</div>
           <div className="description">{spell.entries}</div>
-          {spell.caster ? spell.caster.map((e) => <div className="classe">{e}</div>) : <></>}
+          {spell.casters ? spell.casters.map((e) => <div className="classe">{e}</div>) : <></>}
           <div className="source">{spell.source}</div>
         </div>
       </div>

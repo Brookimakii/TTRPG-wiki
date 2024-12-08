@@ -394,58 +394,15 @@ export const Dnd5eClasses = () => {
     }
   }
 
-
-  function renderContent(entry, depth: number = 1, toggle: string = "") {
-    if (!entry) return;
-    else if (Array.isArray(entry)) return entry.map(item => renderContent(item, depth, toggle));
-    else if (entry.type) {
-      switch (entry.type) {
-        case "subFeature": {
-          return renderFeature(entry.subFeature, 2)
-        }
-        case "entries": {
-          if (depth > 1) {
-            return <div></div>
-          }
-          toggle = toggle + "-sub-" + entry.name ?? ""
-          addToggleableState(toggle)
-          // console.log(entry, entry.entries)
-          return <div className="rd__b rd__b--2">
-            <h3 className="rd__h rd__h--2">
-              <span className="entry-title-inner">{entry.name}</span>
-              <span className="ve-flex-vh-center" onClick={() => toggleStateChange(toggle)}>
-                <span className="">[{getToggleState(toggle) ? "–" : "+"}]</span>
-              </span>
-            </h3>
-            {getToggleState(toggle) ? renderContent(entry.entries, depth++, toggle) : ""}
-          </div>
-        }
-        case "list": {
-          // console.log(entry)
-          return <ul className={"rd__list " + entry.style ?? ""}>
-            {entry.entries.map(item => {
-              return <li className="rd__li">{renderContent(item, depth++, toggle)}</li>
-            })}
-          </ul>
-        }
-        default:
-          return <><br/>Not yet implemented: "{entry.type}".</>
-      }
-    } else if (typeof entry === "string") {
-      return <p>{entry}</p>
-    } else return false;
-  }
-
   function renderFeature(featureStringId: string, header: number = 1) {
     const featureObject = findFeatureInClass(featureStringId)
-    let featureName, className, featureSource, featureLevel
-    let subclassClassName, subclassClassSource, subclassName
+    let featureName, _, featureSource, featureLevel, subclassName
     let toggleName
     if (featureObject?.subclassShortName) {
-      [featureName, subclassClassName, subclassClassSource, subclassName, featureSource, featureLevel] = featureStringId.split("|")
+      [featureName, _, _, subclassName, featureSource, featureLevel] = featureStringId.split("|")
       toggleName = selectedClass.id + "-subclass-" + (featureObject?.subclassShortName ?? "Unknown") + "-feature-" + featureName
     } else {
-      [featureName, className, featureSource, featureLevel] = featureStringId.split("|")
+      [featureName, _, featureSource, featureLevel] = featureStringId.split("|")
       toggleName = selectedClass.id + "-feature-" + featureName
     }
 

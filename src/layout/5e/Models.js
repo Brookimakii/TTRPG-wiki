@@ -198,6 +198,3 @@ export class PlayerOptionNFeature {
   entries: [string]
   source: string
 }
-
-export default class Clazz {
-}

@@ -138,7 +138,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       </div>
       <div id="list" className="list list--stats">
         {/*{console.log(elements)}*/}
-        {elements.map((elem, idx) => {
+        {elements.map((elem) => {
           // console.log(elem)
           return <div
             className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
@@ -168,7 +168,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
 
   function TempFilters({filters, toggleFilter}) {
     return <div className="fltr__mini-view ve-btn-group">
-      {Object.keys(filters).map((filter, idx) => {
+      {Object.keys(filters).map((filter) => {
         const path = filters[filter]
         return <div className="fltr__mini-pill"
                     data-state={filters[path + "-" + filter] ?? "disabled"}
