@@ -72,5 +72,5 @@ export const getResource = (resources: { dev: [], prod: "" }) => {
   const env = !process.env.NODE_ENV || process.env.NODE_ENV === "development"
 
   console.log(fetching("spells.json"))
-  return env ? resources.dev : fetch(resources.prod).then((response) => response.json());
+  return resources.dev
 }
