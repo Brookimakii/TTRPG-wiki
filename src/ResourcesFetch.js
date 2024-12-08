@@ -71,6 +71,6 @@ async function fetching (page){
 export const getResource = (resources: { dev: [], prod: "" }) => {
   const env = !process.env.NODE_ENV || process.env.NODE_ENV === "development"
 
-  console.log(fetching("spells.json"))
+  // console.log(fetching("spells.json"))
   return resources.dev
 }

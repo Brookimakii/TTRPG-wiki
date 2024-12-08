@@ -1,3 +1,16 @@
+export class Feature {
+  name: string
+  source: string
+  page: number
+  className: string
+  classSource: string
+  subclassShortName: string
+  subclassSource: string
+  level: number
+  header: number
+  entries: [string]
+}
+
 export class PlayerClass {
   id: string
   info: {
@@ -52,19 +65,36 @@ export class PlayerClass {
   ]
   classFeatures: [Feature]
   subclassFeatures: [Feature]
-}
 
-export class Feature {
-  name: string
-  source: string
-  page: number
-  className: string
-  classSource: string
-  subclassShortName: string
-  subclassSource: string
-  level: number
-  header: number
-  entries: [string]
+  findFeatureInClass(values: string): Feature | undefined {
+    values = values.split("|")
+    if (values.length === 4) {
+      const [featureName, className, classSource, level] = values
+      return this.classFeatures.find((feature) => {
+        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.level === Number(level))
+      })
+    }
+    else if (values.length === 6) {
+      const [featureName, className, classSource, subClassName, subClassSource, level] = values
+      // console.log("-------------------------------------------------------------")
+      // console.log(featureName, className, classSource, subClassName, subClassSource, level)
+      // console.log(selectedClass.subclassFeatures)
+      return this.subclassFeatures.find((feature) => {
+        return (
+          feature.name === featureName &&
+          feature.className === className &&
+          feature.classSource === classSource &&
+          feature.subclassShortName === subClassName &&
+          feature.subclassSource === subClassSource &&
+          feature.level === Number(level)
+        )
+      })
+    }
+  }
+
+  constructor() {
+  }
+
 }
 
 export class PlayerRace {
@@ -104,6 +134,7 @@ export class PlayerBackground {
 }
 
 export class Spell {
+  castingTime: string
 
 }
 

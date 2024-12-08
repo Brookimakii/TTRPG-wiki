@@ -163,7 +163,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     </>;
   }
 
-  function TempFilters({ filters, toggleFilter }) {
+  function TempFilters({filters, toggleFilter}) {
     return <div className="fltr__mini-view ve-btn-group">
       {Object.keys(filters).map((filter, idx) => {
         const path = filters[filter]
@@ -247,7 +247,7 @@ export const ToggleState = () => {
   return {toggleStateChange, getToggleState, addToggleableState}
 }
 
-export const FilterManager = (setElements: function, updateSortElementsState: function, elements: []= []) => {
+export const FilterManager = (setElements: function, updateSortElementsState: function, elements: [] = []) => {
   const [filters, setFilters] = useState({});
 
   function extractNestedValue(obj, path) {
@@ -305,4 +305,54 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     filters,
     toggleFilter,
   };
+}
+
+export const RenderModule = (props: {}) => {
+
+  const render = (entry, depth: number = 1, toggle: string = "") => {
+    if (!entry) return;
+    else if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
+    else if (entry.type) {
+      switch (entry.type) {
+        case "subFeature": {
+          return render(entry.subFeature, 2)
+        }
+        case "entries": {
+          if (depth > 1) {
+            return <div></div>
+          }
+          toggle = toggle + "-sub-" + entry.name ?? ""
+          // addToggleableState(toggle)
+          // console.log(entry, entry.entries)
+          return <div className="rd__b rd__b--2">
+            <h3 className="rd__h rd__h--2">
+              <span className="entry-title-inner">{entry.name}</span>
+              <span className="ve-flex-vh-center" onClick={() => props.toggleStateChange(toggle)}>
+                <span className="">[{props.getToggleState(toggle) ? "–" : "+"}]</span>
+              </span>
+            </h3>
+            {props.getToggleState(toggle) ? render(entry.entries, depth++, toggle) : ""}
+          </div>
+        }
+        case "list": {
+          // console.log(entry)
+          return <ul className={"rd__list " + entry.style ?? ""}>
+            {entry.entries.map(item => {
+              return <li className="rd__li">{render(item, depth++, toggle)}</li>
+            })}
+          </ul>
+        }
+        default:
+          return <><br/>Not yet implemented: "{entry.type}".</>
+      }
+    }
+    else if (typeof entry === "string") {
+      return <p>{entry}</p>
+    }
+    else return false;
+  }
+
+  return {render}
+
+
 }

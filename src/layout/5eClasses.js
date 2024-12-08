@@ -4,7 +4,7 @@ import {Link, useLocation} from "react-router-dom";
 import {TableHeader} from "./5eLayout";
 import {Toggle} from "./5e/LayoutPurks"
 import {Parser} from "./5e/js/parser"
-import {Selector5e, ToggleState} from "./5eModules";
+import {RenderModule, Selector5e, ToggleState} from "./5eModules";
 import races from "../resources/races.json";
 import type {PlayerClass} from "./5e/Models";
 import {Feature} from "./5e/Models";
@@ -486,7 +486,10 @@ export const Layout5eClasses = () => {
             </span>
           </h2>
           {featureObject ? "" : <p>Unable to find {featureStringId}</p>}
-          {getToggleState(toggleName) && renderContent(featureObject?.entries, header, toggleName)}
+          {getToggleState(toggleName) && RenderModule({
+            getToggleState: getToggleState,
+            toggleStateChange: toggleStateChange
+          }).render(featureObject?.entries, header, toggleName)}
         </div>
       </td>
     </tr>

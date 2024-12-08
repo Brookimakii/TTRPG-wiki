@@ -38,8 +38,8 @@ Parser.ATB_ABV_TO_FULL = {
 
 // region School
 Parser.SKL_ABV_ABJ = "A";
-Parser.SKL_ABV_EVO = "V";
-Parser.SKL_ABV_ENC = "E";
+Parser.SKL_ABV_EVO = "Ev";
+Parser.SKL_ABV_ENC = "En";
 Parser.SKL_ABV_ILL = "I";
 Parser.SKL_ABV_DIV = "D";
 Parser.SKL_ABV_NEC = "N";

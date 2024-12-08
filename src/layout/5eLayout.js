@@ -7,7 +7,7 @@ import "./5e/css/fontawesome.css"
 import "./5e/scss/bootstrap.scss"
 import "./5e/scss/import.scss"
 import "./5e/css/index.css"
-import {FilterManager, Selector5e} from "./5eModules";
+import {FilterManager, RenderModule, Selector5e} from "./5eModules";
 import {Parser} from "./5e/js/parser";
 import {getResource, Resources} from "../ResourcesFetch";
 
@@ -928,7 +928,7 @@ export const Layout5eFeats = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selected.shortDesc}
+                    {RenderModule().render(selected.shortDesc)}
                   </div>
                 </td>
               </tr>
@@ -1168,7 +1168,7 @@ export const Layout5eOptionFeatures = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selected.shortDesc}
+                    {RenderModule().render(selected.shortDesc)}
                   </div>
                 </td>
               </tr>
@@ -1313,7 +1313,7 @@ export const Layout5eItems = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selected.shortDesc}
+                    {RenderModule().render(selected.shortDesc)}
                   </div>
                 </td>
               </tr>
@@ -1413,7 +1413,7 @@ export const Layout5eRules = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selected.shortDesc}
+                    {RenderModule().render(selected.shortDesc)}
                   </div>
                 </td>
               </tr>
@@ -1514,7 +1514,7 @@ export const Layout5eCondition = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selected.shortDesc}
+                    {RenderModule().render(selected.shortDesc)}
                   </div>
                 </td>
               </tr>
@@ -1615,7 +1615,7 @@ export const Layout5eBestiary = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selected.shortDesc}
+                    {RenderModule().render(selected.shortDesc)}
                   </div>
                 </td>
               </tr>

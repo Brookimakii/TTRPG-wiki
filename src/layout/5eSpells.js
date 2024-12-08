@@ -1,8 +1,10 @@
-import {FilterManager, Selector5e} from "./5eModules";
+import {FilterManager, RenderModule, Selector5e} from "./5eModules";
 import React from "react";
 import {Parser} from "./5e/js/parser";
 import {TableHeader} from "./5eLayout";
 import {getResource, Resources} from "../ResourcesFetch";
+import type {PlayerClass} from "./5e/Models";
+import {Spell} from "./5e/Models";
 
 
 function tableDisplayOption(column, string, element) {
@@ -64,7 +66,7 @@ export const Layout5eSpells = () => {
   const spells: [] = getResource(Resources.spell)
   // const [elements, setElements] = useState(spells)
   // const [sorting, setSorting] = useState("")
-  // const [selected, setSelected] = useState(
+  // const [selectedSpell, setSelected] = useState(
   //   // setSelectFromHash([...spells], useLocation().hash)
   // )
   const {
@@ -133,7 +135,8 @@ export const Layout5eSpells = () => {
     "caster.subclasses": [],
     "caster.races": []
   }
-
+  
+  const selectedSpell: Spell = {...selected}
 
   Object.entries(casterObj).map(([path, list], idx) => {
     list.map(element => casters[element] = path)
@@ -160,7 +163,7 @@ export const Layout5eSpells = () => {
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-      {!selected || Object.keys(selected).length === 0 ?
+      {!selectedSpell || Object.keys(selectedSpell).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
@@ -203,30 +206,30 @@ export const Layout5eSpells = () => {
               </tr>
               <DetailsHeader/>
               <tr>
-                <td colSpan="6"><i>{selected.school} de Niveau {selected.level} </i></td>
+                <td colSpan="6"><i>{Parser.SP_SCHOOL_ABV_TO_FULL[selectedSpell.school]} de Niveau {selectedSpell.level} </i></td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-2">
-                  <b>Casting Time:</b> {selected.castingTime}{selected.ritual ? " ou en rituel" : ""}
+                  <b>Casting Time:</b> {selectedSpell.castingTime}{selectedSpell.ritual ? " ou en rituel" : ""}
                 </td>
               </tr>
               <tr>
-                <td colSpan="6"><b>Range:</b> {selected.range}</td>
+                <td colSpan="6"><b>Range:</b> {selectedSpell.range}</td>
               </tr>
               <tr>
-                <td colSpan="6"><b>Components:</b> {selected.component}</td>
+                <td colSpan="6"><b>Components:</b> {selectedSpell.component}</td>
               </tr>
               <tr>
                 <td colSpan="6" className="pb-2">
-                  <b>Duration:</b> {selected.concentration ? "Concentration, jusqu'à" : ""}{selected.duration ?? ""}
+                  <b>Duration:</b> {selectedSpell.concentration ? "Concentration, jusqu'à" : ""}{selectedSpell.duration ?? ""}
                 </td>
               </tr>
               <tr>
                 <td colSpan="6">
                   <div className="rd__b  rd__b--2">
-                    {selected.longDesc ?? selected.shortDesc}
+                    {RenderModule().render(selectedSpell.longDesc ?? selectedSpell.shortDesc)}
                   </div>
-                  {selected.upCast ? <div className="rd__b  rd__b--3">
+                  {selectedSpell.upCast ? <div className="rd__b  rd__b--3">
                     <p></p>
                     <div data-roll-name-ancestor="Using a Higher-Level Spell Slot" className="rd__b  rd__b--3">
                       <p>
@@ -239,7 +242,7 @@ export const Layout5eSpells = () => {
                     </div>
                   </div> : ""}
                   {/*TODO: Put caster here.*/}
-                  {Object.entries(selected.casters).map(([type, casters]) => {
+                  {Object.entries(selectedSpell.casters).map(([type, casters]) => {
                     if (casters.length === 0) return;
                     return <div>
                       <span className="bold">{type.substring(0, 1).toUpperCase() + type.substring(1)}: </span>
@@ -257,7 +260,7 @@ export const Layout5eSpells = () => {
               <tr>
                 <td colSpan="6" className="pt-3">
                   <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selected.source]}>{selected.source}</i>, page.
+                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedSpell.source]}>{selectedSpell.source}</i>, page.
                 </td>
               </tr>
               <tr>
