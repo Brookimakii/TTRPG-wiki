@@ -14,12 +14,7 @@ import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import {
-  Layout5e, Layout5eBackgrounds,
-  Layout5eBestiary, Layout5eCondition,
-  Layout5eFeats,
-  Layout5eHome, Layout5eItems,
-  Layout5eOptionFeatures,
-  Layout5eRaces, Layout5eRules
+  Layout5e, Layout5eHome
 } from "../layout/5eLayout";
 import {
   Aventure,
@@ -32,6 +27,14 @@ import {
 import {Layout5eClasses} from "../layout/5eClasses";
 import AideDD from "../pages/AideDD";
 import {Layout5eSpells} from "../layout/5eSpells";
+import {Layout5eRaces} from "../layout/layout5eRaces";
+import {Layout5eFeats} from "../layout/layout5eFeats";
+import {Layout5eBackgrounds} from "../layout/layout5eBackgrounds";
+import {Layout5eOptionFeatures} from "../layout/layout5eOptionFeatures";
+import {Layout5eItems} from "../layout/layout5eItems";
+import {Layout5eRules} from "../layout/layout5eRules";
+import {Layout5eCondition} from "../layout/layout5eCondition";
+import {Layout5eBestiary} from "../layout/layout5eBestiary";
 
 const routes = [
   {

@@ -73,8 +73,7 @@ export class PlayerClass {
       return this.classFeatures.find((feature) => {
         return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.level === Number(level))
       })
-    }
-    else if (values.length === 6) {
+    } else if (values.length === 6) {
       const [featureName, className, classSource, subClassName, subClassSource, level] = values
       // console.log("-------------------------------------------------------------")
       // console.log(featureName, className, classSource, subClassName, subClassSource, level)
@@ -115,14 +114,14 @@ export class PlayerRace {
   "info": [{}]
   "images": []
   "subraces": [{
-      "id": string,
-      "name": string,
-      "bonus": string,
-      "source": string,
-      "traits": [{}],
-      "info": {},
-      "images": []
-    }]
+    "id": string,
+    "name": string,
+    "bonus": string,
+    "source": string,
+    "traits": [{}],
+    "info": {},
+    "images": []
+  }]
 }
 
 export class PlayerFeat {
@@ -146,4 +145,17 @@ export class Item {
 
 }
 
-export default class Clazz {}
+export class Condition {
+
+}
+
+export class Rule {
+
+}
+
+export class PlayerOptionNFeature {
+
+}
+
+export default class Clazz {
+}
