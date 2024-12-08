@@ -54,5 +54,5 @@ Resources.bestiary = {
 
 export const getResource = (resources:{dev:[],prod:""}) => {
   const env = !process.env.NODE_ENV || process.env.NODE_ENV === "development"
-  return env ? resources.dev : require(resources.prod);
+  return env ? resources.dev : fetch(resources.prod).then((response)=> response.json());
 }
