@@ -174,7 +174,14 @@ body::-webkit-scrollbar {
       border-top-right-radius: 0;
     }
   }
+  > div.link {
+    padding: 5px 14px 6px;
 
+    @media screen and (width > #{vars.$width-screen-md}) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
   @media screen and (width <= #{vars.$width-screen-md}) {
     margin-top: 2px;
     margin-bottom: 2px;

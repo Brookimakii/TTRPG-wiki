@@ -1,3 +1,11 @@
+export class Entry {
+  type: string
+  subFeature: string
+  style: string
+  name: string
+  entries: [string | {}]
+}
+
 export class Feature {
   name: string
   source: string
@@ -8,7 +16,7 @@ export class Feature {
   subclassSource: string
   level: number
   header: number
-  entries: [string]
+  entries: [string|Entry]
 }
 
 export class PlayerClass {

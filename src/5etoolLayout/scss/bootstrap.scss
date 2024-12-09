@@ -46,6 +46,9 @@ template {
 a {
   background-color: transparent;
 }
+div.link {
+  background-color: transparent;
+}
 
 a:active,
 a:hover {
@@ -1386,11 +1389,21 @@ a {
   color: #337ab7;
   text-decoration: none;
 }
+div.link {
+  color: #337ab7;
+  text-decoration: none;
+}
 
 a:focus,
 a:hover {
   color: #23527c;
   text-decoration: underline;
+}
+
+div.link:focus,
+div.link:hover {
+  cursor: pointer;
+  color: #23527c;
 }
 
 a:focus {
@@ -4215,10 +4228,24 @@ tbody.collapse.in {
   text-decoration: none;
   background-color: #f5f5f5;
 }
+.ve-dropdown-menu > li > div.link:focus,
+.ve-dropdown-menu > li > div.link:hover {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
 
 .ve-dropdown-menu > .active > a,
 .ve-dropdown-menu > .active > a:focus,
 .ve-dropdown-menu > .active > a:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  outline: 0;
+}
+.ve-dropdown-menu > .active > div.link,
+.ve-dropdown-menu > .active > div.link:focus,
+.ve-dropdown-menu > .active > div.link:hover {
   color: #fff;
   text-decoration: none;
   background-color: #337ab7;
@@ -4231,8 +4258,23 @@ tbody.collapse.in {
   color: #777;
 }
 
+.ve-dropdown-menu > .disabled > div.link,
+.ve-dropdown-menu > .disabled > div.link:focus,
+.ve-dropdown-menu > .disabled > div.link:hover {
+  color: #777;
+}
+
 .ve-dropdown-menu > .disabled > a:focus,
 .ve-dropdown-menu > .disabled > a:hover {
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.ve-dropdown-menu > .disabled > div.link:focus,
+.ve-dropdown-menu > .disabled > div.link:hover {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
@@ -4681,9 +4723,19 @@ textarea.input-group-sm > .input-group-btn > .ve-btn {
   display: block;
   padding: 10px 15px;
 }
+.nav > li > div.link {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
 
 .nav > li > a:focus,
 .nav > li > a:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
+.nav > li > div.link:focus,
+.nav > li > div.link:hover {
   text-decoration: none;
   background-color: #eee;
 }
@@ -4699,10 +4751,23 @@ textarea.input-group-sm > .input-group-btn > .ve-btn {
   cursor: not-allowed;
   background-color: transparent;
 }
+.nav > li.disabled > div.link:focus,
+.nav > li.disabled > div.link:hover {
+  color: #777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+}
 
 .nav .open > a,
 .nav .open > a:focus,
 .nav .open > a:hover {
+  background-color: #eee;
+  border-color: #337ab7;
+}
+.nav .open > div.link,
+.nav .open > div.link:focus,
+.nav .open > div.link:hover {
   background-color: #eee;
   border-color: #337ab7;
 }
@@ -4737,10 +4802,22 @@ textarea.input-group-sm > .input-group-btn > .ve-btn {
 .nav-tabs > li > a:hover {
   border-color: #eee #eee #ddd;
 }
+.nav-tabs > li >div.link:hover {
+  border-color: #eee #eee #ddd;
+}
 
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+.nav-tabs > li.active > div.link,
+.nav-tabs > li.active > div.link:focus,
+.nav-tabs > li.active > div.link:hover {
   color: #555;
   cursor: default;
   background-color: #fff;
@@ -4805,6 +4882,9 @@ textarea.input-group-sm > .input-group-btn > .ve-btn {
 }
 
 .nav-pills > li > a {
+  border-radius: 4px;
+}
+.nav-pills > li > div.link {
   border-radius: 4px;
 }
 

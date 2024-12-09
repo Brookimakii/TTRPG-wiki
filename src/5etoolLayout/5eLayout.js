@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Link, Outlet} from "react-router-dom";
 import NavMenu, {MenuDivider, MenuLink, SubMenu} from "../layout/5e/NavMenu";
 import "./css/fontawesome.css"
-import "../layout/5e/scss/bootstrap.scss"
-import "../layout/5e/scss/import.scss"
+import "./scss/bootstrap.scss"
+import "./scss/import.scss"
 import "./css/index.css"
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
@@ -41,7 +41,7 @@ export const Layout5e = () => {
         </button>
         <ul className="nav nav-pills page__nav-inner" id="navbar">
           <NavMenu name="Home" href={"/" + base} showMenu={showMenu}/>
-          <NavMenu name="Rules" href="#" addCaret={true} showMenu={showMenu}>
+          <NavMenu name="Rules" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="Rules Glossary" link="rules" callback={setShowMenu}/>
             <MenuLink name="Tables" link="#Unknown" callback={setShowMenu}/>
             <MenuDivider/>
@@ -51,7 +51,7 @@ export const Layout5e = () => {
             <MenuDivider/>
             <MenuLink name="Quick Reference (2014)" link="#Unknown" href="" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Player" href="#" addCaret={true} showMenu={showMenu}>
+          <NavMenu name="Player" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="Classes" link="classes" callback={setShowMenu}/>
             <MenuLink name="Backgrounds" link="backgrounds" callback={setShowMenu}/>
             <MenuLink name="Feats" link="feats" callback={setShowMenu}/>
@@ -64,7 +64,7 @@ export const Layout5e = () => {
             <MenuLink name="This Is Your Life" link="#Unknown" callback={setShowMenu}/>
             <MenuLink name="Names" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Dungeon Master" href="#" addCaret={true} showMenu={showMenu}>
+          <NavMenu name="Dungeon Master" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="DM Screen" link="dmscreen" href="dmscreen" callback={setShowMenu}/>
             <MenuDivider/>
             <SubMenu name="Adventures" showMenu={showMenu}></SubMenu>
@@ -78,7 +78,7 @@ export const Layout5e = () => {
             <MenuDivider/>
             <MenuLink name="Maps" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="References" href="#" addCaret={true} showMenu={showMenu}>
+          <NavMenu name="References" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="Actions" link="#Unknown" callback={setShowMenu}/>
             <MenuLink name="Bestiary" link="bestiary" callback={setShowMenu}/>
             <MenuLink name="Conditions &amp; Diseases" link="conditions" callback={setShowMenu}/>
@@ -93,10 +93,10 @@ export const Layout5e = () => {
             <MenuDivider/>
             <MenuLink name="Recipes" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Utilities" href="#" addCaret={true} showMenu={showMenu}>
+          <NavMenu name="Utilities" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="" link="dfts<" href="zersq" callback={setShowMenu}/>
           </NavMenu>
-          <NavMenu name="Settings" href="#" addCaret={true} showMenu={showMenu}>
+          <NavMenu name="Settings" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="" link="dfts<" href="zersq" callback={setShowMenu}/>
           </NavMenu>
           <div className="input-group omni__wrp-input">

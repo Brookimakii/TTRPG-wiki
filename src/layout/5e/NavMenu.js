@@ -29,9 +29,14 @@ const NavMenu = forwardRef(({open, setOpen, props}, ref) => {
   return (
     <li ref={ref}
         className={"dropdown dropdown--navbar page__nav-hidden-mobile page__btn-nav-root" + isCategoryActive(name, location) + (open ? " open" : "") + (showMenu ? " block" : "")}>
-      <Link to={href} className="nav__link" onClick={() => setOpen(!open)}>
-        {name}{addCaret ? (<span className="caret "></span>) : ""}
-      </Link>
+      {href===""?
+        <div className="nav__link link" onClick={() => setOpen(!open)}>
+          {name}{addCaret ? (<span className="caret "></span>) : ""}
+        </div>:
+        <Link to={href} className="nav__link" onClick={() => setOpen(!open)}>
+          {name}{addCaret ? (<span className="caret "></span>) : ""}
+        </Link>
+      }
 
       {props.children?<>{open && (
         <ul className="ve-dropdown-menu ve-dropdown-menu--top">
@@ -44,14 +49,15 @@ const NavMenu = forwardRef(({open, setOpen, props}, ref) => {
 
 export default withClickOutside(NavMenu)
 
-export const MenuLink = ({name, link, callback}) => {
+export const MenuLink = ({name, link="", callback}) => {
   const location = useLocation()
 
   return (
     <li className={isCategoryActive(link, location)}>
-      <Link to={link}
-            // onClick={callback(false)}
-      >{name}</Link>
+      {link===""?
+        <div>{name}</div>:
+        <Link to={link}>{name}</Link>
+      }
     </li>
   )
 }

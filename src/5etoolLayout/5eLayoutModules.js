@@ -1,6 +1,8 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
+import {type} from "@testing-library/user-event/dist/type";
+import type {Entry} from "../layout/5e/Models";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -155,8 +157,13 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
                         {string}
                       </span>
                     )
-                  default:
-                    return tableDisplayOption(column, string, elem) ?? <span className={column.colClass}>{string}</span>
+                  default: {
+                    if (typeof tableDisplayOption === "function") {
+                      return tableDisplayOption(column, string, elem) ??
+                        <span className={column.colClass}>{string}</span>
+                    }
+                  }
+                    return <span className={column.colClass}>{string}</span>
                 }
               })}
             </Link>
@@ -311,13 +318,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   };
 }
 
-class Entry extends {} {
-  type: string
-  subFeature: string
-  style: string
-  name: string
-  entries: [string | {}]
-}
+
 
 
 export const RenderModule = (props: {}) => {
@@ -329,24 +330,13 @@ export const RenderModule = (props: {}) => {
     else if (entry.type) {
       switch (entry.type) {
         case "subFeature": {
-          return render(entry.subFeature, 2)
+          return props.subFeature(entry.subFeature, depth+1)
         }
         case "entries": {
           if (depth > 1) {
             return <div></div>
           }
-          toggle = toggle + "-sub-" + entry.name ?? ""
-          // addToggleableState(toggle)
-          // console.log(entry, entry.entries)
-          return <div className="rd__b rd__b--2">
-            <h3 className="rd__h rd__h--2">
-              <span className="entry-title-inner">{entry.name}</span>
-              <span className="ve-flex-vh-center" onClick={() => props.toggleStateChange(toggle)}>
-                <span className="">[{props.getToggleState(toggle) ? "–" : "+"}]</span>
-              </span>
-            </h3>
-            {props.getToggleState(toggle) ? render(entry.entries, depth++, toggle) : ""}
-          </div>
+          return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "",depth)
         }
         case "list": {
           // console.log(entry)
