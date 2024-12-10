@@ -2,7 +2,7 @@ import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
 import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../ResourcesFetch";
-import {Spell} from "../../layout/5e/Models";
+import {Entry, Spell} from "../../layout/5e/Models";
 
 function tableDisplayOption(column, string, element) {
   switch (column.sortId) {
@@ -133,12 +133,27 @@ export const Dnd5eSpells = () => {
     "caster.subclasses": [],
     "caster.races": []
   }
-  
+
   const selectedSpell: Spell = {...selected}
 
   Object.entries(casterObj).map(([path, list], idx) => {
     list.map(element => casters[element] = path)
   })
+
+  const renderEntries = (entry: Entry, toggle, depth) => {
+    return <div className="rd__b rd__b--3">
+      <p>
+        <span className="rd__h rd__h--3" data-title-index="1">
+          <span className="entry-title-inner">{entry.name}. </span>
+        </span>
+        {RenderModule({...renderProps, defaultString: (string) => string,}).render(entry.entries)}
+      </p>
+    </div>
+  }
+
+  const renderProps = {
+    renderEntries: renderEntries
+  }
 
   // console.log(casters)
 
@@ -204,42 +219,46 @@ export const Dnd5eSpells = () => {
               </tr>
               <DetailsHeader/>
               <tr>
-                <td colSpan="6"><i>{Parser.SP_SCHOOL_ABV_TO_FULL[selectedSpell.school]} de Niveau {selectedSpell.level} </i></td>
+                <td colSpan="6"><i>{Parser.SP_SCHOOL_ABV_TO_FULL[selectedSpell.school]} de
+                  Niveau {selectedSpell.level} </i></td>
               </tr>
               <tr>
                 <td colSpan="6" className="pt-2">
-                  <b>Casting Time:</b> {selectedSpell.castingTime}{selectedSpell.ritual ? " ou en rituel" : ""}
+                  <b>Temps d'incantation:</b> {selectedSpell.castingTime}
+                  {selectedSpell.ritual ? " ou en rituel" : ""}
+                  {selectedSpell.castingTimeAddition ? ", " + selectedSpell.castingTimeAddition : ""}
                 </td>
               </tr>
               <tr>
-                <td colSpan="6"><b>Range:</b> {selectedSpell.range}</td>
+                <td colSpan="6"><b>Portée:</b> {selectedSpell.range}</td>
               </tr>
               <tr>
-                <td colSpan="6"><b>Components:</b> {selectedSpell.component}</td>
+                <td colSpan="6">
+                  <b>Composant:</b> {selectedSpell.component} {selectedSpell.materialComponent?.material ? "(" + selectedSpell.materialComponent.material + ")" : ""}
+                </td>
               </tr>
               <tr>
                 <td colSpan="6" className="pb-2">
-                  <b>Duration:</b> {selectedSpell.concentration ? "Concentration, jusqu'à" : ""}{selectedSpell.duration ?? ""}
+                  <b>Durée:</b> {selectedSpell.concentration ? "Concentration, jusqu'à" : ""}{selectedSpell.duration ?? ""}
                 </td>
               </tr>
               <tr>
                 <td colSpan="6">
                   <div className="rd__b  rd__b--2">
-                    {RenderModule().render(selectedSpell.entries ?? selectedSpell.shortDesc)}
+                    {RenderModule(renderProps).render(selectedSpell.entries && selectedSpell.entries.length !== 0 ? selectedSpell.entries : selectedSpell.shortDesc)}
                   </div>
-                  {selectedSpell.upCast ? <div className="rd__b  rd__b--3">
+                  {selectedSpell.upCast && selectedSpell.upCast !== "" ? <div className="rd__b  rd__b--3">
                     <p></p>
                     <div data-roll-name-ancestor="Using a Higher-Level Spell Slot" className="rd__b  rd__b--3">
                       <p>
                         <span className="rd__h rd__h--3" data-title-index="6">
-                          <span className="entry-title-inner">Using a Higher-Level Spell Slot.</span>
+                          <span className="entry-title-inner">À plus haut niveau. </span>
                         </span>
-                        The spell's duration increases by 48 hours for
-                        each spell slot level above 2.
+                        {selectedSpell.upCast}
                       </p>
                     </div>
                   </div> : ""}
-                  {/*TODO: Put caster here.*/}
+
                   {Object.entries(selectedSpell.casters).map(([type, casters]) => {
                     if (casters.length === 0) return;
                     return <div>
@@ -257,8 +276,17 @@ export const Dnd5eSpells = () => {
               </tr>
               <tr>
                 <td colSpan="6" className="pt-3">
-                  <b>Source:</b>
-                  <i title={Parser.SOURCE_JSON_TO_FULL[selectedSpell.source]}>{selectedSpell.source}</i>, page.
+                  <div style={{display: "flex", justifyContent: "space-between"}}>
+                  <span>
+                    <b>Source: </b>
+                    <i
+                      title={Parser.SOURCE_JSON_TO_FULL[selectedSpell.source]}>{selectedSpell.source}</i>, page {selectedSpell.page}.
+                  </span>
+                    <span>
+                    <b>Nom Anglais: </b>
+                    <i>{selectedSpell.id}</i>
+                  </span>
+                  </div>
                 </td>
               </tr>
               <tr>

@@ -350,7 +350,7 @@ export const RenderModule = (props: {}) => {
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
     } else if (typeof entry === "string") {
-      return <p>{entry}</p>
+      return props.defaultString?props.defaultString(entry):<p>{entry}</p>
     } else return false;
   }
 

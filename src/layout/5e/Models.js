@@ -16,7 +16,7 @@ export class Feature {
   subclassSource: string
   level: number
   header: number
-  entries: [string|Entry]
+  entries: [string | Entry]
 }
 
 export class PlayerClass {
@@ -125,7 +125,7 @@ export class PlayerRace {
     bonus: string,
     source: string,
     traits: [{}],
-    info: {}, 
+    info: {},
     images: []
   }]
 }
@@ -150,12 +150,12 @@ export class Spell {
   name: string
   level: string
   school: string
-  source: string
   castingTime: string
+  castingTimeAddition: string
   range: string
   duration: string
   component: string
-  materialComponent:{
+  materialComponent: {
     material: string,
     cost: string
   }
@@ -165,6 +165,8 @@ export class Spell {
   shortDesc: string
   entries: [string]
   upCast: string
+  source: string
+  page: number
   casters: {
     classes: [string]
   }
