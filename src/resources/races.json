@@ -4,13 +4,12 @@
     "name": "Aarakocra",
     "bonus": "Dex +2; Sag +1",
     "size": "Moyenne",
-    "source": "EEPC",
     "creatureType": "Humainoïde",
     "speed": "7,5m, vol 15m",
     "common": {
-      "age": "",
-      "alignment": "",
-      "size": "",
+      "age": "Les Aarakocra atteignent la maturité à l'âge de 3 ans. Comparés aux humains, les Aarakocra ne vivent généralement pas plus de 30 ans.",
+      "alignment": "La plupart des aarakocras sont bons et choisissent rarement leur camp lorsqu'il s'agit de la loi et du chaos. Les chefs de tribus et les guerriers peuvent être loyaux, tandis que les explorateurs et les aventuriers ont tendance à être chaotiques.",
+      "size": "Les Aarakocra mesurent environ 1,50 m de haut. Ils ont un corps mince et léger qui pèse entre 40 et 50 kg. Votre taille est moyenne.",
       "languages": "Vous pouvez parler, lire et écrire le commun, l'aarakocra et l'aérien."
     },
     "traits": [
@@ -22,11 +21,51 @@
       }
     ],
     "info": [
+      "Séquestrés dans les hautes montagnes au sommet de grands arbres, les aarakocras, parfois appelés oiseaux, évoquent la peur et l'émerveillement. De nombreux aarakocras ne sont même pas originaires du plan matériel. Ils viennent d'un monde au-delà des horizons infinis du plan élémentaire de l'air. Ce sont des immigrants, des réfugiés, des éclaireurs et des explorateurs, leurs avant-postes fonctionnant comme des points d'appui dans un monde à la fois étrange et étranger.",
       {
-        "": ""
+        "name": "Bec et plumes",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Les gardiens du ciel",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Maniérismes des oiseaux",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Terres natales",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Aarakocra dans les Forgotten Realms",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Un grand objectif",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Noms des Aarakocra",
+        "type": "entries",
+        "entries": []
+      },
+      {
+        "name": "Contexte d'Aarakocra",
+        "type": "entries",
+        "entries": []
       }
     ],
-    "images": []
+    "images": [],
+    "source": "EEPC",
+    "page": 5
   },
   {
     "id": "aasimar",
@@ -945,7 +984,9 @@
       {
         "Résilience construite": [
           "Vous avez été créé pour avoir un courage remarquable, représenté par les avantages suivants:",
-          {"ulist": [
+          {
+            "type": "list",
+            "entries": [
             "Vous avez l'avantage de sauver les lancers contre l'empoisonnement, et vous avez une résistance aux dommages causés par le poison.",
             "Vous n'avez pas besoin de manger, de boire ou de respirer.",
             "Vous êtes immunisé contre la maladie.",
@@ -959,7 +1000,9 @@
       {
         "Protection intégrée": [
           "Votre corps a des couches défensives intégrées, qui peuvent être améliorées avec une armure.",
-          {"ulist": [
+          {
+            "type": "list",
+            "entries": [
             "Vous gagnez un bonus +1 à la classe d'armure.",
             "Vous ne pouvez revêtir que l'armure avec laquelle vous maîtrisez. Pour enfiler l'armure, vous devez l'incorporer dans votre corps pendant 1 heure, pendant laquelle vous devez rester en contact avec l'armure. Pour enlever l'armure, vous devez passer 1 heure à l'enlever. Vous pouvez vous reposer tout en enfilant ou en enlevant une armure de cette façon.",
             "Tant que vous vivez, votre armure ne peut pas être retirée de votre corps contre votre volonté."

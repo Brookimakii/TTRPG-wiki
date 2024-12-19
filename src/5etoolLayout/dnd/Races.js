@@ -1,11 +1,12 @@
 import {getResource, Resources} from "../../ResourcesFetch";
-import {Selector5e} from "../5eLayoutModules";
+import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {Parser} from "../../layout/5e/js/parser";
 import {Link} from "react-router-dom";
 import {formatContent} from "../../pages/dnd/chara crea/Details";
 import React from "react";
 import type {PlayerRace} from "../../layout/5e/Models";
+import {Entry} from "../../layout/5e/Models";
 
 export function Dnd5eRaces() {
 
@@ -90,11 +91,28 @@ export function Dnd5eRaces() {
 
   const buttonTab = "ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0"
   // console.log(elements)
+
+  const renderEntries = (entry: Entry, toggle, depth) => {
+    return <div className="rd__b rd__b--3">
+      <p>
+        <span className="rd__h rd__h--3" data-title-index="1">
+          <span className="entry-title-inner">{entry.name}. </span>
+        </span>
+        {RenderModule({...renderProps, defaultString: (string) => string,}).render(entry.entries)}
+      </p>
+    </div>
+  }
+
+  const renderProps = {
+    renderEntries: renderEntries
+  }
+
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <DisplayList/>
+        {/*Include list Here (elements).*/}
+        {DisplayList(elements)}
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
@@ -331,38 +349,7 @@ export function Dnd5eRaces() {
                 <td colSpan={6} className="pt-3">
                   <div className="rd__b rd__b--1">
                     <div className="rd__b rd__b--2">
-                      {selectedRace.info.map((info) => {
-                        const key = Object.keys(info)[0];
-                        const value = info[key]
-                        if (key === "") {
-                          return (<p>{value}</p>)
-                        }
-                        if (typeof value === typeof []) {
-                          return (<div className="rd__b rd__b--3">
-                            {value.map((elem) => {
-                              return (<p>
-                                {elem === value[0] ? <>
-                                            <span className="rd__h rd__b--3">
-                                              <span className="entry-title-inner">{key}</span>
-                                            </span>
-                                  {" " + key}
-                                </> : key}
-                              </p>)
-                            })}
-                          </div>)
-                        }
-                        if (typeof value === typeof {}) {
-                          return formatContent([value])
-                        }
-                        return (<div className="rd__b rd__b--3">
-                          <p>
-                                      <span className="rd__h rd__b--3">
-                                        <span className="entry-title-inner">{key}</span>
-                                      </span>
-                            {" " + key}
-                          </p>
-                        </div>)
-                      })}
+                      {RenderModule(renderProps).render(selectedRace.info)}
                     </div>
                   </div>
                 </td>

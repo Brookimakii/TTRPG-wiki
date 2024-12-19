@@ -36,7 +36,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     let shouldReset = sorting === type + ".des"
     let shouldAscend = !sorting.startsWith(type)
     let shouldDescend = sorting === type + ".asc"
-
+    // console.log("---------")
+    // console.log("type", type)
     if (updateState) {
       if (shouldAscend) {
         // console.log("Should now ascend: " + type + ".asc")
@@ -49,22 +50,21 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
         // console.log("Should reset.")
         type = defaultSort
       }
-    }
-    // console.log("sorting",sorting)
-    // console.log("type",type)
-    // console.log("sorting === type",sorting === type)
-    if (sorting === type || type === "") {
-      if (type.includes(".asc") && !type.includes(".des")) {
+    } else {
+      if (sorting.includes(".asc") && !sorting.includes(".des")) {
         shouldAscend = true
       }
-      if (type === "") {
+      if (sorting === "") {
         shouldReset = true
         type = defaultSort
       }
-      type = type.replace(".asc", "").replace(".des", "")
+      type = sorting.replace(".asc", "").replace(".des", "")
     }
-
-    return list.toSorted((a, b) => {
+    // console.log("sorting", sorting)
+    // console.log("type", type)
+    // console.log("shouldAscend", shouldAscend)
+    // console.log("shouldReset", shouldReset)
+    return [...list].sort((a, b) => {
       let textA = a[type]?.toUpperCase() || "";
       let textB = b[type]?.toUpperCase() || "";
       if (shouldAscend || shouldReset) {
@@ -120,7 +120,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     </>)
   }
 
-  function DisplayList() {
+  function DisplayList(elementsToShow = []) {
     // console.log(selected)
     return <>
       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
@@ -140,12 +140,12 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       </div>
       <div id="list" className="list list--stats">
         {/*{console.log(elements)}*/}
-        {elements.map((elem) => {
+        {elementsToShow.map((elem) => {
           // console.log(elem)
           return <div
             className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
             onClick={() => handleClickSelection(elem)}>
-            <Link to={"#" + elem.id} className="lst__row-border lst__row-inner">
+            <Link to={"#" + elem.id} id={"#" + elem.id.replace(" ", "%20")} className="lst__row-border lst__row-inner">
               {columns.map(column => {
                 const string = Object.byString(elem, column.sortId)
                 switch (column.sortId) {
@@ -319,8 +319,6 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
 }
 
 
-
-
 export const RenderModule = (props: {}) => {
 
   const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
@@ -330,13 +328,13 @@ export const RenderModule = (props: {}) => {
     else if (entry.type) {
       switch (entry.type) {
         case "subFeature": {
-          return props.subFeature(entry.subFeature, depth+1)
+          return props.subFeature(entry.subFeature, depth + 1)
         }
         case "entries": {
           if (depth > 1) {
             return <div></div>
           }
-          return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "",depth)
+          return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "", depth)
         }
         case "list": {
           // console.log(entry)
@@ -350,7 +348,7 @@ export const RenderModule = (props: {}) => {
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
     } else if (typeof entry === "string") {
-      return props.defaultString?props.defaultString(entry):<p>{entry}</p>
+      return props?.defaultString ? props.defaultString(entry) : <p>{entry}</p>
     } else return false;
   }
 

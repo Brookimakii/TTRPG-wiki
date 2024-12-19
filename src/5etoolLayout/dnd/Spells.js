@@ -128,7 +128,7 @@ export const Dnd5eSpells = () => {
       "Moine",
       "Occultiste",
       "Paladin",
-      "Ranger"
+      "Rôdeur"
     ],
     "caster.subclasses": [],
     "caster.races": []
@@ -172,7 +172,7 @@ export const Dnd5eSpells = () => {
             </div>
           })}
         </div>
-        <DisplayList/>
+        {DisplayList(elements)}
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}

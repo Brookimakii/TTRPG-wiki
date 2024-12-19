@@ -2532,7 +2532,10 @@
           "classFeature": "Domaine divin|Clerc|PHB|1",
           "gainSubClassFeature": true
         },
-        "Canalisation d'énergie divine (1/repos)|Clerc|PHB|2",
+        {
+          "classFeature": "Canalisation d'énergie divine (1/repos)|Clerc|PHB|2",
+          "gainSubClassFeature": true
+        },
         "Amélioration du score de capacité|Clerc|PHB|4",
         "Canalisation d'énergie divine (2/repos)|Clerc|PHB|5",
         {
@@ -4873,7 +4876,7 @@
         ]
       },
       {
-        "name": "Fougue",
+        "name": "Fougue (1)",
         "source": "PHB",
         "page": 0,
         "className": "Guerrier",
@@ -8455,7 +8458,7 @@
           ],
           "count": 4
         },
-        "saves": []
+        "saves": ["dex","int"]
       },
       "startingEquipment": {
         "goldAlternative": "4d4 × 10",

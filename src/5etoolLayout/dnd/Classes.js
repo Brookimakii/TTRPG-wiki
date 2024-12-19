@@ -661,7 +661,7 @@ export const Dnd5eClasses = () => {
         <div className="col-md-3" id="listcontainer">
           <div className="night__shadow-big">
             <TableHeader/>
-            <DisplayList/>
+            {DisplayList(elements)}
           </div>
         </div>
         <div className="col-md-9" id="classtable">

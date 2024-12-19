@@ -931,7 +931,7 @@
     "ritual": false,
     "shortDesc": "1 ou 2 créatures dans un rayon de 1,50 m doivent réussir un JdS de Dex. ou subir 1d6 dégâts d'acide (dégâts/niv).",
     "entries": [
-      "Vous lancez une boule d'acide. Choisissez une créature à\nportée, ou deux créatures à portée situées à 1,50 mètre\nCHAP!TRF 11 ; LES SORTS\n21\n2lh\nou moins l'une de l'autre. Une cible doit réussir un jet de\nsauvegarde de Dextérité, sinon elle subit ld6 dégâts d'acide.\nLes dégâts du sort augmentent de ld6 quand vous atteignez le\nniveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous lancez une boule d'acide. Choisissez une créature à\nportée, ou deux créatures à portée situées à 1,50 mètre\nou moins l'une de l'autre. Une cible doit réussir un jet de\nsauvegarde de Dextérité, sinon elle subit ld6 dégâts d'acide.\nLes dégâts du sort augmentent de ld6 quand vous atteignez le\nniveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "PHB",

@@ -40,7 +40,7 @@ export const Dnd5eBackgrounds = () => {
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <DisplayList/>
+        {DisplayList(elements)}
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
