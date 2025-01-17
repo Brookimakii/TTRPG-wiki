@@ -6,6 +6,7 @@ import {Feature} from "../../layout/5e/Models";
 import "../css/classes.css"
 import {RefObject} from "react";
 import {Link, useLocation} from "react-router-dom";
+import classes from "../../resources/classes.json";
 
 
 export const Dnd5eClasses = () => {
@@ -90,7 +91,7 @@ export const Dnd5eClasses = () => {
     sorting, setSorting,
     handleClickSelection, updateSortElementsState,
     TableHeader, DisplayList, DetailsHeader, TempFilters
-  } = Selector5e(classes, columns);
+  } = Selector5e(classes, columns, "info.name");
   // console.log("classes", elements)
 
   const {toggleStateChange, getToggleState, addToggleableState} = ToggleState()
@@ -593,7 +594,7 @@ export const Dnd5eClasses = () => {
   }
 
   function renderEntry(feature, toggle, depth) {
-    return <div className="rd__b rd__b--2" ref={refs[toggle]}>
+    return <div className="rd__b rd__b--3" ref={refs[toggle]}>
       <h3 className="rd__h rd__h--2">
         <span className="entry-title-inner">{feature.name}</span>
         <span className="ve-flex-vh-center" style={{cursor: "pointer"}} onClick={() => toggleStateChange(toggle)}>
@@ -826,17 +827,20 @@ export const Dnd5eClasses = () => {
                     </span>
                       </div>
                       {(selectedClass.info.proficiencies.weapon) ? <>
-                        <div className="py-2 w-100"></div>
+                        {/*<div className="py-2 w-100"></div>*/}
                         <div>
                           <b>Armes: </b>
                           <span>
                         {Array.isArray(selectedClass.info.proficiencies.weapon) ? selectedClass.info.proficiencies.weapon.map((weapon, idx) => {
-                          return <>{weapon.replace("simple", "armes courantes")}{idx !== selectedClass.info.proficiencies.weapon.length - 1 ? ", " : ""}</>
+                          return <>
+                            {weapon.replace("simple", "armes courantes").replace("martial", "armes de guerre")}
+                            {idx !== selectedClass.info.proficiencies.weapon.length - 1 ? ", " : ""}
+                          </>
                         }) : "armes courantes" + (selectedClass.info.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
                       </span>
                         </div>
                       </> : ""}
-                      <div className="py-2 w-100"></div>
+                      {/*<div className="py-2 w-100"></div>*/}
                       <div>
                         <b>Outils: </b>
                         <span>
@@ -856,7 +860,7 @@ export const Dnd5eClasses = () => {
                         </div>
                       </> : ""}
                       {(selectedClass.info.proficiencies.skills) ? <>
-                        <div className="py-2 w-100"></div>
+                        {/*<div className="py-2 w-100"></div>*/}
                         <div><b>Compétences :</b>
                           <span>
                         {selectedClass.info.proficiencies.skills.any ?

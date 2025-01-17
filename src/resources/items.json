@@ -1,3 +1,5029 @@
 [
-  {"id": "", "name": "", "entries": ""}
+  {"name": "Arme courante de corps à corps", "itemType": "separator"},
+  {
+    "id": "quarterstaff",
+    "name": "Bâton",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 0.2,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "V"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d6",
+    "dmg2": "1d8",
+    "dmgType": "B"
+  },
+  {
+    "id": "dagger",
+    "name": "Dague",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.56,
+    "value": 2,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "F",
+      "L",
+      "T"
+    ],
+    "isBaseWeapon": true,
+    "range": "6/18",
+    "dmg1": "1d4",
+    "dmgType": "P"
+  },
+  {
+    "id": "club",
+    "name": "Gourdin",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 0.1,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "L"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d4",
+    "dmgType": "B"
+  },
+  {
+    "id": "handaxe",
+    "name": "Hachette",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 5,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "L",
+      "T"
+    ],
+    "isBaseWeapon": true,
+    "range": "6/18",
+    "dmg1": "1d6",
+    "dmgType": "T"
+  },
+  {
+    "id": "javelin",
+    "name": "Javeline",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 0.5,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "T"
+    ],
+    "isBaseWeapon": true,
+    "range": "9/36",
+    "dmg1": "1d6",
+    "dmgType": "P"
+  },
+  {
+    "id": "spear",
+    "name": "Lance",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1.5,
+    "value": 1,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "T",
+      "V"
+    ],
+    "isBaseWeapon": true,
+    "range": "6/18",
+    "dmg1": "1d6",
+    "dmg2": "1d8",
+    "dmgType": "P"
+  },
+  {
+    "id": "lightHammer",
+    "name": "Marteau léger",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 2,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "L",
+      "T"
+    ],
+    "isBaseWeapon": true,
+    "range": "6/18",
+    "dmg1": "1d4",
+    "dmgType": "B"
+  },
+  {
+    "id": "greatclub",
+    "name": "Masse d'arme",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 5,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [],
+    "isBaseWeapon": true,
+    "dmg1": "1d6",
+    "dmgType": "B"
+  },
+  {
+    "id": "mace",
+    "name": "Massue",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 5,
+    "value": 0.2,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmgType": "B"
+  },
+  {
+    "id": "sickle",
+    "name": "Serpe",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 1,
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "L"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d4",
+    "dmgType": "T"
+  },
+  {"name": "Arme courante à distance", "itemType": "separator"},
+  {
+    "id": "lightCrossbow",
+    "name": "Arbalète légère",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 2.5,
+    "value": 25,
+    "weaponType": "simple",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A",
+      "LD",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "range": "24/96",
+    "dmg1": "1d8",
+    "dmgType": "P"
+  },
+  {
+    "id": "shortbow",
+    "name": "Arc court",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 25,
+    "weaponType": "simple",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A"
+    ],
+    "isBaseWeapon": true,
+    "range": "24/96",
+    "dmg1": "1d6",
+    "dmgType": "P"
+  },
+  {
+    "id": "dart",
+    "name": "Fléchette",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.1,
+    "value": 0.05,
+    "weaponType": "simple",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "F",
+      "T"
+    ],
+    "isBaseWeapon": true,
+    "range": "6/18",
+    "dmg1": "1d4",
+    "dmgType": "P"
+  },
+  {
+    "id": "sling",
+    "name": "Fronde",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0.1,
+    "weaponType": "simple",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A"
+    ],
+    "isBaseWeapon": true,
+    "range": "9/36",
+    "dmg1": "1d4",
+    "dmgType": "B"
+  },
+  {"name": "Arme de guerre de corps à corps", "itemType": "separator"},
+  {
+    "id": "scimitar",
+    "name": "Cimeterre",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1.5,
+    "value": 25,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "F",
+      "L"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d6",
+    "dmgType": "T"
+  },
+  {
+    "id": "glaive",
+    "name": "Coutille",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 3,
+    "value": 20,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "H",
+      "R",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d10",
+    "dmgType": "T"
+  },
+  {
+    "id": "greatsword",
+    "name": "Épée à deux mains",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 3,
+    "value": 50,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "L",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "2d6",
+    "dmgType": "T"
+  },
+  {
+    "id": "shortsword",
+    "name": "Épée courte",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.5,
+    "value": 10,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "F",
+      "L"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d6",
+    "dmgType": "P"
+  },
+  {
+    "id": "longsword",
+    "name": "Épée longue",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1.5,
+    "value": 15,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "V"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmg2": "1d10",
+    "dmgType": "T"
+  },
+  {
+    "id": "flail",
+    "name": "Fléau",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 10,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmgType": "B"
+  },
+  {
+    "id": "whip",
+    "name": "Fouet",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1.5,
+    "value": 2,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "F",
+      "R"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d4",
+    "dmgType": "T"
+  },
+  {
+    "id": "greataxe",
+    "name": "Hache à deux mains",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 3.5,
+    "value": 30,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "H",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d12",
+    "dmgType": "T"
+  },
+  {
+    "id": "battleaxe",
+    "name": "Hache d'armes",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 10,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "V"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmg2": "1d10",
+    "dmgType": "T"
+  },
+  {
+    "id": "halberd",
+    "name": "Hallebarde",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 3,
+    "value": 20,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "H",
+      "R",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d10",
+    "dmgType": "T"
+  },
+  {
+    "id": "lance",
+    "name": "Lance d'arçon",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 3,
+    "value": 10,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "R",
+      "S"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "maul",
+    "name": "Maillet d'armes",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 5,
+    "value": 10,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "H",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "2d6",
+    "dmgType": "B"
+  },
+  {
+    "id": "warhammer",
+    "name": "Marteau de guerre",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.5,
+    "value": 15,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "V"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmg2": "1d10",
+    "dmgType": "B"
+  },
+  {
+    "id": "morningstar",
+    "name": "Morgenstern",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 15,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmgType": "P"
+  },
+  {
+    "id": "warPick",
+    "name": "Pic de gerre",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.5,
+    "value": 15,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmgType": "P"
+  },
+  {
+    "id": "pike",
+    "name": "Pique",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 9,
+    "value": 5,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "H",
+      "R",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d10",
+    "dmgType": "P"
+  },
+  {
+    "id": "rapier",
+    "name": "Rapière",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.5,
+    "value": 25,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "F"
+    ],
+    "isBaseWeapon": true,
+    "dmg1": "1d8",
+    "dmgType": "P"
+  },
+  {
+    "id": "trident",
+    "name": "Trident",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 5,
+    "weaponType": "martial",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "T",
+      "V"
+    ],
+    "isBaseWeapon": true,
+    "range": "6/18",
+    "dmg1": "1d6",
+    "dmg2": "1d8",
+    "dmgType": "P"
+  },
+  {"name": "Arme de guerre à distance", "itemType": "separator"},
+  {
+    "id": "handCrossbow",
+    "name": "Arbalète de poing",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1.5,
+    "value": 75,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A",
+      "L",
+      "LD"
+    ],
+    "isBaseWeapon": true,
+    "range": "9/36",
+    "dmg1": "1d6",
+    "dmgType": "P"
+  },
+  {
+    "id": "heavyCrossbow",
+    "name": "Arbalète lourde",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 9,
+    "value": 50,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A",
+      "H",
+      "LD",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "range": "30/120",
+    "dmg1": "1d10",
+    "dmgType": "P"
+  },
+  {
+    "id": "longbow",
+    "name": "Arc long",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1,
+    "value": 50,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A",
+      "H",
+      "2H"
+    ],
+    "isBaseWeapon": true,
+    "range": "45/180",
+    "dmg1": "1d8",
+    "dmgType": "P"
+  },
+  {
+    "id": "net",
+    "name": "Filet",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 1.5,
+    "value": 1,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "S",
+      "T"
+    ],
+    "isBaseWeapon": true,
+    "range": "9/36"
+  },
+  {
+    "id": "blowgun",
+    "name": "Sarbacane",
+    "source": "PHB",
+    "page": 149,
+    "itemType": "weapon",
+    "weight": 0.5,
+    "value": 10,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "weaponProperty": [
+      "A",
+      "LD"
+    ],
+    "isBaseWeapon": true,
+    "range": "9/21",
+    "dmg1": "1",
+    "dmgType": "P"
+  },
+  {"name": "Armes à Feu de la Renaissance", "itemType": "separator"},
+  {
+    "id": "",
+    "name": "Mousquet",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "renaissance",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Pistolet",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "renaissance",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {"name": "Armes à Feu Moderne", "itemType": "separator"},
+  {
+    "id": "",
+    "name": "Fusil à canon scié",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "modern",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Fusil automatique",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "modern",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Fusil de chasse",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "modern",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Pistolet automatique",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "modern",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Revolver",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "modern",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {"name": "Armes à Feu Futuriste", "itemType": "separator"},
+  {
+    "id": "",
+    "name": "Pistolet laser",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "futuriste",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Fusil antimatière",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "futuriste",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {
+    "id": "",
+    "name": "Fusil laser",
+    "source": "DMG",
+    "page": 167,
+    "itemType": "weapon",
+    "weight": 0,
+    "value": 0,
+    "weaponType": "martial",
+    "weaponCategory": "ranged",
+    "age": "futuriste",
+    "weaponProperty": [
+      "AF",
+      "RLD"
+    ],
+    "isBaseWeapon": true,
+    "reload": 0,
+    "range": "12/36",
+    "dmg1": "1d12",
+    "dmgType": "P"
+  },
+  {"name": "Armure Légère", "itemType": "separator"},
+  {
+    "id": "paddedArmor",
+    "name": "Armure Matelassée",
+    "source": "PHB",
+    "page": 144,
+    "itemType": "armor",
+    "weight": 4,
+    "value": 5,
+    "armorType": "light",
+    "ac": 11,
+    "stealth": true,
+    "entries": [
+      "Une armure matelassée est faite de plusieurs couches de tissus rembourrées."
+    ]
+  },
+  {
+    "id": "leatherArmor",
+    "name": "Armure en Cuir",
+    "source": "PHB",
+    "page": 144,
+    "itemType": "armor",
+    "weight": 5,
+    "value": 10,
+    "armorType": "light",
+    "ac": 11,
+    "entries": [
+      "La cuirasse et les spalières de cette armure sont en cuir bouilli dans l'huile pour le durcir. Le reste de l'armure est composé de matériaux plus souples et plus flexibles."
+    ]
+  },
+  {
+    "id": "studdedLeatherArmor",
+    "name": "Armure en Cuir clouté",
+    "source": "PHB",
+    "page": 144,
+    "itemType": "armor",
+    "weight": 6.5,
+    "value": 45,
+    "armorType": "light",
+    "ac": 12,
+    "entries": [
+      "Cette armure est faite d'un cuir résistant mais souple, sur lequel sont fixés des rivets ou des pointes à intervalles réguliers."
+    ]
+  },
+  {"name": "Armure Intermédiaire", "itemType": "separator"},
+  {
+    "id": "hideArmor",
+    "name": "Armure de Peaux",
+    "source": "PHB",
+    "page": 144,
+    "itemType": "armor",
+    "weight": 6,
+    "value": 10,
+    "armorType": "medium",
+    "ac": 12,
+    "entries": [
+      "Cette armure fruste se compose d'épaisses fourrures et peaux de bête. Elle est généralement portée par les membres de tribus barbares, les humanoïdes maléfiques et autres personnes qui n'ont pas accès aux outils et matériaux nécessaires pour fabriquer de meilleures armures."
+    ]
+  },
+  {
+    "id": "chainShirt",
+    "name": "Chemise de mailles",
+    "source": "PHB",
+    "page": 144,
+    "itemType": "armor",
+    "weight": 10,
+    "value": 50,
+    "armorType": "medium",
+    "ac": 13,
+    "entries": [
+      "Une chemise de mailles est faite d'anneaux métalliques entrecroisés. Elle est portée entre plusieurs couches de tissu ou de cuir. Cette armure offre une modeste protection au tronc de son porteur et le crissement des anneaux est étouffé par les couches qui les recouvrent."
+    ]
+  },
+  {
+    "id": "scaleMail",
+    "name": "Armure d'Écailles",
+    "source": "PHB",
+    "page": 144,
+    "itemType": "armor",
+    "weight": 22.5,
+    "value": 50,
+    "armorType": "medium",
+    "ac": 14,
+    "stealth": true,
+    "entries": [
+      "Cette armure se compose d'une veste et d'un pantalon (et parfois d'une jupe séparée) de cuir recouverts de plaques de métal qui se superposent, un peu comme les écailles d'un poisson. Des gantelets viennent compléter l'ensemble."
+    ]
+  },
+  {
+    "id": "breastplate",
+    "name": "Cuirasse",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 10,
+    "value": 400,
+    "armorType": "medium",
+    "ac": 14,
+    "entries": [
+      "Cette armure consiste en une pièce de métal qui couvre le torse, complétée par du cuir souple. Bien que les bras et les jambes soient peu protégés, cette armure permet de �ger efficacement les organes vitaux tout en préservant la liberté de mouvement de son porteur."
+    ]
+  },
+  {
+    "id": "halfPlateArmor",
+    "name": "Armure de Demi-plate",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 20,
+    "value": 750,
+    "armorType": "medium",
+    "ac": 15,
+    "stealth": true,
+    "entries": [
+      "Cette armure se compose de plaques de métal qui couvrent la majorité du corps de son porteur. Par contre, ses jambes sont seulement protégées par des grèves attachées par des lanières de cuir."
+    ]
+  },
+  {"name": "Armure Lourde", "itemType": "separator"},
+  {
+    "id": "ringMail",
+    "name": "Broigne",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 20,
+    "value": 30,
+    "armorType": "heavy",
+    "ac": 14,
+    "stealth": true,
+    "entries": [
+      "Il s'agit d'une armure de cuir sur laquelle sont cousus de lourds anneaux. Ces anneaux permettent de renforcer l'armure et d'offrir une protection contre les coups d'épées et de haches. Une broigne est moins efficace qu'une cotte de mailles et elle est généralement portée par ceux qui n'ont pas les moyens de s'offrir une meilleure armure."
+    ]
+  },
+  {
+    "id": "chainMail",
+    "name": "Cotte de mailles",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 27.5,
+    "value": 75,
+    "armorType": "heavy",
+    "ac": 16,
+    "strength": 13,
+    "stealth": true,
+    "entries": [
+      "Une cotte de mailles se compose d'anneaux de métal entrecroisés. Elle se porte sur une couche de tissu renforcé pour éviter les frottements et amortir les coups. L'armure comporte des gantelets."
+    ]
+  },
+  {
+    "id": "splintArmor",
+    "name": "Clibanion",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 30,
+    "value": 200,
+    "armorType": "heavy",
+    "ac": 17,
+    "strength": 15,
+    "stealth": true,
+    "entries": [
+      "Cette armure est faite d'étroites plaques de métal rivetées à un support de cuir porté sur un vêtement rembourré. Les articulations sont protégées par des pièces de cotte de mailles plus souples."
+    ]
+  },
+  {
+    "id": "plateArmor",
+    "name": "Harnois",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 32.5,
+    "value": 1500,
+    "armorType": "heavy",
+    "ac": 18,
+    "strength": 15,
+    "stealth": true,
+    "entries": [
+      "Le harnois, ou armure de plates, se compose de plaques de métal superposées qui couvrent l'ensemble du corps. I.:armure inclut des gantelets lourds, des bottes de cuir épais, un casque à visière et plusieurs épaisseurs de rembourrage sous l'armure. Des sangles permettent de répartir le poids sur tout le corps."
+    ]
+  },
+  {"name": "Bouclier", "itemType": "separator"},
+  {
+    "id": "shield",
+    "name": "Bouclier",
+    "source": "PHB",
+    "page": 145,
+    "itemType": "armor",
+    "weight": 3,
+    "value": 10,
+    "armorType": "shield",
+    "ac": 2
+  },
+  {"name": "Équipement d'aventurier", "itemType": "separator"},
+  {
+    "id": "acid_(vial)",
+    "name": "Acide (fiole)",
+    "source": "PHB",
+    "page": 148,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 25,
+    "entries": [
+      "Vous pouvez utiliser une action pour déverser le contenu de cette fiole sur une créature qui se trouve dans un rayon de 1,50 mètre autour de vous ou pour la lancer jusqu'à une distance de 6 mètres. La fiole se brise à l'impact. Dans les deux cas, il s'agit d'une attaque à distance contre une créature ou un objet, en considérant l'acide comme une arme improvisée. Si vous touchez votre cible, celle-ci subit 2d6 dégâts d'acide."
+    ]
+  },
+  {
+    "id": "Antitoxin_(vial)",
+    "name": "Antidote (fiole)",
+    "source": "PHB",
+    "page": 148,
+    "itemType": "adventuringGear",
+    "value": 50,
+    "entries": [
+      "Une créature qui boit le liquide de cette fiole devient avantagée lors de s<::s jets de sauvegarde contre le poison pendant une heure. l'antitoxine ne confère aucun avantage aux morts-vivants et aux créatures artificielles"
+    ]
+  },
+  {
+    "id": "merchantsScale",
+    "name": "Balance de marchand",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 1.5,
+    "value": 5,
+    "entries": [
+      "Cet appareil de mesure se présente sous la forme d'une petite balance, de plateaux et d'un assortiment de poids qui vont jusqu'à 1 kg. Elle permet de mesurer le poids exact de petits objets, comme des métaux précieux ou autres marchandises, afin de déterminer leur valeur."
+    ]
+  },
+  {
+    "id": "fineClothes",
+    "name": "Beaux habits",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 3,
+    "value": 15
+  },
+  {
+    "id": "portableRam",
+    "name": "Bélier portable",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 17.5,
+    "value": 4,
+    "entries": [
+      "Vous pouvez utiliser un bélier portable pour enfoncer des portes. Quand vous utilisez un bélier, vous gagnez un bonus de +4 à vos tests de Force. Si un autre personnage vous aide à utiliser le bélier, vous êtes avantagé lors de ce test."
+    ]
+  },
+  {
+    "id": "ballBearing",
+    "name": "Billes (sac de 1.000)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 1,
+    "entries": [
+      "Vous pouvez utiliser une action pour répandre ces petites billes de métal sur une surface plane de 3 mètres de côté. Une créature qui traverse cette surface doit réussir un jet de sauvegarde de Dextérité DD 10 pour ne pas tomber à terre. Une créature peut traverser la zone sans avoir besoin de faire un jet de sauvegarde si elle se déplace à la moitié de sa vitesse."
+    ]
+  },
+  {
+    "id": "tinderbox",
+    "name": "Boîte à amadou",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.5,
+    "entries": [
+      "Cette petite boîte contient tout ce qu'il faut pour faire un feu : un silex, du ferrocérium et de l'amadou (généralement des morceaux de tissu imbibés d'huile). Utiliser la boîte à amadou pour allumer une torche ou quoi que ce soit d'autre avec assez de combustible coûte une action. Allumer un autre type de feu prend une minute."
+    ]
+  },
+  {
+    "id": "candle",
+    "name": "Bougie",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "value": 0.01,
+    "entries": [
+      "Une bougie diffuse pendant une heure une lumière vive dans un rayon de 1,50 mètre et une lumière faible dans un rayon de 1,50 mètre supplémentaire"
+    ]
+  },
+  {
+    "id": "abacus",
+    "name": "Boulier",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 2
+  },
+  {
+    "id": "glassBottle",
+    "name": "Bouteille, verre",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 2,
+    "entries": [
+      "Une bouteille pouvant contenir jusqu'à 0,75L de liquide."
+    ]
+  },
+  {
+    "id": "lock",
+    "name": "Cadenas",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 10,
+    "entries": [
+      "Ce cadenas est accompagné d'une clé. Si elle n'a pas la clé, une créature qui maîtrise les outils de voleur peut crocheter le cadenas en réussissant un test de Dextérité DD 15. Votre MD peut décider que de meilleurs cadenas sont disponibles pour un prix plus élevé."
+    ]
+  },
+  {
+    "id": "quiver",
+    "name": "Carquois",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 1,
+    "entries": [
+      "Un carquois peut contenir jusqu'à 20 flèches."
+    ]
+  },
+  {
+    "id": "chain_(10_feet)",
+    "name": "Chaîne (3 mètres)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 5,
+    "value": 5,
+    "entries": [
+      "Une chaîne a 10 points de vie. Elle peut être brisée en réussissant un test de Force DD 20."
+    ]
+  },
+  {
+    "id": "caltrop",
+    "name": "Chausse-trappes (sac de 20)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 1,
+    "entries": [
+      "Vous pouvez utiliser une action pour répandre un sac de chausse-trappes sur une surface de 1,50 mètre de côté. Une créature qui traverse cette surface doit réussir un jet de sauvegarde de Dextérité DD 15 ou arrêter de se déplacer pendant son tour et subir 1 dégât perforant. Si elle subit ce dégât, la vitesse de cette créature est réduite de 3 mètres jusqu'à ce qu'elle regagne au moins 1 point de vie. Une créature peut traverser la zone sans avoir besoin de faire un jet de sauvegarde si elle se déplace à la moitié de sa vitesse."
+    ]
+  },
+  {
+    "id": "signetRing",
+    "name": "Chevalière",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 5
+  },
+  {
+    "id": "sealingWax",
+    "name": "Cire à cacheter",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.5
+  },
+  {
+    "id": "bell",
+    "name": "Cloche",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 1
+  },
+  {
+    "id": "Chest",
+    "name": "Coffre",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 12.5,
+    "value": 5,
+    "entries": [
+      "Un coffre peut contenir jusqu'à 0.36m³ ou 150kg d'équipement."
+    ]
+  },
+  {
+    "id": "hempenRope_(50_feet)",
+    "name": "Corde en chanvre (15 mètres)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 5,
+    "value": 1,
+    "entries": [
+      "Une corde, qu'elle soit faite de chanvre ou de soie, a deux points de vie et peut être rompue en réussissant un test de Force DD 17."
+    ]
+  },
+  {
+    "id": "silkRope_(50_feet)",
+    "name": "Corde en soie (15 mètres)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 10,
+    "entries": [
+      "Une corde, qu'elle soit faite de chanvre ou de soie, a deux points de vie et peut être rompue en réussissant un test de Force DD 17."
+    ]
+  },
+  {
+    "id": "costumeClothes",
+    "name": "Costume",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 2,
+    "value": 5
+  },
+  {
+    "id": "blanket",
+    "name": "Couverture",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 1.5,
+    "value": 0.5
+  },
+  {
+    "id": "chalk_(1_piece)",
+    "name": "Craie (1 bâton)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.01
+  },
+  {
+    "id": "jugOrPitcher",
+    "name": "Cruche ou pichet",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 2,
+    "value": 0.02,
+    "entries": [
+      "Une Cruche ou un pichet peut contenir jusqu'à 3,5L de liquide."
+    ]
+  },
+  {
+    "id": "holyWater_(flask)",
+    "name": "Eau bénite (flasque)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 25,
+    "entries": [
+      "Vous pouvez utiliser une action pour asperger d'eau bénite une créature qui se trouve dans un rayon de 1,50 mètre de vous, ou lancer la flasque jusqu'à 6 mètres. La flasque se brise à l'impact. Dans les deux cas, il s'agit d'une attaque à distance contre une créature et l'eau bénite est considérée comme une arme improvisée. Si votre cible est un fiélon ou un mort-vivant, elle subit 2d6 dégâts radiants.",
+      "Un clerc ou un paladin peut créer de l'eau bénite en accomplissant un rituel spécifique. Ce rituel dure 1 heure, il requiert la dépense de 25 po de poudre d'argent et l'utilisation d'un emplacement de sort de niveau 1 de la part du lanceur de sorts."
+    ]
+  },
+  {
+    "id": "ladder_(10-foot)",
+    "name": "Échelle (3 mètres)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 12.5,
+    "value": 0.1
+  },
+  {
+    "id": "Ink_(1-ounce_bottle)",
+    "name": "Encre (bouteille de 30g)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 10
+  },
+  {
+    "id": "crossbowBoltCase",
+    "name": "Étui pour carreaux",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 1,
+    "entries": [
+      "Cet étui de bois peut contenir jusqu'à 20 carreaux d'arbalète."
+    ]
+  },
+  {
+    "id": "mapOrScrollCase",
+    "name": "Étui pour cartes ou parchemins",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 1,
+    "entries": [
+      "Cet étui cylindrique de cuir peut contenir jusqu'à dix feuilles de papier roulées ou cinq feuilles de parchemin roulées."
+    ]
+  },
+  {
+    "id": "alchemistFire_(flask)",
+    "name": "Feu grégeois (flasque)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 50,
+    "entries": [
+      "Ce liquide gluant et collant s'enflamme au contact de l'air. Vous pouvez utiliser une action pour lancer la flasque jusqu'à une distance de 6 mètres. La flasque se brise à l'impact. Il s'agit d'une attaque à distance contre une créature ou un objet, en considérant le feu grégeois comme une arme improvisée. Si vous touchez votre cible, celle-ci subit ld4 dégâts de feu au début de chacun de ses tours. La cible peut mettre fin à cet effet et tenter d'éteindre les flammes en utilisant son action pour faire un test de Dextérité DD 10."
+    ]
+  },
+  {
+    "id": "vial",
+    "name": "Fiole",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "value": 1,
+    "entries": [
+      "Une fiole peut contenir jusqu'à 100g de liquide."
+    ]
+  },
+  {
+    "id": "flaskTankard",
+    "name": "Flasque ou chope",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.02,
+    "entries": [
+      "Une flasque ou une chope peut contenir jusqu'à 0.5L de liquide."
+    ]
+  },
+  {
+    "id": "messKit",
+    "name": "Gamelle",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 2,
+    "entries": [
+      ". Cette boite métallique contient un gobelet et des couverts simples. La boîte est composée de deux parties qui s'assemblent. Un côté peut être utilisé pour cuire les aliments et l'autre comme une assiette creuse."
+    ]
+  },
+  {
+    "id": "grapplingHook",
+    "name": "Grappin",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 2,
+    "value": 2
+  },
+  {
+    "id": "spellbook",
+    "name": "Grimoire",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 1.5,
+    "value": 50,
+    "entries": [
+      "Un grimoire est l'outil indispensable des magiciens. Il s'agit d'un livre relié en cuir avec 100 pages de vélin blanc dans lequel ils écrivent leurs sorts."
+    ]
+  },
+  {
+    "id": "oil_(flask)",
+    "name": "Huile (flasque)",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.1,
+    "entries": [
+      "L'huile est généralement vendue dans des flasques d'argile d'un demi-litre. Vous pouvez utiliser une action pour asperger une créature qui se trouve dans un rayon de 1,50 mètre autour de vous ou pour lancer la flasque jusqu'à une distance de 6 mètres. La flasque se brise à l'impact. Dans les deux cas, il s'agit d'une attaque à distance contre une créature ou un objet et l'huile doit être considérée comme une arme improvisée. Si vous touchez votre cible, celle-ci est couverte d'huile. Si elle subit au moins 1 dégât de feu avant que l'huile ne sèche (après 1 minute), la cible subit 5 dégâts de feu supplémentaires infligés par l'huile enflammée. Vous pouvez aussi verser le contenu de la flasque d'huile sur une surface plane afin de recouvrir une zone de 1,50 mètre de côté. Si vous y mettez le feu, l'huile brûle pendant 2 rounds et inflige 5 dégâts de feu à toutes créatures qui pénètrent dans la zone ou y terminent leur tour. Une créature ne peut subir ces dégâts qu'une fois par tour."
+    ]
+  },
+  {
+    "id": "lamp",
+    "name": "Lampe",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.5,
+    "entries": [
+      "Une lampe diffuse une lumière vive dans un rayon de 4,5 mètres et une lumière faible sur 9 mètres supplémentaires. Une fois allumée, elle brûle pendant 6 heures en consommant une flasque (0,5 litre) d'huile."
+    ]
+  },
+  {
+    "id": "hoodedLantern",
+    "name": "Lanterne à capote",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 5,
+    "entries": [
+      "Une lanterne à capote diffuse une lumière vive sur un rayon de 9 mètres et une lumière faible sur 9 mètres supplémentaires. Une fois allumée, elle brûle pendant 6 heures en consommant une flasque (0,5 litre) d'huile. Vous pouvez utiliser une action pour abaisser la capote de la lanterne afin qu'elle ne diffuse qu'une lumière faible sur un rayon de 1,50 mètre."
+    ]
+  },
+  {
+    "id": "bullseyeLantern",
+    "name": "Lanterne sourde",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 10,
+    "entries": [
+      "Une lanterne sourde diffuse une lumière vive sur un cône de 18 mètres et une lumière faible sur 18 mètres supplémentaires. Une fois allumée, elle brûle pendant 6 heures en consommant une flasque (0,5 litre) d'huile."
+    ]
+  },
+  {
+    "id": "book",
+    "name": "Livre",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 25,
+    "entries": [
+      "Un livre peut contenir de la poésie, des récits historiques, des informations relatives à un domaine particulier de connaissance, des diagrammes et des notes sur des inventions gnomes, ou tout ce qui peut être inscrit sous forme de textes ou d'images. Un livre de sort est appelé un grimoire (ses particularités sont décrites plus haut dans cette section)."
+    ]
+  },
+  {
+    "id": "spyglass",
+    "name": "Longue-vue",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 1000,
+    "entries": [
+      "Une longue-vue permet de grossir jusqu'à deux fois les choses que vous voyez à distance."
+    ]
+  },
+  {
+    "id": "magnifyingGlass",
+    "name": "Loupe",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "value": 1000,
+    "entries": [
+      "Cette lentille permet d'examiner de près les petits objets. Elle peut également remplacer le silex et le ferrocérium pour allumer un feu. Allumer un feu à l'aide d'une loupe nécessite la présence d'une lumière aussi vive que celle du soleil afin de faire prendre l'amadou et environ cinq minutes pour que le feu prenne. Une loupe donne un avantage pour les tests de caractéristique effectués dans le but d'inspecter ou d'estimer la valeur d'un objet petit ou très détaillé."
+    ]
+  },
+  {
+    "id": "hammer",
+    "name": "Marteau",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 1.5,
+    "value": 1
+  },
+  {
+    "id": "sledgehammer",
+    "name": "Masse",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 5,
+    "value": 2
+  },
+  {
+    "id": "climbersKit",
+    "name": "Matériel d'escalade",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 6,
+    "value": 25,
+    "entries": [
+      "Le matériel d'escalade comprend des pitons spéciaux, des crampons de chaussures, des gants et un harnais. Vous pouvez utiliser ce matériel lors d'une action pour vous accrocher à une paroi. Vous ne pouvez alors plus chuter de plus de 7,50 mètres depuis votre point d'ancrage, mais vous devez vous décrocher si vous voulez vous éloigner de plus de 7,50 mètres de ce point."
+    ]
+  },
+  {
+    "id": "fishingTackle",
+    "name": "Matériel de pêche",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 2,
+    "value": 1,
+    "entries": [
+      "Le matériel de pêche se compose d'une canne de bois, d'un fil de soie, de bouchons en liège, d'hameçons métalliques, de plombs, d'appâts et d'un petit filet."
+    ]
+  },
+  {
+    "id": "manacles",
+    "name": "Menottes",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 3,
+    "value": 2,
+    "entries": [
+      "Ces menottes métalliques peuvent être utilisées sur une créature de taille Petite ou Moyenne. Pour s'en échapper, une créature doit réussir un test de Dextérité DD 20. Pour les briser, elle doit réussir un test de Force DD 20. Chaque paire de menottes est accompagnée d'une clé. Une créature qui n'a pas la clé mais qui maîtrise les outils de voleur peut crocheter la serrure des menottes en réussissant un test de Dextérité DD 15. Les menottes ont 15 points de vie."
+    ]
+  },
+  {
+    "id": "steelMirror",
+    "name": "Miroir en acier",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 0.25,
+    "value": 5
+  },
+  {
+    "id": "waterskin",
+    "name": "Outre",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 0.2,
+    "entries": [
+      "Une outre peut contenir jusqu'à 2L de liquide."
+    ]
+  },
+  {
+    "id": "blockAndTackle",
+    "name": "Palan",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 1,
+    "entries": [
+      "Un palan est un système de poulies avec un câble et un crochet qui vous permet de soulever jusqu'à quatre fois Je poids que vous pouvez normalement soulever."
+    ]
+  },
+  {
+    "id": "basket",
+    "name": "Panier",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 0.4,
+    "entries": [
+      "Un panier peut contenir jusqu'à 0.06m³ ou 20kg d'équipement."
+    ]
+  },
+  {
+    "id": "paper_(one_sheet)",
+    "name": "Papier (une feuille)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.2
+  },
+  {
+    "id": "parchment_(one_sheet)",
+    "name": "Parchemin (une feuille)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.1
+  },
+  {
+    "id": "perfume_(vial)",
+    "name": "Parfum (fiole)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 5
+  },
+  {
+    "id": "shovel",
+    "name": "Pelle",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 2
+  },
+  {
+    "id": "pole_(10-foot)",
+    "name": "Perche (3 mètres)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 3.5,
+    "value": 0.05
+  },
+  {
+    "id": "ironSpike",
+    "name": "Pics en fer (10)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 1
+  },
+  {
+    "id": "crowbar",
+    "name": "Pied-de-biche",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 2,
+    "entries": [
+      "Vous êtes avantagé lors des tests de Force que vous effectuez quand le pied-de-biche est utilisé pour faire levier."
+    ]
+  },
+  {
+    "id": "huntingTrap",
+    "name": "Piège à mâchoires",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 12.5,
+    "value": 5,
+    "entries": [
+      "Vous pouvez utiliser une action pour installer ce piège qui se présente sous la forme d'un anneau d'acier dentelé. Celui-ci se referme violemment quand une créature marche sur la plaque de pression qui se trouve en son centre. Le piège est ancré grâce à une lourde chaîne à un objet immobile, comme un arbre ou une pointe enfoncée dans le sol. Une créature qui marche sur la plaque doit réussir un jet de sauvegarde de Dextérité DD 13 pour éviter de subir ld4 dégâts perforants et d'être stoppée net dans son déplacement. Si elle échoue, tant que la créature est prise au piège, son déplacement est limité par la longueur de la chaîne (qui fait généralement 1 mètre de long). Une créature peut utiliser une action pour faire un test de Force DD 13 afin de tenter de se libérer ellemême ou une autre créature dans sa zone <l'allonge. À chaque échec, la créature prise au piège subit 1 dégât perforant."
+    ]
+  },
+  {
+    "id": "whetstone",
+    "name": "Pierre à affûter",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.01
+  },
+  {
+    "id": "minersPick",
+    "name": "Pioche de mineur",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 5,
+    "value": 2
+  },
+  {
+    "id": "piton",
+    "name": "Piton",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 0.125,
+    "value": 0.05
+  },
+  {
+    "id": "basicPoison_(vial)",
+    "name": "Poison (fiole)",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "value": 100,
+    "entries": [
+      "Un personnage peut utiliser le poison qui se trouve dans cette fiole pour enduire la lame d'une arme tranchante ou perforante ou jusqu'à trois munitions. Il vous faut utiliser une action pour appliquer le poison. Une créature touchée par l'arme ou la munition empoisonnée doit faire un jet de sauvegarde de Constitution DD 10 ou subir ld4 dégâts de poison. Une fois appliqué, le poison reste efficace pendant 1 minute avant de sécher."
+    ]
+  },
+  {
+    "id": "inkPen",
+    "name": "Porte-plume",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.02
+  },
+  {
+    "id": "ironPot",
+    "name": "Pot en fer",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 5,
+    "value": 2,
+    "entries": [
+      "Un pot en fer peut contenir jusqu'à 3.5L de liquide."
+    ]
+  },
+  {
+    "id": "hourglass",
+    "name": "Sablier",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 25
+  },
+  {
+    "id": "sack",
+    "name": "Sac",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 0.25,
+    "value": 0.01,
+    "entries": [
+      "Un Sac peut contenir jusqu'à 0.03m³ ou 15kg d'équipement. Vous pouvez aussi attacher des objects comme un sac de couchage ou un rouleau de corde sur le sac à dos."
+    ]
+  },
+  {
+    "id": "backpack",
+    "name": "Sac-à-dos",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 2.5,
+    "value": 2,
+    "entries": [
+      "Un sac-à-dos peut contenir jusqu'à 0.03m³ ou 15kg d'équipement."
+    ]
+  },
+  {
+    "id": "bedroll",
+    "name": "Sac de couchage",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 3.5,
+    "value": 1
+  },
+  {
+    "id": "pouch",
+    "name": "Sacoche",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.5,
+    "entries": [
+      "Une sacoche en tissu ou en cuir peut contenir jusqu'à 20 billes de fronde ou 50 dards de sarbacane, entre autres. Une sacoche à compartiments qui est utilisée pour stocker les composantes de sorts s'appelle une sacoche à composantes (celle-ci est également décrite dans cette section).",
+      "Une sacocheUn peut contenir jusqu'à 0.006m³ ou 3kg d'équipement."
+    ]
+  },
+  {
+    "id": "componentPouch",
+    "name": "Sacoche de composantes",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 25,
+    "entries": [
+      "Une sacoche à composantes est une petite sacoche de cuir imperméable fixée à la ceinture qui possède plusieurs compartiments permettant de stocker toutes les composantes matérielles et autres objets spéciaux utiles à l'incantation des sorts, à l'exception des composantes ayant un coût spécifique (comme indiqué dans la description des sorts concernés)."
+    ]
+  },
+  {
+    "id": "soap",
+    "name": "Savon",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.02
+  },
+  {
+    "id": "bucket",
+    "name": "Seau",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 0.05,
+    "entries": [
+      "Un Sceau peut contenir jusqu'à 10.5L ou 0.0015m³ de solide."
+    ]
+  },
+  {
+    "id": "signal_Whistle",
+    "name": "Sifflet",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "value": 0.05
+  },
+  {
+    "id": "two-PersonTent",
+    "name": "Tente, deux personne",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 10,
+    "value": 2,
+    "entries": [
+      "Un abri de toile simple et portable qui peut accueillir deux personnes."
+    ]
+  },
+  {
+    "id": "travelersClothes",
+    "name": "Tenue de voyage",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 2,
+    "value": 2
+  },
+  {
+    "id": "barrel",
+    "name": "Tonneau",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 35,
+    "value": 2,
+    "entries": [
+      "Un Tonneau peut contenir jusqu'à 140L ou 0.12m³ de solide."
+    ]
+  },
+  {
+    "id": "torch",
+    "name": "Torche",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 0.5,
+    "value": 0.01,
+    "entries": [
+      "Une torche brûle pendant 1 heure et diffuse une lumière vive dans un rayon de 6 mètres et une lumière faible dans un rayon de 6 mètres supplémentaires. Si vous réussissez une attaque de corps à corps avec une torche, celle-ci inflige 1 dégât de feu à votre cible."
+    ]
+  },
+  {
+    "id": "healersKit",
+    "name": "Trousse de soin",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 1.5,
+    "value": 5,
+    "entries": [
+      "Une trousse de soins est une sacoche de cuir contenant des bandages, des onguents et des attelles. La trousse peut être utilisée dix fois. Vous pouvez utiliser une action pour stabiliser une créature avec 0 point de vie à l'aide de la trousse de soins sans avoir besoin de faire un test de Sagesse (Médecine)."
+    ]
+  },
+  {
+    "id": "rations_(1_day)",
+    "name": "Ration (1 jour)",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "adventuringGear",
+    "weight": 1,
+    "value": 0.5,
+    "entries": [
+      "Les rations sont des aliments séchés (viande séchée, biscuits, noix ... ) utilisés pour de longs voyages."
+    ]
+  },
+  {
+    "id": "robes",
+    "name": "Robes",
+    "source": "PHB",
+    "page": 153,
+    "itemType": "adventuringGear",
+    "weight": 2,
+    "value": 1
+  },
+  {
+    "id": "commonClothes",
+    "name": "Vêtements ordinaires",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "adventuringGear",
+    "weight": 1.5,
+    "value": 0.5
+  },
+  {
+    "id": "trinket",
+    "name": "Babiole",
+    "source": "PHB",
+    "page": 0,
+    "itemType": "adventuringGear",
+    "entries": [
+      "Lorsque vous créez votre personnage, vous pouvez lancer une fois le dé dans la table Babioles pour obtenir un objet nimbé de mystère. Le MD peut aussi utiliser cette table pour garnir une pièce dans un donjon ou remplir les poches d'une créature.",
+      {
+        "type": "table",
+        "colLabels": [
+          "d100",
+          "Babiole"
+        ],
+        "colStyles": [
+          "text-center col-2",
+          "col-10"
+        ],
+        "rows": [
+          [
+            1,
+            "Une main de gobelin momifiée"
+          ],
+          [
+            2,
+            "Un éclat de cristal qui luit faiblement sous les rayons de la lune"
+          ],
+          [
+            3,
+            "Une pièce d'or frappée dans un pays inconnu"
+          ],
+          [
+            4,
+            "Un journal écrit dans une langue que vous ne connaissez pas"
+          ],
+          [
+            5,
+            "Une bague en cuivre qui ne verdit jamais"
+          ],
+          [
+            6,
+            "Une vieille pièce d'échec en verre"
+          ],
+          [
+            7,
+            "Deux dés en os marqués d'un crâne sur la face qui devrait indiquer le 6"
+          ],
+          [
+            8,
+            "Une petite idole représentant une créature cauchemardesque qui provoque des rêves troublants quand vous dormez près d'elle"
+          ],
+          [
+            9,
+            "Un collier de corde où pendent quatre doigts elfiques momifiés"
+          ],
+          [
+            10,
+            "Un titre de propriété dans un royaume qui vous est inconnu"
+          ],
+          [
+            11,
+            "Un bloc de 30 grammes d'un matériau inconnu"
+          ],
+          [
+            12,
+            "Une petite poupée de tissu hérissée d'aiguilles"
+          ],
+          [
+            13,
+            "Un croc d'un animal inconnu"
+          ],
+          [
+            14,
+            "Une énorme écaille, peut-être celle d'un dragon"
+          ],
+          [
+            15,
+            "Une plume vert vif"
+          ],
+          [
+            16,
+            "Une vieille carte de tarot à votre effigie"
+          ],
+          [
+            17,
+            "Un orbe de verre empli d'une fumée mouvante"
+          ],
+          [
+            18,
+            "Un œuf de 500 grammes à la coquille rouge vif"
+          ],
+          [
+            19,
+            "Une pipe qui fait des bulles"
+          ],
+          [
+            20,
+            "Un bocal de verre contenant un étrange bout de chair flottant dans la saumure"
+          ],
+          [
+            21,
+            "Une petite boîte à musique de facture gnome qui joue une chanson vous rappelant vaguement votre enfance"
+          ],
+          [
+            22,
+            "Une petite statuette de bois représentant un halfelin à l'air satisfait"
+          ],
+          [
+            23,
+            "Un orbe en laiton gravé de runes étranges"
+          ],
+          [
+            24,
+            "Un disque de pierre multicolore"
+          ],
+          [
+            25,
+            "Une petite icône de corbeau en argent"
+          ],
+          [
+            26,
+            "Un sac contenant quarante-sept dents d'humanoïdes dont une pourrie"
+          ],
+          [
+            27,
+            "Un éclat d'obsidienne toujours tiède au toucher"
+          ],
+          [
+            28,
+            "Une griffe de dragon accrochée à un collier de cuir"
+          ],
+          [
+            29,
+            "Une paire de vieilles chaussettes"
+          ],
+          [
+            30,
+            "Un livre vierge dont les pages refusent de retenir l'encre, la craie, le graphite ou toute autre substance ou marquage"
+          ],
+          [
+            31,
+            "Un emblème en argent en forme d'étoile à cinq branches"
+          ],
+          [
+            32,
+            "Un couteau appartenant à un parent"
+          ],
+          [
+            33,
+            "Une fiole de verre pleine de rognures d'ongle"
+          ],
+          [
+            34,
+            "Un objet métallique rectangulaire avec deux petites coupes en métal sur un côté qui lance des étincelles dès qu'on le mouille"
+          ],
+          [
+            35,
+            "Un gant blanc à paillettes destiné à un humain"
+          ],
+          [
+            36,
+            "Une veste dotée de cent petites poches"
+          ],
+          [
+            37,
+            "Un petit bloc de pierre ne pesant rien"
+          ],
+          [
+            38,
+            "Un petit portrait au crayon d'un gobelin"
+          ],
+          [
+            39,
+            "Une fiole de verre vide qui sent le parfum quand on l'ouvre"
+          ],
+          [
+            40,
+            "Une gemme que toute personne autre que vous prend pour un bout de charbon"
+          ],
+          [
+            41,
+            "Un morceau d'une vieille bannière"
+          ],
+          [
+            42,
+            "Un insigne de grade appartenant à un légionnaire oublié"
+          ],
+          [
+            43,
+            "Une petite cloche en argent sans battant"
+          ],
+          [
+            44,
+            "Un canari mécanique dans une lampe de gnome"
+          ],
+          [
+            45,
+            "Un minuscule coffret avec de nombreux pieds taillés en dessous"
+          ],
+          [
+            46,
+            "Un esprit follet mort dans une bouteille de verre"
+          ],
+          [
+            47,
+            "Une boîte de métal sans ouverture mais, au bruit, elle semble remplie de liquide, de sable, d'araignées ou d'éclats de verre"
+          ],
+          [
+            48,
+            "Un orbe de verre rempli d'eau où nage un poisson rouge mécanique"
+          ],
+          [
+            49,
+            "Une cuillère en argent gravée d'un M sur le manche"
+          ],
+          [
+            50,
+            "Un sifflet en bois doré"
+          ],
+          [
+            51,
+            "Un scarabée mort aussi gros que votre main"
+          ],
+          [
+            52,
+            "Deux soldats de plomb, l'un décapité"
+          ],
+          [
+            53,
+            "Une petite boîte remplie de boutons de tailles diverses"
+          ],
+          [
+            54,
+            "Une chandelle impossible à allumer"
+          ],
+          [
+            55,
+            "Une petite cage sans porte"
+          ],
+          [
+            56,
+            "Une vieille clef"
+          ],
+          [
+            57,
+            "Une carte au trésor indéchiffrable"
+          ],
+          [
+            58,
+            "La poignée d'une épée brisée"
+          ],
+          [
+            59,
+            "Une patte de lapin"
+          ],
+          [
+            60,
+            "Un œil de verre"
+          ],
+          [
+            61,
+            "Un camée représentant une personne hideuse"
+          ],
+          [
+            62,
+            "Un crâne en argent de la taille d'une pièce de monnaie"
+          ],
+          [
+            63,
+            "Un masque en albâtre"
+          ],
+          [
+            64,
+            "Une pyramide d'encens noir collant qui dégage une odeur nauséabonde"
+          ],
+          [
+            65,
+            "Un bonnet de nuit qui vous fait faire de beaux rêves quand vous le portez"
+          ],
+          [
+            66,
+            "Un unique chausse-trappe en os"
+          ],
+          [
+            67,
+            "Une monture de monocle en or, sans le verre"
+          ],
+          [
+            68,
+            "Un cube de 2,5 centimètres d'arrête dont chaque face est peinte d'une couleur différente"
+          ],
+          [
+            69,
+            "Une poignée de porte en cristal"
+          ],
+          [
+            70,
+            "Un petit paquet rempli de poussière rose"
+          ],
+          [
+            71,
+            "Un extrait d'une magnifique chanson, écrit sous forme de notes de musique sur deux bouts de parchemin"
+          ],
+          [
+            72,
+            "Une boucle d'oreille goutte d'eau en argent faite à partir d'une véritable larme"
+          ],
+          [
+            73,
+            "Une coquille d'œuf peinte de scènes représentant la misère humaine avec un souci du détail dérangeant"
+          ],
+          [
+            74,
+            "Un éventail qui, une fois déplié, montre un chat endormi"
+          ],
+          [
+            75,
+            "Un ensemble de flûtes en os"
+          ],
+          [
+            76,
+            "Un trèAe à quatre feuilles conservé dans un livre parlant d'étiquette et de bonnes manières"
+          ],
+          [
+            77,
+            "Un parchemin sur lequel est dessiné un engin au mécanisme complexe"
+          ],
+          [
+            78,
+            "Un fourreau ornementé où ne peut rentrer aucune des lames que vous avez trouvées jusqu'ici"
+          ],
+          [
+            79,
+            "Une invitation à une fête où s'est déroulé un meurtre"
+          ],
+          [
+            80,
+            "Un pentacle en bronze gravé d'une tête de rat en son centre"
+          ],
+          [
+            81,
+            "Un mouchoir violet brodé du nom d'un puissant archimage"
+          ],
+          [
+            82,
+            "La moitié du plan du rez-de-chaussée d'un temple, d'un château ou d'un édifice similaire"
+          ],
+          [
+            83,
+            "Un tissu plié qui, une fois déplié, se révèle être un chapeau à la mode"
+          ],
+          [
+            84,
+            "Le reçu d'un dépôt dans une banque d'une ville éloignée"
+          ],
+          [
+            85,
+            "Un journal intime où il manque sept pages"
+          ],
+          [
+            86,
+            "Une boîte à tabac vide en argent marquée d'une inscription disant \"songes\""
+          ],
+          [
+            87,
+            "Un symbole sacré en fer dédié à un dieu inconnu"
+          ],
+          [
+            88,
+            "Un livre racontant l'ascension et la chute d'un héros de légende, mais il manque le dernier chapitre"
+          ],
+          [
+            89,
+            "Une fiole de sang de dragon"
+          ],
+          [
+            90,
+            "Une antique Aèche de conception elfique"
+          ],
+          [
+            91,
+            "Une aiguille qui ne se tord jamais"
+          ],
+          [
+            92,
+            "Une broche ornementée de facture naine"
+          ],
+          [
+            93,
+            "Une bouteille vide portant une jolie étiquette indiquant \"Le Magicien du Vignoble, Cuvée du dragon rouge, 331422-x\""
+          ],
+          [
+            94,
+            "Une mosaïque vitrée en céramique multicolore"
+          ],
+          [
+            95,
+            "Une souris pétrifiée"
+          ],
+          [
+            96,
+            "Un pavillon pirate noir orné d'un crâne de dragon et de tibias croisés"
+          ],
+          [
+            97,
+            "Un petit crabe ou une petite araignée mécanique qui se déplace quand personne ne l'observe"
+          ],
+          [
+            98,
+            "Un bocal de verre contenant du gras étiqueté \"Graisse de griffon\""
+          ],
+          [
+            99,
+            "Une boîte en bois au fond de céramique contenant un ver vivant doté d'une tête aux deux extrémités de son corps"
+          ],
+          [
+            100,
+            "Une urne de métal contenant les cendres d'un héros"
+          ]
+        ]
+      }
+    ]
+  },
+  {"name": "Focaliseur de sorts", "itemType": "separator"},
+  {
+    "id": "arcaneFocus",
+    "name": "Focaliseur Arcanique",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "wand",
+    "name": "Baguette",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "weight": 0.5,
+    "value": 10,
+    "scfType": "arcane"
+  },
+  {
+    "id": "staff",
+    "name": "Bâton",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 5,
+    "scfType": "arcane",
+
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "V"
+    ],
+    "dmg1": "1d6",
+    "dmg2": "1d8",
+    "dmgType": "B"
+  },
+  {
+    "id": "crystal",
+    "name": "Cristal",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "weight": 0.5,
+    "value": 10,
+    "scfType": "arcane"
+  },
+  {
+    "id": "orb",
+    "name": "Orbe",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "weight": 1.5,
+    "value": 20,
+    "scfType": "arcane"
+  },
+  {
+    "id": "rod",
+    "name": "Sceptre",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "weight": 1,
+    "value": 10,
+    "scfType": "arcane"
+  },
+  {
+    "id": "druidicFocus",
+    "name": "Focaliseur druidique",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "yewWand",
+    "name": "Baguette d'if",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "weight": 0.5,
+    "value": 10,
+    "scfType": "arcane"
+  },
+  {
+    "id": "woodenStaff",
+    "name": "Bâton en bois",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "weapon",
+    "weight": 2,
+    "value": 5,
+    "scfType": "arcane",
+
+    "weaponType": "simple",
+    "weaponCategory": "melee",
+    "weaponProperty": [
+      "V"
+    ],
+    "dmg1": "1d6",
+    "dmg2": "1d8",
+    "dmgType": "B"
+  },
+  {
+    "id": "sprigOfMistletoe",
+    "name": "Branche de houx",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "value": 1,
+    "scfType": "arcane"
+  },
+  {
+    "id": "totem",
+    "name": "Totem",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "spellcastingFocus",
+    "value": 1,
+    "scfType": "arcane"
+  },
+  {
+    "id": "holySymbol",
+    "name": "Symbole sacrée",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "spellcastingFocus",
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "amulet",
+    "name": "Amulette",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "spellcastingFocus",
+    "weight": 0.5,
+    "value": 5,
+    "scfType": "arcane"
+  },
+  {
+    "id": "emblem",
+    "name": "Emblème",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "spellcastingFocus",
+    "value": 5,
+    "scfType": "arcane"
+  },
+  {
+    "id": "reliquary",
+    "name": "Reliquaire",
+    "source": "PHB",
+    "page": 152,
+    "itemType": "spellcastingFocus",
+    "weight": 1,
+    "value": 5,
+    "scfType": "arcane"
+  },
+  {"name": "Paquetage d'Équipement", "itemType": "separator"},
+  {
+    "id": "entertainersPack",
+    "name": "Paquetage d'artiste",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 19,
+    "value": 40,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "burglarsPack",
+    "name": "Paquetage de cambrioleur",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 22.25,
+    "value": 16,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diplomatsPack",
+    "name": "Paquetage de diplomate",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 18,
+    "value": 39,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "priestsPack",
+    "name": "Paquetage d'ecclésiastique",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 12,
+    "value": 19,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "scholarsPack",
+    "name": "Paquetage d'érudit",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 5,
+    "value": 40,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "explorerPack",
+    "name": "Paquetage d'explorateur",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 27.5,
+    "value": 10,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dungeoneersPack",
+    "name": "Paquetage d'exploration souterraine",
+    "source": "PHB",
+    "page": 151,
+    "itemType": "adventuringGear",
+    "weight": 30.75,
+    "value": 12,
+    "entries": [
+      "Includes:",
+      {
+        "type": "list",
+        "entries": [
+          ""
+        ]
+      }
+    ]
+  },
+  {"name": "Munition", "itemType": "separator"},
+  {
+    "id": "slingBullets_(30)",
+    "name": "Bille de Fronde (30)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "ammunition",
+    "weight": 0.75,
+    "value": 0.04
+  },
+  {
+    "id": "crossbowBolts_(20)",
+    "name": "Carreau d'arbalète (20)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "ammunition",
+    "weight": 0.75,
+    "value": 1
+  },
+  {
+    "id": "blowgunNeedles_(50)",
+    "name": "Darts de sarbacane (50)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "ammunition",
+    "weight": 0.5,
+    "value": 1
+  },
+  {
+    "id": "arrows_(20)",
+    "name": "Flèches (20)",
+    "source": "PHB",
+    "page": 150,
+    "itemType": "ammunition",
+    "weight": 0.5,
+    "value": 1
+  },
+  {
+    "id": "",
+    "name": "Balles de la renaissance (10)",
+    "source": "DMG",
+    "page": 268,
+    "age": "renaissance",
+    "itemType": "ammunition",
+    "weight": 1,
+    "value": 3
+  },
+  {
+    "id": "",
+    "name": "Balles modern (10)",
+    "source": "DMG",
+    "page": 268,
+    "age": "modern",
+    "itemType": "ammunition",
+    "weight": 0.5
+  },
+  {
+    "id": "",
+    "name": "Cellule d'énergie",
+    "source": "DMG",
+    "page": 268,
+    "age": "futuristic",
+    "itemType": "ammunition",
+    "weight": 0.150
+  },
+  {"name": "Outils d'Artisan", "itemType": "separator"},
+  {
+    "id": "artisansTools",
+    "name": "Outils d'Artisan",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "entries": [
+      "Ce type particulier d'outils réunit les objets permettant d'exercer une profession. Le tableau présente une liste des outils les plus courants, chaque ensemble proposant des objets liés à un artisanat spécifique. Si vous maîtrisez l'utilisation d'outils liés à un artisanat, vous pouvez ajouter votre bonus de maîtrise aux tests de caractéristique que vous effectuez en utilisant les outils de votre profession. Chacun de ces outils nécessite une maîtrise distincte."
+    ]
+  },
+  {
+    "id": "alchemistsSupplies",
+    "name": "Matériel d'alchimiste",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 4,
+    "value": 50,
+    "entries": [
+      "Le matériel d'alchimiste permet à un personnage de préparer des décoctions fort utiles, comme de l'acide ou du feu grégeois",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel d'alchimiste se compose de deux béchers en verre, d'un support en métal permettant de poser un bécher sur une flamme nue, d'un mélangeur en verre, d'un petit mortier et son pilon et d'une bourse d'ingrédients alchimiques ordinaires, comprenant entre autres du sel, de la limaille de fer et de l'eau purifiée."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes",
+        "entries": [
+          "La maîtrise du matériel d'alchimiste vous permet d'obtenir des informations supplémentaires sur les tests d'Arcanes impliquant des potions ou des objets similaires."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Lorsque vous inspectez une zone en quête d'indices, la maîtrise du matériel d'alchimiste vous permet d'obtenir des informations supplémentaires sur les substances chimiques ou autres qui ont été utilisées dans la zone du test."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Artisanat alchimique",
+        "entries": [
+          "Vous pouvez utiliser cette maîtrise pour créer des objets alchimiques. Un personnage peut dépenser de l'argent pour rassembler des matières premières, d'un poids de 500 grammes par 50 po. Le MD peut avantager le personnage lors d'un test avec la compétence indiquée. Lors d'un long repos, vous pouvez utiliser le matériel d'alchimiste pour fabriquer une dose d'acide, de feu grégeois, d'antidote, de parfum, d'huile ou de savon. Soustrayez la moitié de la valeur de l'objet créé de la valeur totale des matières premières alchimiques que vous possédez."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Matériel d'Alchimiste",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Créer un épais nuage de fumée",
+            10
+          ],
+          [
+            "Identifier un poison",
+            10
+          ],
+          [
+            "Identifier une substance",
+            15
+          ],
+          [
+            "Allumer un feu",
+            15
+          ],
+          [
+            "Neutraliser de l'acide",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "brewersSupplies",
+    "name": "Matériel de brasseur",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 4.5,
+    "value": 20,
+    "entries": [
+      "Le brassage est l'art de fabriquer de la bière. Non seulement cela sert à préparer un breuvage alcoolisé, mais le processus nécessite aussi de purifier de l'eau. Il faut des semaines pour que la fermentation se déroule, mais le travail ne demande que quelques heures",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel de brassage comprend une grande cuve de verre, du houblon, un siphon et plusieurs mètres de tuyaux."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "La maîtrise du matériel de brassage vous donne des informations supplémentaires sur les tests d'Intelligence (Histoire) concernant des événements où l'alcool a joué un rôle important."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Médecine",
+        "entries": [
+          "La maîtrise de cet outil vous rend plus compétent lorsque vous traitez quelqu'un souffrant d'ébriété avancée ou lorsque vous utilisez de l'alcool pour atténuer la douleur."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Persuasio",
+        "entries": [
+          "Une boisson forte peut adoucir le cœur le plus endurci. La maîtrise du matériel de brasseur peut vous aider à amadouer quelqu'un avec de l'alcool, en le faisant boire juste ce qu'il faut pour adoucir son humeur."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Eau potable",
+        "entries": [
+          "Votre connaissance du processus de brassage vous permet de purifier une eau qui serait imbuvable sans cela. Lors d'un long repos, vous pouvez purifier jusqu'à 24 litres d'eau, mais 4 seulement lors d'un court repos."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Matériel de brasseur",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Détecter du poison ou des impuretés dans une boisson",
+            10
+          ],
+          [
+            "Identifier de l'alcool",
+            15
+          ],
+          [
+            "Ignorer les effets de l'alcool",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "calligraphersSupplies",
+    "name": "Matériel de calligraphe",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 2.5,
+    "value": 10,
+    "entries": [
+      "La calligraphie convertit l'écriture en un art délicat et esthétique. Un calligraphe produit un texte agréable à regarder en utilisant un style difficile à imiter. Son matériel lui permet aussi d'examiner une écriture et de déterminer si elle est authentique, car lors de sa formation, il a passé des heures à étudier divers styles d'écriture et à les reproduire",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel de calligraphie comprend de l'encre, une dizaine de feuilles de parchemin et trois plumes."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes",
+        "entries": [
+          "La calligraphie n'est pas d'une grande aide pour déchiffrer des écrits magiques, mais la maîtrise des outils de calligraphie aide à identifier l'auteur d'un écrit de nature magique."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "La maîtrise de la calligraphie peut augmenter les bénéfices tirés de l'analyse ou de l'étude d'écrits antiques, de parchemins ou d'autres textes, y compris des runes gravées dans la pierre ou des messages inclus dans des fresques ou d'autres décorations."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Déchiffrer une carte au trésor",
+        "entries": [
+          "La maîtrise de cet objet vous rend expert dans l'étude des cartes. Vous pouvez faire un test d'Intelligence pour déterminer l'âge d'une carte, savoir si elle cache des messages secrets, etc"
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Matériel de calligraphe",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Identifier l'auteur d'un écrit non magique",
+            10
+          ],
+          [
+            "Déterminer l'état d'esprit de l'auteur",
+            15
+          ],
+          [
+            "Repérer un texte contrefait",
+            15
+          ],
+          [
+            "Imiter une signature",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "paintersSupplies",
+    "name": "Matériel de peintre",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 2.5,
+    "value": 10,
+    "entries": [
+      "La maîtrise du matériel de peintre représente la capacité à peindre et dessiner qui s'accompagne de connaissances sur l'histoire de l'art susceptibles de vous aider lorsque vous examinez une ceuvre d'art.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel de peintre comprend un chevalet, des toiles, des pinceaux, des peintures, des fusains et une palette."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes, Histoire, Religion",
+        "entries": [
+          "Votre expertise vous aide à découvrir toutes sortes d'informations liées à une ceuvre d'art, comme les propriétés magiques d'une peinture ou les origines d'une curieuse fresque découverte dans un donjon."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation, Perception",
+        "entries": [
+          "Lorsque vous inspectez une peinture ou une ceuvre d'art visuelle similaire, votre connaissance des techniques de création de telles œuvres vous donne des informations complémentaires."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Peindre et dessiner",
+        "entries": [
+          "Vous pouvez créer une œuvre d'art simple lors d'un court ou long repos. Bien qu'elle manque de précision, elle peut représenter une image ou une scène ou bien être une copie d'une autre."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Matériel de peintre",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Peindre un portrait fidèle",
+            10
+          ],
+          [
+            "Créer une peinture avec un message caché",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tinkersTools",
+    "name": "Outils de bricoleur",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 5,
+    "value": 50,
+    "entries": [
+      "Les outils de bricoleur sont conçus pour vous permettre de réparer nombre d'objets courants. Vous ne pouvez pas fabriquer grand-chose avec, mais vous pouvez raccommoder des habits déchirés, affûter une lame émoussée ou réparer une cotte de mailles ébréchée.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de bricoleur comprennent des outils manuels, du fil, des aiguilles, une pierre à aiguiser, des bouts de tissu et de cuir et un petit pot de colle"
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Vous déterminez l'âge et l'origine des objets, même s'il n'en reste que quelques débris."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Quand vous inspectez un objet endommagé, vous apprenez comment il a été abîmé et depuis combien de temps."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Réparation",
+        "entries": [
+          "Vous rendez 10 points de vie à un objet par heure de travail. Vous devez avoir accès aux matériaux bruts requis pour réparer l'objet. Pour les objets métalliques, vous devez disposer d'une flamme nue assez chaude pour rendre le métal malléable."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de bricoleur",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Réparer temporairement un objet hors d'état",
+            10
+          ],
+          [
+            "Réparer un objet en moitié moins de temps que la normale",
+            15
+          ],
+          [
+            "Improviser un objet temporaire en utilisant des matériaux de récupération",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cartographersTools",
+    "name": "Outils de cartographe",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 3,
+    "value": 15,
+    "entries": [
+      "En utilisant des outils de cartographe, vous pouvez dessiner des cartes précises pour faciliter vos voyages et ceux d'autrui. Ces cartes peuvent se présenter à grande échelle et représenter des chaînes de montagnes ou prendre la forme de diagrammes montrant la disposition d'un étage d'un donjon.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de cartographe comprennent une plume, de l'encre, du parchemin, un compas, un pied à coulisse et une règle."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes, Histoire, Religion",
+        "entries": [
+          "Lorsque vous utilisez ces compétences, vos connaissances des cartes et des lieux vous donnent des informations plus détaillées. Vous pouvez par exemple repérer un message secret sur une carte, déterminer la date de création de la carte pour savoir si la géographie des lieux a changé depuis, etc."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Nature",
+        "entries": [
+          "Votre familiarité avec la géographie physique vous aide à répondre aux questions relatives au terrain qui vous entoure et à percer ses mystères."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Survie",
+        "entries": [
+          "Vos connaissances géographiques vous aident à trouver un chemin menant à la civilisation, à deviner où trouver une ville ou un village et à éviter de vous perdre. Vous avez étudié tant de cartes que vous savez parfaitement comment les routes commerciales évoluent et sur quels sites géographiques les villages se développent."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Dessiner une carte",
+        "entries": [
+          "Lorsque vous voyagez, vous pouvez dessiner une carte en cours de route, en plus de vos autres activités."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de cartographe",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Déterminer l'âge et l'origine d'une carte",
+            10
+          ],
+          [
+            "Estimer la direction et la distance d'un point de repère",
+            15
+          ],
+          [
+            "Déterminer si une carte est fausse ",
+            15
+          ],
+          [
+            "Remplir une zone manquante sur une carte ",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "carpentersTools",
+    "name": "Outils de charpentier",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 3,
+    "value": 8,
+    "entries": [
+      "Les talents de charpentier permettent à un personnage de construire des structures de bois. Le charpentier sait construire une maison, une hutte, un placard en bois et d'autres objets similaires.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de charpentier comprennent une scie, un marteau, des clous, une hachette, une équerre, une règle, une herminette, un rabot et un ciseau."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "La maîtrise de ces outils vous permet d'identifier l'utilité et l'origine de bâtiments en bois et d'autres objets de bois de grande taille."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Vous obtenez des informations supplémentaires lorsque vous inspectez un lieu comprenant des structures en bois, car vous connaissez les astuces de construction permettant de dissimuler une zone."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perception",
+        "entries": [
+          "Vous repérez les irrégularités dans les murs de bois et les parquets, ce qui vous aide à déceler les pièges et les passages secrets."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Discrétion",
+        "entries": [
+          "Vous repérez rapidement les points faibles d'un parquet, ce qui vous aide à éviter les zones qui craquent dès qu'on pose le pied dessus."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Fortifications",
+        "entries": [
+          "Avec une minute de travail et quelques matières premières, vous rendez une porte ou une fenêtre plus difficile à enfoncer. Augmentez de 5 le DD pour l'ouvrir."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Abri temporaire",
+        "entries": [
+          "Lors d'un long repos, vous pouvez construire un appentis ou un abri similaire pour mettre votre groupe au sec et à l'ombre pour la durée du repos. Comme cet abri a été construit à la va-vite avec le bois à disposition, il s'effondre au bout de ld3 jours."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de charpentier",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Construire une structure en bois simple",
+            10
+          ],
+          [
+            "Concevoir une structure en bois complexe",
+            15
+          ],
+          [
+            "Trouver un point faible dans un mur de bois",
+            15
+          ],
+          [
+            "Démanteler une porte ",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cobblersTools",
+    "name": "Outils de cordonnier",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 2.5,
+    "value": 5,
+    "entries": [
+      "Le métier de cordonnier peut sembler trop humble pour un aventurier, mais une bonne paire de bottes aidera toujours un personnage à traverser les étendues sauvages ou le plus redoutable des donjons.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de cordonnier comprennent un marteau, un poinçon, un couteau, un pied de cordonnier, des pinces coupantes, du cuir et du fil."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes, Histoire",
+        "entries": [
+          "Vos connaissances en matière de chaussures vous aident à identifier les propriétés magiques des bottes enchantées et à deviner leur histoire."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Les chaussures renferment un nombre étonnant de secrets. Vous pouvez apprendre où quelqu'un s'est rendu il y a peu en examinant l'usure et la poussière accumulée sur ses chaussures. Votre expérience en matière de réparation de chaussures vous aide à identifier d'où viennent les dégâts qu'elles ont reçus."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Entretien des chaussures",
+        "entries": [
+          "Vous pouvez réparer les chaussures de vos compagnons lors d'un long repos. Pendant les 24 prochaines heures, un maximum de six créatures de votre choix portant des chaussures travaillées par vos soins peuvent se déplacer jusqu'à 10 heures par jour sans faire de jet de sauvegarde contre l'épuisement."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Fabriquer un compartiment secret",
+        "entries": [
+          "Avec 8 heures de travail, vous pouvez ajouter un compartiment secret à une paire de chaussures. Il contient un objet d'au maximum 7,5 centimètres de long pour 2,5 de large et de haut. Faites un test d'Intelligence en utilisant votre maîtrise des outils pour déterminer le DD du test d'lntelligence (Investigation) à faire pour trouver le compartiment secret."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de cordonnier",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Déterminer l'âge et l'origine d'une chaussure",
+            10
+          ],
+          [
+            "Trouver un compartiment secret dans le talon d'une botte",
+            15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "smithsTools",
+    "name": "Outils de forgeron",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 4,
+    "value": 20,
+    "entries": [
+      "Le matériel de forgeron vous permet de travailler le métal, de le chauffer pour modifier sa forme, réparer des dégâts ou transformer des lingots en objets utiles.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel de forgeron comprend des marteaux, des pinces, du charbon, des chiffons et une pierre à aiguiser."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes et Histoire",
+        "entries": [
+          "Votre expertise vous donne des informations complémentaires lorsque vous examinez des objets en métal, comme des armes."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Vous repérez des indices et faites des déductions qui échappent à autrui lorsque votre investigation porte sur des armes, des armures ou d'autres objets métalliques."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Réparation",
+        "entries": [
+          "Si vous disposez de vos outils et d'une flamme nue assez chaude pour rendre le métal malléable, vous pouvez rendre 10 points de vie par heure de travail à un objet métallique endommagé."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de forgeron",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Affûter une lame émoussée",
+            10
+          ],
+          [
+            "Réparer une armure ",
+            15
+          ],
+          [
+            "Briser un objet métallique non magique",
+            15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jewelersTools",
+    "name": "Outils de joaillier",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 1,
+    "value": 25,
+    "entries": [
+      "La maîtrise des outils de joaillier enseigne les techniques de base d'embellissement des gemmes et vous permet aussi d'identifier les pierres précieuses.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de joaillier comprennent une petite scie et un marteau, des pinces, des pinces coupantes et des limes."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes",
+        "entries": [
+          "La maîtdse des outils de joaillier étoffe vos connaissances sur les fameux usages mystiques des gemmes, ce qui est bien pratique lorsque vous faites un test d'Arcanes lié aux gemmes ou à un objet incrusté de pierreries."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          ". Lorsque vous inspectez des objets sertis de joyaux, votre maîtrise des outils de joaillier vous aide à repérer les indices qu'ils recèlent peut-être."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Identification des gemmes",
+        "entries": [
+          "Vous identifiez les gemmes et déterminez leur valeur au premier coup d'œil."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de joaillier",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Modifier l'apparence d'une gemme",
+            15
+          ],
+          [
+            "Déterminer l'histoire d'une gemme",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "masonsTools",
+    "name": "Outils de maçon",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 4,
+    "value": 10,
+    "entries": [
+      "Les outils de maçon vous permettent de fabriquer des structures de pierre, dont des murs et des bâtiments en brique.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de maçon comprennent une truelle, une massette, un ciseau, des brosses et une équerre."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à déterminer la date de construction d'un bâtiment ainsi que son utilité et vous donne une idée de qui l'a bâti."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Vous obtenez des informations supplémentaires lorsque vous inspectez une zone contenant des structures de pierre."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perception",
+        "entries": [
+          "Vous repérez les irrégularités dans les murs et sols de pierre, ce qui vous aide à déceler des trappes et des passages secrets."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Démolition",
+        "entries": [
+          "Vos connaissances en maçonnerie vous aident à repérer des points faibles dans les murs de brique. Vous infligez des dégâts doublés à ces structures avec vos attaques armées."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de maçon",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Percer un petit trou dans un mur de pierre",
+            10
+          ],
+          [
+            "Trouver un point faible dans un mur de pierre",
+            15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "woodcarversTools",
+    "name": "Outils de menuisier",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 1,
+    "value": 2.5,
+    "entries": [
+      "Les outils de menuisier vous permettent de fabriquer des objets complexes en bois, comme des flèches ou des bibelots.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de menuisier se composent d'un couteau, d'une gouge et d'une petite scie."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes, Histoire",
+        "entries": [
+          "Votre expertise vous aide à examiner des objets de bois, comme des figurines ou des flèches."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Nature",
+        "entries": [
+          "Votre connaissance des objets de bois vous aide à examiner les arbres."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Réparation",
+        "entries": [
+          "Lors d'un court repos, vous pouvez réparer un unique objet en bois endommagé."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Fabrication de flèches",
+        "entries": [
+          "Lors d'un court repos, vous pouvez fabriquer jusqu'à cinq flèches ; lors d'un long repos, vous pouvez en fabriquer jusqu'à vingt. Vous devez disposer d'assez de bois pour cela."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de menuisier",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Créer une petite figurine de bois",
+            10
+          ],
+          [
+            "Sculpter un motif complexe dans le bois",
+            15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pottersTools",
+    "name": "Outils de potier",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 1.5,
+    "value": 10,
+    "entries": [
+      "Les outils de potier servent à créer divers objets en céramique, souvent des pots ou des récipients.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de potier comprennent une estèque, des mirettes, des aiguilles de potier, une raclette, un couteau et un compas."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à identifier les objets en céramique et à déterminer leur date de création, ainsi que le lieu ou la culture d'origine probable de l'objet."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation, Perception",
+        "entries": [
+          "Vous obtenez des informations supplémentaires lorsque vous inspectez un objet en céramique et découvrez des indices qu'autrui raterait en remarquant des irrégularités mineures."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Reconstruction",
+        "entries": [
+          "En observant des éclats de poterie, vous pouvez déterminer la forme originelle de l'objet intact et son utilité probable."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de potier",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Déterminer ce qu'un récipient a contenu",
+            10
+          ],
+          [
+            "Créer un pot fonctionnel ",
+            15
+          ],
+          [
+            "Trouver le point faible d'un objet en céramique",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "glassblowersTools",
+    "name": "Outils de souffleur de verre",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 2.5,
+    "value": 30,
+    "entries": [
+      "Une personne maîtrisant les outils de souffleur de verre sait façonner le verre, mais aussi comment fabriquer des objets en verre selon différentes méthodes.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de souffleur de verre comprennent une canne de verrier, un marbre, des pinces et des moules. Vous aurez besoin d'une source de chaleur pour travailler le verre"
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes, Histoire",
+        "entries": [
+          "Votre connaissance des techniques de travail du verre vous aide lorsque vous étudiez un objet en verre, comme une bouteille de potion ou des objets de verre contenus dans un trésor. Par exemple, vous pouvez examiner la manière dont une bouteille de potion en verre a été modifiée par son contenu pour déterminer les effets de la potion. (Une potion peut laisser un résidu, déformer le verre ou le tacher.)"
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Quand vous étudiez une zone, vos connaissances vous aident s'il s'y trouve du verre brisé ou des objets en verre."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Identifier les faiblesses",
+        "entries": [
+          "Après une minute d'étude, vous identifiez le point faible d'un objet de verre. Les dégâts infligés à un objet au niveau de son point faible sont doublés."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de souffleur de verre",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Identifier l'origine du verre",
+            10
+          ],
+          [
+            "Déterminer ce qu'un objet de verre a contenu",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "leatherworkersTools",
+    "name": "Outils de tanneur",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 2.5,
+    "value": 5,
+    "entries": [
+      "Le savoir ne se limite pas au travail du cuir et porte aussi sur les peaux des animaux et leurs propriétés, ainsi que sur les armures de cuir et produits similaires.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de tanneur comprennent un couteau, un petit maillet, un couteau à parer, une alène, du fil et des morceaux de cuir."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes",
+        "entries": [
+          "Votre expertise en matière de travail du cuir vous aide lorsque vous inspectez des objets magiques en cuir, comme des bottes ou certaines capes."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Vous obtenez des informations supplémentaires lorsque vous étudiez des objets en cuir ou des indices liés à ces objets grâce à votre connaissance du cuir, qui vous permet de repérer des détails que d'autres auraient négligés."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Identification des peaux",
+        "entries": [
+          "Lorsque vous observez une peau ou un objet en cuir, vous déterminez l'origine du cuir et les techniques spéciales utilisées pour le traiter. Vous différenciez par exemple un cuir tanné selon une méthode naine d'un cuir tanné selon une méthode halfeline."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de tanneur",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Modifier l'apparence d'un objet de cuir",
+            10
+          ],
+          [
+            "Déterminer l'histoire d'un objet en cuir",
+            20
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weaversTools",
+    "name": "Outils de tisserand",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 2.5,
+    "value": 1,
+    "entries": [
+      "Les outils de tisserand vous permettent de créer des tissus et de les tailler pour en faire des habits.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de tisserand comprennent du fil, des aiguilles et du tissu. Vous savez comment utiliser un métier à tisser, mais cet objet est trop grand pour que vous puissiez le transporter."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes, Histoire",
+        "entries": [
+          "Votre expertise vous aide à examiner des objets en tissu, comme des capes et des robes."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Grâce à votre connaissance du processus de création d'un objet en tissu, vous repérez des indices et tirez des conclusions qui échappent à autrui lorsque vous examinez des tapisseries, des tissus d'ameublement, des habits et d'autres objets tissés."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Réparation",
+        "entries": [
+          "Lors d'un court repos, vous pouvez réparer un unique objet en tissu endommagé."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Fabriquer des habits",
+        "entries": [
+          "Si vous disposez d'assez de tissu et de fil, vous pouvez créer des habits pour une créature lors d'un long repos."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de tisserand",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Changer l'utilité d'un tissu",
+            10
+          ],
+          [
+            "Raccommoder un accroc dans un tissu",
+            10
+          ],
+          [
+            "Fabriquer un vêtement ",
+            15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cooksUtensils",
+    "name": "Ustensiles de cuisinier",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "artisanTools",
+    "weight": 4,
+    "value": 1,
+    "entries": [
+      "La vie d'aventurier est très dure, mais avec un cuisinier dans l'équipe, les repas seront bien meilleurs que les rations habituelles de biscuits de guerre et de fruits secs.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les ustensiles de cuisinier comprennent une marmite en métal, des couteaux, des fourchettes, une cuillère à touiller et une louche."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre connaissance des techniques culinaires vous permet d'évaluer les modèles sociaux qui ressortent des habitudes gastronomiques d'une société."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Médecine",
+        "entries": [
+          "Lorsque vous administrez un traitement, vous pouvez transformer tout remède amer ou acide en décoction délicieuse."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Survie",
+        "entries": [
+          "Quand vous cherchez de la nourriture dans la nature, vous parvenez à transformer ce que vous trouvez en repas nourrissant alors qu'autrui en serait incapable."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Préparation des repas",
+        "entries": [
+          "Lors d'un court repos, vous pouvez préparer un bon repas qui aidera vos camarades à reprendre des forces. Vous et un maximum de cinq autres créatures de votre choix récupérez un point de vie supplémentaire par dé de vie dépensé lors de ce court repos, à condition que vous ayez accès à vos ustensiles de cuisinier et à une quantité de nourriture suffisante."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Ustensiles de cuisinier",
+        "colLabels": [
+          "Activité",
+          "DD"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Préparer un repas ordinaire",
+            10
+          ],
+          [
+            "Copier un repas",
+            10
+          ],
+          [
+            "Repérer du poison ou des impuretés dans la nourriture",
+            15
+          ],
+          [
+            "Préparer un repas gastronomique",
+            15
+          ]
+        ]
+      }
+    ]
+  },
+  {"name": "Nourriture et Boisson", "itemType": "separator"},
+  {"name": "Boite de jeu", "itemType": "separator"},
+  {
+    "id": "gamingSet",
+    "name": "Boite de jeu",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "gameSet",
+    "entries": [
+      "La maîtrise d'une boîte de jeux s'applique à un type de\njeux, comme le jeu des dragons ou les jeux de hasard utilisant des dés.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          " La boîte de jeu contient tous les accessoires nécessaires pour faire une partie du ou des jeux\nconcernés, comme un jeu de cartes complet ou un plateau\nde jeu et des pions."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre maîtrise du jeu inclut des connaissances\nsur son histoire, ainsi que sur les événements importants\nauxquels il est associé et les personnalités éminentes qui le\npratiquaient. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perspicacité",
+        "entries": [
+          "On comprend souvent mieux la personnalité de quelqu'un en jouant avec lui, ce qui aide à discerner\nle mensonge de la vérité et à déchiffrer son humeur. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Escamotage",
+        "entries": [
+          " L'Escamotage est une compétence bien\npratique pour tricher au jeu, car elle vous permet d'échanger des jetons, d'escamoter des cartes ou de modifier le\nrésultat d'un jet de dé. De plus, une cible captivée par les\nmouvements adroits de son adversaire de jeu fait une proie\nidéale pour les pickpockets."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Boite de jeu",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Surprendre un joueur en train de tricher", 15],
+          ["Mieux comprendre la personnalité de son adversaire", 15]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diceSet",
+    "name": "Dés",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "gameSet",
+    "value": 0.1,
+    "entries": [
+      "La maîtrise d'une boîte de jeux s'applique à un type de\njeux, comme le jeu des dragons ou les jeux de hasard utilisant des dés.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          " La boîte de jeu contient tous les accessoires nécessaires pour faire une partie du ou des jeux\nconcernés, comme un jeu de cartes complet ou un plateau\nde jeu et des pions."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre maîtrise du jeu inclut des connaissances\nsur son histoire, ainsi que sur les événements importants\nauxquels il est associé et les personnalités éminentes qui le\npratiquaient. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perspicacité",
+        "entries": [
+          "On comprend souvent mieux la personnalité de quelqu'un en jouant avec lui, ce qui aide à discerner\nle mensonge de la vérité et à déchiffrer son humeur. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Escamotage",
+        "entries": [
+          " L'Escamotage est une compétence bien\npratique pour tricher au jeu, car elle vous permet d'échanger des jetons, d'escamoter des cartes ou de modifier le\nrésultat d'un jet de dé. De plus, une cible captivée par les\nmouvements adroits de son adversaire de jeu fait une proie\nidéale pour les pickpockets."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Boite de jeu",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Surprendre un joueur en train de tricher", 15],
+          ["Mieux comprendre la personnalité de son adversaire", 15]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dragonchessSet",
+    "name": "Échecs draconiques",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "gameSet",
+    "weight": 0.25,
+    "value": 1,
+    "entries": [
+      "La maîtrise d'une boîte de jeux s'applique à un type de\njeux, comme le jeu des dragons ou les jeux de hasard utilisant des dés.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          " La boîte de jeu contient tous les accessoires nécessaires pour faire une partie du ou des jeux\nconcernés, comme un jeu de cartes complet ou un plateau\nde jeu et des pions."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre maîtrise du jeu inclut des connaissances\nsur son histoire, ainsi que sur les événements importants\nauxquels il est associé et les personnalités éminentes qui le\npratiquaient. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perspicacité",
+        "entries": [
+          "On comprend souvent mieux la personnalité de quelqu'un en jouant avec lui, ce qui aide à discerner\nle mensonge de la vérité et à déchiffrer son humeur. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Escamotage",
+        "entries": [
+          " L'Escamotage est une compétence bien\npratique pour tricher au jeu, car elle vous permet d'échanger des jetons, d'escamoter des cartes ou de modifier le\nrésultat d'un jet de dé. De plus, une cible captivée par les\nmouvements adroits de son adversaire de jeu fait une proie\nidéale pour les pickpockets."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Boite de jeu",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Surprendre un joueur en train de tricher", 15],
+          ["Mieux comprendre la personnalité de son adversaire", 15]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "playingCardSet",
+    "name": "Jeu de cartes",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "gameSet",
+    "value": 0.5,
+    "entries": [
+      "La maîtrise d'une boîte de jeux s'applique à un type de\njeux, comme le jeu des dragons ou les jeux de hasard utilisant des dés.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          " La boîte de jeu contient tous les accessoires nécessaires pour faire une partie du ou des jeux\nconcernés, comme un jeu de cartes complet ou un plateau\nde jeu et des pions."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre maîtrise du jeu inclut des connaissances\nsur son histoire, ainsi que sur les événements importants\nauxquels il est associé et les personnalités éminentes qui le\npratiquaient. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perspicacité",
+        "entries": [
+          "On comprend souvent mieux la personnalité de quelqu'un en jouant avec lui, ce qui aide à discerner\nle mensonge de la vérité et à déchiffrer son humeur. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Escamotage",
+        "entries": [
+          " L'Escamotage est une compétence bien\npratique pour tricher au jeu, car elle vous permet d'échanger des jetons, d'escamoter des cartes ou de modifier le\nrésultat d'un jet de dé. De plus, une cible captivée par les\nmouvements adroits de son adversaire de jeu fait une proie\nidéale pour les pickpockets."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Boite de jeu",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Surprendre un joueur en train de tricher", 15],
+          ["Mieux comprendre la personnalité de son adversaire", 15]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Three-DragonAnteSet",
+    "name": "Jeu des dragons",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "gameSet",
+    "value": 1,
+    "entries": [
+      "La maîtrise d'une boîte de jeux s'applique à un type de\njeux, comme le jeu des dragons ou les jeux de hasard utilisant des dés.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          " La boîte de jeu contient tous les accessoires nécessaires pour faire une partie du ou des jeux\nconcernés, comme un jeu de cartes complet ou un plateau\nde jeu et des pions."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre maîtrise du jeu inclut des connaissances\nsur son histoire, ainsi que sur les événements importants\nauxquels il est associé et les personnalités éminentes qui le\npratiquaient. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Perspicacité",
+        "entries": [
+          "On comprend souvent mieux la personnalité de quelqu'un en jouant avec lui, ce qui aide à discerner\nle mensonge de la vérité et à déchiffrer son humeur. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Escamotage",
+        "entries": [
+          " L'Escamotage est une compétence bien\npratique pour tricher au jeu, car elle vous permet d'échanger des jetons, d'escamoter des cartes ou de modifier le\nrésultat d'un jet de dé. De plus, une cible captivée par les\nmouvements adroits de son adversaire de jeu fait une proie\nidéale pour les pickpockets."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Boite de jeu",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Surprendre un joueur en train de tricher", 15],
+          ["Mieux comprendre la personnalité de son adversaire", 15]
+        ]
+      }
+    ]
+  },
+  {"name": "Instruments", "itemType": "separator"},
+  {
+    "id": "musicalInstrument",
+    "name": "Instruments",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shawm",
+    "name": "Chalemie",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 0.5,
+    "value": 2,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "horn",
+    "name": "Cor",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 1,
+    "value": 3,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bagpipes",
+    "name": "Cornemuse",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 3,
+    "value": 30,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flute",
+    "name": "Flûte",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 0.5,
+    "value": 2,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "panFlute",
+    "name": "Flûte de pan",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 1,
+    "value": 12,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lute",
+    "name": "Luth",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 1,
+    "value": 35,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lyre",
+    "name": "Lyre",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 1,
+    "value": 30,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "drum",
+    "name": "Tambour",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 1.5,
+    "value": 6,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dulcimer",
+    "name": "Tympanon",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 5,
+    "value": 25,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "viol",
+    "name": "Viole",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "instrument",
+    "weight": 0.5,
+    "value": 30,
+    "entries": [
+      "Maîtriser un instrument de musique veut dire que vous\nconnaissez les techniques permettant d'enjouer. Vous\nconnaissez également quelques chansons que l'on joue souvent avec votre instrument. ",
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre expertise vous aide à vous souvenir de\nconnaissances associées à votre instrument."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Votre capacité à donner une belle\nreprésentation s'améliore lorsque vous y intégrez votre\ninstrument. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Composer une mélodie",
+        "entries": [
+          "Vous pouvez composer un\nnouvel air accompagné de nouvelles paroles pour votre\ninstrument lors d'un long repos. Cela peut vous servir à\nimpressionner un noble ou à répandre une rumeur scandaleuse sur un air entraînant. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instruments",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Identifier un air", 10],
+          ["Improviser un air", 20]
+        ]
+      }
+    ]
+  },
+  {"name": "Monture", "itemType": "separator"},
+  {"name": "Outils", "itemType": "separator"},
+  {
+    "id": "disguiseKit",
+    "name": "Accessoires de déguisement",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "tools",
+    "weight": 1.5,
+    "value": 25,
+    "entries": [
+      "Outils parfaits pour qui veut duper autrui, les accessoires\nde déguisement permettent à leur utilisateur d'endosser\nune fausse identité.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          " Les accessoires de déguisement comprennent des cosmétiques, de la teinture capillaire, de petits accessoires et quelques habits."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Supercherie",
+        "entries": [
+          " Le déguisement améliore parfois la crédibilité des mensonges."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Intimidation",
+        "entries": [
+          "Avec le bon déguisement, vous paraissez\nplus effrayant, que vous tentiez de terrifier quelqu'un en\npassant pour la victime d'une épidémie ou d'intimider un\ngroupe de voyous en vous faisant passer pour un gros dur."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Représentation",
+        "entries": [
+          "Les spectateurs apprécient parfois\nmieux une représentation si elle s'accompagne du déguisement idoine, mais ce dernier doit être spécialement conçu\npour générer la réaction escomptée."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Persuasion",
+        "entries": [
+          "Les gens ont tendance à se fier aux personnes en uniforme. Si vous vous déguisez en représentant\nde l'ordre, vos efforts de persuasion seront sûrement plus\nefficaces. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Créer un déguisement",
+        "entries": [
+          "Vous pouvez fabriquer un déguisement lors d'un long repos. Une fois créé, il vous faut 1 minute pour l'enfiler. Vous ne pouvez transporter qu'un seul\ndéguisement à la fois, sans quoi vous risquez d'attirer une\nattention malvenue, à moins de disposer d'un sac sans fond\nou d'une méthode similaire pour les dissimuler. Chaque\ndéguisement pèse 500 grammes. ",
+          "En d'autres circonstances, il faut 10 minutes pour fabriquer un déguisement apportant des changements mineurs\nà votre apparence et 30 minutes s'il apporte des changements plus importants."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Accessoires de déguisement",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Cache des blessures ou des marques distinctives", 10],
+          ["Remarquer que quelqu'un porte un déguisement", 15],
+          ["Imiter l'apparence d'un humanoïde", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "navigatorsTools",
+    "name": "Instrument de navigateur",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "tools",
+    "weight": 1,
+    "value": 25,
+    "entries": [
+      "La maîtrise des instruments de navigateur vous aide à déterminer votre itinéraire en observant les étoiles. Elle vous\naide aussi à comprendre les cartes et à développer votre\nsens de l'orientation.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les instruments de navigateur comprennent un sextant, une boussole, un compas, une règle,\ndu parchemin, de l'encre et une plume. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Survie",
+        "entries": [
+          " La maîtrise des instruments de navigateur vous\naide à éviter de vous perdre et à deviner l'emplacement le\nplus probable pour une route ou un village. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Repérage",
+        "entries": [
+          " Grâce à des mesures précises, vous déterminez votre position sur une carte nautique et l'heure de\nla journée."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Instrument de navigateur",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Définir un itinéraire", 10],
+          ["Trouver sa position sur une carte nautique", 15]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "poisonersKit",
+    "name": "Matériel d'empoisonneur",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "tools",
+    "weight": 1,
+    "value": 50,
+    "entries": [
+      "Le matériel d'empoisonneur est l'une des ressources\nfavorites des voleurs, des assassins et d'autres individus\nimpliqués dans des affaires douteuses. Il permet de créer\ndes poisons à partir de diverses matières et de les appliquer. La connaissance des poisons aide aussi à soigner\nleurs victimes. ",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel d'empoisonneur comprend\ndes fioles de verre, un pilon et un mortier, des produits\nchimiques et un agitateur en verre."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre formation d'empoisonneur vous aide à\nvous souvenir de faits en rapport avec des empoisonnements célèbres. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation, Perception",
+        "entries": [
+          "Vous avez l'habitude de manipuler les poisons avec précaution, ce qui vous aide lorsque\nvous inspectez des objets empoisonnés ou tentez de trouver\nun indice suite à un événement impliquant du poison. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Médecine",
+        "entries": [
+          " Lorsque vous soignez la victime d'un empoisonnement, vos connaissances vous aident à trouver le\nmeilleur traitement."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Nature, Survie",
+        "entries": [
+          " En travaillant avec les poisons, vous\navez appris quelles plantes et quels animaux sont venimeux\nou empoisonnés. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Manipulation des poisons",
+        "entries": [
+          "Votre maîtrise vous permet\nde manipuler et d'appliquer un poison sans risque de vous\ny exposer."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Matériel d'empoisonneur",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Repérer un objet empoisonné", 10],
+          ["Déterminer les effets d'un poison", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "herbalismKit",
+    "name": "Matériel d'herboriste",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "tools",
+    "weight": 1.5,
+    "value": 5,
+    "entries": [
+      "La maîtrise du matériel d'herboriste vous permet d'identifier les plantes et de récupérer leurs éléments utiles en\ntoute sécurité.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel d'herboriste comprend des\nsacoches pour stocker les herbes, un sécateur et des gants\nde cuir pour récolter les plantes, un pilon et un mortier et\nplusieurs bocaux en verre. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes",
+        "entries": [
+          "Vos connaissances sur la nature et l'utilisation\ndes plantes vous aident lors des études magiques traitant\ndes plantes et lorsque vous tentez d'identifier une potion."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Lorsque vous inspectez une zone envahie\nde végétation, votre maîtrise vous aide à repérer des détails\net des indices que les autres gens rateraient sûrement."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Médecine",
+        "entries": [
+          "Votre maîtrise de l'herboristerie vous aide à\ntraiter les maladies et les blessures en améliorant vos méthodes de traitement par les plantes médicinales. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Nature et survie",
+        "entries": [
+          " Lorsque vous voyagez dans les étendues sauvages, vos talents d'herboriste vous aident à identifier les plantes et les sources de nourriture que d'autres\nrisqueraient de rater. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Identification des plantes",
+        "entries": [
+          "Vous identifiez la plupart\ndes plantes très rapidement grâce à leur odeur et leur\napparence. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Matériel d'herboriste",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Trouver des plantes", 15],
+          ["Identifier un poison", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "forgeryKit",
+    "name": "Matériel de contrefaçon",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "tools",
+    "weight": 2.5,
+    "value": 15,
+    "entries": [
+      "Il faut du matériel de contrefaçon pour imiter des documents et reproduire plus facilement une signature ou un\nsceau personnel.",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Le matériel de contrefaçon comprend\ndiverses encres, divers papiers et parchemins, quelques\nplumes, des sceaux et de la cire à cacheter, de la feuille d'or\net d'argent et des outils de précision pour sculpter de la cire\nfondue de manière à imiter un sceau."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Arcanes",
+        "entries": [
+          "Vous pouvez utiliser le matériel de contrefaçon\navec la compétence Arcanes pour déterminer si un objet\nest réellement magique ou non."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Supercherie",
+        "entries": [
+          "Un faux de bonne qualité, comme des\npapiers certifiant votre statut de noble ou des écrits vous\ngarantissant un sauf-conduit, peut ajouter de la crédibilité à\nun mensonge. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          " Il est plus facile de créer de faux documents\nhistoriques ou de déterminer l'authenticité d'un document\nantique en utilisant votre connaissance de l'histoire en\nconjonction avec du matériel de contrefaçon."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation",
+        "entries": [
+          "Quand vous examinez un objet, il est\nplus facile de déterminer comment il a été fabriqué et de\nsavoir s'il est authentique si vous maîtrisez le matériel de\ncontrefaçon."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Les autres outils",
+        "entries": [
+          "Vos faux sont encore plus crédibles\nsi vous maîtrisez d'autres outils. Par exemple, vous pouvez\nallier la maîtrise du matériel de contrefaçon et des outils de\ncartographe pour créer une carte factice. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Contrefaçon rapide",
+        "entries": [
+          "Vous pouvez créer un faux document d'au plus une page de long lors d'un court repos.\nLors d'un long repos, le document peut faire au maximum\nquatre pages. Faites un test d'Intelligence en utilisant le\nmatériel de contrefaçon pour déterminer le DD du test d'Intelligence (Investigation) qu'autrui devra faire pour remarquer qu'il s'agit d'un faux. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Imiter une écriture", 15],
+          ["Reproduire un cachet de cire", 20]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "thievesTools",
+    "name": "Outils de Voleur",
+    "source": "PHB",
+    "page": 154,
+    "itemType": "tools",
+    "weight": 0.5,
+    "value": 25,
+    "entries": [
+      "Les outils de voleur sont probablement les plus employés\npar les aventuriers et sont conçus pour crocheter les serrures et désamorcer les pièges. La maîtrise de ces outils\ns'accompagne de connaissances générales sur les pièges et\nles serrures. ",
+      {
+        "type": "entries",
+        "name": "Composition",
+        "entries": [
+          "Les outils de voleur comprennent une\npetite lime, des rossignols, un petit miroir monté sur un\nmanche de métal, des peignes de crochetage et des pinces. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Histoire",
+        "entries": [
+          "Votre connaissance des pièges vous aide à\nrépondre aux questions portant sur un lieu connu pour\nses pièges. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Investigation et Perception",
+        "entries": [
+          "Vous repérez plus facilement les pièges, car vous avez appris à remarquer les\nsignes trahissant communément leur présence. "
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Poser un piège",
+        "entries": [
+          "Vous installez les pièges aussi facilement que vous les désamorcez. Lors d'un court repos, vous\npouvez créer un piège avec les objets dont vous disposez.\nLe total de votre test devient le DD des tentatives pour\nrepérer ou désamorcer le piège. Ce dernier inflige des dégâts égaux à ceux des matériaux utilisés pour le fabriquer\n(comme du poison ou une arme) ou des dégâts égaux à la\nmoitié du résultat de votre test, selon ce que le MJ estime le\nplus approprié. "
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Outils de Voleur",
+        "colLabels": ["Activité", "DD"],
+        "colStyles": ["col-10", "col-2 text-center"],
+        "rows": [
+          ["Crocheter une serrure", "Variable"],
+          ["Désamorcer un piège", "Variable"]
+        ]
+      }
+    ]
+  },
+  {"name": "Objets Magiques: Anneaux", "itemType": "separator"},
+  {"name": "Objets Magiques: Armes", "itemType": "separator"},
+  {"name": "Objets Magiques: Armures", "itemType": "separator"},
+  {"name": "Objets Magiques: Baguettes", "itemType": "separator"},
+  {"name": "Objets Magiques: Bâtons", "itemType": "separator"},
+  {"name": "Objets Magiques: Parchemins", "itemType": "separator"},
+  {"name": "Objets Magiques: Potion", "itemType": "separator"},
+  {"name": "Objets Magiques: Sceptres", "itemType": "separator"},
+  {"name": "Objets Magiques: Objets Merveilleux", "itemType": "separator"}
 ]

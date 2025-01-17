@@ -1,10 +1,2371 @@
 [
   {
+    "id": "mindSharpener",
+    "name": "Aiguisoir d'esprit",
+    "source": "TCE",
+    "page": 20,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une armure ou une toge"
+        ]
+      }
+    ],
+    "entries": [
+      "L'objet imprégné d'influx peut envoyer une décharge au porteur pour lui remettre les idées au clair. L'objet dispose de 4 charges. Lorsque le porteur rate un jet de sauvegarde de Constitution visant à maintenir sa concentration sur un sort, il peut jouer sa réaction pour dépenser 1 des charges de l'objet, auquel cas il réussit en réalité le JS. L'objet récupère quotidiennement ld4 charges dépensées, à l'aube."
+    ]
+  },
+  {
+    "id": "spell-RefuelingRing",
+    "name": "Anneau de ravitaillement magique",
+    "source": "TCE",
+    "page": 20,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 6,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "un anneau (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Tant qu'elle porte cet anneau, une créature peut récupérer un emplacement de sort dépensé, au prix d'une action. L'emplacement récupéré doit être du 3e niveau ou inférieur. Une fois utilisé, l'anneau ne peut plus resservir jusqu'à l'aube suivante."
+    ]
+  },
+  {
+    "id": "enhancedWeapon",
+    "name": "Arme améliorée",
+    "source": "TCE",
+    "page": 20,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une arme courante ou de guerre"
+        ]
+      }
+    ],
+    "entries": [
+      "Cette arme magique confère un bonus de + 1 aux jets d'attaque et de dégâts effectués avec elle",
+      "Ce bonus passe à +2 lorsque vous atteignez le niveau 10 dans cette classe."
+    ]
+  },
+  {
+    "id": "returningWeapon",
+    "name": "Arme Boomerang",
+    "source": "TCE",
+    "page": 20,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une arme courante ou de guerre dotée de la propriété lancer"
+        ]
+      }
+    ],
+    "entries": [
+      "Cette arme magique confère un bonus de +l aux jets d'attaque et de dégâts effectués avec elle, et revient dans la main de son porteur juste après avoir été utilisée pour une attaque à distance."
+    ]
+  },
+  {
+    "id": "radiantWeapon",
+    "name": "Arme radiante",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 6,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "une arme courante ou de guerre (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Cette arme magique confère un bonus de +1 aux jets d'attaque et de dégâts effectués avec elle. Tant qu'il tient l'arme, le porteur peut par une action bonus lui faire émettre une lueur vive sur un rayon de 9 m et une lumière faible sur 9 m de plus. Le porteur peut éteindre cette lueur par une action bonus.",
+      "L'arme dispose de 4 charges. S'il joue sa réaction juste après avoir été touché par une attaque, le porteur peut dépenser 1 charge pour que l'assaillant soit soumis à un jet de sauvegarde de Constitution assorti de votre DD de sauvegarde des sorts. En cas d'échec, l'assaillant est aveuglé jusqu'à la fin de son tour suivant. L'arme récupère quotidiennement ld4 charges dépensées, à l'aube."
+    ]
+  },
+  {
+    "id": "arcanePropulsionArmor",
+    "name": "Armure à propulsion arcanique",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 14,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "une armure (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Le porteur de cette armure reçoit les bénéfices suivants:",
+      {
+        "type": "list",
+        "entries": [
+          "La vitesse au sol du porteur augmente de 1,50 m.",
+          "L'armure comprend des gantelets qui constituent chacun une arme de corps à corps magique ne pouvant être utilisée que si la main correspondante ne tient rien. Le porteur a la maîtrise de ces gantelets, qui infligent chacun ld8 dégâts de force lorsqu'ils touchent et présentent la propriété lancer, avec une portée normale de 6 m et une portée longue de 18 m. Quand on le lance, le gantelet se détache et file vers la cible de l'attaque, puis revient aussitôt vers le porteur et se glisse de nouveau à sa main.",
+          "L'armure ne peut être retirée contre la volonté du porteur",
+          "L'armure remplace d'éventuels membres manquants du porteur (mains, bras, pieds, jambes ou appendices de ce type) et fonctionne comme s'ils étaient pleinement présents."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "armorOfMagicalStrength",
+    "name": "Armure de force magique",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une armure (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Cette armure dispose de 6 charges. Le porteur peut dépenser les charges de l'armure de plusieurs façons:",
+      {
+        "type": "list",
+        "entries": [
+          "Lorsque le porteur effectue un test de Force ou un jet de sauvegarde de Force, il peut dépenser 1 charge pour ajouter au jet un bonus égal à son modificateur d'Intelligence.",
+          "Quand le porteur est censé être jeté à terre, il peut jouer sa réaction pour dépenser 1 charge afin d'éviter de se retrouver à terre."
+        ]
+      },
+      "L'armure récupère quotidiennement ld6 charges dépensées, à l'aube."
+    ]
+  },
+  {
+    "id": "resistantArmor",
+    "name": "Armure résistante",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 6,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "une armure (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Tant qu'elle porte cette armure, une créature bénéficie de la résistance à l'un des types de dégâts suivants, que vous choisissez lorsque vous imprégnez l'objet : acide, feu, force, foudre, froid, nécrotiques, poison, psychiques, radiants ou tonnerre."
+    ]
+  },
+  {
+    "id": "bootsOfTheWindingPath",
+    "name": "Bottes du sentier tortueux",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 6,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "une paire de bottes (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Tant qu'elle porte ces bottes, une créature peut se téléporter d'un maximum de 4,50 m par une action bonus, jusqu'à un espace inoccupé qu'elle voit. La créature doit avoir occupé l'espace concerné à un moment du tour en cours."
+    ]
+  },
+  {
+    "id": "repulsionShield",
+    "name": "Bouclier répulsif",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 6,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "un bouclier (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Une créature reçoit un bonus de +là la classe d'armure tant qu'elle tient ce bouclier.",
+      "Le bouclier dispose de 4 charges. Tant qu'il le tient, le porteur peut jouer sa réaction juste après avoir été touché par une attaque de corps à corps pour dépenser 1 des charges du bouclier et repousser l'assaillant d'un maximum de 4,50 m. Le bouclier récupère quotidiennement ld4 charges dépensées, à l'aube."
+    ]
+  },
+  {
+    "id": "enhancedDefense",
+    "name": "Défense améliorée",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une armure ou un bouclier"
+        ]
+      }
+    ],
+    "entries": [
+      "Une créature reçoit un bonus de +l à la classe d'armure tant qu'elle porte cette armure ou tient ce bouclier.",
+      "Ce bonus passe à +2 lorsque vous atteignez le niveau 10 dans cette classe"
+    ]
+  },
+  {
+    "id": "enhancedArcaneFocus",
+    "name": "Focaliseur Arcanique amélioré",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une baguette, un bâton ou un sceptre (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Tant qu'elle tient cet objet, une créature reçoit un bonus de +1 aux jets d'attaque de sort. Par ailleurs, la créature ne tient pas compte des abris partiels lorsqu'elle effectue une attaque de sort.",
+      "Ce bonus passe à +2 lorsque vous atteignez le niveau 10 dans cette classe."
+    ]
+  },
+  {
+    "id": "helmOfAwareness",
+    "name": "Heaume de vigilance",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "level": {
+          "level": 10,
+          "class": {
+            "name": "Artificier",
+            "source": "TCE"
+          }
+        },
+        "item": [
+          "un casque (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Tant qu'elle porte ce casque, une créature est avantagée aux jets d'initiative. Par ailleurs, le porteur ne peut pas être surpris tant qu'il n'est pas neutralisé"
+    ]
+  },
+  {
+    "id": "replicateMagicItem",
+    "name": "Réplique d'objet magique",
+    "source": "TCE",
+    "page": 21,
+    "featureType": [
+      "AI"
+    ],
+    "entries": [
+      "Cet influx vous permet de reproduire un objet magique donné. Vous pouvez apprendre plusieurs fois cet influx ; chaque fois, choisissez un objet magique qu'il vous permettra de reproduire parmi les tables « Objets reproductibles ». Le titre de chaque table vous indique le niveau minimal requis dans la classe pour pouvoir choisir un objet de la liste. Une autre option consiste à choisir votre objet magique parmi les objets magiques courants du jeu, à l'exclusion des potions et parchemins.",
+      "Chaque entrée des tables vous indique si l'objet requiert l'harmonisation. Reportez-vous à la description des objets dans le Dungeon Master's Guide pour plus de détails, notamment le type d'objet demandé par sa confection.",
+      {
+        "type": "table",
+        "caption": "Objets Reproductible (Artificier de niveau 2)",
+        "colLabels": [
+          "Objets magique",
+          "Harmonisation"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Baguette de détection de la magie",
+            "Non"
+          ],
+          [
+            "Baguette des secrets",
+            "Non"
+          ],
+          [
+            "Capuchon de respiration aquatique",
+            "Non"
+          ],
+          [
+            "Corde d'escalade",
+            "Non"
+          ],
+          [
+            "Cruche alchimique",
+            "Non"
+          ],
+          [
+            "Lunettes du nyctalope",
+            "Non"
+          ],
+          [
+            "Pierres messagères",
+            "Non"
+          ],
+          [
+            "Sac sans fond",
+            "Non"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Objets Reproductible (Artificier de niveau 6)",
+        "colLabels": [
+          "Objets magique",
+          "Harmonisation"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Anneau de marche sur l'onde",
+            "Non"
+          ],
+          [
+            "Bottes elfiques",
+            "Non"
+          ],
+          [
+            "Cape de la raie monta",
+            "Non"
+          ],
+          [
+            "Cape elfique",
+            "Oui"
+          ],
+          [
+            "Flûte terrifiante",
+            "Non"
+          ],
+          [
+            "Gants de chapardeur",
+            "Non"
+          ],
+          [
+            "Lanterne de révélation",
+            "Non"
+          ],
+          [
+            "Regard charmeur",
+            "Oui"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Objets Reproductible (Artificier de niveau 10)",
+        "colLabels": [
+          "Objets magique",
+          "Harmonisation"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Amulette de cicatrisation",
+            "Oui"
+          ],
+          [
+            "Anneau de barrière mentale",
+            "Oui"
+          ],
+          [
+            "Anneau de saut",
+            "Oui"
+          ],
+          [
+            "Bandeau d'intelligence",
+            "Oui"
+          ],
+          [
+            "Bottes ailées",
+            "Oui"
+          ],
+          [
+            "Bottes de sept lieues",
+            "Oui"
+          ],
+          [
+            "Bottes des terres gelées",
+            "Oui"
+          ],
+          [
+            "Bracelets d'archer",
+            "Oui"
+          ],
+          [
+            "Broche de défense",
+            "Oui"
+          ],
+          [
+            "Cape de protection",
+            "Oui"
+          ],
+          [
+            "Carquois d'Ehlonna",
+            "Non"
+          ],
+          [
+            "Chapeau de déguisement",
+            "Oui"
+          ],
+          [
+            "Chaussons de l'araignée",
+            "Oui"
+          ],
+          [
+            "Collier d'adaptation",
+            "Oui"
+          ],
+          [
+            "Flûte des égouts",
+            "Oui"
+          ],
+          [
+            "Gantelets de puissance d'ogre",
+            "Oui"
+          ],
+          [
+            "Gants de nage et d'escalade",
+            "Oui"
+          ],
+          [
+            "Gants piégeurs de projectiles",
+            "Oui"
+          ],
+          [
+            "Heaume de télépathie",
+            "Oui"
+          ],
+          [
+            "Médaillon des pensées",
+            "Oui"
+          ],
+          [
+            "Yeux de lynx",
+            "Oui"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Objets Reproductible (Artificier de niveau 14)",
+        "colLabels": [
+          "Objets magique",
+          "Harmonisation"
+        ],
+        "colStyles": [
+          "col-10",
+          "col-2 text-center"
+        ],
+        "rows": [
+          [
+            "Amulette de santé",
+            "Oui"
+          ],
+          [
+            "Anneau d'action libre",
+            "Oui"
+          ],
+          [
+            "Anneau de protection",
+            "Oui"
+          ],
+          [
+            "Anneau du bélier",
+            "Oui"
+          ],
+          [
+            "Bottes de lévitation",
+            "Oui"
+          ],
+          [
+            "Bottes de rapidité",
+            "Oui"
+          ],
+          [
+            "Bracelets de défense",
+            "Oui"
+          ],
+          [
+            "Cape de la chauve-souris",
+            "Oui"
+          ],
+          [
+            "Ceinturon de force de géant des collines",
+            "Oui"
+          ],
+          [
+            "Cor de dévastation",
+            "Non"
+          ],
+          [
+            "Gemme de vision",
+            "Oui"
+          ],
+          [
+            "Menottes dimensionnelles",
+            "Non"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "repeatingShot",
+    "name": "Salve",
+    "source": "TCE",
+    "page": 23,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une arme courante ou de guerre dotée de la propriété munitions (harmonisation requise)"
+        ]
+      }
+    ],
+    "entries": [
+      "Cette arme magique confère un bonus de +l aux jets d'attaque et de dégâts effectués avec elle lorsqu'elle est utilisée pour effectuer une attaque à distance, et elle ne tient pas compte d'une éventuelle propriété « chargement »",
+      "Si vous ne chargez aucune munition dans l'arme, elle produit ses propres projectiles : elle crée automatiquement une munition, magique, lorsque vous effectuez une attaque à distance avec elle. Les munitions créées par l'arme disparaissent juste après avoir touché ou raté leur cible."
+    ]
+  },
+  {
+    "id": "homunculusServant",
+    "name": "Serviteur Homoncule",
+    "source": "TCE",
+    "page": 23,
+    "featureType": [
+      "AI"
+    ],
+    "prerequisite": [
+      {
+        "item": [
+          "une gemme ou un cristal d'une valeur minimale de lOOpo"
+        ]
+      }
+    ],
+    "entries": [
+      "Vous apprenez des méthodes complexes pour créer magiquement un homoncule à votre service spécifique. L'objet que vous imprégnez d'influx constitue le cœur de la créature, autour duquel le corps se forme aussitôt.",
+      "Vous décidez de l'aspect de !'homoncule. Certains artificiers préfèrent les oiseaux d'aspect mécanique, d'autres des fioles ailées ou des chaudrons miniatures et animés.",
+      "L'homoncule se montre amical envers vous et vos compagnons, et il obéit à vos ordres. Son profil ci-joint se base à plusieurs reprises sur votre bonus de maîtrise (BM).",
+      "Au combat, !'homoncule partage votre rang d'initiative, mais il joue son tour juste après vous. Il peut se déplacer et jouer sa réaction de son propre chef, mais la seule action qu'il puisse entreprendre à son tour est Esquiver, sauf si vous consacrez une action bonus à votre tour pour lui ordonner d'entreprendre une autre action. Cette action peut alors être l'une de son profil ou une autre. Si vous êtes neutralisé, !'homoncule peut entreprendre l'action de son choix et n'est plus limité à Esquiver.",
+      "Si on lance le sort réparation sur !'homoncule, il récupère 2d6 points de vie. Si vous ou !'homoncule mourez, ce dernier disparaît en laissant son cœur dans son espace."
+    ]
+  },
+  {},
+  {
     "id": "",
-    "name": "",
-    "prerequisite": "",
-    "level": "",
-    "entries": "",
-    "source": ""
+    "name": "Armure d'ombre",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Avachissement",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Buveuse de vie",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Chaînes des Carcères",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "agonizingBlast",
+    "name": "Décharge déchirante",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [
+      {
+        "spell": [
+          "eldritch blast#c"
+        ]
+      }
+    ],
+    "entries": [
+      "When you cast {@spell eldritch blast}, add your Charisma modifier to the damage it deals on a hit."
+    ]
+  },
+  {
+    "id": "",
+    "name": "Décharge Répulsive",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Lame assoiffée",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Lance Occulte",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Langage Animal",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Livre des screts anciens",
+    "source": "PHB",
+    "page": 101,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Maître des formes",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Maître des ombres",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Mille visages",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Mot d'effroi",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Murmures impérieux",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Murmures de la tombe",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Œil du gardien des runes",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Pas aérien",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Perception transférée",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Présence captivante",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Royaumes lointains",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Saut d'outre-monde",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sbires du chaos",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sculpteur de chair",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sombre présage",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Vigueur Fiélonne",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Vision sorcière",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Vision du Diable",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Vision occulte",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Vision Embrumées",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Voix du maître des chaînes",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Voleur des cinq destinées",
+    "source": "PHB",
+    "page": 102,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Engagement du maître des chaînes",
+    "source": "TCE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Esprit occulte",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Lien du talisment",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Présent des sauveurs",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Protection du talisman",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Réprimande du talisman",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Scribe des horizons",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Servitude de la tombe",
+    "source": "TCE",
+    "page": 61,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Arme de pact Améliorée",
+    "source": "XGE",
+    "page": 59,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Aspect de la lune",
+    "source": "XGE",
+    "page": 59,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Arraque occulte",
+    "source": "XGE",
+    "page": 59,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Don des immortels",
+    "source": "XGE",
+    "page": 59,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Don des profondeurs",
+    "source": "XGE",
+    "page": 59,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Étreinte de Hadar",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Fuite de l'escamoteur",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Lance de léthargie",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Maléfice accablant",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Maléfice implacable",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Voile des mouches",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Regard fantomatique",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Tombe de Levistus",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Voile d'ombre",
+    "source": "XGE",
+    "page": 60,
+    "featureType": [
+      "EI"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {},
+  {
+    "id": "",
+    "name": "Flèche affaiblissante",
+    "source": "XGE",
+    "page": 51,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche agrippante",
+    "source": "XGE",
+    "page": 51,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche chercheuse",
+    "source": "XGE",
+    "page": 51,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche d'ombre",
+    "source": "XGE",
+    "page": 51,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche de bannissement",
+    "source": "XGE",
+    "page": 51,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche envoûtante",
+    "source": "XGE",
+    "page": 51,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche explosive",
+    "source": "XGE",
+    "page": 52,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flèche perforante",
+    "source": "XGE",
+    "page": 52,
+    "featureType": [
+      "AS"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {},
+  {
+    "id": "",
+    "name": "Crochets du serpent de feu",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Défense de la montagne éternelle",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Destrier des vents",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Étreinte du vent du nord",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Façonnage de la rivière",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Flamme du phénix",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Fouet de l'onde",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Frappe de cendres",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Gong du sommet",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Harmonisation élémentaire",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Poing de l'air comprimé",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Poing des quatre tonnerres",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Posture de brume",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Ruée des esprits du vents",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Souffle de l'hiver",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Torrent des flammes voraces",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Vague de terre grondante",
+    "source": "PHB",
+    "page": 95,
+    "featureType": [
+      "ED"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {},
+  {
+    "id": "archery",
+    "name": "Archerie",
+    "source": "PHB",
+    "page": 78,
+    "featureType": [
+      "FS:F",
+      "FS:R"
+    ],
+    "entries": [
+      "Vous gagnez un bonus de +2 aux jets d'attaque quand vous attaquez avec des armes à distance."
+    ]
+  },
+  {
+    "id": "greatWeaponFighting",
+    "name": "Armes à deux mains",
+    "source": "PHB",
+    "page": 78,
+    "featureType": [
+      "FS:F"
+    ],
+    "entries": [
+      "Quand vous faites 1 ou 2 avec un dé de dégâts pour une attaque avec une arme de corps à corps tenue à deux mains, vous pouvez lancer de nouveau Je dé et vous devez conserver Je second résultat, même s'il s'agit encore d'un 1 ou d'un 2. I:arme doit posséder la propriété à deux mains ou polyvalente pour que vous puissiez bénéficier de cet avantage"
+    ]
+  },
+  {
+    "id": "two-WeaponFighting",
+    "name": "Combat à deux armes",
+    "source": "PHB",
+    "page": 78,
+    "featureType": [
+      "FS:F",
+      "FS:B",
+      "FS:P",
+      "FS:R"
+    ],
+    "entries": [
+      "Quand vous combattez avec deux armes, vous pouvez ajouter votre modificateur de caractéristique aux dégâts de la deuxième attaque."
+    ]
+  },
+  {
+    "id": "defense",
+    "name": "Défense",
+    "source": "PHB",
+    "page": 78,
+    "featureType": [
+      "FS:F",
+      "FS:P",
+      "FS:R"
+    ],
+    "entries": [
+      "Quand vous portez une armure, vous gagnez un bonus de + 1 à votre CA."
+    ]
+  },
+  {
+    "id": "dueling",
+    "name": "Duel",
+    "source": "PHB",
+    "page": 78,
+    "featureType": [
+      "FS:F",
+      "FS:B",
+      "FS:P",
+      "FS:R"
+    ],
+    "entries": [
+      "Quand vous maniez une arme de corps à corps d'une main et aucune autre arme, vous gagnez un bonus de +2 aux jets de dégâts infligés avec cette arme."
+    ]
+  },
+  {
+    "id": "protection",
+    "name": "Protection",
+    "source": "PHB",
+    "page": 78,
+    "featureType": [
+      "FS:F",
+      "FS:P"
+    ],
+    "entries": [
+      "Quand une créature qui se trouve dans votre champ de vision attaque une cible autre que vous qui se trouve dans un rayon de 1,50 mètre, vous pouvez utiliser votre réaction pour imposer un désavantage au jet d'attaque de l'assaillant. Vous devez porter un bouclier pour utiliser cette aptitude."
+    ]
+  },
+  {
+    "id": "thrownWeaponFighting",
+    "name": "Armes de lancer",
+    "source": "TCE",
+    "page": 45,
+    "featureType": [
+      "FS:F",
+      "FS:R"
+    ],
+    "entries": [
+      "Vous pouvez dégainer une arme dotée de la propriété  lancer dans le cadre de l'attaque effectuée avec l'arme.",
+      "De plus, lorsque vous touchez avec une attaque à  distance en utilisant une arme de lancer, vous recevez un bonus de +2 au jet de dégâts."
+    ]
+  },
+  {
+    "id": "unarmedFighting",
+    "name": "Combat à mains nues",
+    "source": "TCE",
+    "page": 45,
+    "featureType": [
+      "FS:F"
+    ],
+    "entries": [
+      "Vos frappes à mains nues peuvent infliger des dégâts contondants égaux à ld6 + votre modificateur de Force lorsqu'elles touchent. Si vous ne tenez aucune arme ni bouclier lorsque vous effectuez le jet d'attaque, le d6 devient un d8.",
+      "Au début de chacun de vos tours, vous pouvez infliger ld4 dégâts contondants à une créature agrippée par vous."
+    ]
+  },
+  {
+    "id": "blindFighting",
+    "name": "Combat en aveugle",
+    "source": "TCE",
+    "page": 45,
+    "featureType": [
+      "FS:F",
+      "FS:P",
+      "FS:R"
+    ],
+    "entries": [
+      "Vous disposez de la vision aveugle sur 3 m. Dans ce rayon, vous « voyez » tout ce qui ne bénéficie pas d'un abri total, même si vous êtes aveuglé ou dans les ténèbres. Vous percevez aussi les créatures invisibles dans ce rayon, sauf celles qui parviennent à se cacher de vous."
+    ]
+  },
+  {
+    "id": "interception",
+    "name": "Intergeption",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "FS:F",
+      "FS:P"
+    ],
+    "entries": [
+      "Lorsqu'une créature que vous voyez touche avec une attaque une cible autre que vous située dans un rayon de 1,50 m de vous, vous pouvez jouer votre réaction pour réduire les dégâts subis par la cible de ldlO + votre bonus de maîtrise (en les réduisant au maximum à 0). Vous devez porter un bouclier ou une arme (courante ou de guerre) pour pouvoir jouer cette réaction."
+    ]
+  },
+  {
+    "id": "superiorTechnique",
+    "name": "Technique supérieur",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "FS:F"
+    ],
+    "entries": [
+      "Vous pouvez apprendre une manœuvre de votre choix parmi celles accessibles à l'archétype Maître de guerre. Quand une manœuvre demande à la cible d'effectuer un jet de sauvegarde pour résister à ses effets, le DD de sauvegarde est égal à 8 + votre bonus de maîtrise+ votre modificateur de Force ou Dextérité  (à votre convenance).",
+      "Vous recevez un dé de supériorité, un d6 (qui s'ajoute à d'éventuels dés de supériorité que vous pourriez tirer d'une autre source). Ce dé vous permet d'alimenter vos manœuvres. Tout dé de supériorité est dépensé quand vous l'utilisez. Vous récupérez vos dés de supériorité  dépensés quand vous terminez un repos court ou long"
+    ]
+  },
+  {
+    "id": "",
+    "name": "Combattant béni",
+    "source": "TCE",
+    "page": 66,
+    "featureType": [
+      "FS:P"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Combattant Druidique",
+    "source": "TCE",
+    "page": 71,
+    "featureType": [
+      "FS:R"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {},
+  {
+    "id": "",
+    "name": "Sort accéléré",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort ample",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort étendu",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort intensifié",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort jumeau",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort prévenant",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort renforcé",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort subtil",
+    "source": "PHB",
+    "page": 73,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort chercheur",
+    "source": "TCE",
+    "page": 41,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Sort transmuté",
+    "source": "TCE",
+    "page": 41,
+    "featureType": [
+      "MM"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {},
+  {
+    "id": "menacingAttack",
+    "name": "Attaque menaçante",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour tenter de terroriser la cible. Vous ajoutez le dé de supériorité au jet de dégâts et obligez la cible à faire un jet de sauvegarde de Sagesse. En cas d'échec, elle est terrorisée à votre vue jusqu'à la fin de votre prochain tour."
+    ]
+  },
+  {
+    "id": "precisionAttack",
+    "name": "Attaque précise",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Lorsque vous effectuez un jet d'attaque avec une arme contre une créature, vous pouvez dépenser un dé de supériorité et l'ajouter au jet d'attaque. Vous pouvez utiliser cette manœuvre avant ou après votre jet d'attaque, mais avant de savoir si l'attaque touche ou non."
+    ]
+  },
+  {
+    "id": "sweepingAttack",
+    "name": "Balayage",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour tenter de blesser une créature de plus lors de la même attaque. Choisissez;, une créature située dans un rayon de 1,50 mètre autour de la cible première et dans votre zone <l'allonge. Si le jet d'attaque originel vous permet de toucher la seconde cible, cette dernière subit un montant de dégâts égal au chiffre indiqué sur votre dé de supériorité. Ces dégâts sont du même type que ceux de l'attaque originelle."
+    ]
+  },
+  {
+    "id": "pushingAttack",
+    "name": "Bélier",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour tenter de repousser la cible. Vous ajoutez le dé de supériorité au jet de dégâts et obligez la cible à faire un jet de sauvegarde de Force si elle est de taille Grande ou inférieure. En cas d'échec, vous la repoussez à 4,50 mètres de vous."
+    ]
+  },
+  {
+    "id": "tripAttack",
+    "name": "Croc-en-jambe",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour tenter de renverser la cible. Vous ajoutez le dé de supériorité au jet de dégâts et obligez la cible à faire un jet de sauvegarde de Force si elle est de taille Grande ou inférieure. En cas d'échec, vous la faites tomber à terre."
+    ]
+  },
+  {
+    "id": "disarmingAttack",
+    "name": "Désarmement",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une cible avec une attaque armée, vous pouvez dépenser un dé de supériorité pour tenter de désarmer la cible, en l'obligeant à lâcher un objet de votre choix qu'elle tient en main. Vous ajoutez le dé de supériorité au jet de dégâts de l'attaque et obligez la cible à faire un jet de sauvegarde de Force. Si elle le rate, elle lâche l'objet que vous avez choisi, qui atterrit à ses pieds."
+    ]
+  },
+  {
+    "id": "distractingStrike",
+    "name": "Diversion",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour la distraire et offrir une ouverture à vos alliés. Vous ajoutez le dé de supériorité à votre jet de dégâts. La prochaine fois qu'une créature autre que vous effectue un jet d'attaque contre la cible, elle est avantagée, à condition d'attaquer avant le début de votre prochain tour."
+    ]
+  },
+  {
+    "id": "feintingAttack",
+    "name": "Feinte",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "À votre tour, vous pouvez dépenser un dé de supériorité et utiliser une action bonus pour exécuter une feinte contre une créature située dans un rayon de 1,50 mètre autour de vous. Vous êtes avantagé lors de votre prochain jet d'attaque contre cette créature. Si cette attaque touche, ajoutez le dé de supériorité aux dégâts de l'attaque"
+    ]
+  },
+  {
+    "id": "lungingAttack",
+    "name": "Fente",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour augmenter l'allonge de cette attaque de 1,50 mètre. Vous ajoutez le dé de supériorité à votre jet de dégâts si l'attaque touche."
+    ]
+  },
+  {
+    "id": "CommandersStrike",
+    "name": "Instruction",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      ". Quand vous optez pour l'action Attaquer à votre tour, vous pouvez renoncer à effectuer l'une de vos attaques et dépenser une action bonus pour guider les coups de l'un de vos camarades. Pour ce faire, choisissez une créature amicale à même de vous entendre ou de vous voir et dépensez un dé de supériorité. Cette créature peut utiliser sa réaction sur-le-champ pour effectuer une attaque armée et ajouter votre dé de supériorité à son jet de dégâts."
+    ]
+  },
+  {
+    "id": "evasiveFootwork",
+    "name": "Jeu de jambes défensif",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous vous déplacez, vous pouvez dépenser un dé de supériorité et ajouter son résultat à votre CA jusqu'à la fin de votre déplacement"
+    ]
+  },
+  {
+    "id": "maneuveringAttack",
+    "name": "Manœuvre tactique",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour manœuvrer de manière à placer un camarade dans une position plus avantageuse. Vous ajoutez le dé de supériorité au jet de dégâts et choissez une créature amicale à même de vous voir ou vous entendre. Elle peut utiliser sa réaction pour se déplacer de la moitié de sa vitesse sans provoquer d'attaques d'opportunité de la part de la cible de votre propre attaque."
+    ]
+  },
+  {
+    "id": "parry",
+    "name": "Parade",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      ". Quand une tierce personne vous blesse avec une attaque de corps à corps, vous pouvez utiliser votre réaction et dépenser un dé de supériorité pour réduire les dégâts subis d'un montant équivalent au chiffre obtenu sur votre dé de supériorité+ votre modificateur de Dextérité."
+    ]
+  },
+  {
+    "id": "goadingAttack",
+    "name": "Provocation",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand vous touchez une créature avec une attaque armée, vous pouvez dépenser un dé de supériorité pour la provoquer et la pousser à vous attaquer. Vous ajoutez le dé de supériorité à votre jet de dégâts et obligez la cible à faire un jet de sauvegarde de Sagesse. Si elle échoue, elle est désavantagée lors de tous ses jets d'attaque contre une cible autre que vous jusqu'à la fin de votre prochain tour."
+    ]
+  },
+  {
+    "id": "rally",
+    "name": "Regain",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      ". À votre tour, vous pouvez dépenser une action bonus et un dé de supériorité pour raffermir la résolution de l'un de vos compagnons. Pour ce faire, choisissez une créature amicale en mesure de vous voir ou vous entendre. Elle gagne un montant de points de vie temporaires égal au résultat de votre dé de supériorité + votre modificateur de Charisme."
+    ]
+  },
+  {
+    "id": "riposte",
+    "name": "Riposte",
+    "source": "PHB",
+    "page": 81,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Quand une créature vous rate suite à une attaque de corps à corps, vous pouvez utiliser votre réaction et dépenser un dé de supériorité pour effectuer une attaque armée contre elle. Si vous la touchez, vous ajoutez le dé de supériorité au jet de dégâts."
+    ]
+  },
+  {
+    "id": "brace",
+    "name": "Anticipation",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Lorsqu'une créature que vous voyez se déplace à portée d'allonge de l'arme de corps à corps que vous tenez, vous pouvez jouer votre réaction pour dépenser un dé de supériorité et effectuer une attaque contre la créature, avec cette arme. Si l'attaque touche, ajoutez le dé de supériorité au jet de dégâts de l'arme."
+    ]
+  },
+  {
+    "id": "commandingPresence",
+    "name": "Autorité Naturelle",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Lorsque vous effectuez un test de Charisme (Intimidation), Charisme (Représentation) ou Charisme (Persuasion), vous pouvez dépenser un dé de supériorité pour l'ajouter au test de caractéristique."
+    ]
+  },
+  {
+    "id": "baitAndSwitch",
+    "name": "Chassé-croisé",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Lorsque vous êtes dans un rayon de 1,50 m d'une créature à votre tour, vous pouvez dépenser un dé de supériorité pour échanger vos places, à condition d'y consacrer au moins 1,50 m de déplacement et que la créature soit consentante et non neutralisée. Ce déplacement ne provoque pas d'attaque d'opportunité.",
+      "Lancez le dé de supériorité. Jusqu'au début de votre tour suivant, vous ou l'autre créature (à votre convenance) recevez à la CA un bonus égal au résultat du dé. "
+    ]
+  },
+  {
+    "id": "grapplingStrike",
+    "name": "Coup agrippant",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Juste après avoir touché une créature avec une attaque de corps à corps à votre tour, vous pouvez dépenser un dé de supériorité pour tenter d'agripper la cible par une action bonus (consultez le Player's Handbook pour les règles de la lutte). Ajoutez le dé de supériorité à votre test de Force (Athlétisme)."
+    ]
+  },
+  {
+    "id": "ambush",
+    "name": "Embuscade",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Lorsque vous effectuez un test de Dextérité (Discrétion) ou un jet d'initiative, vous pouvez dépenser un dé de supériorité pour en ajouter le résultat au jet, à condition de ne pas être neutralisé."
+    ]
+  },
+  {
+    "id": "tacticalAssessment",
+    "name": "Évaluation tactique",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Lorsque vous effectuez un test d'Intelligence (Investigation), Intelligence (Histoire) ou Sagesse (Intuition), vous pouvez dépenser un dé de supériorité pour l'ajouter au test de caractéristique."
+    ]
+  },
+  {
+    "id": "quickToss",
+    "name": "Lancer preste",
+    "source": "TCE",
+    "page": 46,
+    "featureType": [
+      "MV:B"
+    ],
+    "consumes": {
+      "name": "Superiority Die"
+    },
+    "entries": [
+      "Par une action bonus, vous pouvez dépenser un dé de supériorité pour effectuer une attaque à distance avec une arme dotée de la propriété lancer. Vous pouvez dégainer l'arme dans le cadre de l'attaque. Si vous touchez, ajoutez le dé de supériorité au jet de dégâts de l'arme."
+    ]
+  },
+  {},
+  {
+    "id": "",
+    "name": "Pacte de la chaîne",
+    "source": "PHB",
+    "page": 98,
+    "featureType": [
+      "PB"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Pacte de la lame",
+    "source": "PHB",
+    "page": 98,
+    "featureType": [
+      "PB"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Pacte du grimoire",
+    "source": "PHB",
+    "page": 99,
+    "featureType": [
+      "PB"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
+  },
+  {
+    "id": "",
+    "name": "Pacte du talisman",
+    "source": "TCE",
+    "page": 56,
+    "featureType": [
+      "PB"
+    ],
+    "prerequisite": [],
+    "entries": [
+      ""
+    ]
   }
 ]

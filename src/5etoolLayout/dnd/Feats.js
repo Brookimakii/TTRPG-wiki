@@ -9,22 +9,35 @@ export const Dnd5eFeats = () => {
 
   const columns = [
     {
-      id: "Nom", sortId: "name", classSize: "ve-col-3-2"
+      id: "Nom", sortId: "name", classSize: "ve-col-3-2", colClass: "bold ve-col-3-2 px-1"
     },
     {
-      id: "Catégorie", sortId: "cat", classSize: "ve-col-1-3"
+      id: "Catégorie", sortId: "cat", classSize: "ve-col-1-3", colClass: "ve-col-1-3 px-1 ve-text-center italic"
     },
     {
-      id: "Capacité", sortId: "ability", classSize: "ve-col-2-5"
+      id: "Capacité", sortId: "ability", classSize: "ve-col-2-5", colClass: "ve-col-2-5 px-1 "
     },
     {
-      id: "Prérequis", sortId: "prerequisite", classSize: "ve-col-3"
+      id: "Prérequis", sortId: "prerequisite", classSize: "ve-col-3", colClass: "ve-col-3 px-1 "
     },
     {
-      id: "Source", sortId: "source", classSize: "ve-grow"
+      id: "Source", sortId: "source", classSize: "ve-grow", colClass: "source ve-col-1-7 ve-text-center pl-1 pr-0"
     }
   ]
   const feat = getResource(Resources.feat)
+
+  function tableDisplayOption(column, string, elem) {
+    switch (column.sortId) {
+      case "ability" :
+        return <span className={column.colClass}>{elem.ability ?? "None"}</span>
+      case "cat" :
+        return <span className={column.colClass}>{elem.cat ?? "—"}</span>
+      case "prerequisite" :
+        return <span className={column.colClass}>{elem.prerequisite ?? "—"}</span>
+      default:
+        return undefined
+    }
+  }
 
   const {
     selected, setSelected,
@@ -32,8 +45,9 @@ export const Dnd5eFeats = () => {
     sorting, setSorting,
     handleClickSelection, updateSortElementsState,
     TableHeader, DisplayList, DetailsHeader, TempFilters
-  } = Selector5e([...feat], columns);
+  } = Selector5e([...feat], columns, "name", tableDisplayOption);
 
+  console.log(feat)
 
   const selectedFeat: PlayerFeat = {...selected}
 
@@ -42,7 +56,7 @@ export const Dnd5eFeats = () => {
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
         <TableHeader/>
-        <DisplayList/>
+        {DisplayList(elements)}
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {Object.keys(selectedFeat).length === 0 ?

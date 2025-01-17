@@ -21,10 +21,14 @@ Object.byString = function (o, s) {
 }
 
 
+export function extractNestedValue(obj, path) {
+  return path.split('.').reduce((o, i) => o?.[i], obj)
+}
+
 export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function) => {
   // console.log("defaultElements", defaultElements)
   const [selected: {} | undefined, setSelected] = useState();
-  const [elements: [{}], setElements] = useState(defaultElements ?? []);
+  const [elements: [{}], setElements] = useState(sortList(defaultElements, defaultSort, true) ?? []);
   const [sorting: string, setSorting] = useState("");
   const location = useLocation()
 
@@ -38,6 +42,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     let shouldDescend = sorting === type + ".asc"
     // console.log("---------")
     // console.log("type", type)
+    type = type !== "" ? type : defaultSort
     if (updateState) {
       if (shouldAscend) {
         // console.log("Should now ascend: " + type + ".asc")
@@ -64,14 +69,20 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     // console.log("type", type)
     // console.log("shouldAscend", shouldAscend)
     // console.log("shouldReset", shouldReset)
+    // console.log("updateSortElementsState '", type, "'")
+    return sortList(list, type, shouldAscend || shouldReset);
+  }
+
+  function sortList(list, fieldName, ascend) {
+    // console.log(list, fieldName)
     return [...list].sort((a, b) => {
-      let textA = a[type]?.toUpperCase() || "";
-      let textB = b[type]?.toUpperCase() || "";
-      if (shouldAscend || shouldReset) {
+      let textA = extractNestedValue(a, fieldName)?.toUpperCase() || "";
+      let textB = extractNestedValue(b, fieldName)?.toUpperCase() || "";
+      if (ascend) {
         return textA < textB ? -1 : textA > textB ? 1 : 0;
       }
       return textA < textB ? 1 : textA > textB ? -1 : 0;
-    });
+    })
   }
 
   function setSelectFromHash() {
@@ -121,6 +132,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
   }
 
   function DisplayList(elementsToShow = []) {
+    // console.log(elementsToShow)
     // console.log(selected)
     return <>
       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
@@ -140,7 +152,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       </div>
       <div id="list" className="list list--stats">
         {/*{console.log(elements)}*/}
-        {elementsToShow.map((elem) => {
+        {elementsToShow?.map((elem) => {
           // console.log(elem)
           return <div
             className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
@@ -162,8 +174,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
                       return tableDisplayOption(column, string, elem) ??
                         <span className={column.colClass}>{string}</span>
                     }
-                  }
                     return <span className={column.colClass}>{string}</span>
+                  }
                 }
               })}
             </Link>
@@ -173,12 +185,12 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     </>;
   }
 
-  function TempFilters({filters, toggleFilter}) {
+  function TempFilters({filters, toggleFilter, filtersToggleList}) {
     return <div className="fltr__mini-view ve-btn-group">
       {Object.keys(filters).map((filter) => {
         const path = filters[filter]
         return <div className="fltr__mini-pill"
-                    data-state={filters[path + "-" + filter] ?? "disabled"}
+                    data-state={filtersToggleList[path + "-" + filter] ?? "disabled"}
                     onClick={() => toggleFilter(path + "-" + filter)}
         >
           {filter}
@@ -218,6 +230,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
   // console.log("selected", selected)
   // console.log("elements", elements)
   // console.log("sorting", sorting)
+
+
   return {
     selected,
     setSelected,
@@ -261,10 +275,6 @@ export const ToggleState = () => {
 export const FilterManager = (setElements: function, updateSortElementsState: function, elements: [] = []) => {
   const [filters, setFilters] = useState({});
 
-  function extractNestedValue(obj, path) {
-    return path.split('.').reduce((o, i) => o?.[i], obj)
-  }
-
   function doFilter(key, element, state) {
     const [nestedKey, expectedValue] = key.split("-");
 
@@ -274,10 +284,12 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     // console.log(nestedKey, expectedValue, nestedValue)
 
     if (state === 'positive') {
+      // console.log(state, Array.isArray(nestedValue) ? nestedValue.includes(expectedValue) : nestedValue === expectedValue)
       return Array.isArray(nestedValue)
         ? nestedValue.includes(expectedValue)
         : nestedValue === expectedValue;
     } else if (state === 'negative') {
+      // console.log(state, Array.isArray(nestedValue) ? !nestedValue.includes(expectedValue) : nestedValue !== expectedValue)
       return Array.isArray(nestedValue)
         ? !nestedValue.includes(expectedValue)
         : nestedValue !== expectedValue;
@@ -291,6 +303,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     );
     // console.log("activeFilters", activeFilters)
     let updatedElements = [...elements]
+    // console.log(elements)
     if (activeFilters.length > 0) {
       updatedElements = [...elements].filter((element) => {
         return activeFilters.some(([key, state]) => doFilter(key, element, state));
@@ -318,10 +331,10 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   };
 }
 
-
 export const RenderModule = (props: {}) => {
 
   const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
+    // console.log(entry)
     if (!entry) return;
 
     if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));

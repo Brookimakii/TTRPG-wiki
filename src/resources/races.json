@@ -399,7 +399,7 @@
       {
         "id": "high",
         "name": "Haut",
-        "bonus": "Int +1",
+        "bonus": ";Int +1",
         "source": "PHB",
         "traits": [
           {
