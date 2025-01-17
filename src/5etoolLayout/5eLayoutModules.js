@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
 import {type} from "@testing-library/user-event/dist/type";
 import type {Entry} from "../layout/5e/Models";
+import {getResource, Resources} from "../ResourcesFetch";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -90,7 +91,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     // console.log("hash", hash)
     // console.log("hash", hash.replaceAll("%20"," "))
     // elements.map((e) => console.log(e.id,("#" + e.id === hash.replace("%20"," "))))
-    const filtered = elements.find((e) => "#" + e.id === hash.replace(/%20/g, " "))
+    const filtered = elements.find((e) => "#" + e.id.toLowerCase() === hash.toLowerCase().replace(/%20/g, " "))
     // console.log("selected", filtered)
     if (filtered) {
       return filtered
@@ -150,14 +151,14 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
           </button>)
         })}
       </div>
-      <div id="list" className="list list--stats">
+      <div fid="list" className="list list--stats">
         {/*{console.log(elements)}*/}
-        {elementsToShow?.map((elem) => {
-          // console.log(elem)
-          return <div
+        {elementsToShow?.map((elem) =>
+          <div
             className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-            onClick={() => handleClickSelection(elem)}>
-            <Link to={"#" + elem.id} id={"#" + elem.id.replace(" ", "%20")} className="lst__row-border lst__row-inner">
+            onClick={() => handleClickSelection(elem)}
+            key={elem.id}>
+            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")} className="lst__row-border lst__row-inner">
               {columns.map(column => {
                 const string = Object.byString(elem, column.sortId)
                 switch (column.sortId) {
@@ -180,7 +181,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
               })}
             </Link>
           </div>
-        })}
+        )}
       </div>
     </>;
   }
@@ -254,7 +255,7 @@ export const ToggleState = () => {
     setToggleStates((prevStates) => ({
       ...prevStates, [id]: prevStates[id] !== undefined ? !prevStates[id] : false,
     }));
-    console.log(toggleStates)
+    // console.log(toggleStates)
   }
   const getToggleState = (id) => {
     // console.log(id, toggleStates[id])
@@ -332,6 +333,195 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
 }
 
 export const RenderModule = (props: {}) => {
+  const _SPLIT_BY_TAG_LEADING_CHARS = new Set(["@", "="])
+  const TAG_LOOKUP = {
+    spell: {
+      tagName: "spell",
+      defaultSource: Parser.SRC_PHB,
+      page: "/TTRPG-wiki/spells",
+    }
+  }
+
+  function splitByTags(string) {
+    let tagDepth = 0;
+    let char, char2;
+    const out = [];
+    let curStr = "";
+    let isPrevCharOpenBrace = false;
+
+    const pushOutput = () => {
+      if (!curStr) return;
+      out.push(curStr);
+    };
+
+    const len = string.length;
+    for (let i = 0; i < len; ++i) {
+      char = string[i];
+      char2 = string[i + 1];
+
+      switch (char) {
+        case "{":
+          if (!_SPLIT_BY_TAG_LEADING_CHARS.has(char2)) {
+            isPrevCharOpenBrace = false;
+            curStr += "{";
+            break;
+          }
+
+          isPrevCharOpenBrace = true;
+
+          if (tagDepth++ > 0) {
+            curStr += "{";
+          } else {
+            pushOutput();
+            curStr = `{${char2}`;
+            ++i;
+          }
+
+          break;
+
+        case "}":
+          isPrevCharOpenBrace = false;
+          curStr += "}";
+          if (tagDepth !== 0 && --tagDepth === 0) {
+            pushOutput();
+            curStr = "";
+          }
+          break;
+
+        case "@":
+        case "=": {
+          curStr += char;
+          break;
+        }
+
+        default:
+          isPrevCharOpenBrace = false;
+          curStr += char;
+          break;
+      }
+    }
+
+    pushOutput();
+
+    return out;
+  }
+
+  function splitFirstSpace(string) {
+    const firstIndex = string.indexOf(" ");
+    return firstIndex === -1 ? [string, ""] : [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
+  }
+
+  function renderString_renderTag(tag, string) {
+    switch (tag) {
+      case "@b":
+      case "@bold":
+        return <b>{render(string)}</b>
+      case "@i":
+      case "@italic":
+        return <i>{render(string)}</i>
+      case "@s":
+      case "@strike":
+        return <s>{render(string)}</s>
+      case "@s2":
+      case "@str":
+        return <s className="ve-strike-double">{render(string)}</s>
+      case "@u":
+      case "@underline":
+        return <u>{render(string)}</u>
+      case "@u2":
+      case "@underlineDouble":
+        return <u className="ve-underline-double">{render(string)}</u>
+      default:
+        const {
+          name,
+          source,
+          displayText,
+          others,
+          page,
+          hash,
+          hashPreEncoded,
+          pageHover,
+          hashHover,
+          hashPreEncodedHover,
+          preloadId,
+          linkText,
+          subhashes,
+          subhashesHover,
+          isFauxPage
+        } = getTagMeta(tag, string)
+        return <Link to={page + (hash?"#" +hash:"")}>{name}</Link>
+    }
+  }
+
+  function getTagMeta(tag, string) {
+    switch (tag) {
+      default:
+        return getTagMeta_generic(tag, string)
+    }
+  }
+
+  function getTagMeta_generic(tag, string) {
+    function getTagSource(tag, source) {
+      if (source && source.trim()) return source;
+
+      tag = tag.trim();
+      const tagMeta = TAG_LOOKUP[tag.substring(1,tag.length)];
+
+      if (!tagMeta) throw new Error(`Unhandled tag "${tag}"`);
+      return tagMeta.defaultSource;
+    };
+
+    function unpackUid(uid, tag, opts) {
+      opts = opts || {};
+      if (opts.isLower) uid = uid.toLowerCase();
+      let [name, source, displayText, ...others] = uid.split("|").map(Function.prototype.call.bind(String.prototype.trim));
+
+      source = source || getTagSource(tag, source);
+      if (opts.isLower) source = source.toLowerCase();
+
+      return {
+        name,
+        source,
+        displayText,
+        others,
+      };
+    }
+
+    function encodeForHash(toEncode) {
+      if (toEncode instanceof Array) return toEncode.map(it => `${it}`.toUrlified()).join("_");
+      else return `${toEncode}`.toUrlified();
+    }
+
+    const {name, source, displayText, others} = unpackUid(string, tag);
+    const hash = encodeForHash([name, source ?? ""]);
+
+    const out = {
+      name,
+      displayText,
+      others,
+
+      page: null,
+      source,
+      hash,
+
+      preloadId: null,
+      subhashes: null,
+      linkText: null,
+
+      hashPreEncoded: true,
+    }
+
+    switch (tag) {
+      case "@spell": {
+        out.hash = encodeForHash(getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]?.id)
+        out.page = "/TTRPG-wiki/spells";
+        break;
+      }
+      default:
+        throw new Error(`Unhandled tag "${tag}"`);
+    }
+    return out
+  }
 
   const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
     // console.log(entry)
@@ -352,8 +542,8 @@ export const RenderModule = (props: {}) => {
         case "list": {
           // console.log(entry)
           return <ul className={"rd__list " + entry.style ?? ""}>
-            {entry.entries.map(item => {
-              return <li className="rd__li">{render(item, depth++, toggle)}</li>
+            {entry.entries.map((item, idx) => {
+              return <li key={idx} className="rd__li">{render(item, depth++, toggle)}</li>
             })}
           </ul>
         }
@@ -361,7 +551,26 @@ export const RenderModule = (props: {}) => {
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
     } else if (typeof entry === "string") {
-      return props?.defaultString ? props.defaultString(entry) : <p>{entry}</p>
+      let str = []
+      const tagSplit = splitByTags(entry)
+      const len = tagSplit.length;
+      for (let i = 0; i < len; ++i) {
+        const s = tagSplit[i];
+        if (!s) continue;
+
+        if (!s.startsWith("{@")) {
+          str.push(s);
+          continue;
+        }
+
+        const [tag, text] = splitFirstSpace(s.slice(1, -1));
+        // console.log(tag, text)
+        str.push(renderString_renderTag(tag, text));
+
+      }
+      // console.log("HERE:", str)
+
+      return props?.defaultString ? props.defaultString(str) : <p>{str}</p>
     } else return false;
   }
 

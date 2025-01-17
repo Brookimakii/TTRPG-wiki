@@ -14,10 +14,14 @@
     },
     "traits": [
       {
-        "Vol": "Vous avez une vitesse de vol de 15 mètres par round. Pour utiliser cette vitesse, vous ne devez pas porter d'armure moyenne ou lourde."
+        "type": "entries",
+        "name": "Vol",
+        "entries": ["Vous avez une vitesse de vol de 15 mètres par round. Pour utiliser cette vitesse, vous ne devez pas porter d'armure moyenne ou lourde."]
       },
       {
-        "Serre": "Vous maîtrisez vos armes naturelles, lesquelles infligent 1d4 de dégâts tranchants."
+        "type": "entries",
+        "name": "Serre",
+        "entries": ["Vous maîtrisez vos armes naturelles, lesquelles infligent 1d4 de dégâts tranchants."]
       }
     ],
     "info": [
@@ -83,16 +87,24 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Résistance céleste": "Vous avez une résistance aux dégâts nécrotiques et aux dégâts radieux."
+        "type": "entries",
+        "name": "Résistance céleste",
+        "entries": ["Vous avez une résistance aux dégâts nécrotiques et aux dégâts radieux."]
       },
       {
-        "Guérir les mains": "En tant qu'action, vous pouvez toucher une créature et lui faire retrouver un nombre de points de vie égal à votre niveau. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un long repos."
+        "type": "entries",
+        "name": "Guérir les mains",
+        "entries": ["En tant qu'action, vous pouvez toucher une créature et lui faire retrouver un nombre de points de vie égal à votre niveau. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un long repos."]
       },
       {
-        "Porteur de lumière": "Vous connaissez le tour de magie Lumière. Le charisme est votre capacité de lancer de sorts pour cela."
+        "type": "entries",
+        "name": "Porteur de lumière",
+        "entries": ["Vous connaissez le tour de magie Lumière. Le charisme est votre capacité de lancer de sorts pour cela."]
       }
     ],
     "info": [
@@ -109,11 +121,13 @@
         "source": "VGM",
         "traits": [
           {
-            "Consommation radiante": [
+        "type": "entries",
+        "name": "Consommation radiante",
+        "entries": [ [
               "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant une lumière brûlante qui rayonne de vous, se déverse de vos yeux et de votre bouche et menace de vous carboniser.",
               "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous projetez une lumière vive dans un rayon de 3 mètres et une faible lumière pendant 3 mètres supplémentaires, et à la fin de chacun de vos tours, vous et chaque créature à moins de 3 mètres de vous subissez des dégâts radieux égaux à la moitié de votre niveau (arrondi). De plus, une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
               "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
-            ]
+            ]]
           }
         ],
         "info": {
@@ -128,7 +142,9 @@
         "source": "VGM",
         "traits": [
           {
-            "Âme rayonnante": [
+        "type": "entries",
+        "name": "Âme rayonnante",
+        "entries": [
               "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, faisant briller vos yeux et faire jaillir deux ailes lumineuses et incorporelles de votre dos.",
               "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous avez une vitesse de vol de 9 mètres, et une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
               "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
@@ -147,11 +163,13 @@
         "source": "VGM",
         "traits": [
           {
-            "Suaire nécrotique": [
+        "type": "entries",
+        "name": "Suaire nécrotique",
+        "entries": [ [
               "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant la transformation de vos yeux en flaques d'obscurité et deux ailes squelettiques, fantomatiques et incapables de voler jaillir de votre dos. À l'instant où vous vous transformez, les autres créatures à moins de 3 mètres de vous qui peuvent vous voir doivent chacune réussir un lancer de sauvetage de charisme (DC 8 + votre bonus de compétence + votre modificateur de charisme) ou avoir peur de vous jusqu'à la fin de votre prochain tour.",
               "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, une fois à chacun de vos tours, vous pouvez infliger des dégâts nécrotiques supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts nécrotiques supplémentaires sont égaux à votre niveau.",
               "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
-            ]
+            ]]
           }
         ],
         "info": {
@@ -177,10 +195,14 @@
     },
     "traits": [
       {
-        "Changeur de forme": "En tant qu'action, vous pouvez changer votre apparence et votre voix. Vous déterminez les spécificités des changements, y compris votre coloration, la longueur de vos cheveux et votre sexe. Vous pouvez également ajuster votre taille et votre poids, mais pas au point que votre taille change. Vous pouvez vous faire apparaître comme un membre d'une autre race, bien qu'aucune de vos statistiques de jeu ne change. Vous ne pouvez pas reproduire l'apparence d'une créature que vous n'avez jamais vue, et vous devez adopter une forme qui a le même arrangement de base des membres que vous avez. Vos vêtements et votre équipement ne sont pas modifiés par ce trait.\n\nVous restez dans la nouvelle forme jusqu'à ce que vous utilisiez une action pour revenir à votre véritable forme ou jusqu'à ce que vous mouriez."
+        "type": "entries",
+        "name": "Changeur de forme",
+        "entries": ["En tant qu'action, vous pouvez changer votre apparence et votre voix. Vous déterminez les spécificités des changements, y compris votre coloration, la longueur de vos cheveux et votre sexe. Vous pouvez également ajuster votre taille et votre poids, mais pas au point que votre taille change. Vous pouvez vous faire apparaître comme un membre d'une autre race, bien qu'aucune de vos statistiques de jeu ne change. Vous ne pouvez pas reproduire l'apparence d'une créature que vous n'avez jamais vue, et vous devez adopter une forme qui a le même arrangement de base des membres que vous avez. Vos vêtements et votre équipement ne sont pas modifiés par ce trait.\n\nVous restez dans la nouvelle forme jusqu'à ce que vous utilisiez une action pour revenir à votre véritable forme ou jusqu'à ce que vous mouriez."]
       },
       {
-        "Instincts changeants": "Vous maîtrisez deux des compétences suivantes de votre choix : tromperie, perspicacité, intimidation et persuasion."
+        "type": "entries",
+        "name": "Instincts changeants",
+        "entries": ["Vous maîtrisez deux des compétences suivantes de votre choix : tromperie, perspicacité, intimidation et persuasion."]
       }
     ],
     "info": [
@@ -206,7 +228,9 @@
     },
     "traits": [
       {
-        "Ascendance draconique": [
+        "type": "entries",
+        "name": "Ascendance draconique",
+        "entries":  [
           "Vous avez une ascendance draconique. Choisissez un type de dragon dans la table ci-dessous. Votre souffle et votre résistance aux dégâts sont déterminés par le type de dragon, comme indiqué dans la table.",
           {
             "table": {
@@ -278,10 +302,14 @@
         ]
       },
       {
-        "Souffle": "Vous pouvez utiliser votre action pour libérer un souffle d'énergie destructrice. Votre ascendance draconique détermine la taille, la forme et le type de dégâts de votre souffle. Lorsque vous utilisez votre souffle, toute créature dans la zone de l'expiration doit faire un jet de sauvegarde, dont le type est déterminé par votre ascendance draconique. Le DD de ce jet de sauvegarde est égal à 8 + votre modificateur de Constitution + votre bonus de maîtrise. En cas d'échec, la créature subit 2d6 dégâts, ou la moitié de ces dégâts en cas de réussite. Les dégâts augmentent à 3d6 au niveau 6, 4d6 au niveau 11, et 5d6 au niveau 16. Après avoir utilisé votre souffle, vous devez terminer un repos court ou long pour pouvoir l'utiliser à nouveau."
+        "type": "entries",
+        "name": "Souffle",
+        "entries": ["Vous pouvez utiliser votre action pour libérer un souffle d'énergie destructrice. Votre ascendance draconique détermine la taille, la forme et le type de dégâts de votre souffle. Lorsque vous utilisez votre souffle, toute créature dans la zone de l'expiration doit faire un jet de sauvegarde, dont le type est déterminé par votre ascendance draconique. Le DD de ce jet de sauvegarde est égal à 8 + votre modificateur de Constitution + votre bonus de maîtrise. En cas d'échec, la créature subit 2d6 dégâts, ou la moitié de ces dégâts en cas de réussite. Les dégâts augmentent à 3d6 au niveau 6, 4d6 au niveau 11, et 5d6 au niveau 16. Après avoir utilisé votre souffle, vous devez terminer un repos court ou long pour pouvoir l'utiliser à nouveau."]
       },
       {
-        "Résistance aux dégâts": "Vous obtenez la résistance au type de dégâts associé à votre ascendance draconique."
+        "type": "entries",
+        "name": "Résistance aux dégâts",
+        "entries": ["Vous obtenez la résistance au type de dégâts associé à votre ascendance draconique."]
       }
     ],
     "info": [
@@ -307,19 +335,29 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Résistance naine": "Vous avez un avantage aux jets de sauvegarde contre le poison et obtenez la résistance contre les dégâts de poison."
+        "type": "entries",
+        "name": "Résistance naine",
+        "entries": ["Vous avez un avantage aux jets de sauvegarde contre le poison et obtenez la résistance contre les dégâts de poison."]
       },
       {
-        "Entraînement aux armes naines": "Vous obtenez la maîtrise des hachettes, des haches d'armes, des marteaux légers et des marteaux de guerre."
+        "type": "entries",
+        "name": "Entraînement aux armes naines",
+        "entries": ["Vous obtenez la maîtrise des hachettes, des haches d'armes, des marteaux légers et des marteaux de guerre."]
       },
       {
-        "Maîtrise des outils": "Vous obtenez la maîtrise d'un des outils d'artisan suivant au choix : outils de forgeron, outils de brasseur ou outils de maçon."
+        "type": "entries",
+        "name": "Maîtrise des outils",
+        "entries": ["Vous obtenez la maîtrise d'un des outils d'artisan suivant au choix : outils de forgeron, outils de brasseur ou outils de maçon."]
       },
       {
-        "Connaissance de la pierre": "Chaque fois que vous effectuez un jet d'Intelligence (Histoire) en relation avec l'origine d'un travail lié à la pierre, considérez que vous maîtrisez la compétence Histoire et ajoutez le double de votre bonus de maîtrise au jet, au lieu du bonus de maîtrise normal."
+        "type": "entries",
+        "name": "Connaissance de la pierre",
+        "entries": ["Chaque fois que vous effectuez un jet d'Intelligence (Histoire) en relation avec l'origine d'un travail lié à la pierre, considérez que vous maîtrisez la compétence Histoire et ajoutez le double de votre bonus de maîtrise au jet, au lieu du bonus de maîtrise normal."]
       }
     ],
     "info": [
@@ -336,7 +374,9 @@
         "source": "PHB",
         "traits": [
           {
-            "Ténacité naine": "Votre maximum de points de vie augmente de 1 à chaque niveau."
+        "type": "entries",
+        "name": "Ténacité naine",
+        "entries": [ "Votre maximum de points de vie augmente de 1 à chaque niveau."]
           }
         ],
         "info": {
@@ -351,7 +391,9 @@
         "source": "PHB",
         "traits": [
           {
-            "Formation au port des armures naines": "Vous maîtrisez les armures légères et intermédiaires."
+        "type": "entries",
+        "name": "Formation au port des armures naines",
+        "entries": [ "Vous maîtrisez les armures légères et intermédiaires." ]
           }
         ],
         "info": {
@@ -377,13 +419,19 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Sens aiguisés": "Vous maîtrisez la compétence Perception."
+        "type": "entries",
+        "name": "Sens aiguisés",
+        "entries": ["Vous maîtrisez la compétence Perception."]
       },
       {
-        "Ascendance féerique": "Vous avez un avantage aux jets de sauvegarde contre les effets de charme et la magie ne peut pas vous endormir."
+        "type": "entries",
+        "name": "Ascendance féerique",
+        "entries": ["Vous avez un avantage aux jets de sauvegarde contre les effets de charme et la magie ne peut pas vous endormir."]
       },
       {
         "Transe": "Les elfes n'ont pas besoin de dormir. Au lieu de cela, ils méditent profondément, restant à demi conscients, 4 heures par jour (le mot commun pour désigner cette méditation est « transe »). En méditant, vous pouvez rêver, tant bien que mal ; ces rêves sont en fait des exercices mentaux qui deviennent un réflexe après des années de pratique. Après un repos de ce type, vous obtenez les mêmes avantages qu'un humain après 8 heures de sommeil."
@@ -403,13 +451,19 @@
         "source": "PHB",
         "traits": [
           {
-            "Entraînement aux armes elfiques": "Vous obtenez la maîtrise des épées (longues et courtes) et des arcs (longs et courts)."
+        "type": "entries",
+        "name": "Entraînement aux armes elfiques",
+        "entries": [ "Vous obtenez la maîtrise des épées (longues et courtes) et des arcs (longs et courts)." ]
           },
           {
-            "Sort mineur": "Vous connaissez un sort mineur de votre choix parmi la liste des sorts mineurs de magicien. L'Intelligence est votre caractéristique d'incantation pour ce sort."
+        "type": "entries",
+        "name": "Sort mineur",
+        "entries": [ "Vous connaissez un sort mineur de votre choix parmi la liste des sorts mineurs de magicien. L'Intelligence est votre caractéristique d'incantation pour ce sort." ]
           },
           {
-            "Langue supplémentaire": "Vous parlez, lisez et écrivez une langue supplémentaire de votre choix."
+        "type": "entries",
+        "name": "Langue supplémentaire",
+        "entries": [ "Vous parlez, lisez et écrivez une langue supplémentaire de votre choix." ]
           }
         ],
         "info": {
@@ -424,13 +478,19 @@
         "source": "PHB",
         "traits": [
           {
-            "Entraînement aux armes elfiques": "Vous obtenez la maîtrise des épées (longues et courtes) et des arcs (longs et courts)."
+        "type": "entries",
+        "name": "Entraînement aux armes elfiques",
+        "entries": [ "Vous obtenez la maîtrise des épées (longues et courtes) et des arcs (longs et courts)." ]
           },
           {
-            "Foulée légère": "Votre vitesse de base passe à 10,50 mètres."
+        "type": "entries",
+        "name": "Foulée légère",
+        "entries": [ "Votre vitesse de base passe à 10,50 mètres." ]
           },
           {
-            "Cachette naturelle": "Vous pouvez tenter de vous cacher dans une zone à visibilité réduite, comme en présence de branchages, de forte pluie, de neige qui tombe, de brume ou autre phénomène naturel."
+        "type": "entries",
+        "name": "Cachette naturelle",
+        "entries": [ "Vous pouvez tenter de vous cacher dans une zone à visibilité réduite, comme en présence de branchages, de forte pluie, de neige qui tombe, de brume ou autre phénomène naturel." ]
           }
         ],
         "info": {
@@ -445,16 +505,24 @@
         "source": "PHB",
         "traits": [
           {
-            "Vision dans le noir supérieure": "Votre vision dans le noir est étendue à 36 mètres."
+        "type": "entries",
+        "name": "Vision dans le noir supérieure",
+        "entries": [ "Votre vision dans le noir est étendue à 36 mètres." ]
           },
           {
-            "Sensibilité au soleil": "Vous avez un désavantage aux jets d'attaque et aux jets de Sagesse (Perception) basés sur la vue quand vous, la cible de l'attaque ou ce que vous essayez de détecter est exposé à la lumière du soleil."
+        "type": "entries",
+        "name": "Sensibilité au soleil",
+        "entries": [ "Vous avez un désavantage aux jets d'attaque et aux jets de Sagesse (Perception) basés sur la vue quand vous, la cible de l'attaque ou ce que vous essayez de détecter est exposé à la lumière du soleil." ]
           },
           {
-            "Magie drow": "Vous connaissez le sort mineur lumières dansantes. Lorsque vous atteignez le niveau 3, vous pouvez lancer le sort lueurs féeriques une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Lorsque vous atteignez le niveau 5, vous pouvez lancer le sort ténèbres une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."
+        "type": "entries",
+        "name": "Magie drow",
+        "entries": [ "Vous connaissez le sort mineur {@i lumières dansantes}. Lorsque vous atteignez le niveau 3, vous pouvez lancer le sort lueurs féeriques une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Lorsque vous atteignez le niveau 5, vous pouvez lancer le sort {@i ténèbres} une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts." ]
           },
           {
-            "Entraînement aux armes drows": "Vous obtenez la maîtrise des rapières, des épées courtes et des arbalètes de poing."
+        "type": "entries",
+        "name": "Entraînement aux armes drows",
+        "entries": [ "Vous obtenez la maîtrise des rapières, des épées courtes et des arbalètes de poing." ]
           }
         ],
         "info": {
@@ -480,16 +548,24 @@
     },
     "traits": [
       {
-        "Magie Firbolg": "Vous pouvez lancer la magie et se déguiser avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 1,50 mètres plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."
+        "type": "entries",
+        "name": "Magie Firbolg",
+        "entries": ["Vous pouvez lancer les sorts {@i détection de la magie} et {@i détection de la magie} avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 1,50 mètres plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."]
       },
       {
-        "Étape cachée": "En tant qu'action bonus, vous pouvez magiquement devenir invisible jusqu'au début de votre prochain tour ou jusqu'à ce que vous attaquiez, fassiez un lancer de dégâts ou forciez quelqu'un à faire un lancer de sauvetage. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un repos court ou long."
+        "type": "entries",
+        "name": "Étape cachée",
+        "entries": ["En tant qu'action bonus, vous pouvez magiquement devenir invisible jusqu'au début de votre prochain tour ou jusqu'à ce que vous attaquiez, fassiez un lancer de dégâts ou forciez quelqu'un à faire un lancer de sauvetage. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un repos court ou long."]
       },
       {
-        "Construction puissante": "Vous comptez comme une taille plus grande pour déterminer votre capacité de charge et le poids que vous pouvez pousser, traîner ou soulever."
+        "type": "entries",
+        "name": "Construction puissante",
+        "entries": ["Vous comptez comme une taille plus grande pour déterminer votre capacité de charge et le poids que vous pouvez pousser, traîner ou soulever."]
       },
       {
-        "Discours de la bête et de la feuille": "Vous avez la capacité de communiquer de manière limitée avec les bêtes et les plantes. Ils peuvent comprendre le sens de vos mots, bien que vous n'ayez aucune capacité particulière à les comprendre en retour. Vous avez un avantage sur tous les contrôles de charisme que vous faites pour les influencer."
+        "type": "entries",
+        "name": "Discours de la bête et de la feuille",
+        "entries": ["Vous avez la capacité de communiquer de manière limitée avec les bêtes et les plantes. Ils peuvent comprendre le sens de vos mots, bien que vous n'ayez aucune capacité particulière à les comprendre en retour. Vous avez un avantage sur tous les contrôles de charisme que vous faites pour les influencer."]
       }
     ],
     "info": [
@@ -532,10 +608,14 @@
         "source": "EEPC",
         "traits": [
           {
-            "Souffle sans fin": "Vous pouvez retenir votre respiration indéfiniment tant que vous n'êtes pas incapable d'agir."
+        "type": "entries",
+        "name": "Souffle sans fin",
+        "entries": [ "Vous pouvez retenir votre respiration indéfiniment tant que vous n'êtes pas incapable d'agir." ]
           },
           {
-            "Se mêler au vent": "Vous pouvez lancer le sort lévitation une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+        "type": "entries",
+        "name": "Se mêler au vent",
+        "entries": [ "Vous pouvez lancer le sort {@i lévitation} une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -550,10 +630,14 @@
         "source": "EEPC",
         "traits": [
           {
-            "Marche de la terre": "Vous pouvez vous déplacer sur des terrains difficiles faits de pierre ou de terre sans dépenser de mouvement supplémentaire."
+        "type": "entries",
+        "name": "Marche de la terre",
+        "entries": [ "Vous pouvez vous déplacer sur des terrains difficiles faits de pierre ou de terre sans dépenser de mouvement supplémentaire." ]
           },
           {
-            "Fusionner avec la pierre": "Vous pouvez lancer le sort passage sans trace une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+        "type": "entries",
+        "name": "Fusionner avec la pierre",
+        "entries": [ "Vous pouvez lancer le sort {@i passage sans trace} une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -568,13 +652,19 @@
         "source": "EEPC",
         "traits": [
           {
-            "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": [ "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris" ]
           },
           {
-            "Résistance au feu": "Vous avez la résistance aux dégâts de feu."
+        "type": "entries",
+        "name": "Résistance au feu",
+        "entries": [ "Vous avez la résistance aux dégâts de feu." ]
           },
           {
-            "Atteindre le brasier": "Vous pouvez lancer le sort mineur flammes. Une fois le niveau 3 atteint, vous pouvez lancer le sort mains brûlantes une fois comme un sort de niveau 1 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+        "type": "entries",
+        "name": "Atteindre le brasier",
+        "entries": [ "Vous pouvez lancer le sort mineur {@i flammes}. Une fois le niveau 3 atteint, vous pouvez lancer le sort {@i mains brûlantes} une fois comme un sort de niveau 1 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -590,16 +680,24 @@
         "speed": "9m, nage 9m",
         "traits": [
           {
-            "Résistance à l'acide": "Vous avez la résistance aux dégâts d'acide."
+        "type": "entries",
+        "name": "Résistance à l'acide",
+        "entries": [ "Vous avez la résistance aux dégâts d'acide." ]
           },
           {
-            "Amphibien": "Vous pouvez respirer aussi bien dans l'air que sous l'eau."
+        "type": "entries",
+        "name": "Amphibien",
+        "entries": [ "Vous pouvez respirer aussi bien dans l'air que sous l'eau." ]
           },
           {
-            "Nage": "Votre vitesse de nage est de 9 mètres."
+        "type": "entries",
+        "name": "Nage",
+        "entries": [ "Votre vitesse de nage est de 9 mètres." ]
           },
           {
-            "Appeler la vague": "Vous pouvez lancer le sort mineur façonnage de l'eau. Une fois le niveau 3 atteint, vous pouvez lancer le sort création ou destruction d'eau une fois comme un sort de niveau 2 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort."
+        "type": "entries",
+        "name": "Appeler la vague",
+        "entries": [ "Vous pouvez lancer le sort mineur {@i façonnage de l'eau}. Une fois le niveau 3 atteint, vous pouvez lancer le sort {@i création ou destruction d'eau} une fois comme un sort de niveau 2 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -625,10 +723,14 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Ruse gnome": "Vous avez un avantage aux jets de sauvegarde d'Intelligence, de Sagesse et de Charisme contre la magie."
+        "type": "entries",
+        "name": "Ruse gnome",
+        "entries": ["Vous avez un avantage aux jets de sauvegarde d'Intelligence, de Sagesse et de Charisme contre la magie."]
       }
     ],
     "info": [
@@ -645,10 +747,14 @@
         "source": "PHB",
         "traits": [
           {
-            "Illusionniste-né": "Vous connaissez le sort mineur illusion mineure. L'Intelligence est votre caractéristique d'incantation pour ce sort."
+        "type": "entries",
+        "name": "Illusionniste-né",
+        "entries": [ "Vous connaissez le sort mineur illusion mineure. L'Intelligence est votre caractéristique d'incantation pour ce sort." ]
           },
           {
-            "Communication avec les petits animaux": "À l'aide de sons et de gestes, vous pouvez communiquer des idées simples à des bêtes de taille P ou plus petite. Les gnomes des forêts aiment les animaux et traitent de manière bienveillante comme un animal domestique tout animal qu'ils peuvent trouver (écureuils, blaireaux, lapins, taupes, picidés, etc.)."
+        "type": "entries",
+        "name": "Communication avec les petits animaux",
+        "entries": [ "À l'aide de sons et de gestes, vous pouvez communiquer des idées simples à des bêtes de taille P ou plus petite. Les gnomes des forêts aiment les animaux et traitent de manière bienveillante comme un animal domestique tout animal qu'ils peuvent trouver (écureuils, blaireaux, lapins, taupes, picidés, etc.)." ]
           }
         ],
         "info": {
@@ -663,7 +769,9 @@
         "source": "PHB",
         "traits": [
           {
-            "Connaissance en ingénierie": "Chaque fois que vous effectuez un jet d'Intelligence (Histoire) en relation avec l'alchimie, des objets magiques ou des dispositifs technologiques, ajoutez le double de votre bonus de maîtrise au jet, au lieu du bonus de maîtrise normal."
+        "type": "entries",
+        "name": "Connaissance en ingénierie",
+        "entries": [ "Chaque fois que vous effectuez un jet d'Intelligence (Histoire) en relation avec l'alchimie, des objets magiques ou des dispositifs technologiques, ajoutez le double de votre bonus de maîtrise au jet, au lieu du bonus de maîtrise normal." ]
           },
           {
             "Bricoleur": [
@@ -678,7 +786,8 @@
                   },
                   {
                     "Jouet mécanique": "Le jouet représente un animal ou une personne, comme une grenouille, une souris, un oiseau ou un soldat, sur des roulettes. Lorsqu'il est placé sur le sol, il se déplace de 1,50 mètre chaque tour dans une direction aléatoire et fait des bruits en fonction de la créature qu'il représente."
-                  }                ]
+                  }
+                ]
               }
             ]
           }
@@ -706,16 +815,24 @@
     },
     "traits": [
       {
-        "Athlète naturel": "Vous maîtrisez la compétence Athlétisme."
+        "type": "entries",
+        "name": "Athlète naturel",
+        "entries": ["Vous maîtrisez la compétence Athlétisme."]
       },
       {
-        "Endurance de la pierre": "Vous pouvez vous concentrer pour éviter occasionnellement une blessure. Lorsque vous subissez des dégâts, vous pouvez utiliser votre réaction pour lancer un d12. Ajoutez votre modificateur de Constitution au nombre obtenu, et réduisez les dommages de ce total. Après avoir utilisé ce trait, vous devez terminer un repos court ou long avant de pouvoir le réutiliser."
+        "type": "entries",
+        "name": "Endurance de la pierre",
+        "entries": ["Vous pouvez vous concentrer pour éviter occasionnellement une blessure. Lorsque vous subissez des dégâts, vous pouvez utiliser votre réaction pour lancer un d12. Ajoutez votre modificateur de Constitution au nombre obtenu, et réduisez les dommages de ce total. Après avoir utilisé ce trait, vous devez terminer un repos court ou long avant de pouvoir le réutiliser."]
       },
       {
-        "Puissamment bâti": "Vous comptez comme étant plus grand d'une taille pour déterminer votre capacité de charge et le poids que vous pouvez pousser, traîner ou soulever."
+        "type": "entries",
+        "name": "Puissamment bâti",
+        "entries": ["Vous comptez comme étant plus grand d'une taille pour déterminer votre capacité de charge et le poids que vous pouvez pousser, traîner ou soulever."]
       },
       {
-        "Montagnard": "Vous obtenez la résistance au dégâts du froid. Vous êtes aussi habitué aux hautes altitudes, y compris des altitudes supérieures à 6000 mètres"
+        "type": "entries",
+        "name": "Montagnard",
+        "entries": ["Vous obtenez la résistance au dégâts du froid. Vous êtes aussi habitué aux hautes altitudes, y compris des altitudes supérieures à 6000 mètres"]
       }
     ],
     "info": [
@@ -741,13 +858,19 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Ascendance féerique": "Vous avez un avantage aux jets de sauvegarde contre les effets de charme et la magie ne peut pas vous endormir.."
+        "type": "entries",
+        "name": "Ascendance féerique",
+        "entries": ["Vous avez un avantage aux jets de sauvegarde contre les effets de charme et la magie ne peut pas vous endormir.."]
       },
       {
-        "Polyvalence": "Vous gagnez la maîtrise de deux compétences de votre choix."
+        "type": "entries",
+        "name": "Polyvalence",
+        "entries": ["Vous gagnez la maîtrise de deux compétences de votre choix."]
       }
     ],
     "info": [
@@ -773,16 +896,24 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Menaçant": "Vous gagnez la maîtrise de la compétence Intimidation."
+        "type": "entries",
+        "name": "Menaçant",
+        "entries": ["Vous gagnez la maîtrise de la compétence Intimidation."]
       },
       {
-        "Endurance implacable": "Lorsque vous tombez à 0 point de vie, mais que vous n'êtes pas tué sur le coup, vous pouvez passer à 1 point de vie à la place. Vous devez terminer un repos long avant de pouvoir utiliser cette capacité de nouveau."
+        "type": "entries",
+        "name": "Endurance implacable",
+        "entries": ["Lorsque vous tombez à 0 point de vie, mais que vous n'êtes pas tué sur le coup, vous pouvez passer à 1 point de vie à la place. Vous devez terminer un repos long avant de pouvoir utiliser cette capacité de nouveau."]
       },
       {
-        "Attaques sauvages": "Lorsque vous réalisez un coup critique lors d'une attaque au corps à corps avec une arme, vous pouvez lancer l'un des dés de dégâts de l'arme une deuxième fois et l'ajouter aux dégâts supplémentaires du coup critique."
+        "type": "entries",
+        "name": "Attaques sauvages",
+        "entries": ["Lorsque vous réalisez un coup critique lors d'une attaque au corps à corps avec une arme, vous pouvez lancer l'un des dés de dégâts de l'arme une deuxième fois et l'ajouter aux dégâts supplémentaires du coup critique."]
       }
     ],
     "info": [
@@ -808,13 +939,19 @@
     },
     "traits": [
       {
-        "Chanceux": "Lorsque vous obtenez un 1 au dé d'un jet d'attaque, de caractéristique ou de sauvegarde, vous pouvez relancer le dé et devez alors utiliser ce nouveau résultat."
+        "type": "entries",
+        "name": "Chanceux",
+        "entries": ["Lorsque vous obtenez un 1 au dé d'un jet d'attaque, de caractéristique ou de sauvegarde, vous pouvez relancer le dé et devez alors utiliser ce nouveau résultat."]
       },
       {
-        "Brave": "Vous avez un avantage aux jets de sauvegarde pour ne pas être effrayé."
+        "type": "entries",
+        "name": "Brave",
+        "entries": ["Vous avez un avantage aux jets de sauvegarde pour ne pas être effrayé."]
       },
       {
-        "Agilité halfeline": "Vous pouvez passer dans l'espace de toute créature d'une taille supérieure à la vôtre."
+        "type": "entries",
+        "name": "Agilité halfeline",
+        "entries": ["Vous pouvez passer dans l'espace de toute créature d'une taille supérieure à la vôtre."]
       }
     ],
     "info": [
@@ -831,7 +968,9 @@
         "source": "PHB",
         "traits": [
           {
-            "Discrétion naturelle": "Vous pouvez tenter de vous cacher si vous vous trouvez derrière une créature d'une taille supérieure à la vôtre."
+        "type": "entries",
+        "name": "Discrétion naturelle",
+        "entries": [ "Vous pouvez tenter de vous cacher si vous vous trouvez derrière une créature d'une taille supérieure à la vôtre." ]
           }
         ],
         "info": {
@@ -846,7 +985,9 @@
         "source": "PHB",
         "traits": [
           {
-            "Résistance des robustes": "Vous obtenez un avantage aux jets de sauvegarde contre le poison et la résistance contre les dégâts de poison."
+        "type": "entries",
+        "name": "Résistance des robustes",
+        "entries": [ "Vous obtenez un avantage aux jets de sauvegarde contre le poison et la résistance contre les dégâts de poison." ]
           }
         ],
         "info": {
@@ -889,10 +1030,14 @@
         "source": "PHB",
         "traits": [
           {
-            "Compétence": "Vous gagnez la maîtrise d'une compétence de votre choix."
+        "type": "entries",
+        "name": "Compétence",
+        "entries": [ "Vous gagnez la maîtrise d'une compétence de votre choix." ]
           },
           {
-            "Don": "Vous obtenez un don de votre choix."
+        "type": "entries",
+        "name": "Don",
+        "entries": [ "Vous obtenez un don de votre choix." ]
           }
         ],
         "info": {
@@ -918,13 +1063,19 @@
     },
     "traits": [
       {
-        "Falsification experte": "Vous pouvez dupliquer l'écriture et l'artisanat d'autres créatures. Vous avez un avantage sur toutes les vérifications effectuées pour produire des contrefaçons ou des doublons d'objets existants."
+        "type": "entries",
+        "name": "Falsification experte",
+        "entries": ["Vous pouvez dupliquer l'écriture et l'artisanat d'autres créatures. Vous avez un avantage sur toutes les vérifications effectuées pour produire des contrefaçons ou des doublons d'objets existants."]
       },
       {
-        "Formation Kenku": "Vous maîtrisez le choix de deux des compétences suivantes: acrobatie, tromperie, furtivité et tour de passe-passe."
+        "type": "entries",
+        "name": "Formation Kenku",
+        "entries": ["Vous maîtrisez le choix de deux des compétences suivantes: acrobatie, tromperie, furtivité et tour de passe-passe."]
       },
       {
-        "Mimétisme": "Vous pouvez imiter les sons que vous avez entendus, y compris les voix. Une créature qui entend les sons que vous faites peut dire qu'ils sont des imitations avec une vérification réussie de la Sagesse (Insight) opposée à votre vérification du Charisme (Déception)."
+        "type": "entries",
+        "name": "Mimétisme",
+        "entries": ["Vous pouvez imiter les sons que vous avez entendus, y compris les voix. Une créature qui entend les sons que vous faites peut dire qu'ils sont des imitations avec une vérification réussie de la Sagesse (Insight) opposée à votre vérification du Charisme (Déception)."]
       }
     ],
     "info": [
@@ -950,13 +1101,19 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": ["Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"]
       },
       {
-        "Résistance infernale": "Vous avez la résistance aux dégâts de feu."
+        "type": "entries",
+        "name": "Résistance infernale",
+        "entries": ["Vous avez la résistance aux dégâts de feu."]
       },
       {
-        "Ascendance infernale": "Vous connaissez le sort mineur thaumaturgie. Quand vous atteignez le niveau 3, vous pouvez lancer le sort représailles infernales comme un sort de niveau 2 une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Quand vous atteignez le niveau 5, vous pouvez lancer le sort ténèbres une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."
+        "type": "entries",
+        "name": "Ascendance infernale",
+        "entries": ["Vous connaissez le sort mineur thaumaturgie. Quand vous atteignez le niveau 3, vous pouvez lancer le sort représailles infernales comme un sort de niveau 2 une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Quand vous atteignez le niveau 5, vous pouvez lancer le sort {@i ténèbres} une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."]
       }
     ],
     "info": [
@@ -982,35 +1139,45 @@
     },
     "traits": [
       {
-        "Résilience construite": [
+        "type": "entries",
+        "name": "Résilience construite",
+        "entries": [
           "Vous avez été créé pour avoir un courage remarquable, représenté par les avantages suivants:",
           {
             "type": "list",
             "entries": [
-            "Vous avez l'avantage de sauver les lancers contre l'empoisonnement, et vous avez une résistance aux dommages causés par le poison.",
-            "Vous n'avez pas besoin de manger, de boire ou de respirer.",
-            "Vous êtes immunisé contre la maladie.",
-            "Vous n'avez pas besoin de dormir, et la magie ne peut pas vous endormir."
-          ]}
+              "Vous avez l'avantage de sauver les lancers contre l'empoisonnement, et vous avez une résistance aux dommages causés par le poison.",
+              "Vous n'avez pas besoin de manger, de boire ou de respirer.",
+              "Vous êtes immunisé contre la maladie.",
+              "Vous n'avez pas besoin de dormir, et la magie ne peut pas vous endormir."
+            ]
+          }
         ]
       },
       {
-        "Repos de sentinelle": "Lorsque vous prenez un long repos, vous devez passer au moins six heures dans un état inactif et immobile, plutôt que de dormir. Dans cet état, vous semblez inerte, mais cela ne vous rend pas inconscient, et vous pouvez voir et entendre normalement."
+        "type": "entries",
+        "name": "Repos de sentinelle",
+        "entries": ["Lorsque vous prenez un long repos, vous devez passer au moins six heures dans un état inactif et immobile, plutôt que de dormir. Dans cet état, vous semblez inerte, mais cela ne vous rend pas inconscient, et vous pouvez voir et entendre normalement."]
       },
       {
-        "Protection intégrée": [
+        "type": "entries",
+        "name": "Protection intégrée",
+        "entries": [
           "Votre corps a des couches défensives intégrées, qui peuvent être améliorées avec une armure.",
           {
             "type": "list",
             "entries": [
-            "Vous gagnez un bonus +1 à la classe d'armure.",
-            "Vous ne pouvez revêtir que l'armure avec laquelle vous maîtrisez. Pour enfiler l'armure, vous devez l'incorporer dans votre corps pendant 1 heure, pendant laquelle vous devez rester en contact avec l'armure. Pour enlever l'armure, vous devez passer 1 heure à l'enlever. Vous pouvez vous reposer tout en enfilant ou en enlevant une armure de cette façon.",
-            "Tant que vous vivez, votre armure ne peut pas être retirée de votre corps contre votre volonté."
-          ]}
+              "Vous gagnez un bonus +1 à la classe d'armure.",
+              "Vous ne pouvez revêtir que l'armure avec laquelle vous maîtrisez. Pour enfiler l'armure, vous devez l'incorporer dans votre corps pendant 1 heure, pendant laquelle vous devez rester en contact avec l'armure. Pour enlever l'armure, vous devez passer 1 heure à l'enlever. Vous pouvez vous reposer tout en enfilant ou en enlevant une armure de cette façon.",
+              "Tant que vous vivez, votre armure ne peut pas être retirée de votre corps contre votre volonté."
+            ]
+          }
         ]
       },
       {
-        "Conception spécialisée": "Vous acquérez une maîtrisez une compétence et un outil d'artisant de votre choix."
+        "type": "entries",
+        "name": "Conception spécialisée",
+        "entries": ["Vous acquérez une maîtrisez une compétence et un outil d'artisant de votre choix."]
       }
     ],
     "info": [
@@ -1036,16 +1203,26 @@
     },
     "traits": [
       {
-        "Vision dans le noir": "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": [
+          "Vous pouvez voir à 18 mètres dans une lumière faible comme vous verriez avec une lumière vive, et dans le noir comme vous verriez avec une lumière faible. Dans le noir, vous ne discernez pas les couleurs, uniquement des nuances de gris"
+        ]
       },
       {
-        "Lanceur de sorts innés": "Vous connaissez le sort Mineur Poison Spray. Vous pouvez lancer Animal Friendship un nombre illimité de fois avec ce trait, mais vous ne pouvez cibler que les serpents avec lui. À partir du 3ème niveau, vous pouvez également lancer Suggestion avec ce trait. Une fois que vous l'avez lancé, vous ne pouvez pas le refaire tant que vous n'avez pas terminé un long repos. Le charisme est votre capacité de lancer de sorts pour ces sorts."
+        "type": "entries",
+        "name": "Lanceur de sorts innés",
+        "entries": ["Vous connaissez le sort Mineur {@spell bouffée de poison}. Vous pouvez lancer {@i amitié avec les animaux} un nombre illimité de fois avec ce trait, mais vous ne pouvez cibler que les serpents avec lui. À partir du 3ème niveau, vous pouvez également lancer {@i suggestion} avec ce trait. Une fois que vous l'avez lancé, vous ne pouvez pas le refaire tant que vous n'avez pas terminé un long repos. Le charisme est votre capacité de lancer de sorts pour ces sorts."]
       },
       {
-        "Résistance magique": "Vous avez l'avantage de sauvegarder les lancers contre les sorts et autres effets magiques."
+        "type": "entries",
+        "name": "Résistance magique",
+        "entries": ["Vous avez l'avantage de sauvegarder les lancers contre les sorts et autres effets magiques."]
       },
       {
-        "Immunité aux poisons": "Vous êtes immunisé contre les dommages causés par le poison et la condition empoisonnée."
+        "type": "entries",
+        "name": "Immunité aux poisons",
+        "entries": ["Vous êtes immunisé contre les dommages causés par le poison et la condition empoisonnée."]
       }
     ],
     "info": [

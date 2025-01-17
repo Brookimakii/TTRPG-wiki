@@ -1,7 +1,7 @@
 export class Parser {
 }
 Parser.attAbvToFull = function (abv) {
-  return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
+  return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv.toLowerCase());
 };
 
 Parser.attFullToAbv = function (full) {
