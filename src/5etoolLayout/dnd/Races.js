@@ -182,7 +182,10 @@ export function Dnd5eRaces() {
                     <li key={"ability"} className="rd__li">
                       <p className="rd__p-list-item">
                         <span className="bold rd__list-item-name">Score de capacité:</span>
-                        {" " + Parser.attAbvToFull(selectedRace.bonus)}
+                        {" " + selectedRace.bonus.split(";").map(att =>{
+                          const elem = att.trim().toLowerCase().split(" ");
+                          return `${Parser.attAbvToFull(elem[0])} ${elem[1]}`
+                        }).join(", ")}
                       </p>
                     </li>
                     <li key={"type"} className="rd__li">

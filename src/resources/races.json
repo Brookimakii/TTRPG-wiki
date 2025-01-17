@@ -517,7 +517,7 @@
           {
         "type": "entries",
         "name": "Magie drow",
-        "entries": [ "Vous connaissez le sort mineur {@i lumières dansantes}. Lorsque vous atteignez le niveau 3, vous pouvez lancer le sort lueurs féeriques une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Lorsque vous atteignez le niveau 5, vous pouvez lancer le sort {@i ténèbres} une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts." ]
+        "entries": [ "Vous connaissez le sort mineur {@spell lumières dansantes}. Lorsque vous atteignez le niveau 3, vous pouvez lancer le sort lueurs féeriques une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Lorsque vous atteignez le niveau 5, vous pouvez lancer le sort {@spell ténèbres} une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts." ]
           },
           {
         "type": "entries",
@@ -550,7 +550,7 @@
       {
         "type": "entries",
         "name": "Magie Firbolg",
-        "entries": ["Vous pouvez lancer les sorts {@i détection de la magie} et {@i détection de la magie} avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 1,50 mètres plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."]
+        "entries": ["Vous pouvez lancer les sorts {@spell détection de la magie} et {@spell déguisement} avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 1,50 mètres plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."]
       },
       {
         "type": "entries",
@@ -615,7 +615,7 @@
           {
         "type": "entries",
         "name": "Se mêler au vent",
-        "entries": [ "Vous pouvez lancer le sort {@i lévitation} une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
+        "entries": [ "Vous pouvez lancer le sort {@spell lévitation} une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -637,7 +637,7 @@
           {
         "type": "entries",
         "name": "Fusionner avec la pierre",
-        "entries": [ "Vous pouvez lancer le sort {@i passage sans trace} une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
+        "entries": [ "Vous pouvez lancer le sort {@spell passage sans trace} une fois, sans composante matérielle, et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -664,7 +664,7 @@
           {
         "type": "entries",
         "name": "Atteindre le brasier",
-        "entries": [ "Vous pouvez lancer le sort mineur {@i flammes}. Une fois le niveau 3 atteint, vous pouvez lancer le sort {@i mains brûlantes} une fois comme un sort de niveau 1 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
+        "entries": [ "Vous pouvez lancer le sort mineur {@spell flammes}. Une fois le niveau 3 atteint, vous pouvez lancer le sort {@spell mains brûlantes} une fois comme un sort de niveau 1 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -697,7 +697,7 @@
           {
         "type": "entries",
         "name": "Appeler la vague",
-        "entries": [ "Vous pouvez lancer le sort mineur {@i façonnage de l'eau}. Une fois le niveau 3 atteint, vous pouvez lancer le sort {@i création ou destruction d'eau} une fois comme un sort de niveau 2 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
+        "entries": [ "Vous pouvez lancer le sort mineur {@spell façonnage de l'eau}. Une fois le niveau 3 atteint, vous pouvez lancer le sort {@spell création ou destruction d'eau} une fois comme un sort de niveau 2 et vous regagnez la capacité de le relancer ainsi après un repos long. La Constitution est votre caractéristique d'incantation pour ce sort." ]
           }
         ],
         "info": {
@@ -1113,7 +1113,7 @@
       {
         "type": "entries",
         "name": "Ascendance infernale",
-        "entries": ["Vous connaissez le sort mineur thaumaturgie. Quand vous atteignez le niveau 3, vous pouvez lancer le sort représailles infernales comme un sort de niveau 2 une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Quand vous atteignez le niveau 5, vous pouvez lancer le sort {@i ténèbres} une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."]
+        "entries": ["Vous connaissez le sort mineur {@spell thaumaturgie}. Quand vous atteignez le niveau 3, vous pouvez lancer le sort {@spell représailles infernales} comme un sort de niveau 2 une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Quand vous atteignez le niveau 5, vous pouvez lancer le sort {@spell ténèbres} une fois avec ce trait et regagnez cette capacité lorsque vous terminez un repos long. Le Charisme est votre caractéristique d'incantation pour ces sorts."]
       }
     ],
     "info": [
@@ -1212,7 +1212,7 @@
       {
         "type": "entries",
         "name": "Lanceur de sorts innés",
-        "entries": ["Vous connaissez le sort Mineur {@spell bouffée de poison}. Vous pouvez lancer {@i amitié avec les animaux} un nombre illimité de fois avec ce trait, mais vous ne pouvez cibler que les serpents avec lui. À partir du 3ème niveau, vous pouvez également lancer {@i suggestion} avec ce trait. Une fois que vous l'avez lancé, vous ne pouvez pas le refaire tant que vous n'avez pas terminé un long repos. Le charisme est votre capacité de lancer de sorts pour ces sorts."]
+        "entries": ["Vous connaissez le sort Mineur {@spell bouffée de poison}. Vous pouvez lancer {@spell amitié avec les animaux} un nombre illimité de fois avec ce trait, mais vous ne pouvez cibler que les serpents avec lui. À partir du 3ème niveau, vous pouvez également lancer {@spell suggestion} avec ce trait. Une fois que vous l'avez lancé, vous ne pouvez pas le refaire tant que vous n'avez pas terminé un long repos. Le charisme est votre capacité de lancer de sorts pour ces sorts."]
       },
       {
         "type": "entries",

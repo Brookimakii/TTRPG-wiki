@@ -1,7 +1,8 @@
 export class Parser {
 }
 Parser.attAbvToFull = function (abv) {
-  return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv.toLowerCase());
+  // console.log(abv)
+  return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
 };
 
 Parser.attFullToAbv = function (full) {
@@ -11,6 +12,7 @@ Parser.attFullToAbv = function (full) {
 Parser._parse_aToB = function (abMap, a, fallback) {
   if (a === undefined || a === null) throw new TypeError("undefined or null object passed to parser");
   if (typeof a === "string") a = a.trim();
+  // console.log(a)
   if (abMap[a] !== undefined) return abMap[a];
   return fallback !== undefined ? fallback : a;
 };

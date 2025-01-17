@@ -408,7 +408,7 @@ export const RenderModule = (props: {}) => {
 
   function splitFirstSpace(string) {
     const firstIndex = string.indexOf(" ");
-    return firstIndex === -1 ? [string, ""] : [string.substr(0, firstIndex), string.substr(firstIndex + 1)];
+    return firstIndex === -1 ? [string, ""] : [string.substring(0, firstIndex), string.substring(firstIndex + 1)];
   }
 
   function renderString_renderTag(tag, string) {
@@ -513,7 +513,7 @@ export const RenderModule = (props: {}) => {
 
     switch (tag) {
       case "@spell": {
-        out.hash = encodeForHash(getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]?.id)
+        out.hash = encodeForHash(getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]?.id ?? `Unknown spell name ${string}`)
         out.page = "/TTRPG-wiki/spells";
         break;
       }
