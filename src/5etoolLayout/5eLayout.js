@@ -232,6 +232,14 @@ export const Layout5eHome = () => {
     </div>
     <div className="my-4"></div>
     <hr className="no-shrink w-100 my-0"/>
+    <main className="container">
+      <div className="w-100">
+        <h3>Un problème ?</h3>
+        <p>N'hésitez pas à me contacter pour tout problème rencontré. Un système de ticket est en cours de création.</p>
+        <h3>Changelog</h3>
+        <p>Vous pouvez consulter tous les changement <Link to="changelog">ici</Link></p>
+      </div>
+    </main>
   </div>)
 }
 

@@ -39,6 +39,7 @@ import {Dnd5eItems} from "../5etoolLayout/dnd/Items";
 import {Dnd5eRules} from "../5etoolLayout/dnd/Rules";
 import {Dnd5eCondition} from "../5etoolLayout/dnd/Condition";
 import {Dnd5eBestiary} from "../5etoolLayout/dnd/Bestiary";
+import {Changelog} from "../ChangeLog/Changelog";
 
 const routes = [
   {
@@ -285,6 +286,11 @@ const routes = [
         id: "5eHome",
         path: "",
         element: <Layout5eHome/>
+      },
+      {
+        id: "changelog",
+        path: "changelog",
+        element: <Changelog/>
       },
       {
         id: "5eRaces",
