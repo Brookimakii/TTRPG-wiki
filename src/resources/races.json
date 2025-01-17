@@ -9,7 +9,7 @@
     "common": {
       "age": "Les Aarakocra atteignent la maturité à l'âge de 3 ans. Comparés aux humains, les Aarakocra ne vivent généralement pas plus de 30 ans.",
       "alignment": "La plupart des aarakocras sont bons et choisissent rarement leur camp lorsqu'il s'agit de la loi et du chaos. Les chefs de tribus et les guerriers peuvent être loyaux, tandis que les explorateurs et les aventuriers ont tendance à être chaotiques.",
-      "size": "Les Aarakocra mesurent environ 1,50 m de haut. Ils ont un corps mince et léger qui pèse entre 40 et 50 kg. Votre taille est moyenne.",
+      "size": "Les Aarakocra mesurent environ 1,50 mètres de haut. Ils ont un corps mince et léger qui pèse entre 40 et 50 kg. Votre taille est moyenne.",
       "languages": "Vous pouvez parler, lire et écrire le commun, l'aarakocra et l'aérien."
     },
     "traits": [
@@ -111,7 +111,7 @@
           {
             "Consommation radiante": [
               "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant une lumière brûlante qui rayonne de vous, se déverse de vos yeux et de votre bouche et menace de vous carboniser.",
-              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous projetez une lumière vive dans un rayon de 10 pieds et une faible lumière pendant 10 pieds supplémentaires, et à la fin de chacun de vos tours, vous et chaque créature à moins de 10 pieds de vous subissez des dégâts radieux égaux à la moitié de votre niveau (arrondi). De plus, une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
+              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous projetez une lumière vive dans un rayon de 3 mètres et une faible lumière pendant 3 mètres supplémentaires, et à la fin de chacun de vos tours, vous et chaque créature à moins de 3 mètres de vous subissez des dégâts radieux égaux à la moitié de votre niveau (arrondi). De plus, une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
               "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
             ]
           }
@@ -130,7 +130,7 @@
           {
             "Âme rayonnante": [
               "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, faisant briller vos yeux et faire jaillir deux ailes lumineuses et incorporelles de votre dos.",
-              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous avez une vitesse de vol de 30 pieds, et une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
+              "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, vous avez une vitesse de vol de 9 mètres, et une fois à chacun de vos tours, vous pouvez infliger des dégâts radieux supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts radieux supplémentaires sont égaux à votre niveau.",
               "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
             ]
           }
@@ -148,7 +148,7 @@
         "traits": [
           {
             "Suaire nécrotique": [
-              "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant la transformation de vos yeux en flaques d'obscurité et deux ailes squelettiques, fantomatiques et incapables de voler jaillir de votre dos. À l'instant où vous vous transformez, les autres créatures à moins de 10 pieds de vous qui peuvent vous voir doivent chacune réussir un lancer de sauvetage de charisme (DC 8 + votre bonus de compétence + votre modificateur de charisme) ou avoir peur de vous jusqu'à la fin de votre prochain tour.",
+              "À partir du 3ème niveau, vous pouvez utiliser votre action pour libérer l'énergie divine en vous, provoquant la transformation de vos yeux en flaques d'obscurité et deux ailes squelettiques, fantomatiques et incapables de voler jaillir de votre dos. À l'instant où vous vous transformez, les autres créatures à moins de 3 mètres de vous qui peuvent vous voir doivent chacune réussir un lancer de sauvetage de charisme (DC 8 + votre bonus de compétence + votre modificateur de charisme) ou avoir peur de vous jusqu'à la fin de votre prochain tour.",
               "Votre transformation dure 1 minute ou jusqu'à ce que vous la terminiez en tant qu'action bonus. Pendant ce temps, une fois à chacun de vos tours, vous pouvez infliger des dégâts nécrotiques supplémentaires à une cible lorsque vous lui infligez des dégâts avec une attaque ou un sort. Les dégâts nécrotiques supplémentaires sont égaux à votre niveau.",
               "Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau jusqu'à ce que vous ayez terminé un long repos."
             ]
@@ -298,7 +298,7 @@
     "size": "Moyenne",
     "source": "PHB",
     "creatureType": "Humainoïde",
-    "speed": "9m",
+    "speed": "7,5m",
     "common": {
       "age": "",
       "alignment": "",
@@ -480,7 +480,7 @@
     },
     "traits": [
       {
-        "Magie Firbolg": "Vous pouvez lancer la magie et se déguiser avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 3 pieds plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."
+        "Magie Firbolg": "Vous pouvez lancer la magie et se déguiser avec ce trait, en utilisant la sagesse comme capacité de lancer des sorts pour eux. Une fois que vous avez lancé l'un ou l'autre sort, vous ne pouvez pas le lancer à nouveau avec ce trait tant que vous n'avez pas terminé un court ou long repos. Lorsque vous utilisez cette version de déguisement, vous pouvez sembler jusqu'à 1,50 mètres plus court que la normale, ce qui vous permet de vous fondre plus facilement dans les humains et les elfes."
       },
       {
         "Étape cachée": "En tant qu'action bonus, vous pouvez magiquement devenir invisible jusqu'au début de votre prochain tour ou jusqu'à ce que vous attaquiez, fassiez un lancer de dégâts ou forciez quelqu'un à faire un lancer de sauvetage. Une fois que vous utilisez ce trait, vous ne pouvez pas l'utiliser à nouveau tant que vous n'avez pas terminé un repos court ou long."
@@ -616,7 +616,7 @@
     "size": "Petite",
     "source": "PHB",
     "creatureType": "Humainoïde",
-    "speed": "9m",
+    "speed": "7,5m",
     "common": {
       "age": "",
       "alignment": "",
@@ -799,7 +799,7 @@
     "size": "Petite",
     "source": "PHB",
     "creatureType": "Humainoïde",
-    "speed": "9m",
+    "speed": "7,5m",
     "common": {
       "age": "",
       "alignment": "",
