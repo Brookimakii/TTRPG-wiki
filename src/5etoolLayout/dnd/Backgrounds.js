@@ -88,7 +88,9 @@ export const Dnd5eBackgrounds = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedBackground.entries)}
+                    {selectedBackground.entries[0].html?
+                      <p dangerouslySetInnerHTML={{__html:selectedBackground.entries[0].html}}></p>:
+                      RenderModule().render(selectedBackground.entries)}
                   </div>
                 </td>
               </tr>
