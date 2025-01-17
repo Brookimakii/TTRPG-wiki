@@ -1,6 +1,6 @@
 import React, {createRef, useEffect, useRef, useState} from "react";
 import {Parser} from "../../layout/5e/js/parser"
-import {RenderModule, Selector5e, ToggleState} from "../5eLayoutModules";
+import $utils, {RenderModule, Selector5e, ToggleState} from "../5eLayoutModules";
 import type {PlayerClass} from "../../layout/5e/Models";
 import {Feature} from "../../layout/5e/Models";
 import "../css/classes.css"
@@ -431,7 +431,12 @@ export const Dnd5eClasses = () => {
         <div
           ref={refs[featureStringId]}
           className={"rd__b rd__b--" + (featureObject?.header ?? header) + (featureObject?.subclassShortName ? " cls__feature-subclass" : "")}>
-          <h2 className={"rd__h rd__h--" + (featureObject?.header ?? header)}>
+          <h2 className={"rd__h rd__h--" + (featureObject?.header ?? header)}
+              onClick={(event)=> {
+                navigator.clipboard.writeText(featureName)
+                  // .then($utils(event.target))
+              }}
+          >
             <span className="entry-title-inner">
               {/*{featureLevel + "-" + nbFeatureThisLevel + (nbTitle ? "-" + nbTitle : "")}*/}
               {featureObject?.subclassShortName ?
@@ -594,7 +599,7 @@ export const Dnd5eClasses = () => {
   }
 
   function renderEntry(feature, toggle, depth) {
-    return <div className="rd__b rd__b--3" ref={refs[toggle]}>
+    return <div className="rd__b rd__b--2" ref={refs[toggle]}>
       <h3 className="rd__h rd__h--2">
         <span className="entry-title-inner">{feature.name}</span>
         <span className="ve-flex-vh-center" style={{cursor: "pointer"}} onClick={() => toggleStateChange(toggle)}>

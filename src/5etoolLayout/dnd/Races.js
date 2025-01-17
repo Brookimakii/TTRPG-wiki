@@ -3,7 +3,6 @@ import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {Parser} from "../../layout/5e/js/parser";
 import {Link} from "react-router-dom";
-import {formatContent} from "../../pages/dnd/chara crea/Details";
 import React from "react";
 import type {PlayerRace} from "../../layout/5e/Models";
 import {Entry} from "../../layout/5e/Models";
@@ -324,6 +323,7 @@ export function Dnd5eRaces() {
                     {/*})}*/}
                     {/*{console.log(selectedRace.traits)}*/}
                     {RenderModule({...renderProps}).render(selectedRace.traits)}
+                    {/*{Renderer({...renderProps}).recursiveRender(selectedRace.traits)}*/}
                     <div className="rd__b  rd__b--3">
                       <p>
                             <span className="rd__h rd__h--3">

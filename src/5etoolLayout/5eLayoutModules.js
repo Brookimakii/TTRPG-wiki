@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
-import {type} from "@testing-library/user-event/dist/type";
 import type {Entry} from "../layout/5e/Models";
 import {getResource, Resources} from "../ResourcesFetch";
 
@@ -20,6 +19,151 @@ Object.byString = function (o, s) {
   // console.log("o", o)
   return o;
 }
+
+export class Utils {
+  constructor(selector) {
+    this.elements = Utils.getSelector(selector);
+    this.element = this.get(0);
+    return this;
+  }
+
+  offset() {
+    if (!this.element) {
+      return {
+        left: 0,
+        top: 0,
+      };
+    }
+    const box = this.element.getBoundingClientRect();
+    return {
+      top:
+        box.top +
+        window.pageYOffset -
+        document.documentElement.clientTop,
+      left:
+        box.left +
+        window.pageXOffset -
+        document.documentElement.clientLeft,
+    };
+  }
+  css(css, value) {
+    if (value !== undefined) {
+      this.each((el) => {
+        Utils.setCss(el, css, value);
+      });
+      return this;
+    }
+    if (typeof css === 'object') {
+      for (const property in css) {
+        if (Object.prototype.hasOwnProperty.call(css, property)) {
+          this.each((el) => {
+            Utils.setCss(el, property, css[property]);
+          });
+        }
+      }
+      return this;
+    }
+    const cssProp = Utils.camelCase(css);
+    const property = Utils.styleSupport(cssProp);
+    return getComputedStyle(this.element)[property];
+  }
+  html(html) {
+    if (html === undefined) {
+      if (!this.element) {
+        return '';
+      }
+      return this.element.innerHTML;
+    }
+    this.each((el) => {
+      el.innerHTML = html;
+    });
+    return this;
+  }
+  width() {
+    if (!this.element) {
+      return 0;
+    }
+    const style = window.getComputedStyle(this.element, null);
+    return parseFloat(style.width.replace('px', ''));
+  }
+  remove() {
+    this.each((el) => {
+      el.parentNode.removeChild(el);
+    });
+    return this;
+  }
+  static getSelector(selector, context) {
+    if (selector && typeof selector !== 'string') {
+      if (selector.length !== undefined) {
+        return selector;
+      }
+      return [selector];
+    }
+    context = context || document;
+
+    // For performance reasons, use getElementById
+    // eslint-disable-next-line no-control-regex
+    const idRegex = /^#(?:[\w-]|\\.|[^\x00-\xa0])*$/;
+    if (idRegex.test(selector)) {
+      const el = document.getElementById(selector.substring(1));
+      return el ? [el] : [];
+    }
+    return [].slice.call(context.querySelectorAll(selector) || []);
+  }
+  get(index) {
+    if (index !== undefined) {
+      return this.elements[index];
+    }
+    return this.elements;
+  }
+  each(func) {
+    if (!this.elements.length) {
+      return this;
+    }
+    this.elements.forEach((el, index) => {
+      func.call(el, el, index);
+    });
+    return this;
+  }
+  static setCss(el, prop, value) {
+    // prettier-ignore
+    let cssProperty = Utils.camelCase(prop);
+    cssProperty = Utils.styleSupport(cssProperty);
+    el.style[cssProperty] = value;
+  }
+  static camelCase(text) {
+    return text.replace(/-([a-z])/gi, (s, group1) => group1.toUpperCase());
+  }
+  static styleSupport(prop) {
+    let vendorProp;
+    let supportedProp;
+    const capProp = prop.charAt(0).toUpperCase() + prop.slice(1);
+    const prefixes = ['Moz', 'Webkit', 'O', 'ms'];
+    let div = document.createElement('div');
+
+    if (prop in div.style) {
+      supportedProp = prop;
+    } else {
+      for (let i = 0; i < prefixes.length; i++) {
+        vendorProp = prefixes[i] + capProp;
+        if (vendorProp in div.style) {
+          supportedProp = vendorProp;
+          break;
+        }
+      }
+    }
+
+    div = null;
+    return supportedProp;
+  }
+}
+
+Utils.eventListeners = {};
+
+export default function $utils(selector) {
+  return new Utils(selector);
+}
+
 
 
 export function extractNestedValue(obj, path) {
@@ -209,6 +353,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
             <h1 className="stats__h-name copyable m-0"
               // onMouseDown="event.preventDefault()"
               // onClick="Renderer.utils._pHandleNameClick(this)"
+              onClick={() => navigator.clipboard.writeText(selected.name)}
             >{selected.name}</h1>
           </div>
           <div className="stats__wrp-h-source  ve-flex-v-baseline">
@@ -513,7 +658,7 @@ export const RenderModule = (props: {}) => {
 
     switch (tag) {
       case "@spell": {
-        out.hash = encodeForHash(getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]?.id ?? `Unknown spell name ${string}`)
+        out.hash = encodeForHash(getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]?.id ?? string)
         out.page = "/TTRPG-wiki/spells";
         break;
       }
@@ -547,6 +692,33 @@ export const RenderModule = (props: {}) => {
             })}
           </ul>
         }
+        case "table": {
+          return <>
+            <table className={"w-100 rd__table" + (entry.isStriped === false ? "" : " stripe-odd-table")}>
+              {entry.caption ? <caption>{entry.caption}</caption> : ""}
+              <thead>
+              <tr>
+                {entry.colLabels.map((label, idx) =><th className={entry.colStyles[idx]}>
+                  {label}
+                </th>)}
+              </tr>
+              </thead>
+              <tbody>
+              {entry.rows.map(row=><tr>
+                {row.map((cell, idx) => <td className={entry.colStyles[idx]}>
+                  {render(cell)}
+                </td>)}
+              </tr>)}
+              </tbody>
+            </table>
+          </>
+        }
+        case "abilityDc": return <div className={"rd__wrp-centered-ability"}>
+          <b>DD de sauvegarde des sorts</b> = 8 + votre modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0))?"d'":"de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} + bonus de maîtrise
+        </div>
+        case "abilityAttackMod": return <div className={"rd__wrp-centered-ability"}>
+          <b>Modificateur aux attaques avec un sort</b> = votre modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0))?"d'":"de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} + bonus de maîtrise
+        </div>
         default:
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
@@ -568,7 +740,7 @@ export const RenderModule = (props: {}) => {
         str.push(renderString_renderTag(tag, text));
 
       }
-      // console.log("HERE:", str)
+      console.log("HERE:", str)
 
       return props?.defaultString ? props.defaultString(str) : <p>{str}</p>
     } else return false;

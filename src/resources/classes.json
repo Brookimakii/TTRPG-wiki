@@ -246,8 +246,16 @@
             "name": "Caractéristique d'incantation",
             "entries": [
               "L'Intelligence est votre caractéristique d'incantation pour vos sorts d'artificier ; votre compréhension théorique de la magie vous permet de manier ces sorts avec une grande habileté. Vous utilisez votre Intelligence chaque fois qu'un sort d'artificier se réfère à votre caractéristique d'incantation. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort d'artificier que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
-              "DD de sauvegarde des sorts = 8 + votre bonus de maîtrise + votre modificateur d'Intelligence ",
-              "Modificateur aux attaques avec un sort = votre bonus de maîtrise + votre modificateur d'Intelligence "
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "int"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "int"
+              }
             ]
           },
           {
@@ -547,33 +555,33 @@
             "type": "table",
             "caption": "Sort d'Alchimiste",
             "colLabels": [
-              "Artificer Level",
-              "Spell"
+              "Niveau d'Artificier",
+              "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "rd__th ve-col-2 ve-text-center",
+              "rd__th ve-col-10"
             ],
             "rows": [
               [
-                "3rd",
-                "{@spell healing word}, {@spell ray of sickness}"
+                "3e",
+                "{@spell Mot de guérison}, {@spell Rayon empoisonné}"
               ],
               [
-                "5th",
-                "{@spell flaming sphere}, {@spell Melf's acid arrow}"
+                "5e",
+                "{@spell Sphère de feu}, {@spell Flèche acide de Melf}"
               ],
               [
-                "9th",
-                "{@spell gaseous form}, {@spell mass healing word}"
+                "9e",
+                "{@spell Forme gazeuse}, {@spell Mot de guérison de groupe}"
               ],
               [
-                "13th",
-                "{@spell blight}, {@spell death ward}"
+                "13e",
+                "{@spell Flétrissement}, {@spell Protection contre la mort}"
               ],
               [
-                "17th",
-                "{@spell cloudkill}, {@spell raise dead}"
+                "17e",
+                "{@spell Brume mortelle}, {@spell Rappel à la vie}"
               ]
             ]
           }
@@ -1839,7 +1847,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "L'énergie magique qui coule en vous jaillit parfois. Lorsque vous entrez en rage, lancez 1d8 sur la table de Magie sauvage pour déterminer l'effet magique produit. Si l'effet requiert un jet de sauvegarde, le DD est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution.##### Magie sauvage|d8 |       Effet   ||:---:|:----||1| Toute créature de votre choix que vous pouvez voir à 9 mètres ou moins de vous doit réussir un jet de sauvegarde de Constitution ou subir 1d12 dégâts nécrotiques. Vous gagnez également des points de vie temporaires égaux à 1d12 plus votre niveau de barbare.||2| Vous vous téléportez dans un espace inoccupé que vous pouvez voir dans un rayon de 9 mètres. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet à chacun de vos tours.||3| Un esprit intangible, ressemblant à un flumph ou à une pixie (selon votre choix), apparaît à 1,50 m d'une créature de votre choix que vous pouvez voir dans un rayon de 9 mètres autour de vous. À la fin de ce tour, l'esprit explose et toute créature à 1,50 mètre ou moins de lui doit réussir un jet de sauvegarde de Dextérité ou subir 1d6 dégâts de force. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet en invoquant un autre esprit à chacun de vos tours.||4| Un éclair de lumière jaillit de votre poitrine. Une autre créature de votre choix que vous pouvez voir 9 mètres ou moins de vous doit réussir un jet de sauvegarde de Constitution ou subir 1d6 dégâts radiants et être aveuglée jusqu'au début de votre prochain tour. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet à chacun de vos tours.||5| Chaque fois qu'une créature vous touche avec un jet d'attaque avant la fin de votre rage, cette créature subit 1d6 dégâts de force, la magie se déchaînant en représailles.||6| Vous êtes entouré de lumières protectrices multicolores. Vous gagnez un bonus de +1 à la CA, et vos alliés à 3 mètres ou moins de vous gagnent le même bonus.||7| Des fleurs et des plantes poussent temporairement autour de vous. Jusqu'à ce que votre rage se termine, le sol dans un rayon de 4,50 mètres autour de vous est un terrain difficile pour vos ennemis.||8| La magie imprègne une arme de votre choix que vous tenez. Jusqu'à ce que votre rage se termine, le type de dégâts de l'arme est de force, et elle acquiert les propriétés légère et lancer, avec une portée nominale de 6 mètres et une longue portée de 18 mètres. Si l'arme quitte votre main, elle réapparaît dans votre main à la fin du tour en cours.|"
+          "L'énergie magique qui coule en vous jaillit parfois. Lorsque vous entrez en rage, lancez 1d8 sur la table de Magie sauvage pour déterminer l'effet magique produit. Si l'effet requiert un jet de sauvegarde, le DD est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution.",
+          "Magie sauvage|d8 |       Effet   ||:---:|:----||1| Toute créature de votre choix que vous pouvez voir à 9 mètres ou moins de vous doit réussir un jet de sauvegarde de Constitution ou subir 1d12 dégâts nécrotiques. Vous gagnez également des points de vie temporaires égaux à 1d12 plus votre niveau de barbare.||2| Vous vous téléportez dans un espace inoccupé que vous pouvez voir dans un rayon de 9 mètres. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet à chacun de vos tours.||3| Un esprit intangible, ressemblant à un flumph ou à une pixie (selon votre choix), apparaît à 1,50 m d'une créature de votre choix que vous pouvez voir dans un rayon de 9 mètres autour de vous. À la fin de ce tour, l'esprit explose et toute créature à 1,50 mètre ou moins de lui doit réussir un jet de sauvegarde de Dextérité ou subir 1d6 dégâts de force. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet en invoquant un autre esprit à chacun de vos tours.||4| Un éclair de lumière jaillit de votre poitrine. Une autre créature de votre choix que vous pouvez voir 9 mètres ou moins de vous doit réussir un jet de sauvegarde de Constitution ou subir 1d6 dégâts radiants et être aveuglée jusqu'au début de votre prochain tour. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet à chacun de vos tours.||5| Chaque fois qu'une créature vous touche avec un jet d'attaque avant la fin de votre rage, cette créature subit 1d6 dégâts de force, la magie se déchaînant en représailles.||6| Vous êtes entouré de lumières protectrices multicolores. Vous gagnez un bonus de +1 à la CA, et vos alliés à 3 mètres ou moins de vous gagnent le même bonus.||7| Des fleurs et des plantes poussent temporairement autour de vous. Jusqu'à ce que votre rage se termine, le sol dans un rayon de 4,50 mètres autour de vous est un terrain difficile pour vos ennemis.||8| La magie imprègne une arme de votre choix que vous tenez. Jusqu'à ce que votre rage se termine, le type de dégâts de l'arme est de force, et elle acquiert les propriétés légère et lancer, avec une portée nominale de 6 mètres et une longue portée de 18 mètres. Si l'arme quitte votre main, elle réapparaît dans votre main à la fin du tour en cours.|"
         ]
       },
       {
@@ -2249,7 +2258,59 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Vous avez appris à démêler et remodeler le tissu de la réalité en harmonie avec vos souhaits et vos rêves. Vos sorts font partie intégrante de votre vaste répertoire, une magie que vous pouvez accorder à différentes situations.#### Sorts mineursVous connaissez deux sorts mineurs de barde de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus.#### Emplacements de sortsLa table du barde montre combien d'emplacements de sorts vous avez pour lancer vos sorts de barde de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Par exemple, si vous connaissez le sort de niveau 1 soins et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer deux fois ce sort.#### Sorts connus de niveau 1 et supérieurVous connaissez quatre sorts de niveau 1, à choisir dans la liste des sorts de barde. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts de barde de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort, comme indiqué dans la table. Par exemple, lorsque vous atteignez le niveau 3 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de barde que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de barde, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort.#### Caractéristique d'incantationLe Charisme est votre caractéristique d'incantation pour vos sorts de barde, car le pouvoir de votre magie vient du cœur et de l'âme que vous mettez lorsque jouez d'un instrument ou lors de vos oraisons. Vous utilisez votre Charisme chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort de barde que vous lancez, ainsi que pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur de Charisme**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur de Charisme#### RituelVous pouvez lancer n'importe quel sort de barde que vous connaissez comme un rituel si celui-ci possède l'étiquette rituel.#### Focaliseur d'incantationVous pouvez utiliser un instrument de musique comme focaliseur d'incantation pour vos sorts de barde."
+          "Vous avez appris à démêler et remodeler le tissu de la réalité en harmonie avec vos souhaits et vos rêves. Vos sorts font partie intégrante de votre vaste répertoire, une magie que vous pouvez accorder à différentes situations.",
+          {
+            "type": "entries",
+            "name": "Sorts mineurs",
+            "entries": [
+              "Vous connaissez deux sorts mineurs de barde de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Emplacements de sorts",
+            "entries": [
+              "La table du barde montre combien d'emplacements de sorts vous avez pour lancer vos sorts de barde de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Par exemple, si vous connaissez le sort de niveau 1 soins et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer deux fois ce sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Sorts connus de niveau 1 et supérieur",
+            "entries": [
+              "Vous connaissez quatre sorts de niveau 1, à choisir dans la liste des sorts de barde. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts de barde de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort, comme indiqué dans la table. Par exemple, lorsque vous atteignez le niveau 3 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de barde que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de barde, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Caractéristique d'incantation",
+            "entries": [
+              "Le Charisme est votre caractéristique d'incantation pour vos sorts de barde, car le pouvoir de votre magie vient du cœur et de l'âme que vous mettez lorsque jouez d'un instrument ou lors de vos oraisons. Vous utilisez votre Charisme chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort de barde que vous lancez, ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Rituel",
+            "entries": [
+              "Vous pouvez lancer n'importe quel sort de barde que vous connaissez comme un rituel si celui-ci possède l'étiquette rituel."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Focaliseur d'incantation",
+            "entries": [
+              "Vous pouvez utiliser un instrument de musique comme focaliseur d'incantation pour vos sorts de barde."
+            ]
+          }
         ]
       },
       {
@@ -3237,7 +3298,52 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "En tant que conduit de la puissance divine, vous pouvez lancer des sorts de clerc.#### Sorts mineursAu niveau 1, vous connaissez trois sorts mineurs de clerc de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus.#### Préparer et lancer des sortsLa table du clerc montre combien d'emplacements de sorts vous avez pour lancer vos sorts de clerc de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de clerc qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de clerc égal à votre modificateur de Sagesse + votre niveau de clerc (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un clerc de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de clerc nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste.#### Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de clerc. La puissance de vos sorts vient de votre dévotion à votre dieu. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de clerc que vous lancez ainsi que pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur de Sagesse**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur de Sagesse#### RituelVous pouvez lancer un sort de clerc en tant que rituel si ce sort possède l'étiquette rituel et si vous avez préparé le sort.#### Focaliseur d'incantationVous pouvez utiliser un symbole sacré comme focaliseur d'incantation pour vos sorts de clerc."
+          "En tant que conduit de la puissance divine, vous pouvez lancer des sorts de clerc.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts mineursAu niveau 1, vous connaissez trois sorts mineurs de clerc de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Préparer et lancer des sortsLa table du clerc montre combien d'emplacements de sorts vous avez pour lancer vos sorts de clerc de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de clerc qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de clerc égal à votre modificateur de Sagesse + votre niveau de clerc (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un clerc de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de clerc nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de clerc. La puissance de vos sorts vient de votre dévotion à votre dieu. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de clerc que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "RituelVous pouvez lancer un sort de clerc en tant que rituel si ce sort possède l'étiquette rituel et si vous avez préparé le sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Focaliseur d'incantationVous pouvez utiliser un symbole sacré comme focaliseur d'incantation pour vos sorts de clerc."
+            ]
+          }
         ]
       },
       {
@@ -3248,7 +3354,8 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Choisissez un domaine lié à votre divinité : duperie, guerre, lumière, nature, savoir, tempête ou vie. Votre choix vous accorde des sorts de domaine et des capacités spéciales dès le niveau 1, puis de nouvelles aux niveaux 6, 8 et 17. Il vous octroie également des manières supplémentaires pour utiliser le Conduit divin du niveau 2.#### Sorts de domaineChaque domaine possède une liste de sorts, les sorts de domaine, que vous gagnez au niveau de clerc indiqué dans la description du domaine. Une fois que vous gagnez un sort de domaine, il est toujours préparé, et ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous gagnez un sort de domaine qui ne figure pas sur la liste de sorts de clerc, le sort est néanmoins un sort de clerc pour vous."
+          "Choisissez un domaine lié à votre divinité : duperie, guerre, lumière, nature, savoir, tempête ou vie. Votre choix vous accorde des sorts de domaine et des capacités spéciales dès le niveau 1, puis de nouvelles aux niveaux 6, 8 et 17. Il vous octroie également des manières supplémentaires pour utiliser le Conduit divin du niveau 2.",
+          "Sorts de domaineChaque domaine possède une liste de sorts, les sorts de domaine, que vous gagnez au niveau de clerc indiqué dans la description du domaine. Une fois que vous gagnez un sort de domaine, il est toujours préparé, et ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous gagnez un sort de domaine qui ne figure pas sur la liste de sorts de clerc, le sort est néanmoins un sort de clerc pour vous."
         ]
       },
       {
@@ -3259,7 +3366,8 @@
         "classSource": "PHB",
         "level": 2,
         "entries": [
-          "Au niveau 2, vous gagnez la possibilité de canaliser l'énergie divine directement depuis votre divinité et d'utiliser cette énergie pour alimenter des effets magiques. Vous commencez avec deux effets : Renvoi des morts-vivants et un effet déterminé par votre domaine. Certains domaines vous accordent des effets supplémentaires lorsque vous montez de niveau, comme indiqué dans la description du domaine. Lorsque vous utilisez votre Conduit divin, vous choisissez quel effet créer. Vous devez ensuite terminer un repos court ou long pour pouvoir utiliser votre Conduit divin de nouveau.Certains effets du Conduit divin demandent un jet de sauvegarde. Lorsque vous utilisez un tel effet de cette classe, le DD est égal au DD de vos sorts de clerc.À partir du niveau 6, vous pouvez utiliser votre Conduit divin deux fois entre deux repos, et à partir du niveau 18, vous pouvez l'utiliser trois fois entre deux repos. Lorsque vous terminez un repos court ou long, vous regagnez vos utilisations dépensées.#### Conduit divin : renvoi des morts-vivantsAu prix d'une action, vous présentez votre symbole sacré en psalmodiant une prière contre les morts-vivants. Chaque mort-vivant qui peut vous voir ou vous entendre et qui se trouve à 9 mètres ou moins de vous doit effectuer un jet de sauvegarde de Sagesse. Si la créature rate son jet de sauvegarde, elle est renvoyée pendant 1 minute ou jusqu'à ce qu'elle prenne des dégâts.Une créature renvoyée doit passer ses actions à essayer de s'éloigner le plus loin possible de vous et ne peut volontairement se rapprocher à 9 mètres ou moins de vous. Elle ne peut pas utiliser de réactions et peut utiliser ses actions seulement pour Foncer ou essayer de s'échapper d'un effet immobilisant. S'il n'y a nulle part où aller, la créature peut utiliser l'action Esquiver."
+          "Au niveau 2, vous gagnez la possibilité de canaliser l'énergie divine directement depuis votre divinité et d'utiliser cette énergie pour alimenter des effets magiques. Vous commencez avec deux effets : Renvoi des morts-vivants et un effet déterminé par votre domaine. Certains domaines vous accordent des effets supplémentaires lorsque vous montez de niveau, comme indiqué dans la description du domaine. Lorsque vous utilisez votre Conduit divin, vous choisissez quel effet créer. Vous devez ensuite terminer un repos court ou long pour pouvoir utiliser votre Conduit divin de nouveau.Certains effets du Conduit divin demandent un jet de sauvegarde. Lorsque vous utilisez un tel effet de cette classe, le DD est égal au DD de vos sorts de clerc.À partir du niveau 6, vous pouvez utiliser votre Conduit divin deux fois entre deux repos, et à partir du niveau 18, vous pouvez l'utiliser trois fois entre deux repos. Lorsque vous terminez un repos court ou long, vous regagnez vos utilisations dépensées.",
+          "Conduit divin : renvoi des morts-vivantsAu prix d'une action, vous présentez votre symbole sacré en psalmodiant une prière contre les morts-vivants. Chaque mort-vivant qui peut vous voir ou vous entendre et qui se trouve à 9 mètres ou moins de vous doit effectuer un jet de sauvegarde de Sagesse. Si la créature rate son jet de sauvegarde, elle est renvoyée pendant 1 minute ou jusqu'à ce qu'elle prenne des dégâts.Une créature renvoyée doit passer ses actions à essayer de s'éloigner le plus loin possible de vous et ne peut volontairement se rapprocher à 9 mètres ou moins de vous. Elle ne peut pas utiliser de réactions et peut utiliser ses actions seulement pour Foncer ou essayer de s'échapper d'un effet immobilisant. S'il n'y a nulle part où aller, la créature peut utiliser l'action Esquiver."
         ]
       },
       {
@@ -3386,7 +3494,8 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "À partir du niveau 2, vous pouvez utiliser votre canalisation divine pour abjurer des créatures d'un autre monde.Par une action, vous présentez votre symbole sacré, et un céleste, élémental, fée ou démon de votre choix qui se trouve à 9 mètres ou moins de vous doit effectuer un jet de sauvegarde de Sagesse, à condition que la créature puisse vous voir ou vous entendre. Si la créature rate son jet de sauvegarde, elle est retournée pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts.Une créature retournée doit passer ses tours à essayer de s'éloigner le plus possible de vous, et elle ne peut pas volontairement terminer son déplacement dans un espace situé à moins de 9 mètres de vous. Il ne peut pas non plus prendre de réactions. Pour son action, il ne peut utiliser que l'action Dash ou tenter d'échapper à un effet qui l'empêche de se déplacer. S'il n'y a nulle part où se déplacer, la créature peut utiliser l'action Esquiver.Après avoir atteint le niveau 5, lorsqu'une créature échoue à son jet de sauvegarde contre votre capacité Arcane Abjuration, la créature est bannie pendant 1 minute (comme dans le sort Bannissement , aucune concentration requise) si elle n'est pas sur son plan d'origine et son défi est égal ou inférieur à un certain seuil, comme indiqué sur le tableau Arcane Banishment.###### Bannissement arcanique| Niveau Clerc | Bannit les créatures de CR… ||:------------:|:----------------------------|| 5e           | 1/2 ou moins                || 8e           | 1 ou moins                  || 11e          | 2 ou moins                  || 14e          | 3 ou moins                  || 17e          | 4 ou moins                  |"
+          "À partir du niveau 2, vous pouvez utiliser votre canalisation divine pour abjurer des créatures d'un autre monde.Par une action, vous présentez votre symbole sacré, et un céleste, élémental, fée ou démon de votre choix qui se trouve à 9 mètres ou moins de vous doit effectuer un jet de sauvegarde de Sagesse, à condition que la créature puisse vous voir ou vous entendre. Si la créature rate son jet de sauvegarde, elle est retournée pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts.Une créature retournée doit passer ses tours à essayer de s'éloigner le plus possible de vous, et elle ne peut pas volontairement terminer son déplacement dans un espace situé à moins de 9 mètres de vous. Il ne peut pas non plus prendre de réactions. Pour son action, il ne peut utiliser que l'action Dash ou tenter d'échapper à un effet qui l'empêche de se déplacer. S'il n'y a nulle part où se déplacer, la créature peut utiliser l'action Esquiver.Après avoir atteint le niveau 5, lorsqu'une créature échoue à son jet de sauvegarde contre votre capacité Arcane Abjuration, la créature est bannie pendant 1 minute (comme dans le sort Bannissement , aucune concentration requise) si elle n'est pas sur son plan d'origine et son défi est égal ou inférieur à un certain seuil, comme indiqué sur le tableau Arcane Banishment.",
+          "Bannissement arcanique| Niveau Clerc | Bannit les créatures de CR… ||:------------:|:----------------------------|| 5e           | 1/2 ou moins                || 8e           | 1 ou moins                  || 11e          | 2 ou moins                  || 14e          | 3 ou moins                  || 17e          | 4 ou moins                  |"
         ]
       },
       {
@@ -5607,7 +5716,52 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Puisant dans l'essence divine de la nature elle-même, vous pouvez lancer des sorts pour modeler cette essence selon votre volonté.#### Sorts mineursAu niveau 1, vous connaissez deux sorts mineurs de druide de votre choix. Vous apprendrez des sorts mineurs de druide supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus.#### Préparer et lancer des sortsLa table du druide montre combien d'emplacements de sorts vous avez pour lancer vos sorts de druide de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de druide qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de druide égal à votre modificateur de Sagesse + votre niveau de druide (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un druide de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de druide nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste.#### Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de druide, étant donné que votre puissance magique dépend de votre dévotion ainsi que de votre connexion à la nature. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de druide que vous lancez ainsi que pour le jet d'attaque de celui-ci.***DD de sauvegarde des sorts*** = 8 + votre bonus de maîtrise + votre modificateur de Sagesse***Modificateur aux attaques avec un sort*** = votre bonus de maîtrise + votre modificateur de Sagesse#### RituelVous pouvez lancer un sort de druide en tant que rituel si ce sort possède l'étiquette rituel et si vous avez préparé le sort.#### Focaliseur d'incantationVous pouvez utiliser un focaliseur druidique comme focaliseur d'incantation pour vos sorts de druide."
+          "Puisant dans l'essence divine de la nature elle-même, vous pouvez lancer des sorts pour modeler cette essence selon votre volonté.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts mineursAu niveau 1, vous connaissez deux sorts mineurs de druide de votre choix. Vous apprendrez des sorts mineurs de druide supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Préparer et lancer des sortsLa table du druide montre combien d'emplacements de sorts vous avez pour lancer vos sorts de druide de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de druide qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de druide égal à votre modificateur de Sagesse + votre niveau de druide (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un druide de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de druide nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de druide, étant donné que votre puissance magique dépend de votre dévotion ainsi que de votre connexion à la nature. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de druide que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "RituelVous pouvez lancer un sort de druide en tant que rituel si ce sort possède l'étiquette rituel et si vous avez préparé le sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Focaliseur d'incantationVous pouvez utiliser un focaliseur druidique comme focaliseur d'incantation pour vos sorts de druide."
+            ]
+          }
         ]
       },
       {
@@ -6366,7 +6520,8 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "Votre lien symbiotique avec les champignons et votre capacité à puiser dans le cycle de la vie et de la mort vous donnent accès à certains sorts. Au niveau 2, vous apprenez le sort mineur Chill Touch .Aux niveaux 3, 5, 7 et 9, vous accédez aux sorts répertoriés pour ce niveau dans le tableau des sorts du cercle des spores. Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et cela ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous accédez à un sort qui n'apparaît pas sur la liste des sorts du druide, le sort est néanmoins un sort de druide pour vous.##### Cercle des sorts de spores|Niveau de druide   |     Sorts de cercle||:----:|:-------||2ème    |    Toucher froid||3ème    |    Cécité/Surdité , Repos en douceur||5ème    |    Animer les morts , forme gazeuse||7ème    |    Brûlure , Confusion||9ème  |     Cloudkill , Contagion|"
+          "Votre lien symbiotique avec les champignons et votre capacité à puiser dans le cycle de la vie et de la mort vous donnent accès à certains sorts. Au niveau 2, vous apprenez le sort mineur Chill Touch .Aux niveaux 3, 5, 7 et 9, vous accédez aux sorts répertoriés pour ce niveau dans le tableau des sorts du cercle des spores. Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et cela ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous accédez à un sort qui n'apparaît pas sur la liste des sorts du druide, le sort est néanmoins un sort de druide pour vous.",
+          "Cercle des sorts de spores|Niveau de druide   |     Sorts de cercle||:----:|:-------||2ème    |    Toucher froid||3ème    |    Cécité/Surdité , Repos en douceur||5ème    |    Animer les morts , forme gazeuse||7ème    |    Brûlure , Confusion||9ème  |     Cloudkill , Contagion|"
         ]
       },
       {
@@ -6495,7 +6650,15 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "Votre connexion mystique à la terre vous permet de lancer certains sorts. Aux niveaux 3, 5, 7 et 9, vous accédez à des sorts de cercle liés à la terre qui vous a vu devenir druide. Choisissez ce terrain (arctique, désert, forêt, littoral, marais, montagne, Outreterre ou plaine) et consultez la liste de sorts associée. Une fois que vous avez accès à un sort de cercle, ce sort est constamment préparé et ne compte pas dans le total de sorts que vous pouvez préparer chaque jour. Si vous accédez à un sort qui n'apparaît pas dans la liste de sorts du druide, ce sort est néanmoins considéré comme étant un sort de druide pour vous.##### Arctique|Niveau de druide|Sorts de cercle                                  ||:--------------:|:------------------------------------------------|| 3              | croissance d'épines, immobilisation de personne || 5              | lenteur, tempête de neige                       || 7              | liberté de mouvement, tempête de grêle          || 9              | communion avec la nature, cône de froid         |##### Désert|Niveau de druide|Sorts de cercle                                                 ||:--------------:|:---------------------------------------------------------------|| 3              | flou, silence                                                  || 5              | création de nourriture et d'eau, protection contre une énergie || 7              | flétrissement, terrain hallucinatoire                          || 9              | fléau d'insectes, mur de pierre                                |##### Forêt|Niveau de druide|Sorts de cercle                                   ||:--------------:|:-------------------------------------------------|| 3              | pattes d'araignée, peau d'écorce                 || 5              | appel de la foudre, croissance végétale          || 7              | divination, liberté de mouvement                 || 9              | communion avec la nature, passage par les arbres |##### Littoral|Niveau de druide|Sorts de cercle                          ||:--------------:|:----------------------------------------|| 3              | foulée brumeuse, image miroir           || 5              | marche sur l'eau, respiration aquatique || 7              | contrôle de l'eau, liberté de mouvement || 9              | invocation d'élémentaire, scrutation    |##### Marais|Niveau de druide|Sorts de cercle                                 ||:--------------:|:-----------------------------------------------|| 3              | flèche acide de Melf, ténèbres                 || 5              | marche sur l'eau, nuage nauséabond             || 7              | liberté de mouvement, localisation de créature || 9              | fléau d'insectes, scrutation                   |##### Montagne|Niveau de druide|Sorts de cercle                         ||:--------------:|:---------------------------------------|| 3              | croissance d'épines, pattes d'araignée || 5              | éclair, fusion dans la pierre          || 7              | façonnage de la pierre, peau de pierre || 9              | mur de pierre, passe-muraille          |##### Outreterre|Niveau de druide|Sorts de cercle                                  ||:--------------:|:------------------------------------------------|| 3              | pattes d'araignée, toile d'araignée             || 5              | forme gazeuse, nuage nauséabond                 || 7              | façonnage de la pierre, invisibilité supérieure || 9              | brume mortelle, fléau d'insectes                |##### Plaine|Niveau de druide|Sorts de cercle                   ||:--------------:|:---------------------------------|| 3              | invisibilité, passage sans trace || 5              | hâte, lumière du jour            || 7              | divination, liberté de mouvement || 9              | fléau d'insectes, songe          |"
+          "Votre connexion mystique à la terre vous permet de lancer certains sorts. Aux niveaux 3, 5, 7 et 9, vous accédez à des sorts de cercle liés à la terre qui vous a vu devenir druide. Choisissez ce terrain (arctique, désert, forêt, littoral, marais, montagne, Outreterre ou plaine) et consultez la liste de sorts associée. Une fois que vous avez accès à un sort de cercle, ce sort est constamment préparé et ne compte pas dans le total de sorts que vous pouvez préparer chaque jour. Si vous accédez à un sort qui n'apparaît pas dans la liste de sorts du druide, ce sort est néanmoins considéré comme étant un sort de druide pour vous.",
+          "Arctique|Niveau de druide|Sorts de cercle                                  ||:--------------:|:------------------------------------------------|| 3              | croissance d'épines, immobilisation de personne || 5              | lenteur, tempête de neige                       || 7              | liberté de mouvement, tempête de grêle          || 9              | communion avec la nature, cône de froid         |",
+          "Désert|Niveau de druide|Sorts de cercle                                                 ||:--------------:|:---------------------------------------------------------------|| 3              | flou, silence                                                  || 5              | création de nourriture et d'eau, protection contre une énergie || 7              | flétrissement, terrain hallucinatoire                          || 9              | fléau d'insectes, mur de pierre                                |",
+          "Forêt|Niveau de druide|Sorts de cercle                                   ||:--------------:|:-------------------------------------------------|| 3              | pattes d'araignée, peau d'écorce                 || 5              | appel de la foudre, croissance végétale          || 7              | divination, liberté de mouvement                 || 9              | communion avec la nature, passage par les arbres |",
+          "Littoral|Niveau de druide|Sorts de cercle                          ||:--------------:|:----------------------------------------|| 3              | foulée brumeuse, image miroir           || 5              | marche sur l'eau, respiration aquatique || 7              | contrôle de l'eau, liberté de mouvement || 9              | invocation d'élémentaire, scrutation    |",
+          "Marais|Niveau de druide|Sorts de cercle                                 ||:--------------:|:-----------------------------------------------|| 3              | flèche acide de Melf, ténèbres                 || 5              | marche sur l'eau, nuage nauséabond             || 7              | liberté de mouvement, localisation de créature || 9              | fléau d'insectes, scrutation                   |",
+          "Montagne|Niveau de druide|Sorts de cercle                         ||:--------------:|:---------------------------------------|| 3              | croissance d'épines, pattes d'araignée || 5              | éclair, fusion dans la pierre          || 7              | façonnage de la pierre, peau de pierre || 9              | mur de pierre, passe-muraille          |",
+          "Outreterre|Niveau de druide|Sorts de cercle                                  ||:--------------:|:------------------------------------------------|| 3              | pattes d'araignée, toile d'araignée             || 5              | forme gazeuse, nuage nauséabond                 || 7              | façonnage de la pierre, invisibilité supérieure || 9              | brume mortelle, fléau d'insectes                |",
+          "Plaine|Niveau de druide|Sorts de cercle                   ||:--------------:|:---------------------------------|| 3              | invisibilité, passage sans trace || 5              | hâte, lumière du jour            || 7              | divination, liberté de mouvement || 9              | fléau d'insectes, songe          |"
         ]
       },
       {
@@ -6693,7 +6856,13 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Vous adoptez un style particulier de combat qui sera votre spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de style de combat plus d'une fois, même si vous obtenez plus tard la possibilité de choisir un nouveau style.#### ArcherieVous obtenez un bonus de +2 aux jets d'attaque avec une arme à distance.#### Arme à deux mainsLorsque vous obtenez 1 ou 2 à un dé de dégâts lors d'une attaque que vous effectuez avec une arme de corps à corps que vous tenez avec vos deux mains, vous pouvez relancer le dé et obligatoirement prendre le nouveau résultat, même si celui-ci est un 1 ou un 2. L'arme doit avoir la propriété à deux mains ou polyvalente pour octroyer cet avantage.#### Combat à deux armesLorsque vous vous engagez dans un combat avec deux armes en mains, vous pouvez ajouter votre modificateur de caractéristique aux dégâts de la seconde attaque.#### DéfenseSi vous portez une armure, vous obtenez un bonus de +1 à la CA.#### DuelLorsque vous attaquez avec une arme de corps à corps dans une main et aucune autre arme, vous obtenez un bonus de +2 aux dégâts avec cette arme.#### ProtectionQuand une créature que vous pouvez voir attaque une cible autre que vous-même et qui se trouve à 1,50 mètre ou moins de vous, vous pouvez utiliser votre réaction pour imposer un désavantage à son jet d'attaque. Vous devez pour cela porter un bouclier."
+          "Vous adoptez un style particulier de combat qui sera votre spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de style de combat plus d'une fois, même si vous obtenez plus tard la possibilité de choisir un nouveau style.",
+          "ArcherieVous obtenez un bonus de +2 aux jets d'attaque avec une arme à distance.",
+          "Arme à deux mainsLorsque vous obtenez 1 ou 2 à un dé de dégâts lors d'une attaque que vous effectuez avec une arme de corps à corps que vous tenez avec vos deux mains, vous pouvez relancer le dé et obligatoirement prendre le nouveau résultat, même si celui-ci est un 1 ou un 2. L'arme doit avoir la propriété à deux mains ou polyvalente pour octroyer cet avantage.",
+          "Combat à deux armesLorsque vous vous engagez dans un combat avec deux armes en mains, vous pouvez ajouter votre modificateur de caractéristique aux dégâts de la seconde attaque.",
+          "DéfenseSi vous portez une armure, vous obtenez un bonus de +1 à la CA.",
+          "DuelLorsque vous attaquez avec une arme de corps à corps dans une main et aucune autre arme, vous obtenez un bonus de +2 aux dégâts avec cette arme.",
+          "ProtectionQuand une créature que vous pouvez voir attaque une cible autre que vous-même et qui se trouve à 1,50 mètre ou moins de vous, vous pouvez utiliser votre réaction pour imposer un désavantage à son jet d'attaque. Vous devez pour cela porter un bouclier."
         ]
       },
       {
@@ -7151,7 +7320,18 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Lorsque vous atteignez le niveau 3, vous augmentez vos prouesses martiales avec la possibilité de lancer des sorts.**Sorts mineurs.** Vous apprenez deux sorts mineurs de votre choix dans la liste de sorts de magicien. Vous apprenez un autre sort mineur de votre choix au niveau 10.**Emplacements de sorts.** La table ci-dessous montre de combien d'emplacements de sorts vous disposez pour lancer vos sorts de magicien de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 bouclier et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez jeter ce sort deux fois.**Sorts connus de niveau 1 et supérieur.** Vous connaissez trois sorts de magicien de niveau 1 de votre choix, dont deux que vous devez choisir dans les écoles d'abjuration et d'évocation. La colonne Sorts connus indique à quel niveau vous apprenez plus de sorts de magicien de niveau 1 ou supérieur. Chacun de ces sorts doit être des écoles d’abjuration ou d’évocation, au choix, et doit être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, lorsque vous atteignez le niveau 7 dans cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. Les sorts que vous apprenez aux niveaux 8, 14 et 20 peuvent appartenir à n'importe école de magie. Chaque fois que vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de magicien que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de magicien. Le nouveau sort doit être également d'un niveau pour lequel vous possédez des emplacements de sorts, et appartenir à l’école d’abjuration ou d‘évocation, à moins que vous ne remplaciez le sort que vous avez acquis au niveau 3, 8, 14 ou 20 de n'importe quelle école de magie.**Caractéristique d'incantation.** L'Intelligence est votre caractéristique d'incantation pour vos sorts de magicien, car vous apprenez vos sorts à travers l'étude et la mémorisation. Vous utilisez votre Intelligence chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort de magicien que vous lancez, ou pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur d'Intelligence**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur d'Intelligence{{classTable,frame,decoration,wide##### Chevalier occulte| Niveau | Sorts mineur | Sorts   |--- Emplacement de sorts par niveau de sort ---|||||       ^| Connus      ^| Connus ^|1er |2e |3e |4e ||:------:|:---------:|:---------|:--:|:-:|:-:|:-:||   3e   | 3 | 3  | 2 | — | — | — ||   4e   | 3 | 4  | 2 | — | — | — ||   5e   | 3 | 4  | 3 | — | — | — ||   6e   | 3 | 4  | 3 | — | — | — ||   7e   | 3 | 5  | 4 | 2 | — | — ||   8e   | 3 | 6  | 4 | 2 | — | — ||   9e   | 3 | 6  | 4 | 2 | — | — ||   10e  | 4 | 7  | 4 | 3 | — | — ||   11e  | 4 | 8  | 4 | 3 | — | — ||   12e  | 4 | 8  | 4 | 3 | — | — ||   13e  | 4 | 9  | 4 | 3 | 2 | — ||   14e  | 4 | 10 | 4 | 3 | 2 | — ||   15e  | 4 | 10 | 4 | 3 | 2 | — ||   16e  | 4 | 11 | 4 | 3 | 3 | — ||   17e  | 4 | 11 | 4 | 3 | 3 | — ||   18e  | 4 | 11 | 4 | 3 | 3 | — ||   19e  | 4 | 12 | 4 | 3 | 3 | 1 ||   20e  | 4 | 13 | 4 | 3 | 3 | 1 |}}"
+          "Lorsque vous atteignez le niveau 3, vous augmentez vos prouesses martiales avec la possibilité de lancer des sorts.**Sorts mineurs.** Vous apprenez deux sorts mineurs de votre choix dans la liste de sorts de magicien. Vous apprenez un autre sort mineur de votre choix au niveau 10.**Emplacements de sorts.** La table ci-dessous montre de combien d'emplacements de sorts vous disposez pour lancer vos sorts de magicien de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 bouclier et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez jeter ce sort deux fois.**Sorts connus de niveau 1 et supérieur.** Vous connaissez trois sorts de magicien de niveau 1 de votre choix, dont deux que vous devez choisir dans les écoles d'abjuration et d'évocation. La colonne Sorts connus indique à quel niveau vous apprenez plus de sorts de magicien de niveau 1 ou supérieur. Chacun de ces sorts doit être des écoles d’abjuration ou d’évocation, au choix, et doit être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, lorsque vous atteignez le niveau 7 dans cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. Les sorts que vous apprenez aux niveaux 8, 14 et 20 peuvent appartenir à n'importe école de magie. Chaque fois que vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de magicien que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de magicien. Le nouveau sort doit être également d'un niveau pour lequel vous possédez des emplacements de sorts, et appartenir à l’école d’abjuration ou d‘évocation, à moins que vous ne remplaciez le sort que vous avez acquis au niveau 3, 8, 14 ou 20 de n'importe quelle école de magie.**Caractéristique d'incantation.** L'Intelligence est votre caractéristique d'incantation pour vos sorts de magicien, car vous apprenez vos sorts à travers l'étude et la mémorisation. Vous utilisez votre Intelligence chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort de magicien que vous lancez, ou pour le jet d'attaque de celui-ci.",
+          {
+            "type": "abilityDc",
+            "name": "Spell",
+            "attribute": "cha"
+          },
+          {
+            "type": "abilityAttackMod",
+            "name": "Spell",
+            "attribute": "cha"
+          },
+          "Chevalier occulte| Niveau | Sorts mineur | Sorts   |--- Emplacement de sorts par niveau de sort ---|||||       ^| Connus      ^| Connus ^|1er |2e |3e |4e ||:------:|:---------:|:---------|:--:|:-:|:-:|:-:||   3e   | 3 | 3  | 2 | — | — | — ||   4e   | 3 | 4  | 2 | — | — | — ||   5e   | 3 | 4  | 3 | — | — | — ||   6e   | 3 | 4  | 3 | — | — | — ||   7e   | 3 | 5  | 4 | 2 | — | — ||   8e   | 3 | 6  | 4 | 2 | — | — ||   9e   | 3 | 6  | 4 | 2 | — | — ||   10e  | 4 | 7  | 4 | 3 | — | — ||   11e  | 4 | 8  | 4 | 3 | — | — ||   12e  | 4 | 8  | 4 | 3 | — | — ||   13e  | 4 | 9  | 4 | 3 | 2 | — ||   14e  | 4 | 10 | 4 | 3 | 2 | — ||   15e  | 4 | 10 | 4 | 3 | 2 | — ||   16e  | 4 | 11 | 4 | 3 | 3 | — ||   17e  | 4 | 11 | 4 | 3 | 3 | — ||   18e  | 4 | 11 | 4 | 3 | 3 | — ||   19e  | 4 | 12 | 4 | 3 | 3 | 1 ||   20e  | 4 | 13 | 4 | 3 | 3 | 1 |}}"
         ]
       },
       {
@@ -7266,7 +7446,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "À partir du niveau 3, vous pouvez utiliser des runes magiques pour améliorer votre équipement. Vous apprenez deux runes de votre choix, parmi les runes décrites ci-dessous, et chaque fois que vous gagnez un niveau dans cette classe, vous pouvez remplacer une rune que vous connaissez par une autre issue de cette fonctionnalité. Lorsque vous atteignez certains niveaux dans cette classe, vous apprenez des runes supplémentaires, comme indiqué dans le tableau des runes connues.#### Runes connues        |Niveau de combattant    |    Nombre de runes||:---:|:----:||3ème     |   2||7ème     |   3||10e      |  4||15e     |   5|Chaque fois que vous terminez un repos long, vous pouvez toucher un nombre d'objets égal au nombre de runes que vous connaissez, et vous inscrivez une rune différente sur chacun des objets. Pour être éligible, un objet doit être une arme, une armure, un bouclier, un bijou ou autre chose que vous pouvez porter ou tenir dans une main. Votre rune reste sur un objet jusqu'à ce que vous terminiez un repos long, et un objet ne peut porter qu'une seule de vos runes à la fois.Les runes suivantes sont disponibles lorsque vous apprenez une rune. Si une rune a un niveau requis, vous devez avoir au moins ce niveau dans cette classe pour apprendre la rune. Si une rune nécessite un jet de sauvegarde, votre DD de sauvegarde de Rune Magic est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution.- **Rune Nuageuse.** Cette rune émule la magie trompeuse utilisée par certains géants des nuages. Lorsque vous portez ou transportez un objet inscrit avec cette rune, vous avez un avantage aux tests de Dextérité (Tour de passe-passe) et aux tests de Charisme (Tromperie).- De plus, lorsque vous ou une créature que vous pouvez voir à moins de 9 mètres de vous êtes touché par un jet d'attaque, vous pouvez utiliser votre réaction pour invoquer la rune et choisir une autre créature à moins de 9 mètres de vous, autre que l'attaquant. La créature choisie devient la cible de l'attaque, en utilisant le même jet. Cette magie peut transférer les effets de l'attaque quelle que soit la portée de l'attaque. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Rune de Feu.** La magie de cette rune canalise le savoir-faire magistral des grands forgerons. Lorsque vous portez ou transportez un objet portant cette rune, votre bonus de maîtrise est doublé pour tout test de caractéristique que vous effectuez et qui utilise votre maîtrise d'un outil.- De plus, lorsque vous touchez une créature avec une attaque à l'aide d'une arme, vous pouvez invoquer la rune pour invoquer des chaînes enflammées : la cible subit 2d6 dégâts de feu supplémentaires, et elle doit réussir un jet de sauvegarde de Force ou être entravée pendant 1 minute. Tant qu'elle est retenue par les chaînes, la cible subit 2d6 dégâts de feu au début de chacun de ses tours. La cible peut répéter le jet de sauvegarde à la fin de chacun de ses tours, bannissant les chaînes en cas de réussite. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Rune de givre.** La magie de cette rune évoque la puissance de ceux qui survivent dans la nature hivernale, comme les géants du givre. Lorsque vous portez ou transportez un objet portant cette rune, vous avez un avantage aux tests de Sagesse (Manipulation des animaux) et aux tests de Charisme (Intimidation).- De plus, vous pouvez invoquer la rune en tant qu'action bonus pour augmenter votre robustesse. Pendant 10 minutes, vous bénéficiez d'un bonus de +2 à tous les tests de caractéristiques et jets de sauvegarde qui utilisent la Force ou la Constitution. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Rune de pierre.** La magie de cette rune canalise la justesse associée aux géants de pierre. Tant que vous portez ou transportez un objet portant cette rune, vous avez un avantage aux tests de Sagesse (Perspicacité) et vous avez la vision dans le noir jusqu'à une distance de 120 pieds.- De plus, lorsqu'une créature que vous pouvez voir termine son tour à moins de 9 mètres de vous, vous pouvez utiliser votre réaction pour invoquer la rune et forcer la créature à effectuer un jet de sauvegarde de Sagesse. À moins que la sauvegarde ne réussisse, la créature est charmée par vous pendant 1 minute. Tant qu'elle est charmée de cette manière, la créature a une vitesse de 0 et est frappée d'incapacité, tombant dans une stupeur rêveuse. La créature répète le jet de sauvegarde à la fin de chacun de ses tours, mettant fin à l'effet en cas de réussite. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Hill Rune (niveau 7 ou supérieur).** La magie de cette rune confère une résilience qui rappelle celle d'un géant des collines. Lorsque vous portez ou transportez un objet qui porte cette rune, vous avez un avantage aux jets de sauvegarde contre l'empoisonnement et vous avez une résistance contre les dégâts de poison.- De plus, vous pouvez invoquer la rune en tant qu'action bonus, gagnant une résistance aux dégâts contondants, perforants et tranchants pendant 1 minute. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Storm Rune (niveau 7 ou supérieur).** En utilisant cette rune, vous pouvez entrevoir l'avenir comme un voyant géant des tempêtes. Lorsque vous portez ou transportez un objet inscrit avec cette rune, vous avez un avantage aux tests d'Intelligence (Arcanes), et vous ne pouvez pas être surpris tant que vous n'êtes pas incapable d'agir.- De plus, vous pouvez invoquer la rune en tant qu'action bonus pour entrer dans un état prophétique pendant 1 minute ou jusqu'à ce que vous soyez incapable d'agir. Jusqu'à la fin de l'état, lorsque vous ou une autre créature que vous pouvez voir dans un rayon de 18 mètres autour de vous effectuez un jet d'attaque, un jet de sauvegarde ou un test de caractéristique, vous pouvez utiliser votre réaction pour que le jet ait un avantage ou un désavantage. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long."
+          "À partir du niveau 3, vous pouvez utiliser des runes magiques pour améliorer votre équipement. Vous apprenez deux runes de votre choix, parmi les runes décrites ci-dessous, et chaque fois que vous gagnez un niveau dans cette classe, vous pouvez remplacer une rune que vous connaissez par une autre issue de cette fonctionnalité. Lorsque vous atteignez certains niveaux dans cette classe, vous apprenez des runes supplémentaires, comme indiqué dans le tableau des runes connues.",
+          "Runes connues        |Niveau de combattant    |    Nombre de runes||:---:|:----:||3ème     |   2||7ème     |   3||10e      |  4||15e     |   5|Chaque fois que vous terminez un repos long, vous pouvez toucher un nombre d'objets égal au nombre de runes que vous connaissez, et vous inscrivez une rune différente sur chacun des objets. Pour être éligible, un objet doit être une arme, une armure, un bouclier, un bijou ou autre chose que vous pouvez porter ou tenir dans une main. Votre rune reste sur un objet jusqu'à ce que vous terminiez un repos long, et un objet ne peut porter qu'une seule de vos runes à la fois.Les runes suivantes sont disponibles lorsque vous apprenez une rune. Si une rune a un niveau requis, vous devez avoir au moins ce niveau dans cette classe pour apprendre la rune. Si une rune nécessite un jet de sauvegarde, votre DD de sauvegarde de Rune Magic est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution.- **Rune Nuageuse.** Cette rune émule la magie trompeuse utilisée par certains géants des nuages. Lorsque vous portez ou transportez un objet inscrit avec cette rune, vous avez un avantage aux tests de Dextérité (Tour de passe-passe) et aux tests de Charisme (Tromperie).- De plus, lorsque vous ou une créature que vous pouvez voir à moins de 9 mètres de vous êtes touché par un jet d'attaque, vous pouvez utiliser votre réaction pour invoquer la rune et choisir une autre créature à moins de 9 mètres de vous, autre que l'attaquant. La créature choisie devient la cible de l'attaque, en utilisant le même jet. Cette magie peut transférer les effets de l'attaque quelle que soit la portée de l'attaque. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Rune de Feu.** La magie de cette rune canalise le savoir-faire magistral des grands forgerons. Lorsque vous portez ou transportez un objet portant cette rune, votre bonus de maîtrise est doublé pour tout test de caractéristique que vous effectuez et qui utilise votre maîtrise d'un outil.- De plus, lorsque vous touchez une créature avec une attaque à l'aide d'une arme, vous pouvez invoquer la rune pour invoquer des chaînes enflammées : la cible subit 2d6 dégâts de feu supplémentaires, et elle doit réussir un jet de sauvegarde de Force ou être entravée pendant 1 minute. Tant qu'elle est retenue par les chaînes, la cible subit 2d6 dégâts de feu au début de chacun de ses tours. La cible peut répéter le jet de sauvegarde à la fin de chacun de ses tours, bannissant les chaînes en cas de réussite. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Rune de givre.** La magie de cette rune évoque la puissance de ceux qui survivent dans la nature hivernale, comme les géants du givre. Lorsque vous portez ou transportez un objet portant cette rune, vous avez un avantage aux tests de Sagesse (Manipulation des animaux) et aux tests de Charisme (Intimidation).- De plus, vous pouvez invoquer la rune en tant qu'action bonus pour augmenter votre robustesse. Pendant 10 minutes, vous bénéficiez d'un bonus de +2 à tous les tests de caractéristiques et jets de sauvegarde qui utilisent la Force ou la Constitution. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Rune de pierre.** La magie de cette rune canalise la justesse associée aux géants de pierre. Tant que vous portez ou transportez un objet portant cette rune, vous avez un avantage aux tests de Sagesse (Perspicacité) et vous avez la vision dans le noir jusqu'à une distance de 120 pieds.- De plus, lorsqu'une créature que vous pouvez voir termine son tour à moins de 9 mètres de vous, vous pouvez utiliser votre réaction pour invoquer la rune et forcer la créature à effectuer un jet de sauvegarde de Sagesse. À moins que la sauvegarde ne réussisse, la créature est charmée par vous pendant 1 minute. Tant qu'elle est charmée de cette manière, la créature a une vitesse de 0 et est frappée d'incapacité, tombant dans une stupeur rêveuse. La créature répète le jet de sauvegarde à la fin de chacun de ses tours, mettant fin à l'effet en cas de réussite. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Hill Rune (niveau 7 ou supérieur).** La magie de cette rune confère une résilience qui rappelle celle d'un géant des collines. Lorsque vous portez ou transportez un objet qui porte cette rune, vous avez un avantage aux jets de sauvegarde contre l'empoisonnement et vous avez une résistance contre les dégâts de poison.- De plus, vous pouvez invoquer la rune en tant qu'action bonus, gagnant une résistance aux dégâts contondants, perforants et tranchants pendant 1 minute. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long.- **Storm Rune (niveau 7 ou supérieur).** En utilisant cette rune, vous pouvez entrevoir l'avenir comme un voyant géant des tempêtes. Lorsque vous portez ou transportez un objet inscrit avec cette rune, vous avez un avantage aux tests d'Intelligence (Arcanes), et vous ne pouvez pas être surpris tant que vous n'êtes pas incapable d'agir.- De plus, vous pouvez invoquer la rune en tant qu'action bonus pour entrer dans un état prophétique pendant 1 minute ou jusqu'à ce que vous soyez incapable d'agir. Jusqu'à la fin de l'état, lorsque vous ou une autre créature que vous pouvez voir dans un rayon de 18 mètres autour de vous effectuez un jet d'attaque, un jet de sauvegarde ou un test de caractéristique, vous pouvez utiliser votre réaction pour que le jet ait un avantage ou un désavantage. Une fois que vous avez invoqué cette rune, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long."
         ]
       },
       {
@@ -7931,7 +8112,10 @@
         "classSource": "PHB",
         "level": 2,
         "entries": [
-          "À partir du niveau 2, votre entrainement vous permet d'exploiter cette mystérieuse énergie qu'est le ki. Votre accès à cette énergie est représenté par un nombre de points ki. Votre niveau de moine détermine le nombre de points ki que vous possédez, comme indiqué dans la colonne Ki de la table ci-dessus. Vous pouvez dépenser ces points pour déclencher diverses capacités ki. Vous débutez en connaissant trois de ces capacités ki : Déluge de coups, Défense patiente et Déplacement aérien. Vous apprendrez de nouvelles capacités ki en gagnant des niveaux de moine.Lorsque vous dépensez un point ki, il n'est plus disponible jusqu'à ce que vous finissiez un repos court ou long, à la fin desquels vous récupérez tous les points ki utilisés. Vous devez passer au moins 30 minutes de votre repos à méditer pour pouvoir regagner vos points ki. Plusieurs de vos capacités ki nécessitent que votre cible effectue un jet de sauvegarde pour résister à leurs effets. Le DD du jet de sauvegarde est calculé ainsi :**DD du jet de sauvegarde du ki** = 8 + votre bonus de maîtrise + votre modificateur de Sagesse#### Défense patienteVous pouvez dépenser 1 point ki pour utiliser l'action Esquiver via une action bonus au cours de votre tour.#### Déluge de coupsImmédiatement après avoir utilisé une action Attaquer au cours de votre tour, vous pouvez dépenser 1 point ki pour effectuer deux attaques à mains nues via une action bonus.#### Déplacement aérienVous pouvez dépenser 1 point ki pour utiliser l'action Se Désengager ou l'action Foncer via une action bonus au cours de votre tour, de plus votre distance de saut est doublée pour le tour."
+          "À partir du niveau 2, votre entrainement vous permet d'exploiter cette mystérieuse énergie qu'est le ki. Votre accès à cette énergie est représenté par un nombre de points ki. Votre niveau de moine détermine le nombre de points ki que vous possédez, comme indiqué dans la colonne Ki de la table ci-dessus. Vous pouvez dépenser ces points pour déclencher diverses capacités ki. Vous débutez en connaissant trois de ces capacités ki : Déluge de coups, Défense patiente et Déplacement aérien. Vous apprendrez de nouvelles capacités ki en gagnant des niveaux de moine.Lorsque vous dépensez un point ki, il n'est plus disponible jusqu'à ce que vous finissiez un repos court ou long, à la fin desquels vous récupérez tous les points ki utilisés. Vous devez passer au moins 30 minutes de votre repos à méditer pour pouvoir regagner vos points ki. Plusieurs de vos capacités ki nécessitent que votre cible effectue un jet de sauvegarde pour résister à leurs effets. Le DD du jet de sauvegarde est calculé ainsi :**DD du jet de sauvegarde du ki** = 8 + votre bonus de maîtrise + votre modificateur de Sagesse",
+          "Défense patienteVous pouvez dépenser 1 point ki pour utiliser l'action Esquiver via une action bonus au cours de votre tour.",
+          "Déluge de coupsImmédiatement après avoir utilisé une action Attaquer au cours de votre tour, vous pouvez dépenser 1 point ki pour effectuer deux attaques à mains nues via une action bonus.",
+          "Déplacement aérienVous pouvez dépenser 1 point ki pour utiliser l'action Se Désengager ou l'action Foncer via une action bonus au cours de votre tour, de plus votre distance de saut est doublée pour le tour."
         ]
       },
       {
@@ -8445,7 +8629,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Lorsque vous choisissez cette tradition au niveau 3, vous acquérez la maîtrise des compétences Perspicacité et Médecine, et vous acquérez la maîtrise du kit d'herboristerie.Vous gagnez également un masque spécial, que vous portez souvent lorsque vous utilisez les fonctionnalités de cette sous-classe. Vous déterminez son apparence, ou le générez aléatoirement en lançant sur le tableau Miséricordieux Masque.##### Masque Miséricordieux        | d6  | Apparence du masque ||:---:|:--------------------|| 1   | Corbeau             || 2   | Blanc et blanc      || 3   | Visage qui pleure   || 4   | Visage riant        || 5   | Le crâne            || 6   | Papillon            |"
+          "Lorsque vous choisissez cette tradition au niveau 3, vous acquérez la maîtrise des compétences Perspicacité et Médecine, et vous acquérez la maîtrise du kit d'herboristerie.Vous gagnez également un masque spécial, que vous portez souvent lorsque vous utilisez les fonctionnalités de cette sous-classe. Vous déterminez son apparence, ou le générez aléatoirement en lançant sur le tableau Miséricordieux Masque.",
+          "Masque Miséricordieux        | d6  | Apparence du masque ||:---:|:--------------------|| 1   | Corbeau             || 2   | Blanc et blanc      || 3   | Visage qui pleure   || 4   | Visage riant        || 5   | Le crâne            || 6   | Papillon            |"
         ]
       },
       {
@@ -8996,7 +9181,11 @@
         "classSource": "PHB",
         "level": 2,
         "entries": [
-          "Au niveau 2, vous adoptez un style particulier de combat qui sera votre spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de style de combat plus d'une fois, même si vous obtenez plus tard la possibilité de choisir un nouveau style.#### Arme à deux mainsLorsque vous obtenez 1 ou 2 à un dé de dégâts lors d'une attaque que vous effectuez avec une arme de corps à corps que vous tenez avec vos deux mains, vous pouvez relancer le dé et obligatoirement prendre le nouveau résultat, même si celui-ci est un 1 ou un 2. L'arme doit avoir la propriété à deux mains ou polyvalente pour octroyer cet avantage.#### DéfenseSi vous portez une armure, vous obtenez un bonus de +1 à la CA.#### DuelLorsque vous attaquez avec une arme de corps à corps dans une main et aucune autre arme, vous obtenez un bonus de +2 aux dégâts avec cette arme.#### ProtectionQuand une créature que vous pouvez voir attaque une cible autre que vous-même et qui se trouve à 1,50 mètre ou moins de vous, vous pouvez utiliser votre réaction pour imposer un désavantage à son jet d'attaque. Vous devez pour cela porter un bouclier."
+          "Au niveau 2, vous adoptez un style particulier de combat qui sera votre spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de style de combat plus d'une fois, même si vous obtenez plus tard la possibilité de choisir un nouveau style.",
+          "Arme à deux mainsLorsque vous obtenez 1 ou 2 à un dé de dégâts lors d'une attaque que vous effectuez avec une arme de corps à corps que vous tenez avec vos deux mains, vous pouvez relancer le dé et obligatoirement prendre le nouveau résultat, même si celui-ci est un 1 ou un 2. L'arme doit avoir la propriété à deux mains ou polyvalente pour octroyer cet avantage.",
+          "DéfenseSi vous portez une armure, vous obtenez un bonus de +1 à la CA.",
+          "DuelLorsque vous attaquez avec une arme de corps à corps dans une main et aucune autre arme, vous obtenez un bonus de +2 aux dégâts avec cette arme.",
+          "ProtectionQuand une créature que vous pouvez voir attaque une cible autre que vous-même et qui se trouve à 1,50 mètre ou moins de vous, vous pouvez utiliser votre réaction pour imposer un désavantage à son jet d'attaque. Vous devez pour cela porter un bouclier."
         ]
       },
       {
@@ -9007,7 +9196,38 @@
         "classSource": "PHB",
         "level": 2,
         "entries": [
-          "Au niveau 2, vous avez appris à tirer parti de la magie divine à travers la méditation et la prière pour lancer des sorts comme un clerc le ferait.#### Préparer et lancer des sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts de paladin de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de paladin qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de paladin égal à votre modificateur de Charisme + la moitié de votre niveau de paladin, arrondi à l'inférieur (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un paladin de niveau 5, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec un Charisme de 14, votre liste de sorts préparés peut inclure quatre sorts parmi le niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de paladin nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste.#### Caractéristique d'incantationLe Charisme est votre caractéristique d'incantation pour vos sorts de paladin. La puissance de vos sorts vient de votre force de conviction. Vous utilisez votre Charisme chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort de paladin que vous lancez ainsi que pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur de Charisme**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur de Charisme#### Focaliseur d'incantationVous pouvez utiliser un symbole sacré comme focaliseur d'incantation pour vos sorts de paladin."
+          "Au niveau 2, vous avez appris à tirer parti de la magie divine à travers la méditation et la prière pour lancer des sorts comme un clerc le ferait.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Préparer et lancer des sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts de paladin de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de paladin qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de paladin égal à votre modificateur de Charisme + la moitié de votre niveau de paladin, arrondi à l'inférieur (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un paladin de niveau 5, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec un Charisme de 14, votre liste de sorts préparés peut inclure quatre sorts parmi le niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de paladin nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Caractéristique d'incantationLe Charisme est votre caractéristique d'incantation pour vos sorts de paladin. La puissance de vos sorts vient de votre force de conviction. Vous utilisez votre Charisme chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort de paladin que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Focaliseur d'incantationVous pouvez utiliser un symbole sacré comme focaliseur d'incantation pour vos sorts de paladin."
+            ]
+          }
         ]
       },
       {
@@ -9038,7 +9258,9 @@
         "classSource": "PHB",
         "level": 3,
         "entries": [
-          "Au niveau 3, vous prêtez un serment qui vous lie en tant que paladin pour l'éternité. Jusque-là, vous étiez dans une phase préparatoire, engagé dans la voie, mais sans avoir encore prêté serment. Maintenant, vous devez choisir entre le serment de dévotion, le serment des anciens ou le serment de vengeance, qui sont tous détaillés à la fin de la description de la classe. Votre choix vous accorde des capacités au niveau 3, puis aux niveaux 7, 15 et 20. Ces capacités comprennent des sorts de serment et la capacité de Conduit divin.#### Sorts de sermentChaque serment est associé à une liste de sorts qui lui est propre. Vous accéderez à ces sorts au niveau spécifié dans la description du serment. Une fois que vous avez accès à un sort de serment, celui-ci sera toujours considéré comme préparé mais ne compte pas dans le nombre de sorts que vous préparez chaque jour. Si vous gagnez un sort de serment qui n'est pas dans la liste des sorts de paladin, ce sort sera tout de même considéré comme étant un sort de paladin pour vous.#### Conduit divinVotre serment vous permet de canaliser de l'énergie divine qui alimente des effets magiques. Chaque Conduit divin proposé par votre serment en détaille les options d'utilisation. Quand vous utilisez votre Conduit divin, vous choisissez quelle option vous voulez utiliser. Un repos court ou long est nécessaire pour pouvoir utiliser un Conduit divin de nouveau. Certains effets de Conduit divin nécessitent des jets de sauvegarde. Quand vous utilisez ce type d'effet, le DD est égal au DD pour résister à vos sorts."
+          "Au niveau 3, vous prêtez un serment qui vous lie en tant que paladin pour l'éternité. Jusque-là, vous étiez dans une phase préparatoire, engagé dans la voie, mais sans avoir encore prêté serment. Maintenant, vous devez choisir entre le serment de dévotion, le serment des anciens ou le serment de vengeance, qui sont tous détaillés à la fin de la description de la classe. Votre choix vous accorde des capacités au niveau 3, puis aux niveaux 7, 15 et 20. Ces capacités comprennent des sorts de serment et la capacité de Conduit divin.",
+          "Sorts de sermentChaque serment est associé à une liste de sorts qui lui est propre. Vous accéderez à ces sorts au niveau spécifié dans la description du serment. Une fois que vous avez accès à un sort de serment, celui-ci sera toujours considéré comme préparé mais ne compte pas dans le nombre de sorts que vous préparez chaque jour. Si vous gagnez un sort de serment qui n'est pas dans la liste des sorts de paladin, ce sort sera tout de même considéré comme étant un sort de paladin pour vous.",
+          "Conduit divinVotre serment vous permet de canaliser de l'énergie divine qui alimente des effets magiques. Chaque Conduit divin proposé par votre serment en détaille les options d'utilisation. Quand vous utilisez votre Conduit divin, vous choisissez quelle option vous voulez utiliser. Un repos court ou long est nécessaire pour pouvoir utiliser un Conduit divin de nouveau. Certains effets de Conduit divin nécessitent des jets de sauvegarde. Quand vous utilisez ce type d'effet, le DD est égal au DD pour résister à vos sorts."
         ]
       },
       {
@@ -10558,7 +10780,11 @@
         "classSource": "PHB",
         "level": 2,
         "entries": [
-          "Au niveau 2, Vous adoptez un style particulier de combat qui sera votre spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de Style de combat plus d'une fois, même si vous obtenez plus tard la possibilité de choisir un nouveau style.#### ArcherieVous obtenez un bonus de +2 aux jets d'attaque avec une arme à distance.#### Combat à deux armesLorsque vous vous engagez dans un combat avec deux armes en mains, vous pouvez ajouter votre modificateur de caractéristique aux dégâts de la seconde attaque.#### DéfenseSi vous portez une armure, vous obtenez un bonus de +1 à la CA.#### DuelLorsque vous attaquez avec une arme de corps à corps dans une main et aucune autre arme, vous obtenez un bonus de +2 aux dégâts avec cette arme."
+          "Au niveau 2, Vous adoptez un style particulier de combat qui sera votre spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de Style de combat plus d'une fois, même si vous obtenez plus tard la possibilité de choisir un nouveau style.",
+          "ArcherieVous obtenez un bonus de +2 aux jets d'attaque avec une arme à distance.",
+          "Combat à deux armesLorsque vous vous engagez dans un combat avec deux armes en mains, vous pouvez ajouter votre modificateur de caractéristique aux dégâts de la seconde attaque.",
+          "DéfenseSi vous portez une armure, vous obtenez un bonus de +1 à la CA.",
+          "DuelLorsque vous attaquez avec une arme de corps à corps dans une main et aucune autre arme, vous obtenez un bonus de +2 aux dégâts avec cette arme."
         ]
       },
       {
@@ -10569,7 +10795,38 @@
         "classSource": "PHB",
         "level": 2,
         "entries": [
-          "Au moment où vous atteignez le niveau 2, vous avez appris à utiliser l'essence magique de la nature pour lancer des sorts, tout comme le fait un druide.#### Emplacements de sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts de rôdeur de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 amitié avec les animaux et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer ce sort avec n'importe lequel de ces deux emplacements.#### Sorts connus de niveau 1 et supérieurVous connaissez deux sorts de niveau 1, à choisir dans la liste des sorts de rôdeur. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts de rôdeur de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort, comme indiqué dans la table. Par exemple, lorsque vous atteignez le niveau 5 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de rôdeur que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de rôdeur, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort.#### Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de rôdeur, car le pouvoir de votre magie vient de votre lien avec la nature. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de rôdeur que vous lancez, ainsi que pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur de Sagesse**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur de Sagesse"
+          "Au moment où vous atteignez le niveau 2, vous avez appris à utiliser l'essence magique de la nature pour lancer des sorts, tout comme le fait un druide.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Emplacements de sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts de rôdeur de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 amitié avec les animaux et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer ce sort avec n'importe lequel de ces deux emplacements."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts connus de niveau 1 et supérieurVous connaissez deux sorts de niveau 1, à choisir dans la liste des sorts de rôdeur. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts de rôdeur de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort, comme indiqué dans la table. Par exemple, lorsque vous atteignez le niveau 5 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de rôdeur que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de rôdeur, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de rôdeur, car le pouvoir de votre magie vient de votre lien avec la nature. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de rôdeur que vous lancez, ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          }
         ]
       },
       {
@@ -10995,7 +11252,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Au niveau 3, un essaim d'esprits de la nature intangibles s'est lié à vous et peut vous aider au combat. Jusqu'à ce que vous mouriez, l'essaim reste dans votre espace, rampant sur vous ou volant et glissant autour de vous dans votre espace. Vous déterminez son apparence, ou vous générez son apparence en faisant un jet sur la table Swarm Appearance.#### Apparence d'essaim        | d4 | Apparence                       ||:--:|:--------------------------------|| 1  | Essaim d'insectes               || 2  | Brûlures miniatures des rameaux || 3  | Oiseaux flottants               || 4  | Lutins ludiques                 |Une fois à chacun de vos tours, vous pouvez faire en sorte que l'essaim vous assiste de l'une des manières suivantes, immédiatement après avoir touché une créature avec une attaque :- La cible de l'attaque subit 1d6 dégâts perforants de la nuée.- La cible de l'attaque doit réussir un jet de sauvegarde de Force contre votre DD de sauvegarde de sort ou être déplacée par l'essaim jusqu'à 15 pieds horizontalement dans la direction de votre choix.- Vous êtes déplacé par l'essaim de 1,50 mètre horizontalement dans la direction de votre choix."
+          "Au niveau 3, un essaim d'esprits de la nature intangibles s'est lié à vous et peut vous aider au combat. Jusqu'à ce que vous mouriez, l'essaim reste dans votre espace, rampant sur vous ou volant et glissant autour de vous dans votre espace. Vous déterminez son apparence, ou vous générez son apparence en faisant un jet sur la table Swarm Appearance.",
+          "Apparence d'essaim        | d4 | Apparence                       ||:--:|:--------------------------------|| 1  | Essaim d'insectes               || 2  | Brûlures miniatures des rameaux || 3  | Oiseaux flottants               || 4  | Lutins ludiques                 |Une fois à chacun de vos tours, vous pouvez faire en sorte que l'essaim vous assiste de l'une des manières suivantes, immédiatement après avoir touché une créature avec une attaque :- La cible de l'attaque subit 1d6 dégâts perforants de la nuée.- La cible de l'attaque doit réussir un jet de sauvegarde de Force contre votre DD de sauvegarde de sort ou être déplacée par l'essaim jusqu'à 15 pieds horizontalement dans la direction de votre choix.- Vous êtes déplacé par l'essaim de 1,50 mètre horizontalement dans la direction de votre choix."
         ]
       },
       {
@@ -11009,7 +11267,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Toujours au niveau 3, vous apprenez le sort mineur de la main de mage si vous ne le connaissez pas déjà. Lorsque vous la lancez, la main prend la forme de vos esprits de la nature grouillants.Vous apprenez également un sort supplémentaire de niveau 1 ou supérieur lorsque vous atteignez certains niveaux dans cette classe, comme indiqué dans le tableau des sorts de Swarmkeeper. Chaque sort compte pour vous comme un sort de rôdeur, mais il ne compte pas dans le nombre de sorts de rôdeur que vous connaissez.##### Sorts de gardien d'essaim",
+          "Toujours au niveau 3, vous apprenez le sort mineur de la main de mage si vous ne le connaissez pas déjà. Lorsque vous la lancez, la main prend la forme de vos esprits de la nature grouillants.Vous apprenez également un sort supplémentaire de niveau 1 ou supérieur lorsque vous atteignez certains niveaux dans cette classe, comme indiqué dans le tableau des sorts de Swarmkeeper. Chaque sort compte pour vous comme un sort de rôdeur, mais il ne compte pas dans le nombre de sorts de rôdeur que vous connaissez.",
+          "Sorts de gardien d'essaim",
           {
             "type": "table",
             "caption": "Swarmkeeper Spells",
@@ -11189,7 +11448,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "À partir du niveau 3, vous apprenez un sort supplémentaire lorsque vous atteignez certains niveaux dans cette classe, comme indiqué dans le tableau des sorts de traqueur sombre. Le sort compte pour vous comme un sort de rôdeur, mais il ne compte pas dans le nombre de sorts de rôdeur que vous connaissez.##### Sorts de traqueur des ténèbres",
+          "À partir du niveau 3, vous apprenez un sort supplémentaire lorsque vous atteignez certains niveaux dans cette classe, comme indiqué dans le tableau des sorts de traqueur sombre. Le sort compte pour vous comme un sort de rôdeur, mais il ne compte pas dans le nombre de sorts de rôdeur que vous connaissez.",
+          "Sorts de traqueur des ténèbres",
           {
             "type": "table",
             "caption": "Gloom Stalker Spells",
@@ -11324,7 +11584,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "À partir du niveau 3, vous apprenez un sort supplémentaire lorsque vous atteignez certains niveaux dans cette classe, comme indiqué dans le tableau des sorts de Monster Slayer. Le sort compte pour vous comme un sort de rôdeur, mais il ne compte pas dans le nombre de sorts de rôdeur que vous connaissez.##### Sorts de traqueur des ténèbres",
+          "À partir du niveau 3, vous apprenez un sort supplémentaire lorsque vous atteignez certains niveaux dans cette classe, comme indiqué dans le tableau des sorts de Monster Slayer. Le sort compte pour vous comme un sort de rôdeur, mais il ne compte pas dans le nombre de sorts de rôdeur que vous connaissez.",
+          "Sorts de traqueur des ténèbres",
           {
             "type": "table",
             "caption": "Monster Slayer Spells",
@@ -11545,7 +11806,7 @@
         "subclassSource": "TCE",
         "level": 3,
         "header": 2,
-        "entries":[
+        "entries": [
           "De plus, au niveau 3, vos qualités féeriques vous confèrent un charme surnaturel. Par conséquent, chaque fois que vous effectuez un test de Charisme, vous gagnez un bonus au test égal à votre modificateur de Sagesse (minimum +1).De plus, vous acquérez la maîtrise de l'une des compétences suivantes de votre choix : Tromperie, Performance ou Persuasion."
         ]
       },
@@ -12496,7 +12757,18 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Lorsque vous atteignez le niveau 3, vous gagnez la possibilité de lancer des sorts.**Sorts mineurs.** Vous apprenez trois sorts mineurs : main de mage et deux autres sorts mineurs de votre choix dans la liste de sorts de magicien. Vous apprenez un autre sort mineur de votre choix au niveau 10.**Emplacements de sorts.** La table ci-dessous montre de combien d'emplacements de sorts vous disposez pour lancer vos sorts de magicien de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 charme-personne et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez jeter deux fois ce sort.**Sorts connus du niveau 1 et supérieur.** Vous connaissez trois sorts de magicien de niveau 1 de votre choix, dont deux que vous devez choisir dans les écoles d’enchantement ou d'illusion. La colonne Sorts connus indique à quel niveau vous apprenez plus de sorts de magicien de niveau 1 ou plus élevé. Chacun de ces sorts doit être de l’école d’enchantement ou d'illusion, au choix, et doit être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, lorsque vous atteignez le niveau 7 dans cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. Les sorts que vous apprenez aux niveaux 8, 14 et 20 peuvent appartenir à n'importe école de magie. Chaque fois que vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de magicien que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de magicien. Le nouveau sort doit être également d'un niveau pour lequel vous possédez des emplacements de sorts, et appartenir à l’école d’enchantement ou d'illusion, à moins que vous ne remplaciez le sort que vous avez acquis au niveau 3, 8, 14 ou 20 de n'importe quelle école de magie.**Caractéristique d'incantation.** L’Intelligence est votre caractéristique d'incantation pour vos sorts de magicien, car vous apprenez vos sorts à travers l'étude et la mémorisation. Vous utilisez votre Intelligence chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort de magicien que vous lancez, ou pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur d'Intelligence**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur d'Intelligence | Niv | Sorts mineurs | Sorts   | - Emplacements de sorts -|||||    ^|     connus   ^| connus ^| 1er ^| 2e ^| 3e ^| 4e ^|| 3   |     3         | 3       | 2    | -   | -   | -   || 4   |     3         | 4       | 3    | -   | -   | -   || 5   |     3         | 4       | 3    | -   | -   | -   || 6   |     3         | 4       | 3    | -   | -   | -   || 7   |     3         | 5       | 4    | 2   | -   | -   || 8   |     3         | 6       | 4    | 2   | -   | -   || 9   |     3         | 6       | 4    | 2   | -   | -   || 10  |      4        | 7       | 4    | 3   | -   | -   || 11  |      4        | 8       | 4    | 3   | -   | -   || 12  |      4        | 8       | 4    | 3   | -   | -   || 13  |      4        | 9       | 4    | 3   | 2   | -   || 14  |      4        | 10      | 4    | 3   | 2   | -   || 15  |      4        | 10      | 4    | 3   | 2   | -   || 16  |      4        | 11      | 4    | 3   | 3   | -   || 17  |      4        | 11      | 4    | 3   | 3   | -   || 18  |      4        | 11      | 4    | 3   | 3   | -   || 19  |      4        | 12      | 4    | 3   | 3   | 1   || 20  |      4        | 13      | 4    | 3   | 3   | 1   |  "
+          "Lorsque vous atteignez le niveau 3, vous gagnez la possibilité de lancer des sorts.**Sorts mineurs.** Vous apprenez trois sorts mineurs : main de mage et deux autres sorts mineurs de votre choix dans la liste de sorts de magicien. Vous apprenez un autre sort mineur de votre choix au niveau 10.**Emplacements de sorts.** La table ci-dessous montre de combien d'emplacements de sorts vous disposez pour lancer vos sorts de magicien de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 charme-personne et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez jeter deux fois ce sort.**Sorts connus du niveau 1 et supérieur.** Vous connaissez trois sorts de magicien de niveau 1 de votre choix, dont deux que vous devez choisir dans les écoles d’enchantement ou d'illusion. La colonne Sorts connus indique à quel niveau vous apprenez plus de sorts de magicien de niveau 1 ou plus élevé. Chacun de ces sorts doit être de l’école d’enchantement ou d'illusion, au choix, et doit être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, lorsque vous atteignez le niveau 7 dans cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2. Les sorts que vous apprenez aux niveaux 8, 14 et 20 peuvent appartenir à n'importe école de magie. Chaque fois que vous gagnez un niveau dans cette classe, vous pouvez choisir un sort de magicien que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts de magicien. Le nouveau sort doit être également d'un niveau pour lequel vous possédez des emplacements de sorts, et appartenir à l’école d’enchantement ou d'illusion, à moins que vous ne remplaciez le sort que vous avez acquis au niveau 3, 8, 14 ou 20 de n'importe quelle école de magie.**Caractéristique d'incantation.** L’Intelligence est votre caractéristique d'incantation pour vos sorts de magicien, car vous apprenez vos sorts à travers l'étude et la mémorisation. Vous utilisez votre Intelligence chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort de magicien que vous lancez, ou pour le jet d'attaque de celui-ci.",
+          {
+            "type": "abilityDc",
+            "name": "Spell",
+            "attribute": "cha"
+          },
+          {
+            "type": "abilityAttackMod",
+            "name": "Spell",
+            "attribute": "cha"
+          },
+          "| Niv | Sorts mineurs | Sorts   | - Emplacements de sorts -|||||    ^|     connus   ^| connus ^| 1er ^| 2e ^| 3e ^| 4e ^|| 3   |     3         | 3       | 2    | -   | -   | -   || 4   |     3         | 4       | 3    | -   | -   | -   || 5   |     3         | 4       | 3    | -   | -   | -   || 6   |     3         | 4       | 3    | -   | -   | -   || 7   |     3         | 5       | 4    | 2   | -   | -   || 8   |     3         | 6       | 4    | 2   | -   | -   || 9   |     3         | 6       | 4    | 2   | -   | -   || 10  |      4        | 7       | 4    | 3   | -   | -   || 11  |      4        | 8       | 4    | 3   | -   | -   || 12  |      4        | 8       | 4    | 3   | -   | -   || 13  |      4        | 9       | 4    | 3   | 2   | -   || 14  |      4        | 10      | 4    | 3   | 2   | -   || 15  |      4        | 10      | 4    | 3   | 2   | -   || 16  |      4        | 11      | 4    | 3   | 3   | -   || 17  |      4        | 11      | 4    | 3   | 3   | -   || 18  |      4        | 11      | 4    | 3   | 3   | -   || 19  |      4        | 12      | 4    | 3   | 3   | 1   || 20  |      4        | 13      | 4    | 3   | 3   | 1   |  "
         ]
       },
       {
@@ -12950,7 +13222,52 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Un événement dans votre passé, ou dans la vie d'un parent ou un ancêtre, vous a laissé une marque indélébile, en vous insufflant la magie des arcanes. Cette source de magie, quelle que soit son origine, alimente vos sorts.#### Sorts mineursAu niveau 1, vous connaissez quatre sorts mineurs de votre choix dans la liste de sorts d'ensorceleur. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus.#### Emplacements de sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts d'ensorceleur de niveau 1 et supérieur. Pour lancer un de ces sorts d’ensorceleur, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 mains brûlantes et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer deux fois ce sort.#### Sorts connus de niveau 1 et supérieurVous connaissez deux sorts de niveau 1 de votre choix dans la liste des sorts d’ensorceleur. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts d’ensorceleur de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort. Par exemple, lorsque vous atteignez le niveau 3 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2.En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort d’ensorceleur que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts d’ensorceleur, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort.#### Caractéristique d'incantationLe Charisme est votre caractéristique d'incantation pour vos sorts d’ensorceleur, car la puissance de votre magie repose sur votre capacité à projeter votre volonté dans le monde. Vous utilisez votre Charisme chaque fois qu'un sort fait référence à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort d’ensorceleur que vous lancez et quand vous effectuez un jet d'attaque.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur de Charisme**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur de Charisme#### Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts d’ensorceleur."
+          "Un événement dans votre passé, ou dans la vie d'un parent ou un ancêtre, vous a laissé une marque indélébile, en vous insufflant la magie des arcanes. Cette source de magie, quelle que soit son origine, alimente vos sorts.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts mineursAu niveau 1, vous connaissez quatre sorts mineurs de votre choix dans la liste de sorts d'ensorceleur. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Emplacements de sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts d'ensorceleur de niveau 1 et supérieur. Pour lancer un de ces sorts d’ensorceleur, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 mains brûlantes et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer deux fois ce sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts connus de niveau 1 et supérieurVous connaissez deux sorts de niveau 1 de votre choix dans la liste des sorts d’ensorceleur. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts d’ensorceleur de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort. Par exemple, lorsque vous atteignez le niveau 3 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2.En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort d’ensorceleur que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts d’ensorceleur, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Caractéristique d'incantation",
+            "entries": [
+              "Le Charisme est votre caractéristique d'incantation pour vos sorts d’ensorceleur, car la puissance de votre magie repose sur votre capacité à projeter votre volonté dans le monde. Vous utilisez votre Charisme chaque fois qu'un sort fait référence à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort d’ensorceleur que vous lancez et quand vous effectuez un jet d'attaque.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts d’ensorceleur."
+            ]
+          }
         ]
       },
       {
@@ -12961,7 +13278,9 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Choisissez une origine d'ensorceleur, qui décrit la source de votre pouvoir magique inné : lignée draconique ou magie sauvage, lesquelles sont détaillées à la fin de la description de la classe.#### Points de sorcellerieVous avez 2 points de sorcellerie, et vous en gagnez plus à des niveaux supérieurs, comme indiqué dans la colonne de Points de sorcellerie de la table ci-dessus. Vous ne pouvez jamais avoir plus de points de sorcellerie que ce que vous permet votre niveau dans la table ci-dessus. Vous récupérez tous les points de sorcellerie utilisés lorsque vous terminez un repos long.#### Flexibilité des sortsVous pouvez utiliser vos points de sorcellerie pour gagner des emplacements de sorts supplémentaires ou sacrifier des emplacements de sorts pour gagner des points de sorcellerie supplémentaires. Vous apprenez d'autres façons d'utiliser vos points de sorcellerie lorsque vous atteignez des niveaux plus élevés. Tout emplacement de sort créé de cette manière disparaît lorsque vous terminez un repos long.**Création d'emplacements de sorts.** Vous pouvez transformer des points de sorcellerie inutilisés en un emplacement de sort par une action bonus à votre tour. La table ci-dessous indique le coût pour créer un emplacement de sort d'un niveau donné. Vous ne pouvez pas créer d’emplacements de sorts d'un niveau supérieur à 5.| Niveau         | Coût en      || d'emplacement ^| points de   ^|| de sort       ^| sorcellerie ^||:---:|:---:||1    |   2 ||2    |   3 ||3    |   5 ||4    |   6 ||5    |   7 |Convertir un emplacement de sort en points de sorcellerie. Par une action bonus à votre tour, vous pouvez dépenser un emplacement de sort et gagner un nombre de points de sorcellerie égal au niveau d'emplacement."
+          "Choisissez une origine d'ensorceleur, qui décrit la source de votre pouvoir magique inné : lignée draconique ou magie sauvage, lesquelles sont détaillées à la fin de la description de la classe.",
+          "Points de sorcellerieVous avez 2 points de sorcellerie, et vous en gagnez plus à des niveaux supérieurs, comme indiqué dans la colonne de Points de sorcellerie de la table ci-dessus. Vous ne pouvez jamais avoir plus de points de sorcellerie que ce que vous permet votre niveau dans la table ci-dessus. Vous récupérez tous les points de sorcellerie utilisés lorsque vous terminez un repos long.",
+          "Flexibilité des sortsVous pouvez utiliser vos points de sorcellerie pour gagner des emplacements de sorts supplémentaires ou sacrifier des emplacements de sorts pour gagner des points de sorcellerie supplémentaires. Vous apprenez d'autres façons d'utiliser vos points de sorcellerie lorsque vous atteignez des niveaux plus élevés. Tout emplacement de sort créé de cette manière disparaît lorsque vous terminez un repos long.**Création d'emplacements de sorts.** Vous pouvez transformer des points de sorcellerie inutilisés en un emplacement de sort par une action bonus à votre tour. La table ci-dessous indique le coût pour créer un emplacement de sort d'un niveau donné. Vous ne pouvez pas créer d’emplacements de sorts d'un niveau supérieur à 5.| Niveau         | Coût en      || d'emplacement ^| points de   ^|| de sort       ^| sorcellerie ^||:---:|:---:||1    |   2 ||2    |   3 ||3    |   5 ||4    |   6 ||5    |   7 |Convertir un emplacement de sort en points de sorcellerie. Par une action bonus à votre tour, vous pouvez dépenser un emplacement de sort et gagner un nombre de points de sorcellerie égal au niveau d'emplacement."
         ]
       },
       {
@@ -12972,7 +13291,15 @@
         "classSource": "PHB",
         "level": 3,
         "entries": [
-          "Au niveau 3, vous gagnez la possibilité d’altérer vos sorts en fonction de vos besoins. Vous gagnez deux des options de métamagie suivantes de votre choix. Vous en gagnez une autre aux niveaux 10 et 17. Sauf indication contraire, vous ne pouvez utiliser sur un sort qu'une seule option de métamagie lorsque vous le lancez.#### Sort accéléréLorsque vous lancez un sort qui a un temps d'incantation de 1 action, vous pouvez dépenser 2 points de sorcellerie pour changer le temps d'incantation à 1 action bonus pour lancer ce sort.#### Sort ampleQuand vous lancez un sort qui a une portée de 1,50 mètre ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler la portée du sort. Si le sort a une portée de contact, vous pouvez dépenser 1 point de sorcellerie pour faire passer sa portée à 9 mètres.#### Sort étenduLorsque vous lancez un sort qui a une durée de 1 minute ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler sa durée (maximum 24 heures).#### Sort intensifiéLorsque vous lancez un sort qui oblige une créature à faire un jet de sauvegarde pour résister à ses effets, vous pouvez dépenser 3 points de sorcellerie pour donner à une cible du sort un désavantage à son premier jet de sauvegarde contre le sort.#### Sort jumeauQuand vous lancez un sort qui a pour cible une seule créature et qui n'a pas une portée personnelle, vous pouvez dépenser un nombre de points de sorcellerie égal au niveau du sort pour viser une deuxième créature à portée avec le même sort (1 point de sorcellerie si le sort est un sort mineur).Pour pouvoir utiliser cette option de métamagie, le sort doit être incapable de cibler plus d'une créature au niveau auquel il est lancé. Par exemple, rayon de givre fonctionne avec cette option mais pas projectile magique ni rayon ardent.#### Sort prévenantLorsque vous lancez un sort qui force les autres créatures à faire un jet de sauvegarde, vous pouvez libérer de cette obligation du sort certaines de ces créatures. Pour ce faire, dépensez 1 point de sorcellerie et choisissez un nombre de créatures égal à votre modificateur de Charisme (minimum 1 créature). Chaque créature choisie réussie automatiquement son jet de sauvegarde contre le sort.#### Sort renforcéLorsque vous lancez les dégâts pour un sort, vous pouvez dépenser 1 point de sorcellerie pour relancer un nombre de dés de dégâts ne dépassant pas votre modificateur de Charisme (minimum 1). Vous devez forcément utiliser les nouveaux dégâts. Vous pouvez utiliser Sort puissant même si vous avez déjà utilisé une option différente de métamagie lors du lancer de ce sort.#### Sort subtilLorsque vous lancez un sort, vous pouvez dépenser 1 point de sorcellerie pour le lancer sans composantes somatiques ou verbales."
+          "Au niveau 3, vous gagnez la possibilité d’altérer vos sorts en fonction de vos besoins. Vous gagnez deux des options de métamagie suivantes de votre choix. Vous en gagnez une autre aux niveaux 10 et 17. Sauf indication contraire, vous ne pouvez utiliser sur un sort qu'une seule option de métamagie lorsque vous le lancez.",
+          "Sort accéléréLorsque vous lancez un sort qui a un temps d'incantation de 1 action, vous pouvez dépenser 2 points de sorcellerie pour changer le temps d'incantation à 1 action bonus pour lancer ce sort.",
+          "Sort ampleQuand vous lancez un sort qui a une portée de 1,50 mètre ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler la portée du sort. Si le sort a une portée de contact, vous pouvez dépenser 1 point de sorcellerie pour faire passer sa portée à 9 mètres.",
+          "Sort étenduLorsque vous lancez un sort qui a une durée de 1 minute ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler sa durée (maximum 24 heures).",
+          "Sort intensifiéLorsque vous lancez un sort qui oblige une créature à faire un jet de sauvegarde pour résister à ses effets, vous pouvez dépenser 3 points de sorcellerie pour donner à une cible du sort un désavantage à son premier jet de sauvegarde contre le sort.",
+          "Sort jumeauQuand vous lancez un sort qui a pour cible une seule créature et qui n'a pas une portée personnelle, vous pouvez dépenser un nombre de points de sorcellerie égal au niveau du sort pour viser une deuxième créature à portée avec le même sort (1 point de sorcellerie si le sort est un sort mineur).Pour pouvoir utiliser cette option de métamagie, le sort doit être incapable de cibler plus d'une créature au niveau auquel il est lancé. Par exemple, rayon de givre fonctionne avec cette option mais pas projectile magique ni rayon ardent.",
+          "Sort prévenantLorsque vous lancez un sort qui force les autres créatures à faire un jet de sauvegarde, vous pouvez libérer de cette obligation du sort certaines de ces créatures. Pour ce faire, dépensez 1 point de sorcellerie et choisissez un nombre de créatures égal à votre modificateur de Charisme (minimum 1 créature). Chaque créature choisie réussie automatiquement son jet de sauvegarde contre le sort.",
+          "Sort renforcéLorsque vous lancez les dégâts pour un sort, vous pouvez dépenser 1 point de sorcellerie pour relancer un nombre de dés de dégâts ne dépassant pas votre modificateur de Charisme (minimum 1). Vous devez forcément utiliser les nouveaux dégâts. Vous pouvez utiliser Sort puissant même si vous avez déjà utilisé une option différente de métamagie lors du lancer de ce sort.",
+          "Sort subtilLorsque vous lancez un sort, vous pouvez dépenser 1 point de sorcellerie pour le lancer sans composantes somatiques ou verbales."
         ]
       },
       {
@@ -13115,7 +13442,14 @@
         "entries": [
           "Vous apprenez des sorts supplémentaires lorsque vous atteignez certains niveaux dans cette classe, comme indiqué sur le tableau des sorts mécaniques. Chaque sort compte pour vous comme un sort d'ensorceleur, mais il ne compte pas dans le nombre de sorts d'ensorceleur que vous connaissez. Ces sorts ne peuvent pas être remplacés lorsque vous gagnez un niveau dans cette classe.Chaque fois que vous gagnez un niveau d'ensorceleur, vous pouvez remplacer un sort que vous avez obtenu grâce à cette fonctionnalité par un autre sort du même niveau. Le nouveau sort doit être un sort d'abjuration ou de transmutation de la liste des sorts d'ensorceleur, de démoniste ou de magicien.",
           "#### Sorts d'horlogerie        | Niveau Sorcier | Sorts ||:--------------:|:-------|| 1er            | Alarme , protection contre le mal et le bien || 3e             | Aide , Petite restauration || 5e             | Dissipation de la magie , protection contre l'énergie || 7e             | Liberté de mouvement , construction d'invocation || 9e             | Grande Restauration , Mur de Force |",
-          "De plus, consultez le tableau des manifestations de l'ordre et choisissez ou déterminez au hasard une façon dont votre connexion à l'ordre se manifeste pendant que vous lancez l'un de vos sorts d'ensorceleur.##### Manifestations d'ordre        | d6 | Manifestation ||:--:|:--------------|| 1  | Des rouages ​​spectraux planent derrière vous. || 2  | Les aiguilles d'une horloge tournent dans vos yeux. || 3  | Votre peau brille d'un éclat cuivré. || 4  | Des équations flottantes et des objets géométriques recouvrent votre corps. || 5  | Votre focalisation sur les sorts prend temporairement la forme d'un petit mécanisme d'horlogerie. || 6  | Le tic-tac des engrenages ou la sonnerie d'une horloge peuvent être entendus par vous et ceux qui sont affectés par votre magie. |"
+          "De plus, consultez le tableau des manifestations de l'ordre et choisissez ou déterminez au hasard une façon dont votre connexion à l'ordre se manifeste pendant que vous lancez l'un de vos sorts d'ensorceleur.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Manifestations d'ordre        | d6 | Manifestation ||:--:|:--------------|| 1  | Des rouages ​​spectraux planent derrière vous. || 2  | Les aiguilles d'une horloge tournent dans vos yeux. || 3  | Votre peau brille d'un éclat cuivré. || 4  | Des équations flottantes et des objets géométriques recouvrent votre corps. || 5  | Votre focalisation sur les sorts prend temporairement la forme d'un petit mécanisme d'horlogerie. || 6  | Le tic-tac des engrenages ou la sonnerie d'une horloge peuvent être entendus par vous et ceux qui sont affectés par votre magie. |"
+            ]
+          }
         ]
       },
       {
@@ -13851,7 +14185,52 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Vos recherches arcaniques et la magie qui vous est conférée par votre patron vous ont donné des facilités avec les sorts.#### Sorts mineursVous connaissez deux sorts mineurs d'occultiste de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus.#### Emplacements de sortsLa table de l'occultiste indique combien d'emplacements de sorts vous avez pour lancer vos sorts d'occultiste de niveau 1 à 5. Elle montre aussi quel est le niveau de ces emplacements. Tous vos emplacements sont du même niveau. Pour lancer un sort d'occultiste de niveau 1 ou supérieur, vous devez dépenser un emplacement. Vous regagnez tous vos emplacements de sorts dépensés lorsque vous terminez un repos court ou long.Par exemple, au niveau 5 vous avez deux emplacements de sorts de niveau 3. Pour lancer le sort de niveau 1 trait ensorcelé, vous devez dépenser un de ces emplacements, et le sort est lancé comme un sort de niveau 3.#### Sorts connus de niveau 1 et supérieurAu niveau 1, vous connaissez deux sorts d'occultiste de niveau 1 de votre choix. La colonne Sorts connus de la table indique à quels niveaux vous apprendrez plus de sorts de niveau 1 et supérieur. Un sort choisi ne peut être supérieur au niveau indiqué dans la colonne Niveau d’emplacement correspondant à votre niveau. Par exemple, lorsque vous atteignez le niveau 6, vous apprenez un nouveau sort d'occultiste, qui pourra être de niveau 1, 2 ou 3.En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir de remplacer un sort que vous connaissez par un autre de la liste de sorts d'occultiste, lequel doit toutefois être aussi d'un niveau pour lequel vous possédez des emplacements.#### Caractéristique d'incantationLe Charisme est votre caractéristique d'incantation pour vos sorts d'occultiste. Vous utilisez votre Charisme chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort d'occultiste que vous lancez ainsi que pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur de Charisme**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur de Charisme#### Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts d'occultiste."
+          "Vos recherches arcaniques et la magie qui vous est conférée par votre patron vous ont donné des facilités avec les sorts.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts mineursVous connaissez deux sorts mineurs d'occultiste de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Emplacements de sortsLa table de l'occultiste indique combien d'emplacements de sorts vous avez pour lancer vos sorts d'occultiste de niveau 1 à 5. Elle montre aussi quel est le niveau de ces emplacements. Tous vos emplacements sont du même niveau. Pour lancer un sort d'occultiste de niveau 1 ou supérieur, vous devez dépenser un emplacement. Vous regagnez tous vos emplacements de sorts dépensés lorsque vous terminez un repos court ou long.Par exemple, au niveau 5 vous avez deux emplacements de sorts de niveau 3. Pour lancer le sort de niveau 1 trait ensorcelé, vous devez dépenser un de ces emplacements, et le sort est lancé comme un sort de niveau 3."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts connus de niveau 1 et supérieurAu niveau 1, vous connaissez deux sorts d'occultiste de niveau 1 de votre choix. La colonne Sorts connus de la table indique à quels niveaux vous apprendrez plus de sorts de niveau 1 et supérieur. Un sort choisi ne peut être supérieur au niveau indiqué dans la colonne Niveau d’emplacement correspondant à votre niveau. Par exemple, lorsque vous atteignez le niveau 6, vous apprenez un nouveau sort d'occultiste, qui pourra être de niveau 1, 2 ou 3.En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir de remplacer un sort que vous connaissez par un autre de la liste de sorts d'occultiste, lequel doit toutefois être aussi d'un niveau pour lequel vous possédez des emplacements."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Caractéristique d'incantationLe Charisme est votre caractéristique d'incantation pour vos sorts d'occultiste. Vous utilisez votre Charisme chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Charisme pour définir le DD du jet de sauvegarde d'un sort d'occultiste que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts d'occultiste."
+            ]
+          }
         ]
       },
       {
@@ -13873,7 +14252,14 @@
         "classSource": "PHB",
         "level": 3,
         "entries": [
-          "Au niveau 3, votre patron vous gratifie d’une aptitude pour votre loyauté. Vous gagnez une des capacités suivantes de votre choix.#### Pacte de la chaîneVous apprenez le sort appel de familier et pouvez le lancer sous forme de rituel. Ce sort n’est pas comptabilisé comme un sort connu. Lorsque vous lancez le sort, vous pouvez choisir une forme normale pour votre familier (voir le sort) ou bien une des formes spéciales suivantes : esprit follet, diablotin, pseudodragon ou quasit.En outre, quand vous choisissez l’action Attaquer, vous pouvez renoncer à une de vos attaques pour permettre à votre familier d’attaquer. Lorsque vous laissez votre familier attaquer, il le fait avec sa réaction.#### Pacte de la lameVous pouvez utiliser une action pour créer une arme de pacte dans votre main libre. Vous pouvez choisir la forme que prend cette arme de corps à corps à chaque fois que vous la créez. Vous maîtrisez cette arme tant que vous la tenez en main. Cette arme est considérée comme magique au regard des résistances et des immunités aux attaques et aux dégâts non magiques.Votre arme de pacte disparaît si elle se trouve à plus de 1,50 mètre de vous pendant une minute ou plus. Elle disparaît également si vous utilisez à nouveau cette aptitude, si vous congédiez l’arme ou si vous mourrez.Vous pouvez transformer une arme magique pour en faire votre arme de pacte en effectuant un rituel spécial si vous tenez l’arme en main. Vous réalisez le rituel en 1 heure, ce qui peut être fait durant un repos court. Vous pouvez alors congédier l’arme, la déplaçant dans un espace extra dimensionnel, pour la faire réapparaître à chaque fois que vous créez votre arme de pacte par la suite. Vous ne pouvez affecter un artéfact ou une arme intelligente par ce procédé. Cette arme cesse d’être votre arme de pacte si vous mourrez, si vous vous liez avec une arme différente ou si vous réalisez le rituel de 1 heure pour briser le lien vous unissant à elle. L’arme apparaît alors à vos pieds si elle se trouve dans l’espace extra dimensionnel quand le lien est brisé.#### Pacte du grimoireVotre patron vous offre un grimoire appelé un Livre des Ombres. Dès lors que vous bénéficiez de cette capacité, choisissez trois sorts mineurs dans la liste de sorts de n'importe quelles classes. Tant que vous portez le grimoire sur vous, vous pouvez lancer ces sorts mineurs à volonté. Ils ne comptent pas dans votre nombre de sorts mineurs connus. Même s'ils ne sont pas sur la liste de sorts d'occultiste, vous pouvez les considérer comme des sorts d'occultiste.Si vous perdez votre Livre des Ombres, vous pouvez réaliser une cérémonie de 1 heure pour en recevoir un nouveau de la part de votre patron. Cette cérémonie détruit le grimoire précédent et peut être réalisée durant un repos court ou long. Le grimoire se transforme en cendre quand vous mourrez."
+          "Au niveau 3, votre patron vous gratifie d’une aptitude pour votre loyauté. Vous gagnez une des capacités suivantes de votre choix.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Pacte de la chaîneVous apprenez le sort appel de familier et pouvez le lancer sous forme de rituel. Ce sort n’est pas comptabilisé comme un sort connu. Lorsque vous lancez le sort, vous pouvez choisir une forme normale pour votre familier (voir le sort) ou bien une des formes spéciales suivantes : esprit follet, diablotin, pseudodragon ou quasit.En outre, quand vous choisissez l’action Attaquer, vous pouvez renoncer à une de vos attaques pour permettre à votre familier d’attaquer. Lorsque vous laissez votre familier attaquer, il le fait avec sa réaction.#### Pacte de la lameVous pouvez utiliser une action pour créer une arme de pacte dans votre main libre. Vous pouvez choisir la forme que prend cette arme de corps à corps à chaque fois que vous la créez. Vous maîtrisez cette arme tant que vous la tenez en main. Cette arme est considérée comme magique au regard des résistances et des immunités aux attaques et aux dégâts non magiques.Votre arme de pacte disparaît si elle se trouve à plus de 1,50 mètre de vous pendant une minute ou plus. Elle disparaît également si vous utilisez à nouveau cette aptitude, si vous congédiez l’arme ou si vous mourrez.Vous pouvez transformer une arme magique pour en faire votre arme de pacte en effectuant un rituel spécial si vous tenez l’arme en main. Vous réalisez le rituel en 1 heure, ce qui peut être fait durant un repos court. Vous pouvez alors congédier l’arme, la déplaçant dans un espace extra dimensionnel, pour la faire réapparaître à chaque fois que vous créez votre arme de pacte par la suite. Vous ne pouvez affecter un artéfact ou une arme intelligente par ce procédé. Cette arme cesse d’être votre arme de pacte si vous mourrez, si vous vous liez avec une arme différente ou si vous réalisez le rituel de 1 heure pour briser le lien vous unissant à elle. L’arme apparaît alors à vos pieds si elle se trouve dans l’espace extra dimensionnel quand le lien est brisé.#### Pacte du grimoireVotre patron vous offre un grimoire appelé un Livre des Ombres. Dès lors que vous bénéficiez de cette capacité, choisissez trois sorts mineurs dans la liste de sorts de n'importe quelles classes. Tant que vous portez le grimoire sur vous, vous pouvez lancer ces sorts mineurs à volonté. Ils ne comptent pas dans votre nombre de sorts mineurs connus. Même s'ils ne sont pas sur la liste de sorts d'occultiste, vous pouvez les considérer comme des sorts d'occultiste.Si vous perdez votre Livre des Ombres, vous pouvez réaliser une cérémonie de 1 heure pour en recevoir un nouveau de la part de votre patron. Cette cérémonie détruit le grimoire précédent et peut être réalisée durant un repos court ou long. Le grimoire se transforme en cendre quand vous mourrez."
+            ]
+          }
         ]
       },
       {
@@ -14749,39 +15135,39 @@
         "entries": [
           "L'Impénétrable vous permet de choisir parmi une liste étendue de sorts lorsque vous apprenez un sort de démoniste. Les sorts suivants sont ajoutés à la liste des sorts de démoniste pour vous.",
           {
-                "type": "table",
-                "caption": "Fathomless Expanded Spells",
-                "colLabels": [
-                  "Spell Level",
-                  "Spells"
-                ],
-                "colStyles": [
-                  "col-2 text-center",
-                  "col-10"
-                ],
-                "rows": [
-                  [
-                    "1st",
-                    "{@spell create or destroy water}, {@spell thunderwave}"
-                  ],
-                  [
-                    "2nd",
-                    "{@spell gust of wind}, {@spell silence}"
-                  ],
-                  [
-                    "3rd",
-                    "{@spell lightning bolt}, {@spell sleet storm}"
-                  ],
-                  [
-                    "4th",
-                    "{@spell control water}, {@spell summon elemental|tce} (water only)"
-                  ],
-                  [
-                    "5th",
-                    "{@spell Bigby's hand} (appears as a tentacle), {@spell cone of cold}"
-                  ]
-                ]
-              }
+            "type": "table",
+            "caption": "Fathomless Expanded Spells",
+            "colLabels": [
+              "Spell Level",
+              "Spells"
+            ],
+            "colStyles": [
+              "col-2 text-center",
+              "col-10"
+            ],
+            "rows": [
+              [
+                "1st",
+                "{@spell create or destroy water}, {@spell thunderwave}"
+              ],
+              [
+                "2nd",
+                "{@spell gust of wind}, {@spell silence}"
+              ],
+              [
+                "3rd",
+                "{@spell lightning bolt}, {@spell sleet storm}"
+              ],
+              [
+                "4th",
+                "{@spell control water}, {@spell summon elemental|tce} (water only)"
+              ],
+              [
+                "5th",
+                "{@spell Bigby's hand} (appears as a tentacle), {@spell cone of cold}"
+              ]
+            ]
+          }
         ]
       },
       {
@@ -15377,7 +15763,66 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "En tant qu'étudiant de la magie des arcanes, vous possédez un grimoire qui contient des sorts qui montrent les premières lueurs de votre véritable pouvoir.#### Sorts mineursAu niveau 1, vous connaissez trois sorts mineurs de magicien de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus.#### GrimoireAu niveau 1, vous possédez un grimoire qui contient six sorts de magicien de niveau 1 de votre choix. Votre grimoire est le gardien des sorts de magicien que vous connaissez, à exception des sorts mineurs qui sont eux fixés dans votre esprit.#### Préparer et lancer des sortsLa table du magicien montre combien d'emplacements de sorts vous avez pour lancer vos sorts de magicien de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de magicien qui vous sont disponibles pour les lancer. Pour ce faire, choisissez dans votre grimoire un nombre de sorts de magicien égal à votre modificateur d'Intelligence + votre niveau de magicien (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un magicien de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Intelligence de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison, sélectionnés depuis votre grimoire. Si vous préparez le sort de niveau 1 projectile magique, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de magicien nécessite du temps pour étudier votre grimoire et mémoriser les incantations et les gestes que vous devez faire pour lancer le sort : au moins 1 minute par niveau de sort pour chaque sort sur votre liste.#### Caractéristique d'incantationL'intelligence est votre caractéristique d'incantation pour vos sorts de magicien, car vous apprenez vos sorts à travers l'étude et la mémorisation. Vous utilisez votre Intelligence chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort de magicien que vous lancez ainsi que pour le jet d'attaque de celui-ci.**DD de sauvegarde des sorts** = 8 + votre bonus de maîtrise + votre modificateur d'Intelligence**Modificateur aux attaques avec un sort** = votre bonus de maîtrise + votre modificateur d'Intelligence#### RituelVous pouvez lancer un sort de magicien en tant que rituel si ce sort possède l'étiquette rituel et si vous avez le sort dans votre grimoire. Vous n'avez pas besoin d'avoir préparé le sort.#### Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts de magicien.#### Apprendre des sorts de niveau 1 et supérieurChaque fois que vous gagnez un niveau de magicien, vous pouvez ajouter deux sorts de magicien de votre choix à votre grimoire. Chacun de ces sorts doit être d'un niveau pour lequel vous avez des emplacements de sorts, comme indiqué sur la table ci-dessus. Lors de vos aventures, vous trouverez peut-être d'autres sorts que vous pourrez ajouter à votre grimoire (voir l'encadré Votre Grimoire)."
+          "En tant qu'étudiant de la magie des arcanes, vous possédez un grimoire qui contient des sorts qui montrent les premières lueurs de votre véritable pouvoir.",
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Sorts mineursAu niveau 1, vous connaissez trois sorts mineurs de magicien de votre choix. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "GrimoireAu niveau 1, vous possédez un grimoire qui contient six sorts de magicien de niveau 1 de votre choix. Votre grimoire est le gardien des sorts de magicien que vous connaissez, à exception des sorts mineurs qui sont eux fixés dans votre esprit."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Préparer et lancer des sortsLa table du magicien montre combien d'emplacements de sorts vous avez pour lancer vos sorts de magicien de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de magicien qui vous sont disponibles pour les lancer. Pour ce faire, choisissez dans votre grimoire un nombre de sorts de magicien égal à votre modificateur d'Intelligence + votre niveau de magicien (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un magicien de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Intelligence de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison, sélectionnés depuis votre grimoire. Si vous préparez le sort de niveau 1 projectile magique, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de magicien nécessite du temps pour étudier votre grimoire et mémoriser les incantations et les gestes que vous devez faire pour lancer le sort : au moins 1 minute par niveau de sort pour chaque sort sur votre liste."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Caractéristique d'incantationL'intelligence est votre caractéristique d'incantation pour vos sorts de magicien, car vous apprenez vos sorts à travers l'étude et la mémorisation. Vous utilisez votre Intelligence chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur d'Intelligence pour définir le DD du jet de sauvegarde d'un sort de magicien que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
+              {
+                "type": "abilityDc",
+                "name": "Spell",
+                "attribute": "cha"
+              },
+              {
+                "type": "abilityAttackMod",
+                "name": "Spell",
+                "attribute": "cha"
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "RituelVous pouvez lancer un sort de magicien en tant que rituel si ce sort possède l'étiquette rituel et si vous avez le sort dans votre grimoire. Vous n'avez pas besoin d'avoir préparé le sort."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts de magicien."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "",
+            "entries": [
+              "Apprendre des sorts de niveau 1 et supérieurChaque fois que vous gagnez un niveau de magicien, vous pouvez ajouter deux sorts de magicien de votre choix à votre grimoire. Chacun de ces sorts doit être d'un niveau pour lequel vous avez des emplacements de sorts, comme indiqué sur la table ci-dessus. Lors de vos aventures, vous trouverez peut-être d'autres sorts que vous pourrez ajouter à votre grimoire (voir l'encadré Votre Grimoire)."
+            ]
+          }
         ]
       },
       {
