@@ -421,7 +421,8 @@
         "classSource": "TCE",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -512,16 +513,16 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise des outils|Artificier|TCE|Alchimiste|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise des outils|Artificier|TCE|Alchimiste|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Sorts d'alchimiste|Artificier|TCE|Alchimiste|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts d'alchimiste|Artificier|TCE|Alchimiste|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Élixir expérimental|Artificier|TCE|Alchimiste|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Élixir expérimental|Artificier|TCE|Alchimiste|TCE|3"
           }
         ]
       },
@@ -559,8 +560,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "rd__th ve-col-2 ve-text-center",
-              "rd__th ve-col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -655,20 +656,20 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise des outils|Artificier|TCE|Armurier|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise des outils|Artificier|TCE|Armurier|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Sorts d'armurier|Artificier|TCE|Armurier|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts d'armurier|Artificier|TCE|Armurier|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Armure des arcanes|Artificier|TCE|Armurier|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Armure des arcanes|Artificier|TCE|Armurier|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Modèle d'armure|Artificier|TCE|Armurier|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Modèle d'armure|Artificier|TCE|Armurier|TCE|3"
           }
         ]
       },
@@ -816,16 +817,16 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise des outils|Artificier|TCE|Artilleur|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise des outils|Artificier|TCE|Artilleur|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Sorts d'artilleur|Artificier|TCE|Artilleur|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts d'artilleur|Artificier|TCE|Artilleur|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Canon occulte|Artificier|TCE|Artilleur|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Canon occulte|Artificier|TCE|Artilleur|TCE|3"
           }
         ]
       },
@@ -959,20 +960,20 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise des outils|Artificier|TCE|Forgeron de Guerre|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise des outils|Artificier|TCE|Forgeron de Guerre|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de forgeron de guerre|Artificier|TCE|Forgeron de Guerre|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de forgeron de guerre|Artificier|TCE|Forgeron de Guerre|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Apte au combat|Artificier|TCE|Forgeron de Guerre|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Apte au combat|Artificier|TCE|Forgeron de Guerre|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Défenseur d'acier|Artificier|TCE|Forgeron de Guerre|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Défenseur d'acier|Artificier|TCE|Forgeron de Guerre|TCE|3"
           }
         ]
       },
@@ -1328,7 +1329,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -1430,8 +1432,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Frénésie|Barbare|PHB|Berserker|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Frénésie|Barbare|PHB|Berserker|PHB|3"
           }
         ]
       },
@@ -1503,8 +1505,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -1576,8 +1578,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -1649,12 +1651,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Quêteur spirituel|Barbare|PHB|Guerrier Totem|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Quêteur spirituel|Barbare|PHB|Guerrier Totem|PHB|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Esprit totem|Barbare|PHB|Guerrier Totem|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Esprit totem|Barbare|PHB|Guerrier Totem|PHB|3"
           }
         ]
       },
@@ -1740,8 +1742,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -1813,12 +1815,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sens de la magie|Barbare|PHB|Magie Sauvage|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sens de la magie|Barbare|PHB|Magie Sauvage|TCE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Sursaut sauvage|Barbare|PHB|Magie Sauvage|TCE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sursaut sauvage|Barbare|PHB|Magie Sauvage|TCE|3"
           }
         ]
       },
@@ -1905,8 +1907,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -1992,12 +1994,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Puissance Géante|Barbare|PHB|Géant|BGG|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Puissance Géante|Barbare|PHB|Géant|BGG|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Ravage du Géant|Barbare|PHB|Géant|BGG|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Ravage du Géant|Barbare|PHB|Géant|BGG|3"
           }
         ]
       },
@@ -2376,7 +2378,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -2436,8 +2439,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2509,8 +2512,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2596,8 +2599,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2683,8 +2686,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2770,8 +2773,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2843,8 +2846,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2916,8 +2919,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -2989,8 +2992,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -3378,7 +3381,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -3416,8 +3420,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -3552,8 +3556,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -3713,12 +3717,12 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Duperie|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Duperie|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Bénédiction de l'escroc|Clerc|PHB|Duperie|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Bénédiction de l'escroc|Clerc|PHB|Duperie|PHB|1"
           }
         ]
       },
@@ -3852,8 +3856,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -3999,16 +4003,16 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Guerre|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Guerre|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise supplémentaires|Clerc|PHB|Guerre|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise supplémentaires|Clerc|PHB|Guerre|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Prêtre de guerre|Clerc|PHB|Guerre|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Prêtre de guerre|Clerc|PHB|Guerre|PHB|1"
           }
         ]
       },
@@ -4154,16 +4158,16 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Lumière|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Lumière|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Sorts mineur supplémentaire|Clerc|PHB|Lumière|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts mineur supplémentaire|Clerc|PHB|Lumière|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Illumination protectrice|Clerc|PHB|Lumière|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Illumination protectrice|Clerc|PHB|Lumière|PHB|1"
           }
         ]
       },
@@ -4311,16 +4315,16 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Mort|DMG|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Mort|DMG|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise supplémentaires|Clerc|PHB|Mort|DMG|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise supplémentaires|Clerc|PHB|Mort|DMG|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Faucheuse|Clerc|PHB|Mort|DMG|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Faucheuse|Clerc|PHB|Mort|DMG|1"
           }
         ]
       },
@@ -4466,16 +4470,16 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Nature|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Nature|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Acolyte de la nature|Clerc|PHB|Nature|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Acolyte de la nature|Clerc|PHB|Nature|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise supplémentaire|Clerc|PHB|Nature|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise supplémentaire|Clerc|PHB|Nature|PHB|1"
           }
         ]
       },
@@ -4621,8 +4625,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -4770,8 +4774,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -4919,12 +4923,12 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Savoir|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Savoir|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Bénédiction du savoir|Clerc|PHB|Savoir|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Bénédiction du savoir|Clerc|PHB|Savoir|PHB|1"
           }
         ]
       },
@@ -5058,16 +5062,16 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Tempête|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Tempête|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise supplémentaire|Clerc|PHB|Tempête|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise supplémentaire|Clerc|PHB|Tempête|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Fureur de l'ouragan|Clerc|PHB|Tempête|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Fureur de l'ouragan|Clerc|PHB|Tempête|PHB|1"
           }
         ]
       },
@@ -5213,8 +5217,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Clerc|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -5362,16 +5366,16 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Sorts de domaine|Clerc|PHB|Vie|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sorts de domaine|Clerc|PHB|Vie|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise supplémentaire|Clerc|PHB|Vie|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise supplémentaire|Clerc|PHB|Vie|PHB|1"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Disciple de la vie|Clerc|PHB|Vie|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Disciple de la vie|Clerc|PHB|Vie|PHB|1"
           }
         ]
       },
@@ -5719,47 +5723,50 @@
           "Puisant dans l'essence divine de la nature elle-même, vous pouvez lancer des sorts pour modeler cette essence selon votre volonté.",
           {
             "type": "entries",
-            "name": "",
+            "name": "Sorts mineurs",
             "entries": [
-              "Sorts mineursAu niveau 1, vous connaissez deux sorts mineurs de druide de votre choix. Vous apprendrez des sorts mineurs de druide supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+              "Au niveau 1, vous connaissez deux sorts mineurs de druide de votre choix. Vous apprendrez des sorts mineurs de druide supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
             ]
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Préparer et lancer des sorts",
             "entries": [
-              "Préparer et lancer des sortsLa table du druide montre combien d'emplacements de sorts vous avez pour lancer vos sorts de druide de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.Vous devez préparer la liste des sorts de druide qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de druide égal à votre modificateur de Sagesse + votre niveau de druide (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, si vous êtes un druide de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de druide nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste."
+              "La table du druide montre combien d'emplacements de sorts vous avez pour lancer vos sorts de druide de niveau 1 et supérieur. Pour lancer un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.",
+              "Vous devez préparer la liste des sorts de druide qui vous sont disponibles pour les lancer. Pour ce faire, choisissez un nombre de sorts de druide égal à votre modificateur de Sagesse + votre niveau de druide (minimum un sort). Les sorts doivent être d'un niveau pour lequel vous avez des emplacements de sorts.",
+              "Par exemple, si vous êtes un druide de niveau 3, vous avez suivant la table quatre emplacements de sorts de niveaux 1 et deux emplacements de sorts de niveau 2. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de niveau 1 et 2, selon n'importe quelle combinaison. Si vous préparez le sort de niveau 1 soins, vous pouvez le lancer en utilisant un emplacement de niveau 1 ou de niveau 2. Lancer le sort ne le supprime pas de votre liste de sorts préparés.",
+              "Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un repos long. Préparer une nouvelle liste de sorts de druide nécessite du temps pour prier et méditer : au moins 1 minute par niveau de sort pour chaque sort sur votre liste."
             ]
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Caractéristique d'incantation",
             "entries": [
-              "Caractéristique d'incantationLa Sagesse est votre caractéristique d'incantation pour vos sorts de druide, étant donné que votre puissance magique dépend de votre dévotion ainsi que de votre connexion à la nature. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de druide que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
+              "La Sagesse est votre caractéristique d'incantation pour vos sorts de druide, étant donné que votre puissance magique dépend de votre dévotion ainsi que de votre connexion à la nature. Vous utilisez votre Sagesse chaque fois qu'un sort se réfère à votre capacité de lancer des sorts. En outre, vous utilisez votre modificateur de Sagesse pour définir le DD du jet de sauvegarde d'un sort de druide que vous lancez ainsi que pour le jet d'attaque de celui-ci.",
               {
                 "type": "abilityDc",
                 "name": "Spell",
-                "attribute": "cha"
+                "attribute": "sag"
               },
               {
                 "type": "abilityAttackMod",
                 "name": "Spell",
-                "attribute": "cha"
+                "attribute": "sag"
               }
             ]
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Rituel",
             "entries": [
-              "RituelVous pouvez lancer un sort de druide en tant que rituel si ce sort possède l'étiquette rituel et si vous avez préparé le sort."
+              "Vous pouvez lancer un sort de druide en tant que rituel si ce sort possède l'étiquette rituel et si vous avez préparé le sort."
             ]
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Focaliseur d'incantation",
             "entries": [
-              "Focaliseur d'incantationVous pouvez utiliser un focaliseur druidique comme focaliseur d'incantation pour vos sorts de druide."
+              "Vous pouvez utiliser un focaliseur druidique comme focaliseur d'incantation pour vos sorts de druide."
             ]
           }
         ]
@@ -5794,7 +5801,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+          "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -5843,8 +5851,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -5930,8 +5938,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -6017,8 +6025,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -6344,8 +6352,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -6431,8 +6439,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -6504,8 +6512,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -6606,8 +6614,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -6944,8 +6952,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7045,8 +7053,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7118,8 +7126,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7203,8 +7211,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7304,8 +7312,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7416,8 +7424,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7532,8 +7540,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7647,8 +7655,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7734,8 +7742,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -7832,8 +7840,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8159,7 +8167,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -8307,8 +8316,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8380,8 +8389,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8453,8 +8462,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8526,8 +8535,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8613,8 +8622,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8715,8 +8724,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8788,8 +8797,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8861,8 +8870,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -8906,8 +8915,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -9271,7 +9280,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -9351,8 +9361,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -9486,8 +9496,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -9621,8 +9631,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -9742,8 +9752,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -9877,8 +9887,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -10012,8 +10022,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -10147,8 +10157,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -10282,8 +10292,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -10417,8 +10427,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -10859,7 +10869,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -10941,8 +10952,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11076,8 +11087,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11149,8 +11160,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11236,8 +11247,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11359,8 +11370,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11432,8 +11443,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11568,8 +11579,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -11704,8 +11715,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -12193,12 +12204,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Maîtrise supplémentaires|Roublard|PHB|Assassin|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Maîtrise supplémentaires|Roublard|PHB|Assassin|PHB|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Assassinat|Roublard|PHB|Assassin|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Assassinat|Roublard|PHB|Assassin|PHB|3"
           }
         ]
       },
@@ -12284,12 +12295,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Jeux de jambe sophistiqué|Roublard|PHB|Bretteur|XGE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Jeux de jambe sophistiqué|Roublard|PHB|Bretteur|XGE|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Audace désinvolte|Roublard|PHB|Bretteur|XGE|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Audace désinvolte|Roublard|PHB|Bretteur|XGE|3"
           }
         ]
       },
@@ -12375,8 +12386,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -12462,8 +12473,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -12549,8 +12560,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -12636,8 +12647,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -12737,12 +12748,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Incantation|Roublard|PHB|Escroc Arcanique|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Incantation|Roublard|PHB|Escroc Arcanique|PHB|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Escamotage et main de mage|Roublard|PHB|Escroc Arcanique|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Escamotage et main de mage|Roublard|PHB|Escroc Arcanique|PHB|3"
           }
         ]
       },
@@ -12839,8 +12850,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -12926,12 +12937,12 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Mains lestes|Roublard|PHB|Voleur|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Mains lestes|Roublard|PHB|Voleur|PHB|3"
           },
           {
-            "type": "subFeature",
-            "subFeature": "Monte-en-l'air|Roublard|PHB|Voleur|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Monte-en-l'air|Roublard|PHB|Voleur|PHB|3"
           }
         ]
       },
@@ -13134,7 +13145,7 @@
           "classFeature": "Origine magique|Ensorceleur|PHB|1",
           "gainSubClassFeature": true
         },
-        "Source de magie|Ensorceleur|PHB|2",
+        "Réserve Arcanique|Ensorceleur|PHB|2",
         "Métamagie|Ensorceleur|PHB|3",
         "Amélioration du score de capacité|Ensorceleur|PHB|4",
         {
@@ -13165,8 +13176,7 @@
         "source": "PHB",
         "page": 0,
         "subclassFeatures": [
-          "Ancêtre dragon|Ensorceleur|PHB|Lignée Draconique|PHB|1",
-          "Résistance draconique|Ensorceleur|PHB|Lignée Draconique|PHB|1",
+          "Lignée Draconique|Ensorceleur|PHB|Lignée Draconique|PHB|1",
           "Affinité elementaire|Ensorceleur|PHB|Lignée Draconique|PHB|6",
           "Ailes de dragon|Ensorceleur|PHB|Lignée Draconique|PHB|14",
           "Présence draconique|Ensorceleur|PHB|Lignée Draconique|PHB|18"
@@ -13178,8 +13188,7 @@
         "source": "PHB",
         "page": 0,
         "subclassFeatures": [
-          "Sursaut de magie sauvage|Ensorceleur|PHB|Magie Sauvage|PHB|1",
-          "Vague de chaos|Ensorceleur|PHB|Magie Sauvage|PHB|1",
+          "Magie Sauvage|Ensorceleur|PHB|Magie Sauvage|PHB|1",
           "Chance forcée|Ensorceleur|PHB|Magie Sauvage|PHB|6",
           "Chaos contrôlé|Ensorceleur|PHB|Magie Sauvage|PHB|14",
           "Bombardement de sort|Ensorceleur|PHB|Magie Sauvage|PHB|18"
@@ -13191,25 +13200,22 @@
         "source": "XGE",
         "page": 0,
         "subclassFeatures": [
-          "Vent haut-parleur|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1",
-          "Magie tumultueuse|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1",
-          "Coeur de la tempête|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1",
+          "Sorcellerie de la tempête|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1",
           "Guide des tempêtes|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|6",
           "Fureur de la tempête|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|14",
           "Âme du vent|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|18"
         ]
       },
       {
-        "name": "Magie de l'ombre",
-        "shortName": "Magie de l'ombre",
+        "name": "Magie des ombres",
+        "shortName": "Magie des ombres",
         "source": "XGE",
         "page": 0,
         "subclassFeatures": [
-          "Yeux des ténèbres|Moine|PHB|Ombre|PHB|1",
-          "Force de la tombe|Moine|PHB|Ombre|PHB|1",
-          "Chien du mauvais présage|Moine|PHB|Ombre|PHB|6",
-          "Marche de l'ombre|Moine|PHB|Ombre|PHB|14",
-          "Forme ombrale|Moine|PHB|Ombre|PHB|18"
+          "Magie des ombres|Ensorceleur|PHB|Magie des ombres|XGE|1",
+          "Chien du mauvais présage|Ensorceleur|PHB|Magie des ombres|XGE|6",
+          "Marche de l'ombre|Ensorceleur|PHB|Magie des ombres|XGE|14",
+          "Forme ombrale|Ensorceleur|PHB|Magie des ombres|XGE|18"
         ]
       }
     ],
@@ -13225,23 +13231,26 @@
           "Un événement dans votre passé, ou dans la vie d'un parent ou un ancêtre, vous a laissé une marque indélébile, en vous insufflant la magie des arcanes. Cette source de magie, quelle que soit son origine, alimente vos sorts.",
           {
             "type": "entries",
-            "name": "",
+            "name": "Sorts mineurs",
             "entries": [
-              "Sorts mineursAu niveau 1, vous connaissez quatre sorts mineurs de votre choix dans la liste de sorts d'ensorceleur. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
+              "Au niveau 1, vous connaissez quatre sorts mineurs de votre choix dans la liste de sorts d'ensorceleur. Vous apprendrez des sorts mineurs supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Sorts mineurs connus de la table ci-dessus."
             ]
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Emplacements de sorts",
             "entries": [
-              "Emplacements de sortsLa table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts d'ensorceleur de niveau 1 et supérieur. Pour lancer un de ces sorts d’ensorceleur, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long. Par exemple, si vous connaissez le sort de niveau 1 mains brûlantes et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer deux fois ce sort."
+              "La table ci-dessus montre combien d'emplacements de sorts vous avez pour lancer vos sorts d'ensorceleur de niveau 1 et supérieur. Pour lancer un de ces sorts d’ensorceleur, vous devez dépenser un emplacement du niveau du sort ou supérieur. Vous regagnez tous les emplacements de sorts dépensés lorsque vous terminez un repos long.",
+              "Par exemple, si vous connaissez le sort de niveau 1 mains brûlantes et qu'il vous reste un emplacement de niveau 1 et un emplacement de niveau 2, vous pouvez lancer deux fois ce sort."
             ]
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Sorts connus de niveau 1 et supérieur",
             "entries": [
-              "Sorts connus de niveau 1 et supérieurVous connaissez deux sorts de niveau 1 de votre choix dans la liste des sorts d’ensorceleur. La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts d’ensorceleur de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort. Par exemple, lorsque vous atteignez le niveau 3 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2.En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort d’ensorceleur que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts d’ensorceleur, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort."
+              "Vous connaissez deux sorts de niveau 1 de votre choix dans la liste des sorts d’ensorceleur.",
+              "La colonne Sorts connus de la table ci-dessus indique les niveaux auxquels vous apprenez de nouveaux sorts d’ensorceleur de votre choix. Chacun de ces sorts doit être d'un niveau pour lequel vous possédez un emplacement de sort. Par exemple, lorsque vous atteignez le niveau 3 de cette classe, vous pouvez apprendre un nouveau sort de niveau 1 ou 2.",
+              "En outre, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un sort d’ensorceleur que vous connaissez et le remplacer par un autre sort choisi dans la liste de sorts d’ensorceleur, celui-ci devant également être d'un niveau pour lequel vous possédez un emplacement de sort."
             ]
           },
           {
@@ -13263,9 +13272,9 @@
           },
           {
             "type": "entries",
-            "name": "",
+            "name": "Focaliseur d'incantation",
             "entries": [
-              "Focaliseur d'incantationVous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts d’ensorceleur."
+              "Vous pouvez utiliser un focaliseur arcanique comme focaliseur d'incantation pour vos sorts d’ensorceleur."
             ]
           }
         ]
@@ -13278,9 +13287,78 @@
         "classSource": "PHB",
         "level": 1,
         "entries": [
-          "Choisissez une origine d'ensorceleur, qui décrit la source de votre pouvoir magique inné : lignée draconique ou magie sauvage, lesquelles sont détaillées à la fin de la description de la classe.",
-          "Points de sorcellerieVous avez 2 points de sorcellerie, et vous en gagnez plus à des niveaux supérieurs, comme indiqué dans la colonne de Points de sorcellerie de la table ci-dessus. Vous ne pouvez jamais avoir plus de points de sorcellerie que ce que vous permet votre niveau dans la table ci-dessus. Vous récupérez tous les points de sorcellerie utilisés lorsque vous terminez un repos long.",
-          "Flexibilité des sortsVous pouvez utiliser vos points de sorcellerie pour gagner des emplacements de sorts supplémentaires ou sacrifier des emplacements de sorts pour gagner des points de sorcellerie supplémentaires. Vous apprenez d'autres façons d'utiliser vos points de sorcellerie lorsque vous atteignez des niveaux plus élevés. Tout emplacement de sort créé de cette manière disparaît lorsque vous terminez un repos long.**Création d'emplacements de sorts.** Vous pouvez transformer des points de sorcellerie inutilisés en un emplacement de sort par une action bonus à votre tour. La table ci-dessous indique le coût pour créer un emplacement de sort d'un niveau donné. Vous ne pouvez pas créer d’emplacements de sorts d'un niveau supérieur à 5.| Niveau         | Coût en      || d'emplacement ^| points de   ^|| de sort       ^| sorcellerie ^||:---:|:---:||1    |   2 ||2    |   3 ||3    |   5 ||4    |   6 ||5    |   7 |Convertir un emplacement de sort en points de sorcellerie. Par une action bonus à votre tour, vous pouvez dépenser un emplacement de sort et gagner un nombre de points de sorcellerie égal au niveau d'emplacement."
+          "Choisissez une origine d'ensorceleur, qui décrit la source de votre pouvoir magique inné : lignée draconique ou magie sauvage, lesquelles sont détaillées à la fin de la description de la classe."
+        ]
+      },
+      {
+        "name": "Réserve Arcanique",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 2,
+        "entries": [
+          "Au niveau 2,vous pouvez puiser dans la profonde réserve de magie qui réside en vous. Cette source de magie et représentée par les points de sorcellerie qui vous permettent de créer de nombreux effets magiques.",
+          {
+            "type": "refClassFeature",
+            "classFeature": "Points de sorcellerie|Ensorceleur|PHB|2"
+          },
+          {
+            "type": "refClassFeature",
+            "classFeature": "Flexibilité des sorts|Ensorceleur|PHB|2"
+          }
+        ]
+      },
+      {
+        "name": "Points de sorcellerie",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 2,
+        "entries": [
+          "Vous avez 2 points de sorcellerie, et vous en gagnez plus à des niveaux supérieurs, comme indiqué dans la colonne de Points de sorcellerie de la table ci-dessus. Vous ne pouvez jamais avoir plus de points de sorcellerie que ce que vous permet votre niveau dans la table ci-dessus. Vous récupérez tous les points de sorcellerie utilisés lorsque vous terminez un repos long."
+        ]
+      },
+      {
+        "name": "Flexibilité des sorts",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 2,
+        "entries": [
+          "Vous pouvez utiliser vos points de sorcellerie pour gagner des emplacements de sorts supplémentaires ou sacrifier des emplacements de sorts pour gagner des points de sorcellerie supplémentaires. Vous apprenez d'autres façons d'utiliser vos points de sorcellerie lorsque vous atteignez des niveaux plus élevés. Tout emplacement de sort créé de cette manière disparaît lorsque vous terminez un repos long.",
+          {
+            "type": "entries",
+            "name": "Création d'emplacements de sorts",
+            "entries": [
+              "Vous pouvez transformer des points de sorcellerie inutilisés en un emplacement de sort par une action bonus à votre tour. La table ci-dessous indique le coût pour créer un emplacement de sort d'un niveau donné. Vous ne pouvez pas créer d’emplacements de sorts d'un niveau supérieur à 5.",
+              {
+                "type": "table",
+                "caption": "Création d'emplacement de sorts",
+                "colLabels": ["Niveau d'emplacement de sort", "Coût en points de sorcellerie"],
+                "colStyles": [
+                  "ve-col-6 ve-text-center",
+                  "ve-col-6 ve-text-center"
+                ],
+                "rows": [
+                  ["1", "2"],
+                  ["2", "3"],
+                  ["3", "5"],
+                  ["4", "6"],
+                  ["5", "7"]
+                ]
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Convertir un emplacement de sort en points de sorcellerie",
+            "entries": [
+              "Par une action bonus à votre tour, vous pouvez dépenser un emplacement de sort et gagner un nombre de points de sorcellerie égal au niveau d'emplacement."
+            ]
+          }
         ]
       },
       {
@@ -13292,14 +13370,46 @@
         "level": 3,
         "entries": [
           "Au niveau 3, vous gagnez la possibilité d’altérer vos sorts en fonction de vos besoins. Vous gagnez deux des options de métamagie suivantes de votre choix. Vous en gagnez une autre aux niveaux 10 et 17. Sauf indication contraire, vous ne pouvez utiliser sur un sort qu'une seule option de métamagie lorsque vous le lancez.",
-          "Sort accéléréLorsque vous lancez un sort qui a un temps d'incantation de 1 action, vous pouvez dépenser 2 points de sorcellerie pour changer le temps d'incantation à 1 action bonus pour lancer ce sort.",
-          "Sort ampleQuand vous lancez un sort qui a une portée de 1,50 mètre ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler la portée du sort. Si le sort a une portée de contact, vous pouvez dépenser 1 point de sorcellerie pour faire passer sa portée à 9 mètres.",
-          "Sort étenduLorsque vous lancez un sort qui a une durée de 1 minute ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler sa durée (maximum 24 heures).",
-          "Sort intensifiéLorsque vous lancez un sort qui oblige une créature à faire un jet de sauvegarde pour résister à ses effets, vous pouvez dépenser 3 points de sorcellerie pour donner à une cible du sort un désavantage à son premier jet de sauvegarde contre le sort.",
-          "Sort jumeauQuand vous lancez un sort qui a pour cible une seule créature et qui n'a pas une portée personnelle, vous pouvez dépenser un nombre de points de sorcellerie égal au niveau du sort pour viser une deuxième créature à portée avec le même sort (1 point de sorcellerie si le sort est un sort mineur).Pour pouvoir utiliser cette option de métamagie, le sort doit être incapable de cibler plus d'une créature au niveau auquel il est lancé. Par exemple, rayon de givre fonctionne avec cette option mais pas projectile magique ni rayon ardent.",
-          "Sort prévenantLorsque vous lancez un sort qui force les autres créatures à faire un jet de sauvegarde, vous pouvez libérer de cette obligation du sort certaines de ces créatures. Pour ce faire, dépensez 1 point de sorcellerie et choisissez un nombre de créatures égal à votre modificateur de Charisme (minimum 1 créature). Chaque créature choisie réussie automatiquement son jet de sauvegarde contre le sort.",
-          "Sort renforcéLorsque vous lancez les dégâts pour un sort, vous pouvez dépenser 1 point de sorcellerie pour relancer un nombre de dés de dégâts ne dépassant pas votre modificateur de Charisme (minimum 1). Vous devez forcément utiliser les nouveaux dégâts. Vous pouvez utiliser Sort puissant même si vous avez déjà utilisé une option différente de métamagie lors du lancer de ce sort.",
-          "Sort subtilLorsque vous lancez un sort, vous pouvez dépenser 1 point de sorcellerie pour le lancer sans composantes somatiques ou verbales."
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort accéléré"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort distant"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort étendu"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort intense"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort jumeau"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort prudent"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort puissant"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort subtil"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort chercheur"
+          },
+          {
+            "type": "refOptionalfeature",
+            "optionalfeature": "Sort transmuté"
+          }
         ]
       },
       {
@@ -13310,7 +13420,111 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+          "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Capacité de l'origine magique",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 6,
+        "entries": [
+          "Au niveau 6, vous obtenez une capacité accordée par votre origine sorcière."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 8,
+        "entries": [
+          "Au niveau 8, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Métamagie",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 10,
+        "entries": [
+          "Au niveau 10, vous apprenez une option de métamagie supplémentaire."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 12,
+        "entries": [
+          "Au niveau 12, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Capacité de l'origine magique",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 14,
+        "entries": [
+          "Au niveau 14, vous obtenez une capacité accordée par votre origine sorcière."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 16,
+        "entries": [
+          "Au niveau 16, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Métamagie",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 17,
+        "entries": [
+          "Au niveau 17, vous apprenez une option de métamagie supplémentaire."
+        ]
+      },
+      {
+        "name": "Capacité de l'origine magique",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 18,
+        "entries": [
+          "Au niveau 18, vous obtenez une capacité accordée par votre origine sorcière."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 19,
+        "entries": [
+          "Au niveau 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -13332,13 +13546,13 @@
         "page": 0,
         "className": "Class",
         "classSource": "PHB",
-        "subclassShortName": "",
+        "subclassShortName": "Ensorceleur",
         "subclassSource": "PHB",
-        "level": 3,
+        "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -13419,13 +13633,13 @@
         "page": 0,
         "className": "Class",
         "classSource": "PHB",
-        "subclassShortName": "",
+        "subclassShortName": "Ensorceleur",
         "subclassSource": "PHB",
-        "level": 3,
+        "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -13513,15 +13727,15 @@
         "name": "Subclass",
         "source": "PHB",
         "page": 0,
-        "className": "Class",
+        "className": "Ensorceleur",
         "classSource": "PHB",
         "subclassShortName": "",
         "subclassSource": "PHB",
-        "level": 3,
+        "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
           }
         ]
       },
@@ -13645,18 +13859,22 @@
       },
       {},
       {
-        "name": "Subclass",
+        "name": "Lignée Draconique",
         "source": "PHB",
         "page": 0,
-        "className": "Class",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "",
+        "subclassShortName": "Lignée Draconique",
         "subclassSource": "PHB",
-        "level": 3,
+        "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Ancêtre dragon|Ensorceleur|PHB|Lignée Draconique|PHB|1"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Résistance draconique|Ensorceleur|PHB|Lignée Draconique|PHB|1"
           }
         ]
       },
@@ -13671,7 +13889,29 @@
         "level": 1,
         "header": 2,
         "entries": [
-          "Au niveau 1, vous choisissez un type de dragon comme votre ancêtre. Le type de dégât associé à chaque dragon est utilisé par les capacités que vous gagnerez plus tard.| Dragon | Type de dégâts ||:-------|:---------------|| Blanc  | Froid          || Bleu   | Foudre         || Noir   | Acide          || Rouge  | Feu            || Vert   | Poison         || Airain | Feu            || Argent | Froid          || Bronze | Foudre         || Cuivre | Acide          || Or     | Feu            |Vous pouvez parler, lire et écrire le draconique. De plus, chaque fois que vous faites un jet de Charisme pour interagir avec des dragons, votre bonus de maîtrise est doublé s’il s’applique au jet."
+          "Au niveau 1, vous choisissez un type de dragon comme votre ancêtre. Le type de dégât associé à chaque dragon est utilisé par les capacités que vous gagnerez plus tard.",
+          {
+            "type": "table",
+            "caption": "Ancêtre dragon",
+            "colLabels": ["Dragon","Type de dégâts"],
+            "colStyles": [
+              "ve-col-6 ve-text-center",
+              "ve-col-6 ve-text-center"
+            ],
+            "rows": [
+              ["Blanc","Froid"],
+              ["Bleu","Foudre"],
+              ["Noir","Acide"],
+              ["Rouge","Feu"],
+              ["Vert","Poison"],
+              ["Airain","Feu"],
+              ["Argent","Froid"],
+              ["Bronze","Foudre"],
+              ["Cuivre","Acide"],
+              ["Or","Feu"]
+            ]
+          },
+          "Vous pouvez parler, lire et écrire le {@b draconique}. De plus, chaque fois que vous faites un jet de Charisme pour interagir avec des dragons, votre bonus de maîtrise est doublé s’il s’applique au jet."
         ]
       },
       {
@@ -13685,7 +13925,8 @@
         "level": 1,
         "header": 2,
         "entries": [
-          "La magie qui coule à travers votre corps fait émerger des traits physiques de vos ancêtres dragons. Au niveau 1, votre maximum de points de vie augmente de 1 et également de 1 à chaque fois que vous gagnez un niveau dans cette classe. En outre, des parties de votre peau sont couvertes d’un mince reflet d’écailles de dragon. Lorsque vous ne portez pas d'armure, votre CA est égale à 13 + votre modificateur de Dextérité."
+          "La magie qui coule à travers votre corps fait émerger des traits physiques de vos ancêtres dragons. Au niveau 1, votre maximum de points de vie augmente de 1 et également de 1 à chaque fois que vous gagnez un niveau dans cette classe.",
+          "En outre, des parties de votre peau sont couvertes d’un mince reflet d’écailles de dragon. Lorsque vous ne portez pas d'armure, votre CA est égale à 13 + votre modificateur de Dextérité."
         ]
       },
       {
@@ -13713,7 +13954,8 @@
         "level": 14,
         "header": 2,
         "entries": [
-          "Au niveau 14, vous obtenez la possibilité de faire pousser une paire d'ailes de dragon dans votre dos et gagnez une vitesse de vol égale à votre vitesse actuelle. Vous pouvez créer ces ailes en une action bonus à votre tour. Elles durent jusqu'à ce que vous les rejetiez par une action bonus à votre tour. Vous ne pouvez pas faire apparaître vos ailes si vous portez une armure, sauf si l'armure est faite pour les accueillir. De même, des vêtements non prévus pour accueillir vos ailes pourraient être détruits lorsque vous les faîtes apparaître."
+          "Au niveau 14, vous obtenez la possibilité de faire pousser une paire d'ailes de dragon dans votre dos et gagnez une vitesse de vol égale à votre vitesse actuelle. Vous pouvez créer ces ailes en une action bonus à votre tour. Elles durent jusqu'à ce que vous les rejetiez par une action bonus à votre tour.",
+          "Vous ne pouvez pas faire apparaître vos ailes si vous portez une armure, sauf si l'armure est faite pour les accueillir. De même, des vêtements non prévus pour accueillir vos ailes pourraient être détruits lorsque vous les faîtes apparaître."
         ]
       },
       {
@@ -13732,18 +13974,41 @@
       },
       {},
       {
-        "name": "Subclass",
+        "name": "Magie des ombres",
         "source": "PHB",
         "page": 0,
-        "className": "Class",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "",
-        "subclassSource": "PHB",
-        "level": 3,
+        "subclassShortName": "Magie des ombres",
+        "subclassSource": "XGE",
+        "level": 1,
         "entries": [
+          "Vous êtes une créature d'ombres, car la magie qui vous habite vient directement du Shadowfell. Vous pouvez peutêtre retracer votre lignée jusqu'à une entité provenant de cet endroit, ou alors une de ces entités vous a exposé à sa sinistre énergie et vous avez été transformé par celle-ci.",
+          "Le pouvoir de la magie de l'ombre a d'étranges effets sur votre apparence physique. L'étincelle de vie qui vous anime semble en effet étouffée, comme si elle conservait difficilement sa vivacité face à l'énergie sombre qui imprègne votre âme. Vous pouvez, au choix, lancer un dé ou choisir une bizarrerie pour votre personnage dans la table des Bizarreries d'ensorceleur des ombres.",
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "table",
+            "caption": "Bizarrerie d'ensorceleur des ombers",
+            "colLabels": ["d6","Bizarrerie"],
+            "colStyles": [
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
+            ],
+            "rows": [
+              ["1","Votre peau dégage en permanence un froid glacial."],
+              ["2","Quand vous dormez, vous donnez l'impression de ne pas respirer (cela dit, vous devez quand même respirer pour survivre)."],
+              ["3","Vous saignez très peu, même quand vous êtes gravement blessé"],
+              ["4","Votre cœur ne bat qu'une fois par minute, et quand cela arrive, vous êtes parfois surpris. "],
+              ["5","Vous avez du mal à vous rappeler qu'on ne se comporte pas de la même manière avec les êtres vivants et les cadavres"],
+              ["6","Vous avez cligné des yeux. Une fois. C'était la semaine dernière"]
+            ]
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Yeux des ténèbres|Ensorceleur|PHB|Magie des ombres|XGE|1"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Force de la tombe|Ensorceleur|PHB|Magie des ombres|XGE|1"
           }
         ]
       },
@@ -13751,52 +14016,64 @@
         "name": "Yeux des ténèbres",
         "source": "PHB",
         "page": 0,
-        "className": "Moine",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "Ombre",
-        "subclassSource": "PHB",
+        "subclassShortName": "Magie des ombres",
+        "subclassSource": "XGE",
         "level": 1,
         "header": 2,
         "entries": [
-          "À partir du 1er niveau, vous avez une vision dans le noir avec une portée de 120 pieds.Lorsque vous atteignez le niveau 3 de cette classe, vous apprenez le sort Ténèbres , qui ne compte pas dans votre nombre de sorts d'ensorceleur connus. De plus, vous pouvez le lancer en dépensant 2 points de sorcellerie ou en dépensant un emplacement de sort. Si vous le lancez avec des points de sorcellerie, vous pouvez voir à travers les ténèbres créées par le sort."
+          "À partir du 1er niveau, vous avez une vision dans le noir avec une portée de 36 mètres.",
+          "Lorsque vous atteignez le niveau 3 de cette classe, vous apprenez le sort {@spell Ténèbres} , qui ne compte pas dans votre nombre de sorts d'ensorceleur connus. De plus, vous pouvez le lancer en dépensant 2 points de sorcellerie ou en dépensant un emplacement de sort. Si vous le lancez avec des points de sorcellerie, vous pouvez voir à travers les ténèbres créées par le sort."
         ]
       },
       {
         "name": "Force de la tombe",
         "source": "PHB",
         "page": 0,
-        "className": "Moine",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "Ombre",
-        "subclassSource": "PHB",
+        "subclassShortName": "Magie des ombres",
+        "subclassSource": "XGE",
         "level": 1,
         "header": 2,
         "entries": [
-          "À partir du niveau 1, votre existence dans un état crépusculaire entre la vie et la mort vous rend difficile à vaincre. Lorsque les dégâts vous réduisent à 0 point de vie, vous pouvez effectuer un jet de sauvegarde de Charisme (DD 5 + les dégâts subis). En cas de succès, vous tombez à la place à 1 point de vie. Vous ne pouvez pas utiliser cette fonctionnalité si vous êtes réduit à 0 points de vie par des dégâts radiants ou par un coup critique.Une fois le jet de sauvegarde réussi, vous ne pouvez plus utiliser cette capacité tant que vous n'avez pas terminé un repos long."
+          "À partir du niveau 1, votre existence dans un état crépusculaire entre la vie et la mort vous rend difficile à vaincre. Lorsque les dégâts vous réduisent à 0 point de vie, vous pouvez effectuer un jet de sauvegarde de Charisme (DD 5 + les dégâts subis). En cas de succès, vous tombez à la place à 1 point de vie. Vous ne pouvez pas utiliser cette fonctionnalité si vous êtes réduit à 0 points de vie par des dégâts radiants ou par un coup critique.",
+          "Si vous avez réussi votre jet de sauvegarde, vous ne pouvez plus utiliser cette capacité tant que vous n'avez pas terminé un repos long."
         ]
       },
       {
         "name": "Chien du mauvais présage",
         "source": "PHB",
         "page": 0,
-        "className": "Moine",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "Ombre",
-        "subclassSource": "PHB",
+        "subclassShortName": "Magie des ombres",
+        "subclassSource": "XGE",
         "level": 6,
         "header": 2,
         "entries": [
-          "Au niveau 6, vous gagnez la capacité d'invoquer une créature hurlante des ténèbres pour harceler vos ennemis. Par une action bonus, vous pouvez dépenser 3 points de sorcellerie pour invoquer un chien de mauvais augure pour cibler une créature que vous pouvez voir à moins de 120 pieds de vous. Le chien utilise les statistiques du grand loup, avec les changements suivants :- Le chien est de taille moyenne, pas grande, et il compte comme une monstruosité, pas comme une bête.- Il apparaît avec un nombre de points de vie temporaires égal à la moitié de votre niveau d'ensorceleur.- Il peut se déplacer à travers d'autres créatures et objets comme s'il s'agissait d'un terrain difficile. Le chien subit 5 dégâts de force s'il termine son tour à l'intérieur d'un objet.- Au début de son tour, le chien connaît automatiquement l'emplacement de sa cible. Si la cible était cachée, elle n'est plus cachée au chien.Le chien apparaît dans un espace inoccupé de votre choix à moins de 9 mètres de la cible. Lancez l'initiative pour le chien courant. A son tour, il ne peut se déplacer que vers sa cible par la route la plus directe, et il ne peut utiliser son action que pour attaquer sa cible. Le chien peut effectuer des attaques d'opportunité, mais uniquement contre sa cible. De plus, tant que le chien est à moins de 1,50 mètre de la cible, la cible a un désavantage aux jets de sauvegarde contre tout sort que vous lancez. Le molosse disparaît s'il est réduit à 0 point de vie, si sa cible est réduite à 0 point de vie ou au bout de 5 minutes."
+          "Au niveau 6, vous gagnez la capacité d'invoquer une créature hurlante des ténèbres pour harceler vos ennemis. Par une action bonus, vous pouvez dépenser 3 points de sorcellerie pour invoquer un chien de mauvais augure pour cibler une créature que vous pouvez voir à moins de 120 pieds de vous. Le chien utilise les statistiques du grand loup, avec les changements suivants :",
+          {
+            "type": "list",
+            "entries": [
+              "Le chien est de taille moyenne, pas grande, et il compte comme une monstruosité, pas comme une bête.",
+              "Il apparaît avec un nombre de points de vie temporaires égal à la moitié de votre niveau d'ensorceleur.",
+              "Il peut se déplacer à travers d'autres créatures et objets comme s'il s'agissait d'un terrain difficile. Le chien subit 5 dégâts de force s'il termine son tour à l'intérieur d'un objet.",
+              "Au début de son tour, le chien connaît automatiquement l'emplacement de sa cible. Si la cible était cachée, elle n'est plus cachée au chien."
+            ]
+          },
+          "Le chien apparaît dans un espace inoccupé de votre choix à moins de 9 mètres de la cible. Lancez l'initiative pour le chien courant. A son tour, il ne peut se déplacer que vers sa cible par la route la plus directe, et il ne peut utiliser son action que pour attaquer sa cible. Le chien peut effectuer des attaques d'opportunité, mais uniquement contre sa cible. De plus, tant que le chien est à moins de 1,50 mètre de la cible, la cible a un désavantage aux jets de sauvegarde contre tout sort que vous lancez. Le molosse disparaît s'il est réduit à 0 point de vie, si sa cible est réduite à 0 point de vie ou au bout de 5 minutes."
         ]
       },
       {
         "name": "Marche de l'ombre",
         "source": "PHB",
         "page": 0,
-        "className": "Moine",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "Ombre",
-        "subclassSource": "PHB",
+        "subclassShortName": "Magie des ombres",
+        "subclassSource": "XGE",
         "level": 14,
         "header": 2,
         "entries": [
@@ -13807,30 +14084,35 @@
         "name": "Forme ombrale",
         "source": "PHB",
         "page": 0,
-        "className": "Moine",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "Ombre",
-        "subclassSource": "PHB",
+        "subclassShortName": "Magie des ombres",
+        "subclassSource": "XGE",
         "level": 18,
         "header": 2,
         "entries": [
-          "À partir du niveau 18, vous pouvez dépenser 6 points de sorcellerie en tant qu'action bonus pour vous transformer en une forme ténébreuse. Sous cette forme, vous avez une résistance à tous les dégâts sauf la force et les dégâts radiants, et vous pouvez vous déplacer à travers d'autres créatures et objets comme s'il s'agissait d'un terrain difficile. Vous subissez 5 dégâts de force si vous terminez votre tour à l'intérieur d'un objet.Vous restez sous cette forme pendant 1 minute. Elle se termine plus tôt si vous êtes incapable d'agir, si vous mourez ou si vous la rejetez en tant qu'action bonus."
+          "À partir du niveau 18, vous pouvez dépenser 6 points de sorcellerie en tant qu'action bonus pour vous transformer en une forme ténébreuse. Sous cette forme, vous avez une résistance à tous les dégâts sauf la force et les dégâts radiants, et vous pouvez vous déplacer à travers d'autres créatures et objets comme s'il s'agissait d'un terrain difficile. Vous subissez 5 dégâts de force si vous terminez votre tour à l'intérieur d'un objet.",
+          "Vous restez sous cette forme pendant 1 minute. Elle se termine plus tôt si vous êtes incapable d'agir, si vous mourez ou si vous la rejetez en tant qu'action bonus."
         ]
       },
       {},
       {
-        "name": "Subclass",
+        "name": "Magie Sauvage",
         "source": "PHB",
         "page": 0,
-        "className": "Class",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "",
+        "subclassShortName": "Magie Sauvage",
         "subclassSource": "PHB",
-        "level": 3,
+        "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sursaut de magie sauvage|Ensorceleur|PHB|Magie Sauvage|PHB|1"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Vague de chaos|Ensorceleur|PHB|Magie Sauvage|PHB|1"
           }
         ]
       },
@@ -13845,7 +14127,70 @@
         "level": 1,
         "header": 2,
         "entries": [
-          "Dès lors que vous choisissez cette origine au niveau 1, vos sorts peuvent déclencher des poussées de magie incontrôlables. Une fois par tour, le MD peut vous demander de lancer un d20, immédiatement après que vous ayez lancé un sort d'ensorceleur du niveau 1 ou plus. Si vous obtenez un 1, vous déclenchez un effet magique aléatoire. Reportez-vous au tableau ci-dessous de Sursauts de magie sauvage pour déterminer les effets du résultat. Si l'effet de la magie sauvage est un sort, celui-ci est trop violent pour être affecté par votre métamagie. S'il demande normalement de la concentration, dans ce cas il n'en demande pas ; le sort persiste pour sa durée totale."
+          "Dès lors que vous choisissez cette origine au niveau 1, vos sorts peuvent déclencher des poussées de magie incontrôlables. Une fois par tour, le MD peut vous demander de lancer un d20, immédiatement après que vous ayez lancé un sort d'ensorceleur du niveau 1 ou plus.",
+          "Si vous obtenez un 1, vous déclenchez un effet magique aléatoire. Reportez-vous au tableau ci-dessous de Sursauts de magie sauvage pour déterminer les effets du résultat. Si l'effet de la magie sauvage est un sort, celui-ci est trop violent pour être affecté par votre métamagie.",
+          "S'il demande normalement de la concentration, dans ce cas il n'en demande pas ; le sort persiste pour sa durée totale.",
+          {
+            "type": "table",
+            "caption": "Sursaut de magie sauvage",
+            "colLabels": ["d100","Effet"],
+            "colStyles": [
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
+            ],
+            "rows": [
+              ["01-02",""],
+              ["03-04",""],
+              ["05-06",""],
+              ["07-08",""],
+              ["09-10",""],
+              ["11-12",""],
+              ["13-14",""],
+              ["15-16",""],
+              ["17-18",""],
+              ["19-20",""],
+              ["21-22",""],
+              ["23-24",""],
+              ["25-26",""],
+              ["27-28",""],
+              ["29-30",""],
+              ["31-32",""],
+              ["33-34",""],
+              ["35-36",""],
+              ["37-38",""],
+              ["39-40",""],
+              ["41-42",""],
+              ["43-44",""],
+              ["45-46",""],
+              ["47-48",""],
+              ["49-50",""],
+              ["51-52",""],
+              ["53-54",""],
+              ["55-56",""],
+              ["57-58",""],
+              ["59-60",""],
+              ["61-62",""],
+              ["63-64",""],
+              ["65-66",""],
+              ["67-68",""],
+              ["69-70",""],
+              ["71-72",""],
+              ["73-74",""],
+              ["75-76",""],
+              ["77-78",""],
+              ["79-80",""],
+              ["81-82",""],
+              ["83-84",""],
+              ["85-86",""],
+              ["87-88",""],
+              ["89-90",""],
+              ["91-92",""],
+              ["93-94",""],
+              ["95-96",""],
+              ["97-98",""],
+              ["99-100",""]
+            ]
+          }
         ]
       },
       {
@@ -13859,7 +14204,8 @@
         "level": 1,
         "header": 2,
         "entries": [
-          "À partir du niveau 1, vous pouvez manipuler les forces du hasard et du chaos pour gagner un avantage à un jet d'attaque, un jet de caractéristique ou un jet de sauvegarde. Lorsque vous le faites, vous devez terminer un repos long avant de pouvoir l'utiliser à nouveau.Tant que vous n'avez pas récupéré l'usage de cette capacité, si vous lancez un sort d'ensorceleur de niveau 1 ou plus, le MD peut vous demander de faire un jet de Sursaut de magie sauvage (d100). Quel qu'en soit le résultat, vous récupérez ensuite cette capacité."
+          "À partir du niveau 1, vous pouvez manipuler les forces du hasard et du chaos pour gagner un avantage à un jet d'attaque, un jet de caractéristique ou un jet de sauvegarde. Lorsque vous le faites, vous devez terminer un repos long avant de pouvoir l'utiliser à nouveau.",
+          "Tant que vous n'avez pas récupéré l'usage de cette capacité, si vous lancez un sort d'ensorceleur de niveau 1 ou plus, le MD peut vous demander de faire un jet de Sursaut de magie sauvage (d100). Quel qu'en soit le résultat, vous récupérez ensuite cette capacité."
         ]
       },
       {
@@ -13906,18 +14252,26 @@
       },
       {},
       {
-        "name": "Subclass",
+        "name": "Sorcellerie de la tempête",
         "source": "PHB",
         "page": 0,
-        "className": "Class",
+        "className": "Ensorceleur",
         "classSource": "PHB",
-        "subclassShortName": "",
-        "subclassSource": "PHB",
-        "level": 3,
+        "subclassShortName": "Sorcellerie de la tempête",
+        "subclassSource": "XGE",
+        "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Class|PHB|SubClass|PHB|3"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Vent haut-parleur|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Magie tumultueuse|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Coeur de la tempête|Ensorceleur|PHB|Sorcellerie de la tempête|XGE|1"
           }
         ]
       },
@@ -13974,7 +14328,9 @@
         "level": 6,
         "header": 2,
         "entries": [
-          "Au niveau 6, vous gagnez la capacité de contrôler subtilement la météo autour de vous.S'il pleut, vous pouvez utiliser une action pour que la pluie cesse de tomber dans une sphère de 6 mètres de rayon centrée sur vous. Vous pouvez mettre fin à cet effet par une action bonus.S'il y a du vent, vous pouvez utiliser une action bonus à chaque tour pour choisir la direction dans laquelle le vent souffle dans une sphère de 30 mètres de rayon centrée sur vous. Le vent souffle dans cette direction jusqu'à la fin de votre prochain tour. Cette fonction ne modifie pas la vitesse du vent."
+          "Au niveau 6, vous gagnez la capacité de contrôler subtilement la météo autour de vous.",
+          "S'il pleut, vous pouvez utiliser une action pour que la pluie cesse de tomber dans une sphère de 6 mètres de rayon centrée sur vous. Vous pouvez mettre fin à cet effet par une action bonus.",
+          "S'il y a du vent, vous pouvez utiliser une action bonus à chaque tour pour choisir la direction dans laquelle le vent souffle dans une sphère de 30 mètres de rayon centrée sur vous. Le vent souffle dans cette direction jusqu'à la fin de votre prochain tour. Cette fonction ne modifie pas la vitesse du vent."
         ]
       },
       {
@@ -14002,7 +14358,8 @@
         "level": 18,
         "header": 2,
         "entries": [
-          "Au niveau 18, vous êtes immunisé contre les dégâts de foudre et de tonnerre.Vous gagnez également une vitesse de vol magique de 18 mètres. Par une action, vous pouvez réduire votre vitesse de vol à 9 mètres pendant 1 heure et choisir un nombre de créatures dans un rayon de 9 mètres autour de vous égal à 3 + votre modificateur de Charisme. Les créatures choisies gagnent une vitesse de vol magique de 9 mètres pendant 1 heure. Une fois que vous avez réduit votre vitesse de vol de cette manière, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long."
+          "Au niveau 18, vous êtes immunisé contre les dégâts de foudre et de tonnerre.",
+          "Vous gagnez également une vitesse de vol magique de 18 mètres. Par une action, vous pouvez réduire votre vitesse de vol à 9 mètres pendant 1 heure et choisir un nombre de créatures dans un rayon de 9 mètres autour de vous égal à 3 + votre modificateur de Charisme. Les créatures choisies gagnent une vitesse de vol magique de 9 mètres pendant 1 heure. Une fois que vous avez réduit votre vitesse de vol de cette manière, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos court ou long."
         ]
       }
     ]
@@ -14270,7 +14627,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -14319,8 +14677,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -14440,8 +14798,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -14575,8 +14933,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -14703,8 +15061,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -14824,8 +15182,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -14989,8 +15347,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -15117,8 +15475,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -15266,8 +15624,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -15408,8 +15766,8 @@
         "level": 1,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Occultiste|PHB|SubClass|PHB|1"
           }
         ]
       },
@@ -15855,7 +16213,8 @@
         "classSource": "PHB",
         "level": 4,
         "entries": [
-          "Au niveau 4, puis par la suite aux niveaux 8, 12, 16 et 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais."
+                    "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
         ]
       },
       {
@@ -15893,8 +16252,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -15980,8 +16339,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16067,8 +16426,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16154,8 +16513,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16241,8 +16600,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16328,8 +16687,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16415,8 +16774,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16502,8 +16861,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16575,8 +16934,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16662,8 +17021,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16749,8 +17108,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16836,8 +17195,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },
@@ -16923,8 +17282,8 @@
         "level": 3,
         "entries": [
           {
-            "type": "subFeature",
-            "subFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Magicien|PHB|SubClass|PHB|2"
           }
         ]
       },

@@ -7,6 +7,7 @@ import "../css/classes.css"
 import {RefObject} from "react";
 import {Link, useLocation} from "react-router-dom";
 import classes from "../../resources/classes.json";
+import {getResource, Resources} from "../../ResourcesFetch";
 
 
 export const Dnd5eClasses = () => {
@@ -17,7 +18,23 @@ export const Dnd5eClasses = () => {
     id: "Source", sortId: "info.source", classSize: "ve-grow", colClass: "bold ve-grow ve-text-center pl-0 pr-1"
   }]
   //
-  const classes: [PlayerClass] = require('../../resources/classes.json')
+  // const [classes, setClasses] = useState(getResource(Resources.clazz))
+  const classes: [PlayerClass] = getResource(Resources.clazz)
+
+  // useEffect(() => {
+  //   let repeat;
+  //   async function fetch(){
+  //     console.log("HERRE")
+  //     setClasses(getResource(Resources.clazz))
+  //     repeat = setTimeout(fetch, 10000);
+  //   }
+  //   fetch()
+  //   return () => {
+  //     if (repeat) {
+  //       clearTimeout(repeat);
+  //     }
+  //   }
+  // }, []);
   // console.log(require('./5e/resources/.classes.json'))
   // const [elements, setElements] = useState(classes)
   // const [sorting, setSorting] = useState("")
@@ -385,6 +402,7 @@ export const Dnd5eClasses = () => {
       })
     } else if (values.length === 6) {
       const [featureName, className, classSource, subClassName, subClassSource, level] = values
+      // console.log(featureName, className, classSource, subClassName, subClassSource, level)
       // console.log("-------------------------------------------------------------")
       // console.log(featureName, className, classSource, subClassName, subClassSource, level)
       // console.log(selectedClass.subclassFeatures)
@@ -404,7 +422,8 @@ export const Dnd5eClasses = () => {
   const props = {
     getToggleState: getToggleState,
     toggleStateChange: toggleStateChange,
-    subFeature: renderSubFeature,
+    refClassFeature: renderRefClassFeature,
+    refSubclassFeature: renderRefSubclassFeature,
     renderEntries: renderEntry
   };
 
@@ -425,6 +444,7 @@ export const Dnd5eClasses = () => {
 
     addToggleableState(featureStringId)
     // console.log(featureObject)
+    // console.log(featureStringId, featureObject)
 
     return <tr className="cls-main__linked-titles">
       <td colSpan={6}>
@@ -432,9 +452,9 @@ export const Dnd5eClasses = () => {
           ref={refs[featureStringId]}
           className={"rd__b rd__b--" + (featureObject?.header ?? header) + (featureObject?.subclassShortName ? " cls__feature-subclass" : "")}>
           <h2 className={"rd__h rd__h--" + (featureObject?.header ?? header)}
-              onClick={(event)=> {
+              onClick={(event) => {
                 navigator.clipboard.writeText(featureName)
-                  // .then($utils(event.target))
+                // .then($utils(event.target))
               }}
           >
             <span className="entry-title-inner">
@@ -560,11 +580,36 @@ export const Dnd5eClasses = () => {
     })
   }
 
-  function renderSubFeature(feature, depth) {
+  function renderRefClassFeature(feature, depth) {
+    // console.log(feature)
+    const [featureName, featureClass, featureSource, featureLevel] = feature.split("|")
+
+    const featureObject = findFeatureInClass(feature)
+    // console.log(featureObject)
+    // console.log(depth)
+
+    return <div
+      ref={refs[feature]}
+      className={"rd__b rd__b--2" + (featureObject?.subclassShortName ? " cls__feature-subclass" : "")}>
+      <h3 className="rd__h rd__h--2">
+        <span className="entry-title-inner">{featureObject.name}</span>
+        <span className="ve-flex-vh-center" style={{cursor: "pointer"}} onClick={() => toggleStateChange(feature)}>
+              <span className="">[{getToggleState(feature) ? "–" : "+"}]</span>
+        </span>
+      </h3>
+      {featureObject ? "" : <p>Unable to find {feature}</p>}
+      {/*{console.log(featureObject?.entries)}*/}
+      {getToggleState(feature) && RenderModule(props).render(featureObject?.entries, ++depth, feature)}
+    </div>
+
+  }
+
+  function renderRefSubclassFeature(feature, depth) {
     console.log(feature)
     const [featureName, _, __, subclassName, featureSource, featureLevel] = feature.split("|")
 
     const featureObject = findFeatureInClass(feature)
+    console.log(featureObject)
 
 
     return <div
@@ -599,6 +644,16 @@ export const Dnd5eClasses = () => {
   }
 
   function renderEntry(feature, toggle, depth) {
+    // console.log(feature, toggle, depth)
+    if (depth === 3) {
+      return <div className={"rd__b rd__b--3"}>
+        <p>
+          <span className={"rd__h rd__h--3"}>{feature.name}. </span>
+          {feature.entries[0]}
+        </p>
+        {getToggleState(toggle) && feature.entries.length > 1 ? RenderModule().render([...feature.entries].slice(1, feature.entries.length), ++depth, toggle) : ""}
+      </div>
+    }
     return <div className="rd__b rd__b--2" ref={refs[toggle]}>
       <h3 className="rd__h rd__h--2">
         <span className="entry-title-inner">{feature.name}</span>
@@ -606,7 +661,7 @@ export const Dnd5eClasses = () => {
                 <span className="">[{getToggleState(toggle) ? "–" : "+"}]</span>
               </span>
       </h3>
-      {getToggleState(toggle) ? RenderModule().render(feature.entries, depth++, toggle) : ""}
+      {getToggleState(toggle) ? RenderModule().render(feature.entries, ++depth, toggle) : ""}
     </div>
   }
 
@@ -997,7 +1052,7 @@ export const Dnd5eClasses = () => {
                     </div>
                   )
                   getTitles(findFeatureInClass(feature.classFeature ?? feature)).map(featureD => {
-                    console.log(featureD)
+                    // console.log(featureD)
                     featureList.push(
                       <div
                         className="cls-nav__item cls-nav__item--depth-2"

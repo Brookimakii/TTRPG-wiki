@@ -364,5 +364,11 @@ export class PlayerOptionNFeature {
       class: {}
     }
   }]
+  consumes: {
+    name: string,
+    amount: number,
+    amountMin: number,
+    amountMax: number,
+  }
   entries: [string]
 }

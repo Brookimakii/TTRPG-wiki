@@ -1839,107 +1839,130 @@
   },
   {},
   {
-    "id": "",
+    "id": "Quickened Spell",
     "name": "Sort accéléré",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie",
+      "amount": 2
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort dont le temps d'incantation est de 1 action, vous pouvez dépenser 2 points de sorcellerie pour transformer ce temps d'incantation en 1 action bonus pour cette fois-ci."
     ]
   },
   {
-    "id": "",
-    "name": "Sort ample",
+    "id": "Distant Spell",
+    "name": "Sort distant",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort qui a une portée de 1,50 mètre ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler la portée du sort. ",
+      "Quand vous lancez un sort de contact, vous pouvez dépenser un point de sorcellerie pour faire passer sa portée à 9 mètres."
     ]
   },
   {
-    "id": "",
+    "id": "Extended Spell",
     "name": "Sort étendu",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort qui dure 1 minute ou plus, vous pouvez dépenser 1 point de sorcellerie pour doubler sa durée (jusqu'à un maximum de 24 heures)."
     ]
   },
   {
-    "id": "",
-    "name": "Sort intensifié",
+    "id": "Heightened Spell",
+    "name": "Sort intense",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie",
+      "amount": 3
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort qui force une créature à faire un jet de sauvegarde pour résister à ses effets, vous pouvez dépenser 3 points de sorcellerie pour désavantager la cible lors de son premier jet de sauvegarde contre le sort."
     ]
   },
   {
-    "id": "",
+    "id": "Twinned Spell",
     "name": "Sort jumeau",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie",
+      "amountMin": 1,
+      "amountMax": 9
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort qui a pour cible une unique créature et qui n'est pas un sort à lancer uniquement sur vous-même, vous pouvez dépenser un nombre de points de sorcellerie égal au niveau du sort pour cibler une seconde créature qui se trouve à portée avec le même sort (1 point de sorcellerie suffit s'il s'agit d'un tour de magie). ",
+      "Pour pouvoir appliquer cette option de métamagie, le sort concerné doit être incapable de cibler plus d'une créature au niveau auquel il est lancé. Par exemple, cette option ne fonctionne pas avec {@spell projectile magique} ni avec {@spell rayon ardent}, mais elle fonctionne avec {@spell rayon de givre} ou {@spell orbe chromatique}."
     ]
   },
   {
-    "id": "",
-    "name": "Sort prévenant",
+    "id": "Careful Spell",
+    "name": "Sort prudent",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort qui force d'autres créatures à faire un jet de sauvegarde, vous pouvez atténuer l'effet du sort pour certaines de ces créatures. Dépensez 1 point de sorcellerie et choisissez un nombre de créatures dont le maximum correspond à votre modificateur de Charisme (avec un minimum d'une créature). Les créatures désignées réussissent automatiquement leur jet de sauvegarde contre ce sort."
     ]
   },
   {
-    "id": "",
-    "name": "Sort renforcé",
+    "id": "Empowered Spell",
+    "name": "Sort puissant",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
-      ""
+      "Quand vous lancez les dés de dégâts d'un sort, vous pouvez dépenser 1 point de sorcellerie pour annuler les résultats d'un nombre de dés égal au maximum à votre modificateur de Charisme (avec un minimum d'un) et les relancer. Vous devez appliquer les résultats du nouveau lancer.",
+      "Vous pouvez utiliser« sort puissant» même si vous avez déjà utilisé une autre option de métamagie pour modifier ce sort."
     ]
   },
   {
-    "id": "",
+    "id": "Subtle Spell",
     "name": "Sort subtil",
     "source": "PHB",
     "page": 73,
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
-      ""
+      "Quand vous lancez un sort, vous pouvez dépenser 1 point de sorcellerie pour le lancer sans utiliser de composante verbale ni somatique."
     ]
   },
   {
@@ -1950,7 +1973,9 @@
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
       ""
     ]
@@ -1963,7 +1988,9 @@
     "featureType": [
       "MM"
     ],
-    "prerequisite": [],
+    "consumes": {
+      "name":  "Points de Sorcellerie"
+    },
     "entries": [
       ""
     ]
@@ -2252,7 +2279,7 @@
     },
     "entries": [
       "Lorsque vous êtes dans un rayon de 1,50 m d'une créature à votre tour, vous pouvez dépenser un dé de supériorité pour échanger vos places, à condition d'y consacrer au moins 1,50 m de déplacement et que la créature soit consentante et non neutralisée. Ce déplacement ne provoque pas d'attaque d'opportunité.",
-      "Lancez le dé de supériorité. Jusqu'au début de votre tour suivant, vous ou l'autre créature (à votre convenance) recevez à la CA un bonus égal au résultat du dé. "
+      "Lancez le dé de supériorité. Jusqu'au début de votre tour suivant, vous ou l'autre créature (à votre convenance) recevez à la CA un bonus égal au résultat du dé."
     ]
   },
   {

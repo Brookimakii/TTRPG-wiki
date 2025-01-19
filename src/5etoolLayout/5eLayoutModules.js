@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
 import type {Entry} from "../layout/5e/Models";
 import {getResource, Resources} from "../ResourcesFetch";
+import {PlayerOptionNFeature} from "../layout/5e/Models";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -46,6 +47,7 @@ export class Utils {
         document.documentElement.clientLeft,
     };
   }
+
   css(css, value) {
     if (value !== undefined) {
       this.each((el) => {
@@ -67,6 +69,7 @@ export class Utils {
     const property = Utils.styleSupport(cssProp);
     return getComputedStyle(this.element)[property];
   }
+
   html(html) {
     if (html === undefined) {
       if (!this.element) {
@@ -79,6 +82,7 @@ export class Utils {
     });
     return this;
   }
+
   width() {
     if (!this.element) {
       return 0;
@@ -86,12 +90,14 @@ export class Utils {
     const style = window.getComputedStyle(this.element, null);
     return parseFloat(style.width.replace('px', ''));
   }
+
   remove() {
     this.each((el) => {
       el.parentNode.removeChild(el);
     });
     return this;
   }
+
   static getSelector(selector, context) {
     if (selector && typeof selector !== 'string') {
       if (selector.length !== undefined) {
@@ -110,12 +116,14 @@ export class Utils {
     }
     return [].slice.call(context.querySelectorAll(selector) || []);
   }
+
   get(index) {
     if (index !== undefined) {
       return this.elements[index];
     }
     return this.elements;
   }
+
   each(func) {
     if (!this.elements.length) {
       return this;
@@ -125,15 +133,18 @@ export class Utils {
     });
     return this;
   }
+
   static setCss(el, prop, value) {
     // prettier-ignore
     let cssProperty = Utils.camelCase(prop);
     cssProperty = Utils.styleSupport(cssProperty);
     el.style[cssProperty] = value;
   }
+
   static camelCase(text) {
     return text.replace(/-([a-z])/gi, (s, group1) => group1.toUpperCase());
   }
+
   static styleSupport(prop) {
     let vendorProp;
     let supportedProp;
@@ -163,7 +174,6 @@ Utils.eventListeners = {};
 export default function $utils(selector) {
   return new Utils(selector);
 }
-
 
 
 export function extractNestedValue(obj, path) {
@@ -302,7 +312,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
             className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
             onClick={() => handleClickSelection(elem)}
             key={elem.id}>
-            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")} className="lst__row-border lst__row-inner">
+            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
+                  className="lst__row-border lst__row-inner">
               {columns.map(column => {
                 const string = Object.byString(elem, column.sortId)
                 switch (column.sortId) {
@@ -353,7 +364,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
             <h1 className="stats__h-name copyable m-0"
               // onMouseDown="event.preventDefault()"
               // onClick="Renderer.utils._pHandleNameClick(this)"
-              onClick={() => navigator.clipboard.writeText(selected.name)}
+                onClick={() => navigator.clipboard.writeText(selected.name)}
             >{selected.name}</h1>
           </div>
           <div className="stats__wrp-h-source  ve-flex-v-baseline">
@@ -594,7 +605,7 @@ export const RenderModule = (props: {}) => {
           subhashesHover,
           isFauxPage
         } = getTagMeta(tag, string)
-        return <Link to={page + (hash?"#" +hash:"")}>{name}</Link>
+        return <Link to={page + (hash ? "#" + hash : "")}>{name}</Link>
     }
   }
 
@@ -610,7 +621,7 @@ export const RenderModule = (props: {}) => {
       if (source && source.trim()) return source;
 
       tag = tag.trim();
-      const tagMeta = TAG_LOOKUP[tag.substring(1,tag.length)];
+      const tagMeta = TAG_LOOKUP[tag.substring(1, tag.length)];
 
       if (!tagMeta) throw new Error(`Unhandled tag "${tag}"`);
       return tagMeta.defaultSource;
@@ -675,13 +686,54 @@ export const RenderModule = (props: {}) => {
     if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
     else if (entry.type) {
       switch (entry.type) {
-        case "subFeature": {
-          return props.subFeature(entry.subFeature, depth + 1)
+        case "refClassFeature":
+          return props.refClassFeature(entry.classFeature, depth + 1)
+
+        case "refSubclassFeature":
+          return props.refSubclassFeature(entry.subclassFeature, ++depth)
+
+        case "refOptionalfeature": {
+          // console.log(getResource(Resources.feature))
+          // console.log(entry.optionalfeature)
+          const feature: PlayerOptionNFeature = getResource(Resources.feature).filter(f => f.id && f.name).filter(f =>
+            f.name.toLowerCase() === entry.optionalfeature.toLowerCase() ||
+            f.id.toLowerCase() === entry.optionalfeature.toLowerCase()
+          )[0]
+          if (!feature) {
+            return <><br/>Feature not find: "{entry.optionalfeature}".</>
+          }
+          // console.log(feature)
+          return <div className={"rd__b rd__b--2"}>
+            <h3 className={"rd__h rd__h--2"}>
+              <span className={"entry-title-inner"}>{feature.name}</span>
+              <span className={"ve-flex-vh-center"}>
+                <span className="rd__title-link ">
+                <span className="help-subtle" title={Parser.SOURCE_JSON_TO_FULL[feature.source]}>
+                  {feature.source}
+                </span>
+                p{feature.page}
+              </span>
+                <span className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
+                      onClick={() => props.toggleStateChange(feature)}>
+                  [{props.getToggleState(feature) ? "–" : "+"}]
+                </span>
+              </span>
+            </h3>
+            {props.getToggleState(feature) ?
+              <p>
+                {/*{console.log(feature.consumes)}*/}
+                {feature.consumes ?
+                  <i>Coût: {feature.consumes.amountMin && feature.consumes.amountMax ? feature.consumes.amountMin + "-" + feature.consumes.amountMax : feature.consumes.amount ?? 1} {feature.consumes.name}</i>: ""}
+                {render(feature.entries, depth, toggle)}
+              </p>
+              : ""}
+          </div>
         }
         case "entries": {
-          if (depth > 1) {
-            return <div></div>
-          }
+          // console.log(depth)
+          // if (depth > 1) {
+          //   return <div></div>
+          // }
           return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "", depth)
         }
         case "list": {
@@ -698,14 +750,14 @@ export const RenderModule = (props: {}) => {
               {entry.caption ? <caption>{entry.caption}</caption> : ""}
               <thead>
               <tr>
-                {entry.colLabels.map((label, idx) =><th className={entry.colStyles[idx]}>
+                {entry.colLabels.map((label, idx) => <th className={entry.colStyles[idx]}>
                   {label}
                 </th>)}
               </tr>
               </thead>
               <tbody>
-              {entry.rows.map(row=><tr>
-                {row.map((cell, idx) => <td className={entry.colStyles[idx]}>
+              {entry.rows.map(row => <tr>
+                {row.map((cell, idx) => <td className={"td__th "+entry.colStyles[idx]}>
                   {render(cell)}
                 </td>)}
               </tr>)}
@@ -713,12 +765,18 @@ export const RenderModule = (props: {}) => {
             </table>
           </>
         }
-        case "abilityDc": return <div className={"rd__wrp-centered-ability"}>
-          <b>DD de sauvegarde des sorts</b> = 8 + votre modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0))?"d'":"de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} + bonus de maîtrise
-        </div>
-        case "abilityAttackMod": return <div className={"rd__wrp-centered-ability"}>
-          <b>Modificateur aux attaques avec un sort</b> = votre modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0))?"d'":"de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} + bonus de maîtrise
-        </div>
+        case "abilityDc":
+          return <div className={"rd__wrp-centered-ability"}>
+            <b>DD de sauvegarde des sorts</b> = 8 + votre
+            modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
+            bonus de maîtrise
+          </div>
+        case "abilityAttackMod":
+          return <div className={"rd__wrp-centered-ability"}>
+            <b>Modificateur aux attaques avec un sort</b> = votre
+            modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
+            bonus de maîtrise
+          </div>
         default:
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
@@ -740,7 +798,7 @@ export const RenderModule = (props: {}) => {
         str.push(renderString_renderTag(tag, text));
 
       }
-      console.log("HERE:", str)
+      // console.log("HERE:", str)
 
       return props?.defaultString ? props.defaultString(str) : <p>{str}</p>
     } else return false;
