@@ -571,22 +571,22 @@ export const RenderModule = (props: {}) => {
     switch (tag) {
       case "@b":
       case "@bold":
-        return <b>{render(string)}</b>
+        return <b>{string}</b>
       case "@i":
       case "@italic":
-        return <i>{render(string)}</i>
+        return <i>{string}</i>
       case "@s":
       case "@strike":
-        return <s>{render(string)}</s>
+        return <s>{string}</s>
       case "@s2":
       case "@str":
-        return <s className="ve-strike-double">{render(string)}</s>
+        return <s className="ve-strike-double">{string}</s>
       case "@u":
       case "@underline":
-        return <u>{render(string)}</u>
+        return <u>{string}</u>
       case "@u2":
       case "@underlineDouble":
-        return <u className="ve-underline-double">{render(string)}</u>
+        return <u className="ve-underline-double">{string}</u>
       default:
         const {
           name,
