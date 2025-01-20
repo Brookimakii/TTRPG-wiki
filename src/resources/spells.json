@@ -116,7 +116,7 @@
     "duration": "8 heures",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "une minuscule clochette et un\nfilament en argent",
+      "material": "une minuscule clochette et un filament en argent",
       "cost": "",
       "consumeComponent": false
     },
@@ -124,9 +124,9 @@
     "ritual": true,
     "shortDesc": "Alerte le lanceur ou active une alarme si une créature de taille TP ou supérieure pénètre dans un cube surveillé de 6 m.",
     "entries": [
-      "Vous installez une alarme pour vous avertir en cas d'intrusion.\nChoisissez une porte, une fenêtre ou une zone à portée qui ne fasse pas plus qu'un cube de 6 mètres d'arête. Tant que le sort\nfait effet, une alarme vous alerte dès qu'une créature de taille\nTrès Petite ou supérieure touche la zone protégée ou y pénètre.\nAu moment où vous lancez le sort, vous pouvez désigner des\ncréatures qui ne déclencheront pas l'alarme. Vous pouvez aussi\nchoisir si l'alarme sera audible ou mentale.",
-      "Une alarme mentale vous avertit d'un tintement dans votre\ntête tant que vous vous trouvez dans un rayon de 1,5 kilomètre\nautour de la zone protégée. Ce tintement suffit à vous réveiller si\nvous êtes endormi.",
-      "Une alarme audible émet le même son qu'une cloche d'alerte\npendant 10 secondes et retentit dans un rayon de 18 mètres. "
+      "Vous installez une alarme pour vous avertir en cas d'intrusion. Choisissez une porte, une fenêtre ou une zone à portée qui ne fasse pas plus qu'un cube de 6 mètres d'arête. Tant que le sort fait effet, une alarme vous alerte dès qu'une créature de taille Très Petite ou supérieure touche la zone protégée ou y pénètre. Au moment où vous lancez le sort, vous pouvez désigner des créatures qui ne déclencheront pas l'alarme. Vous pouvez aussi choisir si l'alarme sera audible ou mentale.",
+      "Une alarme mentale vous avertit d'un tintement dans votre tête tant que vous vous trouvez dans un rayon de 1,5 kilomètre autour de la zone protégée. Ce tintement suffit à vous réveiller si vous êtes endormi.",
+      "Une alarme audible émet le même son qu'une cloche d'alerte pendant 10 secondes et retentit dans un rayon de 18 mètres. "
     ],
     "upCast": "",
     "source": "PHB",
@@ -157,13 +157,13 @@
     "ritual": false,
     "shortDesc": "Invoque un céleste, un élémentaire ou un fiélon qui aidera le lanceur contre paiement (1000 po/h, sacrifice, quête, etc).",
     "entries": [
-      "Vous demandez de l'aide à une entité appartenant à un autre\nmonde. Vous devez connaître cet être, que ce soit un dieu,\nun primordial, un prince démoniaque ou une autre créature\nà la puissance cosmique. I..:entité vous envoie un céleste,\nun élémentaire ou un fiélon qui lui est loyal. Cette créature\napparaît dans un emplacement libre à portée. Si vous\nconnaissez le nom d'une créature spécifique, vous pouvez le\nmentionner lors de l'incantation pour demander à ce que ce soit\nelle que l'entité vous envoie, bien qu'elle puisse tout de même\nvous envoyer un autre émissaire (au MD de décider).",
-      "Quand la créature apparaît, elle n'a aucune obligation de\nse comporter d'une manière particulière. Vous pouvez lui\ndemander d'accomplir un service rémunéré, mais elle n'est\npas obligée d'accepter. Votre requête peut être très simple\n(nous faire passer en volant au-dessus de ce précipice, nous\naider à livrer un combat ... ) ou plus complexe (espionner nos\nennemis, nous protéger lors de l'exploration de ce donjon ... ).\nPour négocier un service, vous devez être en mesure de\ncommuniquer avec la créature.",
-      "Le paiement peut se faire sous diverses formes. Un céleste\npeut demander une importante donation en or ou en objets\nmagiques à un temple allié tandis qu'un fiélon peut exiger un\nsacrifice vivant ou un trésor. Certaines créatures monnayent\nleurs services contre une quête à accomplir de votre côté.",
-      "En règle générale, une tâche qui s'accomplit en quelques\nminutes se paie 100 po la minute. Une tâche qui demande\nplusieurs heures coûte 1 000 po de l'heure, et une tâche\neffectuée sur plusieurs jours (10 au maximum) vaut 10 000 po\nla journée. Le MD peut modifier le montant en fonction\ndes circonstances dans lesquelles vous lancez le sort. Si la\ntâche à accomplir s'accorde avec l'éthique de la créature, elle\npeut réduire son salaire de moitié ou même y renoncer. Les\ntâches qui ne présentent aucun risque coûtent souvent la\nmoitié du prix indiqué précédemment tandis que les missions\nparticulièrement dangereuses valent parfois bien plus cher. Une\ncréature accepte rarement une tâche visiblement suicidaire.",
-      "Une fois que la créature a accompli la tâche demandée ou\nquand la durée de service décidée est arrivée à son terme,\nelle retourne sur son plan d'origine après vous avoir fait son\nrapport, si la tâche l'exige et qu'elle est en mesure de le faire",
-      "Si vous êtes incapable de vous mettre d'accord avec\nla créature sur le prix de ses services, elle retourne\nimmédiatement sur son plan natal.",
-      "Une créature enrôlée dans votre groupe compte comme un\nmembre à part entière et reçoit sa part de points d'expérience"
+      "Vous demandez de l'aide à une entité appartenant à un autre monde. Vous devez connaître cet être, que ce soit un dieu, un primordial, un prince démoniaque ou une autre créature à la puissance cosmique. I..:entité vous envoie un céleste, un élémentaire ou un fiélon qui lui est loyal. Cette créature apparaît dans un emplacement libre à portée. Si vous connaissez le nom d'une créature spécifique, vous pouvez le mentionner lors de l'incantation pour demander à ce que ce soit elle que l'entité vous envoie, bien qu'elle puisse tout de même vous envoyer un autre émissaire (au MD de décider).",
+      "Quand la créature apparaît, elle n'a aucune obligation de se comporter d'une manière particulière. Vous pouvez lui demander d'accomplir un service rémunéré, mais elle n'est pas obligée d'accepter. Votre requête peut être très simple (nous faire passer en volant au-dessus de ce précipice, nous aider à livrer un combat ... ) ou plus complexe (espionner nos ennemis, nous protéger lors de l'exploration de ce donjon ... ). Pour négocier un service, vous devez être en mesure de communiquer avec la créature.",
+      "Le paiement peut se faire sous diverses formes. Un céleste peut demander une importante donation en or ou en objets magiques à un temple allié tandis qu'un fiélon peut exiger un sacrifice vivant ou un trésor. Certaines créatures monnayent leurs services contre une quête à accomplir de votre côté.",
+      "En règle générale, une tâche qui s'accomplit en quelques minutes se paie 100 po la minute. Une tâche qui demande plusieurs heures coûte 1 000 po de l'heure, et une tâche effectuée sur plusieurs jours (10 au maximum) vaut 10 000 po la journée. Le MD peut modifier le montant en fonction des circonstances dans lesquelles vous lancez le sort. Si la tâche à accomplir s'accorde avec l'éthique de la créature, elle peut réduire son salaire de moitié ou même y renoncer. Les tâches qui ne présentent aucun risque coûtent souvent la moitié du prix indiqué précédemment tandis que les missions particulièrement dangereuses valent parfois bien plus cher. Une créature accepte rarement une tâche visiblement suicidaire.",
+      "Une fois que la créature a accompli la tâche demandée ou quand la durée de service décidée est arrivée à son terme, elle retourne sur son plan d'origine après vous avoir fait son rapport, si la tâche l'exige et qu'elle est en mesure de le faire",
+      "Si vous êtes incapable de vous mettre d'accord avec la créature sur le prix de ses services, elle retourne immédiatement sur son plan natal.",
+      "Une créature enrôlée dans votre groupe compte comme un membre à part entière et reçoit sa part de points d'expérience"
     ],
     "upCast": "",
     "source": "PHB",
@@ -186,7 +186,7 @@
     "duration": "1 heure",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "des poils ou des plumes\nvenant d'un animal",
+      "material": "des poils ou des plumes venant d'un animal",
       "cost": "",
       "consumeComponent": false
     },
@@ -194,51 +194,51 @@
     "ritual": false,
     "shortDesc": "La cible gagne l'avantage aux jets d'une caractéristique prédéfinie, plus d'éventuels autres bonus (+1 créature/niv).",
     "entries": [
-      "Vous touchez une créature pour lui accorder une amélioration\nmagique. Choisissez l'un des effets suivants dont la cible\nbénéficiera jusqu'à la fin du sort.",
+      "Vous touchez une créature pour lui accorder une amélioration magique. Choisissez l'un des effets suivants dont la cible bénéficiera jusqu'à la fin du sort.",
       {
         "name": "Force du taureau",
         "type": "entries",
         "entries": [
-          "La cible est avantagée lors des tests de\nForce et sa capacité de charge est doublée."
+          "La cible est avantagée lors des tests de Force et sa capacité de charge est doublée."
         ]
       },
       {
         "name": "Grâce du chat",
         "type": "entries",
         "entries": [
-          "La cible est avantagée lors des tests de\nDextérité. De plus, elle ne subit pas de dégâts quand elle\nchute sur 6 mètres ou moins, à condition qu'elle ne soit\npas neutralisée. "
+          "La cible est avantagée lors des tests de Dextérité. De plus, elle ne subit pas de dégâts quand elle chute sur 6 mètres ou moins, à condition qu'elle ne soit pas neutralisée. "
         ]
       },
       {
         "name": "Endurance de l'ours",
         "type": "entries",
         "entries": [
-          "La cible est avantagée lors des tests de\nConstitution. Elle gagne aussi 2d6 points de vie temporaires qui\ndisparaissent quand le sort se termine."
+          "La cible est avantagée lors des tests de Constitution. Elle gagne aussi 2d6 points de vie temporaires qui disparaissent quand le sort se termine."
         ]
       },
       {
         "name": "Ruse du renard",
         "type": "entries",
         "entries": [
-          "La cible est avantagée lors des tests\nd'intelligence. "
+          "La cible est avantagée lors des tests d'intelligence. "
         ]
       },
       {
         "name": "Sagesse du hibou",
         "type": "entries",
         "entries": [
-          "La cible est avantagée lors des\ntests de Sagesse"
+          "La cible est avantagée lors des tests de Sagesse"
         ]
       },
       {
         "name": "Splendeur de l'aigle",
         "type": "entries",
         "entries": [
-          "La cible est avantagée lors des tests\nde Charisme. "
+          "La cible est avantagée lors des tests de Charisme. "
         ]
       }
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 3 ou plus, vous pouvez prendre une\ncréature de plus pour cible par niveau au-delà du 2e",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, vous pouvez prendre une créature de plus pour cible par niveau au-delà du 2e",
     "source": "PHB",
     "page": 212,
     "casters": {
@@ -267,11 +267,11 @@
     "ritual": false,
     "shortDesc": "La cible double son bonus de maîtrise pour une compétence.",
     "entries": [
-      "Votre magie permet à une créature de mieux comprendre\nses propres talents. En touchant une créature consentante,\nvous lui accordez l'expertise dans une compétence de votre\nchoix.Jusqu'à la fin du sort, la créature double son bonus\nde maîtrise lors des tests de caractéristiques qui font appel\nà la compétence choisie.",
-      "Vous devez choisir une compétence que la cible maîtrise et qui n'est pas déjà soumise à un effet qui double le\nbonus de maîtrise, comme celui de l'aptitude expertise,\npar exemple. "
+      "Votre magie permet à une créature de mieux comprendre ses propres talents. En touchant une créature consentante, vous lui accordez l'expertise dans une compétence de votre choix.Jusqu'à la fin du sort, la créature double son bonus de maîtrise lors des tests de caractéristiques qui font appel à la compétence choisie.",
+      "Vous devez choisir une compétence que la cible maîtrise et qui n'est pas déjà soumise à un effet qui double le bonus de maîtrise, comme celui de l'aptitude expertise, par exemple. "
     ],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 150,
     "casters": {
       "classes": ["Artificier", "Barde", "Ensorceleur", "Magicien"],
@@ -291,7 +291,7 @@
     "duration": "1 minute",
     "component": "S,M",
     "materialComponent": {
-      "material": "un peu de maquillage à s'appliquer sur le\nvisage lors de l'incantation",
+      "material": "un peu de maquillage à s'appliquer sur le visage lors de l'incantation",
       "cost": "",
       "consumeComponent": false
     },
@@ -299,7 +299,7 @@
     "ritual": false,
     "shortDesc": "Le lanceur obtient l'avantage aux jets de Charisme contre une créature choisie qui ne lui est pas hostile.",
     "entries": [
-      "Pendant toute la durée du sort, vous êtes avantagé sur tous les\ntests de Charisme à l'encontre d'une créature de votre choix qui\nne vous est pas hostile. Quand le sort se termine, cette créature\nse rend compte que vous avez usé de magie pour l'influencer\net elle devient hostile. Si elle est encline à la violence, elle peut\ntrès bien vous attaquer. Une autre peut chercher à se venger\nautrement (au choix du MD)\n, selon la manière dont vous avez\ninteragi avec elle."
+      "Pendant toute la durée du sort, vous êtes avantagé sur tous les tests de Charisme à l'encontre d'une créature de votre choix qui ne vous est pas hostile. Quand le sort se termine, cette créature se rend compte que vous avez usé de magie pour l'influencer et elle devient hostile. Si elle est encline à la violence, elle peut très bien vous attaquer. Une autre peut chercher à se venger autrement (au choix du MD) , selon la manière dont vous avez interagi avec elle."
     ],
     "upCast": "",
     "source": "PHB",
@@ -330,9 +330,9 @@
     "ritual": false,
     "shortDesc": "Une bête d'Intelligence 3 ou moins doit réussir un JdS de Sag. ou être charmée (+1 bête/niv).",
     "entries": [
-      "Grâce à ce sort, vous convainquez une bête que vous ne lui\nvoulez pas de mal. Choisissez une bête située à portée dans\nvotre champ de vision. Elle doit vous voir et vous entendre. Le\nsort échoue si elle possède une Intelligence de 4 ou plus. Dans\nle cas contraire, elle doit réussir un jet de Sagesse, sans quoi\nvous la charmez pendant toute la durée du sort. Le sort se\ntermine si vous ou l'un de vos camarades blessez la cible."
+      "Grâce à ce sort, vous convainquez une bête que vous ne lui voulez pas de mal. Choisissez une bête située à portée dans votre champ de vision. Elle doit vous voir et vous entendre. Le sort échoue si elle possède une Intelligence de 4 ou plus. Dans le cas contraire, elle doit réussir un jet de Sagesse, sans quoi vous la charmez pendant toute la durée du sort. Le sort se termine si vous ou l'un de vos camarades blessez la cible."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 2 ou plus, vous pouvez affecter une bête\nsupplémentaire par emplacement de sort au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, vous pouvez affecter une bête supplémentaire par emplacement de sort au-delà du 1er.",
     "source": "PHB",
     "page": 212,
     "casters": {
@@ -361,8 +361,8 @@
     "ritual": false,
     "shortDesc": "Anime jusqu'à 10 objets non magiques et contrôle leurs actions jusqu'à 150 m (+2 objets/niv).",
     "entries": [
-      "Les objets prennent vie sur votre ordre. Choisissez jusqu'à\ndix objets non magiques à portée que personne ne porte ni ne\ntransporte. Les cibles de taille Moyenne comptent comme deux\nobjets, celles de taille Grande comme quatre et celles de taille\nTrès Grande comme huit. Vous ne pouvez pas animer d'objet de\ntaille supérieure. Chaque cible s'anime et devient une créature\nplacée sous votre contrôle jusqu'à la fin du sort ou jusqu'à\ntomber à O point de vie.",
-      "Par une action bonus, vous pouvez donner un ordre mental\nà toute créature créée via ce sort qui se trouve au maximum à\n150 mètres de vous (si vous en contrôlez plusieurs, vous pouvez\ndonner un ordre à l'une d'elles, certaines d'entre elles ou toutes\nà la fois, à condition de donner le même ordre à toutes). À vous\nde décider quelle action la créature va entreprendre et à quel\nendroit elle se déplacera au cours du tour suivant, mais vous\npouvez aussi lui donner un ordre plus générique, comme de\ngarder une salle ou un couloir. En l'absence d'ordre, la créature\nse contente de se défendre contre les créatures hostiles. Une\nfois qu'elle a reçu un ordre, elle continue à le suivre jusqu'à ce\nqu'elle ait accompli sa tâche.",
+      "Les objets prennent vie sur votre ordre. Choisissez jusqu'à dix objets non magiques à portée que personne ne porte ni ne transporte. Les cibles de taille Moyenne comptent comme deux objets, celles de taille Grande comme quatre et celles de taille Très Grande comme huit. Vous ne pouvez pas animer d'objet de taille supérieure. Chaque cible s'anime et devient une créature placée sous votre contrôle jusqu'à la fin du sort ou jusqu'à tomber à O point de vie.",
+      "Par une action bonus, vous pouvez donner un ordre mental à toute créature créée via ce sort qui se trouve au maximum à 150 mètres de vous (si vous en contrôlez plusieurs, vous pouvez donner un ordre à l'une d'elles, certaines d'entre elles ou toutes à la fois, à condition de donner le même ordre à toutes). À vous de décider quelle action la créature va entreprendre et à quel endroit elle se déplacera au cours du tour suivant, mais vous pouvez aussi lui donner un ordre plus générique, comme de garder une salle ou un couloir. En l'absence d'ordre, la créature se contente de se défendre contre les créatures hostiles. Une fois qu'elle a reçu un ordre, elle continue à le suivre jusqu'à ce qu'elle ait accompli sa tâche.",
       {
         "type": "table",
         "caption": "Statistiques des objets animés",
@@ -390,10 +390,10 @@
           ["Très Grande", "80", "10", "+8 pour toucher, 2d12+4 dégâts", "18", "6"]
         ]
       },
-      "Un objet animé est une créature artificielle avec une CA,\ndes points de vie, des attaques, une Force et une Dextérité\ndéterminés par sa taille. Sa Constitution est de 10 tandis que\nson Intelligence et sa Sagesse sont de 3 et son Charisme de\n1. Il a une vitesse de 9 mètres. S'il est dépourvu de pattes ou\nd'appendices susceptibles de le mouvoir, il gagne à la place la\ncapacité de voler à une vitesse de 9 mètres et peut utiliser le\nvol stationnaire. Si l'objet est solidement attaché à une surface\nou à un objet de plus grande taille, comme une chaîne vissée\nà un mur, sa vitesse est de O. L'objet possède la vision aveugle\ndans un rayon de 9 mètres ; au-delà, il est aveugle. Quand l'objet\nanimé tombe à O point de vie, il reprend sa forme originelle\nd'objet et tout dégât en surplus est infligé à sa forme originelle.",
-      "Si vous ordonnez à un objet animé d'attaquer, il a droit à une\nattaque au corps à corps unique contre une créature située\ndans un rayon de 1,50 mètre. Il porte une attaque de coup avec\nun bonus d'attaque et des dégâts contondants déterminés en\nfonction de sa taille. Le MD peut tout à fait décider qu'un objet\nanimé inflige des dégâts perforants ou tranchants si sa forme\nle lui permet."
+      "Un objet animé est une créature artificielle avec une CA, des points de vie, des attaques, une Force et une Dextérité déterminés par sa taille. Sa Constitution est de 10 tandis que son Intelligence et sa Sagesse sont de 3 et son Charisme de 1. Il a une vitesse de 9 mètres. S'il est dépourvu de pattes ou d'appendices susceptibles de le mouvoir, il gagne à la place la capacité de voler à une vitesse de 9 mètres et peut utiliser le vol stationnaire. Si l'objet est solidement attaché à une surface ou à un objet de plus grande taille, comme une chaîne vissée à un mur, sa vitesse est de O. L'objet possède la vision aveugle dans un rayon de 9 mètres ; au-delà, il est aveugle. Quand l'objet animé tombe à O point de vie, il reprend sa forme originelle d'objet et tout dégât en surplus est infligé à sa forme originelle.",
+      "Si vous ordonnez à un objet animé d'attaquer, il a droit à une attaque au corps à corps unique contre une créature située dans un rayon de 1,50 mètre. Il porte une attaque de coup avec un bonus d'attaque et des dégâts contondants déterminés en fonction de sa taille. Le MD peut tout à fait décider qu'un objet animé inflige des dégâts perforants ou tranchants si sa forme le lui permet."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 6 ou plus, vous pouvez animer deux\nobjets supplémentaires par emplacement au-delà du 5e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, vous pouvez animer deux objets supplémentaires par emplacement au-delà du 5e.",
     "source": "PHB",
     "page": 213,
     "casters": {
@@ -410,11 +410,11 @@
     "level": "3",
     "school": "N",
     "castingTime": "1 minute",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "instantanée",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "une goutte de sang, un lambeau de\nchair et une pincée de poudre d'os",
+      "material": "une goutte de sang, un lambeau de chair et une pincée de poudre d'os",
       "cost": "",
       "consumeComponent": false
     },
@@ -422,11 +422,11 @@
     "ritual": false,
     "shortDesc": "Crée un squelette à partir d'os ou un zombi à partir d'un cadavre, qui est sous le contrôle du lanceur (+2 créatures/niv).",
     "entries": [
-      "Ce sort crée un serviteur mort-vivant. Choisissez un tas d'os ou\nle cadavre d'un humanoïde de taille Moyenne ou Petite situé\nà portée. Votre sort imprègne la cible d'un ignoble simulacre\nde vie, la relevant sous forme de mort-vivant. Elle devient\nun squelette si vous avez lancé le sort sur un tas d'os, et un\nzombi si vous avez opté pour un cadavre (le MD dispose des\nstatistiques de jeu de la créature).",
-      "À chacun de vos tours, vous pouvez dépenser une action\nbonus pour donner un ordre mental à la créature générée via\nce sort si elle se trouve dans un rayon de 18 mètres (si vous\ncontrôlez plusieurs créatures, vous pouvez donner un ordre\nà l'une d'elles, certaines d'entre elles ou à toutes à la fois, à\ncondition de transmettre le même ordre à chacune). À vous de\ndécider quelles actions la créature va entreprendre et à quel\nendroit elle se déplacera au cours du tour suivant, mais vous\npouvez aussi lui donner un ordre plus générique, comme de\ngarder une salle ou un couloir. En l'absence d'ordre, la créature\nse contente de se défendre contre les créatures hostiles. Une\nfois qu'elle a reçu un ordre, elle continue à le suivre jusqu'à ce\nqu'elle ait accompli sa tâche.",
-      "La créature est placée sous votre contrôle pendant\n24 heures, après quoi elle cesse d'obéir aux ordres que vous\nlui avez donnés. Pour la contrôler pendant 24 heures de\nplus, il vous faut lui relancer ce sort avant la fin de la période\nde 24 heures pendant laquelle il fait effet. Si vous utilisez ce\nsort ainsi, il vous permet de réaffirmer votre contrôle sur un\nmaximum de quatre créatures animées grâce à lui plutôt que\nd'en animer une nouvelle."
+      "Ce sort crée un serviteur mort-vivant. Choisissez un tas d'os ou le cadavre d'un humanoïde de taille Moyenne ou Petite situé à portée. Votre sort imprègne la cible d'un ignoble simulacre de vie, la relevant sous forme de mort-vivant. Elle devient un squelette si vous avez lancé le sort sur un tas d'os, et un zombi si vous avez opté pour un cadavre (le MD dispose des statistiques de jeu de la créature).",
+      "À chacun de vos tours, vous pouvez dépenser une action bonus pour donner un ordre mental à la créature générée via ce sort si elle se trouve dans un rayon de 18 mètres (si vous contrôlez plusieurs créatures, vous pouvez donner un ordre à l'une d'elles, certaines d'entre elles ou à toutes à la fois, à condition de transmettre le même ordre à chacune). À vous de décider quelles actions la créature va entreprendre et à quel endroit elle se déplacera au cours du tour suivant, mais vous pouvez aussi lui donner un ordre plus générique, comme de garder une salle ou un couloir. En l'absence d'ordre, la créature se contente de se défendre contre les créatures hostiles. Une fois qu'elle a reçu un ordre, elle continue à le suivre jusqu'à ce qu'elle ait accompli sa tâche.",
+      "La créature est placée sous votre contrôle pendant 24 heures, après quoi elle cesse d'obéir aux ordres que vous lui avez donnés. Pour la contrôler pendant 24 heures de plus, il vous faut lui relancer ce sort avant la fin de la période de 24 heures pendant laquelle il fait effet. Si vous utilisez ce sort ainsi, il vous permet de réaffirmer votre contrôle sur un maximum de quatre créatures animées grâce à lui plutôt que d'en animer une nouvelle."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 4 ou plus, vous animez ou réaffirmez\nvotre contrôle sur deux créatures de plus par niveau au-delà\ndu 3e. Chaque créature doit venir d'un tas d'os ou d'un\ncadavre différent.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, vous animez ou réaffirmez votre contrôle sur deux créatures de plus par niveau au-delà du 3e. Chaque créature doit venir d'un tas d'os ou d'un cadavre différent.",
     "source": "PHB",
     "page": 213,
     "casters": {
@@ -447,16 +447,16 @@
     "duration": "10 jours",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "une statuette de vous taillée\ndans l'ivoire et ornée de gemmes d'une valeur\nminimum de 1 500 po",
+      "material": "une statuette de vous taillée dans l'ivoire et ornée de gemmes d'une valeur minimum de 1 500 po",
       "cost": "1500po"
     },
     "concentration": false,
     "ritual": false,
     "shortDesc": "Conditionne l'activation d'un sort de niveau 5 ou inférieur qui peut cibler le lanceur.",
     "entries": [
-      "Choisissez un sort de niveau 5 ou moins que vous êtes en\nmesure de lancer, qui possède une durée d'incantation d'une\naction, et qui peut vous prendre pour cible. Vous lancez ce sort\n(que l'on appelle le sort contingent) lors de l'incantation de la\ncontingence. Vous dépensez donc les emplacements des deux\nsorts, mais le contingent ne fait pas effet immédiatement. Il\ns'activera lorsque certaines conditions seront remplies. Vous\ndevez décrire ces dernières au moment où vous lancez les\ndeux sorts. Par exemple, lors d'une contingence associée à une\nrespiration aquatique, vous pouvez stipuler que la respiration aquatique doit se déclencher quand vous vous trouvez immergé\ndans l'eau ou dans un liquide similaire.",
-      "Le sort contingent prend effet dès que les circonstances sont\nremplies pour la première fois, que vous le vouliez ou non, ce\nqui met un terme à la contingence.",
-      "Le sort contingent affecte uniquement votre personne, même\ns'il peut normalement affecter d'autres créatures. Vous ne\npouvez utiliser qu'un seul sort de contingence à la fois, si vous\nen lancez un second, les effets du précédent se dissipent. De\nplus, la contingence prend fin si sa composante matérielle n'est\nplus sur votre personne."
+      "Choisissez un sort de niveau 5 ou moins que vous êtes en mesure de lancer, qui possède une durée d'incantation d'une action, et qui peut vous prendre pour cible. Vous lancez ce sort (que l'on appelle le sort contingent) lors de l'incantation de la contingence. Vous dépensez donc les emplacements des deux sorts, mais le contingent ne fait pas effet immédiatement. Il s'activera lorsque certaines conditions seront remplies. Vous devez décrire ces dernières au moment où vous lancez les deux sorts. Par exemple, lors d'une contingence associée à une respiration aquatique, vous pouvez stipuler que la respiration aquatique doit se déclencher quand vous vous trouvez immergé dans l'eau ou dans un liquide similaire.",
+      "Le sort contingent prend effet dès que les circonstances sont remplies pour la première fois, que vous le vouliez ou non, ce qui met un terme à la contingence.",
+      "Le sort contingent affecte uniquement votre personne, même s'il peut normalement affecter d'autres créatures. Vous ne pouvez utiliser qu'un seul sort de contingence à la fois, si vous en lancez un second, les effets du précédent se dissipent. De plus, la contingence prend fin si sa composante matérielle n'est plus sur votre personne."
     ],
     "upCast": "",
     "source": "PHB",
@@ -479,7 +479,7 @@
     "duration": "8 heures",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "une pincée de poussière de diamant\nd'une valeur de 25 po, que le sort consume une fois\nsaupoudrée sur la cible",
+      "material": "une pincée de poussière de diamant d'une valeur de 25 po, que le sort consume une fois saupoudrée sur la cible",
       "cost": "25po",
       "consumeComponent": true
     },
@@ -487,7 +487,7 @@
     "ritual": false,
     "shortDesc": "Protège une créature ou un objet de toute divination ou détection magique.",
     "entries": [
-      "Pendant toute la durée du sort, vous dissimulez la cible que\nvous touchez aux yeux de la magie de divination. Vous pouvez\nprendre pour cible une créature consentante, un endroit\nou un objet ne mesurant pas plus de 3 mètres dans chaque\ndimension. La magie de divination ne peut plus viser votre cible\net les organes de scrutation magiques ne la perçoivent plus."
+      "Pendant toute la durée du sort, vous dissimulez la cible que vous touchez aux yeux de la magie de divination. Vous pouvez prendre pour cible une créature consentante, un endroit ou un objet ne mesurant pas plus de 3 mètres dans chaque dimension. La magie de divination ne peut plus viser votre cible et les organes de scrutation magiques ne la perçoivent plus."
     ],
     "upCast": "",
     "source": "PHB",
@@ -518,9 +518,9 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 6 m doivent réussir un JdS de Cha. ou ne plus être charmées/effrayées, ou être indifférentes.",
     "entries": [
-      "Vous tentez de supprimer les émotions fortes au sein d'un\ngroupe de gens. Chaque humanoïde qui se trouve dans une\nsphère de 6 mètres de rayon centrée autour d'un point de votre\nchoix situé à portée doit faire un jet de sauvegarde de Charisme.\nUne créature peut décider de rater volontairement ce jet,\nsachant que lorsqu'une créature rate son jet de sauvegarde,\nvous l'affectez avec l'un des deux effets suivants, à votre choix.",
-      "Vous débarrassez temporairement la cible de tout état\ncharmé ou terrorisé. Une fois le sort terminé, l'état s'applique de\nnouveau, à moins que sa durée n'ait expiré",
-      "Sinon, vous rendez la cible indifférente vis-à-vis des\ncréatures de votre choix, envers lesquelles elle était auparavant\nhostile. Cette indifférence prend fin si la cible est attaquée ou\naffectée par un sort néfaste, ou bien si elle voit l'un de ses amis\nse faire ainsi molester. La cible redevient hostile dès que le sort\nse termine, à moins que le MD n'en décide autrement."
+      "Vous tentez de supprimer les émotions fortes au sein d'un groupe de gens. Chaque humanoïde qui se trouve dans une sphère de 6 mètres de rayon centrée autour d'un point de votre choix situé à portée doit faire un jet de sauvegarde de Charisme. Une créature peut décider de rater volontairement ce jet, sachant que lorsqu'une créature rate son jet de sauvegarde, vous l'affectez avec l'un des deux effets suivants, à votre choix.",
+      "Vous débarrassez temporairement la cible de tout état charmé ou terrorisé. Une fois le sort terminé, l'état s'applique de nouveau, à moins que sa durée n'ait expiré",
+      "Sinon, vous rendez la cible indifférente vis-à-vis des créatures de votre choix, envers lesquelles elle était auparavant hostile. Cette indifférence prend fin si la cible est attaquée ou affectée par un sort néfaste, ou bien si elle voit l'un de ses amis se faire ainsi molester. La cible redevient hostile dès que le sort se termine, à moins que le MD n'en décide autrement."
     ],
     "upCast": "",
     "source": "PHB",
@@ -551,10 +551,10 @@
     "ritual": false,
     "shortDesc": "Change l'apparence physique et vestimentaire de cibles (JdS si non consentante).",
     "entries": [
-      "Ce sort vous permet de modifier l'apparence d'autant de\ncréatures que vous voulez, à condition qu'elles se trouvent à\nportée et dans votre champ de vision. Vous donnez à chacune\nd'entre elles une nouvelle apparence illusoire. Une cible non\nconsentante peut faire un jet de sauvegarde de Charisme. Si\nelle le réussit, le sort ne l'affecte pas.",
-      "Ce sort change l'apparence physique, mais aussi les habits,\nles armures, les armes et le reste de l'équipement. Vous pouvez\nfaire croire que chaque créature affectée est plus petite ou\nplus grande de 30 centimètres maximum qu'en réalité, lui\ndonner l'air grosse, maigre ou entre les deux. Vous ne pouvez\npas changer le type de son corps, vous devez choisir une\nforme possédant la même conformation qu'elle au niveau des\nmembres. En dehors de cela, les détails de l'illusion sont laissés\nà votre imagination. Le sort persiste pendant toute sa durée ou\njusqu'à ce que vous utilisiez une action pour le révoquer.",
-      "Les changements apportés par le sort ne résistent pas à un\nexamen physique. Par exemple, si vous l'utilisez pour ajouter\nun chapeau à la tenue de la cible, les objets passent au travers\net toute personne qui essaie de le toucher ne sentira que de l'air\nou des cheveux et un crâne. Si vous utilisez le sort pour la faire\nparaître plus mince qu'en réalité, la main de quelqu'un qui tente\nde la toucher se heurtera à son corps alors que, visuellement,\nelle semble encore dans le vide.",
-      "Une créature peut utiliser son action pour examiner une\ncible et faire un test d'lntelligence (Investigation) contre le DD\ndu jet de sauvegarde du sort. Si elle réussit, elle comprend que\nla cible est déguisée."
+      "Ce sort vous permet de modifier l'apparence d'autant de créatures que vous voulez, à condition qu'elles se trouvent à portée et dans votre champ de vision. Vous donnez à chacune d'entre elles une nouvelle apparence illusoire. Une cible non consentante peut faire un jet de sauvegarde de Charisme. Si elle le réussit, le sort ne l'affecte pas.",
+      "Ce sort change l'apparence physique, mais aussi les habits, les armures, les armes et le reste de l'équipement. Vous pouvez faire croire que chaque créature affectée est plus petite ou plus grande de 30 centimètres maximum qu'en réalité, lui donner l'air grosse, maigre ou entre les deux. Vous ne pouvez pas changer le type de son corps, vous devez choisir une forme possédant la même conformation qu'elle au niveau des membres. En dehors de cela, les détails de l'illusion sont laissés à votre imagination. Le sort persiste pendant toute sa durée ou jusqu'à ce que vous utilisiez une action pour le révoquer.",
+      "Les changements apportés par le sort ne résistent pas à un examen physique. Par exemple, si vous l'utilisez pour ajouter un chapeau à la tenue de la cible, les objets passent au travers et toute personne qui essaie de le toucher ne sentira que de l'air ou des cheveux et un crâne. Si vous utilisez le sort pour la faire paraître plus mince qu'en réalité, la main de quelqu'un qui tente de la toucher se heurtera à son corps alors que, visuellement, elle semble encore dans le vide.",
+      "Une créature peut utiliser son action pour examiner une cible et faire un test d'lntelligence (Investigation) contre le DD du jet de sauvegarde du sort. Si elle réussit, elle comprend que la cible est déguisée."
     ],
     "upCast": "",
     "source": "PHB",
@@ -615,7 +615,7 @@
     "shortDesc": "Invoque un esprit sous la forme d'un destrier (griffon, pégase, etc) lié par télépathie au lanceur.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Paladin"],
@@ -631,11 +631,11 @@
     "level": "1",
     "school": "C",
     "castingTime": "1 heure",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "instantanée",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "10 po de charbon, d'encens et d'herbes\nà faire brûler dans un brasero en laiton",
+      "material": "10 po de charbon, d'encens et d'herbes à faire brûler dans un brasero en laiton",
       "cost": "",
       "consumeComponent": false
     },
@@ -643,13 +643,13 @@
     "ritual": true,
     "shortDesc": "Invoque un petit animal qui obéit au lanceur du sort et qui partage ses sens avec lui par télépathie.",
     "entries": [
-      "Vous vous attachez les services d'un familier, un esprit qui\nprend la forme d'un animal de votre choix : une chauvesouris, un chat, un crabe, une grenouille (ou un crapaud),\nun faucon, un lézard, une pieuvre, une chouette, un serpent\nvenimeux, un poisson (un piranha), un rat, un corbeau, un\nhippocampe, une araignée ou une belette. Le familier apparaît\ndans un emplacement inoccupé à portée et possède les\nmêmes statistiques que l'animal dont il revêt la forme, bien\nqu'il soit un céleste, une fée ou un fiélon (à vous de choisir) au\nlieu d'une bête.",
-      "Votre familier agit indépendamment de vous, mais il obéit\ntoujours à vos ordres. Lors d'un combat, il lance son propre dé\nd'initiative et agit à son tour. Il ne peut pas attaquer, mais il peut\neffectuer d'autres actions normalement.",
-      "Quand le familier tombe à 0 point de vie, il disparaît sans\nlaisser de cadavre derrière lui. Il réapparaît si vous lancez de\nnouveau ce sort.",
-      "Vous pouvez communiquer par télépathie avec votre familier\ntant qu'il se trouve dans un rayon de 30 mètres autour de vous.\nDe plus, vous pouvez dépenser votre action pour percevoir le\nmonde par les yeux et les oreilles de votre familier jusqu'au\ndébut de votre prochain tour. Vous bénéficiez aussi de tout sens\nspécial que possède votre familier. Pendant ce temps, vos yeux\net vos oreilles ne fonctionnent plus.",
-      "Vous pouvez renvoyer temporairement votre familier par une\naction. Il gagne alors une poche dimensionnelle où il attend que\nvous le rappeliez. Vous pouvez aussi le renvoyer définitivement.\nVous pouvez utiliser une action alors qu'il est temporairement\nrenvoyé pour le faire réapparrul:re dans un emplacement\ninoccupé situé dans un rayon de 9 mètres autour de vous.",
-      "Vous ne pouvez avoir qu'un familier à la fois. Si vous lancez\nce sort alors que vous avez déjà un familier, vous attribuez\nsimplement une nouvelle forme à celui que vous possédez déjà\nchoisissez une des formes de la liste précédente, que votre\nfamilier adopte de suite.",
-      "Enfin, quand vous lancez un sort avec une portée de\n« contact » votre familier peut délivrer le sort comme si c'était\nlui qui le lançait. Il doit se trouver à 30 mètres de vous ou moins\net utiliser sa réaction pour transmettre le sort au moment où\nvous le lancez. Si le sort exige un jet d'attaque, vous utilisez\nvotre propre modificateur d'attaque lors du jet."
+      "Vous vous attachez les services d'un familier, un esprit qui prend la forme d'un animal de votre choix : une chauvesouris, un chat, un crabe, une grenouille (ou un crapaud), un faucon, un lézard, une pieuvre, une chouette, un serpent venimeux, un poisson (un piranha), un rat, un corbeau, un hippocampe, une araignée ou une belette. Le familier apparaît dans un emplacement inoccupé à portée et possède les mêmes statistiques que l'animal dont il revêt la forme, bien qu'il soit un céleste, une fée ou un fiélon (à vous de choisir) au lieu d'une bête.",
+      "Votre familier agit indépendamment de vous, mais il obéit toujours à vos ordres. Lors d'un combat, il lance son propre dé d'initiative et agit à son tour. Il ne peut pas attaquer, mais il peut effectuer d'autres actions normalement.",
+      "Quand le familier tombe à 0 point de vie, il disparaît sans laisser de cadavre derrière lui. Il réapparaît si vous lancez de nouveau ce sort.",
+      "Vous pouvez communiquer par télépathie avec votre familier tant qu'il se trouve dans un rayon de 30 mètres autour de vous. De plus, vous pouvez dépenser votre action pour percevoir le monde par les yeux et les oreilles de votre familier jusqu'au début de votre prochain tour. Vous bénéficiez aussi de tout sens spécial que possède votre familier. Pendant ce temps, vos yeux et vos oreilles ne fonctionnent plus.",
+      "Vous pouvez renvoyer temporairement votre familier par une action. Il gagne alors une poche dimensionnelle où il attend que vous le rappeliez. Vous pouvez aussi le renvoyer définitivement. Vous pouvez utiliser une action alors qu'il est temporairement renvoyé pour le faire réapparrul:re dans un emplacement inoccupé situé dans un rayon de 9 mètres autour de vous.",
+      "Vous ne pouvez avoir qu'un familier à la fois. Si vous lancez ce sort alors que vous avez déjà un familier, vous attribuez simplement une nouvelle forme à celui que vous possédez déjà choisissez une des formes de la liste précédente, que votre familier adopte de suite.",
+      "Enfin, quand vous lancez un sort avec une portée de « contact » votre familier peut délivrer le sort comme si c'était lui qui le lançait. Il doit se trouver à 30 mètres de vous ou moins et utiliser sa réaction pour transmettre le sort au moment où vous le lancez. Si le sort exige un jet d'attaque, vous utilisez votre propre modificateur d'attaque lors du jet."
     ],
     "upCast": "",
     "source": "PHB",
@@ -680,11 +680,11 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de Dex. ou subir 3d10 dégâts de foudre (dégâts/niv) à chaque tour.",
     "entries": [
-      "Un nuage orageux apparaît sous forme d'un cylindre de\n3 mètres de haut pour 18 mètres de rayon, centré sur un point\nsitué dans votre champ de vision et à 30 mètres directement\nau-dessus de vous. Le sort échoue si vous ne pouvez voir le\npoint situé à cette hauteur, là où le nuage doit se former (si vous\nvous trouvez dans une pièce trop petite pour accueillir le nuage\npar exemple).",
-      "Quand vous lancez le sort, vous devez choisir un point situé à\nportée et dans votre champ de vision. Un éclair jaillit du nuage\net vient frapper ce point. Chaque créature située dans un rayon\nde 1,50 mètre autour de ce point doit faire un jet de sauvegarde\nde Dextérité. Celles qui échouent subissent 3d10 dégâts de\nfoudre, les autres la moitié seulement. À chacun de vos tours\njusqu'à la fin du sort, vous pouvez dépenser votre action pour\nappeler ainsi la foudre, en visant le même point ou un autre",
-      "Si, au moment de l'incantation, vous vous trouvez en\nextérieur et que les conditions sont déjà orageuses, le sort vous\ndonne le contrôle de l'orage déjà présent au lieu d'en créer un\nnouveau. Dans ce cas, les dégâts du sort augmentent de 1d1O."
+      "Un nuage orageux apparaît sous forme d'un cylindre de 3 mètres de haut pour 18 mètres de rayon, centré sur un point situé dans votre champ de vision et à 30 mètres directement au-dessus de vous. Le sort échoue si vous ne pouvez voir le point situé à cette hauteur, là où le nuage doit se former (si vous vous trouvez dans une pièce trop petite pour accueillir le nuage par exemple).",
+      "Quand vous lancez le sort, vous devez choisir un point situé à portée et dans votre champ de vision. Un éclair jaillit du nuage et vient frapper ce point. Chaque créature située dans un rayon de 1,50 mètre autour de ce point doit faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 3d10 dégâts de foudre, les autres la moitié seulement. À chacun de vos tours jusqu'à la fin du sort, vous pouvez dépenser votre action pour appeler ainsi la foudre, en visant le même point ou un autre",
+      "Si, au moment de l'incantation, vous vous trouvez en extérieur et que les conditions sont déjà orageuses, le sort vous donne le contrôle de l'orage déjà présent au lieu d'en créer un nouveau. Dans ce cas, les dégâts du sort augmentent de 1d1O."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 4 ou plus, les dégâts augmentent de 1d1O par niveau au-delà du 3e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de 1d1O par niveau au-delà du 3e.",
     "source": "PHB",
     "page": 215,
     "casters": {
@@ -713,9 +713,9 @@
     "ritual": false,
     "shortDesc": "Une arme devient magique avec +1 aux jets d'attaque et +1d4 de dégâts extra d'un type à choisir (bonus et dégâts/niv).",
     "entries": [
-      "Vous touchez une arme non magique pour la rendre magique.\nChoisissez l'un des types de dégâts suivants : acide, feu,\nfoudre, froid ou tonnerre. Pendant toute la durée du sort,\nl'arme bénéficie d'un bonus de +l aux jets d'attaque et inflige\nld4 dégâts supplémentaires du type choisi."
+      "Vous touchez une arme non magique pour la rendre magique. Choisissez l'un des types de dégâts suivants : acide, feu, foudre, froid ou tonnerre. Pendant toute la durée du sort, l'arme bénéficie d'un bonus de +l aux jets d'attaque et inflige ld4 dégâts supplémentaires du type choisi."
     ],
-    "upCast": " Si vous lancez ce sort en utilisant un\nemplacement de niveau 5 ou 6, le bonus aux jets d'attaque\npasse à +2 et les dégâts supplémentaires à 2d4. Quand vous\nutilisez un emplacement de sort de niveau 7 ou plus, le bonus\npasse à+ 3 et les dégâts supplémentaires à 3d4.",
+    "upCast": " Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou 6, le bonus aux jets d'attaque passe à +2 et les dégâts supplémentaires à 2d4. Quand vous utilisez un emplacement de sort de niveau 7 ou plus, le bonus passe à+ 3 et les dégâts supplémentaires à 3d4.",
     "source": "PHB",
     "page": 215,
     "casters": {
@@ -744,9 +744,9 @@
     "ritual": false,
     "shortDesc": "Transforme une arme en arme magique +1 à l'attaque et aux dégâts (bonus de +2 ou +3/niv).",
     "entries": [
-      "Vous touchez une arme non magique.Jusqu'à la fin du sort, elle\ndevient magique et bénéficie d'un bonus de +1 aux jets d'attaque\net de dégâts."
+      "Vous touchez une arme non magique.Jusqu'à la fin du sort, elle devient magique et bénéficie d'un bonus de +1 aux jets d'attaque et de dégâts."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 4 ou plus, le bonus passe à +2, et à +3 si\nvous utilisez un emplacement de niveau 6 ou plus. ",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, le bonus passe à +2, et à +3 si vous utilisez un emplacement de niveau 6 ou plus. ",
     "source": "PHB",
     "page": 215,
     "casters": {
@@ -776,7 +776,7 @@
     "shortDesc": "L'arme cible brille, inflige 2d8 dégâts radiants supplémentaires et peut exploser sur un rayon de 9 m (JdS ou 4d8 radiants).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Clerc", "Paladin"],
@@ -804,11 +804,11 @@
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d8+Mod.Carac dégâts de force (dégâts/niv). Une action bonus permet une autre attaque.",
     "entries": [
-      "Vous créez à portée une arme spectrale flottante qui persiste\npendant toute la durée du sort ou jusqu'à ce que vous le lanciez\nde nouveau. Lors de l'incantation, vous pouvez faire une attaque\nde sort au corps à corps contre une créature située dans un\nrayon de 1,50 mètre autour de l'arme. Si vous touchez, la\ncible reçoit un montant de dégâts de force égal à ld8 + votre\nmodificateur de caractéristique d'incantation.",
-      "À votre tour et par une action bonus, vous pouvez déplacer\nl'arme d'un maximum de 6 mètres et répéter l'attaque contre\nune créature située dans un rayon de 1,50 mètre autour d'elle.",
-      "L'arme peut revêtir la forme de votre choix. Les clercs\ndes divinités associées à une arme particulière (comme\nSt Cuthbert, connu pour sa masse ou Thor pour son marteau)\nfont en sorte que l'arme générée ressemble à l'arme iconique de\nleur protecteur."
+      "Vous créez à portée une arme spectrale flottante qui persiste pendant toute la durée du sort ou jusqu'à ce que vous le lanciez de nouveau. Lors de l'incantation, vous pouvez faire une attaque de sort au corps à corps contre une créature située dans un rayon de 1,50 mètre autour de l'arme. Si vous touchez, la cible reçoit un montant de dégâts de force égal à ld8 + votre modificateur de caractéristique d'incantation.",
+      "À votre tour et par une action bonus, vous pouvez déplacer l'arme d'un maximum de 6 mètres et répéter l'attaque contre une créature située dans un rayon de 1,50 mètre autour d'elle.",
+      "L'arme peut revêtir la forme de votre choix. Les clercs des divinités associées à une arme particulière (comme St Cuthbert, connu pour sa masse ou Thor pour son marteau) font en sorte que l'arme générée ressemble à l'arme iconique de leur protecteur."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 3 ou plus, les dégâts augmentent de\nld8 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 2e.",
     "source": "PHB",
     "page": 215,
     "casters": {
@@ -837,9 +837,9 @@
     "ritual": false,
     "shortDesc": "Le lanceur gagne 5pv temporaires et une créature qui le touche au corps à corps subit 5 dégâts de froid à (+5 pv et dégâts/niv).",
     "entries": [
-      "Une force magique protectrice vous entoure et se manifeste\nsous la forme d'une pellicule de givre spectral qui recouvre\nvotre personne et votre équipement. Vous gagnez 5 points de vie\ntemporaires pendant toute la durée du sort. Si une créature vous\ntouche avec une attaque de corps à corps alors que vous possédez\nencore ces points de vie temporaires, elle subit 5 dégâts de froid."
+      "Une force magique protectrice vous entoure et se manifeste sous la forme d'une pellicule de givre spectral qui recouvre votre personne et votre équipement. Vous gagnez 5 points de vie temporaires pendant toute la durée du sort. Si une créature vous touche avec une attaque de corps à corps alors que vous possédez encore ces points de vie temporaires, elle subit 5 dégâts de froid."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 2 ou plus, les points de vie temporaires\net les dégâts de froid augmentent de 5 par emplacement de sort\nau-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les points de vie temporaires et les dégâts de froid augmentent de 5 par emplacement de sort au-delà du 1er.",
     "source": "PHB",
     "page": 215,
     "casters": {
@@ -868,7 +868,7 @@
     "ritual": false,
     "shortDesc": "La cible, si elle est consentante et ne porte pas d'armure, obtient une CA de 13+Mod.Dex.",
     "entries": [
-      "Vous touchez une créature consentante qui ne porte pas\nd'armure et l'enveloppez d'une force magique protectrice\njusqu'à la fin du sort. La CA de base de la cible passe à 13 + son\nmodificateur de Dextérité. Le sort se termine si la cible revêt\nune armure ou si vous révoquez le sort par une action."
+      "Vous touchez une créature consentante qui ne porte pas d'armure et l'enveloppez d'une force magique protectrice jusqu'à la fin du sort. La CA de base de la cible passe à 13 + son modificateur de Dextérité. Le sort se termine si la cible revêt une armure ou si vous révoquez le sort par une action."
     ],
     "upCast": "",
     "source": "PHB",
@@ -899,8 +899,8 @@
     "ritual": false,
     "shortDesc": "Arrête le temps durant 1d4+1 tours pour tout le monde sauf pour le lanceur.",
     "entries": [
-      "Vous arrêtez brièvement le cours du temps pour tout le\nmonde sauf vous. Le temps ne s'écoule plus pour les autres\ncréatures tandis que vous disposez de ld4+1 tours d'affilée,\npendant lesquels vous pouvez faire des actions et vous\ndéplacer normalement.",
-      "Ce sort se termine si l'une des actions que vous effectuez lors\nde ce laps de temps ou l'un des effets que vous créez lors de ce\nlaps de temps affecte une créature autre que vous ou un objet\nporté ou transporté par une créature autre que vous. Le sort se\ntermine également si vous vous éloignez à plus de 300 mètres\nde l'endroit où vous l'avez lancé."
+      "Vous arrêtez brièvement le cours du temps pour tout le monde sauf vous. Le temps ne s'écoule plus pour les autres créatures tandis que vous disposez de ld4+1 tours d'affilée, pendant lesquels vous pouvez faire des actions et vous déplacer normalement.",
+      "Ce sort se termine si l'une des actions que vous effectuez lors de ce laps de temps ou l'un des effets que vous créez lors de ce laps de temps affecte une créature autre que vous ou un objet porté ou transporté par une créature autre que vous. Le sort se termine également si vous vous éloignez à plus de 300 mètres de l'endroit où vous l'avez lancé."
     ],
     "upCast": "",
     "source": "PHB",
@@ -931,7 +931,7 @@
     "ritual": false,
     "shortDesc": "1 ou 2 créatures dans un rayon de 1,50 m doivent réussir un JdS de Dex. ou subir 1d6 dégâts d'acide (dégâts/niv).",
     "entries": [
-      "Vous lancez une boule d'acide. Choisissez une créature à\nportée, ou deux créatures à portée situées à 1,50 mètre\nou moins l'une de l'autre. Une cible doit réussir un jet de\nsauvegarde de Dextérité, sinon elle subit ld6 dégâts d'acide.\nLes dégâts du sort augmentent de ld6 quand vous atteignez le\nniveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous lancez une boule d'acide. Choisissez une créature à portée, ou deux créatures à portée situées à 1,50 mètre ou moins l'une de l'autre. Une cible doit réussir un jet de sauvegarde de Dextérité, sinon elle subit ld6 dégâts d'acide. Les dégâts du sort augmentent de ld6 quand vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -962,9 +962,9 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Sag. ou être effrayée puis subir 4d10 dégâts psychiques (dégâts/niv) à chacun de ses tours.",
     "entries": [
-      "Vous puisez dans les cauchemars d'une créature située à portée\ndans votre champ de vision pour créer une manifestation\nillusoire de ses pires terreurs, qu'elle sera la seule à voir. La\ncible doit faire un jet de sauvegarde de Sagesse. Si elle le rate,\nelle est terrorisée pendant toute la durée du sort. Tant que le\nsort n'est pas terminé, la cible doit faire un jet de sauvegarde de\nSagesse à la fin de chacun de ses tours. Elle subit 4d10 dégâts\npsychiques à chaque échec. Le sort se termine dès qu'elle\nréussit un jet de sauvegarde."
+      "Vous puisez dans les cauchemars d'une créature située à portée dans votre champ de vision pour créer une manifestation illusoire de ses pires terreurs, qu'elle sera la seule à voir. La cible doit faire un jet de sauvegarde de Sagesse. Si elle le rate, elle est terrorisée pendant toute la durée du sort. Tant que le sort n'est pas terminé, la cible doit faire un jet de sauvegarde de Sagesse à la fin de chacun de ses tours. Elle subit 4d10 dégâts psychiques à chaque échec. Le sort se termine dès qu'elle réussit un jet de sauvegarde."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 5 ou plus, les dégâts augmentent de\nldlO par niveau au-delà du 4e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts augmentent de ldlO par niveau au-delà du 4e.",
     "source": "PHB",
     "page": 216,
     "casters": {
@@ -994,7 +994,7 @@
     "shortDesc": "Invoque 1 diable FP 6 hostile (FP +1/niv)",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -1022,7 +1022,7 @@
     "ritual": false,
     "shortDesc": "La cible peut ajouter 1d4 à un jet de caractéristique de son choix.",
     "entries": [
-      "Vous touchez une créature consentante. Une fois avant la fin du\nsort, la cible peut lancer ld4 et ajouter le chiffre obtenu au test\nde caractéristique de son choix. Elle peut lancer le dé avant ou\naprès le test. Le sort se termine alors."
+      "Vous touchez une créature consentante. Une fois avant la fin du sort, la cible peut lancer ld4 et ajouter le chiffre obtenu au test de caractéristique de son choix. Elle peut lancer le dé avant ou après le test. Le sort se termine alors."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1054,7 +1054,7 @@
     "shortDesc": "La cible à 90 m doit réussir un JdS de For. ou sa vitesse de vol est réduite à 0 (descend à 18 m/round).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -1083,7 +1083,7 @@
     "shortDesc": "Les créatures dans un cylindre de 9 x 12 m doivent réussir un JdS de Con. ou subir 4d10 dégâts radiants.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Clerc", "Magicien"],
@@ -1103,7 +1103,7 @@
     "duration": "",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "bâtonnets, os ou petits objets\nsimilaires d'une valeur minimale de 25 po, portant des\nmarques spéciales",
+      "material": "bâtonnets, os ou petits objets similaires d'une valeur minimale de 25 po, portant des marques spéciales",
       "cost": "instantanée",
       "consumeComponent": false
     },
@@ -1111,18 +1111,18 @@
     "ritual": true,
     "shortDesc": "Le lanceur obtient un présage concernant le résultat d'une action dans les 30 prochaines min (fortune, péril, les deux ou rien).",
     "entries": [
-      "Vous lancez des bâtonnets ornés de gemmes ou des os de\ndragon, tirez des cartes ornementées ou utilisez une autre\nméthode de divination pour recevoir un présage de la part d'une\nentité d'un autre monde. Ce présage concerne les résultats de\nla conduite que vous comptez tenir dans les trente prochaines\nminutes. C'est au MD de choisir l'un des présages suivants :",
+      "Vous lancez des bâtonnets ornés de gemmes ou des os de dragon, tirez des cartes ornementées ou utilisez une autre méthode de divination pour recevoir un présage de la part d'une entité d'un autre monde. Ce présage concerne les résultats de la conduite que vous comptez tenir dans les trente prochaines minutes. C'est au MD de choisir l'un des présages suivants :",
       {
         "type": "list",
         "entries": [
           "Bonheur pour un résultat positif",
           "Malheur pour un résultat négatif",
-          "Bonheur et malheur pour un résultat comportant du positif\net du négatif",
+          "Bonheur et malheur pour un résultat comportant du positif et du négatif",
           "Rien pour un résultat n'étant ni positif ni négatif "
         ]
       },
-      "Le sort ne tient pas compte d'une éventuelle modification des\ncirconstances, comme l'incantation de sorts supplémentaires,\nou la perte ou l'arrivée d'un compagnon.",
-      "Si vous lancez ce sort à deux reprises ou plus avant un\nlong repos, il y a 25% de chances par incantation en sus de la\npremière que vous obteniez une prémonition aléatoire au lieu\nd'une prémonition fiable. C'est au MD de faire ce jet en secret."
+      "Le sort ne tient pas compte d'une éventuelle modification des circonstances, comme l'incantation de sorts supplémentaires, ou la perte ou l'arrivée d'un compagnon.",
+      "Si vous lancez ce sort à deux reprises ou plus avant un long repos, il y a 25% de chances par incantation en sus de la première que vous obteniez une prémonition aléatoire au lieu d'une prémonition fiable. C'est au MD de faire ce jet en secret."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1153,7 +1153,7 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 9 m ne peuvent tomber malade, ont la résistance au poison et l'avantage à certains JdS.",
     "entries": [
-      "Une énergie purificatrice émane de vous et forme une aura\ndans un rayon de 9 mètres. Cette aura se déplace avec vous\njusqu'à la fin du sort et reste centrée sur vous. Chaque créature\nnon hostile qui se trouve dans l'aura (vous y compris) ne\npeut pas tomber malade, devient résistante aux dégâts de\npoison et est avantagée sur les jets de sauvegarde contre les\neffets générant les états suivants : assourdi, aveuglé, charmé,\nempoisonné, étourdi, paralysé, terrorisé."
+      "Une énergie purificatrice émane de vous et forme une aura dans un rayon de 9 mètres. Cette aura se déplace avec vous jusqu'à la fin du sort et reste centrée sur vous. Chaque créature non hostile qui se trouve dans l'aura (vous y compris) ne peut pas tomber malade, devient résistante aux dégâts de poison et est avantagée sur les jets de sauvegarde contre les effets générant les états suivants : assourdi, aveuglé, charmé, empoisonné, étourdi, paralysé, terrorisé."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1184,7 +1184,7 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 9 m ont la résistance aux dégâts nécrotiques et regagnent automatiquement 1 pv une fois à 0 pv.",
     "entries": [
-      "Une énergie protectrice de vie émane de vous et forme une aura\ndans un rayon de 9 mètres. Cette aura se déplace avec vous\njusqu'à la fin du sort et reste centrée sur vous. Chaque créature\nnon hostile qui se trouve dans l'aura (vous y compris) devient\nrésistante aux dégâts nécrotiques et il est impossible de réduire\nson maximum de points de vie. De plus, une créature vivante\nnon hostile récupère 1 point de vie quand elle débute son tour\nau sein de l'aura alors qu'elle a O point de vie."
+      "Une énergie protectrice de vie émane de vous et forme une aura dans un rayon de 9 mètres. Cette aura se déplace avec vous jusqu'à la fin du sort et reste centrée sur vous. Chaque créature non hostile qui se trouve dans l'aura (vous y compris) devient résistante aux dégâts nécrotiques et il est impossible de réduire son maximum de points de vie. De plus, une créature vivante non hostile récupère 1 point de vie quand elle débute son tour au sein de l'aura alors qu'elle a O point de vie."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1215,7 +1215,7 @@
     "ritual": false,
     "shortDesc": "La cible dans un rayon de 9 m récupère 2d6 pv.",
     "entries": [
-      "Une énergie curative émane de vous et forme une aura dans\nun rayon de 9 mètres. Cette aura se déplace avec vous jusqu'à\nla fin du sort et reste centrée sur vous. Vous pouvez utiliser\nune action bonus pour rendre 2d6 points de vie à une créature\nsituée au sein de l'aura, vous y compris."
+      "Une énergie curative émane de vous et forme une aura dans un rayon de 9 mètres. Cette aura se déplace avec vous jusqu'à la fin du sort et reste centrée sur vous. Vous pouvez utiliser une action bonus pour rendre 2d6 points de vie à une créature située au sein de l'aura, vous y compris."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1246,7 +1246,7 @@
     "ritual": false,
     "shortDesc": "Les créatures non hostiles dans un rayon de 9 m infligent 1d4 dégâts radiants extra lorsqu'ils touchent avec une arme.",
     "entries": [
-      "Une puissance sacrée émane de vous et forme une aura d'un\nrayon de 9 mètres, réveillant la combativité de vos amis. L'aura\nest centrée sur vous et se déplace avec vous jusqu'à la fin du\nsort. Toutes les créatures non hostiles (y compris vous-même)\nsituées en son sein infligent ld4 dégâts radiants de plus quand\nelles touchent une cible avec une attaque armée."
+      "Une puissance sacrée émane de vous et forme une aura d'un rayon de 9 mètres, réveillant la combativité de vos amis. L'aura est centrée sur vous et se déplace avec vous jusqu'à la fin du sort. Toutes les créatures non hostiles (y compris vous-même) situées en son sein infligent ld4 dégâts radiants de plus quand elles touchent une cible avec une attaque armée."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1277,20 +1277,20 @@
     "ritual": false,
     "shortDesc": "Révèle de fausses informations au sujet d'une créature ou d'un objet qui serait la cible d'un sort de divination.",
     "entries": [
-      "Vous enveloppez la créature ou l'objet touché d'une illusion,\nafin que les sorts de divination révèlent des informations\nerronées à son propos. La cible du sort doit être une créature\nconsentante ou un objet qui n'est ni porté ni transporté par une\nautre créature.",
-      "Lorsque vous lancez le sort, vous choisissez l'un des effets\nsuivants, ou les deux, qui persistent pendant toute la durée\ndu sort. Si vous lancez ce sort sur la même créature ou le\nmême objet chaque jour pendant 30 jours, en lui attribuant\nle même effet à chaque fois, l'illusion persiste jusqu'à ce que\nquelqu'un la dissipe.",
+      "Vous enveloppez la créature ou l'objet touché d'une illusion, afin que les sorts de divination révèlent des informations erronées à son propos. La cible du sort doit être une créature consentante ou un objet qui n'est ni porté ni transporté par une autre créature.",
+      "Lorsque vous lancez le sort, vous choisissez l'un des effets suivants, ou les deux, qui persistent pendant toute la durée du sort. Si vous lancez ce sort sur la même créature ou le même objet chaque jour pendant 30 jours, en lui attribuant le même effet à chaque fois, l'illusion persiste jusqu'à ce que quelqu'un la dissipe.",
       {
-        "name":"Aura factice",
+        "name": "Aura factice",
         "type": "entries",
         "entries": [
-          "Vous modifiez la manière dont la cible apparaît\nvis-à-vis des sorts et effets magiques détectant les auras\nmagiques, comme détection de la magie. Vous pouvez ainsi faire\nen sorte qu'un objet magique paraisse dépourvu de magie ou\nqu'un objet ordinaire semble magique, ou vous pouvez modifier\nl'aura magique de la cible de manière à ce qu'elle paraisse\nappartenir à l'école de magie de votre choix. Quand vous\napposez cet effet sur un objet, vous pouvez faire en sorte que la\nmagie factice se montre à toute personne qui manipule l'objet."
+          "Vous modifiez la manière dont la cible apparaît vis-à-vis des sorts et effets magiques détectant les auras magiques, comme détection de la magie. Vous pouvez ainsi faire en sorte qu'un objet magique paraisse dépourvu de magie ou qu'un objet ordinaire semble magique, ou vous pouvez modifier l'aura magique de la cible de manière à ce qu'elle paraisse appartenir à l'école de magie de votre choix. Quand vous apposez cet effet sur un objet, vous pouvez faire en sorte que la magie factice se montre à toute personne qui manipule l'objet."
         ]
       },
       {
-        "name":"Masque",
+        "name": "Masque",
         "type": "entries",
         "entries": [
-          "Vous modifiez la manière dont la cible apparaît aux\nsorts et effets magiques qui détectent les types de créatures,\ncomme le sens divin d'un paladin ou le déclencheur d'un sort de\nsymbole. Vous choisissez un type de créature : les autres sorts\net effets magiques traitent la cible comme si elle appartenait au\ntype ou à l'alignement choisi."
+          "Vous modifiez la manière dont la cible apparaît aux sorts et effets magiques qui détectent les types de créatures, comme le sens divin d'un paladin ou le déclencheur d'un sort de symbole. Vous choisissez un type de créature : les autres sorts et effets magiques traitent la cible comme si elle appartenait au type ou à l'alignement choisi."
         ]
       }
     ],
@@ -1315,7 +1315,7 @@
     "duration": "1 minute",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "(un petit reliquaire d'une valeur\nminimum de 1 000 po contenant une relique sacrée, comme\nun bout de la robe d'un saint ou un morceau de parchemin\nprélevé sur un texte sacré",
+      "material": "(un petit reliquaire d'une valeur minimum de 1 000 po contenant une relique sacrée, comme un bout de la robe d'un saint ou un morceau de parchemin prélevé sur un texte sacré",
       "cost": "1000po",
       "consumeComponent": false
     },
@@ -1323,7 +1323,7 @@
     "ritual": false,
     "shortDesc": "Les cibles dans un rayon de 9 m ont l'avantage aux JdS. Les autres créatures ont un désavantage à l'attaque contre ces cibles.",
     "entries": [
-      "Une lumière divine émane de votre personne et forme un\ndoux halo qui vous enveloppe dans un rayon de 9 mètres. Les\ncréatures de votre choix se trouvant dans ce rayon au moment\noù vous lancez ce sort émettent une faible lumière dans un\nrayon de 1,50 mètre. De plus, jusqu'à la fin du sort, elles sont\navantagées lors des jets de sauvegarde tandis que les autres\ncréatures sont désavantagées quand elles effectuent un jet\nd'attaque contre elles. Quand un fiélon ou un mort-vivant touche\nune créature affectée avec une attaque au corps à corps, l'aura\nqui enveloppe la créature flamboie soudain. L:assaillant doit\nréussir un jet de sauvegarde de Constitution ou se retrouver\naveugle jusqu'à la fin du sort."
+      "Une lumière divine émane de votre personne et forme un doux halo qui vous enveloppe dans un rayon de 9 mètres. Les créatures de votre choix se trouvant dans ce rayon au moment où vous lancez ce sort émettent une faible lumière dans un rayon de 1,50 mètre. De plus, jusqu'à la fin du sort, elles sont avantagées lors des jets de sauvegarde tandis que les autres créatures sont désavantagées quand elles effectuent un jet d'attaque contre elles. Quand un fiélon ou un mort-vivant touche une créature affectée avec une attaque au corps à corps, l'aura qui enveloppe la créature flamboie soudain. L:assaillant doit réussir un jet de sauvegarde de Constitution ou se retrouver aveugle jusqu'à la fin du sort."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1383,7 +1383,7 @@
     "ritual": false,
     "shortDesc": "Donne 15 à un jet de Charisme et masque les mensonges lors d'une détection magique.",
     "entries": [
-      "Jusqu'à la fin du sort, chaque fois que vous faites un test de\nCharisme, vous pouvez remplacer le nombre obtenu au dé\npar un 15. De plus, quoi que vous disiez, la magie visant à\ndéterminer si vous dites la vérité vous croit toujours sincère."
+      "Jusqu'à la fin du sort, chaque fois que vous faites un test de Charisme, vous pouvez remplacer le nombre obtenu au dé par un 15. De plus, quoi que vous disiez, la magie visant à déterminer si vous dites la vérité vous croit toujours sincère."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1414,8 +1414,8 @@
     "ritual": false,
     "shortDesc": "Crée jusqu'à 10 baies qui redonnent 1 pv chacune et gardent leur pouvoir durant 24 heures.",
     "entries": [
-      "Jusqu'à dix baies apparaissent dans votre main. Elles sont\nimprégnées de magie pendant une journée. Une créature peut\nutiliser son action pour manger une baie, ce qui lui rend un\npoint de vie et la nourrit pour la journée.",
-      "Les baies perdent leurs propriétés si personne ne les mange\ndans les 24 heures qui suivent l'incantation."
+      "Jusqu'à dix baies apparaissent dans votre main. Elles sont imprégnées de magie pendant une journée. Une créature peut utiliser son action pour manger une baie, ce qui lui rend un point de vie et la nourrit pour la journée.",
+      "Les baies perdent leurs propriétés si personne ne les mange dans les 24 heures qui suivent l'incantation."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1563,7 +1563,7 @@
     "shortDesc": "Protège une zone de 27 x 27 x 27 m par un brouillard, des lianes, des arbres animés, ou autres effets.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide"],
@@ -1695,7 +1695,7 @@
     "level": "0",
     "school": "C",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S",
     "materialComponent": {
@@ -1911,7 +1911,7 @@
     "shortDesc": "Vole une âme pour gagner des pv, lui poser des questions, obtenir l'avantage à un dé ou voir un lieu qu'elle connaissait.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -1931,17 +1931,20 @@
     "duration": "",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "",
+      "material": "un carquois contenant au moins\nune munition",
       "cost": "",
       "consumeComponent": false
     },
     "concentration": true,
     "ritual": false,
     "shortDesc": "Fait qu'un carquois produise constamment des munitions non magiques, permettant 2 attaques par round en action bonus.",
-    "entries": [],
+    "entries": [
+      "Vous transmutez votre carquois de manière à ce qu'il produise\nune réserve infinie de munitions non magiques qui semblent\nbondir dans votre main dès que vous la tendez pour les saisir",
+      "Pendant toute la durée du sort, à chacun de vos tours, vous\npouvez utiliser une action bonus pour effectuer deux attaques\navec une arme utilisant les munitions venant du carquois.\nChaque fois que vous portez une telle attaque à distance, le\ncarquois remplace magiquement la munition dépensée par une\nautre, identique, non magique. Les munitions que produit le\ncarquois se désintègrent quand le sort se termine. Si le carquois\nne se trouve plus en votre possession, le sort se termine."
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 289,
     "casters": {
       "classes": ["Rôdeur"],
       "subclasses": [],
@@ -1969,7 +1972,7 @@
     "shortDesc": "La cible doit réussir un JdS de Dex. ou subir 3d8 dégâts contondants d'un objet de 2,5 kg max (+2,5 kg et +1d8/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Ensorceleur", "Magicien"],
@@ -2072,7 +2075,7 @@
     "level": "5",
     "school": "C",
     "castingTime": "1 minute",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,M",
     "materialComponent": {
@@ -2101,7 +2104,7 @@
     "level": "3",
     "school": "A",
     "castingTime": "1 minute",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S,M",
     "materialComponent": {
@@ -2143,7 +2146,7 @@
     "shortDesc": "Célèbre un rite religieux (bénir de l'eau, octroyer un bonus à la CA, aux JdS, au jets de carac, etc).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 222,
     "casters": {
       "classes": ["Clerc", "Paladin"],
@@ -2288,7 +2291,7 @@
     "shortDesc": "La cible doit réussir un JdS de Sag. ou être charmée par le lanceur (+1 créature/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -2694,7 +2697,7 @@
     "shortDesc": "Crée un piège magique (JdS de Dex. ou la créature de taille P à G est hissée en l'air).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Magicien", "Rôdeur"],
@@ -2797,7 +2800,7 @@
     "level": "3",
     "school": "N",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S,M",
     "materialComponent": {
@@ -3146,20 +3149,23 @@
     "school": "A",
     "castingTime": "1 heure",
     "range": "18 mètres",
-    "duration": "",
+    "duration": "24 heures",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "",
-      "cost": "",
-      "consumeComponent": false
+      "material": "un bijou d'une valeur minimale de\n1 000 po, que le sort consume",
+      "cost": "1000",
+      "consumeComponent": true
     },
     "concentration": false,
     "ritual": false,
     "shortDesc": "La cible (céleste, élémentaire, fée ou fiélon) doit réussir un JdS de Cha. ou servir le lanceur (durée/niv).",
-    "entries": [],
-    "upCast": "",
-    "source": "PHB",
-    "page": 0,
+    "entries": [
+      "Grâce à ce sort, vous vous attachez de force les services d'un\ncéleste, d'un élémentaire, d'une fée ou d'un fiélon. La créature\ndoit se trouver à portée pendant toute la durée du sort. (En\ngénéral, elle est d'abord invoquée au centre d'un cercle magique\ninversé où elle reste piégée le temps de l'incantation.) La\ncible doit faire un jet de sauvegarde de Charisme à la fin de\nl'incantation. Si elle échoue, elle est contrainte de vous servir\npendant toute la durée du sort. Si elle a été invoquée ou créée\nvia un autre sort, la durée de ce dernier se prolonge jusqu'à\négaler celle de l'entrave planaire.",
+      "La créature liée doit suivre vos instructions au mieux de ses\ncapacités. Vous pouvez lui demander de vous accompagner\nlors d'une aventure, de protéger un lieu ou de transmettre un\nmessage. La créature obéit à vos instructions à la lettre, mais\nsi elle est hostile envers vous, elle peut tout à fait interpréter\nvos paroles de manière à satisfaire ses propres objectifs. Si\nla créature a exécuté vos instructions avant la fin du sort, elle\nrevient vers vous pour vous en informer si elle se trouve sur le\nmême plan d'existence que vous. Si vous êtes sur un autre plan,\nelle se rend là où vous l'avez liée et y reste jusqu'à la fin du sort."
+    ],
+    "upCast": ". Si vous lancez ce sort en utilisant un\nemplacement de niveau supérieur, la durée augmente: 10 jours\nau niveau 6, 30 au niveau 7, 180 au niveau 8 et un an et un\njour au niveau 9",
+     "source": "PHB",
+    "page": 241,
     "casters": {
       "classes": ["Barde", "Clerc", "Druide", "Magicien", "Occultiste"],
       "subclasses": [],
@@ -3245,7 +3251,7 @@
     "shortDesc": "Contrôle les feux non magiques pour les allumer, éteindre, faire grossir, faire apparaître des formes simples, etc.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -3274,7 +3280,7 @@
     "shortDesc": "Contrôle l'air dans un cube de 30 m et produit un effet (Rafales, Écrasement ou Ascension).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -3477,7 +3483,7 @@
     "shortDesc": "Invoque de 1 démon FP 5 qui obéit aux ordres du lanceur (FP +1/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -3506,7 +3512,7 @@
     "shortDesc": "Invoque de 2 démons FP 1 à 8 démons FP 1/4 hostiles (nbre de créatures/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -3854,7 +3860,7 @@
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de Con. ou subir 1d6 dégâts tonnerre (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Barde", "Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -3883,7 +3889,7 @@
     "shortDesc": "Si l'attaque avec un sort touche, 7 atomes infligent chacun 4d12 dégâts radiants (+1 atome/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -3941,7 +3947,7 @@
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d10 dégâts perforants + JdS de Dex. ou 2d6 dégâts de froid (dégâts/niv) à 1,50 m.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -3999,7 +4005,7 @@
     "shortDesc": "Crée un homunculus auquel le lanceur peut transférer ses points de vie jusqu'à son prochain repos long.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien"],
@@ -4015,7 +4021,7 @@
     "level": "6",
     "school": "N",
     "castingTime": "1 minute",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S,M",
     "materialComponent": {
@@ -4202,7 +4208,7 @@
     "shortDesc": "Jusqu'à 5 corps de taille M ou P deviennent des zombies ou des squelettes sous le contrôle du lanceur (+2 corps/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -4219,7 +4225,7 @@
     "school": "T",
     "castingTime": "1 action",
     "range": "18 mètres",
-    "duration": "",
+    "duration": "instantanée",
     "component": "V",
     "materialComponent": {
       "material": "",
@@ -4229,10 +4235,15 @@
     "concentration": false,
     "ritual": false,
     "shortDesc": "Déverrouille ou débloque 1 objet (porte, coffre, cadenas, menottes, etc) ou supprime le sort verrou magique pour 10 minutes.",
-    "entries": [],
+    "entries": [
+      "Choisissez un objet situé à portée et dans votre champ\nde vision. Ce peut être une porte, une boîte, un coffre, des\nmenottes, un cadenas ou un autre objet disposant d'un système\nde fermeture ordinaire ou magique.",
+      "Une cible fermée par une serrure ordinaire, coincée ou\nbloquée par une barre se déverrouille ou se débloque. Si l'objet\na plusieurs serrures, le sort en ouvre une seule.",
+      "Si vous visez une cible fermée par un {@spell verrou magique}, ce\ndernier est supprimé pendant 10 minutes, au cours desquelles\non peut ouvrir et fermer la cible normalement.",
+      "Quand vous lancez le sort, un cliquetis émane de l'objet et\nretentit si fort qu'on l'entend dans un rayon de 90 mètres"
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 233,
     "casters": {
       "classes": ["Barde", "Ensorceleur", "Magicien"],
       "subclasses": [],
@@ -4248,7 +4259,7 @@
     "school": "Ev",
     "castingTime": "1 action",
     "range": "36 mètres",
-    "duration": "",
+    "duration": "instantanée",
     "component": "V,S",
     "materialComponent": {
       "material": "",
@@ -4258,10 +4269,13 @@
     "concentration": false,
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d10 dégâts de force (nbre de rayons/niv).",
-    "entries": [],
+    "entries": [
+      "Un éclair d'énergie crépitante file vers une créature à portée.\nFaites un jet d'attaque de sort à distance contre la cible. Si vous\nréussissez, elle subit ldlO dégâts de force.",
+      "Le sort crée des rayons supplémentaires quand vous\natteignez certains niveaux : il lance deux rayons au niveau 5,\ntrois au niveau 11 et quatre au niveau 17. Vous pouvez diriger\ntous les rayons sur une même cible ou les répartir entre\nplusieurs. Faites un jet d'attaque distinct pour chaque rayon"
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 233,
     "casters": {
       "classes": ["Occultiste"],
       "subclasses": [],
@@ -4277,7 +4291,7 @@
     "school": "C",
     "castingTime": "1 action",
     "range": "18 mètres",
-    "duration": "",
+    "duration": "10 minutes",
     "component": "V,S",
     "materialComponent": {
       "material": "",
@@ -4287,10 +4301,14 @@
     "concentration": true,
     "ritual": false,
     "shortDesc": "Bannit une créature dans un demi-plan labyrinthique. Jet d'Intelligence pour s'évader avant la fin du sort.",
-    "entries": [],
+    "entries": [
+      "Vous bannissez une créature située à portée dans votre\nchamp de vision dans un demi-plan labyrinthique. La cible\ny reste pendant toute la durée du sort ou jusqu'à ce qu'elle\ns'échappe du dédale.",
+      "Elle peut utiliser une action pour tenter de s'évader. Pour\ncela, elle effectue un test d'Intelligence DD 20. Si elle le réussit,\nelle s'échappe et le sort se termine (les minotaures et les\ndémons goristros réussissent automatiquement).",
+      "Quand le sort se termine, la cible réapparaît à l'emplacement\nqu'elle a quitté ou, s'il est occupé, dans l'emplacement libre\nle plus proche. "
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 233,
     "casters": {
       "classes": ["Magicien"],
       "subclasses": [],
@@ -4306,7 +4324,7 @@
     "school": "I",
     "castingTime": "1 action",
     "range": "personnelle",
-    "duration": "",
+    "duration": "1 heure",
     "component": "V,S",
     "materialComponent": {
       "material": "",
@@ -4316,10 +4334,14 @@
     "concentration": false,
     "ritual": false,
     "shortDesc": "Modifie l'apparence du lanceur (son physique et son équipement) grâce à une illusion.",
-    "entries": [],
+    "entries": [
+      "Vous faites en sorte que votre personne (y compris vos\nvêtements, votre armure, vos armes et les autres objets en votre\npossession) prenne une apparence différente jusqu'à la fin du\nsort ou jusqu'à ce que vous utilisiez une action pour y mettre\nun terme. Vous pouvez passer pour W1e personne de trente\ncentimètres de plus ou de moins, sembler gros, maigre ou entre\nles deux. Vous ne pouvez pas changer le type de votre corps,\nvous devez choisir une forme possédant la même conformation\nque vous au niveau des membres. En dehors de cela, les détails\nde l'illusion sont laissés à votre imagination.",
+      "Les changements qu'apporte le sort ne résistent pas à un\nexamen physique. Par exemple, si vous l'utilisez pour ajouter\nun chapeau à votre tenue, les objets passent au travers et toute\npersonne qui essaie de le toucher ne sentira que de l'air, ou\ndes cheveux et un crâne. Si vous utilisez le sort pour paraître\nplus mince qu'en réalité, la main de quelqu'W1 qui tente de vous\ntoucher se heurtera à vous alors que, visuellement, elle semble\nencore dans le vide.",
+      "Pour percer votre déguisement à jour, une créature peut\ndépenser une action pour vous examiner. Elle doit alors réussir\nun test d'Intelligence (Investigation) contre le DD du jet de\nsauvegarde du sort."
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 233,
     "casters": {
       "classes": ["Artificier", "Barde", "Ensorceleur", "Magicien"],
       "subclasses": [],
@@ -4335,7 +4357,7 @@
     "school": "A",
     "castingTime": "1 action",
     "range": "contact",
-    "duration": "",
+    "duration": "instantanée",
     "component": "V,S",
     "materialComponent": {
       "material": "",
@@ -4345,10 +4367,12 @@
     "concentration": false,
     "ritual": false,
     "shortDesc": "Met fin à toutes les malédictions affligeant une créature ou un objet.",
-    "entries": [],
+    "entries": [
+      "À votre contact, toutes les malédictions qui affectent une\ncréature ou un objet disparaissent. Si l'objet est un objet\nmagique maudit, la malédiction persiste, mais le sort rompt\nl'harmonisation entre l'objet et son détenteur, ce qui permet à\nce dernier de l'ôter ou de s'en débarrasser."
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 233,
     "casters": {
       "classes": ["Clerc", "Magicien", "Occultiste", "Paladin"],
       "subclasses": [],
@@ -4376,7 +4400,7 @@
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 5d12 dégâts nécrotiques. Morte, la cible devient un zombie.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -4393,7 +4417,7 @@
     "school": "C",
     "castingTime": "1 action",
     "range": "18 mètres",
-    "duration": "",
+    "duration": "1 heure",
     "component": "S",
     "materialComponent": {
       "material": "",
@@ -4403,10 +4427,13 @@
     "concentration": false,
     "ritual": false,
     "shortDesc": "Crée une porte qui conduit à un demi-plan (cube de 9 m). Les créatures encore dans le demi-plan à la fin du sort sont piégées.",
-    "entries": [],
+    "entries": [
+      "Vous créez une porte floue sur une surface plate et solide\nsituée à portée dans votre champ de vision. Elle est assez large pour laisser passer sans mal des créatures de taille Moyenne.\nQuand quelqu'un ouvre la porte, elle donne sur un demi-plan\nressemblant à une pièce vide de 9 mètres de côté (dans toutes\nles dimensions) faite de bois ou de pierre. La porte disparaît\nquand le sort se termine et les créatures et les objets encore\ndans le demi-plan y restent piégés, car elle s'efface aussi\nde leur côté.",
+      "Vous pouvez créer un nouveau demi-plan pour chaque\nincantation du sort ou relier la porte à un demi-plan que\nvous avez précédemment créé via ce sort. De plus, si vous\nconnaissez la nature et le contenu d'un demi-plan qu'une autre\ncréature a créé grâce à ce sort, vous pouvez lui relier votre\npropre porte. "
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 233,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
       "subclasses": [],
@@ -4422,20 +4449,25 @@
     "school": "T",
     "castingTime": "1 action",
     "range": "18 mètres",
-    "duration": "",
+    "duration": "instantanée",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "",
+      "material": "de la magnétite et une pincée\nde poussière",
       "cost": "",
       "consumeComponent": false
     },
     "concentration": false,
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Dex. ou subir 10d6+40 dégâts de force (dégâts/niv). Un objet de taille G est désintégré.",
-    "entries": [],
-    "upCast": "",
-    "source": "PHB",
-    "page": 0,
+    "entries": [
+      "Un mince rayon de lumière verte jaillit de votre doigt pointé\nvers une cible située à portée dans votre champ de vision. La\ncible peut être une créature, un objet ou une création de force\nmagique, comme un mur issu d'un {@spell mur de force}.",
+      "Une créature visée par ce sort doit faire un jet de sauvegarde\nde Dextérité. Si elle le rate, elle subit 10d6+40 dégâts de force.\nSi ces dégâts la réduisent à 0 point de vie, elle est désintégrée.",
+      "Une créature désintégrée est réduite à l'état de fine poussière\ngrise, tout comme tous les objets qu'elle porte et transporte, à l'exception des objets magiques. Pour ressusciter une créature\nainsi désintégrée, il faut impérativement recourir à une\n{@spell résurrection suprême} ou un {@spell souhait}.",
+      "Ce sort désintègre automatiquement les objets non magiques\nde taille Grande ou inférieure et les créations de force magique.\nSi la cible est un objet de Très Grande taille ou plus, le sort\ndésintègre un cube de 3 mètres d'arête au sein de l'objet. Ce\nsort reste sans effet sur les objets magiques."
+    ],
+    "upCast": "Si vous lancez ce sort en utilisant un\nemplacement de niveau 7 ou plus, les dégâts augmentent de\n3d6 par niveau au-delà du 6e.",
+     "source": "PHB",
+    "page": 234,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
       "subclasses": [],
@@ -4451,7 +4483,7 @@
     "school": "D",
     "castingTime": "1 action",
     "range": "personnelle",
-    "duration": "",
+    "duration": "10 minutes",
     "component": "V,S",
     "materialComponent": {
       "material": "",
@@ -4461,10 +4493,13 @@
     "concentration": true,
     "ritual": true,
     "shortDesc": "Le lanceur détecte toutes émanations magiques dans un rayon de 9 m et en détermine l'école.",
-    "entries": [],
+    "entries": [
+      "Pendant toute la durée du sort, vous percevez la présence de\nmagie dans un rayon de 9 mètres. Si vous percevez ainsi une\nmagie, vous pouvez dépenser votre action pour discerner une\nfaible aura autour d'une créature ou d'un objet visible dans la\nzone et imprégné de magie. Vous découvrez aussi à quelle école\nappartient cette magie, le cas échéant.",
+      "Le sort ignore la plupart des obstacles, mais il ne peut\npas franchir 30 centimètres de pierre, 2,5 centimètres de\nmétal ordinaire, une mince feuille de plomb, ni 1 mètre de\nbois ou de terre."
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 234,
     "casters": {
       "classes": ["Artificier", "Barde", "Clerc", "Druide", "Ensorceleur", "Magicien", "Paladin", "Rôdeur"],
       "subclasses": [],
@@ -4480,20 +4515,22 @@
     "school": "D",
     "castingTime": "1 action",
     "range": "personnelle",
-    "duration": "",
+    "duration": "1 heure",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "",
+      "material": "une pincée de talc et un saupoudrage\nde poudre d'argent",
       "cost": "",
       "consumeComponent": false
     },
     "concentration": true,
     "ritual": false,
     "shortDesc": "Le lanceur détecte les pensées superficielles d'une créature à 9 m, et les plus approfondies si la cible rate un JdS de Sag.",
-    "entries": [],
+    "entries": [
+      "Pendant toute la durée du sort, vous voyez les créatures et\nles objets invisibles comme s'ils étaient bien visibles et vous\npouvez aussi observer le plan éthéré. Les créatures et les objets\néthérés vous apparaissent comme des silhouettes translucides\nët fantomatiques."
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 234,
     "casters": {
       "classes": ["Barde", "Ensorceleur", "Magicien"],
       "subclasses": [],
@@ -4509,7 +4546,7 @@
     "school": "D",
     "castingTime": "1 action",
     "range": "personnelle",
-    "duration": "",
+    "duration": "10 minutes",
     "component": "V,S",
     "materialComponent": {
       "material": "",
@@ -4519,10 +4556,13 @@
     "concentration": true,
     "ritual": false,
     "shortDesc": "Le lanceur détecte et localise aberration, céleste, élémentaire, fée, fiélon ou mort-vivant dans un rayon de 9 m.",
-    "entries": [],
+    "entries": [
+      "Pendant toute la durée du sort, vous savez s'il y a une\naberration, un céleste, un élémentaire, une fée, un fiélon ou\nun mort-vivant dans un rayon de 9 mètres autour de vous et\nvous savez précisément où il se trouve. De même, vous savez\nsi un lieu ou un objet situé dans un rayon de 9 mètres a été\nconsacré ou profané.",
+      "Pendant toute la durée du sort, vous savez s'il y a une\naberration, un céleste, un élémentaire, une fée, un fiélon ou\nun mort-vivant dans un rayon de 9 mètres autour de vous et\nvous savez précisément où il se trouve. De même, vous savez\nsi un lieu ou un objet situé dans un rayon de 9 mètres a été\nconsacré ou profané."
+    ],
     "upCast": "",
-    "source": "PHB",
-    "page": 0,
+     "source": "PHB",
+    "page": 234,
     "casters": {
       "classes": ["Clerc", "Paladin"],
       "subclasses": [],
@@ -4538,17 +4578,20 @@
     "school": "D",
     "castingTime": "1 action",
     "range": "personnelle",
-    "duration": "",
+    "duration": "10 minutes",
     "component": "V,S,M",
     "materialComponent": {
-      "material": "",
+      "material": "un brin d'if",
       "cost": "",
       "consumeComponent": false
     },
     "concentration": true,
     "ritual": true,
     "shortDesc": "Le lanceur détecte et identifie poisons, créatures venimeuses et maladies à 9 mètres.",
-    "entries": [],
+    "entries": [
+      "Pendant toute la durée du sort, vous percevez la présence de\npoisons, de créatures venimeuses et de maladies dans un rayon\nde 9 mètres autour de vous. Vous déterminez également leur\nemplacement et identifiez à chaque fois le type de poison, de\ncréature ou de maladie concerné.",
+      "Le sort ignore la plupart des obstacles, mais il ne peut\npas franchir 30 centimètres de pierre, 2,5 centimètres de\nmétal ordinaire, une mince feuille de plomb, ni 1 mètre de\nbois ou de terre"
+    ],
     "upCast": "",
     "source": "PHB",
     "page": 0,
@@ -4608,7 +4651,7 @@
     "shortDesc": "Jusqu'à 5 créatures sont téléportées (JdS de Sag. si non consentantes) dans un rayon de 36 m.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -4956,7 +4999,7 @@
     "shortDesc": "Les créatures qui voient le dragon illusoire de taille TG doivent réussir un JdS de Sag. ou être effrayées durant 1 min.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien"],
@@ -5072,7 +5115,7 @@
     "shortDesc": "Si l'attaque touche, inflige 2d8 + 1d6 dégâts de type variable (dégâts/niv). Rebond si double 8.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur"],
@@ -5159,7 +5202,7 @@
     "shortDesc": "Les créatures dans un cube de 1,50 m doivent réussir un JdS de Dex. ou subir 1d8 dégâts de feu (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -5246,7 +5289,7 @@
     "shortDesc": "La cible doit réussir un JdS de Dex. ou subir 4d8 dégâts nécrotiques à chaque round (+1d8/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -5304,7 +5347,7 @@
     "shortDesc": "La cible doit réussir un JdS d'Int. ou ne plus pouvoir distinguer amis et ennemis ; tous sont des ennemis pour elle.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Ensorceleur", "Magicien", "Occultiste"],
@@ -5362,7 +5405,7 @@
     "shortDesc": "La cible doit réussir un JdS de Sag. ou subir 3d8 dégâts psychiques (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -5420,7 +5463,7 @@
     "shortDesc": "Les créatures dans un cube de 6 m (terrain difficile) doivent réussir un JdS de Dex. ou subir 3d12 contondants (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -5478,7 +5521,7 @@
     "shortDesc": "Les créatures au contact de l'esprit créé récupèrent 1d6 pv (+1d6 pv/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Rôdeur"],
@@ -5623,7 +5666,7 @@
     "shortDesc": "Contrôle l'eau pour obtenir divers effets mineurs comme changer sa couleur, la faire geler, changer le sens du courant, etc.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -5681,7 +5724,7 @@
     "shortDesc": "Contrôle la terre où la pierre pour la creuser, créer des formes, la transformer en terrain difficile, etc.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -5826,7 +5869,7 @@
     "shortDesc": "Les créatures sur une ligne de 9 x 1,50 m doivent réussir un JdS de Dex. ou subir 3d8 dégâts de feu (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -6000,7 +6043,7 @@
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 2d6 dégâts extra d'un type de dégâts spécifique (+1 cible/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Magicien", "Occultiste"],
@@ -6087,7 +6130,7 @@
     "shortDesc": "12 flèches/carreaux infligent 1d6 dégâts de feu extra (+2 munitions/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Ensorceleur", "Magicien", "Rôdeur"],
@@ -6145,7 +6188,7 @@
     "shortDesc": "Les créatures dans un cube de 9 m doivent réussir un JdS de Con. ou subir 12d8 dégâts nécrotiques. Les plantes meurent.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -6348,7 +6391,7 @@
     "shortDesc": "Fait apparaitre une forteresse de pierre sur une surface de 36 x 36 m pour 7 jours.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien"],
@@ -6493,7 +6536,7 @@
     "shortDesc": "Téléporte le lanceur à 18 m à chaque round par une action bonus.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -6522,7 +6565,7 @@
     "shortDesc": "Le lanceur se téleporte et les créatures dans un rayon de 3 m doivent réussir un JdS de Con. ou subir 3d10 dégâts de tonnerre.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -6580,7 +6623,7 @@
     "shortDesc": "Si l'attaque avec un sort touche, inflige 6d10 dégâts de force à 5 créatures, puis le lanceur se téléporte.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Rôdeur"],
@@ -6609,7 +6652,7 @@
     "shortDesc": "Le mouvement du lanceur (+9 m) ne provoque pas d'AO et il obtient l'avantage à un jet d'attaque qui inflige 1d8 de force extra.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Rôdeur"],
@@ -6667,7 +6710,7 @@
     "shortDesc": "La cible doit réussir un JdS de Sag. ou être effrayée (nbre de cibles/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -6696,7 +6739,7 @@
     "shortDesc": "Anime arbres, roches et plantes dans un cube de 18 x 18 x 18 m.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Rôdeur"],
@@ -6783,7 +6826,7 @@
     "shortDesc": "Transforme le lanceur en Bête primitive (+3 m, vision dans le noir,...) ou en Grand arbre (+10 pv,avantage à certains jets,...).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Rôdeur"],
@@ -6812,7 +6855,7 @@
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 1d6 dégâts de froid et avoir un désavantage à l'attaque (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -6841,7 +6884,7 @@
     "shortDesc": "La cible doit réussir un JdS de Sag. ou subir 1d8 ou 1d12 dégâts nécrotiques (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Clerc", "Magicien", "Occultiste"],
@@ -7160,7 +7203,7 @@
     "shortDesc": "Jusqu'à 10 créatures doivent réussir un JdS d'Int. ou subir 14d6 dégâts psychiques.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Ensorceleur", "Magicien", "Occultiste"],
@@ -7421,7 +7464,7 @@
     "shortDesc": "La cible à 27 m doit réussir un JdS de Dex. ou subir 8d6 dégâts de feu et 4d6 dégâts de feu par la suite.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -7450,7 +7493,7 @@
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 1d6 dégâts de poison et se déplacer de 1,50 m au hasard (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -7885,7 +7928,7 @@
     "shortDesc": "Le lanceur gagne l'immunité à tous les dégàts.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien"],
@@ -7943,7 +7986,7 @@
     "shortDesc": "Crée une arme qui inflige 2d8 dégâts psychiques avec les propriétés finesse, légère et lancer (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -8146,7 +8189,7 @@
     "shortDesc": "Crée jusqu'à 10 mots dans les nuages.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Barde", "Druide", "Magicien"],
@@ -8204,7 +8247,7 @@
     "shortDesc": "Crée un lien télépathique avec une bête pour pouvoir communiquer avec elle.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Rôdeur"],
@@ -8523,7 +8566,7 @@
     "shortDesc": "Les créatures dans un rayon de 9 m doivent réussir un JdS de For. ou subir 6d6 dégâts contondants et être tirées vers le centre.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide"],
@@ -8958,7 +9001,7 @@
     "shortDesc": "Transforme jusqu'à 10 créatures en nouvelles formes de bêtes de FP ou niveau au plus égal au FP ou niveau de la créature.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Ensorceleur", "Magicien"],
@@ -9016,7 +9059,7 @@
     "shortDesc": "Les créatures à 1,50 m doivent réussir un JdS de Dex. ou subir 2d6 dégâts de feu pour chacune des 6 météores (+2 météores/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -9306,7 +9349,7 @@
     "shortDesc": "La cible (100 pv max) a sa vitesse réduite à 3 m, un désavantage aux d20 et doit faire un JdS de Con. pour lancer des sorts.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -9422,7 +9465,7 @@
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de Con. ou subir 1d6 dégâts radiants (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Clerc"],
@@ -9509,7 +9552,7 @@
     "shortDesc": "Crée un mur d'eau de 9 m x 3 m x 30 cm qui donne un désavantage aux attaques à distance et réduit les dégâts de feu.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -9654,7 +9697,7 @@
     "shortDesc": "Crée un mur de lumière de 18 x 3 x 1,50 m qui peut infliger 4d8 dégâts radiants à une cible à chaque tour (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -9712,7 +9755,7 @@
     "shortDesc": "Crée un mur de sable de 9 x 3 x 3 m qui bloque la vue (aveuglé) mais pas les mouvements.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien"],
@@ -9944,7 +9987,7 @@
     "shortDesc": "Les créatures dans une sphère de 1,50 m de rayon doivent réussir un JdS de Dex. ou subir 3d6 dégâts de froid (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -10060,7 +10103,7 @@
     "shortDesc": "Le lanceur obtient la résistance aux dommages radiants et inflige 2d8 dégâts nécrotiques aux créatures qui le touchent.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Occultiste"],
@@ -10118,7 +10161,7 @@
     "shortDesc": "Crée jusqu'à 6 piliers de pierre verticaux de 1,50 x 9 m (+2 piliers/niv). Possibilité d'écraser des créatures au plafond.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide"],
@@ -10350,7 +10393,7 @@
     "shortDesc": "Les créatures dans un rayon de 6 m doivent réussir un JdS d'Int. ou subir 8d6 dégâts psychiques.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Ensorceleur", "Magicien", "Occultiste"],
@@ -10466,7 +10509,7 @@
     "shortDesc": "Jusqu'à 3 cailloux infligent 1d6 + Mod.Carac.Inc dégâts contondant si l'attaque avec un sort touche.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Occultiste"],
@@ -10553,7 +10596,7 @@
     "shortDesc": "La cible doit réussir un JdS de For. ou subir 2d6 dégâts contondants et être entravée.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -10714,7 +10757,7 @@
     "level": "0",
     "school": "T",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S",
     "materialComponent": {
@@ -10785,7 +10828,7 @@
     "shortDesc": "La cible doit réussir un JdS d'Int. ou subir 5d10 dégâts psychiques et se croire entouré par des flammes ou autre danger.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -10830,7 +10873,7 @@
     "level": "9",
     "school": "N",
     "castingTime": "1 heure",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S,M",
     "materialComponent": {
@@ -11046,7 +11089,7 @@
     "shortDesc": "Le lanceur obtient la résistance aux dégâts d'acide, de froid, de feu, de foudre et de tonnerre ou l'immunité à un seul type.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide"],
@@ -11091,7 +11134,7 @@
     "level": "1",
     "school": "T",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S",
     "materialComponent": {
@@ -11133,7 +11176,7 @@
     "shortDesc": "Cible des flammes à 18 m et les fait exploser (JdS de Con. ou aveuglée) ou échapper une épaisse fumée (visibilité nulle).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Barde", "Ensorceleur", "Magicien"],
@@ -11394,7 +11437,7 @@
     "shortDesc": "Les créatures dans un rayon de 9 m doivent réussir un JdS de Con. ou subir 4d10 dégâts radiants et un niveau d'épuisement.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien", "Occultiste"],
@@ -11452,7 +11495,7 @@
     "shortDesc": "Les créatures dans une zone de 9 x 3 x 3 m doivent réussir un JdS de Dex. ou subir 4d8 dégâts contondants et tomber à terre.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -11829,7 +11872,7 @@
     "shortDesc": "Les créatures dans un cône de 4,50 m doivent réussir un JdS de Con. ou subir 4d6 dégâts de froid. Immunité et résistance.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -11858,7 +11901,7 @@
     "shortDesc": "Les créatures dans un rayon de 4,50 m doivent réussir un JdS de Dex. ou tomber à terre. Résistance et traverser la terre/pierre.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -11887,7 +11930,7 @@
     "shortDesc": "Les créatures sur une ligne de 4,50 m doivent réussir un JdS de Dex. ou subir 4d8 dégâts de feu. Immunité et résistance.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -11916,7 +11959,7 @@
     "shortDesc": "Les créatures dans un cube de 4,50 m doivent réussir un JdS de Con. ou subir 2d10 dégâts contondants. Vitesse de vol 18 m.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien", "Occultiste"],
@@ -12061,7 +12104,7 @@
     "shortDesc": "Contrôle l'air afin de déplacer des objets ou des créatures (taille M max) ou de créer des effets sensoriels inoffensifs.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -12090,7 +12133,7 @@
     "shortDesc": "Si l'attaque au corps à corps avec un sort touche, inflige 1d10 dégâts d'acide (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide"],
@@ -12135,7 +12178,7 @@
     "level": "1",
     "school": "Ev",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S",
     "materialComponent": {
@@ -12148,7 +12191,7 @@
     "shortDesc": "Les créatures dans un rayon de 3m doivent réussir un JdS de Dex. ou subir 1d6 dégâts contondants et tomber à terre (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Druide", "Ensorceleur", "Magicien"],
@@ -12293,7 +12336,7 @@
     "shortDesc": "Transforme un objet de taille TP en une créature avec bras et jambes qui obéit au lanceur (+2 objets/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Magicien"],
@@ -12322,7 +12365,7 @@
     "shortDesc": "3 créatures consentantes tombent inconcientes et bénéficient d'un repos court (+1 créature/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Barde", "Ensorceleur", "Magicien"],
@@ -12583,7 +12626,7 @@
     "shortDesc": "Émet un cône de 4,50 m qui inflige 3d6 dégâts d'acide, froid, feu, foudre ou poison en cas d'échec à un JdS de Dex (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -12641,7 +12684,7 @@
     "shortDesc": "Jusqu'à 4 créatures de taille M ou 1 de taille G dans un rayon de 3 m doivent réussir un JdS de For. ou être entravées.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -12699,7 +12742,7 @@
     "shortDesc": "Les créatures dans une sphère de 6 m de rayon doivent réussir un JdS de For. ou subir 2d6 dégâts contondants (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -12728,7 +12771,7 @@
     "shortDesc": "Les créatures à 6 m doivent réussir un JdS de Dex. ou subir 10d4 dégâts d'acide (dégâts/niv) puis 5d4 dégâts d'acide à son tour.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Ensorceleur", "Magicien"],
@@ -12976,7 +13019,7 @@
     "level": "7",
     "school": "C",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V",
     "materialComponent": {
@@ -13134,7 +13177,7 @@
     "shortDesc": "Fait apparaitre un temple dédié à un dieu sur une surface de 36 x 36 m pour 1 jour.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Clerc"],
@@ -13192,7 +13235,7 @@
     "shortDesc": "Les créatures dans une sphère de ténèbres de 18 m de rayon doivent réussir un JdS de Sag. ou subir 8d8 dégâts psychiques.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien", "Occultiste"],
@@ -13424,7 +13467,7 @@
     "shortDesc": "Les créatures dans un cylindre de 3 x 9 m doivent réussir un JdS de Dex. ou subir 10d6 dégâts contondants.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -13453,7 +13496,7 @@
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de For. ou subir 1d8 dégâts contondants (dégâts/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Druide", "Ensorceleur", "Magicien"],
@@ -13540,7 +13583,7 @@
     "shortDesc": "Le lanceur subit 4d8 dégâts nécrotiques et une autre créature récupère 2 fois le montant (+1d8 pv/niv).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Clerc", "Magicien"],
@@ -13569,7 +13612,7 @@
     "shortDesc": "Le lanceur gagne 50 pv, l'avantage aux jets d'attaque, 2d12 extra de dégâts de force, des maîtrises martiales et deux attaques.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Magicien"],
@@ -13598,7 +13641,7 @@
     "shortDesc": "Transforme un cube de 12 m de roche en boue ou de boue en roche.",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Artificier", "Druide", "Magicien"],
@@ -13772,7 +13815,7 @@
     "shortDesc": "Crée un vent fort (30 km/h) dans un rayon de 3 m (rend sourd, éteint les flammes, dissipe le gaz, terrain difficile, etc).",
     "entries": [],
     "upCast": "",
-    "source": "XGE ",
+    "source": "XGE",
     "page": 0,
     "casters": {
       "classes": ["Barde", "Druide", "Ensorceleur", "Magicien"],
@@ -13875,7 +13918,7 @@
     "level": "6",
     "school": "C",
     "castingTime": "1 action",
-    "range":  "3 mètres",
+    "range": "3 mètres",
     "duration": "",
     "component": "V,S",
     "materialComponent": {
@@ -14003,7 +14046,7 @@
     "ritual": false,
     "shortDesc": "Les créatures dans une sphère de 6 m de rayon subissent 2d6 de froid et doivent réussir un JdS de Dex. ou subir 2d6 d'acide.",
     "entries": [
-      "Vous ouvrez un portail sur le vide intersidéral, une région\nplongée dans les ténèbres et infestée par des horreurs\ninconnues. Une sphère de 6 mètres de rayon apparaît. Elle est\nfaite de ténèbres et d'un froid mordant et centrée sur un point\nà portée. Elle reste là pendant toute la durée du sort. Dans ce\nnéant, on entend une cacophonie de sinistres murmures et\nde bruits de mastication, audibles dans un rayon de 9 mètres.\nAucune lumière, ni magique ni autre, ne peut illuminer la zone\net toute créature entièrement englobée en son sein est aveuglée.\nLe néant crée une distorsion dans le tissu de l'espace et la zone\nest considérée comme un terrain difficile. Toute créature qui\ny commence son tour subit 2d6 dégâts de froid. Une créature\nqui y termine son tour doit réussir un jet de sauvegarde de\nDextérité, sans quoi des tentacules laiteux venus d'ailleurs la\npalpent et lui infligent 2d6 dégâts d'acide."
+      "Vous ouvrez un portail sur le vide intersidéral, une région plongée dans les ténèbres et infestée par des horreurs inconnues. Une sphère de 6 mètres de rayon apparaît. Elle est faite de ténèbres et d'un froid mordant et centrée sur un point à portée. Elle reste là pendant toute la durée du sort. Dans ce néant, on entend une cacophonie de sinistres murmures et de bruits de mastication, audibles dans un rayon de 9 mètres. Aucune lumière, ni magique ni autre, ne peut illuminer la zone et toute créature entièrement englobée en son sein est aveuglée. Le néant crée une distorsion dans le tissu de l'espace et la zone est considérée comme un terrain difficile. Toute créature qui y commence son tour subit 2d6 dégâts de froid. Une créature qui y termine son tour doit réussir un jet de sauvegarde de Dextérité, sans quoi des tentacules laiteux venus d'ailleurs la palpent et lui infligent 2d6 dégâts d'acide."
     ],
     "upCast": "",
     "source": "PHB",
