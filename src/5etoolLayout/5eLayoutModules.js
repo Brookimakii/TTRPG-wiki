@@ -495,6 +495,11 @@ export const RenderModule = (props: {}) => {
       tagName: "spell",
       defaultSource: Parser.SRC_PHB,
       page: "/TTRPG-wiki/spells",
+    },
+    spellen: {
+      tagName: "spell English",
+      defaultSource: Parser.SRC_PHB,
+      page: "/TTRPG-wiki/spells",
     }
   }
 
@@ -567,6 +572,7 @@ export const RenderModule = (props: {}) => {
     return firstIndex === -1 ? [string, ""] : [string.substring(0, firstIndex), string.substring(firstIndex + 1)];
   }
 
+  // String formating like bold or italic
   function renderString_renderTag(tag, string) {
     switch (tag) {
       case "@b":
@@ -616,6 +622,7 @@ export const RenderModule = (props: {}) => {
     }
   }
 
+  //Link to other pages like spells
   function getTagMeta_generic(tag, string) {
     function getTagSource(tag, source) {
       if (source && source.trim()) return source;
@@ -673,6 +680,11 @@ export const RenderModule = (props: {}) => {
         out.page = "/TTRPG-wiki/spells";
         break;
       }
+      case "@spellen": {
+        out.hash = encodeForHash("english spell "+ string)
+        out.page = "/TTRPG-wiki/spells";
+        break;
+      }
       default:
         throw new Error(`Unhandled tag "${tag}"`);
     }
@@ -680,18 +692,18 @@ export const RenderModule = (props: {}) => {
   }
 
   const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
-    // console.log(entry)
     if (!entry) return;
+    console.log(entry, depth, toggle)
 
     if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
     else if (entry.type) {
+      // console.log(entry, entry.header, depth)
+      // depth = entry.header ?? depth
       switch (entry.type) {
         case "refClassFeature":
-          return props.refClassFeature(entry.classFeature, depth + 1)
-
+          return props.refClassFeature(entry.classFeature, ++depth)
         case "refSubclassFeature":
           return props.refSubclassFeature(entry.subclassFeature, ++depth)
-
         case "refOptionalfeature": {
           // console.log(getResource(Resources.feature))
           // console.log(entry.optionalfeature)
@@ -730,11 +742,12 @@ export const RenderModule = (props: {}) => {
           </div>
         }
         case "entries": {
-          // console.log(depth)
+          // console.log(entry, depth)
           // if (depth > 1) {
           //   return <div></div>
           // }
-          return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "", depth)
+          // console.log(entry, depth, toggle)
+          return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "", ++depth)
         }
         case "list": {
           // console.log(entry)
@@ -758,7 +771,7 @@ export const RenderModule = (props: {}) => {
               <tbody>
               {entry.rows.map(row => <tr>
                 {row.map((cell, idx) => <td className={"td__th "+entry.colStyles[idx]}>
-                  {render(cell)}
+                  {typeof cell === "number"?render(String(cell)):render(cell)}
                 </td>)}
               </tr>)}
               </tbody>

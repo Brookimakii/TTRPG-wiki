@@ -2469,7 +2469,7 @@
     "itemType": "spellcastingFocus",
     "weight": 0.5,
     "value": 10,
-    "scfType": "arcane"
+    "scfType": "druid"
   },
   {
     "id": "woodenStaff",
@@ -2479,7 +2479,7 @@
     "itemType": "weapon",
     "weight": 2,
     "value": 5,
-    "scfType": "arcane",
+    "scfType": "druid",
 
     "weaponType": "simple",
     "weaponCategory": "melee",
@@ -2497,7 +2497,7 @@
     "page": 151,
     "itemType": "spellcastingFocus",
     "value": 1,
-    "scfType": "arcane"
+    "scfType": "druid"
   },
   {
     "id": "totem",
@@ -2506,7 +2506,7 @@
     "page": 151,
     "itemType": "spellcastingFocus",
     "value": 1,
-    "scfType": "arcane"
+    "scfType": "druid"
   },
   {
     "id": "holySymbol",
@@ -2526,7 +2526,7 @@
     "itemType": "spellcastingFocus",
     "weight": 0.5,
     "value": 5,
-    "scfType": "arcane"
+    "scfType": "holy"
   },
   {
     "id": "emblem",
@@ -2535,7 +2535,7 @@
     "page": 152,
     "itemType": "spellcastingFocus",
     "value": 5,
-    "scfType": "arcane"
+    "scfType": "holy"
   },
   {
     "id": "reliquary",
@@ -2545,7 +2545,7 @@
     "itemType": "spellcastingFocus",
     "weight": 1,
     "value": 5,
-    "scfType": "arcane"
+    "scfType": "holy"
   },
   {"name": "Paquetage d'Équipement", "itemType": "separator"},
   {

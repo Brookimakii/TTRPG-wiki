@@ -483,7 +483,7 @@ export const Dnd5eClasses = () => {
             </span>
           </h2>
           {featureObject ? "" : <p>Unable to find {featureStringId}</p>}
-          {getToggleState(featureStringId) && RenderModule(props).render(featureObject?.entries, header, toggleName)}
+          {getToggleState(featureStringId) && RenderModule(props).render(featureObject?.entries, featureObject?.header??header, toggleName)}
         </div>
       </td>
     </tr>
@@ -605,11 +605,11 @@ export const Dnd5eClasses = () => {
   }
 
   function renderRefSubclassFeature(feature, depth) {
-    console.log(feature)
+    // console.log(feature)
     const [featureName, _, __, subclassName, featureSource, featureLevel] = feature.split("|")
 
     const featureObject = findFeatureInClass(feature)
-    console.log(featureObject)
+    // console.log(featureObject)
 
 
     return <div
@@ -1171,183 +1171,5 @@ export const Dnd5eClasses = () => {
           </div>
         </div>
       }
-    </main>
-    // <div className="view-col-group--cancer h-100 mh-0">
-    //   <div className="container view-col-wrapper view-col-wrapper--cancer">
-    //     <div className="view-col" id="listcontainer">
-    //       <TableHeader/>
-    //       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
-    //         {columns.map((col) => {
-    //           return (<button type="button" className={col.classSize + " sort ve-btn ve-btn-default ve-btn-xs"}
-    //                           onClick={() => handleSort(col.sortId)}>
-    //             {col.id}<span
-    //             className={"lst__caret" + (sorting.startsWith(col.sortId) ? " lst__caret--active" : "") + (sorting === col.sortId + ".des" ? " lst__caret--reverse" : "")}></span>
-    //           </button>)
-    //         })}
-    //       </div>
-    //       {/*TODO: When selecting a div update the class with 'list-multi-selected'*/}
-    //       <div id="list" className="list list--stats">
-    //         {/*{console.log(elements)}*/}
-    //         {elements.map((elem) => {
-    //           // console.log(elem)
-    //           return <div
-    //             className={selected.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-    //             onClick={() => handleClick(elem)}>
-    //
-    //             <a href={"#" + elem.id} className="lst__row-border lst__row-inner">
-    //               <span className="bold ve-col-8 pl-0 pr-1">{elem.name}</span>
-    //               <span className={"ve-col-4 ve-text-center source__" + elem.source + " pl-1 pr-0 pr-1"}
-    //                     title={getSourceName(elem.source)}>{elem.source}</span>
-    //             </a>
-    //           </div>
-    //         })}
-    //       </div>
-    //     </div>
-    //     <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
-    //     {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
-    //     {Object.keys(selected).length === 0 ?
-    //       <div className="view-col" id="contentwrapper">
-    //         <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-    //           <table id="pagecontent" className="w-100 stats">
-    //             <tbody>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             <tr>
-    //               <td colSpan="6" className="initial-message initial-message--med">Select an entry from the list to
-    //                 view it here
-    //               </td>
-    //             </tr>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             </tbody>
-    //           </table>
-    //         </div>
-    //       </div> :
-    //       <Tabs className="view-col" id="contentwrapper">
-    //         <TabList className="w-100 ve-flex" id="stat-tabs" defaultIndex={0}
-    //                  style={{paddingLeft: "0px", marginBottom: "0px"}}>
-    //           <Tab
-    //             className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0 ui-tab__btn-tab-head--active">Traits</Tab>
-    //           <Tab className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Info</Tab>
-    //           {selected.images.length === 0 ?
-    //             <Tab
-    //               className="ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0">Images</Tab>
-    //             : <></>
-    //           }
-    //           <li className="ml-auto ve-flex" id="tabs-right">
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-    //                     title="Pin (Toggle) (Hotkey: p/P)">
-    //               <span className="glyphicon glyphicon-pushpin"></span>
-    //             </button>
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-    //                     title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)">
-    //               <span className="glyphicon glyphicon-new-window"></span>
-    //             </button>
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0 ve-btn-copy-effect"
-    //                     title="Copy Link to Filters (SHIFT to add list; CTRL to copy @filter tag)">
-    //               <span className="glyphicon glyphicon-magnet"></span>
-    //             </button>
-    //             <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-    //                     title="Other Options">
-    //               <span className="glyphicon glyphicon-option-vertical"></span>
-    //             </button>
-    //           </li>
-    //         </TabList>
-    //         <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-    //           <table className="w-100 stats">
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             <DetailsHeader/>
-    //             <tr>
-    //               <td colSpan={6} className="pt-3">
-    //                 <b>Source:</b>
-    //                 <i title={getSourceName(selected.source)}>{selected.source}</i>
-    //                 , page {selected.page}. {selected.reprinted}
-    //               </td>
-    //             </tr>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //           </table>
-    //         </TabPanel>
-    //         <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-    //           <table className="w-100 stats">
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //             <DetailsHeader/>
-    //             <tr>
-    //               <td colSpan={6} className="pt-3">
-    //                 <div className="rd__b rd__b--1">
-    //                   <div className="rd__b rd__b--2">
-    //                     {selected.info.map((info) => {
-    //                       const key = Object.keys(info)[0];
-    //                       const value = info[key]
-    //                       if (key === "") {
-    //                         return (<p>{value}</p>)
-    //                       }
-    //                       if (typeof value === typeof []) {
-    //                         return (
-    //                           <div className="rd__b rd__b--3">
-    //                             {value.map((elem) => {
-    //                               return (
-    //                                 <p>
-    //                                   {elem === value[0] ? <>
-    //                                         <span className="rd__h rd__b--3">
-    //                                           <span className="entry-title-inner">{key}</span>
-    //                                         </span>
-    //                                     {" " + key}
-    //                                   </> : key
-    //                                   }
-    //                                 </p>
-    //                               )
-    //                             })}
-    //                           </div>
-    //                         )
-    //                       }
-    //                       if (typeof value === typeof {}) {
-    //                         return formatContent([value])
-    //                       }
-    //                       return (
-    //                         <div className="rd__b rd__b--3">
-    //                           <p>
-    //                                   <span className="rd__h rd__b--3">
-    //                                     <span className="entry-title-inner">{key}</span>
-    //                                   </span>
-    //                             {" " + key}
-    //                           </p>
-    //                         </div>
-    //                       )
-    //                     })}
-    //                   </div>
-    //                 </div>
-    //               </td>
-    //             </tr>
-    //             <tr>
-    //               <th className="ve-tbl-border" colSpan="6"></th>
-    //             </tr>
-    //           </table>
-    //         </TabPanel>
-    //         {selected.images.length === 0 ?
-    //           <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
-    //             <table className="w-100 stats">
-    //               <tr>
-    //                 <th className="ve-tbl-border" colSpan="6"></th>
-    //               </tr>
-    //               <DetailsHeader/>
-    //               <tr>
-    //                 <th className="ve-tbl-border" colSpan="6"></th>
-    //               </tr>
-    //             </table>
-    //           </TabPanel>
-    //           : <></>
-    //         }
-    //       </Tabs>
-    //     }
-    //   </div>
-    // </div>
-  )
+    </main>)
 }
