@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TTRPG-wiki/static/css/main.083b2f50.css",
-    "main.js": "/TTRPG-wiki/static/js/main.6c69c698.js",
-    "static/js/453.f9ba0b7d.chunk.js": "/TTRPG-wiki/static/js/453.f9ba0b7d.chunk.js",
+    "main.js": "/TTRPG-wiki/static/js/main.302af394.js",
+    "static/js/453.11749e9c.chunk.js": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js",
     "static/media/hpphumblescratch-webfont.woff2": "/TTRPG-wiki/static/media/hpphumblescratch-webfont.5c9eda82bee34f549305.woff2",
     "static/media/pro-fa-light-300-ca12ba.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-ca12ba.57beb94c3fbc1ed27967.woff2",
     "static/media/pro-fa-light-300-50c900.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-50c900.c26b7d6e9b6c18527eaf.woff2",
@@ -64,12 +64,13 @@
     "static/media/pro-fa-light-300-90d968.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-90d968.5dc42d05a583ca77afee.woff2",
     "static/media/pro-fa-solid-900-90d968.woff2": "/TTRPG-wiki/static/media/pro-fa-solid-900-90d968.4c45df8d78e5a539d596.woff2",
     "static/media/2025-01-17.md": "/TTRPG-wiki/static/media/2025-01-17.a9d59d8106ddbe59f125.md",
+    "static/media/2025-01-21.md": "/TTRPG-wiki/static/media/2025-01-21.63dfab871f607407b101.md",
     "main.083b2f50.css.map": "/TTRPG-wiki/static/css/main.083b2f50.css.map",
-    "main.6c69c698.js.map": "/TTRPG-wiki/static/js/main.6c69c698.js.map",
-    "453.f9ba0b7d.chunk.js.map": "/TTRPG-wiki/static/js/453.f9ba0b7d.chunk.js.map"
+    "main.302af394.js.map": "/TTRPG-wiki/static/js/main.302af394.js.map",
+    "453.11749e9c.chunk.js.map": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.083b2f50.css",
-    "static/js/main.6c69c698.js"
+    "static/js/main.302af394.js"
   ]
 }
