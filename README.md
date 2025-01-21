@@ -5,14 +5,30 @@ What to do in this Project:
 - [ ] DnD 5e (2014 + 2024)
     - [ ] Rules
         - [ ] Conditions
-    - [ ] Player Resources3
-        - [ ] Races
+    - [ ] Player Resources
+        - [x] Races
         - [ ] Classes
+          - [ ] Formatage de l'Artificier
+          - [ ] Formatage du Barbare
+          - [ ] Formatage du Barde
+          - [ ] Formatage du Clerc
+          - [x] Formatage du Druide
+          - [x] Formatage de l'Ensorceleur
+          - [ ] Formatage du Guerrier
+          - [ ] Formatage du Magicien
+          - [ ] Formatage du Moine
+          - [ ] Formatage de l'Occultiste
+          - [ ] Formatage du Paladin
+          - [ ] Formatage du Rôdeur
+          - [ ] Formatage du Roublard
         - [ ] Feats
         - [ ] Backgrounds
         - [ ] Options and Features
         - [ ] Equipment
         - [ ] Spells
+          - [x] Détails du PHB 
+          - [x] Détails du TCE 
+          - [ ] Détails du XGE 
     - [ ] DM Resources
         - [ ] Bestiary
 
