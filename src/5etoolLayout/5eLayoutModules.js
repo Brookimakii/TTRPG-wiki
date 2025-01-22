@@ -676,11 +676,17 @@ export const RenderModule = (props: {}) => {
 
     switch (tag) {
       case "@spell": {
-        out.hash = encodeForHash(getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]?.id ?? string)
+        const spell = getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]
+        if (!spell){
+          console.error("Unknown spell: "+ string)
+        }
+        out.hash = encodeForHash(spell?.id)
+
         out.page = "/TTRPG-wiki/spells";
         break;
       }
       case "@spellen": {
+        console.error("This spell is in english: "+ string)
         out.hash = encodeForHash("english spell "+ string)
         out.page = "/TTRPG-wiki/spells";
         break;
