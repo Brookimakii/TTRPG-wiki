@@ -3,462 +3,1127 @@
     "name": "Adepte de métamagie",
     "id": "Metamagic_Adept",
     "prerequisite": "Capacité Incantation ou Magie de pacte",
-    "entries": "Vous apprenez deux options de métamagie et gagnez 2 points de sorcellerie.",
-    "source": "TCE"
+    "entries": [
+      "Vous avez appris à exercer votre volonté sur vos sorts pour altérer leur fonctionnement :",
+      {
+        "type": "list",
+        "entries": [
+          "Vous apprenez deux options de Métamagie de votre choix, issues de la classe d'ensorceleur. Vous ne pouvez appliquer qu'une option de Métamagie à l'incantation d'un sort, sauf si l'option précise le contraire. Chaque fois que vous atteignez un niveau qui vous octroie l'aptitude Amélioration de caractéristique, vous pouvez remplacer l'une de ces options de Métamagie par une autre issue de la classe d'ensorceleur.",
+          "Vous recevez 2 points de sorcellerie pour la Métamagie (ils s'ajoutent à d'éventuels autres points de sorcellerie issus d'une autre source, mais ne peuvent servir qu'à la Métamagie). Vous récupérez tous les points de sorcellerie dépensés en terminant un repos long ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 79
   },
   {
     "name": "Adepte élémentaire",
     "id": "Elemental_Adept",
     "prerequisite": "Capacité de lancer au moins un sort",
-    "entries": "Vos sorts ignorent la résistance aux dégâts d'un type (acide, froid, feu, foudre ou tonnerre) et aux dégâts les 1 sont des 2.",
-    "source": "PHB"
+    "entries": [
+      "Quand vous obtenez ce don, choisissez un des types de dégâts suivants : acide, feu, foudre, froid ou tonnerre .",
+      "Les sorts que vous lancez ignorent la résistance contre le type de dégâts choisi. De plus, quand vous lancez le ou les dés de dégâts d'un sort qui inflige des dégâts de ce type, remplacez tous les résultats de 1 par des 2 .",
+      "Vous pouvez sélectionner ce don plusieurs fois en choisissant à chaque fois un type de dégâts différent."
+    ],
+    "source": "PHB",
+    "page": 165
   },
   {
-    "name": "Adepte martial",
+    "name": "Expert du combat",
     "id": "Martial_Adept",
-    "entries": "Vous apprenez deux manœuvres du maître de bataille et gagnez un dé de supériorité (d6).",
-    "source": "PHB"
+    "entries": [
+      "Vous avez suivi un entraînement martial qui vous permet d'accomplir des manœuvres spéciales lors des combats. Vous bénéficiez des avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Vous apprenez deux manœuvres de votre choix parmi celles dont dispose le maître de guerre, un archétype de la classe de guerrier. Si une manœuvre que vous utilisez exige de votre cible un jet de sauvegarde pour résister à ses effets, le DD de ce jet de sauvegarde est égal à 8 + votre bonus de maîtrise +votre modificateur de Force ou de Dextérité (à vous de choisir).",
+          "Si vous disposez déjà de dés de supériorité, vous en obtenez un de plus ; sinon, vous disposez d'un d6 en guise de dé de supériorité. Ce dé sert à alimenter vos manœuvres. Un dé de supériorité est dépensé une fois utilisé. Vous récupérez vos dés de supériorité dépensés suite à un repos long ou court."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Adepte occulte",
     "id": "Eldritch_Adept",
     "prerequisite": "Capacité Incantation ou Magie de pacte",
-    "entries": "Vous apprenez une manifestation occulte.",
-    "source": "TCE"
+    "entries": [
+      "À force d'étudier l'occulte, vous avez réveillé en vous un pouvoir ésotérique : vous apprenez une option de Manifestation occulte que vous choisissez parmi les propositions de la classe d'occultiste. Si l'invocation s'accompagne de prérequis, vous ne pouvez la choisir que si vous êtes un occultiste remplissant ces prérequis.",
+      "Chaque fois que vous gagnez un niveau, vous pouvez remplacer l'invocation par une autre de la classe d'occultiste."
+    ],
+    "source": "TCE",
+    "page": 79
   },
   {
-    "name": "Agilité des courts-sur-pattes",
+    "name": "Trapu mais agile",
     "id": "Squat_Nimbleness",
     "prerequisite": "Nain ou race de taille P",
-    "entries": "+1 en For. ou Dex., votre vitesse augmente de 1,50 m, et maîtrise et avantage pour s'échapper en Acrobaties ou Athlétisme.",
-    "source": "XGE"
+    "entries": [
+      "Vous êtes incroyablement agile pour quelqu'un de votre race. Vous gagnez les avantages suivant :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force ou de Dextérité augmente de 1, jusqu'à un maximum de 20.",
+          "Votre vitesse au sol augmente de 1,50 mètre.",
+          "Vous gagnez la maîtrise de la compétence Acrobaties ou Athlétisme (à vous de choisir).",
+          "Vous êtes avantagé à tous les tests de Force (Athlétisme) ou Dextérité (Acrobaties) que vous faites pour échapper à une étreinte ."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 75
   },
   {
-    "name": "Amateur d'armes à feu",
+    "name": "Artilleur",
     "id": "Gunner",
-    "entries": "+1 en Dex., maîtrise des armes à feu, ignore la propriété rechargement de ces armes et aucun désavantage à l'attaque au contact.",
-    "source": "TCE"
+    "entries": [
+      "Votre main est aussi vive que votre œil est acéré lorsque vous utilisez des armes à feu, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Dextérité augmente de 1, jusqu'à un maximum de 20.",
+          "Vous recevez la maîtrise des armes à feu (cf. \"Armes à feu\" dans le Dungeon Master's Guide).",
+          "La propriété chargement des armes à feu ne s'applique pas à vous.",
+          "Le fait de vous trouver dans un rayon de 1,50 m d'une créature hostile ne vous impose pas le désavantage aux jets d'attaque à distance ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 79
   },
   {
     "name": "Artificier en herbe",
     "id": "Artificer_Initiate",
-    "entries": "Vous apprenez 1 sort mineur et 1 sort de niv 1 d'artificier (à lancer sans emplacement), maîtrise d'un type d'outils d'artisan.",
-    "source": "TCE"
+    "entries": [
+      "On retrouve chez vous des signes de l'inventivité de l'artificier :",
+      {
+        "type": "list",
+        "entries": [
+          "Vous apprenez un sort mineur de votre choix issu de la liste des sorts d'artificier et un sort du 1er niveau que vous choisissez dans cette même liste. L'Intelligence est la caractéristique d'incantation pour ces sorts.",
+          "Vous pouvez lancer le sort du 1er niveau de ce don sans dépenser d'emplacement de sort, sachant que vous devez chaque fois terminer un repos long pour pouvoir le relancer par ce biais. Vous pouvez également lancer ce même sort avec vos éventuels emplacements de sort.",
+          "Vous recevez la maîtrise d'un type d'outils d'artisan de votre choix et vous pouvez vous servir de ce type d'outils comme focalisateur d'incantation pour tout sort que vous lancez avec l'Intelligence comme caractéristique d'incantation ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 79
   },
   {
     "name": "Athlète",
     "id": "Athlete",
-    "entries": "+1 en For. ou Dex., vous vous relevez et escaladez rapidement, et pouvez sauter avec seulement 1,50 mètre d'élan.",
-    "source": "PHB"
+    "entries": [
+      "Vous avez suivi un entraînement physique intensif qui vous confère les avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force ou de Dextérité de 1, jusqu'à un maximum de 20 .",
+          "Quand vous êtes à terre, vous pouvez vous relever en dépensant 1,50 mètre de déplacement seulement.",
+          "L'escalade ne vous coûte plus de déplacement supplémentaire .",
+          "Vous pouvez effectuer un saut en longueur ou en hauteur avec élan après un déplacement au sol de 1,50 mètre seulement au lieu de 3 mètres ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 165
   },
   {
-    "name": "Attaquant sauvage",
+    "name": "Agresseur sauvage",
     "id": "Savage_Attacker",
-    "entries": "Vous pouvez relancer les dégâts d'une attaque au corps à corps avec une arme une fois par tour.",
-    "source": "PHB"
+    "entries": [
+      "Une fois par tour quand vous effectuez le jet de dégâts suite à une attaque d'arme de corps à corps réussie, vous pouvez relancer le ou les dé(s) de dégâts de l'arme et conserver l'un ou l'autre des deux résultats."
+    ],
+    "source": "PHB",
+    "page": 165
   },
   {
     "name": "Bagarreur de tavernes",
     "id": "Tavern_Brawler",
-    "entries": "+1 en For. ou Con., maîtrise des armes improvisées, d4 à mains nues et engager une lutte par une action bonus.",
-    "source": "PHB"
+    "entries": [
+      "Coutumier des bagarres tumultueuses où tout à portée de main peut vous servir d'arrne, vous bénéficiez des avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force ou de Constitution de 1, jusqu'à un maximum de 20 .",
+          "Vous obtenez la maîtrise des armes improvisées .",
+          "Vos attaques à mains nues utilisent un d4 pour déterminer leurs dégâts.",
+          "Quand vous réussissez une attaque à mains nues ou avec une arme improvisée contre une créature lors de votre tour, vous pouvez utiliser une action bonus pour tenter de l'empoigner ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 165
   },
   {
     "name": "Broyeur",
     "id": "Crusher",
-    "entries": "+1 en For. ou Con., mouvement extra de 1,50 m en cas d'attaque réussie et attaques avec avantage après un coup critique.",
-    "source": "TCE"
+    "entries": [
+      "Vous êtes formé dans l'art de broyer l'ennemi, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force ou Constitution augmente de 1, jusqu'à un maximum de 20.",
+          "Une fois par tour, lorsque vous touchez une créature avec une attaque qui inflige des dégâts contondants, vous pouvez la déplacer de 1,50 m dans un espace inoccupé, à condition que la catégorie de taille de la cible ne soit pas supérieure de plus d'un cran à la vôtre.",
+          "Lorsque vous obtenez un coup critique qui inflige des dégâts contondants à une créature, les jets d'attaque contre cette cible sont avantagés jusqu'au début de votre tour suivant."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 79
   },
   {
     "name": "Chance abondante",
     "id": "Bountiful_Luck",
     "prerequisite": "Halfelin",
-    "entries": "Vous pouvez faire relancer à un allié à 9 m ou moins de vous un 1 sur un d20.",
-    "source": "XGE"
+    "entries": [
+      "Votre peuple a une chance extraordinaire, dont vous pouvez faire mystiquement bénéficier vos compagnons quand vous les voyez faiblir. Vous ne savez pas exactement comment vous y arrivez. Il vous suffit de le souhaiter et cela se passe. C'est sûrement un signe que la chance vous sourit !",
+      "Lorsqu'un allié que vous pouvez voir et qui se trouve dans un rayon de 9 mètres fait un résultat de 1 au d20 d'un jet d'attaque, d'un test de caractéristique ou d'un jet de sauvegarde, vous pouvez utiliser votre réaction pour lui permettre de relancer le dé. Votre allié est alors obligé d'utiliser le résultat du nouveau jet de dé.",
+      "Après avoir utilisé cette capacité, vous ne pouvez pas utiliser votre don racial Chanceux avant la fin de votre prochain tour"
+    ],
+    "source": "XGE",
+    "page": 73
   },
   {
     "name": "Chanceux",
     "id": "Lucky",
-    "entries": "Vous pouvez relancer un d20 ou faire relancer un jet d'attaque contre vous (3/repos long).",
-    "source": "PHB"
+    "entries": [
+      "Vous bénéficiez d'une chance inexplicable qui semble toujours intervenir au bon moment.",
+      "Vous possédez 3 points de chance. Lorsque vous effectuez un jet d'attaque, un test de caractéristique ou un jet de sauvegarde, vous pouvez dépenser un point de chance pour lancer un d20 supplémentaire. Vous pouvez dépenser un point de chance après avoir lancé le dé, mais avant d'en connaître les conséquences. Vous choisissez lequel des résultats vous souhaitez conserver pour le jet d'attaque, Je test de caractéristique ou le jet de sauvegarde .",
+      "Vous pouvez également dépenser un point de chance lorsqu'un tiers effectue un jet d'attaque contre vous. Lancez un d20 puis décidez si l'attaque utilise le résultat de l'attaquant ou le vôtre.",
+      "Si plus d'une créature dépense un point de chance pour influencer le résultat d'un même jet, les points s'annulent mutuellement et aucun dé supplémentaire n'est lancé. Vous récupérez les points de chance dépensés suite à un long repos ."
+    ],
+    "source": "PHB",
+    "page": 165
   },
   {
     "name": "Chef cuisinier",
     "id": "Chef",
-    "entries": "+1 en Con. ou Sag., maîtrise des ustensiles de cuisinier et cuisine des plats qui redonnent des pv.",
-    "source": "TCE"
+    "entries": [
+      "Le temps passé à maîtriser les arts culinaires a payé, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Constitution ou Sagesse augmente de 1, jusqu'à un maximum de 20.",
+          "Vous recevez la maîtrise des ustensiles de cuisinier si vous n'en disposez pas déjà.",
+          "Dans le cadre d'un repos court, vous pouvez préparer un repas spécial à condition de disposer d'ingrédients culinaires et d'outils de cuisinier. Vous pouvez préparer un repas suffisant pour autant de créatures que 4 + votre bonus de maîtrise. À l'issue d'un repos court, toute créature qui a partagé ce repas et dépensé au moins un DV pour récupérer des points de vie regagne ld8 points de vie supplémentaires.",
+          "Si vous y consacrez une heure de travail ou simplement lorsque vous terminez un repos long, vous pouvez préparer autant de friandises que votre bonus de maîtrise. Ces friandises spéciales gardent leurs propriétés pendant 8 heures après leur préparation. Une créature peut ingérer une telle friandise par une action bonus afin de gagner autant de points de vie temporaires que votre bonus de maîtrise."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
     "name": "Combattant à deux armes",
     "id": "Dual_Wielder",
-    "entries": "+1 à la CA si vous avez une arme de CàC dans chaque main, combat à deux armes avec des armes non légères, dégainer deux armes.",
-    "source": "PHB"
+    "entries": [
+      "Vous maîtrisez le combat à deux armes, ce qui vous confère les avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Vous bénéficiez d'un bonus de +là la CA tant que vous maniez une arme de corps à corps dans chaque main.",
+          "Vous pouvez combattre à deux armes, même si les deux armes de corps à corps à une main que vous maniez ne sont pas légères.",
+          "Vous pouvez dégainer ou rengainer deux armes à une main dans les situations où vous devriez normalement n'en dégainer ou n'en rengainer qu'une seule ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 166
   },
   {
     "name": "Combattant monté",
     "id": "Mounted_Combatant",
-    "entries": "Avantage à l'attaque au CàC contre une créature non montée et forcer une attaque à vous cibler au lieu de cibler votre monture.",
-    "source": "PHB"
+    "entries": [
+      "Vous devenez un adversaire redoutable lorsque vous chevauchez une monture. Tant que vous chevauchez une monture et que vous n'êtes pas neutralisé, vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Vous êtes avantagé lors des jets d'attaque au corps à corps contre les créatures qui ne sont pas montées et qui sont plus petites que votre monture.",
+          "Vous pouvez faire en sorte qu'une attaque qui prend pour cible votre monture vous prenne pour cible à la place .",
+          "Si votre monture est la cible d'un effet qui l'autorise à effectuer un jet de sauvegarde de Dextérité pour ne subir que la moitié des dégâts, elle ne subit aucun dégât à la place en cas de jet de sauvegarde réussi et la moitié seulement en cas d'échec ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 166
   },
   {
     "name": "Comédien",
     "id": "Actor",
-    "entries": "+1 en Cha., avantage aux jets de Tromperie et Représentation, imiter le discours d'une personne ou les sons d'une créature.",
-    "source": "PHB"
+    "entries": [
+      "Doué pour les imitations et la comédie, vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Charisme de 1, jusqu'à un maximum de 20.",
+          "Vous êtes avantagé lors des tests de Charisme (Supercherie) et de Charisme (Représentation) quand vous tentez de vous faire passer pour quelqu'un d'autre.",
+          "Vous pouvez imiter la façon de parler d'une personne ou les sons produits par d'autres créatures. Vous devez avoir entendu cette personne parler ou les sons produits par la créature pendant 1 minute au moins. La réussite d'un test de Sagesse (Perspicacité) opposé à votre test de Charisme (Supercherie) permet à un auditeur de détecter la supercherie ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 166
   },
   {
     "name": "Constitution infernale",
     "id": "Infernal_Constitution",
     "prerequisite": "Tieffelin",
-    "entries": "+1 en Con., résistance aux dégâts de froid et de poison, et avantage à vos JdS pour ne pas être empoisonné.",
-    "source": "XGE"
+    "entries": [
+      "Le sang fiélon qui coule dans vos veines est puissant et vous a permis de développer une résistance proche de celle de certains fiélons. Vous gagnez les avantages suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Constitution augmente de 1, jusqu'à un maximum de 20.",
+          "Vous êtes résistant aux dégâts de froid et de poison.",
+          "Vous êtes avantagé aux jets de sauvegarde contre le poison."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
     "name": "Cuir de dragon",
     "id": "Dragon_Hide",
     "prerequisite": "Drakéide",
-    "entries": "+1 en For., Con. ou Cha., votre CA est de 13+Mod.Dex. et vos griffes rétractables infligent 1d4+Mod.For. dégâts tranchants.",
-    "source": "XGE"
+    "entries": [
+      "Vous vous voyez pousser des écailles et des griffes qui rappellent vos ancêtres draconiques. Vous bénéficiez des avantages suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force, de Constitution ou de Charisme augmente de 1,jusqu'à un maximum de 20.",
+          "Vos écailles durcissent. Tant que vous ne portez pas d'armure, votre CA est égale à 13 + votre modificateur de Dextérité. Vous continuez de bénéficier de cet avantage quand vous portez un bouclier.",
+          "Vous avez maintenant des griffes rétractiles au bout des doigts. Vous n'avez pas besoin d'utiliser d'action pour rentrer ou sortir vos griffes. Celles-ci sont des armes naturelles que vous pouvez utiliser pour porter des attaques à mains nues. Si vous portez un coup avec vos griffes, vous infligez une quantité de dégâts tranchants égale à ld4 + votre modificateur de Force, au lieu des dégâts contondants infligés normalement par les attaques à mains nues."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
     "name": "Deuxième chance",
     "id": "Second_Chance",
     "prerequisite": "Halfelin",
-    "entries": "+1 en Dex., Con. ou Cha. et vous pouvez faire relancer le d20 d'attaque lorsqu'une créature vous touche.",
-    "source": "XGE"
+    "entries": [
+      "La chance vous sourit quand quelqu'un tente de vous frapper. Vous gagnez les avantages suivants:",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Dextérité, de Constitution ou de Charisme augmente de 1, jusqu'à un maximum de 20.",
+          "Quand une créature que vous pouvez voir réussit un jet d'attaque contre vous, vous pouvez utiliser votre réaction pour la forcer à refaire son jet. Une fois que vous avez utilisé cette capacité, vous ne pouvez plus y faire appel avant d'avoir fait un jet d'initiative au début d'un combat ou d'avoir terminé un court ou long repos."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
     "name": "Discret",
     "id": "Skulker",
     "prerequisite": "13 ou plus en Dextérité",
-    "entries": "Attaquer à distance avec une arme ne révèle pas votre position et possiblité de se cacher dans une zone à visibilité réduite.",
-    "source": "PHB"
+    "entries": [
+      "Vous savez exploiter les ombres pour vous déplacer furtivement. Vous bénéficiez des avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Vous pouvez tenter de vous cacher aux yeux d'une créature disposant seulement d'une visibilité réduite sur vous.",
+          "Quand vous êtes caché aux yeux d'une créature et que vous ratez une attaque d'arme à distance contre elle, cette attaque ne révèle pas votre position.",
+          "Vous n'êtes pas désavantagé lors des tests de Sagesse (Perception) basés sur la vue et effectués dans des zones où la lumière est faible."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 166
   },
   {
     "name": "Doué",
     "id": "Skilled",
-    "entries": "Vous gagnez la maîtrise de trois compétences ou outils.",
-    "source": "PHB"
+    "entries": [
+      "Vous obtenez la maîtrise de trois compétences ou outils de votre choix"
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Duelliste défensif",
     "id": "Defensive_Duelist",
     "prerequisite": "13 ou plus en Dextérité",
-    "entries": "Vous pouvez ajouter votre bonus de maîtrise à votre CA si vous tenez une arme de finesse, en réaction à une attaque au CàC.",
-    "source": "PHB"
+    "entries": [
+      "Quand vous utilisez une arme dotée de la propriété finesse dont vous maîtrisez le maniement et qu'une créature réussit à vous toucher en effectuant une attaque au corps à corps, vous pouvez utiliser votre réaction pour ajouter votre bonus de maîtrise à votre CA contre cette attaque, ce qui peut éventuellement la faire échouer ."
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Effacement",
     "id": "Fade_away",
     "prerequisite": "Gnome",
-    "entries": "+1 en Dex. ou Int. et vous pouvez utiliser votre réaction pour devenir invisible si vous subissez des dégâts.",
-    "source": "XGE"
+    "entries": [
+      "Votre peuple est intelligent et possède un talent inné pour la magie de l'illusion. Vous avez appris un tour de magie qui vous permet de disparaître quand vous êtes blessé. Vous gagnez les avantages suivants:",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Dextérité ou d'Intelligence augmente de 1, jusqu'à un maximum de 20.",
+          "Immédiatement après avoir subi des dégâts, vous pouvez utiliser une réaction pour devenir magiquement invisible jusqu'à la fin de votre prochain tour ou jusqu'à ce que vous attaquiez une créature, lui infligiez des dégâts ou la forciez à effectuer un jet de sauvegarde. Une fois que vous avez utilisé cette capacité, vous ne pouvez plus le faire tant que vous n'avez pas terminé un court ou long repos."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
-    "name": "Empaleur",
+    "name": "Perforateur",
     "id": "Piercer",
-    "entries": "+1 en For. ou Dex., relance un dé de dégâts en cas d'attaque réussie et un dé de dégâts supplémentaire en cas de coup critique.",
-    "source": "TCE"
+    "entries": [
+      "La pénétration de vos coups à atteint un niveau tel que vous recevez les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force ou Dextérité augmente de 1, jusqu'à un maximum de 20.",
+          "Une fois par tour, lorsque vous touchez une créature avec une attaque qui inflige des dégâts perforants, vous pouvez relancer l'un des dés de dégâts correspondants, le nouveau jet s'appliquant alors .",
+          "Lorsque vous obtenez un coup critique qui inflige des dégâts perforants à une créature, vous pouvez lancer un dé de dégâts de plus lorsque vous déterminez les dégâts perforants supplémentaires subis par la cible."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
     "name": "Empoisonneur",
     "id": "Poisoner",
-    "entries": "Maîtrise du kit d'empoisonneur, application par une action bonus et vos attaques ignorent la résistance aux dégâts de poison.",
-    "source": "TCE"
+    "entries": [
+      "Vous savez préparer et administrer des poisons mortels, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Lorsque vous effectuez un jet de dégâts qui inflige des dégâts de poison, ce jet ne tient pas compte de la résistance aux dégâts de poison.",
+          "Vous pouvez enduire une arme ou un projectile de poison par une action bonus, au lieu d'une action.",
+          "Vous recevez la maîtrise du matériel d'empoisonneur si vous n'en disposez pas déjà. Une heure de travail avec du matériel d'empoisonneur et une dépense de 50 po d'ingrédients vous permettent de préparer des doses de poison puissant, autant que votre bonus de maîtrise. Une fois appliqué sur une arme ou munition, le poison reste efficace pendant 1 minute tant que vous n'avez pas touché de cible avec l'arme ou le projectile. Quand une créature subit des dégâts en raison de l'arme ou munition empoisonnée, elle doit réussir un jet de sauvegarde de Constitution DD 14, sous peine de subir 2d8 dégâts de poison et d'être empoisonnée jusqu'à la fin de votre tour suivant ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
     "name": "Endurant",
     "id": "Durable",
-    "entries": "+1 en Con. et pour chaque Dé de Vie vous regagnez un minimum de pv égal à 2 x votre modificateur de Constitution.",
-    "source": "PHB"
+    "entries": [
+      "Votre endurance vous confère les avantages suivants. Augmentez votre valeur de Constitution de 1,jusqu'à un maximum de 20.",
+      "Quand vous lancez un dé de vie pour récupérer des points de vie, le nombre minimum de points de vie récupérés grâce au jet est égal à deux fois votre modificateur de Constitution (2 au minimum)."
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Esprit affûté",
     "id": "Keen_Mind",
-    "entries": "+1 en Int., vous savez où est le nord, quand va se lever/se coucher le soleil et avez la mémoire des événements du mois passé.",
-    "source": "PHB"
+    "entries": [
+      "Votre tournure d'esprit vous permet de garder la notion de l'heure, de vous orienter et de vous souvenir de détails avec beaucoup de précision. Vous bénéficiez des avantages suivants.  ",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur d'lntelligence de l,jusqu'à un maximum de 20.",
+          "Vous savez toujours dans quelle direction se trouve le nord.",
+          "Vous êtes toujours conscient du nombre d'heures restant avant le prochain coucher ou lever de soleil.",
+          "Vous vous souvenez avec précision de tout ce que vous avez vu et entendu au cours du mois qui vient de s'écouler."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Expert",
     "id": "Skill Expert",
-    "entries": "+1 dans une caractéristique, maîtrise d'une compétence et expertise dans une autre que vous maîtrisez.",
-    "source": "TCE"
+    "entries": [
+      "Votre maîtrise de certaines compétences est si grande que vous recevez les bénéfices suivants : ",
+      {
+        "type": "list",
+        "entries": [
+          "Une valeur de caractéristique de votre choix augmente de 1, jusqu'à un maximum de 20.",
+          "Vous recevez la maîtrise d'une compétence de votre choix.",
+          "Choisissez une compétence dont vous avez la maîtrise. Vous recevez l'expertise de cette compétence, si bien que votre bonus de maîtrise est doublé pour tous vos tests de caractéristique associés à cette compétence. La compétence choisie ne doit pas déjà bénéficier d'une aptitude, comme Expertise, qui double votre bonus de maîtrise."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
     "name": "Expert de la charge",
     "id": "Charger",
-    "entries": "Vous pouvez lors de l'action Foncer faire une attaque au CàC avec un bonus de +5 si vous avez au moins 3 m d'élan.",
-    "source": "PHB"
+    "entries": [
+      "Quand vous effectuez l'action se précipiter, vous pouvez utiliser une action bonus pour faire une attaque d'arme de corps à corps ou pour bousculer une créature.",
+      "Si vous vous déplacez de 3 mètres au moins en ligne droite juste avant d'effectuer cette action bonus, vous pouvez soit bénéficier d'un bonus de +5 au jet de dégâts de l'attaque (si vous décidez de faire une attaque au corps à corps et que celle-ci est réussie) soit repousser la cible sur une distance maximale de 3 mètres (si vous décidez de la bousculer et que la tentative est réussie)."
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Explorateur de donjons",
     "id": "Dungeon_Delver",
-    "entries": "Avantage aux jets de Perception et Investigation, aux JdS contre les pièges, et recherche de pièges à vitesse normale.",
-    "source": "PHB"
+    "entries": [
+      "Toujours à l'affût des pièges dissimulés et des portes secrètes dont sont truffés les donjons, vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Vous êtes avantagé lors des tests de Sagesse (Perception) et d'lntelligence (Investigation) effectués pour détecter la présence de portes dérobées.",
+          "Vous êtes avantagé lors des jets de sauvegarde effectués pour éviter les pièges ou y résister.",
+          "Vous bénéficiez d'une résistance contre les dégâts infligés par les pièges.",
+          "Vous pouvez chercher des pièges en vous déplaçant à un rythme normal et non lent ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Faveur des fées",
     "id": "Fey_Touched",
-    "entries": "+1 en Int., Sag. ou Cha., et vous apprenez foulée brumeuse et un sort de divination ou d'enchantement de niveau 1.",
-    "source": "TCE"
+    "entries": [
+      "Votre exposition à la magie de Féerie vous a changé, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur d'Intelligence, Sagesse ou Charisme augmente de 1, jusqu'à un maximum de 20.",
+          "Vous apprenez le sort {@spell foulée brumeuse} et un sort du 1er niveau de votre choix. Le sort du 1er niveau doit être issu de l'école de la divination ou de l'enchantement. Vous pouvez lancer chacun de ces sorts sans dépenser d'emplacement de sort. Une fois l'un de ces sorts lancé par ce biais, vous devez terminer un repos long pour pouvoir le relancer ainsi. Vous pouvez également lancer ces sorts avec vos éventuels emplacements de sort de niveau adéquat. La caractéristique d'incantation associée à ces sorts est celle que le don a augmentée ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
-    "name": "Faveur des ombres",
+    "name": "Faveur de l'ombres",
     "id": "Shadow_Touched",
-    "entries": "+1 en Int., Sag. ou Cha., et vous apprenez invisibilité et un sort d'illusion ou de nécromancie de niveau 1.",
-    "source": "TCE"
+    "entries": [
+      "Votre exposition à la magie de Gisombre vous a changé, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur d'Intelligence, Sagesse ou Charisme augmente de 1,jusqu'à un maximum de 20.",
+          "Vous apprenez le sort {@spell invisibilité} et un sort du 1er niveau de votre choix. Le sort du 1er niveau doit être issu de l'école de l'illusion ou de la nécromancie. Vous pouvez lancer chacun de ces sorts sans dépenser d'emplacement de sort. Une fois l'un de ces sorts lancé par ce biais, vous devez terminer un repos long pour pouvoir le relancer ainsi. Vous pouvez également lancer ces sorts avec vos éventuels emplacements de sort de niveau adéquat. La caractéristique d'incantation associée à ces sorts est celle que le don a augmentée."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
     "name": "Flammes de Phlégéthos",
     "id": "Flames_of_Phlegethos",
     "prerequisite": "Tieffelin",
-    "entries": "+1 en Int. ou Cha., relancer les 1 pour des dégâts de feu, et vous entourer de flammes lorsque vous lancez un sort de feu.",
-    "source": "XGE"
+    "entries": [
+      "Vous apprenez à faire appel au feu de l'enfer et à le commander. Vous gagnez les avantages suivants:",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur d'Intelligence ou de Charisme augmente de 1, jusqu'à un maximum de 20.",
+          "Quand vous lancez des dés pour calculer les dégâts de feu d'un sort que vous avez lancé, vous pouvez relancer n'importe quel dé qui a fait 1, mais vous devez utiliser le nouveau résultat, même s'il s'agit d'un autre 1.",
+          "Chaque fois que vous lancez un sort qui inflige des dégâts de feu, vous pouvez vous parer d'un voile de flammes jusqu'à la fin de votre prochain tour. Ces flammes ne vous blessent pas ni n'endommagent vos possessions et elles projettent une lumière vive dans un rayon de 9 mètres et une lumière faible sur 9 mètres supplémentaires. Tant que vous êtes entouré par ces flammes, toute créature qui se trouve dans un rayon de 1,50 mètre et vous frappe avec une attaque de corps à corps subit ld4 points de dégâts de feu ."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
     "name": "Fureur orc",
     "id": "Orcish_Fury",
     "prerequisite": "Demi-orc",
-    "entries": "+1 en For. ou Con., relancer un nouveau dé de dégâts avec une arme, et attaquer après avoir utilisé Endurance implacable.",
-    "source": "XGE"
+    "entries": [
+      "Vous bouillonnez perpétuellement de fureur. Vous gagnez les avantages suivants : ",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force ou de Constitution augmente de 1, jusqu'à un maximum de 20.",
+          "Quand une de vos attaques, portée avec une arme courante ou de guerre, est un succès, vous pouvez lancez l'un des dés de dégâts de l'arme une fois supplémentaire et considérer ce résultat comme des dégâts supplémentaires du même type que ceux infligés par l'arme. Une fois que vous avez utilisé cette capacité, vous ne pouvez plus le faire avant d'avoir terminé un court ou long repos.",
+          "Immédiatement après avoir utilisé votre trait Acharnement, vous pouvez utiliser votre réaction pour porter une attaque d'arme."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
     "name": "Haute magie drow",
     "id": "Drow_High_Magic",
     "prerequisite": "Elfe (drow)",
-    "entries": "Vous pouvez lancer détection de la magie (à volonté), lévitation et dissipation de la magie (1/repos long).",
-    "source": "XGE"
+    "entries": [
+      "Vous approfondissez votre connaissance dans la magie maniée généralement par les elfes noirs. Vous apprenez le sort {@spell détection de la magie}, que vous pouvez lancer à volonté sans dépenser d'emplacement de sort. Vous apprenez également les sorts {@spell lévitation} et {@spell dissipation de la magie}, que vous pouvez lancer une fois sans dépenser d'emplacement de sort. Vous pouvez de nouveau lancer ces deux sorts ainsi une fois que vous avez terminé un long repos. Votre caractéristique d'incantation pour ces trois sorts est le Charisme."
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
     "name": "Initié à la magie",
     "id": "Magic_Initiate",
-    "entries": "Vous apprenez deux sorts mineurs et un sort de niveau 1 d'une classe.",
-    "source": "PHB"
+    "entries": [
+      "Choisissez une classe : barde, clerc, druide, ensorceleur, magicien ou sorcier. Vous apprenez deux tours de magie de votre choix parmi ceux de la liste de sorts de la classe choisie.",
+      "De plus, choisissez un sort de niveau 1 de cette même liste. Vous l'apprenez et pouvez le lancer à son niveau le plus bas. Une fois ce sort lancé, vous devez finir un long repos avant de pouvoir le lancer ainsi à nouveau.",
+      "Votre caractéristique d'incantation pour ces sorts dépend de la classe choisie : Charisme pour le barde, l'ensorceleur ou le sorcier ; Sagesse pour le druide ou le clerc ; Intelligence pour le magicien ."
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
-    "name": "Initié au combat",
+    "name": "Combattant de Talent",
     "id": "Fighting_Initiate",
     "prerequisite": "Maîtrise des armes de guerre",
-    "entries": "Vous apprenez une option de Style de combat de la classe de guerrier.",
-    "source": "TCE"
+    "entries": [
+      "Votre formation martiale vous a aidé à affiner votre style de combat. En conséquence, vous apprenez une option de Style de combat de votre choix, issue de la classe de guerrier. Si vous disposez déjà d'un style de combat, vous devez en choisir un différent .",
+      "Chaque fois que vous atteignez un niveau qui vous octroie l'aptitude Amélioration de caractéristique, vous pouvez remplacer le style de combat de ce don par un autre issu de la classe de guerrier, dont vous ne disposez pas déjà ."
+    ],
+    "source": "TCE",
+    "page": 80
   },
   {
     "name": "Linguiste",
     "id": "Linguist",
-    "entries": "+1 en Int, vous apprenez trois langues, et vous pouvez coder des messages efficacement.",
-    "source": "PHB"
+    "entries": [
+      "Vous avez étudié les langues et les codes, ce qui vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur d'Intelligence de l,jusqu'à un maximum de 20.",
+          "Vous apprenez trois langues de votre choix.",
+          "Vous savez créer des messages secrets écrits ingénieux. Pour parvenir à les déchiffrer, une créature doit avoir appris le code auprès de vous ou réussir un test d'intelligence (DD égal à votre valeur d'intelligence+ votre bonus de maîtrise) ou recourir à la magie."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
-    "name": "Lutteur",
+    "name": "Empoigneur",
     "id": "Grappler",
     "prerequisite": "13 ou plus en Force",
-    "entries": "Vous avez un avantage aux jets d'attaque lorsque vous luttez et pouvez tenter d'entraver une créature avec qui vous luttez.",
-    "source": "PHB (SRD)"
+    "entries": [
+      "Vous avez développé des compétences qui vous permettent de bien vous débrouiller quand vous luttez au corps-à-corps. Vous bénéficiez des avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Vous êtes avantagé lors des jets d'attaque contre une créature que vous empoignez.",
+          "Vous pouvez utiliser votre action pour tenter d'immobiliser une créature que vous empoignez. Vous devez d'abord faire un deuxième test d'empoignade. Si vous réussissez, vous et la créature en question êtes tous les deux entravés jusqu'à la fin de l'empoignade."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
     "name": "Mage de guerre",
     "id": "War_Caster",
     "prerequisite": "Capacité de lancer au moins un sort",
-    "entries": "Vous avez un avantage aux JdS pour maintenir la concentration et pouvez lancer certains sorts en réaction au cours d'une AO.",
-    "source": "PHB"
+    "entries": [
+      "Vous vous êtes entraîné à lancer vos sorts en plein combat et avez appris des techniques qui vous confèrent les avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Vous êtes avantagé lors des jets de sauvegarde de Constitution effectués pour maintenir votre concentration sur un sort alors que vous subissez des dégâts.",
+          "Vous pouvez accomplir les composantes somatiques des sorts, même lorsque vous tenez des armes ou un bouclier dans une ou deux mains.",
+          "Quand le déplacement d'une créature hostile provoque une attaque d'opportunité de votre part, vous pouvez utiliser votre réaction pour lui lancer un sort au lieu d'effectuer une attaque d'opportunité. Le temps d'incantation de ce sort doit être d'une action et vous ne pouvez prendre que cette créature pour cible."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Mage offensif",
     "id": "Spell_Sniper",
     "prerequisite": "Capacité de lancer au moins un sort",
-    "entries": "Portée des sorts d'attaque doublée, ces sorts ignorent certains abris, et vous apprenez un sort mineur d'attaque.",
-    "source": "PHB"
+    "entries": [
+      "Vous avez appris des techniques qui améliorent les attaques de certains de vos sorts. Ces techniques vous confèrent les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Quand vous lancez un sort qui nécessite un jet d'attaque, sa portée est doublée.",
+          "Vos attaques de sort à distance ignorent les abris partiels et importants.",
+          "Vous apprenez un tour de magie nécessitant un jet d'attaque choisi dans la liste de sorts des bardes, des clercs, des druides, des ensorceleurs, des magiciens ou des sorciers. Votre caractéristique d'incantation pour ce tour de magie dépend de la liste de sorts d'où il provient: Charisme pour le barde, l'ensorceleur ou le sorcier ; Sagesse pour le druide ou le clerc ; Intelligence pour le magicien ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Magie des elfes des bois",
     "id": "Wood_Elf_Magic",
     "prerequisite": "Elfe (bois)",
-    "entries": "Vous apprenez un sort mineur de druide et pouvez lancer grande foulée et passage sans trace (1/repos long).",
-    "source": "XGE"
+    "entries": [
+      "Vous apprenez la magie des bois primitifs qui sont vénérés et défendus par votre peuple. Vous apprenez un tour de magie de druide de votre choix. Vous apprenez également les sorts {@spell grande foulée} et {@spell passage sans trace}, que vous pouvez chacun lancer une fois sans dépenser d'emplacement de sort. Vous récupérez la capacité de lancer ces deux sorts ainsi après avoir terminé un long repos. Votre caractéristique d'incantation pour ces trois sorts est la Sagesse."
+    ],
+    "source": "XGE",
+    "page": 74
   },
   {
-    "name": "Magie rituelle",
+    "name": "Ritualiste",
     "id": "Ritual_Caster",
     "prerequisite": "13 ou plus en Intelligence ou Sagesse",
-    "entries": "Vous possédez un grimoire avec deux sorts rituel de niv 1 d'une classe et pouvez ensuite ajouter d'autres sorts rituel trouvés.",
-    "source": "PHB"
+    "entries": [
+      "Vous avez appris un certain nombre de sorts que vous pouvez lancer sous forme de rituels. Ces sorts sont inscrits dans un grimoire de rituels que vous devez tenir en main lorsque vous les lancer.",
+      "Quand vous choisissez ce don, vous obtenez un grimoire de rituels contenant deux sorts de niveau 1 de votre choix. Choisissez l'une des classes suivantes : barde, clerc, druide, ensorceleur, magicien ou sorcier. Vous devez choisir vos sorts parmi ceux de la liste de sorts de cette classe et tous doivent porter la mention rituel. La classe choisie détermine également la caractéristique d'incantation appliquée lorsque vous lancez ces sorts : Charisme pour le barde, l'ensorceleur ou le sorcier ; Sagesse pour le druide ou le clerc ; Intelligence pour le magicien.",
+      "Si vous récupérez un sort sous forme écrite, tel que ceux inscrits sur un parchemin magique ou dans un grimoire de magicien, vous pouvez le retranscrire dans votre grimoire de rituels. Le sort doit faire partie de la liste de sorts de la classe choisie, son niveau ne peut être supérieur à la moitié du vôtre (arrondi à l'entier supérieur) et il doit porter la mention rituel. La copie du sort dans votre grimoire de rituels nécessite 2 heures de travail par niveau du sort et coûte 50 po par niveau. Le coût inclut les composantes matérielles dépensées lors de vos travaux pour apprendre le sort, ainsi que les encres raffinées utilisées pour le retranscrire ."
+    ],
+    "source": "PHB",
+    "page": 169
   },
   {
     "name": "Maître d'armes",
     "id": "Weapon_Master",
-    "entries": "+1 en For. ou Dex. et vous gagnez la maîtrise de quatre armes.",
-    "source": "PHB"
+    "entries": [
+      "Vous vous êtes beaucoup entraîné au maniement de diverses armes, ce qui vous confère les avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force ou de Dextérité de 1, jusqu'à un maximum de 20.",
+          "Vous obtenez la maîtrise du maniement de quatre armes de votre choix, chacune devant être une arme courante ou de guerre ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Maître d'hast",
     "id": "Polearm_Master",
-    "entries": "Vous pouvez réaliser une deuxième attaque avec une arme d'hast, et effectuer une AO si une créature entre dans votre allonge.",
-    "source": "PHB"
+    "entries": [
+      "Vous obtenez les avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Quand vous effectuez l'action attaquer et que vous attaquez avec une cou tille, une hallebarde ou un bâton uniquement, vous pouvez utiliser une action bonus pour effectuer une attaque au corps à corps avec l'autre extrémité de l'arme. Cette attaque utilise le même modificateur de caractéristique que l'attaque initiale. Le dé de dégâts de l'arme pour cette attaque est un d4 et l'attaque inflige des dégâts contondants.",
+          "Lorsque vous maniez une coutille, une hallebarde, une pique ou un bâton, vous pouvez effectuer des attaques d'opportunité contre les créatures qui entrent dans votre zone <l'allonge ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
-    "name": "Maître des armes à deux mains",
+    "name": "Grand maître d'arme",
     "id": "Great_Weapon_Master",
-    "entries": "Attaque bonus après un critique au corps à corps et possible -5 à l'attaque pour +10 aux dégâts avec une arme lourde.",
-    "source": "PHB"
+    "entries": [
+      "Vous avez appris à exploiter le poids des armes que vous maniez pour renforcer la puissance de vos attaques. Vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Lors de votre tour, quand vous infligez un coup critique ou réduisez à O les points de vie d'une créature avec une arme de corps à corps, vous pouvez effectuer une attaque d'arme de corps à corps par une action bonus.",
+          "Avant d'effectuer une attaque au corps à corps avec une arme lourde dont vous maîtrisez le maniement, vous pouvez vous imposer un malus de -5 au jet d'attaque. Si cette attaque touche votre cible, vous ajoutez +10 aux dégâts infligés."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
-    "name": "Maître des armures intermédiaires",
+    "name": "Spécialiste des armures intermédiaires",
     "id": "Medium_Armor_Master",
     "prerequisite": "Maîtrise des armures intermédiaires",
-    "entries": "Pas de désavantage aux jets de Discrétion en armure intermédiaire et bonus max de Dextérité à +3 au lieu de +2.",
-    "source": "PHB"
+    "entries": [
+      "Vous vous êtes entraîné pour bouger avec aisance en portant une armure intermédiaire, ce qui vous confère les avantages suivants",
+      {
+        "type": "list",
+        "entries": [
+          "Vous n'êtes pas désavantagé lors de vos tests de Dextérité (Discrétion) lorsque vous portez une armure intermédiaire.",
+          "Lorsque vous portez une armure intermédiaire, vous pouvez ajouter+ 3, au lieu de +2, à votre CA si vous possédez une valeur de Dextérité de 16 ou plus."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
-    "name": "Maître des armures lourdes",
+    "name": "Spécialiste des armures lourdes",
     "id": "Heavy_Armor_Master",
     "prerequisite": "Maîtrise des armures lourdes",
-    "entries": "+1 en For. et les dégâts contondants, perforants et tranchants sont réduits de 3 si vous portez une armure lourde.",
-    "source": "PHB"
+    "entries": [
+      "Vous savez utiliser votre armure pour parer les coups potentiellement mortels. Vous bénéficiez des avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force de l,jusqu'à un maximum de 20 .",
+          "Tant que vous portez une armure lourde, les dégâts contondants, perforants et tranchants que vous subissez lorsqu'ils sont infligés par des armes non-magiques sont réduits de 3."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
-    "name": "Maître des boucliers",
+    "name": "Spécialiste des boucliers",
     "id": "Shield_Master",
-    "entries": "Attaquer permet aussi de bousculer, bonus du bouclier aux JdS de Dex. contre les sorts, et annule les 1/2 dégâts si JdS réussi.",
-    "source": "PHB"
+    "entries": [
+      "Vous utilisez les boucliers pour vous protéger mais aussi pour attaquer. Vous bénéficiez des avantages suivants tant que vous maniez un bouclier .",
+      {
+        "type": "list",
+        "entries": [
+          "Si vous effectuez l'action attaquer lors de votre tour, vous pouvez utiliser une action bonus pour tenter de bousculer avec votre bouclier une créature située à 1,50 mètre ou moins de vous.",
+          "Si vous n'êtes pas neutralisé, vous pouvez ajouter le bonus de CA de votre bouclier à vos jets de sauvegarde de Dextérité effectués contre un sort ou un effet néfaste qui ne prend que vous pour cible.",
+          "Si vous êtes la cible d'un effet qui autorise un jet de sauvegarde de Dextérité pour ne subir que la moitié des dégâts, vous pouvez utiliser votre réaction pour interposer votre bouclier entre vous et la source de l'effet et ne subir ainsi aucun dégât en cas de jet de sauvegarde réussi."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
     "name": "Maître-arbalétrier",
     "id": "Crossbow_Expert",
-    "entries": "Vous ignorez la propriété chargement des arbalètes et n'avez pas de désavantage pour tirer en étant au contact d'une créature.",
-    "source": "PHB"
+    "entries": [
+      "Votre entraînement intensif au maniement des arbalètes vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Vous ignorez la propriété de chargement des arbalètes dont vous maîtrisez le maniement.",
+          "Vous n'êtes pas désavantagé lors des jets d'attaque à distance quand une créature hostile se trouve à 1,50 mètre ou moins de vous.",
+          "Quand vous utilisez l'action attaquer et que vous attaquez avec une arme à une main, vous pouvez utiliser une action bonus pour attaquer avec une arbalète de poing chargée que vous tenez en main."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Meneur exaltant",
     "id": "Inspiring_Leader",
     "prerequisite": "13 ou plus en Charisme",
-    "entries": "Jusqu'à 6 créatures autour de vous peuvent gagner un nombre de pv temporaires égal à votre niveau + votre modificateur de Cha.",
-    "source": "PHB"
+    "entries": [
+      "Vous pouvez passer 10 minutes à motiver vos compagnons pour renforcer leur détermination au combat. Choisissez alors jusqu'à six créatures amicales (vous y compris, si vous le souhaitez) situées à 9 mètres ou moins de vous et qui peuvent vous voir ou vous entendre et, le cas échéant, vous comprendre. Chaque créature obtient alors un nombre de points de vie temporaires égal à votre niveau+ votre modificateur de Charisme. Ce don ne peut pas conférer à nouveau des points de vie temporaires à une créature tant que celle-ci n'a pas fini un repos long ou court."
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Mobile",
     "id": "Mobile",
-    "entries": "Votre vitesse augmente de 3 m, vous pouvez Foncer en terrain difficile sans malus, et vous ne provoquez pas d'AO au CàC.",
-    "source": "PHB"
+    "entries": [
+      "Vous êtes exceptionnellement rapide et agile, ce qui vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Votre vitesse augmente de 3 mètres.",
+          "Quand vous effectuez l'action se précipiter, les terrains difficiles ne vous coûtent aucun déplacement supplémentaire lors de ce tour.",
+          "Quand vous effectuez une attaque au corps à corps contre une créature, vous ne provoquez pas d'attaques d'opportunité de sa part jusqu'à la fin du tour, que votre attaque soit réussie ou non."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Observateur",
     "id": "Observant",
-    "entries": "+1 en Int. ou Sag., vous pouvez lire sur les lèvres, et bonus de +5 en Perception passive et Investigation passive.",
-    "source": "PHB"
+    "entries": [
+      "Prompt à repérer les détails intéressants de votre environnement, vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur d'intelligence ou de Sagesse de 1, jusqu'à un maximum de 20.",
+          "Si vous pouvez voir la bouche d'une créature pendant qu'elle parle une langue que vous connaissez, vous comprenez ce qu'elle dit en lisant sur ses lèvres.",
+          "Vous bénéficiez d'un bonus de +5 à vos valeurs de Sagesse passive (Perception) et d'intelligence passive (Investigation)."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Peur du dragon",
     "id": "Dragon_Fear",
     "prerequisite": "Drakéide",
-    "entries": "+1 en For., Con. ou Cha. et votre Arme de souffle peut effrayer au lieu d'infliger des dégâts.",
-    "source": "XGE"
+    "entries": [
+      "Lorsque vous êtes en colère, l'air autour de vous devient lourd de menaces. Vous gagnez les avantages suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force, de Constitution ou de Charisme augmente de 1, jusqu'à un maximum de 20.",
+          "Au lieu de cracher de l'énergie destructrice, vous pouvez dépenser une utilisation de votre souffle pour rugir et forcer chaque créature de votre choix qui se trouve dans un rayon de 9 mètres de vous à faire un jet de sauvegarde de Sagesse (DD 8 + votre bonus de maîtrise+ votre modificateur de Charisme). Si une des cibles ne vous voit pas ou ne vous entend pas, elle réussit automatiquement son jet de sauvegarde. Sur un échec, une cible est terrifiée par vous pendant 1 minute. Si la cible terrifiée subit des dégâts, elle peut refaire le jet de sauvegarde et mettre fin à l'effet de terreur sur un succès ."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 75
   },
   {
-    "name": "Pourfendeur",
+    "name": "Trancheur",
     "id": "Slasher",
-    "entries": "+1 en For. ou Dex., réduit la vitesse de 3 m en cas d'attaque réussie et désavantage aux jets d'attaque après un coup critique.",
-    "source": "TCE"
+    "entries": [
+      "Vous avez appris à tailler l'adversaire de manière redoutable, ce qui vous octroie les bénéfices suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Force ou Dextérité augmente de 1, jusqu'à un maximum de 20.",
+          "Une fois par tour, lorsque vous touchez une créature avec une attaque qui inflige des dégâts tranchants, vous pouvez réduire la vitesse de la cible de 3 m jusqu'au début de votre tour suivant.",
+          "Lorsque vous obtenez un coup critique qui inflige des dégâts tranchants à une créature, vous la blessez vivement. Jusqu'au début de votre tour suivant, la cible est désavantagée à tous ses jets d'attaque ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 81
   },
   {
     "name": "Précision elfique",
     "id": "Elven_Accuracy",
     "prerequisite": "Elfe ou demi-elfe",
-    "entries": "+1 en Dex., Int., Sag. ou Cha., et vous pouvez relancer un dé d'attaque si vous avez un avantage.",
-    "source": "XGE"
+    "entries": [
+      "La précision des elfes est légendaire et particulièrement celle de leurs archers et lanceurs de sorts. L'incroyable précision de vos tirs repose sur la finesse plutôt que la force brute. Vous gagnez les avantages suivants:",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Dextérité, d'Intelligence, de Sagesse ou de Charisme augmente de 1, jusqu'à un maximum de 20.",
+          "Si vous êtes avantagé à un jet d'attaque faisant appel à votre Dextérité, Intelligence, Sagesse ou Charisme, vous pouvez relancer l'un des dés une fois ."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 75
   },
   {
     "name": "Prodige",
     "id": "Prodigy",
     "prerequisite": "Demi-elfe, demi-orc ou humain",
-    "entries": "Vous gagnez la maîtrise d'une compétence, d'un outil et d'une langue, et gagnez l'expertise dans une compétence.",
-    "source": "XGE"
+    "entries": [
+      "Vous avez un don pour apprendre de nouvelles choses. Vous gagnez les avantages suivants :",
+      {
+        "type": "list",
+        "entries": [
+          "Vous gagnez la maîtrise d'une compétence de votre choix, la maîtrise d'un outil de votre choix et vous apprenez à parler couramment un langage de votre choix.",
+          "Choisissez une compétence que vous maîtrisez. Vous en gagnez l'expertise, ce qui signifie que votre bonus de maîtrise est doublé à chaque fois que vous faites un test de caractéristique qui y fait appel. La compétence que vous choisissez ne doit pas déjà bénéficier d'une aptitude qui, comme expertise, double votre bonus de maîtrise ."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 75
   },
   {
-    "name": "Protection intermédiaire",
+    "name": "Modérément protégé",
     "id": "Moderately_Armored",
     "prerequisite": "Maîtrise des armures légères",
-    "entries": "+1 en For. ou Dex. et vous gagnez la maîtrise des armures intermédiaires et des boucliers.",
-    "source": "PHB"
+    "entries": [
+      "Vous vous êtes entraîné au port des armures intermédiaires et au maniement des boucliers, ce qui vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force ou de Dextérité de 1, jusqu'à un maximum de 20.",
+          "Vous obtenez la maîtrise des armures intermédiaires et des boucliers ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Protection légère",
     "id": "Lightly_Armored",
-    "entries": "+1 en For. ou Dex. et vous gagnez la maîtrise des armures légères.",
-    "source": "PHB"
+    "entries": [
+      "Vous vous êtes entraîné au port des armures légères, ce qui vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force ou de Dextérité de 1, jusqu'à un maximum de 20.",
+          "Vous obtenez la maîtrise des armures légères."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 167
   },
   {
-    "name": "Protection lourde",
+    "name": "Lourdement Protégé",
     "id": "Heavily_Armored",
     "prerequisite": "Maîtrise des armures intermédiaires",
-    "entries": "+1 en For. et vous gagnez la maîtrise des armures lourdes.",
-    "source": "PHB"
+    "entries": [
+      "Vous vous êtes entraîné au port des armures lourdes, ce qui vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez votre valeur de Force de 1, jusqu'à un maximum de 20.",
+          "Vous obtenez la maîtrise des armures lourdes"
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 168
   },
   {
     "name": "Résilient",
     "id": "Resilient",
-    "entries": "+1 dans une caractéristique et vous gagnez la maîtrise des JdS qui utilisent cette caractéristique.",
-    "source": "PHB"
+    "entries": [
+      "Choisissez une valeur de caractéristique. Vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Augmentez la valeur de la caractéristique choisie de 1, jusqu'à un maximum de 20.",
+          "Vous obtenez la maîtrise des jets de sauvegarde basés sur la caractéristique choisie."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 169
   },
   {
     "name": "Robuste",
     "id": "Tough",
-    "entries": "Vos points de vie max augmentent d'un montant égal au double de votre niveau puis de +2 à chaque niveau.",
-    "source": "PHB"
+    "entries": [
+      "Votre total maximum de points de vie augmente d'un montant égal à deux fois votre niveau lorsque vous obtenez ce don. Chaque fois que vous gagnez un niveau par la suite, vous augmentez ce total de 2 points de vie supplémentaires."
+    ],
+    "source": "PHB",
+    "page": 169
   },
   {
     "name": "Sentinelle",
     "id": "Sentinel",
-    "entries": "Une AO réussi empêche l'ennemi de bouger pour le tour et possibilité de faire une AO même si l'ennemi Se désengage.",
-    "source": "PHB"
+    "entries": [
+      "Vous maîtrisez les techniques qui vous permettent d'exploiter la moindre faille dans les défenses de vos ennemis. Ces techniques vous confèrent les avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Quand vous réussissez une attaque d'opportunité contre une créature, la vitesse de celle-ci est réduite à O pour le reste du tour.",
+          "Vous pouvez effectuer des attaques d'opportunité contre les créatures situés à 1,50 mètre ou moins de vous, même si elles utilisent l'action se désengager avant de quitter votre zone d'allonge .",
+          "Quand une créature située à 1,50 mètre ou moins de vous effectue une attaque contre une cible autre que vous (et si cette cible ne possède pas ce don), vous pouvez utiliser votre réaction pour effectuer une attaque d'arme de corps à corps contre l'assaillant."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 169
   },
   {
     "name": "Soigneur",
     "id": "Healer",
-    "entries": "Vous pouvez stabiliser une créature et lui redonner 1 pv, ou la soigner et lui redonner [1d6+4+son nombre de dés de vie] pv.",
-    "source": "PHB"
+    "entries": [
+      "Vous êtes un médecin compétent, ce qui vous permet de soigner rapidement les blessures de vos alliés afin qu'ils retournent au combat. Vous bénéficiez des avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Quand vous utilisez une trousse de soins pour stabiliser une créature à l'agonie, celle-ci récupère également 1 point de vie.",
+          "Par une action, vous pouvez dépenser une utilisation d'une trousse de soins pour guérir une créature afin qu'elle récupère ld6+4 points de vie, plus un nombre de points de vie supplémentaires égal à son total maximum de dés de vie. La créature ne peut pas récupérer de nouveaux points de vie grâce à ce don tant qu'elle n'a pas fini un repos long ou court."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
     "name": "Télékinésiste",
     "id": "Telekinetic",
-    "entries": "+1 en Int., Sag. ou Cha., vous apprenez main de mage et pouvez tenter de pousser mentalement une créature (1,50 m).",
-    "source": "TCE"
+    "entries": [
+      "Vous apprenez à déplacer les objets par la pensée, ce qui vous octroie les bénéfices suivants : ",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur d'intelligence, Sagesse ou Charisme augmente de 1,jusqu'à un maximum de 20.",
+          "Vous apprenez le sort mineur {@spell main du mage}. Vous pouvez le lancer sans composante verbale ni somatique, et vous pouvez rendre la main spectrale invisible. Si vous connaissez déjà ce sort, sa portée augmente de 9 m lorsque vous le lancez. La caractéristique d'incantation associée à ce sort est celle que le don a augmentée.",
+          "Par une action bonus, vous pouvez tenter de bousculer une créature que vous voyez dans un rayon de 9 m, par télékinésie. Dans ce cas, la cible doit réussir un jet de sauvegarde de Force (DD 8 + votre bonus de maîtrise+ le modificateur de la caractéristique augmentée par le don), sous peine d'être déplacée de 1,50 m, vers vous ou loin de vous. Toute créature peut rater volontairement ce JS ."
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 81
   },
   {
     "name": "Télépathe",
     "id": "Telepathic",
-    "entries": "+1 en Int., Sag. ou Cha., vous pouvez lancer détection des pensées et parler télépathiquement à une créature à 18 m.",
-    "source": "TCE"
+    "entries": [
+      "Vous développez la faculté d'entrer en contact mental avec autrui, ce qui vous octroie les bénéfices suivants :  ",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur d'intelligence, Sagesse ou Charisme augmente de 1,jusqu'à un maximum de 20.",
+          "Vous pouvez vous adresser par télépathie à toute créature que vous voyez dans un rayon de 18 m. Ces paroles télépathiques se font dans une langue que vous parlez, si bien que la créature ne les comprend que si elle parle aussi cette langue. Cette communication ne confère pas à la créature la faculté de vous répondre par télépathie.",
+          "Vous pouvez lancer le sort {@spell détection des pensées} sans emplacement de sort ni composantes, après quoi vous devez terminer un repos long pour pouvoir le relancer par ce biais. La caractéristique d'incantation associée à ce sort est celle que le don a augmentée. Si vous disposez d'emplacements de sort du 2e niveau ou supérieur, vous pouvez lancer le sort en les utilisant.  "
+        ]
+      }
+    ],
+    "source": "TCE",
+    "page": 0
   },
   {
     "name": "Téléportation féerique",
     "id": "Fey_Teleportation",
     "prerequisite": "Elfe (haut)",
-    "entries": "+1 en Int. ou Cha., vous parlez le sylvestre, et vous pouvez lancer le sort foulée brumeuse (1/repos court).",
-    "source": "XGE"
+    "entries": [
+      "Vous avez étudié les connaissances des hauts-elfes et avez découvert comment utiliser des pouvoirs féeriques que peu d'autres elfes savent manier, à l'exception de vos cousins éladrins. En faisant appel à vos origines féeriques, vous pouvez brièvement traverser le Feywild pour vous rendre plus rapidement d'un endroit à l'autre. Vous gagnez les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur d'intelligence ou de Charisme augmente de l,jusqu'à un maximum de 20.",
+          "Vous apprenez à parler, à lire et à écrire en sylvestre.",
+          "Vous apprenez le sort pas brumeux et vous pouvez le lancer une fois sans dépenser d'emplacement de sort. Vous pouvez de nouveau le lancer ainsi après avoir terminé un court ou long repos. Votre caractéristique d'incantation pour ce sort est l'intelligence."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 75
   },
   {
     "name": "Tireur d'élite",
     "id": "Sharpshooter",
-    "entries": "Vos tirs ignorent certains abris, pas de désavantage à longue portée, et possible -5 à l'attaque pour +10 aux dégâts à distance.",
-    "source": "PHB"
+    "entries": [
+      "Vous maîtrisez les armes à distance et la précision de vos tirs est inégalée. Vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Vous n'êtes pas désavantagé lors de vos jets d'attaque d'arme à distance effectués à longue portée.",
+          "Vos attaques d'arme à distance ignorent les abris partiels et importants.",
+          "Avant d'effectuer une attaque avec une arme à distance dont vous maîtrisez le maniement, vous pouvez décider de vous imposer un malus de -5 au jet d'attaque. Si cette attaque touche votre cible, vous ajoutez+ 10 aux dégâts infligés."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
     "name": "Tueur de mages",
     "id": "Mage_Slayer",
-    "entries": "Vous pouvez par une réaction attaquer au CàC une créature qui lance un sort et avantage aux JdS contre les sorts au contact.",
-    "source": "PHB"
+    "entries": [
+      "Vous avez appris des techniques efficaces pour combattre les lanceurs de sorts en combat rapproché, ce qui vous confère les avantages suivants .",
+      {
+        "type": "list",
+        "entries": [
+          "Quand une créature située à 1,50 mètre ou moins de vous lance un sort, vous pouvez utiliser votre réaction pour effectuer contre elle une attaque d'arme de corps à corps.",
+          "Quand vous infligez des dégâts à une créature en train de se concentrer sur un sort, celle-ci est désavantagée lors du jet de sauvegarde effectué pour maintenir sa concentration.",
+          "Vous êtes avantagé lors des jets de sauvegarde contre les sorts lancés par des créatures situées à 1,50 mètre ou moins de vous ."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
     "name": "Vigilant",
     "id": "Alert",
-    "entries": "+5 à l'initiative, vous ne pouvez pas être surpris, et les créatures que vous ne voyez pas n'ont pas d'avantage contre vous.",
-    "source": "PHB"
+    "entries": [
+      "Toujours à l'affût du moindre danger, vous bénéficiez des avantages suivants.",
+      {
+        "type": "list",
+        "entries": [
+          "Vous bénéficiez d'un bonus de +5 à l'initiative.",
+          "Vous n'êtes jamais surpris tant que vous êtes conscient.",
+          "Les créatures que vous ne voyez pas ne sont pas avantagées lors de leurs jets d'attaque effectués contre vous."
+        ]
+      }
+    ],
+    "source": "PHB",
+    "page": 170
   },
   {
     "name": "Vigueur naine",
     "id": "Dwarf_Fortitude",
     "prerequisite": "Nain",
-    "entries": "+1 en Con. et vous pouvez dépenser un dé de vie pour vous soigner en utilisant l'action Esquiver.",
-    "source": "XGE"
+    "entries": [
+      "Le sang des héros nains coule dans vos veines. Vous gagnez les avantages suivants:",
+      {
+        "type": "list",
+        "entries": [
+          "Votre valeur de Constitution augmente de l,jusqu'à un maximum de 20.",
+          "À chaque fois que vous choisissez l'action esquiver pendant un combat, vous pouvez dépenser un dé de vie pour vous soigner. Lancez le dé, ajoutez votre modificateur de Constitution au résultat obtenu, et regagnez un nombre de points de vie égal au total (avec un minimum de 1) ."
+        ]
+      }
+    ],
+    "source": "XGE",
+    "page": 75
   }
 ]
