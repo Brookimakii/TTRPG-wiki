@@ -10,13 +10,13 @@
     flex-direction: column;
     /*font-family: Arial;*/
     font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
-    width:100%;
-    margin-bottom:8px;
+    width: 100%;
+    margin-bottom: 8px;
     page-break-inside: avoid;
 }
 
 .section-content {
-    padding:8px;
+    padding: 8px;
     padding-bottom: 0;
     border-radius: 8px;
     margin-top: 0;
@@ -56,7 +56,7 @@
     font-size: inherit;
 }
 
-.section-row:before, .section-row:after{
+.section-row:before, .section-row:after {
     display: table;
     content: " ";
     clear: both;
@@ -101,9 +101,9 @@
 .item-desc {
     font-style: italic;
     font-size: inherit;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .item-text-container {
@@ -111,6 +111,7 @@
     padding-right: 4px;
     font-size: inherit;
     height: 100%;
+    width: 100%;
 }
 
 
@@ -121,6 +122,7 @@
     background-color: maroon;
     border-color: maroon;
 }
+
 #section-movement .text {
     color: maroon;
 }
@@ -129,6 +131,7 @@
     background-color: black;
     border-color: black;
 }
+
 #section-action .text {
     color: black;
 }
@@ -137,22 +140,25 @@
     background-color: indigo;
     border-color: indigo;
 }
+
 #section-bonus-action .text {
     color: indigo;
 }
 
 #section-reaction, #section-reaction .item-icon {
-    background-color: DarkOliveGreen ;
-    border-color: DarkOliveGreen ;
+    background-color: DarkOliveGreen;
+    border-color: DarkOliveGreen;
 }
+
 #section-reaction .text {
-    color: DarkOliveGreen ;
+    color: DarkOliveGreen;
 }
 
 #section-condition, #section-condition .item-icon {
     background-color: FireBrick;
     border-color: FireBrick;
 }
+
 #section-condition .text {
     color: FireBrick;
 }
@@ -161,6 +167,7 @@
     background-color: ForestGreen;
     border-color: ForestGreen;
 }
+
 #section-environment .text {
     color: ForestGreen;
 }
@@ -172,8 +179,8 @@
 
 body {
     display: flex;
-    justify-content:center;
-    align-content:center;
+    justify-content: center;
+    align-content: center;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -249,7 +256,7 @@ p:first-child {
 .modal-container {
     background-clip: padding-box;
     outline: 0;
-    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
 }
 
 .modal-footer {
@@ -264,58 +271,150 @@ p:first-child {
 /* ------------------------------------------------------------------------- */
 
 /* Smart phone, portrait */
-@media (min-width:    0px) and (max-width:  479px) {
-    .fontsize { font-size: 12pt; } 
-    .iconsize { width: 44px; height: 44px;} 
-    .itemsize { height: 44px; width: 100%; } 
-    .modalsize {} 
+@media (min-width: 0px) and (max-width: 479px) {
+    .fontsize {
+        font-size: 12pt;
+    }
+
+    .iconsize {
+        width: 44px;
+        height: 44px;
+    }
+
+    .itemsize {
+        height: 44px;
+        width: 100%;
+    }
+
+    .modalsize {
+    }
 }
 
 /* Smart phone, landscape */
-@media (min-width:  480px) and (max-width:  767px) {
-    .fontsize { font-size: 11pt; }
-    .iconsize { width: 40px; height: 40px;}
-    .itemsize { height: 40px; width:  50%; }
-    .modalsize {}
+@media (min-width: 480px) and (max-width: 767px) {
+    .fontsize {
+        font-size: 11pt;
+    }
+
+    .iconsize {
+        width: 40px;
+        height: 40px;
+    }
+
+    .itemsize {
+        /*height: 40px;*/
+        width: 50%;
+    }
+
+    .modalsize {
+    }
 }
 
 /* Tablet, portrait */
-@media (min-width:  768px) and (max-width:  991px) {
-    .fontsize { font-size: 11pt; }
-    .iconsize { width: 40px; height: 40px;}
-    .itemsize { height: 40px; width:  33%; }
-    .modalsize { width: 600px; margin: 30px auto; }
+@media (min-width: 768px) and (max-width: 991px) {
+    .fontsize {
+        font-size: 11pt;
+    }
+
+    .iconsize {
+        width: 40px;
+        height: 40px;
+    }
+
+    .itemsize {
+        height: 40px;
+        width: 33%;
+    }
+
+    .modalsize {
+        width: 600px;
+        margin: 30px auto;
+    }
 }
 
 /* Tablet, landscape */
-@media (min-width:  992px) and (max-width: 1199px) {
-    .fontsize { font-size: 12pt; }
-    .iconsize { width: 44px; height: 44px;}
-    .itemsize { height: 44px; width:  33%; }
-    .modalsize { width: 600px; margin: 30px auto; }
+@media (min-width: 992px) and (max-width: 1199px) {
+    .fontsize {
+        font-size: 12pt;
+    }
+
+    .iconsize {
+        width: 44px;
+        height: 44px;
+    }
+
+    .itemsize {
+        height: 44px;
+        width: 33%;
+    }
+
+    .modalsize {
+        width: 600px;
+        margin: 30px auto;
+    }
 }
 
 /* Small desktop screen */
 @media (min-width: 1200px) and (max-width: 1599px) {
-    .fontsize { font-size: 12pt; }
-    .iconsize { width: 44px; height: 44px;}
-    .itemsize { height: 44px; width:  25%; }
-    .modalsize { width: 600px; margin: 30px auto; }
+    .fontsize {
+        font-size: 12pt;
+    }
+
+    .iconsize {
+        width: 44px;
+        height: 44px;
+    }
+
+    .itemsize {
+        height: 44px;
+        width: 25%;
+    }
+
+    .modalsize {
+        width: 600px;
+        margin: 30px auto;
+    }
 }
 
 /* Large desktop screen */
 @media (min-width: 1600px) {
-    .fontsize { font-size: 12pt; }
-    .iconsize { width: 44px; height: 44px;}
-    .itemsize { height: 44px; width:  20%; }
-    .modalsize { width: 600px; margin: 30px auto; }
+    .fontsize {
+        font-size: 12pt;
+    }
+
+    .iconsize {
+        width: 44px;
+        height: 44px;
+    }
+
+    .itemsize {
+        height: 44px;
+        width: 20%;
+    }
+
+    .modalsize {
+        width: 600px;
+        margin: 30px auto;
+    }
 }
 
 /* Print */
 @media print {
-    .fontsize { font-size: 10pt; }
-    .iconsize { width: 36px; height: 36px;}
-    .itemsize { height: 36px; width:  33%; }
-    .modalsize {}
+    .fontsize {
+        font-size: 10pt;
+    }
+
+    .iconsize {
+        width: 36px;
+        height: 36px;
+    }
+
+    .itemsize {
+        height: 36px;
+        width: 33%;
+    }
+
+    .modalsize {
+    }
 }
 

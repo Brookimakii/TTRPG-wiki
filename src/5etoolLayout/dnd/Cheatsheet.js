@@ -4,7 +4,7 @@ import '../css/quickref.css'
 import '../css/icons.css'
 import React, {useState} from "react";
 import {Parser} from "../../layout/5e/js/parser";
-import {ToggleState} from "../5eLayoutModules";
+import {RenderModule, ToggleState} from "../5eLayoutModules";
 
 
 export const DnDCheatsheet = () => {
@@ -55,7 +55,7 @@ export const DnDCheatsheet = () => {
       bullets: [
         "Vous pouvez tomber à plat ventre sans utiliser votre vitesse.",
         "Pour vous déplacer en position couchée, vous devez ramper ou utiliser la magie comme la téléportation.",
-        "Tomber à terre ajoute la condition <i>À Terre</i> (les attaques de mêlée contre vous ont un avantage, les attaques à distance contre vous ont un désavantage, vos propres attaques ont un désavantage)"
+        "Tomber à terre ajoute la condition {@i À Terre} (les attaques de mêlée contre vous ont un avantage, les attaques à distance contre vous ont un désavantage, vos propres attaques ont un désavantage)"
       ]
     },
     {
@@ -84,7 +84,7 @@ export const DnDCheatsheet = () => {
 
       reference: "PHB, pg. 182.",
       bullets: [
-        "Vous sautez en l'air d'un nombre de mètres égal à <b>votre valeur de Force divisée par 3 + 1</b> si vous prenez un élan d'au moins 3 mètres.",
+        "Vous sautez en l'air d'un nombre de mètres égal à {@b votre valeur de Force divisée par 3 + 1} si vous prenez un élan d'au moins 3 mètres.",
         "Lorsque vous faites un saut sans élan, vous ne pouvez sauter que la moitié de cette distance.",
         "Vous pouvez étendre vos bras à la moitié de votre taille au-dessus de vous pendant le saut. Cela vous permet d'atteindre une hauteur égale à la hauteur du saut plus une fois et demi votre taille.",
         "Dans certaines circonstances, votre MD peut vous permettre de faire un test de Force (Athlétisme) pour sauter plus haut que vous ne le pouvez normalement."
@@ -97,7 +97,7 @@ export const DnDCheatsheet = () => {
       description: "Coût de déplacement : 1m50 par 1m50 sautés",
       reference: "PHB, pg. 182.",
       bullets: [
-        "Vous couvrez un certain nombre de mètres jusqu'à votre <b>valeur de force divisée par 3</b> si vous prenez un élan d'au moins 3 mètres",
+        "Vous couvrez un certain nombre de mètres jusqu'à votre {@b valeur de force divisée par 3} si vous prenez un élan d'au moins 3 mètres",
         "Lorsque vous faites un saut en longueur sans élan, vous ne pouvez sauter que la moitié de cette distance",
         "Peut impliquer un test de Force (Athlétisme) DD 10 pour franchir un obstacle bas (pas plus haut qu'un quart de la distance du saut). Vous percutez l'obstacle lors d'un test raté.",
         "Peut impliquer un test de Dextérité (Acrobatie) DD 10 pour atterrir sur vos pieds en terrain difficile. Vous atterrissez à terre sur un test raté."
@@ -140,9 +140,9 @@ export const DnDCheatsheet = () => {
       description: "Effectuez une attaque au corps à corps ou à distance avec votre arme",
       reference: "PHB, pgs. 192,194-195.",
       bullets: [
-        "Certaines compétences, telles que la compétence <i>Attaque supplémentaire</i>, vous permettent de faire plus d'une attaque avec cette action. Chacune de ces attaques est un jet séparé et peut cibler différentes créatures. Vous pouvez vous déplacer entre ces attaques.",
-        "Lorsque vous attaquez avec une arme de mêlée légère, vous pouvez utiliser une action bonus pour attaquer avec votre autre main (voir l'action bonus <i>Attaque seconde main</i>).",
-        "Vous pouvez remplacer l'une de vos attaques de mêlée par <i>Empoigner</i> ou <i>Bousculer</i>.",
+        "Certaines compétences, telles que la compétence {@i Attaque supplémentaire}, vous permettent de faire plus d'une attaque avec cette action. Chacune de ces attaques est un jet séparé et peut cibler différentes créatures. Vous pouvez vous déplacer entre ces attaques.",
+        "Lorsque vous attaquez avec une arme de mêlée légère, vous pouvez utiliser une action bonus pour attaquer avec votre autre main (voir l'action bonus {@i Attaque seconde main}).",
+        "Vous pouvez remplacer l'une de vos attaques de mêlée par {@i Empoigner} ou {@i Bousculer}.",
         "Certaines conditions donnent un avantage à l'attaque : attaques contre des cibles aveuglées, paralysées, pétrifiées, entravées, étourdies ou inconscientes ; attaques de mêlée contre des cibles à terre ; attaques d'attaquants invisibles ou cachés.",
         "Certaines conditions donnent un désavantage à l'attaque : attaques contre des cibles invisibles ou cachées ; attaques à distance contre des cibles couchées ; attaques par des attaquants aveuglés, effrayés, empoisonnés ou retenus."
       ]
@@ -154,7 +154,7 @@ export const DnDCheatsheet = () => {
       description: "Tenter d'aggriper une créature ou de lutter avec elle",
       reference: "PHB, pg. 195.",
       bullets: [
-        "Vous pouvez utiliser l'action <i>Attaquer</i> pour effectuer une attaque spéciale au corps à corps, une empoignade. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
+        "Vous pouvez utiliser l'action {@i Attaquer} pour effectuer une attaque spéciale au corps à corps, une empoignade. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
         "La cible de votre empoignade ne doit pas faire plus d'une taille de plus que vous, et elle doit être à votre portée.",
         "Avec au moins une main libre, vous tentez de saisir la cible en effectuant un test de Force (Athlétisme) contesté par le test de Force (Athlétisme) ou de Dextérité (Acrobatie) de la cible (la cible choisit la capacité à utiliser). ",
         "Si vous réussissez, vous soumettez la cible à la condition Aggripé (sa vitesse est réduite à 0).",
@@ -167,7 +167,7 @@ export const DnDCheatsheet = () => {
       description: "Pousser une créature, soit pour la mettre à terre, soit pour la repousser",
       reference: "PHB, pg. 195.",
       bullets: [
-        "En utilisant l'action <i>Attaquer</i>, vous pouvez effectuer une attaque spéciale au corps à corps pour repousser une créature. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
+        "En utilisant l'action {@i Attaquer}, vous pouvez effectuer une attaque spéciale au corps à corps pour repousser une créature. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
         "La cible de votre poussée ne doit pas faire plus d'une taille de plus que vous, et elle doit être à votre portée.",
         "Vous faites un jet de Force (Athlétisme) contesté par le jet de Force (Athlétisme) ou de Dextérité (Acrobatie) de la cible (la cible choisit la capacité à utiliser).",
         "Si vous remportez l'oppposition, soit vous renversez la cible, soit vous la poussez à 1,50m de vous.",
@@ -184,7 +184,7 @@ export const DnDCheatsheet = () => {
         "Vous ne pouvez pas lancer un sort avec votre action et un sort différent avec votre action bonus dans le même tour, sauf si l'action est utilisée pour lancer un sort mineur (niveau 0).",
         "La cible d'un sort doit être dans la portée du sort. Pour cibler quelque chose, vous devez avoir un chemin clair vers lui, donc il ne peut pas être derrière une couverture totale.",
         "Les sorts avec des composants matériels ne consomment pas le matériel sauf indication explicite. À moins que le coût d'un matériel ne soit donné, vous pouvez supposer que le coût est négligeable et que le matériel est simplement disponible dans une pochette de composants.",
-        "Certains sorts nécessitent que vous mainteniez la concentration afin de garder leur magie active. Si vous perdez la concentration, un tel sort prend fin. Vous perdez la concentration sur un sort si vous lancez un autre sort qui nécessite de la concentration ou lorsque vous êtes <i>incapable d'agir</i>. Chaque fois que vous prenez dégâts, vous devez effectuer un jet de sauvegarde de Constitution pour maintenir votre concentration. Le DD est égal à 10 ou à la moitié des dégâts que vous subissez, selon le nombre le plus élevé."
+        "Certains sorts nécessitent que vous mainteniez la concentration afin de garder leur magie active. Si vous perdez la concentration, un tel sort prend fin. Vous perdez la concentration sur un sort si vous lancez un autre sort qui nécessite de la concentration ou lorsque vous êtes {@i incapable d'agir}. Chaque fois que vous prenez dégâts, vous devez effectuer un jet de sauvegarde de Constitution pour maintenir votre concentration. Le DD est égal à 10 ou à la moitié des dégâts que vous subissez, selon le nombre le plus élevé."
       ]
     },
     {
@@ -203,8 +203,7 @@ export const DnDCheatsheet = () => {
       subtitle: "Évite les attaques d'opportunité",
       description: "Votre mouvement ne provoque pas d'attaques d'opportunité pour le reste du tour",
       reference: "PHB, pg. 192.",
-      bullets: [
-      ]
+      bullets: []
     },
     {
       title: "Esquiver",
@@ -214,7 +213,7 @@ export const DnDCheatsheet = () => {
       reference: "PHB, pg. 192.",
       bullets: [
         "Jusqu'au début de votre prochain tour, tout jet d'attaque effectué contre vous a un désavantage si vous pouvez voir l'attaquant, et vous faites des jets de sauvegarde de Dextérité avec un avantage.",
-        "Vous perdez cet avantage si vous êtes <i>incapable d'agir</i> ou si votre vitesse tombe à 0."
+        "Vous perdez cet avantage si vous êtes {@i incapable d'agir} ou si votre vitesse tombe à 0."
       ]
     },
     {
@@ -294,9 +293,7 @@ export const DnDCheatsheet = () => {
       subtitle: "Certaines capacités utilisent des actions",
       description: "Utiliser une capacité raciale ou de classe qui utilise une actionn",
       reference: "Voir la page de votre classe pour plus d'informations.",
-      bullets: [
-
-      ]
+      bullets: []
     },
     {
       title: "Stabiliser une créature",
@@ -330,7 +327,7 @@ export const DnDCheatsheet = () => {
       description: "Empêcher une créature d'utiliser sa réaction",
       reference: "Homebrew (Martial Prowess, pg. 5.)",
       bullets: [
-        "Lorsque vous effectuez l'action <i>Attaquer</i>, vous pouvez effectuer une attaque spéciale au corps à corps pour distraire un ennemi. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
+        "Lorsque vous effectuez l'action {@i Attaquer}, vous pouvez effectuer une attaque spéciale au corps à corps pour distraire un ennemi. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
         "Effectuez un test de Dextérité (Escamotage) contre le test de Sagesse (Perception) d'une créature située à 1,50 mètre ou moins de vous.",
         "Si vous remportez l'opposition, la créature ne peut pas utiliser de réaction avant le début de son prochain tour.",
       ]
@@ -343,7 +340,7 @@ export const DnDCheatsheet = () => {
       reference: "Homebrew (Martial Prowess, pg. 6.)",
       bullets: [
         "Une fois par tour, lorsque vous touchez une créature surprise, incapable d'agir ou entravée avec une attaque contondante, vous pouvez essayer de l'assommer.",
-        "Lancez vos dégâts normalement mais au lieu de subir des dégâts, la créature doit réussir un jet de sauvegarde de Constitution contre un DD égal à 10 ou la moitié de votre jet de dégâts, selon le plus élevé, ou elle tombe <i>inconsciente</i> pendant 1 minute.",
+        "Lancez vos dégâts normalement mais au lieu de subir des dégâts, la créature doit réussir un jet de sauvegarde de Constitution contre un DD égal à 10 ou la moitié de votre jet de dégâts, selon le plus élevé, ou elle tombe {@i inconsciente} pendant 1 minute.",
         "La cible se réveille si elle subit des dégâts ou si une autre créature utilise une action pour la réveiller.",
         "Cette capacité n'a aucun effet sur les constructions et les morts-vivants"
       ]
@@ -355,10 +352,10 @@ export const DnDCheatsheet = () => {
       description: "Tenter de projeter une créature aggripée",
       reference: "Homebrew (The Warrior's Codex, pg. 87.)",
       bullets: [
-        "Lorsque vous agrippez une créature, vous pouvez utiliser l'action <i>Attaquer</i> pour effectuer une attaque spéciale au corps à corps afin de projeter la créature agrippée. Si vous pouvez effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
+        "Lorsque vous agrippez une créature, vous pouvez utiliser l'action {@i Attaquer} pour effectuer une attaque spéciale au corps à corps afin de projeter la créature agrippée. Si vous pouvez effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
         "Pour lancer une autre créature, vous devez réussir un test de Force (Athlétisme), le DD étant déterminé à la fois par votre taille et par la taille de l'autre créature, comme ci-dessous. Si vous réussissez, vous projetez la créature à une distance pouvant atteindre 1,5 fois votre modificateur de Force.",
         "Lorsqu'elle atterrit, la créature projetée subit 1d6 dégâts contondants pour chaque 3 mètres parcourus. Si vous lancez la créature sur une distance plus courte, elle subit des dégâts de chute comme si vous l'aviez lancée sur toute la distance.",
-        "La créature projetée atterrit <i>à terre</i> à moins qu'elle ne réussisse un test de Dextérité (Acrobatie) avec un DD égal au test de Force (Athlétisme) utilisé pour la lancer, ou utilise une capacité ou un sort (comme <i>feuille morte</i>) pour atterrir en toute sécurité.",
+        "La créature projetée atterrit {@i à terre} à moins qu'elle ne réussisse un test de Dextérité (Acrobatie) avec un DD égal au test de Force (Athlétisme) utilisé pour la lancer, ou utilise une capacité ou un sort (comme {@i feuille morte}) pour atterrir en toute sécurité.",
         "<table><tr><th style='text-align:center'>Taille</th><th></th><th></th><th style='text-align:center'>DD</th></tr><tr><td style='text-align:center'>Minuscule</td><td></td><td></td><td style='text-align:center'>5</td></tr><tr><td style='text-align:center'>Petite</td><td></td><td></td><td style='text-align:center'>11</td></tr><tr><td style='text-align:center'>Moyenne</td><td></td><td></td><td style='text-align:center'>17</td></tr><tr><td style='text-align:center'>Grande</td><td></td><td></td><td style='text-align:center'>23</td></tr><tr><td style='text-align:center'>Très Grande</td><td></td><td></td><td style='text-align:center'>29</td></tr><tr><td style='text-align:center'>Gigantesque</td><td></td><td></td><td style='text-align:center'>35</td></tr></table>",
         "Plus vous êtes grand, plus il est facile de lancer d'autres créatures. L'inverse est vrai si vous êtes plus petit. Les DD pour lancer une autre créature augmentent de 5 si votre taille est Petite, et de 10 si votre taille est Minuscule. Ils diminuent de 5 si votre taille est Grande, de 10 si votre taille est Très Grande et de 15 si votre taille est Gigantesque."
       ]
@@ -422,7 +419,7 @@ export const DnDCheatsheet = () => {
       description: "Achever un ennemi en vous exposant à des attaques d'opportunité",
       reference: "Homebrew (Martial Prowess, pg. 5.)",
       bullets: [
-        "Par une action, vous essayez d'achever un adversaire inconscient, paralysé ou autrement rendu incapable d'agir et d'utiliser un mouvement (l'état <i>incapable d'agir</i> n'est pas suffisant).",
+        "Par une action, vous essayez d'achever un adversaire inconscient, paralysé ou autrement rendu incapable d'agir et d'utiliser un mouvement (l'état {@i incapable d'agir} n'est pas suffisant).",
         "Vous infligez un coup critique automatique avec une attaque de mêlée (aucun jet d'attaque n'est nécessaire).",
         "Si la créature survit aux dégâts, elle doit réussir un jet de sauvegarde de Constitution contre un DD égal à 10 ou à la moitié des dégâts infligés, selon le plus élevé. En cas d'échec, il meurt.",
         "Un roublard inflige des dégâts d'attaque sournoise lorsqu'il porte un coup de grâce.",
@@ -438,7 +435,7 @@ export const DnDCheatsheet = () => {
       description: "Attaquez avec votre main libre",
       reference: "PHB, pgs. 192,194-195.",
       bullets: [
-        "Utilisable uniquement si vous prenez l'action <i>Attaquer</i> et attaquez avec une arme de mêlée légère que vous tenez dans une main.",
+        "Utilisable uniquement si vous prenez l'action {@i Attaquer} et attaquez avec une arme de mêlée légère que vous tenez dans une main.",
         "Effectuez une seule attaque avec une arme de mêlée légère différente que vous tenez dans l'autre main.",
         "Vous n'ajoutez pas votre modificateur de capacité aux dégâts de l'attaque bonus, sauf si ce modificateur est négatif.",
         "Si l'une des armes a la propriété de lancer, vous pouvez lancer l'arme au lieu de faire une attaque au corps à corps avec elle."
@@ -452,7 +449,7 @@ export const DnDCheatsheet = () => {
       reference: "PHB, pg. 192.",
       bullets: [
         "Vous ne pouvez pas lancer un sort avec votre action et un sort différent avec votre action bonus dans le même tour, sauf si l'action est utilisée pour lancer un sort mineur.",
-        "Pour plus de détails, voir l'action <i>Lancer un sort</i>."
+        "Pour plus de détails, voir l'action {@i Lancer un sort}."
       ]
     },
     {
@@ -461,9 +458,7 @@ export const DnDCheatsheet = () => {
       subtitle: "Certaines capacités utilisent des actions bonus",
       description: "Utiliser une caractéristique raciale ou de classe qui utilise une action bonus",
       reference: "Voir la page de classe pour plus d'informations.",
-      bullets: [
-
-      ]
+      bullets: []
     },
     {
       title: "Plaquer",
@@ -511,7 +506,7 @@ export const DnDCheatsheet = () => {
       description: "Exécutez la réaction spécifiée par votre action Se tenir prêt",
       reference: "PHB, pg. 193.",
       bullets: [
-        "Déclencheur : spécifié par votre action <i>Se tenir prêt</i>."
+        "Déclencheur : spécifié par votre action {@i Se tenir prêt}."
       ]
     },
     {
@@ -522,7 +517,7 @@ export const DnDCheatsheet = () => {
       reference: "PHB, pg. 192.",
       bullets: [
         "Déclencheur : spécifié par le sort.",
-        "Pour plus de détails, consultez l'action <i>Lancer un sort</i>."
+        "Pour plus de détails, consultez l'action {@i Lancer un sort}."
       ]
     }
   ]
@@ -567,7 +562,19 @@ export const DnDCheatsheet = () => {
       description: "L'épuisement est mesuré en six niveaux",
       reference: "PHB, pg. 291.",
       bullets: [
-        "<table><tr><th>Niveau</th><th></th><th></th><th style='text-align:left'>Effet</th></tr><tr><td>1</td><td></td><td></td><td>Désavantage sur les jets de caractéristique</td></tr><tr><td>2</td><td></td><td></td><td>Vitesse réduite de moitié</td></tr><tr><td>3</td><td></td><td></td><td>Désavantge aux jets d'attaque et jets de sauvegarde</td></tr><tr><td>4</td><td></td><td></td><td>Maximum de points de vie réduit de moitié</td></tr><tr><td>5</td><td></td><td></td><td>Vitesse réduite à 0</td></tr><tr><td>6</td><td></td><td></td><td>Mort</td></tr></table>",
+        {
+          type:"table",
+          colLabels: ["Niveau","Effet"],
+          colStyles: ["ve-col-2 ve-text-center","ve-col-10"],
+          rows:[
+            [1,"Désavantage sur les jets de caractéristique"],
+            [2,"Vitesse réduite de moitié"],
+            [3,"Désavantge aux jets d'attaque et jets de sauvegarde"],
+            [4,"Maximum de points de vie réduit de moitié"],
+            [5,"Vitesse réduite à 0"],
+            [6,"Mort"]
+          ]
+        },
         "Vous subissez l'effet de votre niveau d'épuisement actuel ainsi que tous les niveaux inférieurs.",
         "Terminer un repos long réduit votre niveau d'épuisement de 1, à condition que vous ayez également bu et mangé.",
         "De plus, être ressuscité d'entre les morts réduit le niveau d'épuisement d'une créature de 1."
@@ -602,8 +609,7 @@ export const DnDCheatsheet = () => {
       subtitle: "Vous ne pouvez pas entreprendre d'actions ou de réactions",
       description: "Vous ne pouvez pas entreprendre d'actions ou de réactions",
       reference: "PHB, pg. 290.",
-      bullets: [
-      ]
+      bullets: []
     },
     {
       title: "Invisible",
@@ -738,7 +744,7 @@ export const DnDCheatsheet = () => {
       description: "Lumière tamisée, brouillard épars, feuillage modéré",
       reference: "PHB, pg. 183.",
       bullets: [
-        "Les créatures ont un <b>désavantage sur les jets de Sagesse (Perception)</b> qui dépendent de la vue"
+        "Les créatures ont un {@b désavantage sur les jets de Sagesse (Perception)} qui dépendent de la vue"
       ]
     },
     {
@@ -748,7 +754,7 @@ export const DnDCheatsheet = () => {
       description: "Obscurité, brouillard opaque, feuillage dense",
       reference: "PHB, pg. 183.",
       bullets: [
-        "Une créature dans une zone fortement obscurcie souffre de la <b>condition Aveuglé</b>."
+        "Une créature dans une zone fortement obscurcie souffre de la {@b condition Aveuglé}."
       ]
     }
   ]
@@ -771,7 +777,7 @@ export const DnDCheatsheet = () => {
       description: "Lumière faible, également appelée ombres",
       reference: "PHB, pg. 183.",
       bullets: [
-        "Crée une zone <b>légèrement obscurcie</b>.",
+        "Crée une zone {@b légèrement obscurcie}.",
         "Une zone de faible lumière est généralement une frontière entre une source de lumière vive, telle qu'une torche, et l'obscurité environnante.",
         "La douce lumière du crépuscule et de l'aube compte également comme une faible lumière. Une pleine lune particulièrement brillante pourrait baigner la terre dans une lumière faible."
       ]
@@ -783,7 +789,7 @@ export const DnDCheatsheet = () => {
       description: "L'obscurité crée une zone fortement obscurcie",
       reference: "PHB, pg. 183.",
       bullets: [
-        "Crée une zone <b>fortement obscurcie</b>.",
+        "Crée une zone {@b fortement obscurcie}.",
         "Les personnages font face à l'obscurité à l'extérieur la nuit (même la plupart des nuits éclairées par la lune), dans les confins d'un donjon non éclairé ou d'un caveau souterrain, ou dans une zone d'obscurité magique."
       ]
     }
@@ -807,7 +813,7 @@ export const DnDCheatsheet = () => {
       description: "Une créature avec la vision dans le noir peut mieux voir dans l'obscurité ou dans des conditions de faible luminosité, dans un certain rayon",
       reference: "PHB, pgs. 183-184.",
       bullets: [
-        "Dans une plage spécifiée, une créature dotée de la vision dans le noir peut <b>voir dans l'obscurité comme si l'obscurité était une lumière faible</b>, de sorte que les zones d'obscurité ne sont que légèrement obscurcies en ce qui concerne cette créature.",
+        "Dans une plage spécifiée, une créature dotée de la vision dans le noir peut {@b voir dans l'obscurité comme si l'obscurité était une lumière faible}, de sorte que les zones d'obscurité ne sont que légèrement obscurcies en ce qui concerne cette créature.",
         "Cependant, la créature ne peut pas discerner la couleur dans l'obscurité, seulement des nuances de gris.",
         "De nombreuses créatures dans les mondes de D&D, en particulier celles qui vivent sous terre, ont une vision dans le noir."
       ]
@@ -834,7 +840,7 @@ export const DnDCheatsheet = () => {
       reference: "PHB, pg. 196.",
       bullets: [
         "L'obstacle peut être un muret, un gros meuble, un tronc d'arbre étroit ou une créature, que cette créature soit un ennemi ou un ami.",
-        "Une cible à moitié couverte bénéficie d'un <b>bonus de +2 à la CA et aux jets de sauvegarde de Dextérité</b>.",
+        "Une cible à moitié couverte bénéficie d'un {@b bonus de +2 à la CA et aux jets de sauvegarde de Dextérité}.",
         "Si une cible se trouve derrière plusieurs sources de couverture, seul le degré de couverture le plus protecteur s'applique."
       ]
     },
@@ -846,7 +852,7 @@ export const DnDCheatsheet = () => {
       reference: "PHB, pg. 196.",
       bullets: [
         "L'obstacle peut être une herse, une meurtrière ou un gros tronc d'arbre.",
-        "Une cible ayant un abri important bénéficie d'un <b>bonus de +5 à la CA et aux jets de sauvegarde de Dextérité</b>.",
+        "Une cible ayant un abri important bénéficie d'un {@b bonus de +5 à la CA et aux jets de sauvegarde de Dextérité}.",
         "Si une cible se trouve derrière plusieurs sources de couverture, seul le degré de couverture le plus protecteur s'applique."
       ]
     },
@@ -857,7 +863,7 @@ export const DnDCheatsheet = () => {
       description: "Une cible a un abri total si elle est complètement cachée par un obstacle",
       reference: "PHB, pg. 196.",
       bullets: [
-        "Une cible avec un abri total <b>ne peut pas être ciblée directement</b> par une attaque ou un sort, bien que certains sorts puissent atteindre une telle cible en l'incluant dans une zone d'effet.",
+        "Une cible avec un abri total {@b ne peut pas être ciblée directement} par une attaque ou un sort, bien que certains sorts puissent atteindre une telle cible en l'incluant dans une zone d'effet.",
         "Si une cible se trouve derrière plusieurs sources de couverture, seul le degré de couverture le plus protecteur s'applique."
       ]
     }
@@ -871,7 +877,7 @@ export const DnDCheatsheet = () => {
 
   const {toggleStateChange, getToggleState, addToggleableState} = ToggleState()
 
-  function populateDiv(list, category) {
+  function populateDiv(list, category, rbg) {
     return <>
       <div className="section-row section-subtitle text fontsize">
         You can move at any time during your turn (before, after, or during actions).
@@ -887,15 +893,15 @@ export const DnDCheatsheet = () => {
           </div>
           {selected === action.title ?
             <div className="section-container modal-container" id="modal-container"
-                 style={{backgroundColor: `rgb(128, 0, 0)`, borderColor: `rgb(128, 0, 0)`}}>
+                 style={{backgroundColor: rbg, borderColor: rbg}}>
               <div className="section-title" id="modal-title">{action.title}
                 <span className="float-right">{category}</span>
               </div>
               <div className="section-content">
-                <p>{action.description}</p>
+                <p style={{marginTop:0}}>{action.description}</p>
                 {action.bullets ? <div id={"modal-bullets"}>
                   {action.bullets.map((bullet, idx) => <>
-                    <p className={"fonstsize"}>{bullet}</p>
+                    <p className={"fonstsize"} style={{marginTop:0}}>{RenderModule({}).render(bullet)}</p>
                     {idx !== action.bullets.length - 1 ? <hr/> : ""}
                   </>)}
                 </div> : ""}
@@ -944,7 +950,7 @@ export const DnDCheatsheet = () => {
                       </span>
                     </div>
                     {getToggleState("Movement") ? <div className="section-content">
-                      {getToggleState("Movement") ? populateDiv(movement, "Mouvement") : ""}
+                      {populateDiv(movement, "Mouvement", `rgb(128,0,0)`)}
                     </div> : ""}
                   </div>
                 </td>
@@ -964,7 +970,9 @@ export const DnDCheatsheet = () => {
                       </span>
                       </span>
                     </div>
-                    {getToggleState("Action") ? populateDiv(actions, "Action") : ""}
+                    {getToggleState("Action") ? <div className="section-content">
+                      {populateDiv(actions, "Action", `black`)}
+                    </div> : ""}
                   </div>
                 </td>
               </tr>
@@ -983,7 +991,9 @@ export const DnDCheatsheet = () => {
                       </span>
                       </span>
                     </div>
-                    {getToggleState("Bonus-Action") ? populateDiv(bonusAction, "Action Bonus") : ""}
+                    {getToggleState("Bonus-Action") ? <div className="section-content">
+                      {populateDiv(bonusAction, "Action Bonus", `indigo`)}
+                    </div> : ""}
                   </div>
                 </td>
               </tr>
@@ -1002,7 +1012,9 @@ export const DnDCheatsheet = () => {
                       </span>
                       </span>
                     </div>
-                    {getToggleState("Reaction") ? populateDiv(reaction, "Reaction") : ""}
+                    {getToggleState("Reaction") ? <div className="section-content">
+                      {populateDiv(reaction, "Reaction", `DarkOliveGreen`)}
+                    </div> : ""}
                   </div>
                 </td>
               </tr>
@@ -1021,7 +1033,9 @@ export const DnDCheatsheet = () => {
                       </span>
                     </span>
                     </div>
-                    {getToggleState("Condition") ? populateDiv(reaction, "Condition") : ""}
+                    {getToggleState("Condition") ? <div className="section-content">
+                      {populateDiv(condition, "Condition", `FireBrick`)}
+                    </div> : ""}
                   </div>
                 </td>
               </tr>
@@ -1047,25 +1061,25 @@ export const DnDCheatsheet = () => {
                         Effects that obscure vision can prove a significant hindrance to most adventuring tasks.
                       </div>
                       <div className="section-row" id="environment-obscurance">
-                        {populateDiv(environment_obscurance, "Environnement")}
+                        {populateDiv(environment_obscurance, "Environnement", `ForestGreen`)}
                       </div>
                       <div className="section-row section-subtitle text fontsize">
                         The presence or absence of light in an environment creates three categories of illumination.
                       </div>
                       <div className="section-row" id="environment-light">
-                        {populateDiv(environment_light, "Environnement")}
+                        {populateDiv(environment_light, "Environnement", `ForestGreen`)}
                       </div>
                       <div className="section-row section-subtitle text fontsize">
                         Some creatures have extraordinary senses that allow them to perceive their environment.
                       </div>
                       <div className="section-row" id="environment-vision">
-                        {populateDiv(environment_vision, "Environnement")}
+                        {populateDiv(environment_vision, "Environnement", `ForestGreen`)}
                       </div>
                       <div className="section-row section-subtitle text fontsize">
                         Obstacles can provide cover during combat, making a target more difficult to harm.
                       </div>
                       <div className="section-row" id="environment-cover">
-                        {populateDiv(environment_cover, "Environnement")}
+                        {populateDiv(environment_cover, "Environnement", `ForestGreen`)}
                       </div>
                     </div> : ""}
                   </div>
