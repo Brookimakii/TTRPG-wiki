@@ -94,7 +94,7 @@ export const Layout5e = () => {
             <MenuLink name="Recipes" link="#Unknown" callback={setShowMenu}/>
           </NavMenu>
           <NavMenu name="Utilities" href="" addCaret={true} showMenu={showMenu}>
-            <MenuLink name="" link="dfts<" href="zersq" callback={setShowMenu}/>
+            <MenuLink name="Cheatsheets" link="cheatsheet" callback={setShowMenu}/>
           </NavMenu>
           <NavMenu name="Settings" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink name="" link="dfts<" href="zersq" callback={setShowMenu}/>

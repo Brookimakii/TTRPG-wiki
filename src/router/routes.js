@@ -40,6 +40,7 @@ import {Dnd5eRules} from "../5etoolLayout/dnd/Rules";
 import {Dnd5eCondition} from "../5etoolLayout/dnd/Condition";
 import {Dnd5eBestiary} from "../5etoolLayout/dnd/Bestiary";
 import {Changelog} from "../ChangeLog/Changelog";
+import {DnDCheatsheet} from "../5etoolLayout/dnd/Cheatsheet";
 
 const routes = [
   {
@@ -341,6 +342,11 @@ const routes = [
         id: "5eBestiary",
         path: "bestiary",
         element: <Dnd5eBestiary/>,
+      },
+      {
+        id: "5eCheatsheet",
+        path: "cheatsheet",
+        element: <DnDCheatsheet/>,
       }
     ]
   }
