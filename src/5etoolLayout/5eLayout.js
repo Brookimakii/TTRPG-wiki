@@ -8,7 +8,7 @@ import "./css/index.css"
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
 
-import "./css/SystemSelection.scss"
+import "./scss/SystemSelection.scss"
 
 export const Layout5e = ({title="Test", base}) => {
   base = "TTRPG-wiki" + base
