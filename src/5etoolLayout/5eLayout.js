@@ -382,7 +382,6 @@ export const LayoutSystemSelection = ({title="Test"}) => {
 
 export const Layout5e2 = () => {
   const playerRaces = []
-  // const playerRaces = buildRace(require('../resources/races.json'))
   const emptyFilters = {
     sources: []
   }

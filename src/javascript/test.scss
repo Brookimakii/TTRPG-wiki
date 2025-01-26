@@ -1,7 +1,0 @@
-#toggleMe {
-  transition: height .25s ease;
-  overflow: hidden;
-}
-#toggleMe:not(.active) {
-  display: none;
-}

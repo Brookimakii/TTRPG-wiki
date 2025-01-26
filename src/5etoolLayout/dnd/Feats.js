@@ -1,4 +1,4 @@
-import {getResource, Resources} from "../../ResourcesFetch";
+import {getResource, Resources} from "../../resources/ResourcesFetch";
 import React from "react";
 import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Parser} from "../../layout/5e/js/parser";

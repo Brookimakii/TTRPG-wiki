@@ -5,7 +5,7 @@ import type {PlayerClass} from "../../layout/5e/Models";
 import {Feature} from "../../layout/5e/Models";
 import "../css/classes.css"
 import {Link, useLocation} from "react-router-dom";
-import {getResource, Resources} from "../../ResourcesFetch";
+import {getResource, Resources} from "../../resources/ResourcesFetch";
 
 
 export const Dnd5eClasses = () => {
@@ -15,87 +15,7 @@ export const Dnd5eClasses = () => {
   }, {
     id: "Source", sortId: "info.source", classSize: "ve-grow", colClass: "bold ve-grow ve-text-center pl-0 pr-1"
   }]
-  //
-  // const [classes, setClasses] = useState(getResource(Resources.clazz))
   const classes: [PlayerClass] = getResource(Resources.clazz)
-
-  // useEffect(() => {
-  //   let repeat;
-  //   async function fetch(){
-  //     console.log("HERRE")
-  //     setClasses(getResource(Resources.clazz))
-  //     repeat = setTimeout(fetch, 10000);
-  //   }
-  //   fetch()
-  //   return () => {
-  //     if (repeat) {
-  //       clearTimeout(repeat);
-  //     }
-  //   }
-  // }, []);
-  // console.log(require('./5e/resources/.classes.json'))
-  // const [elements, setElements] = useState(classes)
-  // const [sorting, setSorting] = useState("")
-  // const [selected: PlayerClass, setSelected] = useState(setSelectFromHash())
-  // const [subclassSelected, setSubclassSelected] = useState({})
-  //
-  // const scrollRefs = useRef([])
-  //
-  // scrollRefs.current = [...Array(90).keys()].map((_, i) => scrollRefs.current[i] ?? createRef())
-  // const scrollSmoothHandler = (index) => () => {
-  //   scrollRefs.current[index].current.scrollIntoView({behavior: "smooth"});
-  // }
-  //
-  // const location = useLocation()
-  // useEffect(() => {
-  //   const UpdateLocation = () => {
-  //     const hash = location.hash.substring(1);
-  //     if (!hash) return;
-  //     const [mainSection, ...subAnchors] = hash.split(",")
-  //     if (mainSection) {
-  //       const mainElement: [Clazz] = elements.filter((e) => e.id === mainSection)
-  //       if (mainElement) {
-  //         setSelected(mainElement[0])
-  //         const scrolls = []
-  //         let idx = 0
-  //         let previousLevel = 0
-  //         mainElement[0].classFeature.map((feature) => {
-  //           idx = previousLevel === feature.level ? idx + 1 : 0
-  //           scrolls.push(`${feature.level - 1}-${idx}`)
-  //           previousLevel = feature.level
-  //         })
-  //         scrollRefs.current = [...Array(scrolls.length).keys()].map((_, i) => scrollRefs.current[scrolls[i]] ?? createRef())
-  //         // let subClassToggle = {}
-  //         // console.log(mainElement[0].s)
-  //         // mainElement[0].subclasses.map((subClass) => {
-  //         //   subClassToggle[subClass.name] = subClass.selectedByDefault ?? false
-  //         // })
-  //         // setSubclassSelected(subClassToggle)
-  //       }
-  //     }
-  //     subAnchors.forEach((subAnchor) => {
-  //       const [typeAndName, value] = subAnchor.split("=")
-  //       const [type, name] = typeAndName.split(":")
-  //       if (type === "state" && name === "feature") {
-  //         const targetElement = document.querySelectorAll(`[data-scroll-id="${value}"]`)
-  //         if (targetElement) {
-  //           scrollSmoothHandler(value)
-  //         }
-  //       }
-  //
-  //     })
-  //   }
-  //   UpdateLocation()
-  // }, [location])
-  //
-  // function setSelectFromHash() {
-  //   const filtered = elements.find((e) => "#" + e.id === window.location.hash)
-  //   if (filtered) {
-  //     return filtered
-  //   } else {
-  //     return {}
-  //   }
-  // }
 
   const [refs: [RefObject], setRefs] = useState([])
 
@@ -107,273 +27,8 @@ export const Dnd5eClasses = () => {
     handleClickSelection, updateSortElementsState,
     TableHeader, DisplayList, DetailsHeader, TempFilters
   } = Selector5e(classes, columns, "info.name");
-  // console.log("classes", elements)
 
   const {toggleStateChange, getToggleState, addToggleableState} = ToggleState()
-
-  //
-  //
-  // const DetailsHeader = () => {
-  //   return <tr>
-  //     <th className="stats__th-name ve-text-left pb-0 " colSpan="6" data-name="Goblin"
-  //         data-page="races.html" data-source="MPMM" data-hash="goblin_mpmm">
-  //       <div className="split-v-end">
-  //         <div className="ve-flex-v-center">
-  //           <h1 className="stats__h-name copyable m-0"
-  //             // onMouseDown="event.preventDefault()"
-  //             // onClick="Renderer.utils._pHandleNameClick(this)"
-  //           >{selected.name}</h1>
-  //         </div>
-  //         <div className="stats__wrp-h-source  ve-flex-v-baseline">
-  //           <a href={"book.html#" + selected.source + ",page:" + selected.page}
-  //              className={"help-subtle stats__h-source-abbreviation source__" + selected.source}
-  //              title={getSourceName(selected.source)}>{selected.source}</a>
-  //           <a href={"book.html#" + selected.source + ",page:" + selected.page} className="rd__stats-name-page ml-1"
-  //              title={"Page" + selected.page}>p{selected.page}</a>
-  //         </div>
-  //       </div>
-  //     </th>
-  //   </tr>
-  // }
-  //
-  // function setSelectFromHash() {
-  //   const filtered = elements.filter((e) => "#" + e.id === window.location.hash.split(",")[0])
-  //   if (filtered.length > 0) {
-  //     // console.log("filtered", filtered[0])
-  //     return filtered[0]
-  //   } else {
-  //     return elements[0]
-  //   }
-  // }
-  //
-  // function getSourceName(source) {
-  //   switch (source) {
-  //     case "PHB'14":
-  //       return "Player's Handbook (2014)"
-  //     case "VGM":
-  //       return "Volo’s Guide to Monsters"
-  //     case "EEPC":
-  //       return "Elemental Evil Player’s Companion"
-  //     case "ERLW":
-  //       return "Eberron: Rising from the Last War"
-  //     case "TCE":
-  //       return "Tasha’s Cauldron of Everything"
-  //     default:
-  //       return ""
-  //   }
-  // }
-  //
-  // const buildSpells = (maxSpellLevel) => {
-  //   const obj = [];
-  //   for (let i = 1; i <= maxSpellLevel; i++) {
-  //     obj.push(<th className="cls-tbl__col-generic-center">
-  //       <Link to={"spell#blankhash,lvl:" + i + "=1,class:" + selected.id + "=1"}>{i}</Link>
-  //     </th>)
-  //   }
-  //   return obj
-  // }
-  //
-  // const tableContent = (table, columns) => {
-  //   while (table.length < 20) {
-  //     table.push([])
-  //   }
-  //   return table.map((line, lineIdx) => {
-  //     while (line.length < columns) {
-  //       line.push("")
-  //     }
-  //     return <tr className="cls-tbl__stripe-odd">
-  //       <td className="cls-tbl__col-level">{lineIdx === 0 ? (lineIdx + 1) + "er" : (lineIdx + 1) + "e"}</td>
-  //       <td className="cls-tbl__col-level">{"+" + Math.ceil(1 + (lineIdx + 1) / 4)}</td>
-  //
-  //       {line.map((cell, nb) => {
-  //         if (!cell) {
-  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>—</td>
-  //         } else if (typeof (cell) === typeof ("") || typeof (cell) === typeof (0)) {
-  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>{cell}</td>
-  //         } else if (typeof (cell) === typeof ([])) {
-  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>{cell.map((link, idx) => {
-  //             return <>
-  //               <div className="inline-block">
-  //                 <Link to={"#" + selected.id + ",state:s" + lineIdx + "-" + idx}>{link}</Link>
-  //               </div>
-  //               {idx === cell.length - 1 ? "" : ", "}
-  //             </>
-  //           })}</td>
-  //         } else {
-  //           return <td className={nb !== 0 ? "cls-tbl__col-generic-center" : ""}>
-  //             <Link to={"#" + selected.id + ",state:s" + lineIdx + "-0"}>{cell}</Link>
-  //           </td>
-  //         }
-  //       })}
-  //     </tr>
-  //   })
-  // }
-  //
-  //
-  // function getClassFeatures(withSubClass: boolean = false) {
-  //   const entries: [Feature] = []
-  //   const features = []
-  //   selected.class[0].classFeatures.map((feature) => {
-  //     if (feature.gainSubclassFeature) {
-  //       const [featureName, className, classSource, level] = feature.classFeature.split("|")
-  //       entries.push(findFeatureInClass(feature.classFeature))
-  //       if (withSubClass) {
-  //         selected.subclass.map((subclass) => {
-  //           const subFeature = subclass.subclassFeatures.find((subFeature) => subFeature.endsWith(feature.classFeature.replace(/\D+/g, "")))
-  //           entries.push(findFeatureInClass(subFeature))
-  //         })
-  //       }
-  //     } else {
-  //       entries.push(findFeatureInClass(feature))
-  //     }
-  //   })
-  //   return entries
-  // }
-  //
-
-  //
-  // function renderFeatureTable(){
-  //   const features = []
-  //   return features
-  // }
-  //
-  // function renderFeaturesTOC() {
-  //   const features = getClassFeatures(true)
-  //   const elements = []
-  //   features.map((feature) => {
-  //     let style = `cls-nav__item cls-nav__item--depth-${feature.header ?? 1}${feature.subclassShortName ? " cls-nav__item--feature-subclass" : ""}`
-  //     elements.push(<div className={style}>{feature.name}</div>)
-  //     feature.entries.map((entry) => {
-  //       if (!entry.type) return
-  //       // console.log(entry)
-  //       switch (entry.type) {
-  //         case "entries": {
-  //           if (feature.subclassShortName) return
-  //           style = `cls-nav__item cls-nav__item--depth-2${feature.subclassShortName ? " cls-nav__item--feature-subclass" : ""}`
-  //           elements.push(<div className={style}>{entry.name}</div>)
-  //           break
-  //         }
-  //         case "refClassFeature": {
-  //           const subFeature = findFeatureInClass(entry.classFeature)
-  //           style = `cls-nav__item cls-nav__item--depth-2`
-  //           elements.push(<div className={style}>{subFeature.name}</div>)
-  //           break
-  //         }
-  //         case "refSubclassFeature": {
-  //           const subFeature = findFeatureInClass(entry.subclassFeature)
-  //           style = `cls-nav__item cls-nav__item--depth-2 cls-nav__item--feature-subclass`
-  //           elements.push(<div className={style}>{subFeature.name}</div>)
-  //           break
-  //         }
-  //       }
-  //     })
-  //   })
-  //   return elements
-  // }
-  // function featureDetails() {
-  //   const features = getClassFeatures(true)
-  //   let firstSubClassLevel = 20
-  //   features.map((feature) => {
-  //     if (feature.subclassShortName && feature.level < firstSubClassLevel) firstSubClassLevel = feature.level
-  //   })
-  //   const elements = []
-  //   features.map((feature) => {
-  //     if (feature.subclassShortName) {
-  //       elements.push(<tr className="cls-main__linked-titles">
-  //         <td colSpan={6}>
-  //           <div className="rd__b rd__b--1 cls__feature-subclass">
-  //             <Toggle>
-  //               <h2 className="rd__h rd__h--1">
-  //                   <span
-  //                     className="entry-title-inner">{firstSubClassLevel !== feature.level ? <>{feature.subclassShortName}:
-  //                     Niveau {feature.level}: </> : ""}{feature.name}</span>
-  //                 <span className="ve-flex-vh-center">
-  //                   <span className="rd__title-link ">
-  //                     <span className="help-subtle" title={getSourceName(feature.source)}>
-  //                       {feature.source}
-  //                     </span>
-  //                     {feature.page}
-  //                   </span>
-  //                 <span className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
-  //                       data-rd-h-toggle-button="true">[–]</span>
-  //               </span>
-  //               </h2>
-  //               {formatEntries(feature.entries)}
-  //             </Toggle>
-  //           </div>
-  //         </td>
-  //       </tr>)
-  //     } else {
-  //       elements.push(<tr className="cls-main__sc-feature">
-  //         <td colSpan={6}>
-  //           <div className="rd__b rd__b--1">
-  //             <Toggle>
-  //               <h2 className="rd__h rd__h--1">
-  //                 <span className="entry-title-inner">Niveau {feature.level}: {feature.name}</span>
-  //                 <span className="ve-flex-vh-center"> <span className="rd__title-link ">
-  //                 <span className="help-subtle"
-  //                       title={getSourceName(feature.source)}>{feature.source}</span> {feature.page}</span>
-  //                 <span className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
-  //                       data-rd-h-toggle-button="true">[–]</span>
-  //               </span>
-  //               </h2>
-  //               {formatEntries(feature.entries)}
-  //             </Toggle>
-  //           </div>
-  //         </td>
-  //       </tr>)
-  //     }
-  //     // feature.entries.map((entry) => {
-  //     //   if (!entry.type) return
-  //     //   // console.log(entry)
-  //     //   switch (entry.type) {
-  //     //     case "entries": {
-  //     //       if (feature.subclassShortName) return
-  //     //       style = `cls-nav__item cls-nav__item--depth-2${feature.subclassShortName ? " cls-nav__item--feature-subclass" : ""}`
-  //     //       elements.push(<div className={style}>{entry.name}</div>)
-  //     //       break
-  //     //     }
-  //     //     case "refClassFeature": {
-  //     //       const subFeature = findFeatureInClass(entry.classFeature)
-  //     //       style = `cls-nav__item cls-nav__item--depth-2`
-  //     //       elements.push(<div className={style}>{subFeature.name}</div>)
-  //     //       break
-  //     //     }
-  //     //     case "refSubclassFeature": {
-  //     //       const subFeature = findFeatureInClass(entry.subclassFeature)
-  //     //       style = `cls-nav__item cls-nav__item--depth-2 cls-nav__item--feature-subclass`
-  //     //       elements.push(<div className={style}>{subFeature.name}</div>)
-  //     //       break
-  //     //     }
-  //     //   }
-  //     // })
-  //   })
-  //   return elements
-  // }
-
-  // function renderFeature(){
-  //   const features = getClassFeatures(true)
-  //   const element = []
-  //   let oldLevel = -1
-  //   let idSameLevel = 0
-  //   features.map((feature, idx)=>{
-  //     if (oldLevel===feature.level){
-  //       idSameLevel++
-  //     }else{
-  //       oldLevel=feature.level
-  //       idSameLevel = 0
-  //     }
-  //     element.push(<tr data-scroll-id={feature.level-1+"-"+idSameLevel} className="cls-main__linked-titles">
-  //       <td colSpan={6}>
-  //         <div className="rd__b rd__b--1">
-  //           <h2 className="rd__h rd__h--1">{feature.name}</h2>
-  //         </div>
-  //       </td>
-  //     </tr>)
-  //   })
-  //   return element
-  // }
-  // console.log(elements)
 
   //TODO:
   // [x] Liste de selection de classe,
@@ -400,10 +55,6 @@ export const Dnd5eClasses = () => {
       })
     } else if (values.length === 6) {
       const [featureName, className, classSource, subClassName, subClassSource, level] = values
-      // console.log(featureName, className, classSource, subClassName, subClassSource, level)
-      // console.log("-------------------------------------------------------------")
-      // console.log(featureName, className, classSource, subClassName, subClassSource, level)
-      // console.log(selectedClass.subclassFeatures)
       return selectedClass.subclassFeatures.find((feature) => {
         return (
           feature.name === featureName &&
@@ -441,8 +92,6 @@ export const Dnd5eClasses = () => {
     const isTitle = header === 1;
 
     addToggleableState(featureStringId)
-    // console.log(featureObject)
-    // console.log(featureStringId, featureObject)
 
     return <tr className="cls-main__linked-titles">
       <td colSpan={6}>
@@ -452,11 +101,9 @@ export const Dnd5eClasses = () => {
           <h2 className={"rd__h rd__h--" + (featureObject?.header ?? header)}
               onClick={(event) => {
                 navigator.clipboard.writeText(featureName)
-                // .then($utils(event.target))
               }}
           >
             <span className="entry-title-inner">
-              {/*{featureLevel + "-" + nbFeatureThisLevel + (nbTitle ? "-" + nbTitle : "")}*/}
               {featureObject?.subclassShortName ?
                 (
                   featureObject.header ?
@@ -493,39 +140,7 @@ export const Dnd5eClasses = () => {
     let currentLevel = 0
     return selectedClass.info.classFeatures.map(feature => {
       const featureLevel = (feature.classFeature ?? feature).split("|").pop()
-      // if (currentLevel === featureLevel) {
-      //   nbFeatureThisLevel++
-      // } else {
-      //   currentLevel = featureLevel
-      //   nbFeatureThisLevel = 0
-      // }
-      // addToggleableState(selectedClass.id + "-feature-" + featureName)
       let detailsList = [];
-      // const featureObject = findFeatureInClass(feature.classFeature ?? feature)
-      // detailsList.push(<tr className="cls-main__linked-titles">
-      // <td colSpan={6}>
-      //     <div className="rd__b rd__b--1">
-      //       <h2 className="rd__h rd__h--1">
-      //         <span className="entry-title-inner">Niveau {featureLevel}: {featureName}</span>
-      //         <span className="ve-flex-vh-center">
-      //                     <span className="rd__title-link ">
-      //                     <span className="help-subtle" title={Parser.SOURCE_JSON_TO_FULL[sourceName]}>
-      //                       {sourceName}
-      //                     </span> p{0}
-      //                   </span>
-      //                     <span
-      //                       className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
-      //                       onClick={() => toggleStateChange(selectedClass.id + "-feature-" + featureName)}
-      //                     >
-      //                       [{getToggleState(selectedClass.id + "-feature-" + featureName) ? "–" : "+"}]
-      //                     </span>
-      //                   </span>
-      //       </h2>
-      //       {featureObject ? "" : <p>Unable to find {feature.classFeature ?? feature}</p>}
-      //       {getToggleState(selectedClass.id + "-feature-" + featureName) && renderContent(featureObject?.entries)}
-      //     </div>
-      //   </td>*/
-      // </tr>)
       detailsList.push(renderFeature(feature.classFeature ?? feature))
 
       if (feature.gainSubClassFeature) {
@@ -535,40 +150,6 @@ export const Dnd5eClasses = () => {
             const subclassfeatureLevel = subclassFeature.split("|").pop()
             if (featureLevel === subclassfeatureLevel) {
               detailsList.push(renderFeature(subclassFeature))
-              // let subclassFeatureToggle = selectedClass.id + "-subclass-" + subclass.shortName + "-feature-" + featureName;
-              // addToggleableState(subclassFeatureToggle)
-              // const featureObject = findFeatureInClass(subclassFeature)
-              // detailsList.push(
-              //   <tr className="cls-main__linked-titles">
-              //     <td colSpan={6}>
-              //       <div className={"rd__b rd__b--" + (featureObject.header ?? 1) + " cls__feature-subclass"}>
-              //         <h2 className={"rd__h rd__h--" + (featureObject.header ?? 1)}>
-              //                     <span className="entry-title-inner">
-              //                       {featureObject.header ?
-              //                         subclass.name + ": Niveau " + subclassfeatureLevel + ": " + subclassFeatureName :
-              //                         subclassFeatureName
-              //                       }
-              //                     </span>
-              //           <span className="ve-flex-vh-center">
-              //                       <span className="rd__title-link ">
-              //                         <span className="help-subtle" title={Parser.SOURCE_JSON_TO_FULL[subclassSource]}>
-              //                         {subclassSource}
-              //                       </span> p{0}
-              //                       </span>
-              //                       <span
-              //                         className="rd__h-toggle ml-2 clickable no-select no-print lst-is-exporting-image__hidden"
-              //                         onClick={() => toggleStateChange(subclassFeatureToggle)}
-              //                       >
-              //                         [{getToggleState(subclassFeatureToggle) ? "–" : "+"}]
-              //                       </span>
-              //                     </span>
-              //         </h2>
-              //         {featureObject ? "" : <p>Unable to find {subclassFeature}</p>}
-              //         {getToggleState(subclassFeatureToggle) && renderContent(featureObject?.entries)}
-              //       </div>
-              //     </td>
-              //   </tr>
-              // )
             }
           })
         })
@@ -583,8 +164,6 @@ export const Dnd5eClasses = () => {
     const [featureName, featureClass, featureSource, featureLevel] = feature.split("|")
 
     const featureObject = findFeatureInClass(feature)
-    // console.log(featureObject)
-    // console.log(depth)
 
     return <div
       ref={refs[feature]}
@@ -596,18 +175,15 @@ export const Dnd5eClasses = () => {
         </span>
       </h3>
       {featureObject ? "" : <p>Unable to find {feature}</p>}
-      {/*{console.log(featureObject?.entries)}*/}
       {getToggleState(feature) && RenderModule(props).render(featureObject?.entries, ++depth, feature)}
     </div>
 
   }
 
   function renderRefSubclassFeature(feature, depth) {
-    // console.log(feature)
     const [featureName, _, __, subclassName, featureSource, featureLevel] = feature.split("|")
 
     const featureObject = findFeatureInClass(feature)
-    // console.log(featureObject)
 
 
     return <div
@@ -615,7 +191,6 @@ export const Dnd5eClasses = () => {
       className={"rd__b rd__b--2" + (featureObject?.subclassShortName ? " cls__feature-subclass" : "")}>
       <h3 className="rd__h rd__h--2">
             <span className="entry-title-inner">
-              {/*{featureLevel + "-" + nbFeatureThisLevel + (nbTitle ? "-" + nbTitle : "")}*/}
               {featureObject?.subclassShortName ?
                 "Niveau " + featureLevel + ": " + featureName : ""
               }
@@ -642,7 +217,6 @@ export const Dnd5eClasses = () => {
   }
 
   function renderEntry(feature, toggle, depth) {
-    // console.log(feature, toggle, depth)
     if (depth === 3) {
       return <div className={"rd__b rd__b--3"}>
         <p>
@@ -667,14 +241,6 @@ export const Dnd5eClasses = () => {
     // console.log(selected)
     const newRefs = {}
     if (selectedClass?.classFeatures) {
-      let nbFeatureThisLevel = 0
-      let currentLevel = 0
-      // const classFeatures = selectedClass?.classFeatures.toSorted((a, b) => {
-      //   return a.level < b.level ? -1 : a.level > b.level ? 1 : 0
-      // })
-      // const subclassFeatures = selectedClass?.subclassFeatures.toSorted((a, b) => {
-      //   return a.level < b.level ? -1 : a.level > b.level ? 1 : 0
-      // })
       selectedClass?.info.classFeatures?.map(feature => {
         newRefs[feature.classFeature ?? feature] = newRefs[feature.classFeature ?? feature] ?? createRef()
         getTitles(findFeatureInClass(feature.classFeature ?? feature)).map(subFeature => {
@@ -699,7 +265,6 @@ export const Dnd5eClasses = () => {
 
   function getTitles(feature: Feature) {
     const titles = []
-    // console.log(feature)
     feature?.entries.map(entry => {
       if (entry.type && entriesTypeTitle.includes(entry.type)) {
         titles.push(entry.name ?? entry.subFeature ?? ("UnableToFind:" + entry.type))
@@ -714,7 +279,6 @@ export const Dnd5eClasses = () => {
   }
   const location = useLocation()
 
-  // console.log('class',selectedClass)
   return (<main className="container classes">
       <div className="row">
         <div className="col-md-3" id="listcontainer">
@@ -787,7 +351,6 @@ export const Dnd5eClasses = () => {
                     {featurePerLevel.length === 0 ? "—" : selectedClass.info.classFeatures.map((feature, idx) => {
                       const [featureName, className, sourceName, featureLevel] = (feature.classFeature ?? feature).split("|")
                       const currentFeature = featurePerLevel.indexOf(featurePerLevel.find(f => featureName === f[0]))
-                      // console.log("feature", featureName, "|", Number(featureLevel), Number(featureLevel) === level + 1, featureLevel)
                       if (Number(featureLevel) === level + 1) {
                         return <div className="inline-block"
                                     onClick={() => executeScroll(feature.classFeature ?? feature)}>
@@ -885,7 +448,6 @@ export const Dnd5eClasses = () => {
                     </span>
                       </div>
                       {(selectedClass.info.proficiencies.weapon) ? <>
-                        {/*<div className="py-2 w-100"></div>*/}
                         <div>
                           <b>Armes: </b>
                           <span>
@@ -898,7 +460,6 @@ export const Dnd5eClasses = () => {
                       </span>
                         </div>
                       </> : ""}
-                      {/*<div className="py-2 w-100"></div>*/}
                       <div>
                         <b>Outils: </b>
                         <span>
@@ -918,7 +479,6 @@ export const Dnd5eClasses = () => {
                         </div>
                       </> : ""}
                       {(selectedClass.info.proficiencies.skills) ? <>
-                        {/*<div className="py-2 w-100"></div>*/}
                         <div><b>Compétences :</b>
                           <span>
                         {selectedClass.info.proficiencies.skills.any ?
@@ -1060,14 +620,12 @@ export const Dnd5eClasses = () => {
                       </div>
                     )
                   })
-                  // console.log(feature,feature.gainSubClassFeature)
 
                   if (feature.gainSubClassFeature) {
                     selectedClass.subclasses.map((subclass) => {
                       if (!getToggleState(selectedClass.id + "-subclass-" + subclass.shortName)) return
                       subclass.subclassFeatures.map((subclassFeature) => {
                         const [subclassFeatureName, subclassClassName, subclassSourceName, subclassName, subclassSource, subclassfeatureLevel] = subclassFeature.split("|")
-                        // console.log(subclassFeature, featureLevel === subclassfeatureLevel)
                         if (featureLevel === subclassfeatureLevel) {
                           featureList.push(
                             <div className={"cls-nav__item cls-nav__item--depth-"
@@ -1092,7 +650,6 @@ export const Dnd5eClasses = () => {
                       })
                     })
                   }
-                  // console.log(feature, featureList)
                   return featureList
                 })}
               </div>
@@ -1160,8 +717,6 @@ export const Dnd5eClasses = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               {renderFeatures()}
-              {/*{featureDetails()}*/}
-              {/*{formatSubFeature()}*/}
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>

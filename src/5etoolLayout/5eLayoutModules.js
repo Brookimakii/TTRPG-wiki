@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
 import type {Entry} from "../layout/5e/Models";
-import {getResource, Resources} from "../ResourcesFetch";
+import {getResource, Resources} from "../resources/ResourcesFetch";
 import {PlayerOptionNFeature} from "../layout/5e/Models";
 
 Object.byString = function (o, s) {

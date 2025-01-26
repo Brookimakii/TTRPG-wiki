@@ -1,7 +1,7 @@
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
 import {Parser} from "../../layout/5e/js/parser";
-import {getResource, Resources} from "../../ResourcesFetch";
+import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {Entry, Spell} from "../../layout/5e/Models";
 
 function tableDisplayOption(column, string, element) {

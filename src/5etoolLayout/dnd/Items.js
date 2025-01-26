@@ -1,5 +1,5 @@
 import {Parser} from "../../layout/5e/js/parser";
-import {getResource, Resources} from "../../ResourcesFetch";
+import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
 import type {Item} from "../../layout/5e/Models";
@@ -163,7 +163,7 @@ export const Dnd5eItems = () => {
     ].sort()
   }
 
-  Object.entries(casterObj).map(([path, list], idx) => {
+  Object.entries(casterObj).forEach(([path, list], idx) => {
     list.map(element => casters[element] = path)
   })
   // console.log(casters)

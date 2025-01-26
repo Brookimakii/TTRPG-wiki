@@ -1,35 +1,7 @@
-import {createBrowserRouter, Link, Outlet} from "react-router-dom";
-import Home from "../pages/Home";
-import {PlayerGuide, Resources, Rules} from "../pages/dnd/DnD";
-import DnDHome from "../pages/dnd/DnDHome";
-import {
-  BackgroundDetail,
-  ClassDetail,
-  EquipmentDetail,
-  FeatDetails,
-  RacesDetail,
-  Spells
-} from "../pages/dnd/chara crea/Details";
+import {createBrowserRouter, Link} from "react-router-dom";
 import React from "react";
 import {Layout5e, Layout5eHome, LayoutHeader, LayoutSystemSelection} from "../5etoolLayout/5eLayout";
-import {
-  Aventure,
-  Caracteristique,
-  CharacterCreation,
-  Combat,
-  Conditions,
-  FeatList,
-  Incantation,
-  Multiclass,
-  Personalisation,
-  PlayerBackground,
-  PlayerClasses,
-  PlayerEquipment,
-  PlayerRaces,
-  SpellList
-} from "../pages/dnd/chara crea/CharacterCreation";
 import {Dnd5eClasses} from "../5etoolLayout/dnd/Classes";
-import AideDD from "../pages/AideDD";
 import {Dnd5eSpells} from "../5etoolLayout/dnd/Spells";
 import {Dnd5eRaces} from "../5etoolLayout/dnd/Races";
 import {Dnd5eFeats} from "../5etoolLayout/dnd/Feats";
@@ -47,7 +19,6 @@ const routes = [
     id: "base",
     path: "",
     element: <>
-      <Link to="old">To AideDD Layout</Link><br/>
       <Link to="TTRPG-wiki">To 5e Layout</Link><br/>
       <Link to="tests">To test Layout</Link>
     </>,
@@ -55,231 +26,6 @@ const routes = [
   },
   {
     id: "homepage",
-    path: "/old",
-    element: <AideDD/>,
-    children: [
-      {
-        id: "home",
-        path: "",
-        element: <Home/>
-      },
-      {
-        id: "dnd-system-old",
-        path: "dnd",
-        element: <Outlet/>,
-        redirect: "dnd",
-        children: [
-          {
-            id: "dnd-home",
-            path: "",
-            element: <DnDHome/>
-          },
-          {
-            id: "rules",
-            path: "rules",
-            element: <Rules/>,
-            children: [
-              {
-                id: "rules.intro",
-                path: "",
-                element: <></>
-              }
-            ]
-          },
-          {
-            id: "player-guide",
-            path: "player",
-            element: <PlayerGuide/>,
-            children: [
-              {
-                id: "player.intro",
-                path: "",
-                element: <CharacterCreation/>
-              },
-              {
-                id: "races",
-                path: "races",
-                element: <Outlet/>,
-                children: [
-                  {
-                    id: "race-intro",
-                    path: "",
-                    element: <PlayerRaces/>,
-                    children: []
-                  },
-                  {
-                    id: "race-details",
-                    path: ":raceId",
-                    element: <RacesDetail/>,
-                    children: []
-                  },
-                ]
-              },
-              {
-                id: "class",
-                path: "classes",
-                element: <Outlet/>,
-                children: [
-                  {
-                    id: "class-intro",
-                    path: "",
-                    element: <PlayerClasses/>,
-                    children: []
-                  },
-                  {
-                    id: "class-details",
-                    path: ":classId",
-                    element: <ClassDetail/>,
-                    children: []
-                  }
-                ]
-              },
-              {
-                id: "backgrounds",
-                path: "backgrounds",
-                element: <Outlet/>,
-                children: [
-                  {
-                    id: "background-intro",
-                    path: "",
-                    element: <PlayerBackground/>,
-                    children: []
-                  },
-                  {
-                    id: "background-details",
-                    path: ":backgroundId",
-                    element: <BackgroundDetail/>,
-                    children: []
-                  }
-                ]
-              },
-              {
-                id: "equipments",
-                path: "equipments",
-                element: <Outlet/>,
-                children: [
-                  {
-                    id: "equipment-intro",
-                    path: "",
-                    element: <PlayerEquipment/>,
-                    children: []
-                  },
-                  {
-                    id: "equipment-details",
-                    path: ":equipementId",
-                    element: <EquipmentDetail/>,
-                    children: []
-                  }
-                ]
-              },
-              {
-                id: "incantation",
-                path: "incantation",
-                element: <Incantation/>,
-                children: []
-              },
-              {
-                id: "personalize",
-                path: "personalisation",
-                element: <Outlet/>,
-                children: [
-                  {
-                    id: "personalize-intro",
-                    path: "",
-                    element: <Personalisation/>,
-                    children: []
-                  },
-                  {
-                    id: "multiclass",
-                    path: "multiclassage",
-                    element: <Multiclass/>,
-                    children: []
-                  },
-                  {
-                    id: "feats",
-                    path: "dons",
-                    element: <Outlet/>,
-                    children: [
-                      {
-                        id: "feats-list",
-                        path: "",
-                        element: <FeatList/>,
-                        children: []
-                      },
-                      {
-                        id: "feats-details",
-                        path: ":featId",
-                        element: <FeatDetails/>,
-                        children: []
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                id: "abilities",
-                path: "caracteristique",
-                element: <Caracteristique/>,
-                children: []
-              },
-              {
-                id: "adventure",
-                path: "aventure",
-                element: <Aventure/>,
-                children: []
-              },
-              {
-                id: "combat",
-                path: "combat",
-                element: <Combat/>,
-                children: []
-              },
-              {
-                id: "spells",
-                path: "spells",
-                element: <Outlet/>,
-                children: [
-                  {
-                    id: "spell-intro",
-                    path: "",
-                    element: <SpellList/>,
-                    children: []
-                  },
-                  {
-                    id: "spell-details",
-                    path: ":spellId",
-                    element: <Spells/>,
-                    children: []
-                  }
-                ]
-              },
-              {
-                id: "conditions",
-                path: "conditions",
-                element: <Conditions/>,
-                children: []
-              }
-
-            ]
-          },
-          {
-            id: "resources",
-            path: "resources",
-            element: <Resources/>,
-            children: [
-              {
-                id: "resources-intro",
-                path: "",
-                element: <></>
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "tests",
     path: "/TTRPG-wiki",
     element: <LayoutHeader/>,
     children: [
@@ -378,7 +124,6 @@ const routes = [
 
 ]
 
-// export const router = createHashRouter(
 export const router = createBrowserRouter(
   routes
 )

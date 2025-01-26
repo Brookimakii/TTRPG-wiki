@@ -1,4 +1,4 @@
-import {getResource, Resources} from "../../ResourcesFetch";
+import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {Parser} from "../../layout/5e/js/parser";

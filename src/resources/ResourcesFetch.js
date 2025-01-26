@@ -1,13 +1,13 @@
-import spell from "./resources/dnd5e/spells.json"
-import item from "./resources/dnd5e/items.json"
-import feature from "./resources/dnd5e/features.json"
-import clazz from "./resources/dnd5e/classes.json"
-import race from "./resources/dnd5e/races.json"
-import background from "./resources/dnd5e/backgrounds.json"
-import bestiary from "./resources/dnd5e/bestiary.json"
-import feat from "./resources/dnd5e/feats.json"
-import condition from "./resources/dnd5e/conditions.json"
-import rule from "./resources/dnd5e/rules.json"
+import spell from "./dnd5e/spells.json"
+import item from "./dnd5e/items.json"
+import feature from "./dnd5e/features.json"
+import clazz from "./dnd5e/classes.json"
+import race from "./dnd5e/races.json"
+import background from "./dnd5e/backgrounds.json"
+import bestiary from "./dnd5e/bestiary.json"
+import feat from "./dnd5e/feats.json"
+import condition from "./dnd5e/conditions.json"
+import rule from "./dnd5e/rules.json"
 
 export class Resources {
 }
