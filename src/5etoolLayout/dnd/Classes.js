@@ -1,12 +1,10 @@
-import React, {createRef, useEffect, useRef, useState} from "react";
+import React, {createRef, RefObject, useEffect, useState} from "react";
 import {Parser} from "../../layout/5e/js/parser"
-import $utils, {RenderModule, Selector5e, ToggleState} from "../5eLayoutModules";
+import {RenderModule, Selector5e, ToggleState} from "../5eLayoutModules";
 import type {PlayerClass} from "../../layout/5e/Models";
 import {Feature} from "../../layout/5e/Models";
 import "../css/classes.css"
-import {RefObject} from "react";
 import {Link, useLocation} from "react-router-dom";
-import classes from "../../resources/classes.json";
 import {getResource, Resources} from "../../ResourcesFetch";
 
 

@@ -3,8 +3,7 @@ import {getResource, Resources} from "../../ResourcesFetch";
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
 import type {Item} from "../../layout/5e/Models";
-import {Armor, Entry, Weapon, WeaponProperty} from "../../layout/5e/Models";
-import classes from "../../resources/classes.json";
+import {Armor, Weapon, WeaponProperty} from "../../layout/5e/Models";
 
 export const Dnd5eItems = () => {
 

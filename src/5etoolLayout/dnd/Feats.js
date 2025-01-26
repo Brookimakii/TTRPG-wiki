@@ -47,7 +47,7 @@ export const Dnd5eFeats = () => {
     TableHeader, DisplayList, DetailsHeader, TempFilters
   } = Selector5e([...feat], columns, "name", tableDisplayOption);
 
-  console.log(feat)
+  // console.log(feat)
 
   const selectedFeat: PlayerFeat = {...selected}
 
