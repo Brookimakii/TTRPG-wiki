@@ -4903,6 +4903,13 @@ textarea.input-group-sm > .input-group-btn > .ve-btn {
   background-color: #337ab7;
 }
 
+.nav-pills > li.active > div,
+.nav-pills > li.active > div:focus,
+.nav-pills > li.active > div:hover {
+  color: #fff;
+  background-color: #337ab7;
+}
+
 .nav-stacked > li {
   float: none;
 }

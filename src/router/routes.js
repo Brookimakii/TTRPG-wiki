@@ -11,7 +11,7 @@ import {
   Spells
 } from "../pages/dnd/chara crea/Details";
 import React from "react";
-import {Layout5e, Layout5eHome} from "../5etoolLayout/5eLayout";
+import {Layout5e, Layout5eHome, LayoutHeader, LayoutSystemSelection} from "../5etoolLayout/5eLayout";
 import {
   Aventure,
   Caracteristique,
@@ -64,7 +64,7 @@ const routes = [
         element: <Home/>
       },
       {
-        id: "dnd-system",
+        id: "dnd-system-old",
         path: "dnd",
         element: <Outlet/>,
         redirect: "dnd",
@@ -281,72 +281,97 @@ const routes = [
   {
     id: "tests",
     path: "/TTRPG-wiki",
-    element: <Layout5e/>,
+    element: <LayoutHeader/>,
     children: [
+      {
+        id: "dnd-system",
+        path: "dnd5e",
+        element: <Layout5e title={"DnD 5e"} base={"/dnd5e"}/>,
+        children: [
+          {
+            id: "DnD5eHome",
+            path: "",
+            element: <Layout5eHome/>
+          },
+          {
+            id: "5eRaces",
+            path: "races",
+            element: <Dnd5eRaces/>,
+          },
+          {
+            id: "5eClasses",
+            path: "classes",
+            element: <Dnd5eClasses/>,
+          },
+          {
+            id: "5eFeat",
+            path: "feats",
+            element: <Dnd5eFeats/>,
+          },
+          {
+            id: "5eFeaturesOptions",
+            path: "optionsFeatures",
+            element: <Dnd5eOptionFeatures/>,
+          },
+          {
+            id: "5eBackgrounds",
+            path: "backgrounds",
+            element: <Dnd5eBackgrounds/>,
+          },
+          {
+            id: "5eItems",
+            path: "items",
+            element: <Dnd5eItems/>,
+          },
+          {
+            id: "5eSpells",
+            path: "spells",
+            element: <Dnd5eSpells/>,
+          },
+          {
+            id: "5eRules",
+            path: "rules",
+            element: <Dnd5eRules/>,
+          },
+          {
+            id: "5eConditions",
+            path: "conditions",
+            element: <Dnd5eCondition/>,
+          },
+          {
+            id: "5eBestiary",
+            path: "bestiary",
+            element: <Dnd5eBestiary/>,
+          },
+          {
+            id: "5eCheatsheet",
+            path: "cheatsheet",
+            element: <DnDCheatsheet/>,
+          }
+        ]
+      },
+      {
+        id: "pathfinder-system",
+        path: "pathfinder2e",
+        element: <Layout5e title={"Pathfinder 2e"} base={"/pathfinder2e"}/>,
+        children: [
+          {
+            id: "Pathfinder2eHome",
+            path: "",
+            element: <Layout5eHome/>
+          },
+        ]
+      },
+
       {
         id: "5eHome",
         path: "",
-        element: <Layout5eHome/>
+        element: <LayoutSystemSelection title={"System Selection"}/>
       },
       {
         id: "changelog",
         path: "changelog",
         element: <Changelog/>
-      },
-      {
-        id: "5eRaces",
-        path: "races",
-        element: <Dnd5eRaces/>,
-      },
-      {
-        id: "5eClasses",
-        path: "classes",
-        element: <Dnd5eClasses/>,
-      },
-      {
-        id: "5eFeat",
-        path: "feats",
-        element: <Dnd5eFeats/>,
-      },
-      {
-        id: "5eFeaturesOptions",
-        path: "optionsFeatures",
-        element: <Dnd5eOptionFeatures/>,
-      },
-      {
-        id: "5eBackgrounds",
-        path: "backgrounds",
-        element: <Dnd5eBackgrounds/>,
-      },
-      {
-        id: "5eItems",
-        path: "items",
-        element: <Dnd5eItems/>,
-      },
-      {
-        id: "5eSpells",
-        path: "spells",
-        element: <Dnd5eSpells/>,
-      },
-      {
-        id: "5eRules",
-        path: "rules",
-        element: <Dnd5eRules/>,
-      },
-      {
-        id: "5eConditions",
-        path: "conditions",
-        element: <Dnd5eCondition/>,
-      },
-      {
-        id: "5eBestiary",
-        path: "bestiary",
-        element: <Dnd5eBestiary/>,
-      },
-      {
-        id: "5eCheatsheet",
-        path: "cheatsheet",
-        element: <DnDCheatsheet/>,
       }
     ]
   }

@@ -201,6 +201,19 @@ body::-webkit-scrollbar {
   }
 }
 
+.page__nav-inner > li.active > div,
+.page__nav-inner > li.active > div:focus,
+.page__nav-inner > li.active > div:hover {
+  background-color: #006bc4;
+  border-top: 0;
+
+  @media screen and (width > #{vars.$width-screen-md}) {
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid #999;
+  }
+}
+
 .nav > li > a:focus,
 .nav > li > a:hover {
   background-color: rgb(0 0 0 / 10%);
