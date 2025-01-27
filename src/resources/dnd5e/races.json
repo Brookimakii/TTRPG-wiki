@@ -69,7 +69,13 @@
         "entries": []
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "../images/dnd5e/races/Aarakocra.png",
+        "name": "Aarakocra",
+        "caption": "A classic Aarakocra"
+      }
+    ],
     "source": "EEPC",
     "page": 5
   },

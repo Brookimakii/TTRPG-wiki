@@ -699,7 +699,7 @@ export const RenderModule = (props: {}) => {
 
   const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
     if (!entry) return;
-    console.log(entry, depth, toggle)
+    // console.log(entry, depth, toggle)
 
     if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
     else if (entry.type) {

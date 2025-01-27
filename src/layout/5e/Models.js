@@ -118,7 +118,11 @@ export class PlayerRace {
   }
   traits: [{}]
   info: [{}]
-  images: []
+  images: [{
+    url:string,
+    name:string,
+    caption:string,
+  }]
   subraces: [{
     id: string,
     name: string,

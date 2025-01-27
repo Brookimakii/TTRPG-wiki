@@ -181,7 +181,7 @@ export function Dnd5eRaces() {
                     <li key={"ability"} className="rd__li">
                       <p className="rd__p-list-item">
                         <span className="bold rd__list-item-name">Score de capacité:</span>
-                        {" " + selectedRace.bonus.split(";").map(att =>{
+                        {" " + selectedRace.bonus.split(";").map(att => {
                           const elem = att.trim().toLowerCase().split(" ");
                           return `${Parser.attAbvToFull(elem[0])} ${elem[1]}`
                         }).join(", ")}
@@ -372,7 +372,7 @@ export function Dnd5eRaces() {
               </tbody>
             </table>
           </TabPanel>
-          {selectedRace.images.length === 0 ?
+          {console.log(selectedRace.images)}
             <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
               <table className="w-100 stats">
                 <thead>
@@ -382,16 +382,21 @@ export function Dnd5eRaces() {
                 <DetailsHeader selectedRace={selectedRace}/>
                 </thead>
                 <tbody>
-                {selectedRace.images.map(image=><tr>
-                  <img src={image}/>
-                </tr>)}
-                <tr>
+                {selectedRace.images.map(image => {
+                  console.log(image)
+                  return <tr>
+                    <th colSpan="6">
+                      <img src={image.url} alt={image.name}/>
+                      <h5>{image.caption}</h5>
+                    </th>
+                  </tr>
+                })}
+                  <tr>
                   <th className="ve-tbl-border" colSpan="6"></th>
                 </tr>
                 </tbody>
               </table>
-            </TabPanel> : ""
-          }
+            </TabPanel>
         </Tabs>
       }
     </div>
