@@ -1609,7 +1609,7 @@
         "entries": [
           "En commençant quand vous choisissez ce chemin au 3ème niveau, quand vous entrez dans votre rage, vous pouvez vous transformer, révélant le pouvoir bestial en vous. Jusqu’à la fin de la rage, vous manifestez une arme naturelle. Il compte comme une arme de mêlée simple pour vous, et vous ajoutez votre modificateur de force à l’attaque et les dégâts roule lorsque vous attaquez avec elle, comme d’habitude.",
           "Vous choisissez la forme de l’arme chaque fois que vous rage:**Morsure.",
-"** Votre bouche se transforme en une muselière bestiale ou de grandes mandibules (votre choix). Il inflige 1d8 dommages perçants sur un coup. Une fois sur chacun de vos tours lorsque vous endommagez une créature avec cette morsure, vous retrouvez un nombre de points de frappe égal à votre bonus de compétence, à condition que vous avez moins de la moitié de vos points de frappe lorsque vous frappez.",
+"** Votre bouche se transforme en une muselière bestiale ou de grandes mandibules (votre choix). Il inflige 1d8 dommages perçants sur un coup. Une fois sur chacun de vos tours lorsque vous endommagez une créature avec cette morsure, vous retrouvez un nombre de points de frappe égal à votre bonus de maîtrise, à condition que vous avez moins de la moitié de vos points de frappe lorsque vous frappez.",
 "**Griffes.",
 "** Chacune de vos mains se transforme en une griffe, que vous pouvez utiliser comme une arme si elle est vide. Il inflige 1d6 coupant les dégâts sur un coup. Une fois sur chacun de vos tours lorsque vous attaquez avec une griffe en utilisant l’action Attack, vous pouvez faire une attaque supplémentaire de griffe dans le cadre de la même action.",
 "**Queue.",
@@ -1643,7 +1643,7 @@
         "header": 2,
         "entries": [
           "Au niveau 10, lorsque vous touchez une créature avec vos armes naturelles alors que vous êtes en rage, la bête en vous peut maudire votre cible avec une fureur enragée. La cible doit réussir un jet de sauvegarde de Sagesse (DD égal à 8 + votre modificateur de Constitution + votre bonus de maîtrise) ou subir l'un des effets suivants (au choix) :-La cible doit utiliser sa réaction pour effectuer une attaque au corps à corps contre une autre créature de votre choix que vous pouvez voir.-La cible subit 2d12 dégâts psychiques.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -1658,7 +1658,7 @@
         "header": 2,
         "entries": [
           "Au niveau 14, la bête en vous devient si puissante que vous pouvez répandre sa férocité sur les autres et gagner en résilience lorsqu'ils se joignent à votre chasse. Lorsque vous entrez dans votre rage, vous pouvez choisir un nombre d'autres créatures consentantes que vous pouvez voir dans un rayon de 9 mètres autour de vous égal à votre modificateur de Constitution (minimum d'une créature). Vous gagnez 5 points de vie temporaires pour chaque créature qui accepte cette fonctionnalité. Jusqu'à la fin de la rage, les créatures choisies peuvent utiliser l'avantage suivant une fois à chacun de leurs tours : lorsque la créature touche une cible avec un jet d'attaque et lui inflige des dégâts, la créature peut lancer un d6 et gagner un bonus aux dégâts égal à au nombre obtenu.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {},
@@ -2369,7 +2369,7 @@
         "source": "XGE",
         "page": 0,
         "subclassFeatures": [
-          "Bonus de compétence|Barde|PHB|Épée|XGE|3",
+          "bonus de maîtrise|Barde|PHB|Épée|XGE|3",
           "Style de combat|Barde|PHB|Épée|XGE|3",
           "Lame fleurit|Barde|PHB|Épée|XGE|3",
           "Attaque supplémentaire|Barde|PHB|Épée|XGE|6",
@@ -2681,7 +2681,7 @@
         "level": 6,
         "header": 2,
         "entries": [
-          "Au niveau 6, par une action, vous pouvez cibler un objet non magique de taille G ou inférieure que vous pouvez voir dans un rayon de 9 mètres autour de vous et l'animer. L'objet animé utilise le bloc de statistiques Dancing Item, qui utilise votre bonus de compétence (PB). L'objet est amical avec vous et vos compagnons et obéit à vos commandes. Il vit pendant 1 heure, jusqu'à ce qu'il soit réduit à 0 points de vie, ou jusqu'à ce que vous mouriez.",
+          "Au niveau 6, par une action, vous pouvez cibler un objet non magique de taille G ou inférieure que vous pouvez voir dans un rayon de 9 mètres autour de vous et l'animer. L'objet animé utilise le bloc de statistiques Dancing Item, qui utilise votre bonus de maîtrise (PB). L'objet est amical avec vous et vos compagnons et obéit à vos commandes. Il vit pendant 1 heure, jusqu'à ce qu'il soit réduit à 0 points de vie, ou jusqu'à ce que vous mouriez.",
           "En combat, l'objet partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. Il peut se déplacer et utiliser sa réaction de lui-même, mais la seule action qu'il effectue à son tour est l'action Esquiver, à moins que vous n'effectuiez une action bonus à votre tour pour lui ordonner d'effectuer une autre action. Cette action peut être une dans son bloc de statistiques ou une autre action. Si vous êtes incapable d'agir, l'objet peut effectuer n'importe quelle action de son choix, pas seulement Esquiver.",
           "Lorsque vous utilisez votre fonction Inspiration bardique, vous pouvez commander l'objet dans le cadre de la même action bonus que vous utilisez pour Inspiration bardique.",
           "Une fois que vous avez animé un objet avec cette capacité, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos long, à moins que vous ne dépensiez un emplacement de sort de niveau 3 ou supérieur pour utiliser à nouveau cette capacité. Vous ne pouvez avoir qu'un seul élément animé par cette fonctionnalité à la fois ; si vous utilisez cette action et que vous possédez déjà un élément dansant de cette fonctionnalité, le premier devient immédiatement inanimé.{{monster,frame## Object dançant*Créature atificiel grande ou petite*___**Classe d'armure:** :: 16 (armure naturelle)**Points de vie:**  :: 10 + 5 fois votre niveau de barde**Vitesse:**:: 9m, vol 9m (vol stationnaire).",
@@ -2814,7 +2814,7 @@
         ]
       },
       {
-        "name": "Bonus de compétence",
+        "name": "bonus de maîtrise",
         "source": "XGE",
         "page": 0,
         "className": "Barde",
@@ -5333,7 +5333,7 @@
         "header": 2,
         "entries": [
           "À partir du niveau 1, vous pouvez forger un lien stimulant entre des personnes en paix les unes avec les autres. Par une action, vous choisissez un nombre de créatures consentantes dans un rayon de 9 mètres autour de vous (cela peut vous inclure) égal à votre bonus de maîtrise. Vous créez un lien magique entre eux pendant 10 minutes ou jusqu'à ce que vous utilisiez à nouveau cette fonctionnalité. Tant qu'une créature liée se trouve à moins de 9 mètres d'une autre, la créature peut lancer un d4 et ajouter le nombre obtenu à un jet d'attaque, à un test de caractéristique ou à un jet de sauvegarde qu'elle effectue. Chaque créature ne peut pas ajouter le d4 plus d'une fois par tour.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -6626,9 +6626,9 @@
           {
             "type": "list",
             "entries": [
-              "Vous connaissez le sort mineur de {@spell Guidance}.",
-              "Vous avez préparé le sort {@spellen Guiding Bolt}. Il compte pour vous comme un sort de druide, et il ne compte pas dans le nombre de sorts que vous pouvez avoir préparés.",
-              "Vous pouvez lancer {@spellen Guiding Bolt} sans dépenser d'emplacement de sort. Vous pouvez le faire un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+              "Vous connaissez le sort mineur de {@spell Assistance}.",
+              "Vous avez préparé le sort {@spell Rayon traçant}. Il compte pour vous comme un sort de druide, et il ne compte pas dans le nombre de sorts que vous pouvez avoir préparés.",
+              "Vous pouvez lancer {@spell Rayon traçant} sans dépenser d'emplacement de sort. Vous pouvez le faire un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
             ]
           },
           "Si vous perdez la carte, vous pouvez effectuer une cérémonie d'une heure pour créer par magie un remplaçant. Cette cérémonie peut être effectuée pendant un repos court ou long, et elle détruit la carte précédente."
@@ -6645,7 +6645,7 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "Au niveau 2, vous gagnez la capacité d'exploiter le pouvoir des constellations pour modifier votre forme. En tant qu'action bonus, vous pouvez dépenser une utilisation de votre fonction Wild Shape pour prendre une forme étoilée, plutôt que de vous transformer en bête.",
+          "Au niveau 2, vous gagnez la capacité d'exploiter le pouvoir des constellations pour modifier votre forme. En tant qu'action bonus, vous pouvez dépenser une utilisation de votre fonction Forme Sauvage pour prendre une forme étoilée, plutôt que de vous transformer en bête.",
           "Sous votre forme étoilée, vous conservez vos statistiques de jeu, mais votre corps devient lumineux; vos articulations scintillent comme des étoiles et des lignes lumineuses les relient comme sur une carte du ciel. Cette forme diffuse une lumière vive dans un rayon de 3 mètres et une lumière tamisée sur 3 mètres supplémentaires. Cette Forme dure 10 minutes. Il se termine plus tôt si vous le rejetez (aucune action requise), êtes incapable, mourez ou utilisez à nouveau cette fonctionnalité.",
           "Chaque fois que vous assumez votre forme étoilée, choisissez laquelle des constellations suivantes scintille sur votre corps ; votre choix vous donne certains avantages sous la forme:",
           {
@@ -7012,9 +7012,9 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "Au niveau 2, vous pouvez invoquer l'esprit primal lié à votre âme. En tant qu'action, vous pouvez dépenser une utilisation de votre capacité Wild Shape pour invoquer votre esprit de feu de forêt, plutôt que de prendre une forme de bête.",
+          "Au niveau 2, vous pouvez invoquer l'esprit primal lié à votre âme. En tant qu'action, vous pouvez dépenser une utilisation de votre capacité Forme Sauvage pour invoquer votre esprit de feu de forêt, plutôt que de prendre une forme de bête.",
           "L'esprit apparaît dans un espace inoccupé de votre choix que vous pouvez voir à moins de 9 mètres de vous. Chaque créature à moins de 3 mètres de l'esprit (autre que vous) lorsqu'il apparaît doit réussir un jet de sauvegarde de Dextérité contre votre DD de sauvegarde contre les sorts ou subir 2d6 dégâts de feu.",
-          "L'esprit est amical avec vous et vos compagnons et obéit à vos ordres. Consultez les statistiques de jeu de cette créature dans le bloc de statistiques Wildfire Spirit, qui utilise votre bonus de compétence (PB) à plusieurs endroits. Vous déterminez l'apparence de l'esprit. Certains esprits prennent la forme d'une figure humanoïde faite de branches noueuses couvertes de flammes, tandis que d'autres ressemblent à des bêtes couronnées de feu.",
+          "L'esprit est amical avec vous et vos compagnons et obéit à vos ordres. Consultez les statistiques de jeu de cette créature dans le bloc de statistiques Wildfire Spirit, qui utilise votre bonus de maîtrise (PB) à plusieurs endroits. Vous déterminez l'apparence de l'esprit. Certains esprits prennent la forme d'une figure humanoïde faite de branches noueuses couvertes de flammes, tandis que d'autres ressemblent à des bêtes couronnées de feu.",
           "En combat, l'esprit partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. La seule action qu'il effectue à son tour est l'action Esquiver, à moins que vous n'utilisiez une action bonus à votre tour pour lui ordonner d'effectuer une autre action. Cette action peut être une dans son bloc de statistiques ou une autre action. Si vous êtes incapable d'agir, l'esprit peut entreprendre n'importe quelle action de son choix, pas seulement Esquiver.",
           "L'esprit se manifeste pendant 1 heure, jusqu'à ce qu'il soit réduit à 0 points de vie, jusqu'à ce que vous utilisiez cette capacité pour invoquer à nouveau l'esprit, ou jusqu'à ce que vous mouriez.{{monster,frame## Esprit de feu de forêt*petit Élémentaire*___**Classe d'armure:** :: 13 (armure naturelle)**Points de vie:**  :: 5 + cinq fois votre niveau de druide**Vitesse:**:: 9m, vol 9m (vol stationnaire).",
           "___|  FOR  |  DEX  |  CON  |  INT  |  SAG  |  CHA  ||:-----:|:-----:|:-----:|:-----:|:-----:|:-----:||10 (+0)|14 (+2)|14 (+2)|13 (+1)|15 (+2)|11 (+0)|___**Immunités aux dégâts:** :: feu**Immunités aux conditions:** :: charmé, effrayé, agrippé, à terre, retenu**Sens:**:: vision dans le noir 18 mètres, Perception passive 12**Langues:**:: comprend les langues que vous parlez**Défi:**:: ─**bonus de maîtrise (PB):**  :: égal à votre bonus de maîtrise___### Actions***Graine de Flamme.",
@@ -7297,7 +7297,7 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "Votre lien symbiotique avec les champignons et votre capacité à puiser dans le cycle de la vie et de la mort vous donnent accès à certains sorts. Au niveau 2, vous apprenez le sort mineur {@spellen Chill Touch}. Aux niveaux 3, 5, 7 et 9, vous accédez aux sorts répertoriés pour ce niveau dans le tableau des sorts du cercle des spores.",
+          "Votre lien symbiotique avec les champignons et votre capacité à puiser dans le cycle de la vie et de la mort vous donnent accès à certains sorts. Au niveau 2, vous apprenez le sort mineur {@spell Contact glacial}. Aux niveaux 3, 5, 7 et 9, vous accédez aux sorts répertoriés pour ce niveau dans le tableau des sorts du cercle des spores.",
           "Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et cela ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous accédez à un sort qui n'apparaît pas sur la liste des sorts du druide, le sort est néanmoins un sort de druide pour vous.",
           {
             "type": "table",
@@ -7308,8 +7308,8 @@
               "ve-col-10"
             ],
             "rows": [
-              ["2e", "{@spell Cécité/Surdité}, {@spellen Repos en douceur}"],
-              ["5e", "{@spellen Animer les morts}, {@spell forme gazeuse}"],
+              ["2e", "{@spell Cécité/Surdité}, {@spellen Doux Repos}"],
+              ["5e", "{@spell Animation des morts}, {@spell forme gazeuse}"],
               ["7e", "{@spellen Brûlure}, {@spellen Confusion}"],
               ["9e", "{@spellen Cloudkill}, {@spellen Contagion}"]
             ]
@@ -7341,7 +7341,7 @@
         "level": 2,
         "header": 2,
         "entries": [
-          "Toujours au niveau 2, vous gagnez la capacité de canaliser la magie dans vos spores. En tant qu'action, vous pouvez dépenser une utilisation de votre fonction Wild Shape pour réveiller ces spores, plutôt que de vous transformer en une forme de bête, et vous gagnez 4 points de vie temporaires pour chaque niveau que vous avez dans cette classe. Lorsque cette fonctionnalité est active, vous bénéficiez des avantages suivants :",
+          "Toujours au niveau 2, vous gagnez la capacité de canaliser la magie dans vos spores. En tant qu'action, vous pouvez dépenser une utilisation de votre fonction Forme Sauvage pour réveiller ces spores, plutôt que de vous transformer en une forme de bête, et vous gagnez 4 points de vie temporaires pour chaque niveau que vous avez dans cette classe. Lorsque cette fonctionnalité est active, vous bénéficiez des avantages suivants :",
           {
             "type": "list",
             "entries": [
@@ -7349,7 +7349,7 @@
               "Vos attaques au corps à corps avec une arme infligent 1d6 dégâts nécrotiques supplémentaires à toute cible touchée."
             ]
           },
-          "Ces avantages durent 10 minutes, jusqu'à ce que vous perdiez tous ces points de vie temporaires. ou jusqu'à ce que vous utilisiez à nouveau votre Wild Shape."
+          "Ces avantages durent 10 minutes, jusqu'à ce que vous perdiez tous ces points de vie temporaires. ou jusqu'à ce que vous utilisiez à nouveau votre Forme Sauvage."
         ]
       },
       {
@@ -8244,7 +8244,7 @@
         "entries": [
           "Les chevaliers de haut rang doivent se conduire avec grâce.",
           "Au niveau 7, vous maîtrisez la compétence Persuasion. Si vous la maîtrisez déjà, vous maîtrisez l'une des compétences suivantes de votre choix : manipulation d'animaux, perspicacité, intimidation ou performance.",
-          "Votre bonus de compétence est doublé pour tout test de capacité que vous effectuez et qui utilise Persuasion. Vous recevez cet avantage quelle que soit la compétence que vous gagnez grâce à cette fonctionnalité."
+          "Votre bonus de maîtrise est doublé pour tout test de capacité que vous effectuez et qui utilise Persuasion. Vous recevez cet avantage quelle que soit la compétence que vous gagnez grâce à cette fonctionnalité."
         ]
       },
       {
@@ -8390,7 +8390,7 @@
         "header": 2,
         "entries": [
           "Au niveau 3, vous pouvez utiliser une action bonus pour manifester par magie un écho de vous-même dans un espace inoccupé que vous pouvez voir à moins de 4,50 mètres de vous. Cet écho est une image magique, translucide et grise de vous qui dure jusqu'à ce qu'il soit détruit, jusqu'à ce que vous le rejetiez en tant qu'action bonus, jusqu'à ce que vous manifestiez un autre écho ou jusqu'à ce que vous soyez incapable d'agir.",
-          "Votre écho a une CA de 14 + votre bonus de compétence, 1 point de vie et une immunité à toutes les conditions. S'il doit faire un jet de sauvegarde, il utilise votre bonus de jet de sauvegarde pour le jet. Il fait la même taille que vous, et il occupe son espace. À votre tour, vous pouvez ordonner mentalement à l'écho de se déplacer jusqu'à 9 mètres dans n'importe quelle direction (aucune action requise). Si votre écho est à plus de 9 mètres de vous à la fin de votre tour, il est détruit.",
+          "Votre écho a une CA de 14 + votre bonus de maîtrise, 1 point de vie et une immunité à toutes les conditions. S'il doit faire un jet de sauvegarde, il utilise votre bonus de jet de sauvegarde pour le jet. Il fait la même taille que vous, et il occupe son espace. À votre tour, vous pouvez ordonner mentalement à l'écho de se déplacer jusqu'à 9 mètres dans n'importe quelle direction (aucune action requise). Si votre écho est à plus de 9 mètres de vous à la fin de votre tour, il est détruit.",
           "En tant qu'action bonus, vous pouvez vous téléporter, échangeant magiquement des places avec votre écho pour un coût de 15 pieds de votre mouvement, quelle que soit la distance entre vous deux.",
           "Lorsque vous effectuez l'action Attaquer à votre tour, toute attaque que vous faites avec cette action peut provenir de votre espace ou de l'espace de l'écho. Vous faites ce choix pour chaque attaque.",
           "Lorsqu'une créature que vous pouvez voir dans un rayon de 1,50 mètre autour de votre écho s'en éloigne d'au moins 1,50 mètre, vous pouvez utiliser votre réaction pour effectuer une attaque d'opportunité contre cette créature comme si vous étiez dans l'espace de l'écho."
@@ -8649,7 +8649,7 @@
         ]
       },
       {
-        "name": "Bonus de compétence",
+        "name": "bonus de maîtrise",
         "source": "TCE",
         "page": 0,
         "className": "Guerrier",
@@ -8711,7 +8711,7 @@
           "Si vous êtes plus petit que Grand, vous devenez Grand, avec tout ce que vous portez. Si vous n'avez pas la place de devenir Large, votre taille ne change pas.",
           "Vous avez l'avantage aux tests de Force et aux jets de sauvegarde de Force.",
           "Une fois à chacun de vos tours, une de vos attaques avec une arme ou une frappe à mains nues peut infliger 1d6 dégâts supplémentaires à une cible en cas de coup.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous en récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous en récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -8726,7 +8726,7 @@
         "header": 2,
         "entries": [
           "Au niveau 7, vous apprenez à invoquer votre magie runique pour protéger vos alliés. Lorsqu'une autre créature que vous pouvez voir dans un rayon de 18 mètres autour de vous est touchée par un jet d'attaque, vous pouvez utiliser votre réaction pour forcer l'attaquant à relancer le d20 et à utiliser le nouveau jet.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -8790,7 +8790,7 @@
         ]
       },
       {
-        "name": "Bonus de compétence",
+        "name": "bonus de maîtrise",
         "source": "XGE",
         "page": 0,
         "className": "Guerrier",
@@ -9218,7 +9218,7 @@
         ]
       },
       {
-        "name": "Bonus de compétence",
+        "name": "bonus de maîtrise",
         "source": "XGE",
         "page": 0,
         "className": "Guerrier",
@@ -13319,7 +13319,7 @@
         "header": 2,
         "entries": [
           "À partir du niveau 7, vous pouvez condenser une partie de votre essaim en une masse concentrée qui vous élève. Par une action bonus, vous gagnez une vitesse de vol de 3 mètres et pouvez planer. Cet effet dure 1 minute ou jusqu'à ce que vous soyez incapable d'agir.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -13356,7 +13356,7 @@
         "header": 2,
         "entries": [
           "Lorsque vous atteignez le niveau 15, vous pouvez vous dissocier de votre essaim, évitant ainsi le danger. Lorsque vous subissez des dégâts, vous pouvez utiliser votre réaction pour vous donner une résistance à ces dégâts. Vous disparaissez dans votre essaim, puis vous vous téléportez dans un espace inoccupé que vous pouvez voir à moins de 9 mètres de vous, où vous réapparaissez avec l'essaim.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {},
@@ -14720,7 +14720,7 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Lorsque vous choisissez cet archétype au niveau 3, vous gagnez la maîtrise des compétences Nature et Survie si vous ne la possédez pas déjà. Votre bonus de compétence est doublé pour tout test de compétence que vous effectuez et qui utilise l'une de ces compétences."
+          "Lorsque vous choisissez cet archétype au niveau 3, vous gagnez la maîtrise des compétences Nature et Survie si vous ne la possédez pas déjà. Votre bonus de maîtrise est doublé pour tout test de compétence que vous effectuez et qui utilise l'une de ces compétences."
         ]
       },
       {
@@ -15111,7 +15111,7 @@
         "header": 2,
         "entries": [
           "Au niveau 3, lorsque vous poussez quelqu'un plus près de la tombe, vous pouvez canaliser le pouvoir de la mort pour blesser également quelqu'un d'autre. Immédiatement après avoir infligé vos dégâts d'attaque sournoise à une créature pendant votre tour, vous pouvez cibler une deuxième créature que vous pouvez voir à 9 mètres ou moins de la première créature. Lancez la moitié du nombre de dés d'attaque sournoise pour votre niveau (arrondi au supérieur) et la deuxième créature subit des dégâts nécrotiques égaux au total du jet, tandis que les gémissements des morts retentissent autour d'eux pendant un moment.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -15126,7 +15126,7 @@
         "header": 2,
         "entries": [
           "Au niveau 9, lorsqu'une vie se termine en votre présence, vous pouvez arracher un jeton à l'âme qui s'en va, un morceau de son essence vitale qui prend une forme physique : en réaction lorsqu'une créature que vous pouvez voir meurt à moins de 9 mètres de vous, vous pouvez ouvrir votre main libre et y faire apparaître un Tiny trinket, un soul trinket. Le MD détermine la forme de la babiole ou vous fait lancer un dé sur la table des Babioles du Manuel des Joueurs pour la générer.",
-          "Vous pouvez avoir un nombre maximum de bibelots d'âme égal à votre bonus de compétence, et vous ne pouvez pas en créer un tant que vous êtes à votre maximum.",
+          "Vous pouvez avoir un nombre maximum de bibelots d'âme égal à votre bonus de maîtrise, et vous ne pouvez pas en créer un tant que vous êtes à votre maximum.",
           "Vous pouvez utiliser les bibelots d'âme des manières suivantes :",
           "Tant qu'un bijou d'âme est sur vous, vous avez un avantage sur les jets de sauvegarde contre la mort et les jets de sauvegarde de la Constitution, car votre vitalité est renforcée par l'essence de vie contenue dans l'objet.",
           "Lorsque vous infligez des dégâts d'attaque sournoise à votre tour, vous pouvez détruire l'un de vos bibelots d'âme qui se trouve sur vous, puis utiliser immédiatement Wails from the Grave, sans dépenser une utilisation de cette fonctionnalité.",
@@ -15923,7 +15923,7 @@
         "header": 2,
         "entries": [
           "À partir du niveau 1, votre connexion au plan de l'ordre absolu vous permet d'égaliser les moments chaotiques. Lorsqu'une créature que vous pouvez voir dans un rayon de 18 mètres autour de vous est sur le point de lancer un d20 avec avantage ou désavantage, vous pouvez utiliser votre réaction pour éviter que le jet ne soit affecté par l'avantage ou le désavantage.",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -16935,7 +16935,7 @@
         "classSource": "PHB",
         "level": "",
         "entries": [
-          "#### Explosion agonisantePrérequis : sort mineur Explosion occulteLorsque vous lancez Explosion occulte , ajoutez votre modificateur de Charisme aux dégâts qu'elle inflige en cas de touche.#### Arcane Gunslinger (UA:MM)Prérequis : fonction Pacte de la lameVous pouvez créer une arme de pacte qui est une arme de poing ou un bras long, et vous pouvez transformer une arme de poing ou un bras long magique en votre arme de pacte.#### Armure des ombresVous pouvez lancer Mage Armor sur vous-même à volonté, sans dépenser d'emplacement de sort ou de composants matériels.#### Étape ascendantePrérequis : niveau 9Vous pouvez lancer Lévitation sur vous-même à volonté, sans dépenser d'emplacement de sort ni de composants matériels.#### Aspect de la LunePrérequis : Fonction Pacte du tomeVous n'avez plus besoin de dormir et ne pouvez en aucun cas être forcé à dormir. Pour profiter des avantages d'un long repos, vous pouvez passer les 8 heures à faire des activités légères, comme lire votre Livre des Ombres et monter la garde.#### Discours de bêteVous pouvez lancer Parler aux animaux à volonté, sans dépenser d'emplacement de sort.#### Influence séduisanteVous maîtrisez les compétences Tromperie et Persuasion.#### Murmures envoûtantsPrérequis : niveau 7Vous pouvez lancer Compulsion une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Lien du TalismanPrérequis : niveau 12, capacité Pacte du talismanPendant que quelqu'un d'autre porte votre talisman, vous pouvez utiliser votre action pour vous téléporter vers l'espace inoccupé le plus proche de lui, à condition que vous soyez tous les deux sur le même plan d'existence. Le porteur de votre talisman peut faire la même chose, en utilisant son action pour se téléporter vers vous. La téléportation peut être utilisée un nombre de fois égal à votre bonus de compétence, et toutes les utilisations dépensées sont restaurées lorsque vous terminez un repos long.#### Livre des anciens secretsPrérequis : fonctionnalité Pacte du tomeVous pouvez désormais inscrire des rituels magiques dans votre Livre des ombres. Choisissez deux sorts de niveau 1 portant l'étiquette de rituel dans la liste de sorts de n'importe quelle classe (les deux ne doivent pas nécessairement appartenir à la même liste). Les sorts apparaissent dans le livre et ne comptent pas dans le nombre de sorts que vous connaissez. Avec votre Livre des Ombres en main, vous pouvez lancer les sorts choisis sous forme de rituels. Vous ne pouvez lancer les sorts qu'en tant que rituels, à moins que vous ne les ayez appris par d'autres moyens. Vous pouvez également lancer un sort de sorcier que vous connaissez comme un rituel s'il a l'étiquette de rituel.",
+          "#### Explosion agonisantePrérequis : sort mineur Explosion occulteLorsque vous lancez Explosion occulte , ajoutez votre modificateur de Charisme aux dégâts qu'elle inflige en cas de touche.#### Arcane Gunslinger (UA:MM)Prérequis : fonction Pacte de la lameVous pouvez créer une arme de pacte qui est une arme de poing ou un bras long, et vous pouvez transformer une arme de poing ou un bras long magique en votre arme de pacte.#### Armure des ombresVous pouvez lancer Mage Armor sur vous-même à volonté, sans dépenser d'emplacement de sort ou de composants matériels.#### Étape ascendantePrérequis : niveau 9Vous pouvez lancer Lévitation sur vous-même à volonté, sans dépenser d'emplacement de sort ni de composants matériels.#### Aspect de la LunePrérequis : Fonction Pacte du tomeVous n'avez plus besoin de dormir et ne pouvez en aucun cas être forcé à dormir. Pour profiter des avantages d'un long repos, vous pouvez passer les 8 heures à faire des activités légères, comme lire votre Livre des Ombres et monter la garde.#### Discours de bêteVous pouvez lancer Parler aux animaux à volonté, sans dépenser d'emplacement de sort.#### Influence séduisanteVous maîtrisez les compétences Tromperie et Persuasion.#### Murmures envoûtantsPrérequis : niveau 7Vous pouvez lancer Compulsion une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Lien du TalismanPrérequis : niveau 12, capacité Pacte du talismanPendant que quelqu'un d'autre porte votre talisman, vous pouvez utiliser votre action pour vous téléporter vers l'espace inoccupé le plus proche de lui, à condition que vous soyez tous les deux sur le même plan d'existence. Le porteur de votre talisman peut faire la même chose, en utilisant son action pour se téléporter vers vous. La téléportation peut être utilisée un nombre de fois égal à votre bonus de maîtrise, et toutes les utilisations dépensées sont restaurées lorsque vous terminez un repos long.#### Livre des anciens secretsPrérequis : fonctionnalité Pacte du tomeVous pouvez désormais inscrire des rituels magiques dans votre Livre des ombres. Choisissez deux sorts de niveau 1 portant l'étiquette de rituel dans la liste de sorts de n'importe quelle classe (les deux ne doivent pas nécessairement appartenir à la même liste). Les sorts apparaissent dans le livre et ne comptent pas dans le nombre de sorts que vous connaissez. Avec votre Livre des Ombres en main, vous pouvez lancer les sorts choisis sous forme de rituels. Vous ne pouvez lancer les sorts qu'en tant que rituels, à moins que vous ne les ayez appris par d'autres moyens. Vous pouvez également lancer un sort de sorcier que vous connaissez comme un rituel s'il a l'étiquette de rituel.",
           "Au cours de vos aventures, vous pouvez ajouter d'autres sorts rituels à votre Livre des Ombres. Lorsque vous trouvez un tel sort, vous pouvez l'ajouter au livre si le niveau du sort est égal ou inférieur à la moitié de votre niveau de démoniste (arrondi au supérieur) et si vous avez le temps de transcrire le sort. Pour chaque niveau du sort, le processus de transcription prend 2 heures et coûte 50 po pour les encres rares nécessaires pour l'inscrire.#### Chaînes de CarceriPrérequis : niveau 15, capacité Pacte de la chaîneVous pouvez lancer Tenir monstre à volonté – en ciblant un céleste, un démon ou un élémental – sans dépenser d'emplacement de sort ou de composants matériels. Vous devez terminer un repos long avant de pouvoir réutiliser cette invocation sur la même créature.#### Cape de mouchesPrérequis : niveau 5Par une action bonus, vous pouvez vous entourer d'une aura magique qui ressemble à des mouches bourdonnantes. L'aura s'étend à 1,50 mètre de vous dans toutes les directions, mais pas à travers une couverture totale. Elle dure jusqu'à ce que vous soyez incapable d'agir ou que vous la rejetiez en tant qu'action bonus.",
           "L'aura vous donne un avantage sur les tests de Charisme (Intimidation) mais un désavantage sur tous les autres tests de Charisme. Toute autre créature qui commence son tour dans l'aura subit des dégâts de poison égaux à votre modificateur de Charisme (minimum de 0 dégâts).",
           "Une fois que vous avez utilisé cette invocation, vous ne pouvez plus l'utiliser tant que vous n'avez pas terminé un repos court ou long.#### Porteur de malédiction (UA)Prérequis : le patron Hexblade, fonction Pacte de la lameVous pouvez créer une grande épée forgée en argent, avec des runes noires gravées dans sa lame, en utilisant votre fonction Pacte de la lame. Si vous réduisez une cible maudite par la malédiction de votre Hexblade à 0 points de vie avec cette épée, vous pouvez immédiatement changer la cible de la malédiction en une créature différente. Ce changement ne prolonge pas la durée de la malédiction.",
@@ -16951,7 +16951,7 @@
           "Par une action bonus, vous pouvez ordonner au familier d'effectuer l'action Attaquer.",
           "Les attaques d'armes du familier sont considérées comme magiques dans le but de surmonter l'immunité et la résistance aux attaques non magiques.",
           "Si le familier force une créature à effectuer un jet de sauvegarde, il utilise votre DD de sauvegarde contre les sorts.",
-          "Lorsque le familier subit des dégâts, vous pouvez utiliser votre réaction pour lui conférer une résistance contre ces dégâts.#### Lance de léthargiePrérequis : sort mineur Explosion occulteUne fois à chacun de vos tours, lorsque vous touchez une créature avec votre Explosion occulte , vous pouvez réduire la vitesse de cette créature de 3 mètres jusqu'à la fin de votre prochain tour.#### Buveur de viePrérequis : niveau 12, capacité Pacte de la LameLorsque vous touchez une créature avec votre arme de pacte, la créature subit des dégâts nécrotiques supplémentaires égaux à votre modificateur de Charisme (minimum 1).#### Sortilège affolantPrérequis : niveau 5, sort Maléfice ou capacité de sorcier qui mauditPar une action bonus, vous provoquez une perturbation psychique autour de la cible maudite par votre sort Maléfice ou par l'une de vos capacités de démoniste, comme la Malédiction de la Lame Maléfique et le Signe de Mauvais Présage. Lorsque vous le faites, vous infligez des dégâts psychiques à la cible maudite et à chaque créature de votre choix dans un rayon de 1,50 mètre autour d'elle. Les dégâts psychiques sont égaux à votre modificateur de Charisme (minimum de 1 dégât). Pour utiliser cette invocation, vous devez être capable de voir la cible maudite et elle doit se trouver à moins de 9 mètres de vous.#### Maléfice affolant (UA)Prérequis : niveau 5Par une action bonus, vous provoquez une perturbation psychique autour de la cible maudite par votre sort maléfique ou par l'une de vos capacités de sorcier, comme Malédiction de Hexblade et Signe de mauvais augure. Lorsque vous le faites, vous infligez des dégâts psychiques à la cible et à chaque créature de votre choix dans un rayon de 1,50 mètre autour d'elle. Les dégâts psychiques sont égaux à votre modificateur de Charisme (minimum de 0 dégâts).#### Masque aux multiples visagesVous pouvez lancer Disguise Self à volonté, sans dépenser d'emplacement de sort.#### Maître des myriades de formesPrérequis : niveau 15Vous pouvez lancer Altération de soi à volonté, sans dépenser d'emplacement de sort.#### Minions du ChaosPrérequis : niveau 9Vous pouvez lancer Conjuration élémentaire une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Mire l'espritPrérequis : niveau 5Vous pouvez lancer Ralentissement une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Visions brumeusesVous pouvez lancer Image silencieuse à volonté, sans dépenser d'emplacement de sort ou de composants matériels.#### Un avec les ombresPrérequis : niveau 5Lorsque vous êtes dans une zone de faible lumière ou d'obscurité, vous pouvez utiliser votre action pour devenir invisible jusqu'à ce que vous vous déplaciez ou que vous effectuiez une action ou une réaction.#### Saut d'un autre mondePrérequis : niveau 9Vous pouvez lancer Saut à volonté, sans dépenser d'emplacement de sort.#### Protection du talismanPrérequis : niveau 7, capacité Pacte du talismanLorsque le porteur de votre talisman échoue à un jet de sauvegarde, il peut ajouter un d4 au jet, transformant potentiellement la sauvegarde en réussite. Cet avantage peut être utilisé un nombre de fois égal à votre bonus de compétence, et toutes les utilisations dépensées sont restaurées lorsque vous terminez un repos long.#### Réprimande du talismanPrérequis : fonction Pacte du talismanLorsque le porteur de votre talisman est touché par un attaquant que vous pouvez voir à moins de 9 mètres de vous, vous pouvez utiliser votre réaction pour infliger des dégâts psychiques à l'attaquant égaux à votre bonus de compétence et le pousser jusqu'à 10 pieds du porteur du talisman.#### Hex implacablePrérequis : niveau 7, sort maléfiqueou capacité de sorcier qui maudit Votre malédiction crée un lien temporaire entre vous et votre cible. En tant qu'action bonus, vous pouvez vous téléporter par magie jusqu'à 9 mètres dans un espace inoccupé que vous pouvez voir à moins de 1,50 mètre de la cible maudite par votre sort Hex ou par une de vos capacités de sorcier, comme Malédiction de Hexblade et Signe de Mauvais Présage. Pour vous téléporter de cette façon, vous devez pouvoir voir la cible maudite.#### Explosion répulsivePrérequis : sort mineur Explosion occulteLorsque vous touchez une créature avec Explosion occulte , vous pouvez repousser la créature jusqu'à 3 mètres de vous en ligne droite.#### Sculpteur de chairPrérequis : niveau 7Vous pouvez lancer Métamorphose une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Voile d'ombrePrérequis : niveau 15Vous pouvez lancer Invisibilité à volonté, sans dépenser d'emplacement de sort.#### Signe de mauvais augurePrérequis : niveau 5Vous pouvez lancer la malédiction de la grâce une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Arme supérieure du pacte (UA)Prérequis : niveau 9, capacité Pacte de la lameVous pouvez utiliser n'importe quelle arme que vous invoquez avec votre capacité Pacte de la lame comme focaliseur de sorts pour vos sorts de sorcier.",
+          "Lorsque le familier subit des dégâts, vous pouvez utiliser votre réaction pour lui conférer une résistance contre ces dégâts.#### Lance de léthargiePrérequis : sort mineur Explosion occulteUne fois à chacun de vos tours, lorsque vous touchez une créature avec votre Explosion occulte , vous pouvez réduire la vitesse de cette créature de 3 mètres jusqu'à la fin de votre prochain tour.#### Buveur de viePrérequis : niveau 12, capacité Pacte de la LameLorsque vous touchez une créature avec votre arme de pacte, la créature subit des dégâts nécrotiques supplémentaires égaux à votre modificateur de Charisme (minimum 1).#### Sortilège affolantPrérequis : niveau 5, sort Maléfice ou capacité de sorcier qui mauditPar une action bonus, vous provoquez une perturbation psychique autour de la cible maudite par votre sort Maléfice ou par l'une de vos capacités de démoniste, comme la Malédiction de la Lame Maléfique et le Signe de Mauvais Présage. Lorsque vous le faites, vous infligez des dégâts psychiques à la cible maudite et à chaque créature de votre choix dans un rayon de 1,50 mètre autour d'elle. Les dégâts psychiques sont égaux à votre modificateur de Charisme (minimum de 1 dégât). Pour utiliser cette invocation, vous devez être capable de voir la cible maudite et elle doit se trouver à moins de 9 mètres de vous.#### Maléfice affolant (UA)Prérequis : niveau 5Par une action bonus, vous provoquez une perturbation psychique autour de la cible maudite par votre sort maléfique ou par l'une de vos capacités de sorcier, comme Malédiction de Hexblade et Signe de mauvais augure. Lorsque vous le faites, vous infligez des dégâts psychiques à la cible et à chaque créature de votre choix dans un rayon de 1,50 mètre autour d'elle. Les dégâts psychiques sont égaux à votre modificateur de Charisme (minimum de 0 dégâts).#### Masque aux multiples visagesVous pouvez lancer Disguise Self à volonté, sans dépenser d'emplacement de sort.#### Maître des myriades de formesPrérequis : niveau 15Vous pouvez lancer Altération de soi à volonté, sans dépenser d'emplacement de sort.#### Minions du ChaosPrérequis : niveau 9Vous pouvez lancer Conjuration élémentaire une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Mire l'espritPrérequis : niveau 5Vous pouvez lancer Ralentissement une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Visions brumeusesVous pouvez lancer Image silencieuse à volonté, sans dépenser d'emplacement de sort ou de composants matériels.#### Un avec les ombresPrérequis : niveau 5Lorsque vous êtes dans une zone de faible lumière ou d'obscurité, vous pouvez utiliser votre action pour devenir invisible jusqu'à ce que vous vous déplaciez ou que vous effectuiez une action ou une réaction.#### Saut d'un autre mondePrérequis : niveau 9Vous pouvez lancer Saut à volonté, sans dépenser d'emplacement de sort.#### Protection du talismanPrérequis : niveau 7, capacité Pacte du talismanLorsque le porteur de votre talisman échoue à un jet de sauvegarde, il peut ajouter un d4 au jet, transformant potentiellement la sauvegarde en réussite. Cet avantage peut être utilisé un nombre de fois égal à votre bonus de maîtrise, et toutes les utilisations dépensées sont restaurées lorsque vous terminez un repos long.#### Réprimande du talismanPrérequis : fonction Pacte du talismanLorsque le porteur de votre talisman est touché par un attaquant que vous pouvez voir à moins de 9 mètres de vous, vous pouvez utiliser votre réaction pour infliger des dégâts psychiques à l'attaquant égaux à votre bonus de maîtrise et le pousser jusqu'à 10 pieds du porteur du talisman.#### Hex implacablePrérequis : niveau 7, sort maléfiqueou capacité de sorcier qui maudit Votre malédiction crée un lien temporaire entre vous et votre cible. En tant qu'action bonus, vous pouvez vous téléporter par magie jusqu'à 9 mètres dans un espace inoccupé que vous pouvez voir à moins de 1,50 mètre de la cible maudite par votre sort Hex ou par une de vos capacités de sorcier, comme Malédiction de Hexblade et Signe de Mauvais Présage. Pour vous téléporter de cette façon, vous devez pouvoir voir la cible maudite.#### Explosion répulsivePrérequis : sort mineur Explosion occulteLorsque vous touchez une créature avec Explosion occulte , vous pouvez repousser la créature jusqu'à 3 mètres de vous en ligne droite.#### Sculpteur de chairPrérequis : niveau 7Vous pouvez lancer Métamorphose une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Voile d'ombrePrérequis : niveau 15Vous pouvez lancer Invisibilité à volonté, sans dépenser d'emplacement de sort.#### Signe de mauvais augurePrérequis : niveau 5Vous pouvez lancer la malédiction de la grâce une fois en utilisant un emplacement de sort de sorcier. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Arme supérieure du pacte (UA)Prérequis : niveau 9, capacité Pacte de la lameVous pouvez utiliser n'importe quelle arme que vous invoquez avec votre capacité Pacte de la lame comme focaliseur de sorts pour vos sorts de sorcier.",
           "De plus, l'arme compte comme une arme magique avec un bonus de +2 à ses jets d'attaque et de dégâts, sauf s'il s'agit déjà d'une arme magique que vous avez transformée en arme du pacte.#### Voleur des cinq destinsVous pouvez lancer Fléau une fois en utilisant un emplacement de sort de démoniste. Vous ne pouvez plus recommencer tant que vous n'avez pas terminé un repos long.#### Lame assoifféePrérequis : niveau 5, capacité Pacte de la LameVous pouvez attaquer avec votre arme du Pacte deux fois, au lieu d'une, chaque fois que vous effectuez l'action Attaquer à votre tour.#### Tombeau de LévistusPrérequis : niveau 5En réaction lorsque vous subissez des dégâts, vous pouvez vous ensevelir dans la glace, qui fondra à la fin de votre prochain tour. Vous gagnez 10 points de vie temporaires par niveau de démoniste, qui prennent autant de dégâts déclencheurs que possible. Immédiatement après avoir subi les dégâts, vous gagnez en vulnérabilité aux dégâts de feu, votre vitesse est réduite à 0 et vous êtes incapable d'agir. Ces effets, y compris tous les points de vie temporaires restants, se terminent tous lorsque la glace fond.",
           "Une fois que vous avez utilisé cette invocation, vous ne pouvez plus l'utiliser tant que vous n'avez pas terminé un repos court ou long.#### L'évasion d'un escrocPrérequis : niveau 7Vous pouvez lancer Liberté de mouvement une fois sur vous-même sans dépenser d'emplacement de sort. Vous récupérez la capacité de le faire lorsque vous terminez un repos long.#### Arme ultime du pacte (UA)Prérequis : niveau 15, capacité Pacte de la lameVous pouvez utiliser n'importe quelle arme que vous invoquez avec votre capacité Pacte de la lame comme focaliseur de sorts pour vos sorts de sorcier.",
           "De plus, l'arme compte comme une arme magique avec un bonus de +3 à ses jets d'attaque et de dégâts, sauf s'il s'agit déjà d'une arme magique que vous avez transformée en arme du pacte.#### Servitude éternellePrérequis : démoniste de niveau 5Vous pouvez lancer Animate Dead sans utiliser d'emplacement de sort. Une fois que vous l'avez fait, vous ne pouvez plus le lancer de cette façon tant que vous n'avez pas terminé un repos long.#### Visions de royaumes lointainsPrérequis : niveau 15Vous pouvez lancer Arcane Eye à volonté, sans dépenser d'emplacement de sort.#### Voix du maître de la chaînePrérequis : capacité Pacte de la chaîneVous pouvez communiquer par télépathie avec votre familier et percevoir à travers les sens de votre familier tant que vous êtes sur le même plan d'existence. De plus, tout en percevant à travers les sens de votre familier, vous pouvez également parler à travers votre familier avec votre propre voix, même si votre familier est normalement incapable de parler.#### Murmures de la tombePrérequis : niveau 9Vous pouvez lancer Parler aux morts à volonté, sans dépenser d'emplacement de sort.#### Vue de sorcièrePrérequis : niveau 15Vous pouvez voir la véritable forme de tout métamorphe ou créature dissimulée par la magie d'illusion ou de transmutation tant que la créature se trouve à moins de 9 mètres de vous et dans la ligne de mire."
@@ -18053,7 +18053,7 @@
         "header": 2,
         "entries": [
           "À partir du niveau 1, vous gagnez la capacité de lancer une malédiction funeste sur quelqu'un. Par une action bonus, choisissez une créature que vous pouvez voir dans un rayon de 9 mètres autour de vous. La cible est maudite pendant 1 minute. La malédiction se termine plus tôt si la cible meurt, si vous mourez ou si vous êtes incapable d'agir. Jusqu'à la fin de la malédiction, vous bénéficiez des avantages suivants :",
-          "Vous gagnez un bonus aux jets de dégâts contre la cible maudite. Le bonus est égal à votre bonus de compétence.",
+          "Vous gagnez un bonus aux jets de dégâts contre la cible maudite. Le bonus est égal à votre bonus de maîtrise.",
           "Tout jet d'attaque que vous faites contre la cible maudite est un coup critique sur un jet de 19 ou 20 sur le d20.",
           "Si la cible maudite meurt, vous regagnez des points de vie égaux à votre niveau de démoniste + votre modificateur de Charisme (minimum de 1 point de vie).",
           "Vous ne pouvez plus utiliser cette fonctionnalité tant que vous n'avez pas terminé un repos court ou long."
@@ -18806,7 +18806,7 @@
           "Votre vitesse de marche augmente de 10 pieds.",
           "Vous avez un avantage sur les tests de Dextérité (acrobaties).",
           "Vous gagnez un bonus à tout jet de sauvegarde de Constitution que vous effectuez pour maintenir votre concentration sur un sort. Le bonus est égal à votre modificateur d'Intelligence (minimum de +1).",
-          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de compétence, et vous en récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous en récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
         ]
       },
       {
@@ -19712,7 +19712,7 @@
         "entries": [
           "Au niveau 6, vous pouvez conjurer l'esprit de votre grimoire éveillé. Par une action bonus tant que le livre est sur vous, vous pouvez amener l'esprit à se manifester sous la forme d'un minuscule objet spectral, planant dans un espace inoccupé de votre choix à moins de 18 mètres de vous. L'esprit spectral est intangible et n'occupe pas son espace, et il projette une faible lumière dans un rayon de 10 pieds. Cela ressemble à un tome fantomatique, à une cascade de texte ou à un érudit du passé (au choix).",
           "Lorsqu'il est manifesté, l'esprit spectral peut entendre et voir, et il a une vision dans le noir avec une portée de 60 pieds. L'esprit peut partager par télépathie avec vous ce qu'il voit et entend (aucune action requise).",
-          "Chaque fois que vous lancez un sort de sorcier à votre tour, vous pouvez le lancer comme si vous étiez dans l'espace de l'esprit spectral, au lieu du vôtre, en utilisant ses sens. Vous pouvez le faire un nombre de fois par jour égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long.",
+          "Chaque fois que vous lancez un sort de sorcier à votre tour, vous pouvez le lancer comme si vous étiez dans l'espace de l'esprit spectral, au lieu du vôtre, en utilisant ses sens. Vous pouvez le faire un nombre de fois par jour égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long.",
           "Par une action bonus, vous pouvez faire planer l'esprit spectral jusqu'à 9 mètres vers un espace inoccupé que vous ou lui pouvez voir. Il peut traverser les créatures mais pas les objets.",
           "L'esprit spectral cesse de se manifester s'il se trouve à plus de 90 mètres de vous, si quelqu'un lui lance Dissipation de la magie , si le grimoire éveillé est détruit, si vous mourez ou si vous renvoyez l'esprit spectral en tant qu'action bonus.",
           "Une fois que vous avez conjuré l'esprit, vous ne pouvez plus le faire tant que vous n'avez pas terminé un repos long, à moins que vous ne dépensiez un emplacement de sort de n'importe quel niveau pour le conjurer à nouveau."
