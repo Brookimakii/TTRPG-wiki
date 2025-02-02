@@ -13,9 +13,9 @@
     "ritual": false,
     "shortDesc": "Le lanceur a la résistance aux dégâts reçus et inflige 1d6 dégâts extra du même type à sa prochaine attaque (dégâts/niv).",
     "entries": [
-      "Le sort capture une partie de l'énergie dirigée contre vous, avec pour effet de réduire les dégâts qu'elle vous inflige et d'en emmagasiner une partie que vous utiliserez lors de votre prochaine attaque de corps à corps. Vous devenez résistant aux types de dégâts à l'origine de votre réaction jusqu'au début de votre prochain tour. De plus, la première fois que vous réussissez une attaque de corps à corps lors de votre prochain tour, la cible subit ld6 points de dégâts supplémentaires du même type de dégâts, puis le sort prend fin."
+      "Le sort capture une partie de l'énergie dirigée contre vous, avec pour effet de réduire les dégâts qu'elle vous inflige et d'en emmagasiner une partie que vous utiliserez lors de votre prochaine attaque de corps à corps. Vous devenez résistant aux types de dégâts à l'origine de votre réaction jusqu'au début de votre prochain tour. De plus, la première fois que vous réussissez une attaque de corps à corps lors de votre prochain tour, la cible subit 1d6 points de dégâts supplémentaires du même type de dégâts, puis le sort prend fin."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, les dégâts supplémentaires que vous infligez augmentent de ld6 par niveau au-delà du premier.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, les dégâts supplémentaires que vous infligez augmentent de 1d6 par niveau au-delà du premier.",
     "source": "XGE",
     "page": 150,
     "casters": {
@@ -55,7 +55,7 @@
         "name": "Rapetissement",
         "type": "entries",
         "entries": [
-          "La cible réduit de moitié dans toutes les dimensions et son poids est divisé par huit. Ce rétrécissement réduit sa catégorie de taille d'un cran, de Moyenne à Petite par exemple. La cible est désavantagée lors des tests de Force et des jets de sauvegarde de Force jusqu'à la fin du sort. Les armes de la cible rétrécissent pour s'adapter à sa nouvelle taille. Tant qu'elles sont ainsi réduites, elles infligent ld4 dégâts de moins (mais cela ne peut pas faire passer les dégâts en dessous de 1)."
+          "La cible réduit de moitié dans toutes les dimensions et son poids est divisé par huit. Ce rétrécissement réduit sa catégorie de taille d'un cran, de Moyenne à Petite par exemple. La cible est désavantagée lors des tests de Force et des jets de sauvegarde de Force jusqu'à la fin du sort. Les armes de la cible rétrécissent pour s'adapter à sa nouvelle taille. Tant qu'elles sont ainsi réduites, elles infligent 1d4 dégâts de moins (mais cela ne peut pas faire passer les dégâts en dessous de 1)."
         ]
       }
     ],
@@ -674,7 +674,7 @@
     "ritual": false,
     "shortDesc": "Une arme devient magique avec +1 aux jets d'attaque et +1d4 de dégâts extra d'un type à choisir (bonus et dégâts/niv).",
     "entries": [
-      "Vous touchez une arme non magique pour la rendre magique. Choisissez l'un des types de dégâts suivants : acide, feu, foudre, froid ou tonnerre. Pendant toute la durée du sort, l'arme bénéficie d'un bonus de +l aux jets d'attaque et inflige ld4 dégâts supplémentaires du type choisi."
+      "Vous touchez une arme non magique pour la rendre magique. Choisissez l'un des types de dégâts suivants : acide, feu, foudre, froid ou tonnerre. Pendant toute la durée du sort, l'arme bénéficie d'un bonus de +l aux jets d'attaque et inflige 1d4 dégâts supplémentaires du type choisi."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou 6, le bonus aux jets d'attaque passe à +2 et les dégâts supplémentaires à 2d4. Quand vous utilisez un emplacement de sort de niveau 7 ou plus, le bonus passe à+ 3 et les dégâts supplémentaires à 3d4.",
     "source": "PHB",
@@ -753,11 +753,11 @@
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d8+Mod.Carac dégâts de force (dégâts/niv). Une action bonus permet une autre attaque.",
     "entries": [
-      "Vous créez à portée une arme spectrale flottante qui persiste pendant toute la durée du sort ou jusqu'à ce que vous le lanciez de nouveau. Lors de l'incantation, vous pouvez faire une attaque de sort au corps à corps contre une créature située dans un rayon de 1,50 mètre autour de l'arme. Si vous touchez, la cible reçoit un montant de dégâts de force égal à ld8 + votre modificateur de caractéristique d'incantation.",
+      "Vous créez à portée une arme spectrale flottante qui persiste pendant toute la durée du sort ou jusqu'à ce que vous le lanciez de nouveau. Lors de l'incantation, vous pouvez faire une attaque de sort au corps à corps contre une créature située dans un rayon de 1,50 mètre autour de l'arme. Si vous touchez, la cible reçoit un montant de dégâts de force égal à 1d8 + votre modificateur de caractéristique d'incantation.",
       "À votre tour et par une action bonus, vous pouvez déplacer l'arme d'un maximum de 6 mètres et répéter l'attaque contre une créature située dans un rayon de 1,50 mètre autour d'elle.",
       "L'arme peut revêtir la forme de votre choix. Les clercs des divinités associées à une arme particulière (comme St Cuthbert, connu pour sa masse ou Thor pour son marteau) font en sorte que l'arme générée ressemble à l'arme iconique de leur protecteur."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 2e.",
     "source": "PHB",
     "page": 215,
     "casters": {
@@ -843,7 +843,7 @@
     "ritual": false,
     "shortDesc": "Arrête le temps durant 1d4+1 tours pour tout le monde sauf pour le lanceur.",
     "entries": [
-      "Vous arrêtez brièvement le cours du temps pour tout le monde sauf vous. Le temps ne s'écoule plus pour les autres créatures tandis que vous disposez de ld4+1 tours d'affilée, pendant lesquels vous pouvez faire des actions et vous déplacer normalement.",
+      "Vous arrêtez brièvement le cours du temps pour tout le monde sauf vous. Le temps ne s'écoule plus pour les autres créatures tandis que vous disposez de 1d4+1 tours d'affilée, pendant lesquels vous pouvez faire des actions et vous déplacer normalement.",
       "Ce sort se termine si l'une des actions que vous effectuez lors de ce laps de temps ou l'un des effets que vous créez lors de ce laps de temps affecte une créature autre que vous ou un objet porté ou transporté par une créature autre que vous. Le sort se termine également si vous vous éloignez à plus de 300 mètres de l'endroit où vous l'avez lancé."
     ],
     "upCast": "",
@@ -870,7 +870,7 @@
     "ritual": false,
     "shortDesc": "1 ou 2 créatures dans un rayon de 1,50 m doivent réussir un JdS de Dex. ou subir 1d6 dégâts d'acide (dégâts/niv).",
     "entries": [
-      "Vous lancez une boule d'acide. Choisissez une créature à portée, ou deux créatures à portée situées à 1,50 mètre ou moins l'une de l'autre. Une cible doit réussir un jet de sauvegarde de Dextérité, sinon elle subit ld6 dégâts d'acide. Les dégâts du sort augmentent de ld6 quand vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous lancez une boule d'acide. Choisissez une créature à portée, ou deux créatures à portée situées à 1,50 mètre ou moins l'une de l'autre. Une cible doit réussir un jet de sauvegarde de Dextérité, sinon elle subit 1d6 dégâts d'acide. Les dégâts du sort augmentent de 1d6 quand vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -957,7 +957,7 @@
     "ritual": false,
     "shortDesc": "La cible peut ajouter 1d4 à un jet de caractéristique de son choix.",
     "entries": [
-      "Vous touchez une créature consentante. Une fois avant la fin du sort, la cible peut lancer ld4 et ajouter le chiffre obtenu au test de caractéristique de son choix. Elle peut lancer le dé avant ou après le test. Le sort se termine alors."
+      "Vous touchez une créature consentante. Une fois avant la fin du sort, la cible peut lancer 1d4 et ajouter le chiffre obtenu au test de caractéristique de son choix. Elle peut lancer le dé avant ou après le test. Le sort se termine alors."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1162,7 +1162,7 @@
     "ritual": false,
     "shortDesc": "Les créatures non hostiles dans un rayon de 9 m infligent 1d4 dégâts radiants extra lorsqu'ils touchent avec une arme.",
     "entries": [
-      "Une puissance sacrée émane de vous et forme une aura d'un rayon de 9 mètres, réveillant la combativité de vos amis. L'aura est centrée sur vous et se déplace avec vous jusqu'à la fin du sort. Toutes les créatures non hostiles (y compris vous-même) situées en son sein infligent ld4 dégâts radiants de plus quand elles touchent une cible avec une attaque armée."
+      "Une puissance sacrée émane de vous et forme une aura d'un rayon de 9 mètres, réveillant la combativité de vos amis. L'aura est centrée sur vous et se déplace avec vous jusqu'à la fin du sort. Toutes les créatures non hostiles (y compris vous-même) situées en son sein infligent 1d4 dégâts radiants de plus quand elles touchent une cible avec une attaque armée."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1441,7 +1441,7 @@
     "ritual": false,
     "shortDesc": "Jusqu'à 3 cibles peuvent ajouter 1d4 à leur jet d'attaque ou de sauvegarde (+1 créature/niv).",
     "entries": [
-      "Vous bénissez jusqu'à trois créatures de votre choix situées à portée. Quand une cible fait un jet d'attaque ou de sauvegarde avant la fin du sort, elle lance ld4 et ajoute le montant obtenu au jet d'attaque ou de sauvegarde."
+      "Vous bénissez jusqu'à trois créatures de votre choix situées à portée. Quand une cible fait un jet d'attaque ou de sauvegarde avant la fin du sort, elle lance 1d4 et ajoute le montant obtenu au jet d'attaque ou de sauvegarde."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, vous pouvez affecter une créature de plus par niveau au-delà du 1er.",
     "source": "PHB",
@@ -1687,8 +1687,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 1d12 dégâts de poison (dégâts/niv).",
     "entries": [
-      "Vous tendez la main en direction d'une créature située à portée dans votre champ de vision et projetez une bouffée de gaz toxique sortie de votre paume. La créature doit réussir un jet de sauvegarde de Constitution ou subir ld12 dégâts de poison.",
-      "Les dégâts du sort augmentent de ld12 quand vous atteignez le niveau 5 (2d12), le niveau 11 (3d12) et le niveau 17 (4d12)."
+      "Vous tendez la main en direction d'une créature située à portée dans votre champ de vision et projetez une bouffée de gaz toxique sortie de votre paume. La créature doit réussir un jet de sauvegarde de Constitution ou subir 1d12 dégâts de poison.",
+      "Les dégâts du sort augmentent de 1d12 quand vous atteignez le niveau 5 (2d12), le niveau 11 (3d12) et le niveau 17 (4d12)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -1722,7 +1722,7 @@
       "Une traînée luisante part de votre doigt tendu et file vers un point de votre choix situé à portée et dans votre champ de vision, où elle explose dans une gerbe de flammes grondantes. Chaque créature située dans une sphère de 6 mètres de rayon centrée sur ce point doit faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 8d6 dégâts de feu, les autres la moitié seulement.",
       "Le feu s'étend en contournant les angles. Il embrase les objets inflammables de la zone, à moins que quelqu'un ne les porte ou ne les transporte."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 3e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 3e.",
     "source": "PHB",
     "page": 220,
     "casters": {
@@ -1756,7 +1756,7 @@
       "Si quelqu'un touche la bille avant la fin de l'intervalle, il doit faire un jet de sauvegarde de Dextérité. S'il échoue, le sort se termine immédiatement et la bille explose. S'il réussit, il peut lancer la bille à une distance maximale de 12 mètres. Si elle touche un objet solide ou une créature, le sort se termine et la bille explose.",
       "Les flammes endommagent les objets qui se trouvent dans la zone et embrasent les objets inflammables qui ne sont ni portés ni transportés."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 8 ou plus, les dégâts de base augmentent de ld6 par niveau au-delà du 7e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 8 ou plus, les dégâts de base augmentent de 1d6 par niveau au-delà du 7e.",
     "source": "PHB",
     "page": 220,
     "casters": {
@@ -1818,7 +1818,7 @@
       "Quand une créature entre dans la zone du sort pour la première fois de son tour ou qu'elle y démarre son tour, elle doit faire un jet de sauvegarde de Constitution. Elle subit 5d8 dégâts de poison si elle rate son jet et seulement la moitié si elle le réussit. Le brouillard affecte même les créatures qui retiennent leur souffle ou qui n'ont pas besoin de respirer",
       "Le brouillard s'éloigne de vous sur une distance de 3 mètres au début de chacun de vos tours, rampant à la surface du sol. Comme ses vapeurs sont plus lourdes que l'air, il s'enfonce dans les replis du terrain et s'infiltre même dans les ouvertures."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 5e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 5e.",
     "source": "PHB",
     "page": 220,
     "casters": {
@@ -1880,7 +1880,7 @@
     "entries": [
       "Le simple contact de votre main enveloppée d'ombres peut siphonner la force vitale d'autrui pour soigner vos propres plaies. Faites une attaque de sort au corps à corps contre une créature située à une distance inférieure ou égale à votre allonge. Si vous touchez, elle subit 3d6 dégâts nécrotiques et vous récupérez un montant de points de vie égal à la moitié des dégâts infligés. Vous pouvez dépenser votre action à chacun de vos tours pour répéter cette attaque jusqu'à la fin du sort."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 3e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 3e.",
     "source": "PHB",
     "page": 221,
     "casters": {
@@ -1999,7 +1999,7 @@
     "entries": [
       "Choisissez un objet pesant entre 0,5 et 2,5 kilos, qui se trouve à portée et ni porté ni transporté. L'objet vole en ligne droite jusqu'à 27 mètres dans la direction de votre choix avant de retomber au sol. Il s'arrête de manière anticipée s'il rencontre une surface solide. Si l'objet est dirigé contre une créature, celle-ci doit faire un jet de sauvegarde de Dextérité. Sur un échec, l'objet heurte la cible et arrête de bouger. Quand l'objet heurte quelque chose, celui-ci ainsi que la chose qu'il a frappée subissent chacun 3d8 points de dégâts contondants."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, le poids maximum de l'objet que vous pouvez prendre pour cible avec le sort augmente de 2,5 kilos et la quantité de dégâts qu'il inflige augmente de ld8 par niveau au-delà du premier.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, le poids maximum de l'objet que vous pouvez prendre pour cible avec le sort augmente de 2,5 kilos et la quantité de dégâts qu'il inflige augmente de 1d8 par niveau au-delà du premier.",
     "source": "XGE",
     "page": 151,
     "casters": {
@@ -2510,9 +2510,9 @@
     "ritual": false,
     "shortDesc": "Si l'attaque touche, inflige 1d6 dégâts de feu extra et enflamme la cible (dégâts/niv).",
     "entries": [
-      "Lors de la prochaine attaque armée qui vous permet de toucher une créature pendant la durée du sort, votre arme flamboie, comme chauffée à blanc, et l'attaque inflige ld6 dégâts de feu supplémentaires. Elle embrase également la cible qui doit faire un jet de sauvegarde de Constitution au début de chacun de ses tours jusqu'à la fin du sort. Si elle échoue, elle subit ld6 dégâts de feu, si elle réussit le sort se termine. Si la cible ou une créature située dans un rayon de 1,50 mètre autour d'elle utilise une action pour éteindre les flammes ou si un effet les étouffe (si la cible est plongée dans l'eau par exemple), le sort se termine."
+      "Lors de la prochaine attaque armée qui vous permet de toucher une créature pendant la durée du sort, votre arme flamboie, comme chauffée à blanc, et l'attaque inflige 1d6 dégâts de feu supplémentaires. Elle embrase également la cible qui doit faire un jet de sauvegarde de Constitution au début de chacun de ses tours jusqu'à la fin du sort. Si elle échoue, elle subit 1d6 dégâts de feu, si elle réussit le sort se termine. Si la cible ou une créature située dans un rayon de 1,50 mètre autour d'elle utilise une action pour éteindre les flammes ou si un effet les étouffe (si la cible est plongée dans l'eau par exemple), le sort se termine."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts initiaux augmentent de ld6 par emplacement de sort au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts initiaux augmentent de 1d6 par emplacement de sort au-delà du 1er.",
     "source": "PHB",
     "page": 224,
     "casters": {
@@ -2536,7 +2536,7 @@
     "ritual": false,
     "shortDesc": "Si l'attaque touche, inflige 1d6 dégâts psychiques extra et la cible doit réussir un JdS de Sag. ou être effrayée.",
     "entries": [
-      "Lorsque vous touchez une cible avec une attaque armée au corps à corps pour la première fois pendant la durée de ce sort, votre attaque inflige ld6 dégâts psychiques supplémentaires. De plus, si la cible est une créature, elle doit réussir un jet de sauvegarde de Sagesse, sans quoi elle est terrorisée à votre vue jusqu'à ce que le sort se termine. Par une action, elle peut faire un jet de sauvegarde de Sagesse contre le DD du jet de sauvegarde de votre sort pour rassembler son courage et mettre fin au sort."
+      "Lorsque vous touchez une cible avec une attaque armée au corps à corps pour la première fois pendant la durée de ce sort, votre attaque inflige 1d6 dégâts psychiques supplémentaires. De plus, si la cible est une créature, elle doit réussir un jet de sauvegarde de Sagesse, sans quoi elle est terrorisée à votre vue jusqu'à ce que le sort se termine. Par une action, elle peut faire un jet de sauvegarde de Sagesse contre le DD du jet de sauvegarde de votre sort pour rassembler son courage et mettre fin au sort."
     ],
     "upCast": "",
     "source": "PHB",
@@ -2616,7 +2616,7 @@
     "entries": [
       "La prochaine attaque armée qui vous permet de toucher une créature avant la fin de ce sort voit votre arme briller d'une lumière astrale et inflige 2d6 dégâts radiants de plus à votre cible, qui devient visible si elle était invisible et émet une faible lumière dans un rayon de 1,50 mètre jusqu'à la fin du sort. Elle ne peut plus devenir invisible pendant toute cette durée."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts supplémentaires augmentent de ld6 par emplacement de sort au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts supplémentaires augmentent de 1d6 par emplacement de sort au-delà du 2e.",
     "source": "PHB",
     "page": 225,
     "casters": {
@@ -2732,7 +2732,7 @@
     "ritual": false,
     "shortDesc": "Le lanceur a 50% de chance de passer dans le plan éthéré, puis il revient dans l'espace qu'il occupait au tour suivant.",
     "entries": [
-      "Pendant toute la durée du sort, vous lancez ld20 à la fin de chacun de vos tours. Sur un 11 ou plus, vous disparaissez de votre plan d'existence actuel et apparaissez sur le plan éthéré (si vous vous trouviez déjà là, le sort échoue et l'incantation est gaspillée). Au début de votre tour suivant et quand le sort se termine alors que vous vous trouvez sur le plan éthéré, vous retournez sur un emplacement inoccupé de votre choix que vous pouvez voir dans un rayon de 3 mètres autour de l'emplacement dont vous avez disparu. S'il n'y a pas d'emplacement disponible dans ce rayon, vous apparaissez dans l'espace inoccupé le plus proche (choisi au hasard s'il y en a plusieurs à égale distance). Vous pouvez révoquer ce sort par une action.",
+      "Pendant toute la durée du sort, vous lancez 1d20 à la fin de chacun de vos tours. Sur un 11 ou plus, vous disparaissez de votre plan d'existence actuel et apparaissez sur le plan éthéré (si vous vous trouviez déjà là, le sort échoue et l'incantation est gaspillée). Au début de votre tour suivant et quand le sort se termine alors que vous vous trouvez sur le plan éthéré, vous retournez sur un emplacement inoccupé de votre choix que vous pouvez voir dans un rayon de 3 mètres autour de l'emplacement dont vous avez disparu. S'il n'y a pas d'emplacement disponible dans ce rayon, vous apparaissez dans l'espace inoccupé le plus proche (choisi au hasard s'il y en a plusieurs à égale distance). Vous pouvez révoquer ce sort par une action.",
       "Tant que vous êtes sur le plan éthéré, vous voyez et entendez ce qui se passe sur le plan d'où vous venez, qui apparaît sous forme d'ombres grises, mais votre vision ne porte pas au-delà de 18 mètres. Vous pouvez seulement affecter des créatures se trouvant sur le plan éthéré et elles sont les seules à pouvoir vous affecter. Les créatures qui ne se trouvent pas sur ce plan ne peuvent ni vous percevoir, ni interagir avec vous, à moins qu'elles ne disposent d'un pouvoir le leur permettant."
     ],
     "upCast": "",
@@ -2866,7 +2866,7 @@
     "entries": [
       "Une colonne verticale de feu divin rugissant surgit des cieux et s'abat à l'endroit de votre choix. Toute créature située dans un cylindre de 3 mètres de rayon et 12 mètres de haut centré sur le point à portée de votre choix doit faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 4d6 dégâts de feu et 4d6 dégâts radiants, les autres la moitié seulement."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, les dégâts de feu ou les dégâts radiants (à vous de choisir) augmentent de ld6 par niveau au-delà du 5e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, les dégâts de feu ou les dégâts radiants (à vous de choisir) augmentent de 1d6 par niveau au-delà du 5e.",
     "source": "PHB",
     "page": 226,
     "casters": {
@@ -3148,7 +3148,7 @@
       "Une bouffée d'air froid jaillit de vos mains. Toutes les créatures présentes dans un cône de 18 mètres doivent faire un jet de sauvegarde de Constitution. Celles qui le ratent subissent 8d8 dégâts de froid, les autres la moitié seulement.",
       "Une créature qui succombe suite à ce sort se transforme en statue de glace jusqu'à ce qu'elle fonde."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 5e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 6 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 5e.",
     "source": "PHB",
     "page": 228,
     "casters": {
@@ -3244,9 +3244,9 @@
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d8 dégâts nécrotiques (dégâts/niv) et la cible ne peut récupérer ses pv de suite.",
     "entries": [
-      "Vous faites apparaître une main fantomatique et squelettique à l'emplacement d'une créature située à portée. Faites un jet d'attaque de sort à distance contre la créature pour la transir de froid. Si l'attaque touche, la victime reçoit ld8 dégâts nécrotiques et ne peut pas récupérer de point de vie avant le début de votre prochain tour.Jusque-là, la main s'accroche à elle.",
+      "Vous faites apparaître une main fantomatique et squelettique à l'emplacement d'une créature située à portée. Faites un jet d'attaque de sort à distance contre la créature pour la transir de froid. Si l'attaque touche, la victime reçoit 1d8 dégâts nécrotiques et ne peut pas récupérer de point de vie avant le début de votre prochain tour.Jusque-là, la main s'accroche à elle.",
       "Si votre cible est un mort-vivant, il est en plus désavantagé lors des jets d'attaque effectués contre vous jusqu'à la fin de votre prochain tour.",
-      "Les dégâts du sort augmentent de ld8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
+      "Les dégâts du sort augmentent de 1d8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -3577,7 +3577,7 @@
     "shortDesc": "Modifie progressivement les conditions climatiques en extérieur (précipitation, température et force du vent).",
     "entries": [
       "Vous prenez le contrôle de la météo dans un rayon de 7,5 kilomètres autour de vous pendant toute la durée du sort. Vous devez être en extérieur au moment de l'incantation. Si vous vous rendez dans un endroit d'où vous ne voyez pas directement le ciel, le sort se termine prématurément.",
-      "Au moment de l'incantation, vous changez les conditions météorologiques actuelles déterminées par le MD en fonction du climat et de la saison. Vous pouvez modifier les précipitations, la température et le vent. Il faut ld4 x 10 minutes pour que les nouvelles conditions s'installent. Vous pouvez ensuite les modifier à nouveau. Le temps retourne progressivement à la normale une fois le sort terminé.",
+      "Au moment de l'incantation, vous changez les conditions météorologiques actuelles déterminées par le MD en fonction du climat et de la saison. Vous pouvez modifier les précipitations, la température et le vent. Il faut 1d4 x 10 minutes pour que les nouvelles conditions s'installent. Vous pouvez ensuite les modifier à nouveau. Le temps retourne progressivement à la normale une fois le sort terminé.",
       "Quand vous modifiez les conditions météorologiques, cherchez les conditions actuelles dans les tables suivantes vous pouvez les décaler d'un cran vers le haut ou le bas. Quand vous modifiez le vent, vous pouvez changer sa direction.",
       {
         "type": "table",
@@ -3812,7 +3812,7 @@
     "entries": [
       "Vous prononcez une terrible incantation, qui vous permet d'invoquer un démon venant tout droit du chaos des Abysses. Vous choisissez le type de démon, qui doit être d'un indice de dangerosité de 5 ou moins, comme par exemple un démon d'ombre ou un barlgura. Le démon apparaît dans un emplacement inoccupé que vous pouvez voir et qui se trouve à portée, et il disparaît une fois qu'il tombe à O point de vie ou quand le sort se termine.",
       "Faites un jet d'initiative pour le démon, qui a ses propres tours. Lorsque vous l'invoquez et à chacun de vos tours par la suite, vous pouvez lui donner une instruction verbale (aucune action requise) et lui indiquer ce qu'il doit faire au cours de son prochain tour. Sans instruction de votre part, il attaquera lors de son tour la créature la plus proche qui l'a attaqué.",
-      "À la fin de chacun de ses tours, le démon fait un jet de sauvegarde de Charisme. Le démon est désavantagé à ce jet de sauvegarde si vous prononcez son nom véritable. Sur un échec, le démon continue de vous obéir. Sur un succès, vous perdez le contrôle du démon et, jusqu'à la fin du sort, il entreprend de poursuivre et attaquer les créatures les plus proches de lui qui ne sont pas des démons. Si vous arrêtez de vous concentrer sur le sort avant que sa durée normale soit écoulée et qu'un démon dont vous avez perdu le contrôle possède encore des points de vie, il reste présent pendant ld6 rounds supplémentaires.",
+      "À la fin de chacun de ses tours, le démon fait un jet de sauvegarde de Charisme. Le démon est désavantagé à ce jet de sauvegarde si vous prononcez son nom véritable. Sur un échec, le démon continue de vous obéir. Sur un succès, vous perdez le contrôle du démon et, jusqu'à la fin du sort, il entreprend de poursuivre et attaquer les créatures les plus proches de lui qui ne sont pas des démons. Si vous arrêtez de vous concentrer sur le sort avant que sa durée normale soit écoulée et qu'un démon dont vous avez perdu le contrôle possède encore des points de vie, il reste présent pendant 1d6 rounds supplémentaires.",
       "Pendant que vous lancez ce sort, vous pouvez vous servir du sang utilisé comme composante matérielle pour tracer un cercle au sol. Ce cercle est assez grand pour contenir votre emplacement. Pendant toute la durée du sort, le démon invoqué ne peut pas traverser le cercle ou l'endommager et il ne peut pas blesser une créature qui se trouve dans le cercle. Si vous utilisez ainsi cette composante matérielle, elle est considérée comme consumée une fois le sort terminé."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 5 ou plus, l'indice de dangerosité augmente de 1 par niveau au-delà du 4e.",
@@ -4111,7 +4111,7 @@
     "ritual": false,
     "shortDesc": "4 munitions infligent 1d6 dégâts perforants si la cible rate un JdS de Dex. (nbre de munitions/niv).",
     "entries": [
-      "Vous fichez quatre projectiles (flèches ou carreaux) non magiques en terre, à portée, et les imprégnez de magie afin de protéger une zone.Jusqu'à la fin du sort, dès qu'une créature autre que vous approche dans un rayon de 9 mètres autour des projectiles pour la première fois de son tour ou finit son tour à un tel endroit, une munition s'envole pour la frapper. La créature doit réussir un jet de sauvegarde de Dextérité, sans quoi elle subit ld6 dégâts perforants. Le projectile est ensuite détruit. Le sort se termine s'il ne reste plus de projectiles.",
+      "Vous fichez quatre projectiles (flèches ou carreaux) non magiques en terre, à portée, et les imprégnez de magie afin de protéger une zone.Jusqu'à la fin du sort, dès qu'une créature autre que vous approche dans un rayon de 9 mètres autour des projectiles pour la première fois de son tour ou finit son tour à un tel endroit, une munition s'envole pour la frapper. La créature doit réussir un jet de sauvegarde de Dextérité, sans quoi elle subit 1d6 dégâts perforants. Le projectile est ensuite détruit. Le sort se termine s'il ne reste plus de projectiles.",
       "Au moment de l'incantation, vous pouvez désigner plusieurs créatures de votre choix que le sort ignorera."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, vous pouvez enchanter deux projectiles de plus par niveau au-delà du 2e.",
@@ -4238,8 +4238,8 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de Con. ou subir 1d6 dégâts tonnerre (dégâts/niv).",
     "entries": [
-      "Vous créez un bruit semblable à un coup de tonnerre, qui peut être entendu jusqu'à 30 mètres de distance. Toutes les créatures à portée autres que vous doivent réussir un jet de sauvegarde de Constitution ou subir ld6 points de dégâts de tonnerre.",
-      "La quantité de dégâts causée par le sort augmente de ld6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous créez un bruit semblable à un coup de tonnerre, qui peut être entendu jusqu'à 30 mètres de distance. Toutes les créatures à portée autres que vous doivent réussir un jet de sauvegarde de Constitution ou subir 1d6 points de dégâts de tonnerre.",
+      "La quantité de dégâts causée par le sort augmente de 1d6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "XGE",
@@ -4327,7 +4327,7 @@
     "entries": [
       "Vous créez un éclat de glace et le lancez sur une créature qui se trouve à portée. Vous faites une attaque de sort à distance contre la cible. Sur une réussite, elle subit ldlO points de dégâts perforants. Que vous ayez touché la cible ou non, l'éclat explose ensuite. La cible et toute créature qui se trouve dans un rayon de 1,50 mètre de celle-ci doivent réussir un jet de sauvegarde de Dextérité ou subir 2d6 points de dégâts de froid."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, la quantité de dégâts de froid augmente de ld6 par niveau au-delà du premier.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, la quantité de dégâts de froid augmente de 1d6 par niveau au-delà du premier.",
     "source": "XGE",
     "page": 153,
     "casters": {
@@ -5199,7 +5199,7 @@
     "ritual": true,
     "shortDesc": "Le lanceur obtient une réponse fiable à 1 question au sujet d'un évènement à venir dans les 7 prochains jours.",
     "entries": [
-      "Grâce à votre magie et à une offrande, vous entrez en contact avec un dieu ou l'un de ses serviteurs. Vous lui posez une unique question à propos d'un objectif, d'un événement ou d'une activité qtù doit se dérouler dans les sept jours à venir. Le MD vous donne une réponse sincère, pouvant être une courte phrase, des vers cryptiques ou un présage.",
+      "Grâce à votre magie et à une offrande, vous entrez en contact avec un dieu ou l'un de ses serviteurs. Vous lui posez une unique question à propos d'un objectif, d'un événement ou d'une activité qui doit se dérouler dans les sept jours à venir. Le MD vous donne une réponse sincère, pouvant être une courte phrase, des vers cryptiques ou un présage.",
       "Le sort ne tient pas compte d'une éventuelle modification des circonstances susceptible de bouleverser l'issue des événements, comme l'incantation de sorts supplémentaires ou la perte ou l'arrivée d'un compagnon",
       "Si vous lancez ce sort à deux reprises ou plus avant un long repos, il y a 25% de chances par incantation en sus de la première que vous obteniez une prémonition aléatoire au lieu d'une prémonition fiable. C'est au MD de faire ce jet en secret"
     ],
@@ -5227,7 +5227,7 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 7d8+30 dégâts nécrotiques. Si elle meurt elle devient un zombi contrôlé.",
     "entries": [
-      "Vous envoyez de l'énergie négative dans le corps d'une créature située à portée dans votre champ de vision, ce qtù lui inflige des douleurs déchirantes. La cible doit faire un jet de sauvegarde de Constitution. Si elle échoue, elle subit 7d8+30 dégâts nécrotiques, la moitié seulement si elle réussit.",
+      "Vous envoyez de l'énergie négative dans le corps d'une créature située à portée dans votre champ de vision, ce qui lui inflige des douleurs déchirantes. La cible doit faire un jet de sauvegarde de Constitution. Si elle échoue, elle subit 7d8+30 dégâts nécrotiques, la moitié seulement si elle réussit.",
       "Si ce sort achève un humanoïde, ce dernier se relève au début de votre prochain tour sous forme de zombi à jamais sous votre contrôle. li suit vos ordres verbaux au mieux de ses capacités."
     ],
     "upCast": "",
@@ -5255,7 +5255,7 @@
     "shortDesc": "Une bête à 18 m doit réussir un JdS de Sag. ou être charmé et obéir au lanceur (durée/niv).",
     "entries": [
       "Vous tentez d'envoûter une bête située à portée dans votre champ de vision. Elle doit réussir un jet de sauvegarde de Sagesse, sans quoi vous la charmez pendant toute la durée du sort. Elle est avantagée lors du jet de sauvegarde si vous ou des créatures amicales envers vous êtes en train de la combattre.",
-      "Tant que la bête est charmée, vous entretenez un lien télépathique avec elle, qtù persiste tant que vous vous trouvez sur le même plan d'existence. Vous pouvez utiliser ce lien télépathique pour donner des ordres à cette créature tant que vous êtes conscient (ce qui ne vous demande pas d'action). Elle fait de son mieux pour vous obéir. Vous pouvez lui donner un ordre simple et générique, comme \"attaque cette créature\", \"cours jusque là-bas\" ou \"va chercher cet objet\". Si elle ne reçoit pas de nouvelles instructions de votre part une fois l'ordre exécuté, elle se contente de se défendre et de se préserver au mieux.",
+      "Tant que la bête est charmée, vous entretenez un lien télépathique avec elle, qui persiste tant que vous vous trouvez sur le même plan d'existence. Vous pouvez utiliser ce lien télépathique pour donner des ordres à cette créature tant que vous êtes conscient (ce qui ne vous demande pas d'action). Elle fait de son mieux pour vous obéir. Vous pouvez lui donner un ordre simple et générique, comme \"attaque cette créature\", \"cours jusque là-bas\" ou \"va chercher cet objet\". Si elle ne reçoit pas de nouvelles instructions de votre part une fois l'ordre exécuté, elle se contente de se défendre et de se préserver au mieux.",
       "Vous pouvez utiliser votre action pour prendre le contrôle total de votre cible et la diriger de façon précise.Jusqu'à la fin de votre prochain tour, elle exécute seulement les actions que vous choisissez et ne fait rien que vous ne lui ayez autorisé. Pendant cette période, vous pouvez aussi lui faire exécuter une réaction, mais pour cela, vous devez également dépenser votre propre réaction",
       "Chaque fois que la cible subit des dégâts, elle a droit à un nouveau jet de sauvegarde de Sagesse contre le sort. Si elle le réussit, le sort prend fin."
     ],
@@ -5494,7 +5494,7 @@
       "Un éclair formant une ligne de 30 mètres de long pour 1,50 mètre de large jaillit de votre personne et file dans la direction de votre choix. Chaque créature située sur la ligne doit faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 8d6 dégâts de foudre, les autres la moitié seulement.",
       "La foudre embrase les objets inflammables de la zone qui ne sont ni portés ni transportés par une créature."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 3e",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 3e",
      "source": "PHB",
     "page": 238,
     "casters": {
@@ -5518,7 +5518,7 @@
     "ritual": false,
     "shortDesc": "Si l'attaque touche, inflige 2d8 + 1d6 dégâts de type variable (dégâts/niv). Rebond si double 8.",
     "entries": [
-      "Vous projetez une masse ondulante et sifflante d'énergie chaotique sur une créature à portée. Vous faites une attaque de sort à distance contre la cible. Sur une réussite, la cible subit 2d8+ ld6 points de dégâts. Choisissez l'un des d8. Le résultat qui se trouve sur ce dé vous permet de déterminer le type de dégâts causés par l'attaque en vous reportant à la table ci-dessous.",
+      "Vous projetez une masse ondulante et sifflante d'énergie chaotique sur une créature à portée. Vous faites une attaque de sort à distance contre la cible. Sur une réussite, la cible subit 2d8+ 1d6 points de dégâts. Choisissez l'un des d8. Le résultat qui se trouve sur ce dé vous permet de déterminer le type de dégâts causés par l'attaque en vous reportant à la table ci-dessous.",
       {
         "type": "table",
         "colLabels": ["d8","Type de dégâts"],
@@ -5537,7 +5537,7 @@
       "Si vous avez obtenu le même résultat à vos deux d8, votre éclair d'énergie chaotique continue sa course vers une créature différente de votre choix, qui se trouve dans un rayon de 9 mètres de la première cible. Faites un nouveau jet d'attaque contre cette nouvelle cible, puis un nouveau jet de dégâts, susceptible d'occasionner un nouveau bond de votre éclair d'énergie chaotique.",
       "Vous ne pouvez prendre une créature pour cible qu'une seule fois par incantation de ce sort."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, chaque cible subit ld6 points de dégâts supplémentaires du type déterminé par niveau au-delà du premier.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, chaque cible subit 1d6 points de dégâts supplémentaires du type déterminé par niveau au-delà du premier.",
     "source": "XGE",
     "page": 155,
     "casters": {
@@ -5563,7 +5563,7 @@
     "entries": [
       "Un rayon de lumière frappe une créature de votre choix située à portée. Faites un jet d'attaque de sort à distance contre elle. Si vous touchez, elle subit 4d6 dégâts radiants et scintille d'une faible lumière mystique jusqu'à la fin de votre prochain tour. D'ici là et grâce à cette lueur, le prochain jet d'attaque effectué contre elle est avantagé."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 1e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 1e.",
     "source": "PHB",
     "page": 275,
     "casters": {
@@ -5620,9 +5620,9 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un cube de 1,50 m doivent réussir un JdS de Dex. ou subir 1d8 dégâts de feu (dégâts/niv).",
     "entries": [
-      "Vous créez un grand feu sur une portion de terrain que vous pouvez voir et qui se trouve à portée. Jusqu'à la fin du sort, ce brasier magique emplit un cube de 1,50 mètre d'arête. Toute créature qui se trouve à l'emplacement où vous allumez cette fournaise doit réussir un jet de sauvegarde de Dextérité ou subir ld8 points de dégâts de feu. Une créature doit également faire un jet de sauvegarde la première fois qu'elle pénètre dans la zone enflammée ou si elle y termine son tour.",
+      "Vous créez un grand feu sur une portion de terrain que vous pouvez voir et qui se trouve à portée. Jusqu'à la fin du sort, ce brasier magique emplit un cube de 1,50 mètre d'arête. Toute créature qui se trouve à l'emplacement où vous allumez cette fournaise doit réussir un jet de sauvegarde de Dextérité ou subir 1d8 points de dégâts de feu. Une créature doit également faire un jet de sauvegarde la première fois qu'elle pénètre dans la zone enflammée ou si elle y termine son tour.",
       "Les flammes se propagent aux objets inflammables qui se trouvent dans cette zone et qui ne sont pas portés ni transportés par une créature.",
-      "La quantité de dégâts infligés par le sort augmente de ld8 lorsque vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
+      "La quantité de dégâts infligés par le sort augmente de 1d8 lorsque vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
     ],
     "upCast": "",
     "source": "XGE",
@@ -5759,7 +5759,7 @@
       "Vous projetez un cirre de ténèbres d'un noir d'encre qui vient entrer en contact avec une créature que vous pouvez voir et qui se trouve à portée, afin d'absorber son énergie vitale. La cible doit faire un jet de sauvegarde de Dextérité. Sur une réussite, elle subit 2d8 points de dégâts nécrotiques et le sort se termine. Sur un échec, elle subit 4d8 points de dégâts nécrotiques et, jusqu'à ce que le sort se termine, vous pouvez utiliser une action à chacun de vos tours pour infliger automatiquement 4d8 points de dégâts nécrotiques à la cible. Le sort se termine si vous utilisez votre action pour faire n'importe quoi d'autre, si la cible se trouve hors de portée du sort, ou si un abri total la dissimule à vos yeux",
       "À chaque fois que le sort inflige des dégâts à une cible, vous récupérez une quantité de points de vie égale à la moitié des dégâts nécrotiques subis par la cible."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 6 ou plus, la quantité de dégâts infligés augmente de ld8 par niveau au-delà du 5e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 6 ou plus, la quantité de dégâts infligés augmente de 1d8 par niveau au-delà du 5e.",
     "source": "XGE",
     "page": 155,
     "casters": {
@@ -5870,7 +5870,7 @@
     "entries": [
       "Vous vous insinuez dans l'esprit d'une créature que vous pouvez voir et qui se trouve à portée. La cible doit effectuer un jet de sauvegarde de Sagesse. Sur un échec, elle subit 3d8 points de dégâts psychiques et deux fois moins sur une réussite. Si la cible a échoué à son jet de sauvegarde, vous savez constamment où elle se trouve pendant toute la durée du sort, mais seulement si vous êtes sur le même plan d'existence qu'elle. Tant que vous avez cette capacité, votre cible est incapable de se dissimuler à votre regard et, si elle est invisible, elle ne tire aucun bénéfice de cet état contre vous."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts infligés augmente de ld8 par niveau au-delà du second.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts infligés augmente de 1d8 par niveau au-delà du second.",
     "source": "XGE",
     "page": 156,
     "casters": {
@@ -5895,7 +5895,7 @@
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de Dex. ou subir 1d6 de force (dégâts/niv).",
     "entries": [
       "Vous créez un cercle passager de lames spectrales qui s'agitent autour de vous. Toutes les autres créatures situées dans un rayon de 1,50 m de vous doivent réussir un jet de sauvegarde de Dextérité sous peine de subir 1d6 dégâts de force.",
-      "Les dégâts du sort augmentent de ld6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Les dégâts du sort augmentent de 1d6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "TCE",
@@ -5987,10 +5987,10 @@
     "shortDesc": "Les créatures au contact de l'esprit créé récupèrent 1d6 pv (+1d6 pv/niv).",
     "entries": [
       "Vous appelez un esprit de la nature pour apaiser les blessés. L'esprit intangible apparaît dans un cube de 1,50 mètre d'arête que vous pouvez voir et qui se trouve à portée. L'esprit ressemble à une bête ou une fée transparente (vous en décidez)",
-      "Jusqu'à ce que le sort se termine, chaque fois que vous ou une créature que vous pouvez voir se déplace dans l'emplacement occupé par l'esprit pour la première fois pendant un tour ou qu'il y commence son tour, vous pouvez faire en sorte que l'esprit guérisse cette créature de ld6 points de vie (aucune action requise). L'esprit ne peut pas guérir des créatures artificielles ou des morts-vivants.",
+      "Jusqu'à ce que le sort se termine, chaque fois que vous ou une créature que vous pouvez voir se déplace dans l'emplacement occupé par l'esprit pour la première fois pendant un tour ou qu'il y commence son tour, vous pouvez faire en sorte que l'esprit guérisse cette créature de 1d6 points de vie (aucune action requise). L'esprit ne peut pas guérir des créatures artificielles ou des morts-vivants.",
       "Par une action bonus lors de votre tour, vous pouvez déplacer l'esprit de 9 mètres maximum jusqu'à un emplacement que vous pouvez voir."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de points de vie restaurés augmente de ld6 par niveau au-delà du deuxième.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de points de vie restaurés augmente de 1d6 par niveau au-delà du deuxième.",
     "source": "XGE",
     "page": 156,
     "casters": {
@@ -6234,7 +6234,7 @@
     "ritual": false,
     "shortDesc": "Si une attaque avec une arme touche, inflige 1d4 dégâts radiants extra.",
     "entries": [
-      "Vos prières vous imprègnent d'une aura radieuse. Jusqu'à la fin du sort, les attaques que vous portez avec une arme infligent ld4 dégâts radiants supplémentaires en cas de coup au but."
+      "Vos prières vous imprègnent d'une aura radieuse. Jusqu'à la fin du sort, les attaques que vous portez avec une arme infligent 1d4 dégâts radiants supplémentaires en cas de coup au but."
     ],
     "upCast": "",
      "source": "PHB",
@@ -6260,8 +6260,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de For. ou subir 1d8 dégâts de foudre (dégâts/niv) et être poussée de 3 m.",
     "entries": [
-      "Vous créez un fouet d'énergie foudroyante qui s'abat sur une créature de votre choix parmi celles que vous voyez dans un rayon de 4,50 m. La cible doit réussir un jet de sauvegarde de Force sous peine d'être tirée vers vous en ligne droite d'une distance maximale de 3 m, puis de subir ld8 dégâts de foudre si elle finit dans un rayon de 1,50 m de vous.",
-      "Les dégâts du sort augmentent de ld8 lorsque vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
+      "Vous créez un fouet d'énergie foudroyante qui s'abat sur une créature de votre choix parmi celles que vous voyez dans un rayon de 4,50 m. La cible doit réussir un jet de sauvegarde de Force sous peine d'être tirée vers vous en ligne droite d'une distance maximale de 3 m, puis de subir 1d8 dégâts de foudre si elle finit dans un rayon de 1,50 m de vous.",
+      "Les dégâts du sort augmentent de 1d8 lorsque vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
     ],
     "upCast": "",
     "source": "TCE",
@@ -6357,7 +6357,7 @@
     "shortDesc": "Les créatures sur une ligne de 9 x 1,50 m doivent réussir un JdS de Dex. ou subir 3d8 dégâts de feu (dégâts/niv).",
     "entries": [
       "Vous projetez une ligne de flammes rugissantes de 9 mètres de long sur 1,50 mètre de large dans la direction de votre choix. Chaque créature qui se trouve sur cette ligne doit faire un jet de sauvegarde de Dextérité. Sur un échec, elle subit 3d8 points de dégâts de feu, ou moitié moins en cas de réussite.",
-      "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, les dégâts supplémentaires que vous infligez augmentent de ld8 par niveau au-delà du deuxième."
+      "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, les dégâts supplémentaires que vous infligez augmentent de 1d8 par niveau au-delà du deuxième."
     ],
     "upCast": "",
     "source": "XGE",
@@ -6414,8 +6414,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Dex. ou subir 1d8 dégâts radiant (dégâts/niv).",
     "entries": [
-      "Un flamboiement digne d'une flamme s'abat sur une créature située à portée dans votre champ de vision. La cible doit réussir un jet de Dextérité ou subir ld8 dégâts radiants. Même si elle se trouve derrière un abri, la cible n'est pas avantagée lors du jet de sauvegarde.",
-      "Les dégâts du sort augmentent de ld8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
+      "Un flamboiement digne d'une flamme s'abat sur une créature située à portée dans votre champ de vision. La cible doit réussir un jet de Dextérité ou subir 1d8 dégâts radiants. Même si elle se trouve derrière un abri, la cible n'est pas avantagée lors du jet de sauvegarde.",
+      "Les dégâts du sort augmentent de 1d8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
     ],
     "upCast": "",
      "source": "PHB",
@@ -6442,7 +6442,7 @@
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d8 dégâts de feu (dégâts/niv). Émet une lumière vive sur 3 m et faible sur 3 m extra.",
     "entries": [
       "Une flamme vacillante apparaît dans votre main. Elle y reste pendant toute la durée du sort et ne vous blesse pas, pas plus qu'elle n'endommage votre équipement. La flamme émet une vive lumière dans un rayon de 3 mètres et une faible lumière dans un rayon de 3 mètres de plus. Le sort se termine si vous le révoquez par une action ou si vous le lancez de nouveau.",
-      "Vous pouvez attaquer avec la flamme, mais cela met fin au sort. Pour cela, quand vous lancez le sort, ou par une action lors d'un tour ultérieur, vous lancez la flamme sur une créature située dans un rayon de 9 mètres. Faites une attaque de sort à distance. Si vous touchez, la cible subit ld8 dégâts de feu. Les dégâts de ce sort augmentent de ld8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et Je niveau 17 (4d8)."
+      "Vous pouvez attaquer avec la flamme, mais cela met fin au sort. Pour cela, quand vous lancez le sort, ou par une action lors d'un tour ultérieur, vous lancez la flamme sur une créature située dans un rayon de 9 mètres. Faites une attaque de sort à distance. Si vous touchez, la cible subit 1d8 dégâts de feu. Les dégâts de ce sort augmentent de 1d8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et Je niveau 17 (4d8)."
     ],
     "upCast": "",
      "source": "PHB",
@@ -6473,7 +6473,7 @@
     "ritual": false,
     "shortDesc": "Jusqu'à 3 cibles doivent réussir un JdS de Cha. ou soustraire 1d4 à l'attaque ou à la sauvegarde (+1 créature/niv).",
     "entries": [
-      "Trois créatures de votre choix au maximum, toutés situées à portée et dans votre champ de vision, sont contraintes de faire un jet de sauvegarde de Charisme. Dès qu'une cible qui a raté ce jet effectue un jet d'attaque ou de sauvegarde alors que le sort n'est pas terminé, elle doit lancer ld4 et soustraire le nombre obtenu de son jet d'attaque ou de sauvegarde."
+      "Trois créatures de votre choix au maximum, toutés situées à portée et dans votre champ de vision, sont contraintes de faire un jet de sauvegarde de Charisme. Dès qu'une cible qui a raté ce jet effectue un jet d'attaque ou de sauvegarde alors que le sort n'est pas terminé, elle doit lancer 1d4 et soustraire le nombre obtenu de son jet d'attaque ou de sauvegarde."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, vous pouvez viser une créature de plus par niveau au-delà du 1er.",
     "source": "PHB",
@@ -6564,7 +6564,7 @@
     "entries": [
       "Une flèche d'un vert chatoyant file vers une cible située à portée et explose en une gerbe d'acide. Faites une attaque de sort à distance contre la cible. Si vous touchez, la cible reçoit 4d4 dégâts d'acide immédiatement et 2d4 dégâts d'acide à la fin de son prochain tour. Si vous ne touchez pas, l'acide éclabousse la cible et lui inflige la moitié des dégâts initiaux, mais aucun à la fin de son prochain tour."
     ],
-    "upCast": "Quand vous utilisez ce sort via un emplacement de niveau 3 ou plus, les dégâts initiaux et secondaires augmentent de ld4 par niveau au-delà du 2e.Quand vous utilisez ce sort via un emplacement de niveau 3 ou plus, les dégâts initiaux et secondaires augmentent de ld4 par niveau au-delà du 2e.",
+    "upCast": "Quand vous utilisez ce sort via un emplacement de niveau 3 ou plus, les dégâts initiaux et secondaires augmentent de 1d4 par niveau au-delà du 2e.Quand vous utilisez ce sort via un emplacement de niveau 3 ou plus, les dégâts initiaux et secondaires augmentent de 1d4 par niveau au-delà du 2e.",
      "source": "PHB",
     "page": 244,
     "casters": {
@@ -6592,7 +6592,7 @@
       "Que vous touchiez ou ratiez votre cible, toutes les créatures situées dans un rayon de 3 mètres autour d'elle doivent faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 2d8 dégâts de foudre, les autres la moitié seulement.",
       "La munition ou l'arme de jet reprend ensuite sa forme normale."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts dus à chacun des deux effets du sort augmentent de ld8 par emplacement de sort au-delà du 3e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts dus à chacun des deux effets du sort augmentent de 1d8 par emplacement de sort au-delà du 3e.",
      "source": "PHB",
     "page": 244,
     "casters": {
@@ -6616,7 +6616,7 @@
     "ritual": false,
     "shortDesc": "12 flèches/carreaux infligent 1d6 dégâts de feu extra (+2 munitions/niv).",
     "entries": [
-      "Vous touchez un carquois contenant des flèches ou des carreaux. Lorsqu'une cible est touchée par une attaque à dis- tance utilisant une munition provenant de ce carquois, elle subit ld6 points de dégâts de feu supplémentaires. La magie qui imprègne une munition se dissipe quand elle frappe ou manque sa cible et le sort se termine quand douze des munitions contenues dans le carquois ont été tirées."
+      "Vous touchez un carquois contenant des flèches ou des carreaux. Lorsqu'une cible est touchée par une attaque à dis- tance utilisant une munition provenant de ce carquois, elle subit 1d6 points de dégâts de feu supplémentaires. La magie qui imprègne une munition se dissipe quand elle frappe ou manque sa cible et le sort se termine quand douze des munitions contenues dans le carquois ont été tirées."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 4 ou plus, la quantité de munitions que vous imprégnez de magie avec ce sort augmente de deux par niveau au-delà du troisième.",
     "source": "XGE",
@@ -6646,7 +6646,7 @@
       "Si vous visez une créature végétale ou une plante magique, elle est désavantagée lors du jet de sauvegarde et le sort lui inflige le maximum de dégâts possible.",
       "Si vous visez une plante non magique qui n'est pas une créature, comme un arbre ou un buisson, elle n'a pas droit au moindre jet de sauvegarde, mais se flétrit et meurt."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 4e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 4e.",
      "source": "PHB",
     "page": 244,
     "casters": {
@@ -6737,7 +6737,7 @@
       "L'illusion comprend des bruits, une température et d'autres stimuli, mais, de même, la cible du sort est la seule à les percevoir.",
       "La cible peut utiliser une action pour examiner l'illusion avec un test d'intelligence (Investigation) contre le DD du jet de sauvegarde de votre sort. Si elle réussit son test, elle comprend qu'elle a affaire à une simple illusion et le sort se termine.",
       "Tant que la cible est sous l'effet du sort, elle traite l'illusion comme un élément réel et invente une explication rationnelle aux résultats illogiques issus de ses interactions avec elle. Par exemple, si elle tente de traverser un pont fantasmagorique enjambant un ravin et tombe dès qu'elle pose le pied sur ce pont, si elle survit à la chute, elle croit toujours que le pont est réel et trouve une explication logique à sa chute : on l'a poussée, elle a glissé, une forte bourrasque l'a fait basculer...",
-      "Une cible affectée croit si fort à la réalité de l'illusion que cette dernière peut même la blesser. Une illusion créée à l'image d'une créature peut attaquer la cible. De même, une illusion représentant du feu, un bassin d'acide ou une nappe de lave peut brûler la cible. À chaque round, à votre tour, votre illusion inflige ld6 dégâts psychiques à la cible si elle se trouve au sein de l'illusion ou dans un rayon de 1,50 mètre autour d'elle et que cette illusion représente une créature ou un danger qui devrait logiquement la blesser, en l'attaquant par exemple. La cible perçoit les dégâts comme étant d'un type approprié à l'illusion qu'elle voit."
+      "Une cible affectée croit si fort à la réalité de l'illusion que cette dernière peut même la blesser. Une illusion créée à l'image d'une créature peut attaquer la cible. De même, une illusion représentant du feu, un bassin d'acide ou une nappe de lave peut brûler la cible. À chaque round, à votre tour, votre illusion inflige 1d6 dégâts psychiques à la cible si elle se trouve au sein de l'illusion ou dans un rayon de 1,50 mètre autour d'elle et que cette illusion représente une créature ou un danger qui devrait logiquement la blesser, en l'attaquant par exemple. La cible perçoit les dégâts comme étant d'un type approprié à l'illusion qu'elle voit."
     ],
     "upCast": "",
      "source": "PHB",
@@ -6954,8 +6954,8 @@
     "ritual": false,
     "shortDesc": "Si l'attaque touche, inflige 1d6 dégâts perforant et tire la cible (taille G max) sur 3 m (dégâts/niv).",
     "entries": [
-      "Vous créez un long fouet semblable à une liane couverte d'épines. Sur votre ordre, il frappe une créature à portée. Faites une attaque de sort au corps à corps contre la cible. Si vous touchez, la créature subit ld6 dégâts perforants et, si la créature est de taille Grande ou inférieure, vous l'attirez sur 3 mètres dans votre direction.",
-      "Les dégâts du sort augmentent de ld6 quand vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)"
+      "Vous créez un long fouet semblable à une liane couverte d'épines. Sur votre ordre, il frappe une créature à portée. Faites une attaque de sort au corps à corps contre la cible. Si vous touchez, la créature subit 1d6 dégâts perforants et, si la créature est de taille Grande ou inférieure, vous l'attirez sur 3 mètres dans votre direction.",
+      "Les dégâts du sort augmentent de 1d6 quand vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)"
     ],
     "upCast": "",
      "source": "PHB",
@@ -7094,7 +7094,7 @@
       "Un bruit retentit soudain avec une intensité douloureuse, à partir d'un point situé à portée. Chaque créature située dans une sphère de 3 mètres de rayon centrée sur ce point doit faire un jet de sauvegarde de Constitution. Les créatures qui le ratent subissent 3d8 dégâts de tonnerre, les autres la moitié seulement. Une créature faite de matière inorganique, comme de la pierre, du cristal ou du métal est désavantagée sur ce jet de sauvegarde.",
       "Un objet non magique que personne ne porte ni ne transporte subit aussi ces dégâts s'il se trouve dans la zone du sort."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 2•.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 2•.",
      "source": "PHB",
     "page": 246,
     "casters": {
@@ -7151,7 +7151,7 @@
     "shortDesc": "Le mouvement du lanceur (+9 m) ne provoque pas d'attaque d'opportunité et il obtient l'avantage à un jet d'attaque qui inflige 1d8 de force extra.",
     "entries": [
       "Vous bougez comme le vent.Jusqu'à la fin du sort, vos déplacements ne provoquent pas d'attaques d'opportunité.",
-      "Une seule fois, avant la fin du sort et lors de votre tour, vous pouvez vous donner un avantage sur un jet d'attaque d'arme. Cette attaque inflige ld8 points de dégâts de force supplémentaires si vous la réussissez. Que votre attaque soit réussie ou non, votre vitesse de déplacement au sol augmente de 9 mètres jusqu'à la fin de ce tour."
+      "Une seule fois, avant la fin du sort et lors de votre tour, vous pouvez vous donner un avantage sur un jet d'attaque d'arme. Cette attaque inflige 1d8 points de dégâts de force supplémentaires si vous la réussissez. Que votre attaque soit réussie ou non, votre vitesse de déplacement au sol augmente de 9 mètres jusqu'à la fin de ce tour."
     ],
     "upCast": "",
     "source": "XGE",
@@ -7178,9 +7178,9 @@
     "shortDesc": "La cible doit réussir un JdS de For. ou être entravée et subir 1d6 dégâts perforants (dégâts/niv).",
     "entries": [
       "La prochaine attaque armée, faite avant la fin de ce sort, qui vous permet de toucher une créature fait jaillir une masse grouillante de lianes épineuses au point d'impact. La cible doit réussir un jet de sauvegarde de Force, sans quoi elle est entravée jusqu'à la fin du sort. Une créature de taille Grande ou supérieure est avantagée sur ce jet de sauvegarde. Si la cible réussit son jet de sauvegarde, les lianes se flétrissent.",
-      "Tant que la cible est entravée par le sort, elle subit ld6 dégâts perforants au début de chacun de ses tours. Une créature entravée par les lianes peut utiliser son action pour faire un jet de sauvegarde de Force contre le DD du jet de sauvegarde de votre sort. Une créature suffisamment proche de la cible pour la toucher peut aussi effectuer ce jet. Si le jet est réussi, la cible est libérée."
+      "Tant que la cible est entravée par le sort, elle subit 1d6 dégâts perforants au début de chacun de ses tours. Une créature entravée par les lianes peut utiliser son action pour faire un jet de sauvegarde de Force contre le DD du jet de sauvegarde de votre sort. Une créature suffisamment proche de la cible pour la toucher peut aussi effectuer ce jet. Si le jet est réussi, la cible est libérée."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld6 par emplacement de sort au-delà du 1e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d6 par emplacement de sort au-delà du 1e.",
      "source": "PHB",
     "page": 246,
     "casters": {
@@ -7351,7 +7351,7 @@
               "Votre vitesse au sol augmente de 3 mètres.",
               "Vous gagnez vision dans le noir avec une portée de 36 mètres.",
               "Vos jets d'attaque basés sur la Force sont avantagés.",
-              "Vos attaques de corps à corps infligent ld6 points de dégâts de force supplémentaires."
+              "Vos attaques de corps à corps infligent 1d6 points de dégâts de force supplémentaires."
             ]
           }
         ]
@@ -7397,8 +7397,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 1d6 dégâts de froid et avoir un désavantage à l'attaque (dégâts/niv).",
     "entries": [
-      "Vous ciblez une créature que vous pouvez voir et qui se trouve à portée. Elle se trouve alors couverte de givre engourdissant. La cible doit faire un jet de sauvegarde de Constitution. Sur un échec, elle subit ld6 points de dégâts de froid et se trouve désavantagée au prochain jet d'attaque d'arme qu'elle fait avant la fin de son prochain tour.",
-      "Les dégâts infligés par ce sort augmentent de ld6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous ciblez une créature que vous pouvez voir et qui se trouve à portée. Elle se trouve alors couverte de givre engourdissant. La cible doit faire un jet de sauvegarde de Constitution. Sur un échec, elle subit 1d6 points de dégâts de froid et se trouve désavantagée au prochain jet d'attaque d'arme qu'elle fait avant la fin de son prochain tour.",
+      "Les dégâts infligés par ce sort augmentent de 1d6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "XGE",
@@ -7424,7 +7424,7 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Sag. ou subir 1d8 ou 1d12 dégâts nécrotiques (dégâts/niv).",
     "entries": [
-      "Vous désignez une créature que vous pouvez voir et qui se trouve à portée. Le son lugubre d'une cloche emplit temporairement l'air autour de la cible, qui doit réussir un jet de sauvegarde de Sagesse ou subir ld8 points de dégâts nécrotiques. Si la cible n'est pas à son maximum de points de vie, elle subit à la place ld12 points de dégâts nécrotiques.",
+      "Vous désignez une créature que vous pouvez voir et qui se trouve à portée. Le son lugubre d'une cloche emplit temporairement l'air autour de la cible, qui doit réussir un jet de sauvegarde de Sagesse ou subir 1d8 points de dégâts nécrotiques. Si la cible n'est pas à son maximum de points de vie, elle subit à la place 1d12 points de dégâts nécrotiques.",
       "La quantité de dégâts infligés par Je sort augmente d'un dé quand vous atteignez le niveau 5 (2d8 ou 2dl2), le niveau 11 (3d8 ou 3dl2) et le niveau 17 (4d8 ou 4dl2)."
     ],
     "upCast": "",
@@ -7508,7 +7508,7 @@
         ]
       }
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts des runes explosives augmentent de ld8 par niveau au-delà du 3•. Si vous créez un glyphe à sort, vous pouvez stocker un sort d'un niveau égal ou inférieur à celui employé pour lancer le glyphe.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts des runes explosives augmentent de 1d8 par niveau au-delà du 3•. Si vous créez un glyphe à sort, vous pouvez stocker un sort d'un niveau égal ou inférieur à celui employé pour lancer le glyphe.",
     "source": "PHB",
     "page": 247,
     "casters": {
@@ -7924,7 +7924,7 @@
     "shortDesc": "Crée 3 duplicatas illusoires du lanceur qui possèdent chacun une CA de 10+Mod.Dex et sont détruits s'ils sont touchés.",
     "entries": [
       "Trois répliques illusoires de votre personne apparaissent dans votre emplacement.Jusqu'à la fin du sort, ces répliques se déplacent en même temps que vous et imitent toutes vos actions, changeant de position de manière à ce qu'il soit impossible de savoir quelles versions de vous sont des images et quelle version est réelle. Vous pouvez utiliser une action pour révoquer les répliques illusoires.",
-      "Pendant toute la durée du sort, chaque fois qu'une créature vous prend pour cible d'une attaque, vous devez lancer ld20 pour savoir si l'attaque touche votre personne ou l'un de vos doubles.",
+      "Pendant toute la durée du sort, chaque fois qu'une créature vous prend pour cible d'une attaque, vous devez lancer 1d20 pour savoir si l'attaque touche votre personne ou l'un de vos doubles.",
       "Si vous avez trois répliques, vous devez obtenir 6 ou plus pour que l'attaque touche une réplique. Si vous n'en avez plus que deux, vous devez faire 8 ou plus et si vous n'en avez plus qu'une, vous devez faire 11 ou plus.",
       "Chaque réplique possède une CA de 10 + votre modificateur de Dextérité. Si l'attaque touche une réplique, elle la détruit. Le seul moyen de détruire une réplique est de la toucher avec une attaque, car elle ignore tous les autres effets et dégâts. Le sort se termine quand les trois répliques sont détruites. Une créature n'est pas affectée par ce sort si elle ne voit pas, si elle se sert d'un mode de perception autre que la vue (comme la vision aveugle) ou encore si elle perçoit les illusions comme telles avec vision parfaite, par exemple."
     ],
@@ -8079,8 +8079,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 1d6 dégâts de poison et se déplacer de 1,50 m au hasard (dégâts/niv).",
     "entries": [
-      "Vous provoquez la formation momentanée d'un nuage d'acariens, de puces et d'autres parasites autour d'une créature que vous pouvez voir et qui se trouve à portée. La cible doit réussir un jet de sauvegarde de Constitution ou subir ld6 points de dégâts de poison et se trouver repoussée de 1,50 mètre dans une direction aléatoire, si elle peut se déplacer et que sa vitesse est d'au moins 1,50 mètre. Lancez un d4 pour la direction : 1 pour nord, 2 pour sud, 3 pour est ou 4 pour ouest. Ce déplacement ne provoque pas d'attaque d'opportunité et, si le trajet déterminé aléatoirement que doit emprunter la créature est bloqué, elle ne bouge pas.",
-      "La quantité de dégâts causée par le sort augmente de ld6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous provoquez la formation momentanée d'un nuage d'acariens, de puces et d'autres parasites autour d'une créature que vous pouvez voir et qui se trouve à portée. La cible doit réussir un jet de sauvegarde de Constitution ou subir 1d6 points de dégâts de poison et se trouver repoussée de 1,50 mètre dans une direction aléatoire, si elle peut se déplacer et que sa vitesse est d'au moins 1,50 mètre. Lancez un d4 pour la direction : 1 pour nord, 2 pour sud, 3 pour est ou 4 pour ouest. Ce déplacement ne provoque pas d'attaque d'opportunité et, si le trajet déterminé aléatoirement que doit emprunter la créature est bloqué, elle ne bouge pas.",
+      "La quantité de dégâts causée par le sort augmente de 1d6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "XGE",
@@ -8627,7 +8627,7 @@
     "shortDesc": "Si une attaque avec une arme touche, inflige aussi des dégâts de feu égaux au Mod.Carac.Inc à une autre créature (dégâts/niv).",
     "entries": [
       "Vous brandissez l'arme utilisée pour l'incantation du sort et effectuez avec elle une attaque de corps à corps contre une créature que vous voyez dans un rayon de 1,50 m. Si l'attaque touche, la cible subit les effets normaux de l'attaque d'arme et vous pouvez faire jaillir des flammes vertes de la cible vers une autre créature de votre choix parmi celles que vous voyez dans un rayon de 1,50 m de la première. La seconde créature subit autant de dégâts de feu que votre modificateur de caractéristique d'incantation.",
-      "Les dégâts du sort augmentent lorsque vous atteignez certains niveaux. Au niveau 5, l'attaque de corps à corps inflige ld8 dégâts de feu supplémentaires à la cible si l'attaque touche et les dégâts subis par la seconde créature passent à ld8 + votre modificateur de caractéristique d'incantation. Ces deux jets de dégâts augmentent de ld8 au niveau 11 (2d8 et 2d8), puis encore au niveau 17 (3d8 et 3d8)."
+      "Les dégâts du sort augmentent lorsque vous atteignez certains niveaux. Au niveau 5, l'attaque de corps à corps inflige 1d8 dégâts de feu supplémentaires à la cible si l'attaque touche et les dégâts subis par la seconde créature passent à 1d8 + votre modificateur de caractéristique d'incantation. Ces deux jets de dégâts augmentent de 1d8 au niveau 11 (2d8 et 2d8), puis encore au niveau 17 (3d8 et 3d8)."
     ],
     "upCast": "",
     "source": "TCE",
@@ -8689,7 +8689,7 @@
       "Vous pouvez utiliser votre action pour faire une attaque de sort au corps à corps avec la lame enflammée. Si vous touchez la cible, cette dernière subit 3d6 dégâts de feu.",
       "La lame enflammée émet une vive lumière dans un rayon de 3 mètres et une faible lumière dans un rayon de 3 mètres de plus."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de ld6 tous les deux niveaux au-delà du 2e",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les dégâts augmentent de 1d6 tous les deux niveaux au-delà du 2e",
     "source": "PHB",
     "page": 255,
     "casters": {
@@ -8746,8 +8746,8 @@
     "ritual": false,
     "shortDesc": "Si une attaque avec une arme touche, inflige 1d8 dégâts de tonnerre si la cible bouge (dégâts/niv).",
     "entries": [
-      "Vous brandissez l'arme utilisée pour l'incantation du sort et effectuez avec elle une attaque de corps à corps contre une créature que vous voyez dans un rayon de 1,50 m. Si l'attaque touche, la cible subit les effets normaux de l'attaque, puis se retrouve enveloppée d'énergie tonitruante jusqu'au début de votre tour suivant. Si la cible se déplace volontairement de 1,50 m ou plus dans l'intervalle, elle subit ld8 dégâts de tonnerre et le sort prend fin.",
-      "Les dégâts du sort augmentent lorsque vous atteignez certains niveaux. Au niveau 5, l'attaque de corps à corps inflige ld8 dégâts de tonnerre supplémentaires à la cible si l'attaque touche et les dégâts subis si la cible se déplace passent à 2d8. Ces deux jets de dégâts augmentent de ld8 au niveau 11 (2d8 et 3d8), puis encore au niveau 17 (3d8 et 4d8)."
+      "Vous brandissez l'arme utilisée pour l'incantation du sort et effectuez avec elle une attaque de corps à corps contre une créature que vous voyez dans un rayon de 1,50 m. Si l'attaque touche, la cible subit les effets normaux de l'attaque, puis se retrouve enveloppée d'énergie tonitruante jusqu'au début de votre tour suivant. Si la cible se déplace volontairement de 1,50 m ou plus dans l'intervalle, elle subit 1d8 dégâts de tonnerre et le sort prend fin.",
+      "Les dégâts du sort augmentent lorsque vous atteignez certains niveaux. Au niveau 5, l'attaque de corps à corps inflige 1d8 dégâts de tonnerre supplémentaires à la cible si l'attaque touche et les dégâts subis si la cible se déplace passent à 2d8. Ces deux jets de dégâts augmentent de 1d8 au niveau 11 (2d8 et 3d8), puis encore au niveau 17 (3d8 et 4d8)."
     ],
     "upCast": "",
     "source": "TCE",
@@ -9384,7 +9384,7 @@
       "Alors que vous vous tenez les doigts écartés en éventail et les pouces l'un contre l'autre, une mince nappe de feu s'étend depuis vos mains tendues. Chaque créature située dans un cône de 4,50 mètres doit faire un jet de sauvegarde de Dextérité. Celles qui échouent reçoivent 3d6 dégâts de feu, les autres la moitié seulement.",
       "Le feu embrase tous les objets inflammables de la zone, à moins que quelqu'un ne les porte ou ne les transporte."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 1er",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 1er",
     "source": "PHB",
     "page": 258,
     "casters": {
@@ -9415,7 +9415,7 @@
           "Choisissez une caractéristique. Tant que la cible est maudite, elle est désavantagée lors des tests de caractéristique et des jets de sauvegarde basés sur cette caractéristique.",
           "Tant que la cible est maudite, elle est désavantagée lors de ses jets d'attaque contre vous.",
           "Tant que la cible est maudite, elle doit faire un jet de sauvegarde de Sagesse au début de chacun de ses tours. Si elle le rate, elle gaspille son action du tour et ne fait rien.",
-          "Tant que la cible est maudite, les sorts et les attaques émanant de vous lui infligent ld8 dégâts nécrotiques supplémentaires."
+          "Tant que la cible est maudite, les sorts et les attaques émanant de vous lui infligent 1d8 dégâts nécrotiques supplémentaires."
         ]
       },
       "Le sort lever une malédiction met un terme à cet effet. Si le MD est d'accord, vous pouvez choisir un autre effet de malédiction, mais il ne doit pas être plus puissant que ceux proposés ici. C'est au MD de décider s'il accepte ou non le nouvel effet de malédiction."
@@ -9449,7 +9449,7 @@
     "ritual": false,
     "shortDesc": "Si une attaque touche, inflige 1d6 dégâts nécrotiques extra. Désavantage à un jet de carac choisi (durée/niv).",
     "entries": [
-      "Vous lancez une malédiction sur une créature située à portée dans votre champ de vision. Tant que la durée du sort n'a pas expiré, vous infligez ld6 dégâts nécrotiques supplémentaires à la cible chaque fois que vous la touchez avec une attaque. Lorsque vous lancez le sort, choisissez une caractéristique. La cible est désavantagée lors des tests concernant cette caractéristique.",
+      "Vous lancez une malédiction sur une créature située à portée dans votre champ de vision. Tant que la durée du sort n'a pas expiré, vous infligez 1d6 dégâts nécrotiques supplémentaires à la cible chaque fois que vous la touchez avec une attaque. Lorsque vous lancez le sort, choisissez une caractéristique. La cible est désavantagée lors des tests concernant cette caractéristique.",
       "Si la cible tombe à O point de vie avant que le sort n'expire, vous pouvez utiliser votre action bonus lors d'un tour ultérieur pour affecter une nouvelle créature.",
       "Si la cible bénéficie du sort {@spell lever une malédiction}, {@spell maléfice}: se termine immédiatement."
     ],
@@ -9574,7 +9574,7 @@
     "ritual": false,
     "shortDesc": "La cible subit 1d6 dégâts extra et le lanceur a l'avantage aux jets de Sagesse (Perception/Survie) pour la trouver (durée/niv).",
     "entries": [
-      "Vous choisissez une créature située à portée dans votre champ de vision et lui apposez une marque mystique la désignant comme votre proie.Jusqu'à la fin du sort, vous lui infligez ld6 dégâts supplémentaires chaque fois que vous la touchez avec une attaque armée et vous êtes avantàgé sur les éventuels tests de Sagesse (Perception) ou Sagesse (Survie) que vous faites pour la retrouver. Si la cible tombe à 0 point de vie avant que ce sort n'arrive à expiration, vous pouvez utiliser une action bonus lors d'un tour ultérieur pour marquer une nouvelle créature."
+      "Vous choisissez une créature située à portée dans votre champ de vision et lui apposez une marque mystique la désignant comme votre proie.Jusqu'à la fin du sort, vous lui infligez 1d6 dégâts supplémentaires chaque fois que vous la touchez avec une attaque armée et vous êtes avantàgé sur les éventuels tests de Sagesse (Perception) ou Sagesse (Survie) que vous faites pour la retrouver. Si la cible tombe à 0 point de vie avant que ce sort n'arrive à expiration, vous pouvez utiliser une action bonus lors d'un tour ultérieur pour marquer une nouvelle créature."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou 4, vous pouvez vous concentrer sur le sort pendant 8 heures. Si vous utilisez un emplacement de niveau 5 ou plus, vous pouvez maintenir votre concentration sur le sort jusqu'à 24 heures.",
     "source": "PHB",
@@ -9719,7 +9719,7 @@
       "Choisissez un objet manufacturé en métal, comme une arme métallique ou une armure métallique lourde ou intermédiaire. Il doit être situé à portée et dans votre champ de vision et se met alors à luire d'un rouge incandescent. Une créature en contact physique avec l'objet reçoit 2d8 dégâts de feu lorsque vous lancez le sort. Vous pouvez dépenser une action bonus à chacun de vos tours suivants jusqu'à la fin du sort pour infliger de nouveau ce montant de dégâts.",
       "Si une créature tient l'objet qui lui inflige des dégâts ou le porte sur elle, elle doit réussir un jet de sauvegarde de Constitution, sans quoi elle le lâche, si elle peut. Si elle le conserve, elle est désavantagée lors des jets d'attaque et des tests de caractéristique jusqu'au début de votre prochain tour"
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 2e.",
     "source": "PHB",
     "page": 260,
     "casters": {
@@ -9980,7 +9980,7 @@
         "type": "entries",
         "name": "Annes naturelles",
         "entries": [
-          "Vous gagnez des griffes, des crocs, des épines, des cornes ou une autre arme naturelle de votre choix. Vos attaques à mains nues infligent ld6 dégâts contondants, perforants ou tranchants, comme il sied à l'arme naturelle que vous avez choisie et vous maîtrisez automatiquement les attaques à mains nues. Enfin, votre arme naturelle est de nature magique et vous disposez d'un bonus de +l aux jets d'attaque et de dégâts quand vous l'utilisez."
+          "Vous gagnez des griffes, des crocs, des épines, des cornes ou une autre arme naturelle de votre choix. Vos attaques à mains nues infligent 1d6 dégâts contondants, perforants ou tranchants, comme il sied à l'arme naturelle que vous avez choisie et vous maîtrisez automatiquement les attaques à mains nues. Enfin, votre arme naturelle est de nature magique et vous disposez d'un bonus de +l aux jets d'attaque et de dégâts quand vous l'utilisez."
         ]
       }
     ],
@@ -10065,8 +10065,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS de Sag. ou subir 1d4 dégâts psychiques et avoir un désavantage à sa prochaine attaque (dégâts/niv).",
     "entries": [
-      "Vous lancez une bordée d'insultes empreintes d'un subtil enchantement à une créature située à portée dans votre champ de vision. Si elle vous entend (elle n'a pas besoin de vous comprendre), elle doit réussir un jet de sauvegarde de Sagesse, sans quoi elle subit ld4 dégâts psychiques et se trouve désavantagée sur le prochain jet d'attaque qu'elle effectue avant la fin de son prochain tour.",
-      "Les dégâts du sort augmentent de ld4 quand vous atteignez le niveau 5 (2d4), le niveau 11 (3d4) et le niveau 17 (4d4)."
+      "Vous lancez une bordée d'insultes empreintes d'un subtil enchantement à une créature située à portée dans votre champ de vision. Si elle vous entend (elle n'a pas besoin de vous comprendre), elle doit réussir un jet de sauvegarde de Sagesse, sans quoi elle subit 1d4 dégâts psychiques et se trouve désavantagée sur le prochain jet d'attaque qu'elle effectue avant la fin de son prochain tour.",
+      "Les dégâts du sort augmentent de 1d4 quand vous atteignez le niveau 5 (2d4), le niveau 11 (3d4) et le niveau 17 (4d4)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -10124,7 +10124,7 @@
     "ritual": false,
     "shortDesc": "1 créature récupère 1d4+Mod.Carac pv (+1d4 pv/niv).",
     "entries": [
-      "Une créature de votre choix située à portée dans votre champ de vision récupère un montant de points de vie égal à ld4 + votre modificateur de caractéristique d'incantation. Ce sort n'a aucun effet sur les créatures artificielles et les morts-vivants."
+      "Une créature de votre choix située à portée dans votre champ de vision récupère un montant de points de vie égal à 1d4 + votre modificateur de caractéristique d'incantation. Ce sort n'a aucun effet sur les créatures artificielles et les morts-vivants."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les soins augmentent de 1d4 par niveau au-delà du 1er.",
     "source": "PHB",
@@ -10150,9 +10150,9 @@
     "ritual": false,
     "shortDesc": "Jusqu'à 6 créatures récupèrent 1d4+Mod.Carac pv (+1d4 pv/niv).",
     "entries": [
-      "Vous prononcez des paroles curatives qui rendent un montant de points de vie égal à ld4 + votre modificateur de caractéristique d'incantation à un maximum de six créatures de votre choix situées à portée et dans votre champ de vision. Ce sort reste sans effet sur les morts-vivants et les créatures artificielles."
+      "Vous prononcez des paroles curatives qui rendent un montant de points de vie égal à 1d4 + votre modificateur de caractéristique d'incantation à un maximum de six créatures de votre choix situées à portée et dans votre champ de vision. Ce sort reste sans effet sur les morts-vivants et les créatures artificielles."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les soins augmentent de ld4 par niveau au-delà du 3e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 4 ou plus, les soins augmentent de 1d4 par niveau au-delà du 3e.",
     "source": "PHB",
     "page": 263,
     "casters": {
@@ -10287,8 +10287,8 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de Con. ou subir 1d6 dégâts radiants (dégâts/niv).",
     "entries": [
-      "Vous prononcez un mot divin et vous trouvez soudain enveloppé d'une lumière radieuse brûlante. Chaque créature de votre choix que vous pouvez voir et qui se trouve à portée doit réussir un jet de sauvegarde de Constitution ou subir ld6 points de dégâts radiants.",
-      "La quantité de dégâts infligés par le sort augmente de ld6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
+      "Vous prononcez un mot divin et vous trouvez soudain enveloppé d'une lumière radieuse brûlante. Chaque créature de votre choix que vous pouvez voir et qui se trouve à portée doit réussir un jet de sauvegarde de Constitution ou subir 1d6 points de dégâts radiants.",
+      "La quantité de dégâts infligés par le sort augmente de 1d6 lorsque vous atteignez le niveau 5 (2d6), le niveau 11 (3d6) et le niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "XGE",
@@ -10414,7 +10414,7 @@
       "Quand le mur apparaît, chaque créature située dans sa zone doit faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 7d8 dégâts perforants, les autres la moitié seulement.",
       "Une créature peut traverser le mur, mais lentement et dans la douleur. Elle doit dépenser 1,20 mètre de déplacement pour avancer de 30 centimètres au sein du mur. De plus, quand elle entre dans le mur pour la première fois de son tour ou quand elle y termine son tour, elle doit faire un jet de sauvegarde de Dextérité. Elle subit 7d8 dégâts perforants si elle rate son jet, la moitié si elle le réussit."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 7 ou plus, les deux types de dégâts augmentent chacun de ld8 par niveau au-delà du 6e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 7 ou plus, les deux types de dégâts augmentent chacun de 1d8 par niveau au-delà du 6e.",
     "source": "PHB",
     "page": 263,
     "casters": {
@@ -10447,7 +10447,7 @@
       "Quand le mur apparaît, chaque créature présente dans sa zone d'effet doit faire un jet de sauvegarde de Dextérité. Celles qui échouent reçoivent 5d8 dégâts de feu, les autres la moitié seulement.",
       "Une face du mur (celle de votre choix) inflige 5d8 dégâts de feu à chaque créature qui termine son tour à 3 mètres d'elle ou moins ou au sein du mur. Une créature qui pénètre dans le mur pour la première fois de son tour ou y termine son tour subit les mêmes dégâts. L'autre face du mur n'inflige pas de dégâts."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 4e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 4e.",
     "source": "PHB",
     "page": 264,
     "casters": {
@@ -10511,7 +10511,7 @@
       "Vous créez un mur de glace sur une surface solide à portée. Vous pouvez lui donner une forme de dôme hémisphérique ou de sphère d'un rayon maximal de 3 mètres ou en faire une surface plane composée de dix panneaux de 3 mètres carrés. Chaque panneau doit être contigu à un autre. Quelle que soit sa forme, le mur fait 30 centimètres d'épaisseur et persiste pendant toute la durée du sort. Si le mur passe par l'emplacement d'une créature lorsqu'il apparaît, il la repousse d'un côté ou de l'autre et elle doit faire un jet de sauvegarde de Dextérité. Si elle échoue, elle subit 10d6 dégâts de froid, la moitié seulement si elle réussit.",
       "Le mur est un objet que l'on peut endommager et on peut donc y ouvrir des brèches. Il a une CA de 12 et 30 points de vie par section de 3 mètres de côté et il est vulnérable aux dégâts de feu. Si une section de 3 mètres de côté tombe à 0 point de vie, elle est détruite et laisse juste une zone d'air glacé à l'emplacement où se trouvait le pan de mur. Quand une créature se déplace dans cette zone frigorifique pour la première fois de son tour, elle doit faire un jet de sauvegarde de Constitution. Si elle échoue, elle subit 5d6 dégâts de froid, la moitié seulement si elle réussit."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 7 ou plus, les dégâts que le mur inflige en apparaissant augmentent de 2d6 et les dégâts provoqués par un passage dans la zone d'air glacé augmentent de ld6 par niveau au-delà du 6e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 7 ou plus, les dégâts que le mur inflige en apparaissant augmentent de 2d6 et les dégâts provoqués par un passage dans la zone d'air glacé augmentent de 1d6 par niveau au-delà du 6e.",
     "source": "PHB",
     "page": 264,
     "casters": {
@@ -10545,7 +10545,7 @@
       "Une créature qui termine son tour dans la zone occupée par le mur subit 4d8 points de dégâts radiants.",
       "Jusqu'à ce que le sort prenne fin, vous pouvez, par une action, lancer un rayon de lumière radiante depuis le mur jusqu'à une créature que vous pouvez voir et qui se trouve à moins de 18 mètres de celui-ci. Faites une attaque de sort à distance. Si vous touchez votre cible, celle-ci subit 4d8 points de dégâts radiants. Que vous ayez touché votre cible ou non, la longueur du mur est réduite de 3 mètres. Quand elle atteint 0 mètre, le sort prend fin."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 6 ou plus, la quantité de dégâts augmente de ld8 par niveau au-delà du 5e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 6 ou plus, la quantité de dégâts augmente de 1d8 par niveau au-delà du 5e.",
     "source": "XGE",
     "page": 163,
     "casters": {
@@ -10750,7 +10750,7 @@
     "entries": [
       "Vous fredonnez une mélodie discordante qu'entend une seule créature de votre choix, située à portée. La malheureuse est alors victime de terribles douleurs et doit faire un jet de sauvegarde de Sagesse. Si elle échoue, elle subit 3d6 dégâts psyclùques et doit immédiatement dépenser sa réaction (si elle le peut) pour s'éloigner de vous autant que sa vitesse de déplacement le lui permet. Elle ne s'avance pas dans des zones à l'évidence dangereuses, comme un brasier ou une fosse. Si la cible réussit son jet de sauvegarde, elle subit seulement la moitié des dégâts et n'a pas à s'éloigner. Une créature assourdie réussit automatiquement son jet de sauvegarde."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld6 par emplacement de sort au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d6 par emplacement de sort au-delà du 1er.",
     "source": "PHB",
     "page": 265,
     "casters": {
@@ -10901,7 +10901,7 @@
     "entries": [
       "Une rafale de boules de neige magiques apparaît brusquement à un point que vous choisissez à portée. Chaque créature qui se trouve dans une sphère de 1,50 mètre de rayon centrée sur ce point doit faire un jet de sauvegarde de Dextérité. Sur un échec, une créature subit 3d6 points de dégât de froid, ou deux fois moins sur une réussite."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts augmente de ld6 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts augmente de 1d6 par niveau au-delà du 2e.",
     "source": "XGE",
     "page": 163,
     "casters": {
@@ -11055,7 +11055,7 @@
     "entries": [
       "Vous lancez une sphère d'énergie de 10 centimètres de diamètre sur une créature située à portée dans votre champ de vision. Cet orbe est fait d'acide, de feu, de froid, de foudre, de poison ou de tonnerre (à vous de choisir). Vous effectuez ensuite un jet d'attaque à distance contre votre cible. Si vous la touchez, elle subit 3d8 dégâts du type de l'orbe."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld8 par emplacement de sort au-delà du 1e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d8 par emplacement de sort au-delà du 1e.",
     "source": "PHB",
     "page": 267,
     "casters": {
@@ -11451,7 +11451,7 @@
     "ritual": false,
     "shortDesc": "Jusqu'à 3 cailloux infligent 1d6 + Mod.Carac.Inc dégâts contondant si l'attaque avec un sort touche.",
     "entries": [
-      "Vous touchez un à trois cailloux et les imprégnez de magie. Vous ou quelqu'un d'autre pouvez faire un jet d'attaque de sort à distance en lançant un de ces cailloux à la main ou avec une fronde. Si un caillou est lancé, il a une portée de 18 mètres. Si quelqu'un d'autre que vous lance un de ces cailloux, il ajoute le modificateur de votre caractéristique d'incantation (et non le sien) au jet d'attaque. Si le caillou touche sa cible, celle-ci subit une quantité de dégâts contondants égale à ld6 +votre modificateur de caractéristique d'incantation. Que l'attaque réussisse ou non, la magie qui imprégnait le caillou se dissipe.",
+      "Vous touchez un à trois cailloux et les imprégnez de magie. Vous ou quelqu'un d'autre pouvez faire un jet d'attaque de sort à distance en lançant un de ces cailloux à la main ou avec une fronde. Si un caillou est lancé, il a une portée de 18 mètres. Si quelqu'un d'autre que vous lance un de ces cailloux, il ajoute le modificateur de votre caractéristique d'incantation (et non le sien) au jet d'attaque. Si le caillou touche sa cible, celle-ci subit une quantité de dégâts contondants égale à 1d6 +votre modificateur de caractéristique d'incantation. Que l'attaque réussisse ou non, la magie qui imprégnait le caillou se dissipe.",
       "Si vous lancez ce sort à nouveau, la magie qui imprégnait encore les cailloux suite à une précédente incantation se dissipe."
     ],
     "upCast": "",
@@ -11478,8 +11478,8 @@
     "ritual": false,
     "shortDesc": "La cible doit réussir un JdS d'Int. ou subir 1d6 dégâts psychiques et soustraire 1d4 à son prochain JdS (dégâts/niv).",
     "entries": [
-      "Vous enfoncez une pointe d'énergie psychique dérangeante dans l'esprit d'une créature que vous voyez à portée. La cible doit réussir un jet de sauvegarde d'Intelligence sous peine de subir ld6 dégâts psychiques et de soustraire ld4 à son prochain jet de sauvegarde intervenant avant la fin de votre tour suivant.",
-      "Les dégâts du sort augmentent de ld6 lorsque vous atteignez certains niveaux : niveau 5 (2d6), niveau 11 (3d6) et niveau 17 (4d6)."
+      "Vous enfoncez une pointe d'énergie psychique dérangeante dans l'esprit d'une créature que vous voyez à portée. La cible doit réussir un jet de sauvegarde d'Intelligence sous peine de subir 1d6 dégâts psychiques et de soustraire 1d4 à son prochain jet de sauvegarde intervenant avant la fin de votre tour suivant.",
+      "Les dégâts du sort augmentent de 1d6 lorsque vous atteignez certains niveaux : niveau 5 (2d6), niveau 11 (3d6) et niveau 17 (4d6)."
     ],
     "upCast": "",
     "source": "TCE",
@@ -11505,8 +11505,8 @@
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d8 dégâts de foudre (dégâts/niv) et la cible ne peut pas prendre de réaction.",
     "entries": [
-      "La foudre jaillit de votre main et bondit sur la créature que vous tentez de toucher. Faites une attaque de sort au corps à corps contre la cible. Vous êtes avantagé lors du jet d'attaque si votre cible porte une armure métallique. Si vous touchez la cible, elle subit ld8 dégâts de foudre et ne peut pas effectuer de réaction avant le début de son prochain tour.",
-      "Les dégâts du sort augmentent de ld8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
+      "La foudre jaillit de votre main et bondit sur la créature que vous tentez de toucher. Faites une attaque de sort au corps à corps contre la cible. Vous êtes avantagé lors du jet d'attaque si votre cible porte une armure métallique. Si vous touchez la cible, elle subit 1d8 dégâts de foudre et ne peut pas effectuer de réaction avant le début de son prochain tour.",
+      "Les dégâts du sort augmentent de 1d8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -11765,7 +11765,7 @@
     "entries": [
       "Un maximum de six créatures de votre choix, situées à portée et dans votre champ de vision, récupèrent chacune un montant de points de vie égal à 2d8 + votre modificateur de caractéristique d'incantation. Ce sort n'a aucun effet sur les morts-vivants et les créatures artificielles."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les soins augmentent de ld8 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les soins augmentent de 1d8 par niveau au-delà du 2e.",
     "source": "PHB",
     "page": 272,
     "casters": {
@@ -11816,7 +11816,7 @@
     "ritual": false,
     "shortDesc": "3 projectiles infligent automatiquement 1d4+1 dégâts de force chacun à une ou plusieurs créatures (+1 projectile/niv).",
     "entries": [
-      "Vous créez trois fléchettes faites d'énergie magique luisante. Chacune touche une créature de votre choix, située à portée dans votre champ de vision. Une fléchette inflige ld4+1 dégâts de force à la cible. Toutes les fléchettes frappent leur cible en même temps, sachant que vous pouvez toutes les diriger contre une seule et même créature ou les répartir entre plusieurs."
+      "Vous créez trois fléchettes faites d'énergie magique luisante. Chacune touche une créature de votre choix, située à portée dans votre champ de vision. Une fléchette inflige 1d4+1 dégâts de force à la cible. Toutes les fléchettes frappent leur cible en même temps, sachant que vous pouvez toutes les diriger contre une seule et même créature ou les répartir entre plusieurs."
     ],
     "upCast": "2 ou plus, le sort crée une fléchette de plus par niveau au-delà du 1er",
     "source": "PHB",
@@ -12332,7 +12332,7 @@
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d8 dégâts de froid (dégâts/niv) et la vitesse de la cible est réduite de 3 m.",
     "entries": [
-      "Un rayon de lumière d'un blanc bleuté file vers une créature à portée. Faites une attaque de sort à distance contre la cible. Si vous la touchez, elle subit ld8 dégâts de froid et sa vitesse est réduite de 3 mètres jusqu'au début de votre prochain tour. Les dégâts du sort augmentent de ld8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
+      "Un rayon de lumière d'un blanc bleuté file vers une créature à portée. Faites une attaque de sort à distance contre la cible. Si vous la touchez, elle subit 1d8 dégâts de froid et sa vitesse est réduite de 3 mètres jusqu'au début de votre prochain tour. Les dégâts du sort augmentent de 1d8 quand vous atteignez le niveau 5 (2d8), le niveau 11 (3d8) et le niveau 17 (4d8)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -12364,7 +12364,7 @@
     "shortDesc": "Les créatures dans un cylindre de 3 x 12 m doivent réussir un JdS de Con. ou subir 2d10 dégâts radiants (dégâts/niv).",
     "entries": [
       "Un pâle rayon de lune brille dans un cylindre de 1,50 mètre de rayon pour 12 mètres de haut centré sur un point à portée. Une faible lumière emplit le cylindre jusqu'à la fin du sort.",
-      "Quand une créature entre dans la zone du sort pour la première fois de son tour ou qu'elle y commence son tour, elle est enveloppée de flammes fantomatiques qtù provoquent de violentes douleurs, et doit faire un jet de sauvegarde de Constitution. Si elle échoue, elle subit 2d10 dégâts radiants, la moitié seulement si elle réussit.",
+      "Quand une créature entre dans la zone du sort pour la première fois de son tour ou qu'elle y commence son tour, elle est enveloppée de flammes fantomatiques qui provoquent de violentes douleurs, et doit faire un jet de sauvegarde de Constitution. Si elle échoue, elle subit 2d10 dégâts radiants, la moitié seulement si elle réussit.",
       "Les métamorphes sont désavantagés lors de ce jet. Si l'un d'eux le rate, il reprend aussitôt son apparence originelle et ne peut plus changer de forme tant qu'il n'a pas quitté la zone de lumière du sort.",
       "Une fois que vous avez lancé ce sort, à chacun de vos tours, vous pouvez utiliser une action pour déplacer le rayon de lumière de 18 mètres au maximum dans la direction de votre choix."
     ],
@@ -12427,7 +12427,7 @@
     "entries": [
       "Un rayon d'énergie d'un vert maladif frappe une créature à portée. Faites un jet d'attaque de sort à distance contre elle. Si vous la touchez, elle subit 2d8 dégâts de poison et doit faire un jet de sauvegarde de Constitution. Si elle échoue, elle est empoisonnée jusqu'à la fin de votre prochain tour"
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld8 par emplacement de sort au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d8 par emplacement de sort au-delà du 1er.",
     "source": "PHB",
     "page": 275,
     "casters": {
@@ -12478,7 +12478,7 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un cône de 18 m doivent réussir un JdS de Dex. ou subir 10d6 dégâts d'un type déterminé au hasard.",
     "entries": [
-      "Huit rayons de lumière multicolores jaillissent de votre main. Chacun a une couleur différente et possède des pouvoirs et objectifs distincts. Chaque créature présente dans un cône de 18 mètres doit faire un jet de sauvegarde de Dextérité. Lancez ld8 par cible pour savoir quelle couleur l'affecte.",
+      "Huit rayons de lumière multicolores jaillissent de votre main. Chacun a une couleur différente et possède des pouvoirs et objectifs distincts. Chaque créature présente dans un cône de 18 mètres doit faire un jet de sauvegarde de Dextérité. Lancez 1d8 par cible pour savoir quelle couleur l'affecte.",
       {
         "type": "entries",
         "name": "1. Rouge",
@@ -12768,7 +12768,7 @@
     "ritual": false,
     "shortDesc": "La cible peut ajouter 1d4 à un jet de sauvegarde de son choix.",
     "entries": [
-      "Vous touchez une créature consentante. Une fois avant la fin du sort, elle peut lancer ld4 et ajouter le nombre obtenu à un unique jet de sauvegarde de son choix. Elle peut lancer le dé avant ou après avoir fait son jet de sauvegarde. Le sort se termine alors."
+      "Vous touchez une créature consentante. Une fois avant la fin du sort, elle peut lancer 1d4 et ajouter le nombre obtenu à un unique jet de sauvegarde de son choix. Elle peut lancer le dé avant ou après avoir fait son jet de sauvegarde. Le sort se termine alors."
     ],
     "upCast": "",
     "source": "PHB",
@@ -13451,9 +13451,9 @@
     "ritual": false,
     "shortDesc": "Les créatures dans un rayon de 3m doivent réussir un JdS de Dex. ou subir 1d6 dégâts contondants et tomber à terre (dégâts/niv).",
     "entries": [
-      "Vous provoquez un tremblement de terre sur la zone de portée du sort. Toutes les créatures qui se trouvent dans cette zone, sauf vous, doivent faire un jet de sauvegarde de Dextérité. Sur un échec, une créature subit ld6 points de dégâts contondants et se trouve jetée au sol. Si le sol de cette zone est constitué de terre meuble ou de pierrailles, il devient un terrain difficile jusqu'à ce qu'il soit dégagé. Il est possible de dégager la zone à la main, à raison d'au moins une minute par portion de 1,50 mètre de diamètre."
+      "Vous provoquez un tremblement de terre sur la zone de portée du sort. Toutes les créatures qui se trouvent dans cette zone, sauf vous, doivent faire un jet de sauvegarde de Dextérité. Sur un échec, une créature subit 1d6 points de dégâts contondants et se trouve jetée au sol. Si le sol de cette zone est constitué de terre meuble ou de pierrailles, il devient un terrain difficile jusqu'à ce qu'il soit dégagé. Il est possible de dégager la zone à la main, à raison d'au moins une minute par portion de 1,50 mètre de diamètre."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, la quantité de dégâts augmente de ld6 par niveau au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 2 ou plus, la quantité de dégâts augmente de 1d6 par niveau au-delà du 1er.",
     "source": "XGE",
     "page": 166,
     "casters": {
@@ -13718,7 +13718,7 @@
     "ritual": false,
     "shortDesc": "Le lanceur gagne 1d4+4 pv temporaires (+5 pv/niv).",
     "entries": [
-      "Vous renforcez votre corps avec un ersatz de vie et gagnez ld4+4 points de vie temporaires pendant la durée du sort."
+      "Vous renforcez votre corps avec un ersatz de vie et gagnez 1d4+4 points de vie temporaires pendant la durée du sort."
     ],
     "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, vous gagnez 5 points de vie temporaires de plus par niveau au-delà du 1er",
     "source": "PHB",
@@ -13744,9 +13744,9 @@
     "ritual": false,
     "shortDesc": "1 créature récupère 1d8+Mod.Carac pv (+1d8 pv/niv).",
     "entries": [
-      "La créature que vous touchez récupère un nombre de points de vie égal à ld8 + votre modificateur de caractéristique d'incantation. Ce sort n'a aucun effet sur les morts-vivants et les créatures artificielles."
+      "La créature que vous touchez récupère un nombre de points de vie égal à 1d8 + votre modificateur de caractéristique d'incantation. Ce sort n'a aucun effet sur les morts-vivants et les créatures artificielles."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les soins augmentent de ld8 par niveau au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les soins augmentent de 1d8 par niveau au-delà du 1er.",
     "source": "PHB",
     "page": 279,
     "casters": {
@@ -13902,7 +13902,7 @@
     "entries": [
       "Vous touchez une créature volontaire et lui conférez la capacité de cracher de l'énergie magique par la bouche, dans la mesure où elle en possède une. Choisissez un type d'énergie parmi les suivants : acide, feu, foudre, froid ou poison.Jusqu'à la fin du sort, la créature peut utiliser une action pour souffler un jet d'énergie du type choisi dans un cône de 4,50 mètres. Chaque créature qui se trouve dans ce cône doit faire un jet de sauvegarde de Dextérité. Sur un échec, elle subit 3d6 points de dégâts du type choisi ou moitié moins sur une réussite."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts infligés augmente de ld6 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts infligés augmente de 1d6 par niveau au-delà du 2e.",
     "source": "XGE",
     "page": 168,
     "casters": {
@@ -14010,7 +14010,7 @@
       "Vous pouvez déplacer la sphère sur un maximum de 9 mètres par une action bonus. Si vous lui faites heurter une créature, cette dernière doit réussir un jet de sauvegarde contre les dégâts de la sphère qui arrête de se déplacer pour ce tour.",
       "Quand vous déplacez la sphère, vous pouvez lui faire franchir des obstacles de 1,50 mètre de haut et la faire sauter par-dessus des fosses de 3 mètres de large. Elle embrase les objets inflammables qui ne sont ni portés ni transportés. Elle émet une vive lumière dans un rayon de 6 mètres et une faible lumière dans un rayon de 6 mètres de plus."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 3 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 2e.",
     "source": "PHB",
     "page": 280,
     "casters": {
@@ -14039,7 +14039,7 @@
       "Jusqu'à la fin du sort, vous pouvez, à chacun de vos tours, utiliser une action bonus pour qu'un éclair surgisse du centre de la sphère et frappe une créature de votre choix qui se trouve dans un rayon de 18 mètres de celui-ci. Faites une attaque de sort à distance. Vous êtes avantagé à votre jet d'attaque si votre cible se trouve dans la sphère. Si vous réussissez, la cible subit 4d6 points de dégâts de foudre.",
       "Les créatures qui se trouvent dans un rayon de 9 mètres de la sphère sont désavantagées aux tests de Sagesse (Perception) qu'elles font pour entendre."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 5 ou plus, la quantité de dégâts causés par chacun de ses effets augmente de ld6 par niveau au-delà du 4e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 5 ou plus, la quantité de dégâts causés par chacun de ses effets augmente de 1d6 par niveau au-delà du 4e.",
     "source": "XGE",
     "page": 168,
     "casters": {
@@ -14102,7 +14102,7 @@
       "Un globe d'énergie gelée jaillit de la pointe de votre doigt tendu et file vers un point de votre choix situé à portée. Là, il explose en une sphère de 18 mètres de rayon. Chaque créature de la zone doit faire un jet de sauvegarde de Constitution. Celles qui échouent subissent 10d6 dégâts de froid, les autres la moitié seulement. Si le globe frappe une surface aqueuse ou un liquide principalement constitué d'eau (ce qui n'inclut pas les créatures majoritairement composées d'eau), il gèle le liquide sur une épaisseur de 15 centimètres dans une zone de 9 mètres de côté. La glace subsiste une minute. Les créatures qui nageaient à la surlace de l'étendue d'eau se retrouvent prises dans la glace. Une telle créature peut utiliser une action pour faire un test de Force contre le DD du jet de sauvegarde de votre sort afin de se libérer.",
       "Une fois que vous avez terminé l'incantation, vous pouvez attendre avant de lancer le globe. Dans ce cas, il ressemble à une bille de fronde glacée qui reste dans votre main. Vous pouvez alors le lancer à la main (à une portée de 12 mètres) ou avec une fronde (selon la portée habituelle de cette fronde) ou le donner à une créature qui peut faire de même. Le globe se brise à l'impact, explosant comme décrit dans la version normale du sort. Vous pouvez également poser le globe à terre sans le briser. Il explose au bout d'une minute s'il n'a pas été brisé avant."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 7 ou plus, les dégâts augmentent de ld6 par niveau au-delà du 6e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 7 ou plus, les dégâts augmentent de 1d6 par niveau au-delà du 6e.",
     "source": "PHB",
     "page": 280,
     "casters": {
@@ -14538,7 +14538,7 @@
       "Des grêlons durs comme de la pierre s'abattent dans un cylindre de 6 mètres de rayon pour 12 mètres de haut, centré sur un point à portée. Chaque créature présente dans le cylindre doit faire un jet de sauvegarde de Dextérité. Celles qui échouent subissent 2d8 dégâts contondants et 4d6 dégâts de froid tandis que les autres en subissent la moitié seulement.",
       "Les grêlons transforment la zone en terrain difficile jusqu'à la fin de votre prochain tour."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts contondants augmentent de ld8 par niveau au-delà du 4e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 5 ou plus, les dégâts contondants augmentent de 1d8 par niveau au-delà du 4e.",
     "source": "PHB",
     "page": 284,
     "casters": {
@@ -14601,7 +14601,7 @@
         "type": "entries",
         "name": "Round 2",
         "entries": [
-          "Une pluie acide se met à tomber. Les créatures et les objets situés sous le nuage subissent ld6 dégâts d'acide."
+          "Une pluie acide se met à tomber. Les créatures et les objets situés sous le nuage subissent 1d6 dégâts d'acide."
         ]
       },
       {
@@ -14622,7 +14622,7 @@
         "type": "entries",
         "name": "Rounds S à 10",
         "entries": [
-          "Des bourrasques et une pluie glacée balaient la zone sous le nuage et la transforment en terrain difficile où la visibilité est fortement obstruée. Chaque créature qui s'y trouve subit ld6 dégâts de froid. Il est impossible d'effectuer une attaque avec une arme à distance dans la zone. Le vent et la pluie fonctionnent comme une distraction sévère quand il s'agit de se concentrer sur un sort. Enfin, des bourrasques de vent fort (de 30 à 75 km/h) dispersent automatiquement le brouillard, la brume et les phénomènes similaires stagnant dans la zone, qu'ils soient d'origine ordinaire ou magique."
+          "Des bourrasques et une pluie glacée balaient la zone sous le nuage et la transforment en terrain difficile où la visibilité est fortement obstruée. Chaque créature qui s'y trouve subit 1d6 dégâts de froid. Il est impossible d'effectuer une attaque avec une arme à distance dans la zone. Le vent et la pluie fonctionnent comme une distraction sévère quand il s'agit de se concentrer sur un sort. Enfin, des bourrasques de vent fort (de 30 à 75 km/h) dispersent automatiquement le brouillard, la brume et les phénomènes similaires stagnant dans la zone, qu'ils soient d'origine ordinaire ou magique."
         ]
       }
     ],
@@ -14755,7 +14755,7 @@
     "entries": [
       "Vous invoquez la puissance d'Hadar, le Sombre Appétit. Des filaments d'énergie noire jaillissent de vous et fouettent toutes les créatures situées dans un rayon de 3 mètres. Chacune doit faire un jet de sauvegarde de Force. En cas d'échec, une créature subit 2d6 dégâts nécrotiques et ne peut pas utiliser de réaction jusqu'à son prochain tour. Une créature qui réussit son jet de sauvegarde subit seulement la moitié des dégâts et ne souffre pas d'autres effets."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld6 par emplacement de sort au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d6 par emplacement de sort au-delà du 1er.",
     "source": "PHB",
     "page": 284,
     "casters": {
@@ -15025,10 +15025,10 @@
     "shortDesc": "Les créatures dans un rayon de 1,50 m doivent réussir un JdS de For. ou subir 1d8 dégâts contondants (dégâts/niv).",
     "entries": [
       "Choisissez un cube d'air inoccupé de 1,50 mètre d'arête que vous pouvez voir et qui se trouve à portée. Une force élémentaire dont la forme évoque un tourbillon de poussière apparaît dans ce cube et y reste pendant toute la durée du sort.",
-      "Toute créature qui termine son tour à 1,50 mètre ou moins du tourbillon de poussière doit faire un jet de sauvegarde de Force. Sur un échec, la créature subit ld8 points de dégâts contondants et est repoussée de 3 mètres par le tourbillon. Sur une réussite, la créature subit moitié moins de dégâts et n'est pas repoussée.",
+      "Toute créature qui termine son tour à 1,50 mètre ou moins du tourbillon de poussière doit faire un jet de sauvegarde de Force. Sur un échec, la créature subit 1d8 points de dégâts contondants et est repoussée de 3 mètres par le tourbillon. Sur une réussite, la créature subit moitié moins de dégâts et n'est pas repoussée.",
       "Par une action bonus, vous pouvez déplacer le tourbillon de poussière sur une distance maximale de 9 mètres dans la direction de votre choix. Si le tourbillon de poussière se déplace sur du sable, de la poussière, de la terre meuble ou des graviers, il absorbe cette matière et la projette autour de lui sous la forme d'un nuage de débris de 3 mètres de rayon qui persiste jusqu'au début de votre prochain tour. Ce nuage rend la visibilité nulle sur la zone qu'il couvre."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts augmente de ld8 par niveau au-delà du 2e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 3 ou plus, la quantité de dégâts augmente de 1d8 par niveau au-delà du 2e.",
     "source": "XGE",
     "page": 170,
     "casters": {
@@ -15084,9 +15084,9 @@
     "ritual": false,
     "shortDesc": "Si l'attaque avec un sort touche, inflige 1d12 dégâts de foudre (dégâts/niv) à chaque round.",
     "entries": [
-      "Un éclair d'énergie bleutée frappe une cible à portée et forme un arc électrique persistant entre elle et vous. Faites une attaque de sort à distance contre cette créature. Si vous touchez, elle subit ld12 dégâts de foudre et, à chacun de vos tours pendant toute la durée du sort, vous pouvez utiliser votre action pour lui infliger automatiquement ldl2 dégâts de foudre. Le sort se termine si vous utilisez votre action pour faire autre cbose. Il se termine également si la cible passe hors de portée du sort ou bénéficie d'un abri total contre vous."
+      "Un éclair d'énergie bleutée frappe une cible à portée et forme un arc électrique persistant entre elle et vous. Faites une attaque de sort à distance contre cette créature. Si vous touchez, elle subit 1d12 dégâts de foudre et, à chacun de vos tours pendant toute la durée du sort, vous pouvez utiliser votre action pour lui infliger automatiquement ldl2 dégâts de foudre. Le sort se termine si vous utilisez votre action pour faire autre cbose. Il se termine également si la cible passe hors de portée du sort ou bénéficie d'un abri total contre vous."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts initiaux augmentent de ld12 par emplacement de sort au-delà du 1e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts initiaux augmentent de 1d12 par emplacement de sort au-delà du 1e.",
     "source": "PHB",
     "page": 287,
     "casters": {
@@ -15112,7 +15112,7 @@
     "entries": [
       "Vous sacrifiez une partie de votre santé pour soigner les blessures d'une autre créature. Vous subissez 4d8 points de dégâts nécrotiques et une créature de votre choix, que vous pouvez voir et qui se trouve à portée, gagne une quantité de points de vie égale au double des dégâts nécrotiques que vous subissez."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 4 ou plus, la quantité de dégâts reçus augmente de ld8 par niveau au-delà du 3e.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de sort de niveau 4 ou plus, la quantité de dégâts reçus augmente de 1d8 par niveau au-delà du 3e.",
     "source": "XGE",
     "page": 170,
     "casters": {
@@ -15239,7 +15239,7 @@
         "type": "entries",
         "name": "Fissures",
         "entries": [
-          "Une fois que vous avez lancé le sort, des fissures s'ouvrent dans toute la zone affectée au début de votre tour suivant. ld6 fissures s'ouvrent en des points choisis par le MD. Chacune fait ldlO x 3 mètres de profondeur pour 3 mètres de large et s'étend d'un bout de la zone sismique à l'autre. Une créature qui se tient sur l'emplacement d'une fissure en train de s'ouvrir doit faire un jet de sauvegarde de Dextérité. Si elle le rate, elle tombe dedàns, sinon elle réussit à s'écarter à temps.",
+          "Une fois que vous avez lancé le sort, des fissures s'ouvrent dans toute la zone affectée au début de votre tour suivant. 1d6 fissures s'ouvrent en des points choisis par le MD. Chacune fait ldlO x 3 mètres de profondeur pour 3 mètres de large et s'étend d'un bout de la zone sismique à l'autre. Une créature qui se tient sur l'emplacement d'une fissure en train de s'ouvrir doit faire un jet de sauvegarde de Dextérité. Si elle le rate, elle tombe dedàns, sinon elle réussit à s'écarter à temps.",
           "Une structure s'effondre automatiquement si une fissure s'ouvre sous elle (voir plus loin)."
         ]
       },
@@ -15247,7 +15247,7 @@
         "type": "entries",
         "name": "Structures",
         "entries": [
-          "Les secousses infligent 50 dégâts contondants à toute structure en contact avec le sol au moment où vous lancez le sort et au début de chacun de vos tours jusqu'à la fin du sort. Si l'une d'elles tombe à O point de vie, elle s'effondre et blesse peut-être les créatures voisines. Une créature qui se trouve près d'un bâtiment en train de s'effondrer, à une distance égale ou inféri,eure à la moitié de la hauteur de ce bâtiment, doit faire un jet de sauvegarde de Dextérité. Si elle échoue, elle subit 5dq,dêgâts contondants, elle tombe à terre et elle est ensevelie sous les décombres. Il faut réussir un test de Force (Athlétisme) DD 20 via une action pour y échapper. Le MD peut modifier le DD en fonction de la nature des décombres. Si la créature réussit son jet de sauvegarde, elle subit seulement la moitié des dégâts, ne tombe pas à terre et n'est pas ensevelie."
+          "Les secousses infligent 50 dégâts contondants à toute structure en contact avec le sol au moment où vous lancez le sort et au début de chacun de vos tours jusqu'à la fin du sort. Si l'une d'elles tombe à O point de vie, elle s'effondre et blesse peut-être les créatures voisines. Une créature qui se trouve près d'un bâtiment en train de s'effondrer, à une distance égale ou inféri,eure à la moitié de la hauteur de ce bâtiment, doit faire un jet de sauvegarde de Dextérité. Si elle échoue, elle subit 5d6, dégâts contondants, elle tombe à terre et elle est ensevelie sous les décombres. Il faut réussir un test de Force (Athlétisme) DD 20 via une action pour y échapper. Le MD peut modifier le DD en fonction de la nature des décombres. Si la créature réussit son jet de sauvegarde, elle subit seulement la moitié des dégâts, ne tombe pas à terre et n'est pas ensevelie."
         ]
       }
     ],
@@ -15369,7 +15369,7 @@
       "Une vague de force tonnante émane de vous. Chaque créature située dans un cube de 4,50 mètres d'arête partant de vous doit faire un jet de sauvegarde de Constitution. Les créatures qui échouent subissent 2d8 dégâts de tonnerre et sont repoussées de 3 mètres en face de vous. Les autres subissent seulement la moitié des dégâts et ne sont pas repoussées.",
       "De plus, les objets qui ne sont pas arrimés et se trouvent entièrement englobés dans la zone affectée sont automatiquement repoussés de 3 mètres à l'opposé de vous. Le sort émet un grondement de tonnerre qui s'entend dans un rayon de 90 mètres."
     ],
-    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de ld8 par niveau au-delà du 1er.",
+    "upCast": "Si vous lancez ce sort en utilisant un emplacement de niveau 2 ou plus, les dégâts augmentent de 1d8 par niveau au-delà du 1er.",
     "source": "PHB",
     "page": 288,
     "casters": {
@@ -15551,10 +15551,10 @@
     "shortDesc": "Si l'attaque touche, inflige 1d8 dégâts radiants, nécrotiques ou de froid extra. La cible ne regagne de pv ce tour (dégâts/niv).",
     "entries": [
       "Vous invoquez les esprits des morts, qui volettent autour de vous pour toute la durée. Les esprits sont intangibles et invulnérables.",
-      "Jusqu'à la fin du sort, toute attaque que vous effectuez inflige ld8 dégâts supplémentaires si elle touche une créature située dans un rayon de 3 m de vous. Ces dégâts sont radiants, nécrotiques ou de froid (vous en choisissez le type à l'incantation). Toute créature qui subit ces dégâts ne peut pas récupérer de points de vie jusqu'au début de votre tour suivant.",
+      "Jusqu'à la fin du sort, toute attaque que vous effectuez inflige 1d8 dégâts supplémentaires si elle touche une créature située dans un rayon de 3 m de vous. Ces dégâts sont radiants, nécrotiques ou de froid (vous en choisissez le type à l'incantation). Toute créature qui subit ces dégâts ne peut pas récupérer de points de vie jusqu'au début de votre tour suivant.",
       "Par ailleurs, toute créature qui commence son tour dans un rayon de 3 m de vous, si vous la voyez et le décidez, voit sa vitesse réduite de 3 m jusqu'au début de votre tour suivant."
     ],
-    "upCast": "Lorsque vous lancez ce sort par un emplacement du 4e niveau ou supérieur, les dégâts augmentent de ld8 par tranche de deux niveaux d'emplacement au-delà du 3e",
+    "upCast": "Lorsque vous lancez ce sort par un emplacement du 4e niveau ou supérieur, les dégâts augmentent de 1d8 par tranche de deux niveaux d'emplacement au-delà du 3e",
     "source": "TCE",
     "page": 114,
     "casters": {

@@ -239,7 +239,7 @@ export const Dnd5eSpells = () => {
               </tr>
               <tr>
                 <td colSpan="6" className="pb-2">
-                  <b>Durée:</b> {selectedSpell.concentration ? "Concentration, jusqu'à" : ""}{selectedSpell.duration ?? ""}
+                  <b>Durée:</b> {selectedSpell.concentration ? "Concentration, jusqu'à " : ""}{selectedSpell.duration ?? ""}
                 </td>
               </tr>
               <tr>
