@@ -16,13 +16,12 @@
 }
 
 .section-content {
-    padding: 8px;
-    padding-bottom: 0;
     border-radius: 8px;
     margin-top: 0;
     background-color: white;
     border-color: inherit;
     font-size: inherit;
+    padding: 8px 8px 2%;
 }
 
 .section-title {
@@ -93,9 +92,9 @@
 .item-title {
     font-weight: bold;
     font-size: inherit;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .item-desc {
@@ -282,8 +281,9 @@ p:first-child {
     }
 
     .itemsize {
-        height: 44px;
+        /*height: 44px;*/
         width: 100%;
+        line-height: 1;
     }
 
     .modalsize {
@@ -303,7 +303,9 @@ p:first-child {
 
     .itemsize {
         /*height: 40px;*/
-        width: 50%;
+        width: 49.5%;
+        line-height: 1;
+        margin-right: 0.5%;
     }
 
     .modalsize {
@@ -322,8 +324,10 @@ p:first-child {
     }
 
     .itemsize {
-        height: 40px;
-        width: 33%;
+        /*height: 60px;*/
+        width: 32.5%;
+        line-height: 1;
+        margin-right: 0.5%;
     }
 
     .modalsize {
@@ -344,8 +348,10 @@ p:first-child {
     }
 
     .itemsize {
-        height: 44px;
-        width: 33%;
+        /*height: 44px;*/
+        width: 32.5%;
+        line-height: 1;
+        margin-right: 0.5%;
     }
 
     .modalsize {
@@ -366,8 +372,10 @@ p:first-child {
     }
 
     .itemsize {
-        height: 44px;
-        width: 25%;
+        /*height: 60px;*/
+        width: 24.5%;
+        line-height: 1;
+        margin-right: 0.5%;
     }
 
     .modalsize {
@@ -388,8 +396,10 @@ p:first-child {
     }
 
     .itemsize {
-        height: 44px;
-        width: 20%;
+        /*height: 60px;*/
+        width: 19.5%;
+        line-height: 1;
+        margin-right: 0.5%;
     }
 
     .modalsize {

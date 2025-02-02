@@ -884,6 +884,7 @@ export const DnDCheatsheet = () => {
       </div>
       <div className="section-row" id="basic-movement">
         {list.map(action => <>
+          {console.log(action.title,action.subtitle)}
           <div className="item itemsize" onClick={() => handleClick(action.title)}>
             <div className={"item-icon iconsize icon-" + action.icon}></div>
             <div className="item-text-container text">
