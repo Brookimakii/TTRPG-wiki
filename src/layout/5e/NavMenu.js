@@ -3,6 +3,9 @@ import React, {cloneElement, forwardRef, useState} from "react";
 import withClickOutside from "./withClickOutside";
 
 
+const defaultLocalisation = {
+    "Home": ["TTRPG-wiki"]
+}
 const localisation = {
   "TTRPG-wiki/dnd5e": {
     "Home": ["/dnd5e", "/pathfinder2e"],
@@ -13,12 +16,12 @@ const localisation = {
     "Utilities": ["cheatsheet"]
   }
 }
-
 function isCategoryActive(system, category, location): string {
   if (location.pathname.endsWith(category)) {
     return " active"
   }
-  for (const [key, value] of Object.entries(localisation[system])) {
+
+  for (const [key, value] of Object.entries(localisation[system] ?? defaultLocalisation)) {
     // console.log(category, key, value, value.some(s => location.pathname.endsWith(s)))
     if (key === category && value.some(s => location.pathname.endsWith(s))) {
       return " active"
