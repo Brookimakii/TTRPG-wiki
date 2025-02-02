@@ -1,4 +1,16 @@
 export class Parser {
+  static sizeAbvToFull(abv) {
+    return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
+  }
+
+  static alignAbvToFull(abv) {
+    return Parser._parse_aToB(Parser.ALIGNMENT_ABV_TO_FULL, abv);
+  }
+
+  static sensAbvToFull(abv) {
+    return Parser._parse_aToB(Parser.SENS_ABV_TO_FULL, abv);
+
+  }
 }
 Parser.attAbvToFull = function (abv) {
   // console.log(abv)
@@ -26,6 +38,24 @@ Parser._parse_bToA = function (abMap, b, fallback) {
   }
   return fallback !== undefined ? fallback : b;
 };
+
+Parser.SIZE_ABV_TO_FULL = {
+
+}
+Parser.SENS_ABV_TO_FULL = {
+
+}
+Parser.ALIGNMENT_ABV_TO_FULL = {
+  "LB": "Loyal Bon",
+  "LN": "Loyal Neutre",
+  "LM": "Loyal Mauvais",
+  "NB": "Neutre Bon",
+  "N": "Neutre",
+  "NM": "Neutre Mauvais",
+  "CB": "Chaotique Bon",
+  "CN": "Chaotique Neutre",
+  "CM": "Chaotique Mauvais",
+}
 
 Parser.ATB_ABV_TO_FULL = {
   "str": "Force",

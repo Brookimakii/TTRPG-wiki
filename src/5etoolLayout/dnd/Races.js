@@ -372,7 +372,6 @@ export function Dnd5eRaces() {
               </tbody>
             </table>
           </TabPanel>
-          {console.log(selectedRace.images)}
             <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
               <table className="w-100 stats">
                 <thead>
@@ -396,7 +395,7 @@ export function Dnd5eRaces() {
                 </tr>
                 </tbody>
               </table>
-            </TabPanel>
+          </TabPanel>
         </Tabs>
       }
     </div>

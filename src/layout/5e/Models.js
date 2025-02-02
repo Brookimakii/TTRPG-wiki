@@ -1,3 +1,10 @@
+class Image {
+  url:string
+  name:string
+  caption:string
+}
+
+
 export class Entry {
   type: string
   subFeature: string
@@ -118,11 +125,7 @@ export class PlayerRace {
   }
   traits: [{}]
   info: [{}]
-  images: [{
-    url:string,
-    name:string,
-    caption:string,
-  }]
+  images: [Image]
   subraces: [{
     id: string,
     name: string,
@@ -176,11 +179,84 @@ export class Spell {
   }
 }
 
+class Dice {
+  amount: number
+  sides: number
+}
+
 export class Monster {
   id: string
   name: string
-  entries: [string]
+
+  identity:{
+    type: string,
+    tag: string,
+    size: string,
+    alignment: string
+  }
+  defense: {
+    ca: string,
+    caPrecision: string,
+    initiative: number,
+    speed: number,
+    hpRoll:{
+      dice: Dice,
+      bonus: number
+    },
+    otherSpeed: {
+      swim:number,
+      borrow:number,
+      fly:number,
+      climb:number
+    },
+    flyingBonus: string
+  }
+  attribut:{
+    for: number,
+    dex: number,
+    con: number,
+    int: number,
+    sag: number,
+    cha: number
+  }
+  proficiencies: {
+    bonus: number,
+    saves: {
+      for: string,
+      dex: string,
+      con: string,
+      int: string,
+      sag: string,
+      cha: string
+    },
+    skills: {}
+  }
+  affinities: {
+    weakness: [string|{}],
+    resistance: [string|{}],
+    immunity: [string|{}],
+    condition: [string|{}]
+  }
+  senses: []
+  languages:[]
+  fp: number
+
+  traits: [string]
+  actions: [string]
+  bonusActions: [string]
+  reactions: [string]
+  legendaryActions: [string]
+  lairAction: [string]
+  regionEffects: [string]
+
+  habitat: [string]
+
+  info: [string]
+  images: [Image]
+
+  token: Image
   source: string
+  page: number
 }
 
 const Rarity = Object.freeze({
