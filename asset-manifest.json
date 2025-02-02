@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/TTRPG-wiki/static/css/main.6303237e.css",
-    "main.js": "/TTRPG-wiki/static/js/main.3dffe1ce.js",
+    "main.css": "/TTRPG-wiki/static/css/main.74ba54fb.css",
+    "main.js": "/TTRPG-wiki/static/js/main.c3151633.js",
     "static/js/453.11749e9c.chunk.js": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js",
     "static/media/hpphumblescratch-webfont.woff2": "/TTRPG-wiki/static/media/hpphumblescratch-webfont.5c9eda82bee34f549305.woff2",
     "static/media/pro-fa-light-300-ca12ba.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-ca12ba.57beb94c3fbc1ed27967.woff2",
@@ -600,6 +600,7 @@
     "static/media/cracked-mask.png": "/TTRPG-wiki/static/media/cracked-mask.6887fdc46ca19b004709.png",
     "static/media/cubes.png": "/TTRPG-wiki/static/media/cubes.03fd8a95e956678ac87b.png",
     "static/media/imprisoned.png": "/TTRPG-wiki/static/media/imprisoned.c5b27f293a4244c57b2b.png",
+    "static/media/DnD.svg": "/TTRPG-wiki/static/media/DnD.9bec7f14c44f017ccc69.svg",
     "static/media/evil-moon.png": "/TTRPG-wiki/static/media/evil-moon.3fffa17ae5e279793dda.png",
     "static/media/axe-swing.png": "/TTRPG-wiki/static/media/axe-swing.ad038484773a0f26420b.png",
     "static/media/concentration-orb.png": "/TTRPG-wiki/static/media/concentration-orb.579a6ea82b1c606e6d46.png",
@@ -616,6 +617,7 @@
     "static/media/ace.png": "/TTRPG-wiki/static/media/ace.ad3933cd72842b2f1f45.png",
     "static/media/stone-tablet.png": "/TTRPG-wiki/static/media/stone-tablet.5a8155a321d3080a5599.png",
     "static/media/Convergence-Regular.woff2": "/TTRPG-wiki/static/media/Convergence-Regular.920e99339d2e8eafe985.woff2",
+    "static/media/Pathfinder.svg": "/TTRPG-wiki/static/media/Pathfinder.439d47533f4df3459350.svg",
     "static/media/pro-fa-regular-400-9b80fe.woff2": "/TTRPG-wiki/static/media/pro-fa-regular-400-9b80fe.3e2234911000cffa35e8.woff2",
     "static/media/pro-fa-solid-900-9b80fe.woff2": "/TTRPG-wiki/static/media/pro-fa-solid-900-9b80fe.bb1b3d89848d3c4575da.woff2",
     "static/media/pro-fa-light-300-9b80fe.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-9b80fe.f903cdfbab76d188da31.woff2",
@@ -623,15 +625,16 @@
     "static/media/pro-fa-regular-400-90d968.woff2": "/TTRPG-wiki/static/media/pro-fa-regular-400-90d968.184c31f8a82fe2c8ef6c.woff2",
     "static/media/pro-fa-light-300-90d968.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-90d968.5dc42d05a583ca77afee.woff2",
     "static/media/pro-fa-solid-900-90d968.woff2": "/TTRPG-wiki/static/media/pro-fa-solid-900-90d968.4c45df8d78e5a539d596.woff2",
-    "static/media/2025-01-25.md": "/TTRPG-wiki/static/media/2025-01-25.94a6c7058dc74af0ed6c.md",
-    "static/media/2025-01-21.md": "/TTRPG-wiki/static/media/2025-01-21.f56f68395dc45ed4ec86.md",
+    "static/media/2025-01-25.md": "/TTRPG-wiki/static/media/2025-01-25.14a0db838bc4b310b784.md",
+    "static/media/2025-01-21.md": "/TTRPG-wiki/static/media/2025-01-21.36b0ddbe704f541aba9c.md",
     "static/media/2025-01-17.md": "/TTRPG-wiki/static/media/2025-01-17.a9d59d8106ddbe59f125.md",
-    "main.6303237e.css.map": "/TTRPG-wiki/static/css/main.6303237e.css.map",
-    "main.3dffe1ce.js.map": "/TTRPG-wiki/static/js/main.3dffe1ce.js.map",
+    "static/media/2025-01-26.md": "/TTRPG-wiki/static/media/2025-01-26.a3c962117ef72595a4e6.md",
+    "main.74ba54fb.css.map": "/TTRPG-wiki/static/css/main.74ba54fb.css.map",
+    "main.c3151633.js.map": "/TTRPG-wiki/static/js/main.c3151633.js.map",
     "453.11749e9c.chunk.js.map": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6303237e.css",
-    "static/js/main.3dffe1ce.js"
+    "static/css/main.74ba54fb.css",
+    "static/js/main.c3151633.js"
   ]
 }
