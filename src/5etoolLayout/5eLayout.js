@@ -274,82 +274,7 @@ export const LayoutSystemSelection = ({title="Test"}) => {
       </button>
       <ul className="nav nav-pills page__nav-inner" id="navbar">
         <NavMenu name="Home" href={"/" + base} showMenu={showMenu}/>
-        {/*<NavMenu name="Rules" href="" addCaret={true} showMenu={showMenu}>*/}
-        {/*  <MenuLink name="Rules Glossary" link="rules"/>*/}
-        {/*  <MenuLink name="Tables" link="#Unknown"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <SubMenu name="Books" showMenu={showMenu}>*/}
-        {/*    <MenuLink name="Books" link="#Unknown"/>*/}
-        {/*  </SubMenu>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <MenuLink name="Quick Reference (2014)" link="#Unknown" href=""/>*/}
-        {/*</NavMenu>*/}
-        {/*<NavMenu name="Player" href="" addCaret={true} showMenu={showMenu}>*/}
-        {/*  <MenuLink name="Classes" link="classes"/>*/}
-        {/*  <MenuLink name="Backgrounds" link="backgrounds"/>*/}
-        {/*  <MenuLink name="Feats" link="feats"/>*/}
-        {/*  <MenuLink name="Races" link="races"/>*/}
-        {/*  <MenuLink name="Other Character Creation Options" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Other Options &amp; Features" link="optionsFeatures"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <MenuLink name="Stat Generator" link="#Unknown"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <MenuLink name="This Is Your Life" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Names" link="#Unknown"/>*/}
-        {/*</NavMenu>*/}
-        {/*<NavMenu name="Dungeon Master" href="" addCaret={true} showMenu={showMenu}>*/}
-        {/*  <MenuLink name="DM Screen" link="dmscreen" href="dmscreen"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <SubMenu name="Adventures" showMenu={showMenu}></SubMenu>*/}
-        {/*  <MenuLink name="Cults &amp; Supernatural Boons" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Objects" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Traps &amp; Hazards" link="#Unknown"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <MenuLink name="CR Calculator" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Encounter Generator" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Loot Generator" link="#Unknown"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <MenuLink name="Maps" link="#Unknown"/>*/}
-        {/*</NavMenu>*/}
-        {/*<NavMenu name="References" href="" addCaret={true} showMenu={showMenu}>*/}
-        {/*  <MenuLink name="Actions" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Bestiary" link="bestiary"/>*/}
-        {/*  <MenuLink name="Conditions &amp; Diseases" link="conditions"/>*/}
-        {/*  <MenuLink name="Decks" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Deities" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Items" link="items"/>*/}
-        {/*  <MenuLink name="Languages" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Supernatural Gifts &amp; Rewards" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Psionics" link="#Unknown"/>*/}
-        {/*  <MenuLink name="Spells" link="spells"/>*/}
-        {/*  <MenuLink name="Vehicles" link="#Unknown"/>*/}
-        {/*  <MenuDivider/>*/}
-        {/*  <MenuLink name="Recipes" link="#Unknown"/>*/}
-        {/*</NavMenu>*/}
-        {/*<NavMenu name="Utilities" href="" addCaret={true} showMenu={showMenu}>*/}
-          {/*<MenuLink name="Cheatsheets" link="cheatsheet"/>*/}
-          {/*<MenuLink name="Change System" link="../"/>*/}
-        {/*</NavMenu>*/}
-        {/*<NavMenu name="Settings" href="" addCaret={true} showMenu={showMenu}>*/}
-        {/*  <MenuLink name="" link="dfts<" href="zersq"/>*/}
-        {/*</NavMenu>*/}
-      {/*  <div className="input-group omni__wrp-input">*/}
-      {/*    <input disabled className="form-control search omni__input"*/}
-      {/*           title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution."*/}
-      {/*           type="search" placeholder="Search everywhere..."*/}
-      {/*           autoComplete="new-password" autoCapitalize="off"*/}
-      {/*           spellCheck="false"/>*/}
-      {/*    <span className="absolute glyphicon glyphicon-remove omni__btn-clear"></span>*/}
-      {/*    <div className="input-group-btn">*/}
-      {/*      <button disabled className="ve-btn ve-btn-default omni__submit" tabIndex="-1">*/}
-      {/*        <span className="glyphicon glyphicon-search"></span>*/}
-      {/*      </button>*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
       </ul>
-      {/*<div className="omni__wrp-output ve-flex ve-hidden">*/}
-      {/*  <div className="omni__output"></div>*/}
-      {/*</div>*/}
     </nav>
     <div className="home__stripe">
       <div className="home__split relative">
@@ -362,12 +287,12 @@ export const LayoutSystemSelection = ({title="Test"}) => {
             <div className="fal system-dnd home__icn-page"></div>
             <h4 className="ve-text-center home__lbl-page">Dungeon &<br/>Dragon 5e</h4>
           </Link>
-          <Link to="classes" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <Link to="pathdinder2e" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
             <div className="fal system-pathfinder home__icn-page"></div>
             <h4 className="ve-text-center home__lbl-page">Pathfinder 2e</h4>
           </Link>
-          <Link to="feats" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
-            <div className="fal fa-award home__icn-page"></div>
+          <Link to="callOfCthulhu" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+            <div className="fal fa-squid home__icn-page"></div>
             <h4 className="ve-text-center home__lbl-page">Call of<br/>Cthulhu</h4>
           </Link>
         </div>
