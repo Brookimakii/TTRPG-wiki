@@ -1,16 +1,25 @@
 import React, {useEffect, useState} from "react";
 import {Link, Outlet, useLocation, useOutletContext} from "react-router-dom";
 import NavMenu, {MenuDivider, MenuLink, SubMenu} from "../layout/5e/NavMenu";
-import "./css/fontawesome.css"
-import "./scss/bootstrap.scss"
-import "./scss/import.scss"
+// import "./css/fontawesome.css"
 import "./css/index.css"
 
 // TODO: Create a Render and Parser classes and Complete All datasets.
 
 import "./scss/SystemSelection.scss"
+import {Resources} from "../resources/ResourcesFetch";
+
+function load_style(location){
+  if (location.pathname.includes("/TTRPG-wiki/dnd5e")) {
+    require("./scss/dnd/bootstrap.scss")
+    require("./scss/dnd/import.scss")
+  } else if (location.pathname.includes("/TTRPG-wiki/pathfinder2e")) {
+    require("./scss/pathfinder/import.scss")
+  }
+}
 
 export const Layout5e = ({title="Test", base}) => {
+  load_style(useLocation())
   base = "TTRPG-wiki" + base
 
     const [setTitle] = useOutletContext();
@@ -228,6 +237,127 @@ export const Layout5eHome = () => {
   </div>)
 }
 
+export const Layout5eHomePathfinder = () => {
+  return (<div className="home__stripe">
+    <div className="home__split relative">
+      <div className="home__stripe-header ve-text-right home__h-player">
+        <div className="w-100 ve-text-left mobile__text-center">Joueurs</div>
+      </div>
+      <div
+        className="ve-flex ve-flex-wrap relative home__split-spaced home__split-spaced--gutter home__split-spaced--no-header home__wrp-buttons">
+        <Link to="ascendances" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-users home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Ascendances<br/>& Héritages</h4>
+        </Link>
+        <Link to="classes" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-hat-wizard home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Classes</h4>
+        </Link>
+        <Link to="feats" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-award home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Dons</h4>
+        </Link>
+        <Link to="optionsFeatures" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-drafting-compass home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Options <br/>& Capacités</h4>
+        </Link>
+        <Link to="backgrounds" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-portrait home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Historique</h4>
+        </Link>
+        <Link to="items" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-helmet-battle home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Équipement</h4>
+        </Link>
+        <Link to="spells" className="home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-book-spells home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Sorts</h4>
+        </Link>
+        <Link to="" className="disabled home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
+          <div className="fal fa-tally-5 home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Généraeur<br/>de Stats</h4>
+        </Link>
+      </div>
+      <div className="ve-flex ve-flex-wrap home__wrp-buttons home__narrow-hidden">
+        <Link to="backgrounds" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-portrait home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Historiques</h4>
+        </Link>
+        <Link to="items" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-helmet-battle home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Équipement</h4>
+        </Link>
+        <Link to="spells" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-book-spells home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Sorts</h4>
+        </Link>
+        <Link to="" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <div className="fal fa-tally-5 home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Généraeur<br/>de Stats</h4>
+        </Link>
+      </div>
+    </div>
+    <div className="my-4 home__mobile-hidden home__narrow-hidden"></div>
+    <div className="my-4 home__mobile-hidden home__narrow-visible"></div>
+    <div className="my-4 home__mobile-hidden"></div>
+    <div className="home__split">
+      <div className="ve-flex ve-flex-wrap relative home__split-spaced home__split-spaced--gutter home__wrp-buttons">
+        <div className="home__stripe-header home__h-rule">
+          <div className="w-100 ve-text-left mobile__text-center">Règles</div>
+        </div>
+        <Link to="#" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-rule">
+          <div className="fal fa-dungeon home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Aventures</h4>
+        </Link>
+        <Link to="#" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-rule">
+          <div className="fal fa-books home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Livres</h4>
+        </Link>
+        <Link to="rules" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-rule">
+          <div className="fal fa-info-square home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Glossaire<br/>de Règles</h4>
+        </Link>
+        <Link to="conditions" className="home__btn-page ve-btn ve-btn-default home__btn-rule">
+          <div className="fal fa-skull-crossbones home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Afflictions</h4>
+        </Link>
+      </div>
+      <div className="my-4 home__mobile-visible"></div>
+      <div className="ve-flex ve-flex-wrap relative home__wrp-buttons">
+        <div className="home__stripe-header home__h-dm">
+          <div className="w-100 ve-text-left mobile__text-center">Maître du Donjon</div>
+        </div>
+        <Link to="bestiary" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-dm">
+          <div className="fal fa-dragon home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Bestiaire</h4>
+        </Link>
+        <Link to="#" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-dm">
+          <div className="fal fa-map home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Écran de MJ</h4>
+        </Link>
+        <Link to="#" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-dm">
+          <div className="fal fa-treasure-chest home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Générateur<br/>de Butin</h4>
+        </Link>
+        <Link to="#" className="disabled home__btn-page ve-btn ve-btn-default home__btn-dm">
+          <div className="fal fa-abacus home__icn-page"></div>
+          <h4 className="ve-text-center home__lbl-page">Calculateur<br/>de FP</h4>
+        </Link>
+      </div>
+    </div>
+    <div className="my-4"></div>
+    <hr className="no-shrink w-100 my-0"/>
+    <main className="container">
+      <div className="w-100">
+        <h3>Un problème ?</h3>
+        <p>N'hésitez pas à me contacter pour tout problème rencontré. Un système de ticket est en cours de création.</p>
+        <h3>Changelog</h3>
+        <p>Vous pouvez consulter tous les changement <Link to="../changelog">ici</Link></p>
+      </div>
+    </main>
+  </div>)
+}
+
 
 export const LayoutHeader = () => {
 
@@ -287,7 +417,7 @@ export const LayoutSystemSelection = ({title="Test"}) => {
             <div className="fal system-dnd home__icn-page"></div>
             <h4 className="ve-text-center home__lbl-page">Dungeon &<br/>Dragon 5e</h4>
           </Link>
-          <Link to="pathdinder2e" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
+          <Link to="pathfinder2e" className="home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
             <div className="fal system-pathfinder home__icn-page"></div>
             <h4 className="ve-text-center home__lbl-page">Pathfinder 2e</h4>
           </Link>

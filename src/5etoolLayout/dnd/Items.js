@@ -2,8 +2,8 @@ import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
-import type {Item} from "../../layout/5e/Models";
-import {Armor, Weapon, WeaponProperty} from "../../layout/5e/Models";
+import type {Item} from "../../layout/5e/Models5e";
+import {Armor, Weapon, WeaponProperty} from "../../layout/5e/Models5e";
 
 export const Dnd5eItems = () => {
 

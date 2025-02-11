@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------------- */
 /* Sections */
 /* ------------------------------------------------------------------------- */
-.section-container {
+#cheatsheet .section-container {
     border: 8px solid;
     border-radius: 8px;
     box-sizing: border-box;
@@ -15,7 +15,7 @@
     page-break-inside: avoid;
 }
 
-.section-content {
+#cheatsheet .section-content {
     border-radius: 8px;
     margin-top: 0;
     background-color: white;
@@ -24,7 +24,7 @@
     padding: 8px 8px 2%;
 }
 
-.section-title {
+#cheatsheet .section-title {
     height: 32px;
     padding-left: 8px;
     padding-right: 8px;
@@ -36,32 +36,32 @@
     font-size: 16pt;
 }
 
-.float-right {
+#cheatsheet .float-right {
     float: right;
 }
 
-.section-subtitle, #modal-reference {
+#cheatsheet .section-subtitle, #cheatsheet #modal-reference {
     display: block;
     margin-bottom: 8px;
     font-size: inherit;
     font-style: italic;
 }
 
-#modal-reference {
+#cheatsheet #modal-reference {
     margin-top: 1em;
 }
 
-.section-row {
+#cheatsheet .section-row {
     font-size: inherit;
 }
 
-.section-row:before, .section-row:after {
+#cheatsheet .section-row:before, #cheatsheet .section-row:after {
     display: table;
     content: " ";
     clear: both;
 }
 
-.section-row + .section-subtitle {
+#cheatsheet .section-row + .section-subtitle {
     margin-top: 1em;
 }
 
@@ -69,7 +69,7 @@
 /* Items */
 /* ------------------------------------------------------------------------- */
 
-.item {
+#cheatsheet .item {
     margin-bottom: 8px;
     float: left;
     display: flex;
@@ -78,7 +78,7 @@
     box-sizing: border-box;
 }
 
-.item-icon {
+#cheatsheet .item-icon {
     float: left;
     flex: 0 0 auto;
     background-repeat: no-repeat;
@@ -89,7 +89,7 @@
     margin-right: 4px;
 }
 
-.item-title {
+#cheatsheet .item-title {
     font-weight: bold;
     font-size: inherit;
     /*overflow: hidden;*/
@@ -97,7 +97,7 @@
     /*white-space: nowrap;*/
 }
 
-.item-desc {
+#cheatsheet .item-desc {
     font-style: italic;
     font-size: inherit;
     /*overflow: hidden;*/
@@ -105,7 +105,7 @@
     /*white-space: nowrap;*/
 }
 
-.item-text-container {
+#cheatsheet .item-text-container {
     flex: 1;
     padding-right: 4px;
     font-size: inherit;
@@ -117,57 +117,57 @@
 /* ------------------------------------------------------------------------- */
 /* Colors */
 /* ------------------------------------------------------------------------- */
-#section-movement, #section-movement .item-icon {
+#cheatsheet #section-movement, #cheatsheet #section-movement .item-icon {
     background-color: maroon;
     border-color: maroon;
 }
 
-#section-movement .text {
+#cheatsheet #section-movement .text {
     color: maroon;
 }
 
-#section-action, #section-action .item-icon {
+#cheatsheet #section-action, #cheatsheet #section-action .item-icon {
     background-color: black;
     border-color: black;
 }
 
-#section-action .text {
+#cheatsheet #section-action .text {
     color: black;
 }
 
-#section-bonus-action, #section-bonus-action .item-icon {
+#cheatsheet #section-bonus-action, #cheatsheet #section-bonus-action .item-icon {
     background-color: indigo;
     border-color: indigo;
 }
 
-#section-bonus-action .text {
+#cheatsheet #section-bonus-action .text {
     color: indigo;
 }
 
-#section-reaction, #section-reaction .item-icon {
+#cheatsheet #section-reaction, #cheatsheet #section-reaction .item-icon {
     background-color: DarkOliveGreen;
     border-color: DarkOliveGreen;
 }
 
-#section-reaction .text {
+#cheatsheet #section-reaction .text {
     color: DarkOliveGreen;
 }
 
-#section-condition, #section-condition .item-icon {
+#cheatsheet #section-condition, #cheatsheet #section-condition .item-icon {
     background-color: FireBrick;
     border-color: FireBrick;
 }
 
-#section-condition .text {
+#cheatsheet #section-condition .text {
     color: FireBrick;
 }
 
-#section-environment, #section-environment .item-icon {
+#cheatsheet #section-environment, #cheatsheet #section-environment .item-icon {
     background-color: ForestGreen;
     border-color: ForestGreen;
 }
 
-#section-environment .text {
+#cheatsheet #section-environment .text {
     color: ForestGreen;
 }
 
@@ -176,7 +176,7 @@
 /* Page container */
 /* ------------------------------------------------------------------------- */
 
-body {
+#cheatsheet body {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -186,41 +186,41 @@ body {
 /* Misc */
 /* ------------------------------------------------------------------------- */
 
-.hidden {
+#cheatsheet .hidden {
     display: none;
 }
 
-ul {
+#cheatsheet ul {
     padding-left: 20px;
 }
 
-p, hr {
+#cheatsheet p, #cheatsheet hr {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
 
-hr {
+#cheatsheet hr {
     border: 0px;
     border-top: 1px solid gray;
 }
 
-p:first-child {
+#cheatsheet p:first-child {
     margin-top: 1em;
 }
 
 /* ------------------------------------------------------------------------- */
 /* Modal */
 /* ------------------------------------------------------------------------- */
-.modal-open {
+#cheatsheet .modal-open {
     overflow: hidden;
 }
 
-.modal-open .modal {
+#cheatsheet .modal-open .modal {
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.modal {
+#cheatsheet .modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -232,17 +232,17 @@ p:first-child {
     display: none;
 }
 
-.modal-visible {
+#cheatsheet .modal-visible {
     display: block;
 }
 
-.modal-dialog {
+#cheatsheet .modal-dialog {
     position: relative;
     width: auto;
     margin: 8px;
 }
 
-.modal-backdrop {
+#cheatsheet .modal-backdrop {
     position: absolute;
     top: 0;
     right: 0;
@@ -252,13 +252,13 @@ p:first-child {
     overflow: hidden;
 }
 
-.modal-container {
+#cheatsheet .modal-container {
     background-clip: padding-box;
     outline: 0;
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
 }
 
-.modal-footer {
+#cheatsheet .modal-footer {
     padding: 15px;
     text-align: right;
     border-top: 1px solid #e5e5e5;
@@ -271,66 +271,66 @@ p:first-child {
 
 /* Smart phone, portrait */
 @media (min-width: 0px) and (max-width: 479px) {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 12pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 44px;
         height: 44px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         /*height: 44px;*/
         width: 100%;
         line-height: 1;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
     }
 }
 
 /* Smart phone, landscape */
 @media (min-width: 480px) and (max-width: 767px) {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 11pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 40px;
         height: 40px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         /*height: 40px;*/
         width: 49.5%;
         line-height: 1;
         margin-right: 0.5%;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
     }
 }
 
 /* Tablet, portrait */
 @media (min-width: 768px) and (max-width: 991px) {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 11pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 40px;
         height: 40px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         /*height: 60px;*/
         width: 32.5%;
         line-height: 1;
         margin-right: 0.5%;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
         width: 600px;
         margin: 30px auto;
     }
@@ -338,23 +338,23 @@ p:first-child {
 
 /* Tablet, landscape */
 @media (min-width: 992px) and (max-width: 1199px) {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 12pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 44px;
         height: 44px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         /*height: 44px;*/
         width: 32.5%;
         line-height: 1;
         margin-right: 0.5%;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
         width: 600px;
         margin: 30px auto;
     }
@@ -362,23 +362,23 @@ p:first-child {
 
 /* Small desktop screen */
 @media (min-width: 1200px) and (max-width: 1599px) {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 12pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 44px;
         height: 44px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         /*height: 60px;*/
         width: 24.5%;
         line-height: 1;
         margin-right: 0.5%;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
         width: 600px;
         margin: 30px auto;
     }
@@ -386,23 +386,23 @@ p:first-child {
 
 /* Large desktop screen */
 @media (min-width: 1600px) {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 12pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 44px;
         height: 44px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         /*height: 60px;*/
         width: 19.5%;
         line-height: 1;
         margin-right: 0.5%;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
         width: 600px;
         margin: 30px auto;
     }
@@ -410,21 +410,21 @@ p:first-child {
 
 /* Print */
 @media print {
-    .fontsize {
+    #cheatsheet .fontsize {
         font-size: 10pt;
     }
 
-    .iconsize {
+    #cheatsheet .iconsize {
         width: 36px;
         height: 36px;
     }
 
-    .itemsize {
+    #cheatsheet .itemsize {
         height: 36px;
         width: 33%;
     }
 
-    .modalsize {
+    #cheatsheet .modalsize {
     }
 }
 

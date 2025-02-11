@@ -9,7 +9,13 @@ import feat from "./dnd5e/feats.json"
 import condition from "./dnd5e/conditions.json"
 import rule from "./dnd5e/rules.json"
 
+import ancestries from "./pathfinder2e/ancestries.json"
+
 export class Resources {
+}
+
+Resources.dnd = {
+
 }
 
 Resources.race = {
@@ -52,6 +58,12 @@ Resources.bestiary = {
   dev: bestiary,
   prod: "https://raw.githubusercontent.com/Brookimakii/TTRPG-wiki/refs/heads/master/src/resources/bestiary.json?token=GHSAT0AAAAAACZTRR2NZ5JFMX3I7PH3CY3KZ2TMQUQ"
 }
+Resources.pathfinder = {}
+
+Resources.pathfinder.ancestries = {
+  dev: ancestries,
+  prod: ""
+};
 
 
 // async function fetching (page){
@@ -70,7 +82,6 @@ Resources.bestiary = {
 
 export const getResource = (resources: { dev: [], prod: "" }) => {
   const env = !process.env.NODE_ENV || process.env.NODE_ENV === "development"
-
   // console.log(fetching("spells.json"))
   return resources.dev
 }

@@ -1,8 +1,8 @@
 import React, {createRef, RefObject, useEffect, useState} from "react";
 import {Parser} from "../../layout/5e/js/parser"
 import {RenderModule, Selector5e, ToggleState} from "../5eLayoutModules";
-import type {PlayerClass} from "../../layout/5e/Models";
-import {Feature} from "../../layout/5e/Models";
+import type {PlayerClass} from "../../layout/5e/Models5e";
+import {Feature} from "../../layout/5e/Models5e";
 import "../css/classes.css"
 import {Link, useLocation} from "react-router-dom";
 import {getResource, Resources} from "../../resources/ResourcesFetch";

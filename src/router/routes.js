@@ -1,6 +1,12 @@
 import {createBrowserRouter, Link} from "react-router-dom";
 import React from "react";
-import {Layout5e, Layout5eHome, LayoutHeader, LayoutSystemSelection} from "../5etoolLayout/5eLayout";
+import {
+  Layout5e,
+  Layout5eHome,
+  Layout5eHomePathfinder,
+  LayoutHeader,
+  LayoutSystemSelection
+} from "../5etoolLayout/5eLayout";
 import {Dnd5eClasses} from "../5etoolLayout/dnd/Classes";
 import {Dnd5eSpells} from "../5etoolLayout/dnd/Spells";
 import {Dnd5eRaces} from "../5etoolLayout/dnd/Races";
@@ -13,6 +19,7 @@ import {Dnd5eCondition} from "../5etoolLayout/dnd/Condition";
 import {Dnd5eBestiary} from "../5etoolLayout/dnd/Bestiary";
 import {Changelog} from "../ChangeLog/Changelog";
 import {DnDCheatsheet} from "../5etoolLayout/dnd/Cheatsheet";
+import {PF2eRaces} from "../5etoolLayout/pathfinder/Races";
 
 const routes = [
   {
@@ -104,7 +111,12 @@ const routes = [
           {
             id: "Pathfinder2eHome",
             path: "",
-            element: <Layout5eHome/>
+            element: <Layout5eHomePathfinder/>
+          },
+          {
+            id: "pf2Race",
+            path: "ascendances",
+            element: <PF2eRaces/>
           },
         ]
       },

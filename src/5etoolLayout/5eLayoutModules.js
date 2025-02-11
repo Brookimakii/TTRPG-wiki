@@ -1,9 +1,9 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
-import type {Entry} from "../layout/5e/Models";
+import type {Entry} from "../layout/5e/Models5e";
 import {getResource, Resources} from "../resources/ResourcesFetch";
-import {PlayerOptionNFeature} from "../layout/5e/Models";
+import {PlayerOptionNFeature} from "../layout/5e/Models5e";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -286,7 +286,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     </>)
   }
 
-  function DisplayList(elementsToShow = []) {
+  function DisplayList(elementsToShow = [], listStyle:string="") {
     // console.log(elementsToShow)
     // console.log(selected)
     return <>
@@ -305,7 +305,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
           </button>)
         })}
       </div>
-      <div fid="list" className="list list--stats">
+      <div id="list" className={"list list--stats" + listStyle}>
         {/*{console.log(elements)}*/}
         {elementsToShow?.map((elem) =>
           <div
@@ -315,7 +315,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
             <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
                   className="lst__row-border lst__row-inner">
               {columns.map(column => {
-                const string = Object.byString(elem, column.sortId)
+                const colElem = Object.byString(elem, column.sortId)
+                const string = Array.isArray(colElem) ? colElem.join(", "):colElem
                 switch (column.sortId) {
                   case "source":
                     return (
@@ -488,13 +489,35 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   };
 }
 
+function setSystemDependentVariables(location) {
+  let system
+  let resources
+  if (location.pathname.includes("/TTRPG-wiki/dnd5e")) {
+    system = "/TTRPG-wiki/dnd5e"
+    resources = Resources
+
+  } else if (location.pathname.includes("/TTRPG-wiki/pathfinder2e")) {
+    system = "/TTRPG-wiki/pathfinder2e"
+    resources = Resources.pathfinder
+  }
+  return {system, resources};
+}
+
 export const RenderModule = (props: {}) => {
+
+  const location = useLocation()
+
   const _SPLIT_BY_TAG_LEADING_CHARS = new Set(["@", "="])
   const TAG_LOOKUP = {
     spell: {
       tagName: "spell",
       defaultSource: Parser.SRC_PHB,
       page: "/TTRPG-wiki/spells",
+    },
+    ancestry: {
+      tagName: "ancestry",
+      defaultSource: Parser.SRC_PHB,
+      page: "/TTRPG-wiki/ancestry",
     },
     spellen: {
       tagName: "spell English",
@@ -611,6 +634,7 @@ export const RenderModule = (props: {}) => {
           subhashesHover,
           isFauxPage
         } = getTagMeta(tag, string)
+        // console.log(page, hash)
         return <Link to={page + (hash ? "#" + hash : "")}>{name}</Link>
     }
   }
@@ -628,7 +652,8 @@ export const RenderModule = (props: {}) => {
       if (source && source.trim()) return source;
 
       tag = tag.trim();
-      const tagMeta = TAG_LOOKUP[tag.substring(1, tag.length)];
+      // const tagMeta = TAG_LOOKUP[tag.substring(1, tag.length)];
+      const tagMeta = Parser.SRC_PHB;
 
       if (!tagMeta) throw new Error(`Unhandled tag "${tag}"`);
       return tagMeta.defaultSource;
@@ -673,26 +698,27 @@ export const RenderModule = (props: {}) => {
 
       hashPreEncoded: true,
     }
-
+    let {system, resources} = setSystemDependentVariables(location);
     switch (tag) {
       case "@spell": {
-        const spell = getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]
+        const spell = getResource(resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]
         if (!spell){
           console.error("Unknown spell: "+ string)
         }
         out.hash = encodeForHash(spell?.id)
 
-        out.page = "/TTRPG-wiki/spells";
+        out.page = `${system}/spells`;
         break;
       }
-      case "@spellen": {
-        console.error("This spell is in english: "+ string)
-        out.hash = encodeForHash("english spell "+ string)
-        out.page = "/TTRPG-wiki/spells";
+      case "@ancestry": {
+        out.hash = encodeForHash(source??string)
+        out.page = `${system}/ascendances`;
         break;
       }
       default:
-        throw new Error(`Unhandled tag "${tag}"`);
+        out.name = `Unhandled tag "${tag}" (${string})`
+        out.hash = encodeForHash(string)
+        out.pages = ""
     }
     return out
   }
@@ -755,6 +781,9 @@ export const RenderModule = (props: {}) => {
           // console.log(entry, depth, toggle)
           return props.renderEntries(entry, toggle + "-sub-" + entry.name ?? "", ++depth)
         }
+        case "titledEntries": {
+          return props.renderTitleEntries(entry, toggle + "-sub-" + entry.name ?? "", ++depth)
+        }
         case "list": {
           // console.log(entry)
           return <ul className={"rd__list " + entry.style ?? ""}>
@@ -785,15 +814,21 @@ export const RenderModule = (props: {}) => {
           </>
         }
         case "abilityDc":
+          if (!entry.attribute){
+            return "entry is unefinded"
+          }
           return <div className={"rd__wrp-centered-ability"}>
             <b>DD de sauvegarde des sorts</b> = 8 + votre
-            modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
+            modificateur {Array.isArray(entry.attribute)?"arrayToImplement":"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
             bonus de maîtrise
           </div>
         case "abilityAttackMod":
+          if (!entry.attribute){
+            return "entry is unefinded"
+          }
           return <div className={"rd__wrp-centered-ability"}>
             <b>Modificateur aux attaques avec un sort</b> = votre
-            modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
+            modificateur {Array.isArray(entry.attribute)?"arrayToImplement":"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
             bonus de maîtrise
           </div>
         default:

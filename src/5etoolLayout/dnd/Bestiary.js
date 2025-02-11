@@ -2,7 +2,7 @@ import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
-import type {Monster} from "../../layout/5e/Models";
+import type {Monster} from "../../layout/5e/Models5e";
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 
 export const Dnd5eBestiary = () => {

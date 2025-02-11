@@ -1,0 +1,4665 @@
+[
+  {
+    "id": "dwarf",
+    "name": "Nain",
+    "tags": ["Nain", "Humanoïd"],
+    "rarity": "common",
+    "source": "PC",
+    "page": 43,
+    "hitPoint": 10,
+    "size": "Moyenne",
+    "speed": "6 m",
+    "boost": ["Constitution", "Sagesse", "Libre"],
+    "flaw": ["Charisme"],
+    "languages": [
+      "Commun",
+      "Nain",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi gnomien, gobelin, jotun, orquien, pierreux, sakvroth et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": [
+          "You can see in darkness and dim light just as well as you can see in bright light, though your vision in darkness is in black and white."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Dague de clan",
+        "entries": [
+          "Vous obtenez gratuitement une Dague de clan car elle vous a été donnée à votre naissance par votre clan. La vente de cet objet est un tabou terrible et vous vaudrait le dédain des autres nains."
+        ]
+      }
+    ],
+    "heritages": [
+      "You select a heritage at 1st level to reflect abilities passed down to you from your ancestors or common among those of your ancestry in the environment where you were born or grew up. You have only one heritage and can’t change it later. A heritage is not the same as a culture or ethnicity, though some cultures or ethnicities might have more or fewer members from a particular heritage.",
+      "Dwarves take great pride in the resilience of their bloodlines. Choose one of the following dwarven heritages at 1st level.",
+      {
+        "type": "entries",
+        "name": "Nain béni-de-la-forge",
+        "sources": "H",
+        "page": 109,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain coeurélémentaire",
+        "sources": "CG",
+        "page": 19,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain des forges",
+        "sources": "PC",
+        "page": 43,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain de l'enclume",
+        "sources": "CG",
+        "page": 19,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain des roches",
+        "sources": "PC",
+        "page": 43,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain gardemort",
+        "sources": "PC",
+        "page": 43,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain gardeserment",
+        "sources": "CG",
+        "page": 19,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nain sang-ancien",
+        "sources": "PC",
+        "page": 43,
+        "entries": [
+          "Dwarven heroes of old could shrug off their enemies' magic, and some of that resistance manifests in you. You gain the Call on Ancient Blood reaction.",
+          {
+            "type": "action",
+            "name": "Call on Ancient Blood",
+            "cost": "reaction",
+            "trigger": "You attempt a saving throw against a magical effect, but you haven't rolled yet",
+            "entries": [
+              "Your ancestors' innate resistance to magic surges, before slowly ebbing down. You gain a +1 circumstance bonus until the end of this turn. This bonus also applies to the triggering save."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Nain sang-fort",
+        "sources": "PC",
+        "page": 74,
+        "entries": []
+      }
+    ],
+    "info": [],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Dwarf01.png",
+        "name": "Homme nain",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Dwarf02.png",
+        "name": "Femme nainne",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "elf",
+    "name": "Elfe",
+    "tags": ["Elfe", "Humanoïde"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Moyenne",
+    "speed": "9 m",
+    "boost": ["Dextérité", "Intelligence", "Libre"],
+    "flaw": ["Constitution"],
+    "languages": [
+      "Commun",
+      "Elfique",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (si positif). Choisissez parmi draconique, empyréen, gnomien, gobelin, kholo, orquien, fée et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Elfe ancien",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Elfe arctique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Elfe des bois",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Elfe des cavernes",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Elfe des murmures",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Elfe du désert",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Elfe visionnaire",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Elf01.png",
+        "name": "Homme efle",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Elf02.png",
+        "name": "Femme Elfe",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "gnome",
+    "name": "Gnome",
+    "tags": ["Gnome", "Humanoïde"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Petite",
+    "speed": "",
+    "boost": ["Constitution", "Charisme", "Libre"],
+    "flaw": ["Force"],
+    "languages": [
+      "Commun",
+      "Gnomien",
+      "fée",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi Draconique, Nain, Elfique, Gobelin, Jotun, Orquien, et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Gnome béni des fées",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gnome caméléon",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gnome kijimuna",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gnome ombral",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gnome sensitif",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gnome source",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gnome vivace",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Gnome01.png",
+        "name": "Femme gnome",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Gnome02.png",
+        "name": "Homme gnome",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "goblin",
+    "name": "Gobelin",
+    "tags": ["Gobelin", "Humanoïde"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Charisme", "Libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "Commun",
+      "Gobelin",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi draconique, halfelin, gnomien, kholo, nanique, orquien et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Gobelin à queue",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin arboricole",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin boyaud'fer",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin dent'rasoir",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin des neiges",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin dokkaebi",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin incassable",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gobelin peaud'charbon",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Goblin01.png",
+        "name": "Homme gobelin",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Goblin02.png",
+        "name": "Femme gobeline",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "halfling",
+    "name": "Halfelin",
+    "tags": ["Halfelin", "Humanoïde"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Sagesse", "Libre"],
+    "flaw": ["Force"],
+    "languages": [
+      "Commun",
+      "Halfelin",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi Nain, Elfique, Gnomien, Gobelin et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Yeux perçants",
+        "entries": [
+          "Votre vue perçante vous permet de distinguer des détails concernant des créatures masquées ou invisibles que d'autres pourraient ne pas remarquer. Vous obtenez un bonus de circonstances de +2 quand vous utilisez l'action Chercher pour trouver des créatures Cachées ou Non détectées dans un rayon de 9 mètres autour de vous. Quand vous prenez pour cible un adversaire Masqué ou Caché, réduisez le DD du test nu à 3 pour une cible masquée ou à 9 pour une cible cachée."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Halfelin des collines",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Halfelin du crépuscule",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Halfelin flegmatique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Halfelin nomade",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Halfelin observateur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Halfelin portepoisse",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Halfelin bois-sauvage",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Halfling01.png",
+        "name": "Homme Halfelin",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Halfling02.png",
+        "name": "Femme Halfelin",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "human",
+    "name": "Humain",
+    "tags": ["Humain", "Humanoïde"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["deux primes d'attributs libres"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Langues supplémentaires égale à 1 + votre modificateur d'Intelligence (s'il est positif). Choisissez parmi la liste des langues courantes et parmi toutes les langues auxquelles vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Humain polyvalent",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Héritage talentueux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Humain touché par l'hiver",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      "",
+      {
+        "type": "entries",
+        "name": "Humain entraîné à la bataille (BI)",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Humain gardien (BI)",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      "",
+      {
+        "type": "entries",
+        "name": "Aiuvarin",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Dromaar",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Human01.png",
+        "name": "Human",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "leshy",
+    "name": "Léchi",
+    "tags": ["Léchi", "Plante"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Constitution, Sagesse", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "Commun",
+      "fée",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi draconique, elfique, gnomien, gobelin, halfelin, sakvroth et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Alimentation des plantes",
+        "entries": [
+          "Vous obtenez de quoi vous alimenter de la même manière que les plantes ou les champignons qui correspondent à votre type de corps, au travers d'une combinaison de photosynthèse, d'absorption des minéraux par vos racines ou de récupération de matière en décomposition. Vous n'avez généralement pas besoin de payer pour votre nourriture. Si vous dépendez normalement de la photosynthèse et que vous ne voyez pas la lumière du soleil pendant une semaine, vous commencez à dépérir. Vous pouvez obtenir une alimentation à partir de bouteilles spécialement formulées à base de lumière du soleil en remplacement de la lumière du soleil naturelle mais ces bouteilles coûtent 10 fois plus que des rations ordinaires (ou 40 pa)."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Léchi algue",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi cactus",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi calebasse",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi champignon",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi chrysanthème",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi enfant de pêche",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi feuillu",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi fruitier",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi liane",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi lotus",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi pin",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Léchi racinaire",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Leshy01.png",
+        "name": "Léshi",
+        "caption": "Léshi"
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Leshy02.png",
+        "name": "Léshi",
+        "caption": "Léshi"
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Leshy03.png",
+        "name": "Léshi",
+        "caption": "Léshi"
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Leshy04.png",
+        "name": "Léshi",
+        "caption": "Léshi"
+      }
+    ]
+  },
+  {
+    "id": "orc",
+    "name": "Orc",
+    "tags": ["Humanoïde", "Orque"],
+    "rarity": "common",
+    "source": "",
+    "page": 0,
+    "hitPoint": 10,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Force", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Orquien",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi gobelin, jotun, pierreux, sakvroth et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Orc batailleur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Orc des badlands",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Orc hivernal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Orc des moussons",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Orc des profondeurs",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Orc scarifié",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Orc sépulcral",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Orc01.png",
+        "name": "Femme orc",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Orc02.png",
+        "name": "Homme orc",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "athamaru",
+    "name": "Athamaru",
+    "tags": ["Peu courant", "Amphibie", "Athamaru", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "6 m, Nage 7,50 m",
+    "boost": ["Force, Sagesse", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "Commun",
+      "thalassique",
+      "Langues supplémentaires égales à votre modifiateur d'Intelligence (s'il est positif). Choisissez parmi l'alghollthu, l'azlante, le féérique, le Tien et n'importe quelle langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les adaptations des athamarus se sont développées au cours de siècles de vie sous-marine, alors qu'ils faisaient face aux attaques de dangereux prédateurs. Choisissez l'un des héritages athamarus suivants au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Athamaru à piquants",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Athamaru coralien",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Athamaru kaléïdoscopique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Athamaru pleine d'espoir",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Athamaru01.webp",
+        "name": "Athamaru",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Athamaru02.webp",
+        "name": "Athamaru",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "azarketi",
+    "name": "Azarketi",
+    "tags": ["Peu courant", "Amphibie", "Azarketi", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "6 m, Nage 9 m",
+    "boost": ["Constitution, Charisme", "Libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "Commun",
+      "Alghollthu",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi Aklo, Aquatique, Azlante, Draconique, Elfique et Sakvroth et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hydratation",
+        "entries": [
+          "Bien que vous soyez amphibie et autant à l'aise sur terre que dans l'eau, votre corps nécessite que vous retourniez dans les environnements aquatiques au moins une fois par 24 heures. Vous devez vous immerger totalement dans l'eau en vue de réhydrater votre peau acclimatée à l'eau. Si vous ne parvenez pas à le faire, votre peau commence à se craqueler et vos ouïes deviennent douloureuses. Après les premières 24 heures hors de l'eau, vous subissez une pénalité de statut de -1 aux jets de Vigueur. Après 48 heures, vous luttez pour respirer de l'air et commencez à suffoquer jusqu'à ce que vous retourniez dans l'eau."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Azarketi des profondeurs",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi écaille antique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi endurci",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi épineux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi fluvial",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi soufflebrume",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi tactile",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi thalassique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Azarketi yeuxobscurs",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Azarketi01.png",
+        "name": "Femme azarketi",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Azarketi02.png",
+        "name": "Homme azarketi",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "catfolk",
+    "name": "Homme-félin (félide)",
+    "tags": ["Peu courant", "Félide", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Charisme", "Libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "Amurrun",
+      "Commun",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence modifier (s'il est positif). Choisissez parmi draconique, elfique, gnomien, gobelin, halfelin, iruxi (la langue des hommes-lézard), jotun, féerique et n'importe quelle autre langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Retomber sur vos pattes",
+        "entries": [
+          "Lorsque vous chutez, vous ne subissez que la moitié des dégâts normaux et vous ne vous retrouvez pas À terre."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Homme-félin aux neufs vies",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin aux oreilles pointues",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin chasseur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin de la jungle",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin griffu",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin flexible",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin hivernal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-félin liminaire",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Catfolk01.webp",
+        "name": "Homme-félin",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Catfolk02.webp",
+        "name": "Homme-félin",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "centaur",
+    "name": "Centaure",
+    "tags": ["Peu courant", "Bête", "Centaure", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Très grande",
+    "speed": "9 mètres",
+    "boost": ["Force, Sagesse", "Libre"],
+    "flaw": ["Charisme"],
+    "languages": [
+      "Commun",
+      "Féerique",
+      "Langues supplémentaires égale à votre modificateur d'Intelligence (s'il est positif). Choisissez entre arboréen, cyclope, nanique, elfique, gnomien, halfelin, jotun et n'importe quelle autre langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Robuste ",
+        "entries": ["Vous augmentez les limites maximum d'Encombrement et de surcharge de 2."]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les centaures sont un peuple diversifié qui s'adapte à son environnement et aux travaux qu'il effectue. Choisissez un des héritages centaures suivants au niveau 1.  ",
+      {
+        "type": "entries",
+        "name": "Centaure allure de poney",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Centaure aspirant orateur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Centaure au coeur robuste",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Centaure fersabot",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Centaure file au vent",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Centaure moucheté",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Centaur01.webp",
+        "name": "Femme centaure",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Centaur02.webp",
+        "name": "Homme centaure",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "fetchling",
+    "name": "Fetchelin",
+    "tags": ["Peu courant", "Fetchelin", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Langue de l'ombre",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi aklo, draconique, d'ziriak, nécril, sakvroth et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Fetchelin des profondeurs",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Fetchelin déterminé",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Fetchelin liminal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Fetchelin lumineux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Fetchelin menu",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Fetchling01.png",
+        "name": "Femme fetchelin",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Fetchling02.png",
+        "name": "Homme fetchelin",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "hobgoblin",
+    "name": "Hobgobelin",
+    "tags": ["Peu courant", "Hobgobelin", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Constitution, Intelligence", "Libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "Commun",
+      "Gobelin",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi draconique, kholo, halfelin, jotun, nanique, orquien et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Hobgobelin commandant d'avortons",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hobgobelin courtespattes",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hobgobelin fléau elfique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hobgobelin marchebataille",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hobgobelin peaud'acier",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hobgobelin sapeur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Hobgobelin terrierné",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Hobgoblin01.webp",
+        "name": "Hobgobelin",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Hobgoblin02.webp",
+        "name": "Hobgobelin",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "kholo",
+    "name": "Kholo",
+    "tags": ["Peu courant", "Kholo", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Force, Intelligence", "Libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "Commun",
+      "Gnoll",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi draconique, elfique, iruxi, nécril, orquien, fée et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Morsure ",
+        "entries": [
+          "Vos dents acérées et vos puissantes mâchoires sont des armes redoutables. Vous disposez d'une attaque à mains nues de mâchoires qui inflige 1d6 dégâts perforants. Vos mâchoires font partie du groupe pugilat."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Grand kholo",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kholo à haleine douce",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kholo cavernicole",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kholo chien",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kholo fourmi",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kholo hivernal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kholo sorcier",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kholo01.webp",
+        "name": " kholo",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kholo02.webp",
+        "name": " kholo",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "kitsune",
+    "name": "Kitsune",
+    "tags": ["Peu courant", "Humanoïde", "Kitsune"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Charisme", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi elfique, gnomien, gobelin, halfelin, nain, fée et n'importe quelle autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Changement de forme",
+        "entries": [
+          "(concentration, divin, kitsune, métamorphose) Vous prenez une forme alternative spécifique déterminée par votre héritage. Si votre héritage ne fixe pas de forme alternative, votre forme est une forme sans queue, qui est celle d'une ascendance humanoïde courante prévalente là où vous avez grandi (typiquement humaine). Cette forme est du même âge et du même type de corps que votre forme véritable et a approximativement des traits physiques analogues, comme la couleur des cheveux. Utiliser Changement de forme est considéré comme créer un Déguisement pour utiliser l'action de Duperie se Déguiser. Vous perdez toute Frappe à mains nues que vous avez obtenu du fait d'un héritage ou d'un don ancestral kitsune sous cette forme. Vous pouvez rester sous votre forme alternative indéfiniment et vous pouvez revenir à votre forme véritable de kitsune en utilisant cette action de nouveau.",
+          "De plus, lorsque vous gagnez un niveau, vous pouvez voir pousser une ou plusieurs queues. Le nombre maximal de vos queues est égal à la valeur la plus élevée entre le rang du sort le plus élevé que vous pouvez lancer depuis vos emplacements de sorts, le rang du sort inné kitsune le plus élevé qui ne soit pas un tour de magie ou 1 + votre nombre de dons ancestraux kitsunes, sans jamais pouvoir dépasser neuf queues au maximum."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Kitsune des champs sombres",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kitsune des terres sauvages",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kitsune du ciel vide",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kitsune du vent gelé",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kitsune émissaire céleste",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kitsune échos du palais",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kitsune01.png",
+        "name": "Kitsune forme hybride",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kitsune02.png",
+        "name": "Kitsune forme humaine",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "kobold",
+    "name": "Kobold",
+    "tags": ["Peu courant", "Humanoïde", "Kobold"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Charisme", "Libre"],
+    "flaw": ["Constitution"],
+    "languages": [
+      "Commun",
+      "sakvroth",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi aklo, diabolique, draconique, empyréen, fée, gnomien, nanique, pierreux et toute autre langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Kobold à écailles de dragon",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold à forte mâchoire",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold à queue venimeuse",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold cavernicole",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold chutevertigineuse",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold coeur des éléments",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold cornesort",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold grimpegrotte",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold scribeparadis",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Kobold tunnelinondé",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kobold01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kobold02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "lizardfolk",
+    "name": "Homme-lézard",
+    "tags": ["Peu courant", "Humanoïde", "Homme-lézard"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Force, Sagesse", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "Commun",
+      "Iruxi",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi amurrun, aquatique, bourbiérin, draconique, elfique, féerique, jotun, thalassique et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Griffes",
+        "entries": [
+          "Vos griffes aiguisées vous offrent une alternative aux poings que d'autres humanoïdes utilisent pour se battre. Vous disposez d'une attaque à mains nues de griffe qui inflige 1d4 dégâts tranchants et possède les traits agile et finesse."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Adaptation aquatique",
+        "entries": [
+          "Votre biologie reptilienne vous permet de retenir votre souffle pendant très longtemps. Vous obtenez le don général Contrôle de la respiration comme don supplémentaire."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Homme-lézard à collerette",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard arpenteur des sables",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard des terres humides",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard arboricole",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard bakuwa",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard écaille de falaise",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard makari",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard mimétique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-lézard sautenuage",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Lizardfolk01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Lizardfolk02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "merfolk",
+    "name": "Homme-poisson",
+    "tags": ["Peu courant", "Amphibie", "Humanoïde", "Homme-poisson"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "1,50 m, Nage 7,50 m",
+    "boost": ["Dextérité, Charisme", "Libre"],
+    "flaw": ["Constitution"],
+    "languages": [
+      "Commun",
+      "thalassique",
+      "Langues supplémentaires égale à votre modificateur d'Intelligence (s'il est positif). Choisissez entre aklo, azlante, draconique, elfique et féerique et n'importe quelle autre langue à laquelle vous avez accès (comme les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Grace aquatique",
+        "entries": [
+          "Lorsque vous obtenez un succès sur un jet de sauvegarde contre un effet d'eau, il devient un succès critique."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Hydratation ",
+        "entries": [
+          "Votre corps nécessite que vous retourniez dans un environnement aquatique au moins une fois au cours d'une période de 24 heures. Après les 24 premières heures hors de l'eau, vous subissez une pénalité de statut de -1 aux jets de Vigueur. Après 48 heures, vous avez du mal à respirer de l'air et commencez à suffoquer jusqu'à ce que vous retourniez à l'eau."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les héritages des hommes-poissons reflètent souvent les océans dans lesquels ils vivent. Choisissez un des hértiages des hommes-poissons au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Homme-poisson abyssal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-poisson carcharodon",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-poisson pélagique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-poisson des récifs",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Homme-poisson à queue de poisson",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Merfolk01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Merfolk02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "minotaur",
+    "name": "Minotaure",
+    "tags": ["Peu courant", "Bête", "Humanoïde", "Minotaure"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 10,
+    "size": "Grande",
+    "speed": "7,50 mètres",
+    "boost": ["Force, Constitution", "Libre"],
+    "flaw": ["Charisme"],
+    "languages": [
+      "commun",
+      "jotun",
+      "Langues supplémentaires égales à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi cyclope, nanique, féerique, pierreux, sakvroth et n'importe quelle langue à laquelle vous avez accès (Comme les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Cornes ",
+        "entries": [
+          "Vos cornes pointues sont aussi mortelles que des épieux. Vous disposez d'une attaque à mains nues de cornes qui infligent 1d8 dégâts perforants. Vos cornes appartiennent au groupe pugilat et possèdent le trait à mains nues."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les minotaures se distinguent souvent par la région de leur enclave ou de l'enclave de leurs ancêtres. Choisissez l'un des héritages de minotaure suivants au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Minotaure blocâme",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Minotaure des cavernes de glace",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Minotaure itinérant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Minotaure petitecorne",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Minotaure taureau fantôme",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Minotaure traqueur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Minotaur01.webp",
+        "name": "Femme minotaure",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Minotaur02.webp",
+        "name": "Homme minotaure",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "nagaji",
+    "name": "Nagaji",
+    "tags": ["Peu courant", "Humanoïde", "Nagaji"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 10,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Force", "libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "nagaji",
+      "Langues supplémentaires égale à votre modificateur d'Intelligence (s'il est positif). Choisissez entre aklo, aquatique, amurrun, empyréen, sakvroth, draconique, langue de l'ombre, tengu, vanara et parmi toutes les langues auxquelles vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Crocs ",
+        "entries": [
+          "Votre bouche contient soit des rangées de dents crochues et aiguisées, soit une paire de vicieux crochets de serpent. Vous obtenez une attaque à mains nues de crocs qui inflige 1d6 dégâts perforants. Vos crocs font partie du groupe pugilat et possèdent les traits finesse et à mains nues."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "La physiologie des nagajis varie communément entre les individus. Choisissez un héritage nagaji au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Nagaji boucliervenin",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nagaji coiffé",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nagaji fouetcrochets",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nagaji languechatoyante",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nagaji sacré",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nagaji titan",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Nagaji01.png",
+        "name": "Short neck nagaji",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Nagaji02.png",
+        "name": "Lamia nagaji",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Nagaji03.png",
+        "name": "Long neck nagaji",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Nagaji04.png",
+        "name": "Strong nagaji",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "ratfolk",
+    "name": "Homme-rat",
+    "tags": ["Peu courant", "Humanoïde", "Homme-rat"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "",
+    "speed": "",
+    "boost": ["Dextérité, Intelligence", "Libre"],
+    "flaw": ["Force"],
+    "languages": [
+      "Commun",
+      "Ysoki",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi Aklo, Draconique, Nain, Gnoll, Gnomien, Gobelin, Halfelin, Orquien, Sakvroth ou toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Dents aiguisées",
+        "entries": [
+          "Vos incisives proéminentes offrent une alternative aux poings que les autres humanoïdes utilisent dans un combat. Vous disposez d'une attaque à mains nues qui inflige 1d4 points de dégâts perforants, fait partie du groupe pugilat et possède les traits agile et finesse."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Rat à long museau",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rat d'égouts",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rat de l'ombre",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rat des profondeurs",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rat des sables",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rat des tunnels",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rat Neige",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Ratfolk01.webp",
+        "name": "Homme-rat",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Ratfolk02.webp",
+        "name": "Femme-rat",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "samsaran",
+    "name": "Samsaran",
+    "tags": ["Peu courant", "Humanoïde", "Samsaran"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Constitution, Sagesse", "Libre"],
+    "flaw": ["Charisme"],
+    "languages": [
+      "commun",
+      "samsaran",
+      "Langues supplémentaires égales à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi chthonien, diabolique, draconien, empyréen, jotun, pierreux, pyrique, sussuran, thalassique et toute autre langue à laquelle vous avez accès (telles ques les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": [
+          "Vous pouvez voir dans la lumière faible comme s'il s'agissait de lumière vive, de sorte que vous ignorez l'état Masqué à cause de la lumière faible."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Cryptomnésie ",
+        "entries": [
+          "Vous retenez des parcelles de connaissances de vos vies précédentes. Vous obtenez un bonus de circonstances de +1 à vos tests de compétences pour lesquelles vous êtes inexpérimenté."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Âme vagabonde",
+        "entries": [
+          "Votre âme est particulièrement capable de revenir dans le cycle de la réincarnation. Lorsque vous êtes sujet de {@spell Rappel à la vie} , {@spell Réincarnation} ou d'un rituel similaire qui devrait vous ramener à la vie, l'incantateur primaire utilise le résultat d'un degré de succès supérieur à ce qu'il obtenu sur son jet. Vous revenez toujours à la vie en tant que samsaran, même si le rituel devrait vous réincarner au sein d'un corps d'une ascendance différente."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les vies passées d'un samsaran peuvent avoir une grande influence sur leur incarnation actuelle. Choisissez un des héritages samsarans suivantes au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Samsaran guérisseur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Samsaran montagnard",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Samsaran oraculaire",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Samsaran reclus",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Samsaran sauvage",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Samsaran01.webp",
+        "name": "Homme samsaran",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Samsaran02.webp",
+        "name": "Femme samsaran",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "tanuki",
+    "name": "Tanuki",
+    "tags": ["Peu courant", "Humanoïde", "Tanuki"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 10,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Constitution, Charisme", "libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "commun",
+      "tanuki",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez entre elfique, féerique, gnomien, gobelin, kitsune, Tengu et n'importe qu'elle langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "action",
+        "name": "Changement de forme",
+        "cost": "action",
+        "entries": [
+          "(concentration, métamorphose, primordiale, tanuki) Vous pouvez vous transformer en un chien viverrin ordinaire, en utilisant les statistiques de {@spell Forme de nuisible} . Il s'agit d'une forme spécifique de chien viverrin qui possède le même âge et le même type de corps que votre forme réelle et qui a des traits physiques à peu près analogues, comme la couleur des cheveux. Utiliser Changer de forme est considéré comme la création d'un déguisement dans le cadre de l'utilisation de la compétence Duperie pour {@action Se déguiser} . Sous cette forme, vous perdez toutes les Frappes à mains nues que vous avez obtenues par un héritage tanuki ou un don ancestral. Vous pouvez rester sous votre forme de chien viverrin indéfiniment et vous pouvez revenir à votre forme de tanuki en utilisant de nouveau cette action."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "L'héritage d'un tanuki reflète une vertu unique qui bat au fond du cœur du tanuki. Choisissez un des héritages tanukis suivants au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Tanuki ascétique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tanuki courageux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tanuki loyal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tanuki placide",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tanuki vertueux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Tanuki01.webp",
+        "name": "Tanuki forme humaine",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Tanuki02.webp",
+        "name": "Tanuki forme raton",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "tengu",
+    "name": "Tengu",
+    "tags": ["Peu courant", "Humanoïde", "Tengu"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Tengu",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi elfe, fée, halfelin, gnomien, nanique et n'importe quelle autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Bec aiguisé",
+        "entries": [
+          "Avec votre bec aiguisé, vous n'êtes jamais dépourvu d'une arme. Vous disposez d'une attaque à mains nues de bec qui inflige 1d6 dégâts perforants. Votre bec est dans le groupe d'arme pugilat et possède les traits finesse et à mains nues."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Tengu à serres",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tengu battu par les vents",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tengu dent de chien",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tengu enfant du ciel",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tengu gardemontagne",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tengu maudit",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tengu plonge vague",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Tengu01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Tengu02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "tripkee",
+    "name": "Tripkee",
+    "tags": ["Peu courant", "Tripkee", "Humanoïde"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Sagesse", "Libre"],
+    "flaw": ["Force"],
+    "languages": [
+      "Commun",
+      "tripkee",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi bourbiérin, chthonien, draconique, elfique, fée, iruxi, thalassique et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Grimpeur naturel",
+        "entries": ["Vous obtenez un bonus de circonstances de +2 aux tests d'Athlétisme pour Escalader."]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Tripkee à longue langue",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tripkee à palmes",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tripkee à peau empoisonnée",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tripkee à peau épaisse",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tripkee aux orteils collants",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Tripkee des rivières",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Tripkee01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Tripkee02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "vanara",
+    "name": "Vanara",
+    "tags": ["Peu courant", "Humanoïde", "Vanara"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité", "Libre"],
+    "flaw": [],
+    "languages": [
+      "commun",
+      "vanara",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi elfe, infernal, gnome, gobelin, fée et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Queue préhensile",
+        "entries": [
+          "Vous pouvez utiliser votre longue queue flexible pour accomplir des actions Interagir nécessitant une main libre, même si vos deux mains sont occupées par ailleurs. Votre queue ne peut pas effectuer d'actions qui nécessitent des doigts ou une dextérité manuelle importante, y compris une action qui nécessiterait un test pour être accomplie et vous ne pouvez pas l'utiliser pour tenir des objets."
+        ]
+      }
+    ],
+    "info": [],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Vanara01.png",
+        "name": "Femme vanara",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Vanara02.png",
+        "name": "Homme vanara",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "wayang",
+    "name": "Wayang",
+    "tags": ["Peu courant", "Humanoïde", "Ombre", "Wayang"],
+    "rarity": "uncommon",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Charisme", "Libre"],
+    "flaw": ["Constitution"],
+    "languages": [
+      "commun",
+      "langue de l'ombre",
+      "wayang",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez entre d'ziriak, diabolique, minatan, nagaji, thalassique, vudrain, yaksha et toutes les autres langue auxquels vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Chaque wayang se trouve, ainsi que son ombre, attiré par un archétype particulier, comme par un rôle au sein d'une représentation. Choisissez l'un des héritages wayang suivants au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Ombre de l'artisan",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Ombre de l'ermite",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Ombre du courtisan",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Ombre du marin",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Ombre du vagabond",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Wayang01.webp",
+        "name": "Femme wayang",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Wayang02.webp",
+        "name": "Homme wayang",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "anadi",
+    "name": "Anadi",
+    "tags": ["Rare", "Anadi", "Humanoïde"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Sagesse", "Libre"],
+    "flaw": ["Constitution"],
+    "languages": [
+      "Anadi",
+      "Mwangi",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi draconique, elfique, gnoll, iruxi, orquien, fée et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Crocs ",
+        "entries": [
+          "Vous êtes né avec un moyen naturel de chasser et de vous défendre. Vous obtenez une attaque de crocs à mains nues qui inflige 1d6 dégâts perforants. Vos crocs sont dans le groupe pugilat et possèdent le trait finesse et à mains nues."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Changement de forme",
+        "entries": [
+          "(anadi, arcanique, concentration, métamorphose) Vous prenez votre forme humanoïde ou d'araignée. Chaque forme possède sa propre apparence spécifique persistante.",
+          "Sous votre forme humaine, vous ne pouvez pas utiliser les attaques à mains nues accordées par votre ascendance. Sous votre forme d'araignée, vous n'êtes par Pris au dépourvu lorsque vous escaladez.",
+          "Quoi qu'il en soit sous votre forme d'araignée, vous ne pouvez pas utiliser d'armes, de boucliers ou d'autres objets tenus de quelque sorte que ce soit et vous êtes limité dans les actions que vous pouvez entreprendre avec le trait manipulation. Les seules actions de manipulation que vous pouvez entreprendre sont de Lancer un sort, tisser de la soie ou des toiles ou de simples actions d'Interaction telles qu'ouvrir une porte non verrouillée. Vos pattes d'araignées ne peuvent accomplir d'actions qui nécessitent des doigts ou une dextérité manuelle fine, incluant toute action qui nécessiterait un test pour l'accomplir. Le MJ pourrait déterminer quelles autres actions de manipulation sont appropriées pour vos pattes d'araignée."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Anadi01.png",
+        "name": "Anadi forme humaine",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Anadi02.png",
+        "name": "Anadi forme araignée",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "android",
+    "name": "Androïde",
+    "tags": ["Rare", "Androïde", "Humanoïde"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Intelligence", "Libre"],
+    "flaw": ["Charisme"],
+    "languages": [
+      "Commun",
+      "Androffan",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi chthonien, draconique, empyréen, nanique, sakvroth, utopien et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Construit ",
+        "entries": [
+          "Votre corps synthétique résiste aux affections mieux que les organismes purement biologiques. Vous obtenez un bonus de circonstances de +1 aux jets de sauvegarde contre les maladies, les poisons et les radiations."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Émotionnellement non préparé",
+        "entries": [
+          "Vous trouvez qu'il est difficile de comprendre et d'exprimer des émotions complexes. Vous subissez une pénalité de circonstances de -1 aux tests de Diplomatie et de Représentation et aux tests de Perception pour Deviner les intentions."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Artisan androïde",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Androïde combattant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Androïde imposteur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Androïde manoeuvre",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Androïde polyglotte",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Android01.png",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Android02.png",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "automaton",
+    "name": "Automate",
+    "tags": ["Rare", "Automate", "Créature artificielle"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne ou Petite",
+    "speed": "7,50 m",
+    "boost": ["Force", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Utopien",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi chthonien, empyréen, elfique,infernal, nanique, pierreux, pyrique, sussuran, thalassique et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région). À la discrétion du MJ, si vous disposez toujours de souvenirs de votre temps au Jistka, vous pourriez parler Jistka au lieu de Commun."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Noyau automate",
+        "entries": [
+          "Votre corps contient un noyau d'automate imprégné de quintessence planaire qui vous donne le pouvoir d'effectuer diverses tâches et abrite votre âme et votre énergie vitale. Cette énergie vitale circule en vous comme le sang des humanoïdes. Par conséquent, vous êtes une créature vivante. Vous n'avez pas les immunités typiques des créatures artificielles. Vous pouvez être affecté par des effets qui ciblent une créature vivante et vous pouvez récupérer des Points de vie normalement grâce à l'énergie positive. De plus, vous n'êtes pas détruit lorsque vous êtes réduit à 0 Point de vie. Au lieu de cela, votre énergie vitale tente de vous maintenir actif, même dans des conditions difficiles ; vous êtes mis hors d'usage et commencez à mourir lorsque vous êtes réduit à 0 Point de vie."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Corps artificiel",
+        "entries": [
+          "Vos besoins physiologiques sont différents de ceux des créatures vivantes. Vous n'avez pas besoin de manger ou de boire. Vous n'avez pas besoin de dormir mais vous avez quand même besoin d'une période de repos quotidien. Durant cette période de repos, vous devez entrer dans un état de veille pour récupérer pendant 2 heures, ce qui est similaire au sommeil sauf que vous restez conscient de votre environnement et que vous ne subissez aucune pénalité du fait d'être Inconscient. Un peu comme avec le sommeil, si vous restez trop longtemps sans entrer dans votre état de veille, vous devenez Fatigué et ne pouvez récupérer jusqu'à ce que vous entriez en veille pendant 2 heures."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Automate chasseur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Automate combattant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Automate tireur de précision",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Mage automate",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Automaton01.png",
+        "name": "Automate épéiste",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Automaton02.png",
+        "name": "Automate mage",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "awakenedAnimal",
+    "name": "Animal éveillé",
+    "tags": ["Rare", "Animal éveillé", "Bête"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": "Les Points de vie de votre ascendance dépendent de la taille que vous choisissez (voir ci-dessous) : 6 PV si vous êtes Très petit ou Petit, 8 PV si vous êtes de taille Moyenne ou 10 PV si vous êtes de taille Grande.",
+    "size": "Choisissez la taille appropriée à votre héritage : Très petite, Petite, Moyenne ou Grande",
+    "speed": "déterminée par votre héritage",
+    "boost": ["Constitution, Sagesse", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "commun",
+      "Langues supplémentaires égales à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi les langues courantes et toutes les autres auxquelles vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Forme éveillée",
+        "entries": [
+          "L'éveil a altéré votre forme, vous permettant de parler et de vous tenir sur deux jambes. Vous pouvez manier, porter, tenir et utiliser les objets. La nature et le nombre de membres que vous utilisez pour manipuler les objets sont déterminés avec votre MJ, mais vis-à-vis des règles, vous fonctionnez comme un humanoïde avec deux mains."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Esprit éveillé",
+        "entries": [
+          "L'éveil a altéré votre esprit. Vous n'êtes plus un animal, mais vous pouvez toujours poser des questions, recevoir des réponses et utiliser Diplomatie avec les animaux de votre espèce. En vous remémorant vos instincts, vous pouvez vous permettre d'être affecté par des sorts et d'autres effets comme si vous étiez un animal."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les animaux possèdent des formes corporelles très variées et des capacités qui leur sont propres. Choisissez l'un des héritages d'animaux éveillés suivants au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Animal coureur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Animal grimpeur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Animal nageur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Animal volant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      "Si vous êtes un animal éveillé disposant d'un héritage polyvalent, vous choisissez toujours un héritage d'animal éveillé pour la biographie de votre personnage et définir sa forme cosmétique, mais vous ne bénéficiez d'aucun de ses effets mécaniques, bien que vous ayez une vitesse de déplacement de 6 mètres, à moins que vous ne choisissiez d'être aquatique, auquel cas vous avez une vitesse de nage de 6 mètres. Vous pouvez prendre le don {@feat Éveil tardif} pour obtenir le reste des effets de votre héritage et vous qualifier pour les dons qui requièrent un héritage animal éveillé spécifique.",
+      {
+        "type": "entries",
+        "name": "Autres informations",
+        "entries": [
+          {
+            "type": "entries",
+            "name": "Attaques animales",
+            "entries": [
+              "Votre héritage vous accorde une attaque à mains nues spéciale à la place de l'attaque à mains nues de poing des humanoïdes typiques. Cette attaque est dans le groupe pugilat. Définissez avec votre MJ celle que vous possédez, en utilisant le type d'animal que vous avez choisi et les suggestions de votre héritage comme indicateurs. Par exemple, Vous pourriez choisir une attaque de bec, de serre ou d'aile pour un aigle, de poing ou de queue pour un singe ou de langue ou de mâchoire pour une grenouille.",
+              {
+                "type": "table",
+                "caption": "",
+                "colLabels": ["Attaque à mains nues", "Dégâts", "Traits"],
+                "colStyles": [
+                  "ve-text-center ve-col-4",
+                  "ve-text-center ve-col-2",
+                  "ve-text-center ve-col-6"
+                ],
+                "rows": [
+                  ["Aile", "1d4 B", "Agile, finesse, à mains nues"],
+                  ["Bec", "1d6 P", "Finesse, à mains nues"],
+                  ["Bois", "1d6 P", "Finesse, à mains nues"],
+                  ["Corne", "1d6 P", "Finesse, à mains nues"],
+                  ["Crocs", "1d6 P", "Finesse, à mains nues"],
+                  ["Griffe", "1d4 T", "Agile, finesse, à mains nues"],
+                  ["Langue", "1d6 C", "Finesse, à mains nues"],
+                  ["Machoîre", "1d6 P", "Finesse, à mains nues"],
+                  ["Poing", "1d4 C", "Agile, finesse, non-létal, à mains nues"],
+                  ["Queue", "1d6 C", "Finesse, croc-en-jambe, à mains nues"],
+                  ["Serre", "1d4 P", "Agile, finesse, à mains nues"]
+                ]
+              }
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Choisir un animal",
+            "entries": [
+              "Les meilleures formes d'animaux à choisir pour l'ascendance animal éveillé sont celles qui possèdent des membres qui peuvent être modifiés. Même les nageoires peuvent être modifiées sous forme éveillée. Les créatures sans membres comme les serpents pourraient avoir besoin d'aménagements supplémentaires pour pouvoir être utilisées. Lorsque vous discutez avec votre MJ de la possibilité de jouer un animal éveillé, discutez du type spécifique d'animal afin de déterminer ce qui est un choix raisonnable au regard de la partie.",
+              "De nombreux animaux ont des versions géantes dans le jeu et vous pouvez en tirer parti pour créer un animal de la taille que vous préférez - vous pouvez avoir des chiens géants éveillés ou des abeilles géantes éveillées si vous le souhaitez ! Bien que les choix les plus évidents soient les oiseaux, les mammifères et les reptiles, l'ascendance est suffisamment polyvalente pour représenter de nombreux types d'insectes et d'animaux aquatiques.",
+              "Lorsque vous décidez du choix d'héritage et de dons à prendre pour représenter votre animal, commencez par sa principale capacité de déplacement, choisissez l'héritage qui lui correspond le mieux et démarrez de là. Les dons ancestraux offrent de nombreuses possibilités d'affiner votre concept d'animal éveillé, de sorte que l'héritage n'a pas besoin de tout fournir !"
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Suprenant un instant",
+            "entries": [
+              "Alors que dans le monde réel, un ours parlant en armure serait un spectacle incongru, dans Golarion, les gens sont régulièrement exposés au fantastique. Lorsque vous jouez pour un animal éveillé, il n'y a pas de mal à ce que les gens soient surpris par la rencontre d'un animal éveillé - ils sont rares ! Mais laissez vos PNJ s'adapter rapidement à cette situation pour que cela ne devienne pas un fardeau ou une taxe pour le joueur de l'animal éveillé."
+            ]
+          }
+        ]
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Awakened_Animal01.webp",
+        "name": "Ours",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Awakened_Animal02.webp",
+        "name": "Grue",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "conrasu",
+    "name": "Conrasu",
+    "tags": ["Rare", "Aéon", "Conrasu", "Plante"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 10,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Constitution, Sagesse", "Libre"],
+    "flaw": ["Charisme"],
+    "languages": [
+      "Mwangi",
+      "Rasu",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi empyréen, elfique, iruxi, fée, pierreux, utopien et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Guérison par le soleil",
+        "entries": [
+          "Un conrasu peut entrer dans un état méditatif et de guérison en y consacrant une activité de 10 minutes lorsqu'il est exposé à la lumière directe du soleil, auquel cas il récupère 1d8 Points de vie. Au niveau 3, et tous les 2 niveaux par la suite, cette guérison augmente de 1d8. Une fois qu'un conrasu a récupéré des Points de vie de cette façon, il est temporairement immunisé contre d'autres utilisations de Guérison par le soleil pendant 1 jour."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Lorsqu'un conrasu grandit, il prend part à un rite qui modifie et améliore sa forme. Chaque rite a des avantages différents, qui se manifestent par des héritages spécifiques. Choisissez l'un des héritages de conrasu suivants au niveau 1.",
+      {
+        "type": "entries",
+        "name": "Rite d'invocation",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rite de lumière",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rite de passage",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rite de renforcement",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Rite du savoir",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Conrasu01.png",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Conrasu02.png",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "flashwarp",
+    "name": "Distordu",
+    "tags": ["Rare", "Aberration", "Distordu", "Humanoïde"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 10,
+    "size": "Moyenne ou Petite",
+    "speed": "7,50 m",
+    "boost": ["Constitution", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi aklo, draconique, elfique, gobelin, nanique, sakvroth et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région).  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Anatomie inhabituelle",
+        "entries": [
+          "Votre corps non orthodoxe résiste aux agressions physiques conçues pour d'autres créatures. Vous obtenez un bonus de circonstances de +1 aux jets de sauvegarde contre les maladies et les poisons."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Distordu cataphracte",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Distordu créé",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Distordu forméforgé",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Distordu hypersensible",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Distordu mutant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Distordu rebuté",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Distordu technologique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Fleshwarp01.png",
+        "name": "Femme distordu",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Fleshwarp02.png",
+        "name": "Homme distordu",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "ghoran",
+    "name": "Ghoran",
+    "tags": ["Rare", "Ghoran", "Humanoïde", "Plante"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Constitution", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "fée",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi aklo, Draconique, Elfique, Jotun et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région).  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Photosynthèse ",
+        "entries": [
+          "Vous vous nourrissez grâce à la photosynthèse. En général, vous n'avez pas besoin de payer pour vous nourrir. Si vous restez sans soleil pendant une semaine, vous commencez à mourir de faim. Vous pouvez vous nourrir à partir de bouteilles de lumière solaire alchimique spécialement conçues à la place de la lumière solaire naturelle, mais ces bouteilles coûtent 10 fois plus cher que les rations habituelles (40 pa)."
+        ]
+      }
+    ],
+    "info": [],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Ghoran01.png",
+        "name": "Femme ghoran",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Ghoran02.png",
+        "name": "Homme ghoran",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "goloma",
+    "name": "Goloma",
+    "tags": ["Rare", "Goloma", "Humanoïde"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "9 m",
+    "boost": ["Sagesse", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Goloma",
+      "Mwangi",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi chthonien, aklo, draconique, elfique, halfelin, nécril, orquien, fée et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Yeux dans le dos",
+        "entries": [
+          "Vous avez des yeux qui pointent dans plusieurs directions à la fois et vous remarquez instinctivement les mouvements à la périphérie de votre vision. Lorsque vous utilisez l'action de base Chercher, vous pouvez chercher des créatures dans deux zones au lieu d'une. Si la précision est nécessaire, vous pouvez sélectionner deux cônes de 9 m ou deux explosions de 4,50 m dans votre ligne de mire au lieu d'une seule."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Choisissez un des héritages de goloma au niveau 1.  ",
+      {
+        "type": "entries",
+        "name": "Goloma à vison de loin",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Goloma effrayant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Goloma perspicace",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Goloma vicieux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Goloma vigilant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Goloma01.png",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Goloma02.png",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "kashrishi",
+    "name": "Kashrishi",
+    "tags": ["Rare", "Humanoïde", "Kashrishi"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Constitution", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "kashrishi",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi thalassique, céleste, draconique, fée, pierreux, et n'importe quelle autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région).  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Sens empathique",
+        "entries": [
+          "Les kashrishis sont capables d'avoir une vague idée de l'état émotionnel actuel des autres dans un rayon de 4,50 mètres autour d'eux. Cela se manifeste par un sentiment général de bonheur, de colère ou de peur, sans aucun détail précis. Pour ceux avec qui les kashrishis éprouvent un lien émotionnel, le contact physique peut améliorer ce sens à des degrés plus élevés de détail et de compréhension, augmentant avec la force de leur lien. Ce sens fonctionne également comme un sens imprécis qui vous avertit de la présence, mais pas de l'emplacement précis, des créatures qui ne sont pas dénuées d'intelligence dans la zone. Vous bénéficiez d'un bonus de circonstances de +2 aux tests de Perception pour {@action Deviner les intentions} des créatures qui ne sont pas dénuées d'intelligence dans la zone de votre sens empathique."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Corne luisante",
+        "entries": [
+          "Votre corne réagit à l'énergie psychique en s'illuminant doucement. La corne émet une faible lumière dans une émanation de 3 mètres jusqu'au début de votre prochain tour chaque fois que vous utilisez une action occulte acquise grâce à un don d'ascendance, que vous lancez un sort occulte inné ou que vous lancez un sort possédant le trait mental."
+        ]
+      }
+    ],
+    "info": [],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kashrishi01.png",
+        "name": "Femme kashrishi",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Kashrishi02.png",
+        "name": "Homme kashrishi",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "poppet",
+    "name": "Poupée",
+    "tags": ["Rare", "Créature artificielle", "Humanoïde"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Petite",
+    "speed": "7,50 m",
+    "boost": ["Constitution, Charisme", "Libre"],
+    "flaw": ["Dextérité"],
+    "languages": [
+      "Commun",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi draconique, elfique, féerique, gnomien, gobelin, nanique et n'importe quelle autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région).  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Construit ",
+        "entries": [
+          "Les matériaux de votre corps résistent aux maux qui assaillent la chair. Vous obtenez un bonus de circonstances de +1 aux jets de sauvegarde contre les effets de mort, les maladies et le poison ainsi qu'aux jets de sauvegarde contre les effets qui vous donneraient les états Drainé, Paralysé ou Nauséeux. Votre étincelle de vie signifie que vous êtes une créature vivante et que vous pouvez être guéri par l'énergie positive et blessé par l'énergie du vide comme à l'ordinaire."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Inflammable ",
+        "entries": ["Vous avez une faiblesse aux dégâts de feu égale à un tiers de votre niveau (minimum 1)."]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Poupée fantôme",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Poupée rembourrée",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Poupée jouet",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Poupée remontée",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Poupée souhaitée",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Poupée tsukumogami",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Poppet01.png",
+        "name": "Homme poupée",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Poppet02.png",
+        "name": "Femme poupée",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "sarangay",
+    "name": "Sarangay",
+    "tags": ["Rare", "Humanoïde", "Sarangay"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "",
+    "boost": ["Force, Charisme", "Libre"],
+    "flaw": ["Sagesse"],
+    "languages": [
+      "commun",
+      "Langues supplémentaires égales à votre modificateur d'Intelligence (s'il est positif). Choisissez entre empyréen, Fée, nagaji, pierreux, pyrique, sussuran, thalassique, yaksha et toute autre langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Cornes ",
+        "entries": [
+          "Vos puissantes cornes sont des armes formidables. Vous disposez d'une attaque à mains nues de cornes qui inflige 1d6 dégâts perforants et possède le trait pousser. Vos cornes appartiennent au groupe pugilat."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Gemme de tête",
+        "entries": [
+          "Sur votre front se trouve une pierre précieuse qui abrite votre âme. Lorsque vous lancez un sort ou un rituel pour vous ramener à la vie, votre {@equipment Gemme de tête} intacte peut être substituée à votre corps. Bien que vous puissiez librement retirer votre gemme de tête, il est habituellement impossible pour une autre créature d'enlever de force ou de détruire votre gemme de tête à moins que vous ne soyez d'abord tué ou mis hors de combat de manière permanente. À la discrétion du MJ, une magie ou des capacités puissante pourraient circonvenir cette restriction. Si votre gemme de tête est retirée ou détruite, elle peut repousser en utilisant un rituel qui prend 1 journée. Lorsque ceci survient, tous les restes de la gemme précédente tombent en poussière."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les sarangays ont existé à travers le Tian Xia depuis très longtemps et leurs clans sont nommés selon les phases de la lune. Choisissez un des héritages sarangays au niveau 1.  ",
+      {
+        "type": "entries",
+        "name": "Sarangay de la demi-lune",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Sarangay de la lune croissante",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Sarangay de la lune décroissante",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Sarangay de la nouvelle lune",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Sarangay de la pleine lune",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Sarangay01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Sarangay02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "shisk",
+    "name": "Shisk",
+    "tags": ["Rare", "Humanoïde", "Shisk"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Intelligence", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Mwangi",
+      "Shisk",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi toute langue courante et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Choisissez un des héritages shisks suivants au niveau 1.  ",
+      {
+        "type": "entries",
+        "name": "Shisk à piquants",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Shisk aux intestins solides",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Shisk conservateur de savoir",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Shisk démarchepierre",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Shisk garde sort",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Shisk01.png",
+        "name": "Femme shisk",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Shisk02.png",
+        "name": "Homme shisk",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "shoony",
+    "name": "Shoony",
+    "tags": [],
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Petite",
+    "speed": "7,5 m",
+    "boost": ["Dextérité", "Charisma", "libre"],
+    "flaw": ["Constitution"],
+    "languages": [
+      "commun",
+      "Shoony",
+      "Additional languages equal to your Intelligence modifier (if it's positive). Choose from Dwarven, Gnomish, Goblin, Halfling, Terran, and any other languages to which you have access (such as the languages prevalent in your region)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": [
+          "You can see in dim light as though it were bright light, so you ignore the concealed condition due to dim light."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Blunt Snout",
+        "entries": [
+          "Your small, blunt snout and labyrinthine sinus system make you resistant to phenomena that assail the nose. When you roll a saving throw against inhaled threats (such as inhaled poisons) and olfactory effects (such as xulgath stench), you get the outcome one degree of success better than the result of your roll."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "You select a heritage at 1st level to reflect abilities passed down to you from your ancestors or common among those of your ancestry in the environment where you were born or grew up. You have only one heritage and can’t change it later. A heritage is not the same as a culture or ethnicity, though some cultures or ethnicities might have more or fewer members from a particular heritage.",
+      {
+        "type": "entries",
+        "name": "Bloodhound Shoony",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Fishseeker Shoony",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Paddler Shoony",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Thickcoat Shoony",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Shoony01.png",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Shoony02.png",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "skeleton",
+    "name": "Squelette",
+    "tags": ["Rare", "Squelette", "Mort-vivant"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité, Charisme", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "Commun",
+      "Nécril",
+      "Langues supplémentaires Un nombre égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi les langues suivantes : aklo, diabolique, elfique, nanique, orquien, sakvroth ainsi que toutes les autres langues auxquelles vous avez accès (comme les langues les plus répandues dans votre région)  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Mort-vivance",
+        "entries": [
+          "Vous disposez des Avantages de mort-vivant basiques. Pour apaiser votre faim de mort-vivant, vous ne mangez pas de chair comme les goules et ne buvez pas de sang comme les vampires mais vous collectez des os que vous pouvez utiliser pour vous aider à vous réparer."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Squelette compact",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Squelette fluctuant",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Squelette générique",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Squelette monstrueux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Squelette robuste",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Skeleton01.png",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Skeleton02.png",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "sprite",
+    "name": "Sprite",
+    "tags": ["Rare", "Fée", "Sprite"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 6,
+    "size": "Très Petite",
+    "speed": "6 m",
+    "boost": ["Dextérité, Intelligence", "Libre"],
+    "flaw": ["Force"],
+    "languages": [
+      "Commun",
+      "fée",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi empyréen, Draconique, Elfique, Gnomien, Gobelin, Jotun et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région).  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Frappes magiques",
+        "entries": [
+          "Votre magie intrinsèque se répand dans votre être tout entier. Toutes vos Frappes sont magiques, qu'il s'agisse des Frappes à mains nues ou avec armes."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Draxie",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Dijiang",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Gandharva",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Grig",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Leungli",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Sprite lumineux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Mélixie",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Nyctère",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Pixie",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Sprite01.png",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Sprite02.png",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "strix",
+    "name": "Strix",
+    "tags": ["Rare", "Humanoïde", "Strix"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Dextérité", "Libre"],
+    "flaw": [],
+    "languages": [
+      "Commun",
+      "Strix",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi Draconique, Gnomien, Infernal, Jotun et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région).  "
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Ailes ",
+        "entries": [
+          "Tous les strix possèdent de puissantes ailes. Bien que tous les strix ne seconsacrent pas à exercer leurs capacités de vol, un puissant claquement d'ailes permet aux strix de parcourir de plus longues distances lorsqu'ils sautent. Lorsque vous {@action Bondissez} horizontalement, vous vous déplacez de 1,50 mètre supplémentaire. Vous n'obtenez pas automatiquement un échec aux {@action Sauts en hauteur} ou aux {@action Sauts en longueur} si vous ne Marchez pas rapidement d'au moins 3 mètres d'abord. de plus, lorsque vous faites un Saut en longueur, vous pouvez parcourir une distance de 3 mètres de plus que votre résultat au test d'Athlétisme, bien que vous ne puissiez toujours pas dépasser la distance maximale égale à votre Vitesse. De plus, vous ne subissez pas de dégâts lorsque vous chutez, quelle que soit la distance de la chute."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "",
+      {
+        "type": "entries",
+        "name": "Strix des littoraux",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Strix planeur nocturne",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Strix prédateur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Strix grapilleur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Strix oiseau chanteur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Strix01.png",
+        "name": "Homme strix",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Strix02.png",
+        "name": "Femme strix",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "surki",
+    "name": "Surki",
+    "tags": ["Rare", "Humanoïde", "Surki"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Constitution", "Libre"],
+    "flaw": [
+      "Commun",
+      "Surki",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez entre elfique, Féerique, Sakvroth et n'importe qu'elle langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "languages": [],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision dans le noir",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Magiphage ",
+        "entries": [
+          "Les nodules variés à travers votre corps aspirent la magie latente du monde qui vous entoure. Vous n'avez pas besoin de manger et de boire à moins d'être dans un environnement spécialement pauvre en magie (comme dans la Désolation de mana). Choisissez quelle est la tradition magique que vous avez le plus consommé sous votre forme larvaire. Ce type de magie est devenu si enraciné dans votre corps qu'il change la tradition de tous les sorts et les actions magiques de surki qui appartiennent à cette tradition."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les surkis sortent de leur stade larvaire avec quelques adaptations déjà en place. Bien qu'ils ne soient pas tous identiques, les adaptations présentées ci-dessous sont parmi les plus courantes. Les héritages surkis ont de multiples possibilités d'évolution, auxquelles on accède en prenant le don Grande métamorphose.  ",
+      {
+        "type": "entries",
+        "name": "Surki à carapace dure",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Surki à élytre",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Surki briseur",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Surki lanterne",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Surki01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Surki02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "vishkanya",
+    "name": "Vishkanya",
+    "tags": ["Rare", "Humanoïde", "Vishkanya"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 0,
+    "size": "",
+    "speed": "",
+    "boost": [],
+    "flaw": [],
+    "languages": [],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Innate Venom",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "type": "entries",
+        "name": "Elusive Vishkanya",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Keen-Venom Vishkanya",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Old-Blood Vishkanya",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Prismatic Vishkanya",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Scalekeeper Vishkanya",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Venom-Resistant Vishkanya",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Vishkanya01.png",
+        "name": "Homme vishkanya",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Vishkanya02.png",
+        "name": "Femme vishkanya",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "yaksha",
+    "name": "Yaksha",
+    "tags": ["Rare", "Spirituel", "Yaksha"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "",
+    "boost": ["Constitution, Charisme", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "Commun",
+      "fée",
+      "yaksha",
+      "Langues supplémentaires égal à votre modificateur d'Intelligence (s'il est positif). Choisissez entre empyréen, diabolique, nagaji, tang, tengu, vudrain et toute autre langue à laquelle vous avez accès (telles que les langues prévalentes dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Vision nocturne",
+        "entries": []
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les héritages des yakshas sont basés sur leurs vœux primordiaux en vue de défendre des peuples et des lieux. Les yakshas prennent instinctivement conscience de ces engagements primordiaux établis par leurs ainés arrivés plus tôt. En prononçant un tel vœu, un yaksha achève de passer du Premier monde à l'Univers. Lorsqu'un yaksha individuel accepte la mission de protection, le vœu entraîne des transformations physiques et spirituelles permanentes qui se manifestent sous la forme d'héritages de yaksha.  ",
+      "Tous les héritages des yakshas sont accompagnés d'un ou plusieurs édits ou anathèmes supplémentaires. Contrairement aux édits populaires cités plus haut, vous devez ajouter les édits d'un héritage à votre personnage. Si vous ignorez ces préceptes de façon répétée, vous perdez les capacités de votre héritage yaksha et toutes les capacités magiques de votre ascendance. Vous ne pourrez les récupérer que si vous faites preuve de repentir lors d'un rituel de Pénitence. Choisissez l'un des héritages yakshas suivants au niveau 1.  ",
+      {
+        "type": "entries",
+        "name": "Refus de la charité de Dame Nanbyo",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Refus de la quête du Premier-né",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Refus de la renaissance du traître",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Répit des mille toits",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Répit des sentiers sans nuages",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Répit du terreau et de la feuille",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Yaksha01.webp",
+        "name": "Homme yaksha",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Yaksha02.webp",
+        "name": "Femme yaksha",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "yaoguai",
+    "name": "Yaoguai",
+    "tags": ["Rare", "Humanoïde", "Yaoguai"],
+    "rarity": "rare",
+    "source": "",
+    "page": 0,
+    "hitPoint": 8,
+    "size": "Moyenne",
+    "speed": "7,50 m",
+    "boost": ["Charisme, Constitution", "Libre"],
+    "flaw": ["Intelligence"],
+    "languages": [
+      "commun",
+      "Langues supplémentaires égales à votre modificateur d'Intelligence (s'il est positif). Choisissez parmi aklo, draconique, elfique, fée, kitsune, naga, sakvroth, tengu, ysoki et toute autre langue à laquelle vous avez accès (telles que les langues qui prévalent dans votre région)."
+    ],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Changer de forme",
+        "entries": [
+          "(concentration, occulte, métamorphose, yaoguai) Vous passez de votre vraie forme de yaoguai en une forme humanoïde alternative qui est une forme d'une ascendance humanoïde courante de taille Moyenne qui prévaut là où vous êtes né (typiquement humaine). Cette forme possède le même âge apparent et le même type de corps que votre forme de yaoguai et possède des traits physiques à peu près analogues, comme la couleur des cheveux. L'utilisation de Changer de forme est considéré comme la création d'un déguisement pour l'utilisation de la Duperie pour Vous déguiser. Vous pouvez rester indéfiniment sous votre forme humanoïde, mais vous reprenez votre forme yaoguai après 1 heure d'inconscience ou 1 minute après être mort."
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      "Les yaoguais se présentent littéralement sous toutes les formes. L'entité que vous étiez avant de vous éveiller en tant que yaoguai détermine votre origine. Choisissez l'un des héritages yaoguais suivants au niveau 1. Vous ne bénéficiez des avantages d'une forme que lorsque vous êtes sous cette forme.",
+      "Si vous êtes un yaoguai avec un héritage polyvalent, vous choisissez toujours un héritage yaogaui pour renseigner l'histoire de votre personnage, mais vous n'obtenez aucun de ses effets mécaniques. Vous pouvez prendre le don ancestral Héritage yaoguai éveillé pour obtenir ces effets et vous vous qualifiez pour des dons qui nécessitent un héritage spécifique.  ",
+      {
+        "type": "entries",
+        "name": "Né de la végétation",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Né des éléments",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Né d'un animal",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Né d'un céleste",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      },
+      {
+        "type": "entries",
+        "name": "Né d'un objet",
+        "sources": "",
+        "page": 0,
+        "entries": []
+      }
+    ],
+    "images": [
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Yaoguai01.webp",
+        "name": "",
+        "caption": ""
+      },
+      {
+        "url": "https://2e.aonprd.com/Images/Ancestries/Yaoguai02.webp",
+        "name": "",
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "id": "heritage",
+    "name": "Héritage Polyvalent",
+    "tags": [],
+    "source": "",
+    "page": 0,
+    "hitPoint": 0,
+    "size": "",
+    "speed": "",
+    "boost": [],
+    "flaw": [],
+    "languages": [],
+    "traits": [
+      {
+        "type": "entries",
+        "name": "Héritage Polyvalent Commun",
+        "rarity": "common",
+        "sources": "",
+        "page": 0,
+        "entries": [
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Héritage Polyvalent Peu Commun",
+        "rarity": "uncommon",
+        "sources": "",
+        "page": 0,
+        "entries": [
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Héritage Polyvalent Rare",
+        "rarity": "rare",
+        "sources": "",
+        "page": 0,
+        "entries": [
+        ]
+      }
+    ],
+    "info": [],
+    "heritages": [
+      {
+        "id": "aiuvarin",
+        "name": "Aiuvarin",
+        "rarity": "common",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/HalfElf01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/HalfElf02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "dromaar",
+        "name": "Dromaar",
+        "rarity": "common",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/HalfOrc01.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "aphorite",
+        "name": "Aphorite",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Aphorite01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Aphorite02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "ardande",
+        "name": "Ardande",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Ardande01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Ardande02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "changeling",
+        "name": "Changelin",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Changeling01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Changeling02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "dhampir",
+        "name": "Dhampir",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Dhampir01.webp",
+            "name": "Femme dhampir",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Dhampir02.webp",
+            "name": "Femme dhampir",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "dragonblood",
+        "name": "Sang-dragon",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Dragonblood01.webp",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Dragonblood02.webp",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "duskwalker",
+        "name": "Crépusculaire",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Duskwalker01.webp",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Duskwalker02.webp",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "ganzi",
+        "name": "Ganzi",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Ganzi01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Ganzi02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "hungerseed",
+        "name": "Graine affamée",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Hungerseed01.webp",
+            "name": "Femme graine affamée",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Hungerseed02.webp",
+            "name": "Homme graine affamée",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "ifrit",
+        "name": "Ifrit",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Ifrit01.png",
+            "name": "Femme ifrit",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Ifrit02.png",
+            "name": "Homme ifrit",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "nephilim",
+        "name": "Néphilim",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Nephilim01.webp",
+            "name": "Homme néphilim",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Nephilim02.webp",
+            "name": "Femme néphilim",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "oread",
+        "name": "Oréade",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Oread01.png",
+            "name": "Homme oréade",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Oread02.png",
+            "name": "Femme oréade",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "suli",
+        "name": "Suli",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Suli01.png",
+            "name": "Femme suli",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Suli02.png",
+            "name": "Homme suli",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "sylph",
+        "name": "Sylphe",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Sylph01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Sylph02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "talos",
+        "name": "Talos",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Talos01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Talos02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "undine",
+        "name": "Ondin",
+        "rarity": "uncommon",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Undine01.png",
+            "name": "Homme ondin",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Undine02.png",
+            "name": "Femme ondin",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "beastkin",
+        "name": "Animanthrope",
+        "rarity": "rare",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Beastkin01.png",
+            "name": "",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Beastkin02.png",
+            "name": "",
+            "caption": ""
+          }
+        ]
+      },
+      {
+        "id": "reflection",
+        "name": "Reflet",
+        "rarity": "rare",
+        "tags": [],
+        "sources": "",
+        "page": 0,
+        "entries": [],
+        "info": [],
+        "images": [
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Reflection01.png",
+            "name": "Homme reflet",
+            "caption": ""
+          },
+          {
+            "url": "https://2e.aonprd.com/Images/Ancestries/Reflection02.png",
+            "name": "Femme reflet",
+            "caption": ""
+          }
+        ]
+      }
+    ]
+  }
+]

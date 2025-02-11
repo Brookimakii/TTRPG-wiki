@@ -4,8 +4,8 @@ import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import {Parser} from "../../layout/5e/js/parser";
 import {Link} from "react-router-dom";
 import React from "react";
-import type {PlayerRace} from "../../layout/5e/Models";
-import {Entry} from "../../layout/5e/Models";
+import type {PlayerRace} from "../../layout/5e/Models5e";
+import {Entry} from "../../layout/5e/Models5e";
 
 export function Dnd5eRaces() {
 

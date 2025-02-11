@@ -1,10 +1,10 @@
 import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 
-import '../css/quickref.css'
-import '../css/icons.css'
 import React, {useState} from "react";
 import {Parser} from "../../layout/5e/js/parser";
 import {RenderModule, ToggleState} from "../5eLayoutModules";
+import '../css/quickref.css'
+import '../css/icons.css'
 
 
 export const DnDCheatsheet = () => {
@@ -913,7 +913,7 @@ export const DnDCheatsheet = () => {
     </>;
   }
 
-  return (<div className="view-col-group--cancer h-100 mh-0">
+  return (<div id={"cheatsheet"} className="view-col-group--cancer h-100 mh-0">
       <div className="container view-col-wrapper view-col-wrapper--cancer">
         <Tabs className="view-col" id="contentwrapper">
           <TabList className="w-100 ve-flex" id="stat-tabs">

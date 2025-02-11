@@ -7738,7 +7738,7 @@
         "source": "PHB",
         "page": 0,
         "subclassFeatures": [
-          "Chevalier de l'occulte|PHB|Chevalier de l'occulte|PHB|3",
+          "Chevalier de l'occulte|Guerrier|PHB|Chevalier de l'occulte|PHB|3",
           "Magie de guerre|Guerrier|PHB|Chevalier de l'occulte|PHB|7",
           "Frappe occulte|Guerrier|PHB|Chevalier de l'occulte|PHB|10",
           "Charge arcanique|Guerrier|PHB|Chevalier de l'occulte|PHB|15",
@@ -7751,11 +7751,11 @@
         "source": "PHB",
         "page": 0,
         "subclassFeatures": [
-          "Maître de guerre  |Guerrier|PHB|Maître de guerre|PHB|3",
-          "Étudiant de guerre|Guerrier|PHB|Maître de guerre|PHB|7",
-          "Connaître son ennemi|Guerrier|PHB|Maître de guerre|PHB|10",
-          "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|15",
-          "Implacable|Guerrier|PHB|Maître de guerre|PHB|18"
+          "Maître de guerre|Guerrier|PHB|Maître de guerre|PHB|3",
+          "Observation de l'ennemi|Guerrier|PHB|Maître de guerre|PHB|7",
+          "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|10",
+          "Implacable|Guerrier|PHB|Maître de guerre|PHB|15",
+          "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|18"
         ]
       },
       {
@@ -7867,7 +7867,7 @@
         "name": "Amélioration du score de capacité",
         "source": "PHB",
         "page": 0,
-        "className": "Ensorceleur",
+        "className": "Guerrier",
         "classSource": "PHB",
         "level": 6,
         "entries": [
@@ -7890,7 +7890,7 @@
         "name": "Amélioration du score de capacité",
         "source": "PHB",
         "page": 0,
-        "className": "Ensorceleur",
+        "className": "Guerrier",
         "classSource": "PHB",
         "level": 8,
         "entries": [
@@ -7935,7 +7935,7 @@
         "name": "Amélioration du score de capacité",
         "source": "PHB",
         "page": 0,
-        "className": "Ensorceleur",
+        "className": "Guerrier",
         "classSource": "PHB",
         "level": 12,
         "entries": [
@@ -7958,7 +7958,7 @@
         "name": "Amélioration du score de capacité",
         "source": "PHB",
         "page": 0,
-        "className": "Ensorceleur",
+        "className": "Guerrier",
         "classSource": "PHB",
         "level": 14,
         "entries": [
@@ -7981,7 +7981,7 @@
         "name": "Amélioration du score de capacité",
         "source": "PHB",
         "page": 0,
-        "className": "Ensorceleur",
+        "className": "Guerrier",
         "classSource": "PHB",
         "level": 16,
         "entries": [
@@ -8026,7 +8026,7 @@
         "name": "Amélioration du score de capacité",
         "source": "PHB",
         "page": 0,
-        "className": "Ensorceleur",
+        "className": "Guerrier",
         "classSource": "PHB",
         "level": 19,
         "entries": [
@@ -9147,7 +9147,7 @@
         ]
       },
       {
-        "name": "Connaître son ennemi",
+        "name": "Observation de l'ennemi",
         "source": "PHB",
         "page": 0,
         "className": "Guerrier",
@@ -9183,7 +9183,7 @@
         "level": 10,
         "header": 2,
         "entries": [
-          "À partir du niveau 10, vos dés de supériorité deviennent des d10. À partir du niveau 18 ils deviennent des d12."
+          "À partir du niveau 10, vos dés de supériorité deviennent des d10."
         ]
       },
       {
@@ -9198,6 +9198,20 @@
         "header": 2,
         "entries": [
           "À partir du niveau 15, si lorsque vous lancez votre jet d’initiative vous n’avez plus de dés de supériorité disponibles, vous en regagnez un."
+        ]
+      },
+      {
+        "name": "Supériorité au combat améliorée",
+        "source": "PHB",
+        "page": 0,
+        "className": "Guerrier",
+        "classSource": "PHB",
+        "subclassShortName": "Maître de guerre",
+        "subclassSource": "PHB",
+        "level": 18,
+        "header": 2,
+        "entries": [
+          " À partir du niveau 18, vos dés de supériorité deviennent des d12."
         ]
       },
       {},
