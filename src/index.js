@@ -8,6 +8,7 @@ String.prototype.toUrlified = String.prototype.toUrlified || function () {
   return encodeURIComponent(this.toLowerCase()).toLowerCase();
 };
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

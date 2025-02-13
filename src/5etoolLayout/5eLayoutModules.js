@@ -180,6 +180,27 @@ export function extractNestedValue(obj, path) {
   return path.split('.').reduce((o, i) => o?.[i], obj)
 }
 
+export const setValueAtPath = (obj, path, value) => {
+  const keys = path.split(".");
+  let current = obj;
+
+  keys.forEach((key, index) => {
+    // If it's the last key, set the value
+    if (index === keys.length - 1) {
+      current[key] = value;
+    } else {
+      // If the key doesn't exist, create an empty object
+      if (!(key in current) || typeof current[key] !== "object") {
+        current[key] = {};
+      }
+      current = current[key];
+    }
+  });
+
+  return obj;
+};
+
+
 export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function) => {
   // console.log("defaultElements", defaultElements)
   const [selected: {} | undefined, setSelected] = useState();
@@ -254,10 +275,10 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     }
   }
 
-  const TableHeader = () => {
-    return (<>
+  const TableHeader = ({filterOpen}) => {
+     return (<>
       <div className="lst__form-top" id="filter-search-group">
-        <button disabled className="ve-btn ve-btn-default">Filter</button>
+        <button disabled={!filterOpen} onClick={filterOpen} className="ve-btn ve-btn-default">Filter</button>
         {/*TODO: add class "active" when hiding the filters div*/}
         <button disabled className="ve-btn ve-btn-default" title="Toggle Filter Summary">
           <span className="glyphicon glyphicon-resize-small"></span>
@@ -305,7 +326,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
           </button>)
         })}
       </div>
-      <div fid="list" className="list list--stats">
+      <div id="list" className="list list--stats">
         {/*{console.log(elements)}*/}
         {elementsToShow?.map((elem) =>
           <div
@@ -440,23 +461,24 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     const nestedValue = extractNestedValue(element, nestedKey);
     // console.log(nestedKey, expectedValue, nestedValue)
 
-    if (state === 'positive') {
+    if (state === 'yes') {
       // console.log(state, Array.isArray(nestedValue) ? nestedValue.includes(expectedValue) : nestedValue === expectedValue)
       return Array.isArray(nestedValue)
-        ? nestedValue.includes(expectedValue)
+        ? nestedValue.map(a=>a.toLowerCase()).includes(expectedValue.toLowerCase())
         : nestedValue === expectedValue;
     } else if (state === 'negative') {
       // console.log(state, Array.isArray(nestedValue) ? !nestedValue.includes(expectedValue) : nestedValue !== expectedValue)
       return Array.isArray(nestedValue)
-        ? !nestedValue.includes(expectedValue)
+        ? !nestedValue.map(a=>a.toLowerCase()).includes(expectedValue.toLowerCase())
         : nestedValue !== expectedValue;
     }
     return true;
   }
 
   useEffect(() => {
+    console.log("filters", filters)
     const activeFilters = Object.entries(filters).filter(
-      ([, state]) => state !== 'disabled'
+      ([, state]) => state !== 'neutral'
     );
     // console.log("activeFilters", activeFilters)
     let updatedElements = [...elements]
@@ -483,7 +505,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   }, []);
 
   return {
-    filters,
+    setFilters,
     toggleFilter,
   };
 }

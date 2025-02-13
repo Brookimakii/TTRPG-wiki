@@ -1,8 +1,10 @@
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
-import React from "react";
+import React, {useEffect} from "react";
 import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {Entry, Spell} from "../../layout/5e/Models";
+import FilterDialogManager, {getOptionId} from "../FilterDialogManager";
+import Filters from "../FilterDialog";
 
 function tableDisplayOption(column, string, element) {
   switch (column.sortId) {
@@ -60,6 +62,29 @@ export const Dnd5eSpells = () => {
     }
   ]
 
+  const FILTER_OPTIONS = [
+    {category: "casters", subcategory: "classes", value: "artificier", label: "Artificier"},
+    {category: "casters", subcategory: "classes", value: "barde", label: "Bard"},
+    {category: "casters", subcategory: "classes", value: "clerc", label: "Clerc"},
+    {category: "casters", subcategory: "classes", value: "druide", label: "Druide"},
+    {category: "casters", subcategory: "classes", value: "ensorceleur", label: "Ensorceleur"},
+    {category: "casters", subcategory: "classes", value: "magicien", label: "Magicien"},
+    {category: "casters", subcategory: "classes", value: "occultiste", label: "Occultiste"},
+    {category: "casters", subcategory: "classes", value: "paladin", label: "Paladin"},
+    {category: "casters", subcategory: "classes", value: "rôdeur", label: "Rôdeur"},
+    {category: "school", value: "A", label: "Abjuration"},
+    {category: "school", value: "C", label: "Conjuration"},
+    {category: "school", value: "D", label: "Divination"},
+    {category: "school", value: "En", label: "Enchantment"},
+    {category: "school", value: "Ev", label: "Enchantment"},
+    {category: "school", value: "I", label: "Illusion"},
+    {category: "school", value: "N", label: "Necromancy"},
+    {category: "school", value: "T", label: "Transmutation"},
+    // {category: "castingTime", value: "action", label: "Action"},
+    // {category: "castingTime", value: "reaction", label: "Reaction"},
+    // {category: "castingTime", value: "1hour", label: "1 Hour"}
+  ];
+
   const spells: [] = getResource(Resources.spell)
   // const [elements, setElements] = useState(spells)
   // const [sorting, setSorting] = useState("")
@@ -74,7 +99,17 @@ export const Dnd5eSpells = () => {
     TableHeader, DisplayList, DetailsHeader, TempFilters
   } = Selector5e(spells, columns, "name", tableDisplayOption);
 
-  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)
+  const {setFilters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)
+
+  const {
+    isDialogOpen,
+    filterResults,
+    filterState,
+    openDialog,
+    closeDialog,
+    saveFilterResults,
+    resetFilter
+  } = FilterDialogManager(FILTER_OPTIONS)
 
   // function extractNestedValue(obj, path) {
   //   return path.split('.').reduce((o, i) => o?.[i], obj)
@@ -116,6 +151,9 @@ export const Dnd5eSpells = () => {
   //   setElements(updatedElements)
   // }, [filters, setElements]);
 
+  // console.log("filterResults", filterResults)
+  // console.log("filterState", filterState)
+
   const casters = {}
   const casterObj = {
     "casters.classes": [
@@ -136,9 +174,13 @@ export const Dnd5eSpells = () => {
 
   const selectedSpell: Spell = {...selected}
 
-  Object.entries(casterObj).map(([path, list], idx) => {
+  Object.entries(casterObj).forEach(([path, list], idx) => {
     list.map(element => casters[element] = path)
   })
+
+  useEffect(() => {
+    setFilters(filterState)
+  }, [filterState]);
 
   const renderEntries = (entry: Entry, toggle, depth) => {
     return <div className="rd__b rd__b--3">
@@ -155,22 +197,31 @@ export const Dnd5eSpells = () => {
     renderEntries: renderEntries
   }
 
-  // console.log(casters)
+  // console.log(casters)e
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
-        <TableHeader/>
+        <TableHeader filterOpen={openDialog}/>
         <div className="fltr__mini-view ve-btn-group">
-          {Object.keys(casters).map((caster, idx) => {
-            const path = casters[caster]
+          {FILTER_OPTIONS.map((option, idx) => {
+            const id = getOptionId(option)
             return <div className="fltr__mini-pill"
-                        data-state={filters[path + "-" + caster] ?? "disabled"}
-                        onClick={() => toggleFilter(path + "-" + caster)}
+                        data-state={filterState[id]}
+                        onClick={() => resetFilter(id)}
             >
-              {caster}
+              {option.label}
             </div>
           })}
+          {/*{Object.keys(casters).map((caster, idx) => {*/}
+          {/*  const path = casters[caster]*/}
+          {/*  return <div className="fltr__mini-pill"*/}
+          {/*              data-state={filters[path + "-" + caster] ?? "disabled"}*/}
+          {/*              onClick={() => toggleFilter(path + "-" + caster)}*/}
+          {/*  >*/}
+          {/*    {caster}*/}
+          {/*  </div>*/}
+          {/*})}*/}
         </div>
         {DisplayList(elements)}
       </div>
@@ -297,6 +348,8 @@ export const Dnd5eSpells = () => {
         </div>
       }
     </div>
+    {isDialogOpen ? <Filters filterOptions={FILTER_OPTIONS} defaultState={filterState} onClose={closeDialog}
+                             onSave={saveFilterResults}/> : ""}
   </div>)
 
 }

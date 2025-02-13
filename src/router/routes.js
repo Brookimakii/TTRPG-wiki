@@ -13,6 +13,8 @@ import {Dnd5eCondition} from "../5etoolLayout/dnd/Condition";
 import {Dnd5eBestiary} from "../5etoolLayout/dnd/Bestiary";
 import {Changelog} from "../ChangeLog/Changelog";
 import {DnDCheatsheet} from "../5etoolLayout/dnd/Cheatsheet";
+import FilterDialog from "../5etoolLayout/FilterDialog";
+import ParentComponent from "../5etoolLayout/FilterDialogManager";
 
 const routes = [
   {
@@ -29,6 +31,11 @@ const routes = [
     path: "/TTRPG-wiki",
     element: <LayoutHeader/>,
     children: [
+      {
+        id: "5eHome",
+        path: "",
+        element: <LayoutSystemSelection title={"System Selection"}/>
+      },
       {
         id: "dnd-system",
         path: "dnd5e",
@@ -97,30 +104,18 @@ const routes = [
         ]
       },
       {
-        id: "pathfinder-system",
-        path: "pathfinder2e",
-        element: <Layout5e title={"Pathfinder 2e"} base={"/pathfinder2e"}/>,
-        children: [
-          {
-            id: "Pathfinder2eHome",
-            path: "",
-            element: <Layout5eHome/>
-          },
-        ]
-      },
-
-      {
-        id: "5eHome",
-        path: "",
-        element: <LayoutSystemSelection title={"System Selection"}/>
-      },
-      {
         id: "changelog",
         path: "changelog",
         element: <Changelog/>
       }
     ]
-  }
+  },
+  // {
+  //   id: "test",
+  //   path: "/tests",
+  //   element: <ParentComponent/>,
+  //   children: []
+  // }
 
 ]
 
