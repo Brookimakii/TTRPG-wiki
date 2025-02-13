@@ -63,15 +63,15 @@ export const Dnd5eSpells = () => {
   ]
 
   const FILTER_OPTIONS = [
-    {category: "casters", subcategory: "classes", value: "artificier", label: "Artificier"},
-    {category: "casters", subcategory: "classes", value: "barde", label: "Bard"},
-    {category: "casters", subcategory: "classes", value: "clerc", label: "Clerc"},
-    {category: "casters", subcategory: "classes", value: "druide", label: "Druide"},
-    {category: "casters", subcategory: "classes", value: "ensorceleur", label: "Ensorceleur"},
-    {category: "casters", subcategory: "classes", value: "magicien", label: "Magicien"},
-    {category: "casters", subcategory: "classes", value: "occultiste", label: "Occultiste"},
-    {category: "casters", subcategory: "classes", value: "paladin", label: "Paladin"},
-    {category: "casters", subcategory: "classes", value: "rôdeur", label: "Rôdeur"},
+    {category: "casters", subcategory: "classes", label: "Artificier"},
+    {category: "casters", subcategory: "classes", label: "Bard"},
+    {category: "casters", subcategory: "classes", label: "Clerc"},
+    {category: "casters", subcategory: "classes", label: "Druide"},
+    {category: "casters", subcategory: "classes", label: "Ensorceleur"},
+    {category: "casters", subcategory: "classes", label: "Magicien"},
+    {category: "casters", subcategory: "classes", label: "Occultiste"},
+    {category: "casters", subcategory: "classes", label: "Paladin"},
+    {category: "casters", subcategory: "classes", label: "Rôdeur"},
     {category: "school", value: "A", label: "Abjuration"},
     {category: "school", value: "C", label: "Conjuration"},
     {category: "school", value: "D", label: "Divination"},
@@ -80,6 +80,16 @@ export const Dnd5eSpells = () => {
     {category: "school", value: "I", label: "Illusion"},
     {category: "school", value: "N", label: "Necromancy"},
     {category: "school", value: "T", label: "Transmutation"},
+    {category: "level", value: "0", label: "Sort Mineur"},
+    {category: "level", label: "1"},
+    {category: "level", label: "2"},
+    {category: "level", label: "3"},
+    {category: "level", label: "4"},
+    {category: "level", label: "5"},
+    {category: "level", label: "6"},
+    {category: "level", label: "7"},
+    {category: "level", label: "8"},
+    {category: "level", label: "9"},
     // {category: "castingTime", value: "action", label: "Action"},
     // {category: "castingTime", value: "reaction", label: "Reaction"},
     // {category: "castingTime", value: "1hour", label: "1 Hour"}
@@ -210,18 +220,9 @@ export const Dnd5eSpells = () => {
                         data-state={filterState[id]}
                         onClick={() => resetFilter(id)}
             >
-              {option.label}
+              {option.label??option.value}
             </div>
           })}
-          {/*{Object.keys(casters).map((caster, idx) => {*/}
-          {/*  const path = casters[caster]*/}
-          {/*  return <div className="fltr__mini-pill"*/}
-          {/*              data-state={filters[path + "-" + caster] ?? "disabled"}*/}
-          {/*              onClick={() => toggleFilter(path + "-" + caster)}*/}
-          {/*  >*/}
-          {/*    {caster}*/}
-          {/*  </div>*/}
-          {/*})}*/}
         </div>
         {DisplayList(elements)}
       </div>

@@ -5,7 +5,7 @@ import {extractNestedValue, setValueAtPath} from "./5eLayoutModules";
 
 export const getOptionId = (option) => {
   if (option.path) return option.path
-  return `${option.category}${option.subcategory ? `.${option.subcategory}` : ""}-${option.value}`;
+  return `${option.category}${option.subcategory ? `.${option.subcategory}` : ""}-${option.value??option.label}`;
 }
 
 const ParentComponent = (filterOptions) => {
