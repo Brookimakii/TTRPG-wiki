@@ -272,7 +272,7 @@ const Filters = ({filterOptions, defaultState, onSave, onClose}) => {
                        handleRightClick(getOptionId(item))
                      }}
                      data-state={filterState[getOptionId(item)]}
-                >{item.label} - {filterState[getOptionId(item)]}</div>
+                >{item.label??item.value}</div>
               )}
             </div>
           }
