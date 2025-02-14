@@ -2,8 +2,8 @@ import React, {useCallback, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import {Parser} from "../layout/5e/js/parser";
 import type {Entry} from "../layout/5e/Models";
-import {getResource, Resources} from "../resources/ResourcesFetch";
 import {PlayerOptionNFeature} from "../layout/5e/Models";
+import {getResource, Resources} from "../resources/ResourcesFetch";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -28,75 +28,75 @@ export class Utils {
     return this;
   }
 
-  offset() {
-    if (!this.element) {
-      return {
-        left: 0,
-        top: 0,
-      };
-    }
-    const box = this.element.getBoundingClientRect();
-    return {
-      top:
-        box.top +
-        window.pageYOffset -
-        document.documentElement.clientTop,
-      left:
-        box.left +
-        window.pageXOffset -
-        document.documentElement.clientLeft,
-    };
-  }
-
-  css(css, value) {
-    if (value !== undefined) {
-      this.each((el) => {
-        Utils.setCss(el, css, value);
-      });
-      return this;
-    }
-    if (typeof css === 'object') {
-      for (const property in css) {
-        if (Object.prototype.hasOwnProperty.call(css, property)) {
-          this.each((el) => {
-            Utils.setCss(el, property, css[property]);
-          });
-        }
-      }
-      return this;
-    }
-    const cssProp = Utils.camelCase(css);
-    const property = Utils.styleSupport(cssProp);
-    return getComputedStyle(this.element)[property];
-  }
-
-  html(html) {
-    if (html === undefined) {
-      if (!this.element) {
-        return '';
-      }
-      return this.element.innerHTML;
-    }
-    this.each((el) => {
-      el.innerHTML = html;
-    });
-    return this;
-  }
-
-  width() {
-    if (!this.element) {
-      return 0;
-    }
-    const style = window.getComputedStyle(this.element, null);
-    return parseFloat(style.width.replace('px', ''));
-  }
-
-  remove() {
-    this.each((el) => {
-      el.parentNode.removeChild(el);
-    });
-    return this;
-  }
+  // offset() {
+  //   if (!this.element) {
+  //     return {
+  //       left: 0,
+  //       top: 0,
+  //     };
+  //   }
+  //   const box = this.element.getBoundingClientRect();
+  //   return {
+  //     top:
+  //       box.top +
+  //       window.pageYOffset -
+  //       document.documentElement.clientTop,
+  //     left:
+  //       box.left +
+  //       window.pageXOffset -
+  //       document.documentElement.clientLeft,
+  //   };
+  // }
+  //
+  // css(css, value) {
+  //   if (value !== undefined) {
+  //     this.each((el) => {
+  //       Utils.setCss(el, css, value);
+  //     });
+  //     return this;
+  //   }
+  //   if (typeof css === 'object') {
+  //     for (const property in css) {
+  //       if (Object.prototype.hasOwnProperty.call(css, property)) {
+  //         this.each((el) => {
+  //           Utils.setCss(el, property, css[property]);
+  //         });
+  //       }
+  //     }
+  //     return this;
+  //   }
+  //   const cssProp = Utils.camelCase(css);
+  //   const property = Utils.styleSupport(cssProp);
+  //   return getComputedStyle(this.element)[property];
+  // }
+  //
+  // html(html) {
+  //   if (html === undefined) {
+  //     if (!this.element) {
+  //       return '';
+  //     }
+  //     return this.element.innerHTML;
+  //   }
+  //   this.each((el) => {
+  //     el.innerHTML = html;
+  //   });
+  //   return this;
+  // }
+  //
+  // width() {
+  //   if (!this.element) {
+  //     return 0;
+  //   }
+  //   const style = window.getComputedStyle(this.element, null);
+  //   return parseFloat(style.width.replace('px', ''));
+  // }
+  //
+  // remove() {
+  //   this.each((el) => {
+  //     el.parentNode.removeChild(el);
+  //   });
+  //   return this;
+  // }
 
   static getSelector(selector, context) {
     if (selector && typeof selector !== 'string') {
@@ -124,15 +124,15 @@ export class Utils {
     return this.elements;
   }
 
-  each(func) {
-    if (!this.elements.length) {
-      return this;
-    }
-    this.elements.forEach((el, index) => {
-      func.call(el, el, index);
-    });
-    return this;
-  }
+  // each(func) {
+  //   if (!this.elements.length) {
+  //     return this;
+  //   }
+  //   this.elements.forEach((el, index) => {
+  //     func.call(el, el, index);
+  //   });
+  //   return this;
+  // }
 
   static setCss(el, prop, value) {
     // prettier-ignore
@@ -171,10 +171,9 @@ export class Utils {
 
 Utils.eventListeners = {};
 
-export default function $utils(selector) {
-  return new Utils(selector);
-}
-
+// function $utils(selector) {
+//   return new Utils(selector);
+// }
 
 export function extractNestedValue(obj, path) {
   return path.split('.').reduce((o, i) => o?.[i], obj)
@@ -305,23 +304,11 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       } else if (typeof valueA === "number" && typeof valueB === "number") {
         return valueA - valueB
       }
+      console.error(`Unexpected value tag: ${fieldName}`)
+      return 0
 
 
     })
-  }
-
-  function setSelectFromHash() {
-    const hash = location.hash
-    // console.log("hash", hash)
-    // console.log("hash", hash.replaceAll("%20"," "))
-    // elements.map((e) => console.log(e.id,("#" + e.id === hash.replace("%20"," "))))
-    const filtered = elements.find((e) => "#" + e.id.toLowerCase() === hash.toLowerCase().replace(/%20/g, " "))
-    // console.log("selected", filtered)
-    if (filtered) {
-      return filtered
-    } else {
-      return {}
-    }
   }
 
   const TableHeader = ({filterOpen}) => {
@@ -365,7 +352,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
           if (column.sortId === "source") return "";
           // console.log("sorting", sorting)
           return (<button type="button"
-                          className={(column.classSizePinned??column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
+                          className={(column.classSizePinned ?? column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
                           onClick={() => setPinnedElements(updatePinnedSortElementsState(column.sortId, elementsToShow))}
           >
             {column.id}
@@ -393,9 +380,9 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
                   default: {
                     if (typeof tableDisplayOption === "function") {
                       return tableDisplayOption(column, string, elem) ??
-                        <span className={column.colClassPinned??column.colClass}>{string}</span>
+                        <span className={column.colClassPinned ?? column.colClass}>{string}</span>
                     }
-                    return <span className={column.colClassPinned??column.colClass}>{string}</span>
+                    return <span className={column.colClassPinned ?? column.colClass}>{string}</span>
                   }
                 }
               })}
@@ -502,8 +489,22 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
 
   useEffect(() => {
     // console.log(location.hash)
+    function setSelectFromHash() {
+      const hash = location.hash
+      // console.log("hash", hash)
+      // console.log("hash", hash.replaceAll("%20"," "))
+      // elements.map((e) => console.log(e.id,("#" + e.id === hash.replace("%20"," "))))
+      const filtered = elements.find((e) => "#" + e.id.toLowerCase() === hash.toLowerCase().replace(/%20/g, " "))
+      // console.log("selected", filtered)
+      if (filtered) {
+        return filtered
+      } else {
+        return {}
+      }
+    }
+
     setSelected(setSelectFromHash())
-  }, [location]);
+  }, [elements, location]);
 
   // console.log("selected", selected)
   // console.log("elements", elements)
@@ -552,27 +553,27 @@ export const ToggleState = () => {
 export const FilterManager = (setElements: function, updateSortElementsState: function, elements: [] = []) => {
   const [filters, setFilters] = useState({});
 
-  function doFilter(key, element, state) {
-    const [nestedKey, expectedValue] = key.split("-");
-
-    // console.log(key, nestedKey, expectedValue, element)
-
-    const nestedValue = extractNestedValue(element, nestedKey);
-    // console.log(nestedKey, expectedValue, nestedValue)
-
-    if (state === 'yes') {
-      // console.log(state, Array.isArray(nestedValue) ? nestedValue.includes(expectedValue) : nestedValue === expectedValue)
-      return Array.isArray(nestedValue)
-        ? nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
-        : nestedValue === expectedValue;
-    } else if (state === 'negative') {
-      // console.log(state, Array.isArray(nestedValue) ? !nestedValue.includes(expectedValue) : nestedValue !== expectedValue)
-      return Array.isArray(nestedValue)
-        ? !nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
-        : nestedValue !== expectedValue;
-    }
-    return true;
-  }
+  // function doFilter(key, element, state) {
+  //   const [nestedKey, expectedValue] = key.split("-");
+  //
+  //   // console.log(key, nestedKey, expectedValue, element)
+  //
+  //   const nestedValue = extractNestedValue(element, nestedKey);
+  //   // console.log(nestedKey, expectedValue, nestedValue)
+  //
+  //   if (state === 'yes') {
+  //     // console.log(state, Array.isArray(nestedValue) ? nestedValue.includes(expectedValue) : nestedValue === expectedValue)
+  //     return Array.isArray(nestedValue)
+  //       ? nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
+  //       : nestedValue === expectedValue;
+  //   } else if (state === 'negative') {
+  //     // console.log(state, Array.isArray(nestedValue) ? !nestedValue.includes(expectedValue) : nestedValue !== expectedValue)
+  //     return Array.isArray(nestedValue)
+  //       ? !nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
+  //       : nestedValue !== expectedValue;
+  //   }
+  //   return true;
+  // }
 
   // useEffect(() => {
   //   // console.log("filters", filters)
@@ -602,7 +603,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
       if (state === "neutral") continue; // Ignore neutral filters
 
       const [id, value] = key.split("-");
-      const [category, subcategory] = id.includes(".") ? id.split(".") : [id, undefined];
+      const [category,] = id.includes(".") ? id.split(".") : [id, undefined];
       // const categoryKey = subcategory ? `${category}-${subcategory}` : category;
       // console.log(category, subcategory, value)
       if (!categorizedFilters[category]) {
@@ -612,7 +613,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
       categorizedFilters[category][state].push(value.toLowerCase());
     }
     updatedElements = updatedElements.filter((element) => {
-      return Object.entries(categorizedFilters).every(([groupedCategory, {yes, negative, id}]) => {
+      return Object.entries(categorizedFilters).every(([_, {yes, negative, id}]) => {
         let nestedValues = extractNestedValue(element, id);
         if (!Array.isArray(nestedValues)) nestedValues = [nestedValues];
 
@@ -634,7 +635,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
     setElements(updatedElements)
 
-  }, [filters]);
+  }, [elements, filters, setElements, updateSortElementsState]);
 
 
   // Function to toggle a filter
@@ -656,25 +657,20 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
 
 export const RenderModule = (props: {}) => {
   const _SPLIT_BY_TAG_LEADING_CHARS = new Set(["@", "="])
-  const TAG_LOOKUP = {
-    spell: {
-      tagName: "spell",
-      defaultSource: Parser.SRC_PHB,
-      page: "/TTRPG-wiki/spells",
-    },
-    spellen: {
-      tagName: "spell English",
-      defaultSource: Parser.SRC_PHB,
-      page: "/TTRPG-wiki/spells",
-    }
-  }
+  // const TAG_LOOKUP = {
+  //   spell: {
+  //     tagName: "spell",
+  //     defaultSource: Parser.SRC_PHB,
+  //     page: "/TTRPG-wiki/spells",
+  //   }
+  // }
 
   function splitByTags(string) {
     let tagDepth = 0;
     let char, char2;
     const out = [];
     let curStr = "";
-    let isPrevCharOpenBrace = false;
+    // let isPrevCharOpenBrace = false;
 
     const pushOutput = () => {
       if (!curStr) return;
@@ -689,12 +685,12 @@ export const RenderModule = (props: {}) => {
       switch (char) {
         case "{":
           if (!_SPLIT_BY_TAG_LEADING_CHARS.has(char2)) {
-            isPrevCharOpenBrace = false;
+            // isPrevCharOpenBrace = false;
             curStr += "{";
             break;
           }
 
-          isPrevCharOpenBrace = true;
+          // isPrevCharOpenBrace = true;
 
           if (tagDepth++ > 0) {
             curStr += "{";
@@ -707,7 +703,7 @@ export const RenderModule = (props: {}) => {
           break;
 
         case "}":
-          isPrevCharOpenBrace = false;
+          // isPrevCharOpenBrace = false;
           curStr += "}";
           if (tagDepth !== 0 && --tagDepth === 0) {
             pushOutput();
@@ -722,7 +718,7 @@ export const RenderModule = (props: {}) => {
         }
 
         default:
-          isPrevCharOpenBrace = false;
+          // isPrevCharOpenBrace = false;
           curStr += char;
           break;
       }
@@ -762,21 +758,22 @@ export const RenderModule = (props: {}) => {
       default:
         const {
           name,
-          source,
-          displayText,
-          others,
+          _source,
+          _displayText,
+          _others,
           page,
           hash,
-          hashPreEncoded,
-          pageHover,
-          hashHover,
-          hashPreEncodedHover,
-          preloadId,
-          linkText,
-          subhashes,
-          subhashesHover,
-          isFauxPage
+          _hashPreEncoded,
+          _pageHover,
+          _hashHover,
+          _hashPreEncodedHover,
+          _preloadId,
+          _linkText,
+          _subhashes,
+          _subhashesHover,
+          _isFauxPage
         } = getTagMeta(tag, string)
+
         return <Link to={page + (hash ? "#" + hash : "")}>{name}</Link>
     }
   }
@@ -794,14 +791,15 @@ export const RenderModule = (props: {}) => {
       if (source && source.trim()) return source;
 
       tag = tag.trim();
-      const tagMeta = TAG_LOOKUP[tag.substring(1, tag.length)];
+      // const tagMeta = TAG_LOOKUP[tag.substring(1, tag.length)];
+      const tagMeta = {defaultSource: Parser.SRC_PHB};
 
       if (!tagMeta) throw new Error(`Unhandled tag "${tag}"`);
       return tagMeta.defaultSource;
-    };
+    }
 
     function unpackUid(uid, tag, opts) {
-      opts = opts || {};
+      opts = opts || {isLower: false};
       if (opts.isLower) uid = uid.toLowerCase();
       let [name, source, displayText, ...others] = uid.split("|").map(Function.prototype.call.bind(String.prototype.trim));
 

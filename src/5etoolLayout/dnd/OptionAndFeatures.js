@@ -114,11 +114,17 @@ export const Dnd5eOptionFeatures = () => {
   })
 
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(features.sort((a, b) => {
     const textA = a.name.toLowerCase();
     const textB = b.name.toLowerCase();

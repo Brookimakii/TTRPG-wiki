@@ -4,6 +4,7 @@ import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
 import type {Rule} from "../../layout/5e/Models";
 
+
 export const Dnd5eRules = () => {
 
   const columns = [{
@@ -18,11 +19,17 @@ export const Dnd5eRules = () => {
 
   const rules = getResource(Resources.rule)
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(rules, columns, "name");
 
   const selectedRule: Rule = {...selected}

@@ -60,7 +60,7 @@ Parser.ALIGNMENT_ABV_TO_FULL = {
 Parser.ATB_ABV_TO_FULL = {
   "str": "Force",
   "for": "Force",
-  "dex": "Dexterité",
+  "dex": "Dextérité",
   "con": "Constitution",
   "int": "Intelligence",
   "wis": "Sagesse",

@@ -23,11 +23,17 @@ export const Dnd5eCondition = () => {
 
   const conditions = getResource(Resources.condition)
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(conditions, columns, "name");
 
   const selectedCondition: Condition = {...selected}

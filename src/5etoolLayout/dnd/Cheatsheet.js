@@ -3,7 +3,6 @@ import {Tab, TabList, TabPanel, Tabs} from "react-tabs";
 import '../css/quickref.css'
 import '../css/icons.css'
 import React, {useState} from "react";
-import {Parser} from "../../layout/5e/js/parser";
 import {RenderModule, ToggleState} from "../5eLayoutModules";
 
 
@@ -150,14 +149,14 @@ export const DnDCheatsheet = () => {
     {
       title: "Empoigner",
       icon: "grab",
-      subtitle: "Aggriper une créature",
-      description: "Tenter d'aggriper une créature ou de lutter avec elle",
+      subtitle: "Agripper une créature",
+      description: "Tenter d'agripper une créature ou de lutter avec elle",
       reference: "PHB, pg. 195.",
       bullets: [
         "Vous pouvez utiliser l'action {@i Attaquer} pour effectuer une attaque spéciale au corps à corps, une empoignade. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
         "La cible de votre empoignade ne doit pas faire plus d'une taille de plus que vous, et elle doit être à votre portée.",
         "Avec au moins une main libre, vous tentez de saisir la cible en effectuant un test de Force (Athlétisme) contesté par le test de Force (Athlétisme) ou de Dextérité (Acrobatie) de la cible (la cible choisit la capacité à utiliser). ",
-        "Si vous réussissez, vous soumettez la cible à la condition Aggripé (sa vitesse est réduite à 0).",
+        "Si vous réussissez, vous soumettez la cible à la condition Agrippé (sa vitesse est réduite à 0).",
       ]
     },
     {
@@ -170,7 +169,7 @@ export const DnDCheatsheet = () => {
         "En utilisant l'action {@i Attaquer}, vous pouvez effectuer une attaque spéciale au corps à corps pour repousser une créature. Si vous êtes capable d'effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
         "La cible de votre poussée ne doit pas faire plus d'une taille de plus que vous, et elle doit être à votre portée.",
         "Vous faites un jet de Force (Athlétisme) contesté par le jet de Force (Athlétisme) ou de Dextérité (Acrobatie) de la cible (la cible choisit la capacité à utiliser).",
-        "Si vous remportez l'oppposition, soit vous renversez la cible, soit vous la poussez à 1,50m de vous.",
+        "Si vous remportez l'opposition, soit vous renversez la cible, soit vous la poussez à 1,50m de vous.",
         "Vous pouvez également tenter de pousser la cible à 1,50m dans un espace différent à portée (sur le côté, pas plus loin de vous), mais vous avez alors un désavantage à votre jet."
       ]
     },
@@ -178,7 +177,7 @@ export const DnDCheatsheet = () => {
       title: "Jeter un sort",
       icon: "magic-swirl",
       subtitle: "Temps d'incantation de 1 action",
-      description: "Lancer un sort avec un temps d'incantation de 1 actionn",
+      description: "Lancer un sort avec un temps d'incantation de 1 action",
       reference: "PHB, pg. 192.",
       bullets: [
         "Vous ne pouvez pas lancer un sort avec votre action et un sort différent avec votre action bonus dans le même tour, sauf si l'action est utilisée pour lancer un sort mineur (niveau 0).",
@@ -291,7 +290,7 @@ export const DnDCheatsheet = () => {
       title: "Utiliser une capacité de classe",
       icon: "embrassed-energy",
       subtitle: "Certaines capacités utilisent des actions",
-      description: "Utiliser une capacité raciale ou de classe qui utilise une actionn",
+      description: "Utiliser une capacité raciale ou de classe qui utilise une action",
       reference: "Voir la page de votre classe pour plus d'informations.",
       bullets: []
     },
@@ -333,9 +332,9 @@ export const DnDCheatsheet = () => {
       ]
     },
     {
-      title: "Assomer",
+      title: "Assommer",
       icon: "knockout",
-      subtitle: "Assomer une créature non attentive",
+      subtitle: "Assommer une créature non attentive",
       description: "Rendre inconsciente une créature surprise, incapable d'agir ou entravée",
       reference: "Homebrew (Martial Prowess, pg. 6.)",
       bullets: [
@@ -348,8 +347,8 @@ export const DnDCheatsheet = () => {
     {
       title: "Projeter",
       icon: "catapult",
-      subtitle: "Lancer une créature aggripée",
-      description: "Tenter de projeter une créature aggripée",
+      subtitle: "Lancer une créature agrippée",
+      description: "Tenter de projeter une créature agrippée",
       reference: "Homebrew (The Warrior's Codex, pg. 87.)",
       bullets: [
         "Lorsque vous agrippez une créature, vous pouvez utiliser l'action {@i Attaquer} pour effectuer une attaque spéciale au corps à corps afin de projeter la créature agrippée. Si vous pouvez effectuer plusieurs attaques avec l'action Attaquer, cette attaque remplace l'une d'entre elles.",
@@ -392,12 +391,12 @@ export const DnDCheatsheet = () => {
     {
       title: "Retenir",
       icon: "padlock",
-      subtitle: "Immobiliser complètement une cible déjà aggripée",
-      description: "Immobiliser complètement une cible déjà aggripée",
+      subtitle: "Immobiliser complètement une cible déjà agrippée",
+      description: "Immobiliser complètement une cible déjà agrippée",
       reference: "Homebrew (Martial Prowess, pg. 6.)",
       bullets: [
-        "Lorsque vous agrippez une cible de votre taille ou plus petite, vous pouvez essayer de l'immobiliser avec une main libre supplémentaire. En tant qu'action spéciale au corps à corps, effectuez un autre test d'empoignage.",
-        "Si vous gagnez, vous et la cible êtes entravés jusqu'à ce que l'empoignade soit brisée et vous pouvez choisir l'un des effets supplémentaires suivants :<ul><li>Vous manœuvrez vers le côté ou l'arrière de la cible. Tant qu'elle est entravée, la créature ne peut pas vous attaquer.</li><li>Vous épinglez les mains et les bras de la cible. Tant qu'elle est entravée, la créature ne peut pas lancer de sort avec une composante somatique ou matérielle, dégainer ou attaquer avec une arme non légère, ou effectuer l'action Utiliser un objet.</li><li>Vous couvrez la bouche de la cible et étouffez sa voix. Tant qu'elle est retenue, la créature ne peut pas être entendue clairement au-delà de 4,5m, ou du tout au-delà de 9 mètres. Si la créature tente de lancer un sort à composante verbale, elle doit réussir un jet de sauvegarde de Dextérité contre un DD de 8 + votre modificateur de Force ou le sort échoue mais l'emplacement de sort n'est pas perdu. Une créature plus petite que vous a un désavantage à ce jet de sauvegarde.</li></ul>",
+        "Lorsque vous agrippez une cible de votre taille ou plus petite, vous pouvez essayer de l'immobiliser avec une main libre supplémentaire. En tant qu'action spéciale au corps à corps, effectuez un autre test d'empoignade.",
+        "Si vous gagnez, vous et la cible êtes entravés jusqu'à ce que l'empoignade soit brisée et vous pouvez choisir l'un des effets supplémentaires suivants :<ul><li>Vous manœuvrez vers le côté ou l'arrière de la cible. Tant qu'elle est entravée, la créature ne peut pas vous attaquer.</li><li>Vous épinglez les mains et les bras de la cible. Tant qu'elle est entravée, la créature ne peut pas lancer de sort avec une composante somatique ou matérielle, dégainer ou attaquer avec une arme non légère, ou effectuer l'action Utiliser un objet.</li><li>Vous couvrez la bouche de la cible et étouffez sa voix. Tant qu'elle est retenue, la créature ne peut pas être entendue clairement au-delà de 4,5 m, ou du tout au-delà de 9 mètres. Si la créature tente de lancer un sort à composante verbale, elle doit réussir un jet de sauvegarde de Dextérité contre un DD de 8 + votre modificateur de Force ou le sort échoue mais l'emplacement de sort n'est pas perdu. Une créature plus petite que vous a un désavantage à ce jet de sauvegarde.</li></ul>",
         "Une créature ne peut être soumise qu'à un seul de ces effets par chaque créature qui l'agrippe."
       ]
     },
@@ -480,7 +479,7 @@ export const DnDCheatsheet = () => {
       reference: "Homebrew (Martial Prowess, pg. 6.)",
       bullets: [
         "Vous pouvez utiliser votre élan pour attaquer une créature. Lorsque vous utilisez une action pour foncer et que vous vous déplacez d'au moins 3 mètres en ligne droite vers une créature, vous pouvez effectuer une attaque au corps à corps contre elle en tant qu'action bonus.",
-        "Si vous touchez, vous infliez vos dégâts habituels et vous pouvez choisir de repousser la créature à 1,50 mètre de vous.",
+        "Si vous touchez, vous infligez vos dégâts habituels et vous pouvez choisir de repousser la créature à 1,50 mètre de vous.",
         "Que vous touchiez ou non, votre vitesse devient 0 jusqu'à la fin de votre tour."
       ]
     },
@@ -563,16 +562,16 @@ export const DnDCheatsheet = () => {
       reference: "PHB, pg. 291.",
       bullets: [
         {
-          type:"table",
-          colLabels: ["Niveau","Effet"],
-          colStyles: ["ve-col-2 ve-text-center","ve-col-10"],
-          rows:[
-            [1,"Désavantage sur les jets de caractéristique"],
-            [2,"Vitesse réduite de moitié"],
-            [3,"Désavantge aux jets d'attaque et jets de sauvegarde"],
-            [4,"Maximum de points de vie réduit de moitié"],
-            [5,"Vitesse réduite à 0"],
-            [6,"Mort"]
+          type: "table",
+          colLabels: ["Niveau", "Effet"],
+          colStyles: ["ve-col-2 ve-text-center", "ve-col-10"],
+          rows: [
+            [1, "Désavantage sur les jets de caractéristique"],
+            [2, "Vitesse réduite de moitié"],
+            [3, "Désavantage aux jets d'attaque et jets de sauvegarde"],
+            [4, "Maximum de points de vie réduit de moitié"],
+            [5, "Vitesse réduite à 0"],
+            [6, "Mort"]
           ]
         },
         "Vous subissez l'effet de votre niveau d'épuisement actuel ainsi que tous les niveaux inférieurs.",
@@ -592,15 +591,15 @@ export const DnDCheatsheet = () => {
       ]
     },
     {
-      title: "Aggripé",
+      title: "Agrippé",
       icon: "grab",
-      subtitle: "Vous êtes aggripé",
-      description: "Vous êtes aggripé",
+      subtitle: "Vous êtes agrippé",
+      description: "Vous êtes agrippé",
       reference: "PHB, pg. 290.",
       bullets: [
         "Votre vitesse devient 0, et vous ne pouvez bénéficier d'aucun bonus à votre vitesse.",
-        "L'état prend fin si la créature qui aggripe est incapable d'agir.",
-        "L'état se termine également si un effet met la créature aggripée hors de portée de la créature ou de l'effet qui l'aggripe."
+        "L'état prend fin si la créature qui agrippe est incapable d'agir.",
+        "L'état se termine également si un effet met la créature agrippée hors de portée de la créature ou de l'effet qui l'agrippe."
       ]
     },
     {
@@ -625,10 +624,10 @@ export const DnDCheatsheet = () => {
       ]
     },
     {
-      title: "Paralisé",
+      title: "Paralysé",
       // icon: "bolt-spell-cast",
       icon: "internal-injury",
-      subtitle: "Vous êtes paralisé",
+      subtitle: "Vous êtes paralysé",
       description: "Vous ne pouvez rien faire",
       reference: "PHB, pg. 291. & Homebrew (The Warrior's Codex, pg. 89.)",
       bullets: [
@@ -821,7 +820,7 @@ export const DnDCheatsheet = () => {
     {
       title: "Vision véritable",
       icon: "eye-shield",
-      subtitle: "Vision dans les tébères",
+      subtitle: "Vision dans les ténèbres",
       description: "Une créature avec une vision véritable peut tout voir sous sa vraie forme, indépendamment de l'environnement",
       reference: "PHB, pg. 184.",
       bullets: [
@@ -884,7 +883,6 @@ export const DnDCheatsheet = () => {
       </div>
       <div className="section-row" id="basic-movement">
         {list.map(action => <>
-          {console.log(action.title,action.subtitle)}
           <div className="item itemsize" onClick={() => handleClick(action.title)}>
             <div className={"item-icon iconsize icon-" + action.icon}></div>
             <div className="item-text-container text">
@@ -899,10 +897,10 @@ export const DnDCheatsheet = () => {
                 <span className="float-right">{category}</span>
               </div>
               <div className="section-content">
-                <p style={{marginTop:0}}>{action.description}</p>
+                <p style={{marginTop: 0}}>{action.description}</p>
                 {action.bullets ? <div id={"modal-bullets"}>
                   {action.bullets.map((bullet, idx) => <>
-                    <p className={"fonstsize"} style={{marginTop:0}}>{RenderModule({}).render(bullet)}</p>
+                    <p className={"fonstsize"} style={{marginTop: 0}}>{RenderModule({}).render(bullet)}</p>
                     {idx !== action.bullets.length - 1 ? <hr/> : ""}
                   </>)}
                 </div> : ""}
@@ -951,7 +949,7 @@ export const DnDCheatsheet = () => {
                       </span>
                     </div>
                     {getToggleState("Movement") ? <div className="section-content">
-                      {populateDiv(movement, "Mouvement", `rgb(128,0,0)`)}
+                      {populateDiv(movement, "Mouvement", `rgb(128, 0, 0)`)}
                     </div> : ""}
                   </div>
                 </td>

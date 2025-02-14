@@ -21,11 +21,17 @@ export const Dnd5eClasses = () => {
 
 
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(classes, columns, "info.name");
 
   const {toggleStateChange, getToggleState, addToggleableState} = ToggleState()
@@ -35,7 +41,7 @@ export const Dnd5eClasses = () => {
   // [x] Table des capacités de classe,
   // [x] Ajouter les Capacités de classe dans la table
   // [x] Bande des traits & maîtrises de classe,
-  // [x] TOC des capacites de classe,
+  // [x] TOC des capacités de classe,
   // [x] Description des capacités de classe
   // [ ] Retravailler les Toggles pour avoir en clef l'id de la capacité et non un composite bizarre.
   //      Pour les titres: "*idFeature*-*NomEntrée*"
@@ -147,8 +153,8 @@ export const Dnd5eClasses = () => {
         selectedClass.subclasses.map((subclass, idx) => {
           if (!getToggleState(selectedClass.id + "-subclass-" + subclass.shortName)) return
           subclass.subclassFeatures.map((subclassFeature) => {
-            const subclassfeatureLevel = subclassFeature.split("|").pop()
-            if (featureLevel === subclassfeatureLevel) {
+            const subclassFeatureLevel = subclassFeature.split("|").pop()
+            if (featureLevel === subclassFeatureLevel) {
               detailsList.push(renderFeature(subclassFeature))
             }
           })
@@ -161,7 +167,7 @@ export const Dnd5eClasses = () => {
 
   function renderRefClassFeature(feature, depth) {
     // console.log(feature)
-    const [featureName, featureClass, featureSource, featureLevel] = feature.split("|")
+    // const [featureName, featureClass, featureSource, featureLevel] = feature.split("|")
 
     const featureObject = findFeatureInClass(feature)
 
@@ -181,7 +187,7 @@ export const Dnd5eClasses = () => {
   }
 
   function renderRefSubclassFeature(feature, depth) {
-    const [featureName, _, __, subclassName, featureSource, featureLevel] = feature.split("|")
+    const [featureName, _, __, _subclassName, featureSource, featureLevel] = feature.split("|")
 
     const featureObject = findFeatureInClass(feature)
 
@@ -442,7 +448,7 @@ export const Dnd5eClasses = () => {
                         <b>Armures: </b>
                         <span>
                       {selectedClass.info.proficiencies.armor?.length > 1 ?
-                        (selectedClass.info.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selectedClass.info.proficiencies.armor.includes("meduim") ? " et intermédiaires" : "")) +
+                        (selectedClass.info.proficiencies.armor.includes("heavy") ? "Toutes les armures" : "armures légères" + (selectedClass.info.proficiencies.armor.includes("medium") ? " et intermédiaires" : "")) +
                         (selectedClass.info.proficiencies.armor.includes("shield") ? ", boucliers" : "")
                         : "Aucune"}
                     </span>
@@ -622,11 +628,11 @@ export const Dnd5eClasses = () => {
                   })
 
                   if (feature.gainSubClassFeature) {
-                    selectedClass.subclasses.map((subclass) => {
-                      if (!getToggleState(selectedClass.id + "-subclass-" + subclass.shortName)) return
-                      subclass.subclassFeatures.map((subclassFeature) => {
-                        const [subclassFeatureName, subclassClassName, subclassSourceName, subclassName, subclassSource, subclassfeatureLevel] = subclassFeature.split("|")
-                        if (featureLevel === subclassfeatureLevel) {
+                    selectedClass.subclasses.forEach((subclass) => {
+                      if (!getToggleState(selectedClass.id + "-subclass-" + subclass.shortName)) return;
+                      subclass.subclassFeatures.forEach((subclassFeature) => {
+                        const [subclassFeatureName, subclassClassName, subclassSourceName, subclassName, subclassSource, subclassFeatureLevel] = subclassFeature.split("|")
+                        if (featureLevel === subclassFeatureLevel) {
                           featureList.push(
                             <div className={"cls-nav__item cls-nav__item--depth-"
                               + (findFeatureInClass(subclassFeature)?.header ?? 1)
@@ -635,8 +641,8 @@ export const Dnd5eClasses = () => {
                               {subclassFeatureName}
                             </div>
                           )
-                          getTitles(findFeatureInClass(subclassFeature)).map(subSubFeature => {
-                            const [subclassFeatureName, _, __, ___, ____, _____] = subSubFeature.split("|")
+                          getTitles(findFeatureInClass(subclassFeature)).forEach(subSubFeature => {
+                            let [subclassFeatureName, ] = subSubFeature.split("|")
                             featureList.push(
                               <div className={"cls-nav__item cls-nav__item--depth-"
                                 + (findFeatureInClass(subSubFeature)?.header ?? 1)

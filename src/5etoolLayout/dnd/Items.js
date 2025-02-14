@@ -4,6 +4,16 @@ import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React from "react";
 import type {Item} from "../../layout/5e/Models";
 import {Armor, Weapon, WeaponProperty} from "../../layout/5e/Models";
+import FilterDialogManager from "../FilterDialogManager";
+import {loadFromLocalStorage} from "../PersistData";
+
+
+const FILTER_OPTIONS = [
+  // {category: "casters", subcategory: "classes", label: "Artificier"},
+];
+
+const FILTER_ITEM_KEY = "itemFilters"
+const SAVED_ITEM_KEY = "itemPinned"
 
 export const Dnd5eItems = () => {
 
@@ -125,20 +135,24 @@ export const Dnd5eItems = () => {
     }
   })
 
-
   // const [elements, setElements] = useState(buildRace(spells))
   // const [sorting, setSorting] = useState("")
   // const [selectedItem, setSelected] = useState(
   //   // setSelectFromHash([...spells], useLocation().hash)
   // )
 
-
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(items.sort((a, b) => {
     const textA = a.name.toLowerCase()
     const textB = b.name.toLowerCase()
@@ -146,6 +160,17 @@ export const Dnd5eItems = () => {
   }), columns, "name", tableDisplayOption);
 
   const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, items)
+
+  const {
+    isDialogOpen,
+    filterResults,
+    filterState,
+    openDialog,
+    closeDialog,
+    saveFilterResults,
+    resetFilter
+  } = FilterDialogManager(FILTER_OPTIONS, loadFromLocalStorage(FILTER_ITEM_KEY))
+
 
   const casters = {}
   const casterObj = {

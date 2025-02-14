@@ -4,7 +4,7 @@
     "name": "Aarakocra",
     "bonus": "Dex +2; Sag +1",
     "size": "Moyenne",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "7,5m, vol 15m",
     "common": {
       "age": "Les Aarakocra atteignent la maturité à l'âge de 3 ans. Comparés aux humains, les Aarakocra ne vivent généralement pas plus de 30 ans.",
@@ -85,7 +85,7 @@
     "bonus": "Cha +2",
     "size": "Moyenne",
     "source": "VGM",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -203,7 +203,7 @@
     "bonus": "Cha +2; tout autre +1",
     "size": "Moyenne",
     "source": "ERLW",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -240,7 +240,7 @@
     "bonus": "For +2; Cha +1",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -348,7 +348,7 @@
     "bonus": "Con +2",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "7,5m",
     "common": {
       "age": "",
@@ -442,7 +442,7 @@
     "bonus": "Dex +2",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -583,7 +583,7 @@
     "bonus": "Sag +2; For +1",
     "size": "Moyenne",
     "source": "VGM",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -634,7 +634,7 @@
     "bonus": "Con +2",
     "size": "Moyenne",
     "source": "EEPC",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -778,7 +778,7 @@
     "bonus": "Int +2",
     "size": "Petite",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "7,5m",
     "common": {
       "age": "",
@@ -880,7 +880,7 @@
     "bonus": "For +2; Con +1",
     "size": "Moyenne",
     "source": "MPMM",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -929,7 +929,7 @@
     "bonus": "Cha +2; Deux autres +1",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -971,7 +971,7 @@
     "bonus": "For +2; Con +1",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -1020,7 +1020,7 @@
     "bonus": "Dex +2",
     "size": "Petite",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "7,5m",
     "common": {
       "age": "",
@@ -1100,7 +1100,7 @@
     "bonus": "Tous +1",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -1150,7 +1150,7 @@
     "bonus": "Dex +2; Sag +1",
     "size": "Moyenne",
     "source": "VGM",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -1194,7 +1194,7 @@
     "bonus": "Con +2; Int +1",
     "size": "Moyenne",
     "source": "PHB",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -1236,7 +1236,7 @@
     "bonus": "Con +2; tout autre +1",
     "size": "Moyenne",
     "source": "ERLW",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",
@@ -1286,7 +1286,7 @@
       {
         "type": "entries",
         "name": "Conception spécialisée",
-        "entries": ["Vous acquérez une maîtrisez une compétence et un outil d'artisant de votre choix."]
+        "entries": ["Vous acquérez une maîtrisez une compétence et un outil d'artisan de votre choix."]
       }
     ],
     "info": [
@@ -1302,7 +1302,7 @@
     "bonus": "Cha +2; Int +1",
     "size": "Moyenne",
     "source": "VGM",
-    "creatureType": "Humainoïde",
+    "creatureType": "Humanoïde",
     "speed": "9m",
     "common": {
       "age": "",

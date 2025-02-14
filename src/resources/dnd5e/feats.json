@@ -140,7 +140,7 @@
     "name": "Bagarreur de tavernes",
     "id": "Tavern_Brawler",
     "entries": [
-      "Coutumier des bagarres tumultueuses où tout à portée de main peut vous servir d'arrne, vous bénéficiez des avantages suivants .",
+      "Coutumier des bagarres tumultueuses où tout à portée de main peut vous servir d'arme, vous bénéficiez des avantages suivants .",
       {
         "type": "list",
         "entries": [
@@ -423,7 +423,7 @@
       {
         "type": "list",
         "entries": [
-          "Augmentez votre valeur d'lntelligence de l,jusqu'à un maximum de 20.",
+          "Augmentez votre valeur d'Intelligence de l,jusqu'à un maximum de 20.",
           "Vous savez toujours dans quelle direction se trouve le nord.",
           "Vous êtes toujours conscient du nombre d'heures restant avant le prochain coucher ou lever de soleil.",
           "Vous vous souvenez avec précision de tout ce que vous avez vu et entendu au cours du mois qui vient de s'écouler."
@@ -468,7 +468,7 @@
       {
         "type": "list",
         "entries": [
-          "Vous êtes avantagé lors des tests de Sagesse (Perception) et d'lntelligence (Investigation) effectués pour détecter la présence de portes dérobées.",
+          "Vous êtes avantagé lors des tests de Sagesse (Perception) et d'Intelligence (Investigation) effectués pour détecter la présence de portes dérobées.",
           "Vous êtes avantagé lors des jets de sauvegarde effectués pour éviter les pièges ou y résister.",
           "Vous bénéficiez d'une résistance contre les dégâts infligés par les pièges.",
           "Vous pouvez chercher des pièges en vous déplaçant à un rythme normal et non lent ."

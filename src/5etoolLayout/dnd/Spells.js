@@ -132,10 +132,16 @@ export const Dnd5eSpells = () => {
   // )
   const {
     selected,
-    elements, setElements,
-    pinnedElements, setPinnedElements,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
     updateSortElementsState,
-    TableHeader, DisplayListPinned, DisplayList, DetailsHeader, TempFilters
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(spells, columns, "name", tableDisplayOption, loadFromLocalStorage(SAVED_SPELL_KEY));
 
   const {setFilters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)

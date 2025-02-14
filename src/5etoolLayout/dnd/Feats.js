@@ -4,6 +4,14 @@ import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Parser} from "../../layout/5e/js/parser";
 import {PlayerFeat} from "../../layout/5e/Models";
 
+
+const FILTER_OPTIONS = [
+  // {category: "casters", subcategory: "classes", label: "Artificier"},
+];
+
+const FILTER_FEAT_KEY = "featFilters"
+const SAVED_FEAT_KEY = "featPinned"
+
 export const Dnd5eFeats = () => {
   // TODO: Finish Data Set.
 
@@ -40,11 +48,17 @@ export const Dnd5eFeats = () => {
   }
 
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e([...feat], columns, "name", tableDisplayOption);
 
   // console.log(feat)

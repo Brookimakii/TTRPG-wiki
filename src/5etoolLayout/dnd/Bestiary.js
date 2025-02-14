@@ -20,14 +20,13 @@ export const Dnd5eBestiary = () => {
   const bestiary = getResource(Resources.bestiary)
   const {
     selected,
-    setSelected,
     elements,
     setElements,
-    sorting,
-    setSorting,
-    handleClickSelection,
+    pinnedElements,
+    setPinnedElements,
     updateSortElementsState,
     TableHeader,
+    DisplayListPinned,
     DisplayList,
     DetailsHeader,
     TempFilters
@@ -513,7 +512,7 @@ export const Dnd5eBestiary = () => {
                 </> : ""}
                 {selectedMonster.legendaryActions ? <>
                   <tr>
-                    <td colSpan="6"><h3 className="stats__sect-header-inner">Actions Légendaiers</h3></td>
+                    <td colSpan="6"><h3 className="stats__sect-header-inner">Actions Légendaires</h3></td>
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">

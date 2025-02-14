@@ -1,8 +1,6 @@
 import {primaryResize, primaryToggle} from "../javascript/script";
 import PrimaryMenu from "../menu/PrimaryMenu";
-import {Link} from "react-router-dom";
-
-export default function Header() {
+import {Link} from "react-router-dom"; function Header(){
   return (
     <header id="header" className="header">
       <div className="inner">

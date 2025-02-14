@@ -507,7 +507,7 @@
   },
   {
     "id": "warPick",
-    "name": "Pic de gerre",
+    "name": "Pic de guerre",
     "source": "PHB",
     "page": 149,
     "itemType": "weapon",
@@ -1715,7 +1715,7 @@
     "weight": 12.5,
     "value": 5,
     "entries": [
-      "Vous pouvez utiliser une action pour installer ce piège qui se présente sous la forme d'un anneau d'acier dentelé. Celui-ci se referme violemment quand une créature marche sur la plaque de pression qui se trouve en son centre. Le piège est ancré grâce à une lourde chaîne à un objet immobile, comme un arbre ou une pointe enfoncée dans le sol. Une créature qui marche sur la plaque doit réussir un jet de sauvegarde de Dextérité DD 13 pour éviter de subir ld4 dégâts perforants et d'être stoppée net dans son déplacement. Si elle échoue, tant que la créature est prise au piège, son déplacement est limité par la longueur de la chaîne (qui fait généralement 1 mètre de long). Une créature peut utiliser une action pour faire un test de Force DD 13 afin de tenter de se libérer ellemême ou une autre créature dans sa zone <l'allonge. À chaque échec, la créature prise au piège subit 1 dégât perforant."
+      "Vous pouvez utiliser une action pour installer ce piège qui se présente sous la forme d'un anneau d'acier dentelé. Celui-ci se referme violemment quand une créature marche sur la plaque de pression qui se trouve en son centre. Le piège est ancré grâce à une lourde chaîne à un objet immobile, comme un arbre ou une pointe enfoncée dans le sol. Une créature qui marche sur la plaque doit réussir un jet de sauvegarde de Dextérité DD 13 pour éviter de subir ld4 dégâts perforants et d'être stoppée net dans son déplacement. Si elle échoue, tant que la créature est prise au piège, son déplacement est limité par la longueur de la chaîne (qui fait généralement 1 mètre de long). Une créature peut utiliser une action pour faire un test de Force DD 13 afin de tenter de se libérer elle-même ou une autre créature dans sa zone <l'allonge. À chaque échec, la créature prise au piège subit 1 dégât perforant."
     ]
   },
   {
@@ -2335,7 +2335,7 @@
           ],
           [
             90,
-            "Une antique Aèche de conception elfique"
+            "Une antique flèche de conception elfique"
           ],
           [
             91,

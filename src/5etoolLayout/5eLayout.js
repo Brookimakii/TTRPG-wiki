@@ -145,7 +145,7 @@ export const Layout5eHome = () => {
         </Link>
         <Link to="" className="disabled home__btn-page ve-btn ve-btn-default home__narrow-visible home__btn-player">
           <div className="fal fa-tally-5 home__icn-page"></div>
-          <h4 className="ve-text-center home__lbl-page">Généraeur<br/>de Stats</h4>
+          <h4 className="ve-text-center home__lbl-page">Générateur<br/>de Stats</h4>
         </Link>
       </div>
       <div className="ve-flex ve-flex-wrap home__wrp-buttons home__narrow-hidden">
@@ -163,7 +163,7 @@ export const Layout5eHome = () => {
         </Link>
         <Link to="" className="disabled home__btn-page ve-btn ve-btn-default mr-3 home__btn-player">
           <div className="fal fa-tally-5 home__icn-page"></div>
-          <h4 className="ve-text-center home__lbl-page">Généraeur<br/>de Stats</h4>
+          <h4 className="ve-text-center home__lbl-page">Générateur<br/>de Stats</h4>
         </Link>
       </div>
     </div>
@@ -232,9 +232,9 @@ export const Layout5eHome = () => {
 export const LayoutHeader = () => {
 
   const [title, setTitle] = useState("Test")
-  const [homeLink, setHomeLink] = useState("TTRPG-wiki")
+  const [homeLink, _setHomeLink] = useState("TTRPG-wiki")
 
-  const handleTitleUpdate = (str) => setTitle(str)
+  const _handleTitleUpdate = (str) => setTitle(str)
 
   return (<>
     <script type="text/javascript" src="../layout/5e/js/navigation.js"></script>

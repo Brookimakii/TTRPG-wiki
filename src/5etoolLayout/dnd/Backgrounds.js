@@ -28,11 +28,17 @@ export const Dnd5eBackgrounds = () => {
   //   // setSelectFromHash([...background], useLocation().hash)
   // )
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(background, columns, "name");
 
   const selectedBackground: PlayerBackground = {...selected}

@@ -68,11 +68,17 @@ export function Dnd5eRaces() {
 
   const races = getResource(Resources.race)
   const {
-    selected, setSelected,
-    elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
+    selected,
+    elements,
+    setElements,
+    pinnedElements,
+    setPinnedElements,
+    updateSortElementsState,
+    TableHeader,
+    DisplayListPinned,
+    DisplayList,
+    DetailsHeader,
+    TempFilters
   } = Selector5e(buildRace(races), columns);
 
   // console.log(races)
@@ -243,85 +249,6 @@ export function Dnd5eRaces() {
                         {" " + selectedRace.common.size}
                       </p>
                     </div>
-                    {/*{selectedRace.traits.map((trait) => {*/}
-                    {/*  const key = Object.keys(trait)[0];*/}
-                    {/*  const value = trait[key]*/}
-
-                    {/*  if (typeof value === typeof []) {*/}
-                    {/*    // console.log(value)*/}
-                    {/*    return (<div className="rd__b rd__b--3">*/}
-                    {/*      {value.map((elem) => {*/}
-                    {/*        if (typeof elem !== typeof "") {*/}
-                    {/*          const keySub = Object.keys(elem)[0];*/}
-                    {/*          const valueSub = elem[keySub]*/}
-                    {/*          switch (keySub) {*/}
-                    {/*            case "table":*/}
-                    {/*              return (<table className="w-100 rd__table stripe-odd-table">*/}
-                    {/*                <caption>{valueSub.caption}</caption>*/}
-                    {/*                <thead>*/}
-                    {/*                <tr>*/}
-                    {/*                  {valueSub.head.map((head) => {*/}
-                    {/*                    const idx = valueSub.head.indexOf(head)*/}
-                    {/*                    return (<th className={"rd__th " + valueSub.style[idx]}>*/}
-                    {/*                      {head}*/}
-                    {/*                    </th>)*/}
-                    {/*                  })}*/}
-                    {/*                </tr>*/}
-                    {/*                </thead>*/}
-                    {/*                <tbody>*/}
-                    {/*                {valueSub.body.map((body) => {*/}
-                    {/*                  return (<tr>*/}
-                    {/*                    {body.map((cell) => {*/}
-                    {/*                      const idx = body.indexOf(cell)*/}
-                    {/*                      return (<td className={"rd__th " + valueSub.style[idx]}>*/}
-                    {/*                        {cell}*/}
-                    {/*                      </td>)*/}
-                    {/*                    })}*/}
-                    {/*                  </tr>)*/}
-                    {/*                })}*/}
-                    {/*                </tbody>*/}
-                    {/*              </table>)*/}
-                    {/*            case "ulist":*/}
-                    {/*              return (valueSub.map((list) => {*/}
-                    {/*                const keyList = Object.keys(list)[0];*/}
-                    {/*                const valueList = list[keyList]*/}
-                    {/*                // console.log(list)*/}
-                    {/*                // console.log(keyList)*/}
-                    {/*                // console.log(valueList)*/}
-                    {/*                return (<div className="rd__b  rd__b--3">*/}
-                    {/*                  <p>*/}
-                    {/*                          <span className="rd__h rd__h--3">*/}
-                    {/*                            <span className="entry-title-inner">{keyList}.</span>*/}
-                    {/*                          </span>*/}
-                    {/*                    {" " + valueList}*/}
-                    {/*                  </p>*/}
-                    {/*                </div>)*/}
-                    {/*              }))*/}
-                    {/*            default:*/}
-                    {/*              return (<p>Not Implemented: {keySub}</p>)*/}
-                    {/*          }*/}
-                    {/*        }*/}
-                    {/*        return (<p>*/}
-                    {/*          {elem === value[0] ? <>*/}
-                    {/*                  <span className="rd__h rd__h--3">*/}
-                    {/*                    <span className="entry-title-inner">{key}.</span>*/}
-                    {/*                  </span>*/}
-                    {/*            {" " + elem}*/}
-                    {/*          </> : elem}*/}
-                    {/*        </p>)*/}
-                    {/*      })}*/}
-                    {/*    </div>)*/}
-                    {/*  }*/}
-                    {/*  return (<div className="rd__b rd__b--3">*/}
-                    {/*    <p>*/}
-                    {/*            <span className="rd__h rd__h--3">*/}
-                    {/*              <span className="entry-title-inner">{key}.</span>*/}
-                    {/*            </span>*/}
-                    {/*      {" " + value}*/}
-                    {/*    </p>*/}
-                    {/*  </div>)*/}
-                    {/*})}*/}
-                    {/*{console.log(selectedRace.traits)}*/}
                     {RenderModule({...renderProps}).render(selectedRace.traits)}
                     {/*{Renderer({...renderProps}).recursiveRender(selectedRace.traits)}*/}
                     <div className="rd__b  rd__b--3">

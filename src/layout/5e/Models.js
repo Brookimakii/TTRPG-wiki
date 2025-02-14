@@ -338,7 +338,7 @@ export const WeaponProperty = {
   BF: {
     name: "Feu Nourri",
     desc: [
-      "Une arme possédant la propriété feu nourri peut faire une attaque normal sur une cible unique ou arroser de tirs un cube de 3mères d'arrête situé à portée normal. Chaque créature présente dans la zone doit alors réussir un jet de sauvegarde de Dextérité DD 15, sans quoi elle subit les dégâts normaux de l'arme. Cette action nécéssite dix munitions."
+      "Une arme possédant la propriété feu nourri peut faire une attaque normal sur une cible unique ou arroser de tirs un cube de 3mères d'arrête situé à portée normal. Chaque créature présente dans la zone doit alors réussir un jet de sauvegarde de Dextérité DD 15, sans quoi elle subit les dégâts normaux de l'arme. Cette action nécessite dix munitions."
     ],
     formating: "{{prop_name}} "
   },
@@ -405,7 +405,7 @@ export const WeaponProperty = {
     formating: "{{prop_name}}"
   },
   V: {
-    name: "Polyvalante",
+    name: "Polyvalente",
     desc: [
       "Une arme polyvalente peut être utilisée avec une ou deux mains. Une valeur est indiquée entre parenthèses à côté de la propriété : il s'agit de la quantité de dégâts infligés quand l'arme est tenue à deux mains."
     ],

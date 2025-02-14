@@ -751,7 +751,7 @@
   },
   {
     "id": "",
-    "name": "Livre des screts anciens",
+    "name": "Livre des secrets anciens",
     "source": "PHB",
     "page": 101,
     "featureType": [
@@ -1076,7 +1076,7 @@
   },
   {
     "id": "",
-    "name": "Lien du talisment",
+    "name": "Lien du talisman",
     "source": "TCE",
     "page": 61,
     "featureType": [
