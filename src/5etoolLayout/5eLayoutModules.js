@@ -201,11 +201,13 @@ export const setValueAtPath = (obj, path, value) => {
 };
 
 
-export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function) => {
+export const Selector5e = (defaultElements: [{}] = [], defaultPinnedElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function) => {
   // console.log("defaultElements", defaultElements)
   const [selected: {} | undefined, setSelected] = useState();
   const [elements: [{}], setElements] = useState(sortList(defaultElements, defaultSort, true) ?? []);
+  const [pinnedElements: [{}], setPinnedElements] = useState(sortList(defaultPinnedElements, "pinnedAt", true) ?? []);
   const [sorting: string, setSorting] = useState("");
+  const [pinnedSorting: string, setPinnedSorting] = useState("");
   const location = useLocation()
 
   function handleClickSelection(element) {
@@ -232,7 +234,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
         type = defaultSort
       }
     } else {
-      if (sorting.includes(".asc") && !sorting.includes(".des")) {
+      if (sorting.includes(".asc") && !pinnedSorting.includes(".des")) {
         shouldAscend = true
       }
       if (sorting === "") {
@@ -249,15 +251,62 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     return sortList(list, type, shouldAscend || shouldReset);
   }
 
+  function updatePinnedSortElementsState(type: string, list: [] = elements, updateState = true) {
+    let shouldReset = pinnedSorting === type + ".des"
+    let shouldAscend = !pinnedSorting.startsWith(type)
+    let shouldDescend = pinnedSorting === type + ".asc"
+    // console.log("---------")
+    // console.log("type", type)
+    type = type !== "" ? type : defaultSort
+    if (updateState) {
+      if (shouldAscend) {
+        // console.log("Should now ascend: " + type + ".asc")
+        setPinnedSorting(type + ".asc")
+      } else if (shouldDescend) {
+        setPinnedSorting(type + ".des")
+        // console.log("Should now descend: " + type + ".des")
+      } else if (shouldReset) {
+        setPinnedSorting("")
+        // console.log("Should reset.")
+        type = defaultSort
+      }
+    } else {
+      if (pinnedSorting.includes(".asc") && !pinnedSorting.includes(".des")) {
+        shouldAscend = true
+      }
+      if (pinnedSorting === "") {
+        shouldReset = true
+        type = defaultSort
+      }
+      type = pinnedSorting.replace(".asc", "").replace(".des", "")
+    }
+    // console.log("sorting", sorting)
+    // console.log("type", type)
+    // console.log("shouldAscend", shouldAscend)
+    // console.log("shouldReset", shouldReset)
+    // console.log("updateSortElementsState '", type, "'")
+    return sortList(list, type, shouldAscend || shouldReset);
+  }
+
   function sortList(list, fieldName, ascend) {
     // console.log(list, fieldName)
+
     return [...list].sort((a, b) => {
-      let textA = extractNestedValue(a, fieldName)?.toUpperCase() || "";
-      let textB = extractNestedValue(b, fieldName)?.toUpperCase() || "";
-      if (ascend) {
-        return textA < textB ? -1 : textA > textB ? 1 : 0;
+      const valueA = extractNestedValue(a, fieldName)
+      const valueB = extractNestedValue(b, fieldName)
+
+      if (typeof valueA === "string" && typeof valueB === "string") {
+        let textA = valueA?.toUpperCase() || "";
+        let textB = valueB?.toUpperCase() || "";
+        if (ascend) {
+          return textA < textB ? -1 : textA > textB ? 1 : 0;
+        }
+        return textA < textB ? 1 : textA > textB ? -1 : 0;
+      } else if (typeof valueA === "number" && typeof valueB === "number") {
+        return valueA - valueB
       }
-      return textA < textB ? 1 : textA > textB ? -1 : 0;
+
+
     })
   }
 
@@ -276,7 +325,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
   }
 
   const TableHeader = ({filterOpen}) => {
-     return (<>
+    return (<>
       <div className="lst__form-top" id="filter-search-group">
         <button disabled={!filterOpen} onClick={filterOpen} className="ve-btn ve-btn-default">Filter</button>
         {/*TODO: add class "active" when hiding the filters div*/}
@@ -305,6 +354,56 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
 
       {/*TODO: add class "ve-hidden" to hide*/}
     </>)
+  }
+
+  function DisplayListPinned(elementsToShow = []) {
+    // console.log(elementsToShow)
+    // console.log(selected)
+    return <>
+      <div id="sublistsort" className="ve-btn-group sublist__wrp-cols">
+        {columns.map((column) => {
+          if (column.sortId === "source") return "";
+          // console.log("sorting", sorting)
+          return (<button type="button"
+                          className={(column.classSizePinned??column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
+                          onClick={() => setPinnedElements(updatePinnedSortElementsState(column.sortId, elementsToShow))}
+          >
+            {column.id}
+            <span className={"lst__caret"
+              + (pinnedSorting.startsWith(column.sortId) ? " lst__caret--active" : "")
+              + (pinnedSorting === column.sortId + ".des" ? " lst__caret--reverse" : "")
+            }></span>
+          </button>)
+        })}
+      </div>
+      <div id="list" className="list">
+        {/*{console.log(elements)}*/}
+        {elementsToShow?.map((elem) =>
+          <div
+            className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+            onClick={() => handleClickSelection(elem)}
+            key={elem.id}>
+            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
+                  className="lst__row-border lst__row-inner">
+              {columns.map(column => {
+                const string = Object.byString(elem, column.sortId)
+                switch (column.sortId) {
+                  case "source":
+                    return ""
+                  default: {
+                    if (typeof tableDisplayOption === "function") {
+                      return tableDisplayOption(column, string, elem) ??
+                        <span className={column.colClassPinned??column.colClass}>{string}</span>
+                    }
+                    return <span className={column.colClassPinned??column.colClass}>{string}</span>
+                  }
+                }
+              })}
+            </Link>
+          </div>
+        )}
+      </div>
+    </>;
   }
 
   function DisplayList(elementsToShow = []) {
@@ -412,14 +511,13 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
 
   return {
     selected,
-    setSelected,
     elements,
     setElements,
-    sorting,
-    setSorting,
-    handleClickSelection,
+    pinnedElements,
+    setPinnedElements,
     updateSortElementsState,
     TableHeader,
+    DisplayListPinned,
     DisplayList,
     DetailsHeader,
     TempFilters
@@ -464,34 +562,79 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     if (state === 'yes') {
       // console.log(state, Array.isArray(nestedValue) ? nestedValue.includes(expectedValue) : nestedValue === expectedValue)
       return Array.isArray(nestedValue)
-        ? nestedValue.map(a=>a.toLowerCase()).includes(expectedValue.toLowerCase())
+        ? nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
         : nestedValue === expectedValue;
     } else if (state === 'negative') {
       // console.log(state, Array.isArray(nestedValue) ? !nestedValue.includes(expectedValue) : nestedValue !== expectedValue)
       return Array.isArray(nestedValue)
-        ? !nestedValue.map(a=>a.toLowerCase()).includes(expectedValue.toLowerCase())
+        ? !nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
         : nestedValue !== expectedValue;
     }
     return true;
   }
 
+  // useEffect(() => {
+  //   // console.log("filters", filters)
+  //   const activeFilters = Object.entries(filters).filter(
+  //     ([, state]) => state !== 'neutral'
+  //   );
+  //   // console.log("activeFilters", activeFilters)
+  //   let updatedElements = [...elements]
+  //   // console.log(elements)
+  //   if (activeFilters.length > 0) {
+  //     updatedElements = [...elements].filter((element) => {
+  //       return activeFilters.some(([key, state]) => doFilter(key, element, state));
+  //     });
+  //   }
+  //   // console.log(sorting)
+  //   updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
+  //   setElements(updatedElements)
+  // }, [filters, setElements]);
+
   useEffect(() => {
-    console.log("filters", filters)
-    const activeFilters = Object.entries(filters).filter(
-      ([, state]) => state !== 'neutral'
-    );
-    // console.log("activeFilters", activeFilters)
-    let updatedElements = [...elements]
-    // console.log(elements)
-    if (activeFilters.length > 0) {
-      updatedElements = [...elements].filter((element) => {
-        return activeFilters.some(([key, state]) => doFilter(key, element, state));
-      });
+    let updatedElements = [...elements];
+
+    // Group filters by category
+    const categorizedFilters = {};
+
+    for (const [key, state] of Object.entries(filters)) {
+      if (state === "neutral") continue; // Ignore neutral filters
+
+      const [id, value] = key.split("-");
+      const [category, subcategory] = id.includes(".") ? id.split(".") : [id, undefined];
+      // const categoryKey = subcategory ? `${category}-${subcategory}` : category;
+      // console.log(category, subcategory, value)
+      if (!categorizedFilters[category]) {
+        categorizedFilters[category] = {yes: [], negative: [], id: id};
+      }
+
+      categorizedFilters[category][state].push(value.toLowerCase());
     }
-    // console.log(sorting)
+    updatedElements = updatedElements.filter((element) => {
+      return Object.entries(categorizedFilters).every(([groupedCategory, {yes, negative, id}]) => {
+        let nestedValues = extractNestedValue(element, id);
+        if (!Array.isArray(nestedValues)) nestedValues = [nestedValues];
+
+        // console.log("nestedValues", nestedValues)
+        // console.log("negative", negative)
+        // console.log("yes", yes)
+        if (negative.length > 0 && nestedValues.some((val) => negative.includes(val.toLowerCase()))) {
+          return false
+        }
+
+        if (yes.length > 0) {
+          return nestedValues.some((val) => yes.includes(val.toLowerCase()));
+        }
+
+        return true; // If no yes filters exist, do not filter this category
+      })
+    })
+    // console.log("updatedElements", updatedElements)
     updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
     setElements(updatedElements)
-  }, [filters, setElements]);
+
+  }, [filters]);
+
 
   // Function to toggle a filter
   const toggleFilter = useCallback((filterKey) => {
@@ -699,8 +842,8 @@ export const RenderModule = (props: {}) => {
     switch (tag) {
       case "@spell": {
         const spell = getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]
-        if (!spell){
-          console.error("Unknown spell: "+ string)
+        if (!spell) {
+          console.error("Unknown spell: " + string)
         }
         out.hash = encodeForHash(spell?.id)
 
@@ -708,8 +851,8 @@ export const RenderModule = (props: {}) => {
         break;
       }
       case "@spellen": {
-        console.error("This spell is in english: "+ string)
-        out.hash = encodeForHash("english spell "+ string)
+        console.error("This spell is in english: " + string)
+        out.hash = encodeForHash("english spell " + string)
         out.page = "/TTRPG-wiki/spells";
         break;
       }
@@ -763,7 +906,7 @@ export const RenderModule = (props: {}) => {
               <p>
                 {/*{console.log(feature.consumes)}*/}
                 {feature.consumes ?
-                  <i>Coût: {feature.consumes.amountMin && feature.consumes.amountMax ? feature.consumes.amountMin + "-" + feature.consumes.amountMax : feature.consumes.amount ?? 1} {feature.consumes.name}</i>: ""}
+                  <i>Coût: {feature.consumes.amountMin && feature.consumes.amountMax ? feature.consumes.amountMin + "-" + feature.consumes.amountMax : feature.consumes.amount ?? 1} {feature.consumes.name}</i> : ""}
                 {render(feature.entries, depth, toggle)}
               </p>
               : ""}
@@ -798,8 +941,8 @@ export const RenderModule = (props: {}) => {
               </thead>
               <tbody>
               {entry.rows.map(row => <tr>
-                {row.map((cell, idx) => <td className={"td__th "+entry.colStyles[idx]}>
-                  {typeof cell === "number"?render(String(cell)):render(cell)}
+                {row.map((cell, idx) => <td className={"td__th " + entry.colStyles[idx]}>
+                  {typeof cell === "number" ? render(String(cell)) : render(cell)}
                 </td>)}
               </tr>)}
               </tbody>

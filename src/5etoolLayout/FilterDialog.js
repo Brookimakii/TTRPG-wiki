@@ -266,7 +266,7 @@ const Filters = ({filterOptions, defaultState, onSave, onClose}) => {
             <div className={"fltr__wrp-pills fltr__container-pills" + (getToggleState(category) ? "" : " ve-hidden")}>
               {filterOptions.filter(a => a.category === category).map((item) =>
                 <div className="fltr__pill"
-                     onClick={() => handleLeftClick(item.category + "-" + item.value)}
+                     onClick={() => handleLeftClick(getOptionId(item))}
                      onContextMenu={(e) => {
                        e.preventDefault();
                        handleRightClick(getOptionId(item))

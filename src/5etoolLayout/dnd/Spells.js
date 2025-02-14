@@ -1,10 +1,11 @@
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {Entry, Spell} from "../../layout/5e/Models";
 import FilterDialogManager, {getOptionId} from "../FilterDialogManager";
 import Filters from "../FilterDialog";
+import {loadFromLocalStorage, saveToLocalStorage} from "../PersistData";
 
 function tableDisplayOption(column, string, element) {
   switch (column.sortId) {
@@ -36,64 +37,92 @@ function tableDisplayOption(column, string, element) {
   }
 }
 
+const FILTER_OPTIONS = [
+  {category: "casters", subcategory: "classes", label: "Artificier"},
+  {category: "casters", subcategory: "classes", label: "Bard"},
+  {category: "casters", subcategory: "classes", label: "Clerc"},
+  {category: "casters", subcategory: "classes", label: "Druide"},
+  {category: "casters", subcategory: "classes", label: "Ensorceleur"},
+  {category: "casters", subcategory: "classes", label: "Magicien"},
+  {category: "casters", subcategory: "classes", label: "Occultiste"},
+  {category: "casters", subcategory: "classes", label: "Paladin"},
+  {category: "casters", subcategory: "classes", label: "Rôdeur"},
+  {category: "school", value: "A", label: "Abjuration"},
+  {category: "school", value: "C", label: "Conjuration"},
+  {category: "school", value: "D", label: "Divination"},
+  {category: "school", value: "En", label: "Enchantment"},
+  {category: "school", value: "Ev", label: "Enchantment"},
+  {category: "school", value: "I", label: "Illusion"},
+  {category: "school", value: "N", label: "Necromancy"},
+  {category: "school", value: "T", label: "Transmutation"},
+  {category: "level", value: "0", label: "Sort Mineur"},
+  {category: "level", label: "1"},
+  {category: "level", label: "2"},
+  {category: "level", label: "3"},
+  {category: "level", label: "4"},
+  {category: "level", label: "5"},
+  {category: "level", label: "6"},
+  {category: "level", label: "7"},
+  {category: "level", label: "8"},
+  {category: "level", label: "9"},
+  // {category: "castingTime", value: "action", label: "Action"},
+  // {category: "castingTime", value: "reaction", label: "Reaction"},
+  // {category: "castingTime", value: "1hour", label: "1 Hour"}
+];
+
+const FILTER_SPELL_KEY = "spellFilters"
+const SAVED_SPELL_KEY = "spellPinned"
+
 export const Dnd5eSpells = () => {
 
   const columns = [
     {
-      id: "Nom", sortId: "name", classSize: "ve-col-2-9", colClass: "bold ve-col-2-9 pl-0 pr-1"
+      id: "Nom",
+      sortId: "name",
+      classSize: "ve-col-2-9",
+      colClass: "bold ve-col-2-9 pl-0 pr-1",
+      classSizePinned: "ve-col-3-2",
+      colClassPinned: "bold ve-col-3-2 pl-0 pr-1"
     },
     {
       id: "Niveau", sortId: "level", classSize: "ve-col-1-5", colClass: "ve-col-1-5 px-1 ve-text-center"
     },
     {
-      id: "Incantation", sortId: "castingTime", classSize: "ve-col-1-7", colClass: "ve-col-1-7 px-1 ve-text-center"
+      id: "Incantation",
+      sortId: "castingTime",
+      classSize: "ve-col-1-7",
+      colClass: "ve-col-1-7 px-1 ve-text-center",
+      classSizePinned: "ve-col-1-8",
+      colClassPinned: "ve-col-1-8 px-1 ve-text-center"
     },
     {
-      id: "School", sortId: "school", classSize: "ve-col-1-2", colClass: "ve-col-1-2 px-1 ve-text-center"
+      id: "School",
+      sortId: "school",
+      classSize: "ve-col-1-2",
+      colClass: "ve-col-1-2 px-1 ve-text-center",
+      classSizePinned: "ve-col-1-6",
+      colClassPinned: "ve-col-1-6 px-1 ve-text-center"
     },
     {
-      id: "C", sortId: "concentration", classSize: "ve-col-0-6", colClass: "ve-col-0-6 px-1 ve-text-center"
+      id: "C",
+      sortId: "concentration",
+      classSize: "ve-col-0-6",
+      colClass: "ve-col-0-6 px-1 ve-text-center",
+      classSizePinned: "ve-col-0-7",
+      colClassPinned: "ve-col-0-7 px-1 ve-text-center"
     },
     {
-      id: "Range", sortId: "range", classSize: "ve-col-2-4", colClass: "ve-col-2-4 px-1 ve-text-right"
+      id: "Range",
+      sortId: "range",
+      classSize: "ve-col-2-4",
+      colClass: "ve-col-2-4 px-1 ve-text-right",
+      classSizePinned: "ve-col-3-2",
+      colClassPinned: "ve-col-3-2 pl-1 pr-0 ve-text-right"
     },
     {
       id: "Source", sortId: "source", classSize: "ve-grow", colClass: "ve-col-1-7 ve-text-center pl-1 pr-0"
     }
   ]
-
-  const FILTER_OPTIONS = [
-    {category: "casters", subcategory: "classes", label: "Artificier"},
-    {category: "casters", subcategory: "classes", label: "Bard"},
-    {category: "casters", subcategory: "classes", label: "Clerc"},
-    {category: "casters", subcategory: "classes", label: "Druide"},
-    {category: "casters", subcategory: "classes", label: "Ensorceleur"},
-    {category: "casters", subcategory: "classes", label: "Magicien"},
-    {category: "casters", subcategory: "classes", label: "Occultiste"},
-    {category: "casters", subcategory: "classes", label: "Paladin"},
-    {category: "casters", subcategory: "classes", label: "Rôdeur"},
-    {category: "school", value: "A", label: "Abjuration"},
-    {category: "school", value: "C", label: "Conjuration"},
-    {category: "school", value: "D", label: "Divination"},
-    {category: "school", value: "En", label: "Enchantment"},
-    {category: "school", value: "Ev", label: "Enchantment"},
-    {category: "school", value: "I", label: "Illusion"},
-    {category: "school", value: "N", label: "Necromancy"},
-    {category: "school", value: "T", label: "Transmutation"},
-    {category: "level", value: "0", label: "Sort Mineur"},
-    {category: "level", label: "1"},
-    {category: "level", label: "2"},
-    {category: "level", label: "3"},
-    {category: "level", label: "4"},
-    {category: "level", label: "5"},
-    {category: "level", label: "6"},
-    {category: "level", label: "7"},
-    {category: "level", label: "8"},
-    {category: "level", label: "9"},
-    // {category: "castingTime", value: "action", label: "Action"},
-    // {category: "castingTime", value: "reaction", label: "Reaction"},
-    // {category: "castingTime", value: "1hour", label: "1 Hour"}
-  ];
 
   const spells: [] = getResource(Resources.spell)
   // const [elements, setElements] = useState(spells)
@@ -102,12 +131,12 @@ export const Dnd5eSpells = () => {
   //   // setSelectFromHash([...spells], useLocation().hash)
   // )
   const {
-    selected, setSelected,
+    selected,
     elements, setElements,
-    sorting, setSorting,
-    handleClickSelection, updateSortElementsState,
-    TableHeader, DisplayList, DetailsHeader, TempFilters
-  } = Selector5e(spells, columns, "name", tableDisplayOption);
+    pinnedElements, setPinnedElements,
+    updateSortElementsState,
+    TableHeader, DisplayListPinned, DisplayList, DetailsHeader, TempFilters
+  } = Selector5e(spells, loadFromLocalStorage(SAVED_SPELL_KEY), columns, "name", tableDisplayOption);
 
   const {setFilters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)
 
@@ -119,7 +148,15 @@ export const Dnd5eSpells = () => {
     closeDialog,
     saveFilterResults,
     resetFilter
-  } = FilterDialogManager(FILTER_OPTIONS)
+  } = FilterDialogManager(FILTER_OPTIONS, loadFromLocalStorage(FILTER_SPELL_KEY))
+
+  const togglePin = (item) => {
+    if (pinnedElements.some((i) => i.id === item.id)) {
+      setPinnedElements(pinnedElements.filter((i) => i.id !== item.id))
+    } else {
+      setPinnedElements([...pinnedElements, {...item, pinnedAt: Date.now()}]);
+    }
+  }
 
   // function extractNestedValue(obj, path) {
   //   return path.split('.').reduce((o, i) => o?.[i], obj)
@@ -190,7 +227,17 @@ export const Dnd5eSpells = () => {
 
   useEffect(() => {
     setFilters(filterState)
+    saveToLocalStorage(FILTER_SPELL_KEY, filterState)
   }, [filterState]);
+
+  useEffect(() => {
+    const newPinned = [...pinnedElements]
+    console.log(pinnedElements)
+    newPinned.sort((a, b) => a.pinnedAt - b.pinnedAt)
+    console.log(newPinned)
+    saveToLocalStorage(SAVED_SPELL_KEY, newPinned)
+  }, [pinnedElements]);
+
 
   const renderEntries = (entry: Entry, toggle, depth) => {
     return <div className="rd__b rd__b--3">
@@ -220,7 +267,7 @@ export const Dnd5eSpells = () => {
                         data-state={filterState[id]}
                         onClick={() => resetFilter(id)}
             >
-              {option.label??option.value}
+              {option.label ?? option.value}
             </div>
           })}
         </div>
@@ -249,10 +296,56 @@ export const Dnd5eSpells = () => {
           </div>
         </div> :
         <div className="view-col" id="contentwrapper">
+          {pinnedElements.length > 0 ? <>
+            <div id="sublistcontainer" className="sublist sublist--resizable no-print sublist--visible"  style={{height: "76px"}}>
+              {DisplayListPinned(pinnedElements)}
+              <div className="sublist__ele-resize mobile__hidden">...</div>
+            </div>
+            {/*<div className="pt-2 ve-flex-col no-print">*/}
+            {/*  <div className="ve-flex-col my-2 w-100">*/}
+            {/*    <div className="ve-flex-v-center">*/}
+            {/*      <div className="ve-flex-v-center mr-1 w-100 min-w-0 relative">*/}
+            {/*        <div className="mr-2 ve-muted">List:</div>*/}
+            {/*        <input className="form-control input-xs form-control--minimal" autoComplete="new-password"*/}
+            {/*               autoCapitalize="off" spellCheck="false" placeholder="(Unnamed List)"/>*/}
+            {/*        <div className="absolute right-0 z-index-1 no-events ve-flex-vh-center ve-muted pr-2 ve-small"*/}
+            {/*             title="Number of Pinned List Items"><span*/}
+            {/*          className="glyphicon glyphicon-pushpin mr-1"></span> 1*/}
+            {/*        </div>*/}
+            {/*      </div>*/}
+            {/*      <div className="ve-flex-h-right ve-flex-v-center ve-btn-group no-shrink">*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="New Pinned List">*/}
+            {/*          <span className="glyphicon glyphicon-file"></span>*/}
+            {/*        </button>*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="Duplicate Pinned List">*/}
+            {/*          <span className="glyphicon glyphicon-duplicate"></span>*/}
+            {/*        </button>*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="Save Pinned List">*/}
+            {/*          <span className="glyphicon glyphicon-floppy-disk"></span>*/}
+            {/*        </button>*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="Load Pinned List">*/}
+            {/*          <span className="glyphicon glyphicon-folder-open"></span>*/}
+            {/*        </button>*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="Download Pinned List">*/}
+            {/*          <span className="glyphicon glyphicon-download"></span>*/}
+            {/*        </button>*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="Upload Pinned List">*/}
+            {/*          <span className="glyphicon glyphicon-upload"></span>*/}
+            {/*        </button>*/}
+            {/*        <button className="ve-btn ve-btn-5et ve-btn-xs ve-btn-default" title="Reload Pinned List"*/}
+            {/*                disabled="">*/}
+            {/*          <span className="glyphicon glyphicon-refresh"></span>*/}
+            {/*        </button>*/}
+            {/*      </div>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
+          </> : ""}
           <div className="w-100 ve-flex" id="stat-tabs">
             <div className="ml-auto ve-flex" id="tabs-right">
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                      title="Pin (Toggle) (Hotkey: p/P)"><span className="glyphicon glyphicon-pushpin"></span>
+                      onClick={() => togglePin(selectedSpell)} title="Pin (Toggle) (Hotkey: p/P)">
+                <span className="glyphicon glyphicon-pushpin"></span>
               </button>
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
                       title="Popout Window (SHIFT for Source Data; CTRL for Markdown Render)"><span

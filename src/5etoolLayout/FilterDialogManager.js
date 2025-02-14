@@ -8,9 +8,9 @@ export const getOptionId = (option) => {
   return `${option.category}${option.subcategory ? `.${option.subcategory}` : ""}-${option.value??option.label}`;
 }
 
-const ParentComponent = (filterOptions) => {
+const ParentComponent = (filterOptions, savedFilterState = []) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [filterState, setFilterState] = useState([]);
+  const [filterState, setFilterState] = useState(savedFilterState);
   const [filterResults, setFilterResults] = useState({positive:{}, negative: {}});
 
   const openDialog = () => {
