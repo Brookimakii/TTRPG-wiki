@@ -201,7 +201,7 @@ export const setValueAtPath = (obj, path, value) => {
 };
 
 
-export const Selector5e = (defaultElements: [{}] = [], defaultPinnedElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function) => {
+export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSort: string = "name", tableDisplayOption: function, defaultPinnedElements: [{}] = []) => {
   // console.log("defaultElements", defaultElements)
   const [selected: {} | undefined, setSelected] = useState();
   const [elements: [{}], setElements] = useState(sortList(defaultElements, defaultSort, true) ?? []);
@@ -409,6 +409,7 @@ export const Selector5e = (defaultElements: [{}] = [], defaultPinnedElements: [{
   function DisplayList(elementsToShow = []) {
     // console.log(elementsToShow)
     // console.log(selected)
+    console.log("columns", columns)
     return <>
       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
         {columns.map((column) => {
