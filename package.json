@@ -4,21 +4,15 @@
   "private": true,
   "homepage": "https://brookimakii.github.io/TTRPG-wiki/",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.3.3",
-    "gh-pages": "^6.2.0",
-    "react": "^18.3.1",
-    "react-breadcrumbs-dynamic": "^1.2.1",
-    "react-dom": "^18.3.1",
-    "react-markdown": "^9.0.1",
-    "react-router-dom": "^6.27.0",
-    "react-scripts": "5.0.1",
-    "react-tabs": "^6.0.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "react-router-dom": "^7.1.5",
+    "react-scripts": "^5.0.1",
+    "react-tabs": "^6.1.0",
     "sass": "^1.80.4",
     "use-react-router-breadcrumbs": "^4.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
