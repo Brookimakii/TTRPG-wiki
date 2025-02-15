@@ -247,6 +247,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     // console.log("shouldAscend", shouldAscend)
     // console.log("shouldReset", shouldReset)
     // console.log("updateSortElementsState '", type, "'")
+    // console.log("Simple", type, shouldAscend || shouldReset)
     return sortList(list, type, shouldAscend || shouldReset);
   }
 
@@ -284,6 +285,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     // console.log("shouldAscend", shouldAscend)
     // console.log("shouldReset", shouldReset)
     // console.log("updateSortElementsState '", type, "'")
+    // console.log("Pinned", type, shouldAscend || shouldReset)
     return sortList(list, type, shouldAscend || shouldReset);
   }
 
@@ -304,10 +306,8 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       } else if (typeof valueA === "number" && typeof valueB === "number") {
         return valueA - valueB
       }
-      console.error(`Unexpected value tag: ${fieldName}`)
+      console.error(`Unexpected value tag: "${fieldName}"`)
       return 0
-
-
     })
   }
 
@@ -341,56 +341,6 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
 
       {/*TODO: add class "ve-hidden" to hide*/}
     </>)
-  }
-
-  function DisplayListPinned(elementsToShow = []) {
-    // console.log(elementsToShow)
-    // console.log(selected)
-    return <>
-      <div id="sublistsort" className="ve-btn-group sublist__wrp-cols">
-        {columns.map((column) => {
-          if (column.sortId === "source") return "";
-          // console.log("sorting", sorting)
-          return (<button type="button"
-                          className={(column.classSizePinned ?? column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
-                          onClick={() => setPinnedElements(updatePinnedSortElementsState(column.sortId, elementsToShow))}
-          >
-            {column.id}
-            <span className={"lst__caret"
-              + (pinnedSorting.startsWith(column.sortId) ? " lst__caret--active" : "")
-              + (pinnedSorting === column.sortId + ".des" ? " lst__caret--reverse" : "")
-            }></span>
-          </button>)
-        })}
-      </div>
-      <div id="list" className="list">
-        {/*{console.log(elements)}*/}
-        {elementsToShow?.map((elem) =>
-          <div
-            className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-            onClick={() => handleClickSelection(elem)}
-            key={elem.id}>
-            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
-                  className="lst__row-border lst__row-inner">
-              {columns.map(column => {
-                const string = Object.byString(elem, column.sortId)
-                switch (column.sortId) {
-                  case "source":
-                    return ""
-                  default: {
-                    if (typeof tableDisplayOption === "function") {
-                      return tableDisplayOption(column, string, elem) ??
-                        <span className={column.colClassPinned ?? column.colClass}>{string}</span>
-                    }
-                    return <span className={column.colClassPinned ?? column.colClass}>{string}</span>
-                  }
-                }
-              })}
-            </Link>
-          </div>
-        )}
-      </div>
-    </>;
   }
 
   function DisplayList(elementsToShow = []) {
@@ -449,6 +399,56 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     </>;
   }
 
+  function DisplayListPinned(elementsToShow = []) {
+    // console.log(elementsToShow)
+    // console.log(selected)
+    return <>
+      <div id="sublistsort" className="ve-btn-group sublist__wrp-cols">
+        {columns.map((column) => {
+          if (column.sortId === "source") return "";
+          // console.log("sorting", sorting)
+          return (<button type="button"
+                          className={(column.classSizePinned ?? column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
+                          onClick={() => setPinnedElements(updatePinnedSortElementsState(column.sortId, elementsToShow))}
+          >
+            {column.id}
+            <span className={"lst__caret"
+              + (pinnedSorting.startsWith(column.sortId) ? " lst__caret--active" : "")
+              + (pinnedSorting === column.sortId + ".des" ? " lst__caret--reverse" : "")
+            }></span>
+          </button>)
+        })}
+      </div>
+      <div id="list" className="list">
+        {/*{console.log(elements)}*/}
+        {elementsToShow?.map((elem) =>
+          <div
+            className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+            onClick={() => handleClickSelection(elem)}
+            key={elem.id}>
+            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
+                  className="lst__row-border lst__row-inner">
+              {columns.map(column => {
+                const string = Object.byString(elem, column.sortId)
+                switch (column.sortId) {
+                  case "source":
+                    return ""
+                  default: {
+                    if (typeof tableDisplayOption === "function") {
+                      return tableDisplayOption(column, string, elem) ??
+                        <span className={column.colClassPinned ?? column.colClass}>{string}</span>
+                    }
+                    return <span className={column.colClassPinned ?? column.colClass}>{string}</span>
+                  }
+                }
+              })}
+            </Link>
+          </div>
+        )}
+      </div>
+    </>;
+  }
+
   function TempFilters({filters, toggleFilter, filtersToggleList}) {
     return <div className="fltr__mini-view ve-btn-group">
       {Object.keys(filters).map((filter) => {
@@ -494,7 +494,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       // console.log("hash", hash)
       // console.log("hash", hash.replaceAll("%20"," "))
       // elements.map((e) => console.log(e.id,("#" + e.id === hash.replace("%20"," "))))
-      const filtered = elements.find((e) => "#" + e.id.toLowerCase() === hash.toLowerCase().replace(/%20/g, " "))
+      const filtered = defaultElements.find((e) => "#" + e.id.toLowerCase() === hash.toLowerCase().replace(/%20/g, " "))
       // console.log("selected", filtered)
       if (filtered) {
         return filtered
@@ -504,7 +504,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
     }
 
     setSelected(setSelectFromHash())
-  }, [elements, location]);
+  }, [location]);
 
   // console.log("selected", selected)
   // console.log("elements", elements)
@@ -635,7 +635,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
     setElements(updatedElements)
 
-  }, [elements, filters, setElements, updateSortElementsState]);
+  }, [elements, filters]);
 
 
   // Function to toggle a filter

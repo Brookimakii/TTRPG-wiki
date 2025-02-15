@@ -303,7 +303,8 @@ export const Dnd5eSpells = () => {
         </div> :
         <div className="view-col" id="contentwrapper">
           {pinnedElements.length > 0 ? <>
-            <div id="sublistcontainer" className="sublist sublist--resizable no-print sublist--visible"  style={{height: "76px"}}>
+            <div id="sublistcontainer" className="sublist sublist--resizable no-print sublist--visible"
+                 style={{height: "76px"}}>
               {DisplayListPinned(pinnedElements)}
               <div className="sublist__ele-resize mobile__hidden">...</div>
             </div>
@@ -365,6 +366,7 @@ export const Dnd5eSpells = () => {
           </div>
           <div id="wrp-pagecontent" className="relative wrp-stats-table">
             <table className="w-100 stats">
+              <thead>
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
@@ -373,6 +375,8 @@ export const Dnd5eSpells = () => {
                 <td colSpan="6"><i>{Parser.SP_SCHOOL_ABV_TO_FULL[selectedSpell.school]} de
                   Niveau {selectedSpell.level} </i></td>
               </tr>
+              </thead>
+              <tbody>
               <tr>
                 <td colSpan="6" className="pt-2">
                   <b>Temps d'incantation:</b> {selectedSpell.castingTime}
@@ -443,6 +447,7 @@ export const Dnd5eSpells = () => {
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
+              </tbody>
             </table>
           </div>
         </div>
