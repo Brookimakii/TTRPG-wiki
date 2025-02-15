@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/TTRPG-wiki/static/css/main.74ba54fb.css",
-    "main.js": "/TTRPG-wiki/static/js/main.36bec864.js",
-    "static/js/453.11749e9c.chunk.js": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js",
+    "main.css": "/TTRPG-wiki/static/css/main.055dc8e9.css",
+    "main.js": "/TTRPG-wiki/static/js/main.0d99685f.js",
+    "static/js/488.ab765b9e.chunk.js": "/TTRPG-wiki/static/js/488.ab765b9e.chunk.js",
     "static/media/hpphumblescratch-webfont.woff2": "/TTRPG-wiki/static/media/hpphumblescratch-webfont.5c9eda82bee34f549305.woff2",
     "static/media/pro-fa-light-300-ca12ba.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-ca12ba.57beb94c3fbc1ed27967.woff2",
     "static/media/pro-fa-light-300-50c900.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-50c900.c26b7d6e9b6c18527eaf.woff2",
@@ -627,15 +627,16 @@
     "static/media/pro-fa-solid-900-90d968.woff2": "/TTRPG-wiki/static/media/pro-fa-solid-900-90d968.4c45df8d78e5a539d596.woff2",
     "static/media/2025-01-21.md": "/TTRPG-wiki/static/media/2025-01-21.36b0ddbe704f541aba9c.md",
     "static/media/2025-01-17.md": "/TTRPG-wiki/static/media/2025-01-17.444553715b48b13f9cf8.md",
-    "static/media/2025-01-25.md": "/TTRPG-wiki/static/media/2025-01-25.44ef60f6954ca57aec64.md",
-    "static/media/2025-02-02.md": "/TTRPG-wiki/static/media/2025-02-02.aed9319f720a5a8fcf24.md",
-    "static/media/2025-01-26.md": "/TTRPG-wiki/static/media/2025-01-26.f895e5e45aa709b82ba0.md",
-    "main.74ba54fb.css.map": "/TTRPG-wiki/static/css/main.74ba54fb.css.map",
-    "main.36bec864.js.map": "/TTRPG-wiki/static/js/main.36bec864.js.map",
-    "453.11749e9c.chunk.js.map": "/TTRPG-wiki/static/js/453.11749e9c.chunk.js.map"
+    "static/media/2025-01-25.md": "/TTRPG-wiki/static/media/2025-01-25.0d111113bfe28bb0eef7.md",
+    "static/media/2025-02-14.md": "/TTRPG-wiki/static/media/2025-02-14.a7135e7c6eb9bbeb1765.md",
+    "static/media/2025-02-02.md": "/TTRPG-wiki/static/media/2025-02-02.099fef0da848a661ff50.md",
+    "static/media/2025-01-26.md": "/TTRPG-wiki/static/media/2025-01-26.455ca0b1852ee0d2ebc6.md",
+    "main.055dc8e9.css.map": "/TTRPG-wiki/static/css/main.055dc8e9.css.map",
+    "main.0d99685f.js.map": "/TTRPG-wiki/static/js/main.0d99685f.js.map",
+    "488.ab765b9e.chunk.js.map": "/TTRPG-wiki/static/js/488.ab765b9e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.74ba54fb.css",
-    "static/js/main.36bec864.js"
+    "static/css/main.055dc8e9.css",
+    "static/js/main.0d99685f.js"
   ]
 }
