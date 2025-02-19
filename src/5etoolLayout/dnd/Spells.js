@@ -69,6 +69,9 @@ const FILTER_OPTIONS = [
   // {category: "castingTime", value: "reaction", label: "Reaction"},
   // {category: "castingTime", value: "1hour", label: "1 Hour"}
 ];
+const FILTER_OPTIONS_ALIAS_LABELS = {
+  "":""
+}
 
 const FILTER_SPELL_KEY = "spellFilters"
 const SAVED_SPELL_KEY = "spellPinned"
@@ -238,9 +241,9 @@ export const Dnd5eSpells = () => {
 
   useEffect(() => {
     const newPinned = [...pinnedElements]
-    console.log(pinnedElements)
+    // console.log(pinnedElements)
     newPinned.sort((a, b) => a.pinnedAt - b.pinnedAt)
-    console.log(newPinned)
+    // console.log(newPinned)
     saveToLocalStorage(SAVED_SPELL_KEY, newPinned)
   }, [pinnedElements]);
 
@@ -285,7 +288,7 @@ export const Dnd5eSpells = () => {
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
-              <tbody>
+            <tbody>
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>

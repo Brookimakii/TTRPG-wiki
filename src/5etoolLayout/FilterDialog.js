@@ -135,8 +135,9 @@ const getAttributeListAfterFilter = (filterObjects, attribute, attributeToCheck,
   )];
 }
 
-const Filters = ({filterOptions, defaultState, onSave, onClose}) => {
+const Filters = ({filterOptions, filterOptionsLabelAlias, defaultState, onSave, onClose}) => {
   filterOptions = filterOptions ?? FILTER_OPTIONS
+  filterOptionsLabelAlias = filterOptionsLabelAlias ?? {}
   const {toggleStateChange, getToggleState, addToggleableState} = ToggleState()
   // console.log("defaultState", defaultState, defaultState.length!==0)
 
@@ -222,7 +223,7 @@ const Filters = ({filterOptions, defaultState, onSave, onClose}) => {
           {idx !== 0 ? <div className="fltr__dropdown-divider  mb-1"></div> : ""}
           <div className="split fltr__h mb-1">
             <div className="fltr__h-text ve-flex-h-center mobile__w-100">
-              <span>{capitalize(category)}</span>
+              <span>{capitalize(filterOptionsLabelAlias?.[category])??capitalize(category)}</span>
               <button onClick={() => toggleStateChange(category)}
                       className="ve-btn ve-btn-xs ve-btn-default mobile__visible ml-auto px-3 mr-2">
                 {getToggleState(category) ? "Hide" : "Show"}
@@ -236,7 +237,7 @@ const Filters = ({filterOptions, defaultState, onSave, onClose}) => {
                   <div className="split fltr__h mb-1">
                     <div className="fltr__h-text ve-flex-h-center mobile__w-100">
                       <span className="mr-2">-</span>
-                      <span>{subcategory}</span>
+                      <span>{capitalize(filterOptionsLabelAlias?.[subcategory])??capitalize(subcategory)}</span>
                       <button onClick={() => toggleStateChange(`${category}-${subcategory}`)}
                               className="ve-btn ve-btn-xs ve-btn-default mobile__visible ml-auto px-3 mr-2">
                         {getToggleState(`${category}-${subcategory}`) ? "Hide" : "Show"}

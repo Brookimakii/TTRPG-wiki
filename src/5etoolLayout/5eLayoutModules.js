@@ -635,7 +635,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
     setElements(updatedElements)
 
-  }, [elements, filters]);
+  }, [ filters]);
 
 
   // Function to toggle a filter
