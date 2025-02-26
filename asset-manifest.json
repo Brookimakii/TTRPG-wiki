@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TTRPG-wiki/static/css/main.055dc8e9.css",
-    "main.js": "/TTRPG-wiki/static/js/main.01078acb.js",
+    "main.js": "/TTRPG-wiki/static/js/main.1b65e54c.js",
     "static/js/488.ab765b9e.chunk.js": "/TTRPG-wiki/static/js/488.ab765b9e.chunk.js",
     "static/media/hpphumblescratch-webfont.woff2": "/TTRPG-wiki/static/media/hpphumblescratch-webfont.5c9eda82bee34f549305.woff2",
     "static/media/pro-fa-light-300-ca12ba.woff2": "/TTRPG-wiki/static/media/pro-fa-light-300-ca12ba.57beb94c3fbc1ed27967.woff2",
@@ -632,11 +632,11 @@
     "static/media/2025-02-02.md": "/TTRPG-wiki/static/media/2025-02-02.099fef0da848a661ff50.md",
     "static/media/2025-01-26.md": "/TTRPG-wiki/static/media/2025-01-26.455ca0b1852ee0d2ebc6.md",
     "main.055dc8e9.css.map": "/TTRPG-wiki/static/css/main.055dc8e9.css.map",
-    "main.01078acb.js.map": "/TTRPG-wiki/static/js/main.01078acb.js.map",
+    "main.1b65e54c.js.map": "/TTRPG-wiki/static/js/main.1b65e54c.js.map",
     "488.ab765b9e.chunk.js.map": "/TTRPG-wiki/static/js/488.ab765b9e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.055dc8e9.css",
-    "static/js/main.01078acb.js"
+    "static/js/main.1b65e54c.js"
   ]
 }
