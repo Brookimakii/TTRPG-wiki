@@ -7738,7 +7738,7 @@
         "source": "PHB",
         "page": 0,
         "subclassFeatures": [
-          "Chevalier de l'occulte|PHB|Chevalier de l'occulte|PHB|3",
+          "Chevalier de l'occulte|Guerrier|PHB|Chevalier de l'occulte|PHB|3",
           "Magie de guerre|Guerrier|PHB|Chevalier de l'occulte|PHB|7",
           "Frappe occulte|Guerrier|PHB|Chevalier de l'occulte|PHB|10",
           "Charge arcanique|Guerrier|PHB|Chevalier de l'occulte|PHB|15",
@@ -7751,7 +7751,7 @@
         "source": "PHB",
         "page": 0,
         "subclassFeatures": [
-          "Maître de guerre  |Guerrier|PHB|Maître de guerre|PHB|3",
+          "Maître de guerre|Guerrier|PHB|Maître de guerre|PHB|3",
           "Étudiant de guerre|Guerrier|PHB|Maître de guerre|PHB|7",
           "Connaître son ennemi|Guerrier|PHB|Maître de guerre|PHB|10",
           "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|15",
@@ -8067,7 +8067,7 @@
           },
           {
             "type": "refSubclassFeature",
-            "subclassFeature": "Option de tir des arcanes|Guerrier|PHB|Archer des arcanes|PHB|3"
+            "subclassFeature": "Options de tir des arcanes|Guerrier|PHB|Archer des arcanes|XGE|3"
           }
         ]
       },
@@ -8118,9 +8118,7 @@
           {
             "type": "abilityDc",
             "name": "Arcane Shot",
-            "attributes": [
-              "int"
-            ]
+            "attribute": "int"
           },
           {
             "type": "refOptionalfeature",

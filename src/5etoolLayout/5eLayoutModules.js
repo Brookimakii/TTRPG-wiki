@@ -635,7 +635,7 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
     updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
     setElements(updatedElements)
 
-  }, [ filters]);
+  }, [filters]);
 
 
   // Function to toggle a filter
@@ -951,7 +951,8 @@ export const RenderModule = (props: {}) => {
         case "abilityDc":
           return <div className={"rd__wrp-centered-ability"}>
             <b>DD de sauvegarde des sorts</b> = 8 + votre
-            modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
+            modificateur {"aeiouy".includes((entry.attribute??entry.attributes[0]).toLowerCase().at(0)) ? "d'" : "de "}
+            {entry.attribute ? Parser.attAbvToFull(entry.attribute?.toLowerCase()) : entry.attributes.map(att => Parser.attAbvToFull(att.toLowerCase()))} +
             bonus de maîtrise
           </div>
         case "abilityAttackMod":
