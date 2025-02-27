@@ -120,6 +120,7 @@ const FILTER_OPTIONS = [
 const STATES = ["yes", "neutral", "no"];
 
 function capitalize(str) {
+  if (!str) return undefined
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
@@ -223,6 +224,7 @@ const Filters = ({filterOptions, filterOptionsLabelAlias, defaultState, onSave, 
           {idx !== 0 ? <div className="fltr__dropdown-divider  mb-1"></div> : ""}
           <div className="split fltr__h mb-1">
             <div className="fltr__h-text ve-flex-h-center mobile__w-100">
+              {/*{console.log(filterOptionsLabelAlias, category)}*/}
               <span>{capitalize(filterOptionsLabelAlias?.[category])??capitalize(category)}</span>
               <button onClick={() => toggleStateChange(category)}
                       className="ve-btn ve-btn-xs ve-btn-default mobile__visible ml-auto px-3 mr-2">
