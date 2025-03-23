@@ -13212,11 +13212,11 @@
         "entries": [
           {
             "type": "refSubclassFeature",
-            "subclassFeature": "Nuée groupée|Gardien des nuées|PHB|Rôdeur|TCE|3"
+            "subclassFeature": "Nuée groupée|Rôdeur|PHB|Gardien des nuées|TCE|3"
           },
           {
             "type": "refSubclassFeature",
-            "subclassFeature": "Magie du gardien des nuées|Gardien des nuées|PHB|Rôdeur|TCE|3"
+            "subclassFeature": "Magie du gardien des nuées|Rôdeur|PHB|Gardien des nuées|TCE|3"
           }
         ]
       },
@@ -13486,23 +13486,23 @@
             "rows": [
               [
                 "3rd",
-                "{@spell disguise self}"
+                "{@spell déguisement}"
               ],
               [
                 "5th",
-                "{@spell rope trick}"
+                "{@spell corde enchantée}"
               ],
               [
                 "9th",
-                "{@spell fear}"
+                "{@spell terreur}"
               ],
               [
                 "13th",
-                "{@spell greater invisibility}"
+                "{@spell invisibilité supérieure}"
               ],
               [
                 "17th",
-                "{@spell seeming}"
+                "{@spell apparence trompeuse}"
               ]
             ]
           }
