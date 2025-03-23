@@ -467,12 +467,7 @@ export const Dnd5eItems = () => {
           </div>
         </div> :
         <div className="view-col" id="contentwrapper">
-          {pinnedElements.length > 0 ? <>
-            <div id="sublistcontainer" className="sublist sublist--resizable no-print sublist--visible"
-                 style={{height: "76px"}}>
-              {DisplayListPinned(pinnedElements)}
-              <div className="sublist__ele-resize mobile__hidden">...</div>
-            </div>
+          {pinnedElements.length > 0 ? DisplayListPinned(pinnedElements):<>
             {/*<div className="pt-2 ve-flex-col no-print">*/}
             {/*  <div className="ve-flex-col my-2 w-100">*/}
             {/*    <div className="ve-flex-v-center">*/}
@@ -512,7 +507,7 @@ export const Dnd5eItems = () => {
             {/*    </div>*/}
             {/*  </div>*/}
             {/*</div>*/}
-          </> : ""}
+          </>}
           <div className="w-100 ve-flex" id="stat-tabs">
             <div className="ml-auto ve-flex" id="tabs-right">
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"

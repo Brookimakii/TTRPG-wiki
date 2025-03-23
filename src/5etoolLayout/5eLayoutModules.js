@@ -4,6 +4,7 @@ import {Parser} from "../layout/5e/js/parser";
 import type {Entry} from "../layout/5e/Models";
 import {PlayerOptionNFeature} from "../layout/5e/Models";
 import {getResource, Resources} from "../resources/ResourcesFetch";
+import {loadFromLocalStorage, saveToLocalStorage} from "./PersistData";
 
 Object.byString = function (o, s) {
   s = s.replace(/\[(\w+)]/g, '.$1'); // convert indexes to properties
@@ -346,7 +347,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
   function DisplayList(elementsToShow = []) {
     // console.log(elementsToShow)
     // console.log(selected)
-    console.log("columns", columns)
+    // console.log("columns", columns)
     return <>
       <div id="filtertools" className="input-group input-group--bottom ve-flex no-shrink">
         {columns.map((column) => {
@@ -398,53 +399,79 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       </div>
     </>;
   }
+  const defaultMap = {
+    0: "76px",
+    75: "auto",
+  }
+  const defaultHeight = loadFromLocalStorage("pinListHeight") ?? 0
+  const [pinnedHeight, setPinnedHeight] = useState({value: defaultHeight})
+  const [pinnedValue, setPinnedValue] = useState({value: Object.keys(defaultMap).includes(defaultHeight)?defaultMap[defaultHeight]:defaultHeight+"%"})
+
+
 
   function DisplayListPinned(elementsToShow = []) {
-    // console.log(elementsToShow)
-    // console.log(selected)
+    const handleChange = function (event) {
+      if (Object.keys(defaultMap).includes(event.target.value)) {
+        setPinnedValue({value: defaultMap[event.target.value]})
+      }else {
+        setPinnedValue({value: event.target.value + "%"})
+      }
+      setPinnedHeight({value: event.target.value})
+      saveToLocalStorage("pinListHeight",event.target.value)
+    }
+
     return <>
-      <div id="sublistsort" className="ve-btn-group sublist__wrp-cols">
-        {columns.map((column) => {
-          if (column.sortId === "source") return "";
-          // console.log("sorting", sorting)
-          return (<button type="button"
-                          className={(column.classSizePinned ?? column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
-                          onClick={() => setPinnedElements(updatePinnedSortElementsState(column.sortId, elementsToShow))}
-          >
-            {column.id}
-            <span className={"lst__caret"
-              + (pinnedSorting.startsWith(column.sortId) ? " lst__caret--active" : "")
-              + (pinnedSorting === column.sortId + ".des" ? " lst__caret--reverse" : "")
-            }></span>
-          </button>)
-        })}
-      </div>
-      <div id="list" className="list">
-        {/*{console.log(elements)}*/}
-        {elementsToShow?.map((elem) =>
-          <div
-            className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
-            onClick={() => handleClickSelection(elem)}
-            key={elem.id}>
-            <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
-                  className="lst__row-border lst__row-inner">
-              {columns.map(column => {
-                const string = Object.byString(elem, column.sortId)
-                switch (column.sortId) {
-                  case "source":
-                    return ""
-                  default: {
-                    if (typeof tableDisplayOption === "function") {
-                      return tableDisplayOption(column, string, elem) ??
-                        <span className={column.colClassPinned ?? column.colClass}>{string}</span>
+      <div id="sublistcontainer" className="sublist sublist--resizable no-print sublist--visible"
+           style={{height: pinnedValue.value, minHeight: "76px", maxHeight: Object.keys(defaultMap)[1]+"%"}}>
+        <div style={{display: "flex"}}>
+          <input value={pinnedHeight.value} onChange={handleChange} type="range" min="0" max={Object.keys(defaultMap)[1]}/>
+          <div style={{width: "5%"}}></div>
+          <input value={pinnedHeight.value} onChange={handleChange} type="number" min="0" max={Object.keys(defaultMap)[1]}/>
+        </div>
+        <div id="sublistsort" className="ve-btn-group sublist__wrp-cols">
+          {columns.map((column) => {
+            if (column.sortId === "source") return "";
+            // console.log("sorting", sorting)
+            return (<button type="button"
+                            className={(column.classSizePinned ?? column.classSize) + " sort ve-btn ve-btn-default ve-btn-xs"}
+                            onClick={() => setPinnedElements(updatePinnedSortElementsState(column.sortId, elementsToShow))}
+            >
+              {column.id}
+              <span className={"lst__caret"
+                + (pinnedSorting.startsWith(column.sortId) ? " lst__caret--active" : "")
+                + (pinnedSorting === column.sortId + ".des" ? " lst__caret--reverse" : "")
+              }></span>
+            </button>)
+          })}
+        </div>
+        <div id="list" className="list">
+          {/*{console.log(elements)}*/}
+          {elementsToShow?.map((elem) =>
+            <div
+              className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+              onClick={() => handleClickSelection(elem)}
+              key={elem.id}>
+              <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
+                    className="lst__row-border lst__row-inner">
+                {columns.map(column => {
+                  const string = Object.byString(elem, column.sortId)
+                  switch (column.sortId) {
+                    case "source":
+                      return ""
+                    default: {
+                      if (typeof tableDisplayOption === "function") {
+                        return tableDisplayOption(column, string, elem) ??
+                          <span className={column.colClassPinned ?? column.colClass}>{string}</span>
+                      }
+                      return <span className={column.colClassPinned ?? column.colClass}>{string}</span>
                     }
-                    return <span className={column.colClassPinned ?? column.colClass}>{string}</span>
                   }
-                }
-              })}
-            </Link>
-          </div>
-        )}
+                })}
+              </Link>
+            </div>
+          )}
+        </div>
+        <div className="sublist__ele-resize mobile__hidden">...</div>
       </div>
     </>;
   }
@@ -951,7 +978,7 @@ export const RenderModule = (props: {}) => {
         case "abilityDc":
           return <div className={"rd__wrp-centered-ability"}>
             <b>DD de sauvegarde des sorts</b> = 8 + votre
-            modificateur {"aeiouy".includes((entry.attribute??entry.attributes[0]).toLowerCase().at(0)) ? "d'" : "de "}
+            modificateur {"aeiouy".includes((entry.attribute ?? entry.attributes[0]).toLowerCase().at(0)) ? "d'" : "de "}
             {entry.attribute ? Parser.attAbvToFull(entry.attribute?.toLowerCase()) : entry.attributes.map(att => Parser.attAbvToFull(att.toLowerCase()))} +
             bonus de maîtrise
           </div>
