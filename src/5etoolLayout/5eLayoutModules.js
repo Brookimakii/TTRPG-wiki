@@ -422,11 +422,14 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
 
     return <>
       <div id="sublistcontainer" className="sublist sublist--resizable no-print sublist--visible"
-           style={{height: pinnedValue.value, minHeight: "76px", maxHeight: Object.keys(defaultMap)[1]+"%"}}>
+           style={{height: pinnedValue.value, minHeight: "76px", maxHeight: Object.keys(defaultMap)[1] + "%"}}>
         <div style={{display: "flex"}}>
-          <input value={pinnedHeight.value} onChange={handleChange} type="range" min="0" max={Object.keys(defaultMap)[1]}/>
+          <span>Taille:</span>
+          <input value={pinnedHeight.value} onChange={handleChange} type="range" min="0"
+                 max={Object.keys(defaultMap)[1]}/>
           <div style={{width: "5%"}}></div>
-          <input value={pinnedHeight.value} onChange={handleChange} type="number" min="0" max={Object.keys(defaultMap)[1]}/>
+          <input value={pinnedHeight.value} onChange={handleChange} type="number" min="0"
+                 max={Object.keys(defaultMap)[1]}/>
         </div>
         <div id="sublistsort" className="ve-btn-group sublist__wrp-cols">
           {columns.map((column) => {

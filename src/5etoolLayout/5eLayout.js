@@ -38,11 +38,11 @@ export const Layout5e = ({title="Test", base}) => {
           </NavMenu>
           <NavMenu system={base} name="Player" href="" addCaret={true} showMenu={showMenu}>
             <MenuLink system={base} name="Classes" link="classes"/>
-            <MenuLink system={base} name="Backgrounds" link="backgrounds"/>
-            <MenuLink system={base} name="Feats" link="feats"/>
+            <MenuLink system={base} name="Historique" link="backgrounds"/>
+            <MenuLink system={base} name="Dons" link="feats"/>
             <MenuLink system={base} name="Races" link="races"/>
-            <MenuLink system={base} name="Other Character Creation Options" link="#Unknown"/>
-            <MenuLink system={base} name="Other Options &amp; Features" link="optionsFeatures"/>
+            {/*<MenuLink system={base} name="Other Character Creation Options" link="#Unknown"/>*/}
+            <MenuLink system={base} name="Autres Option &amp; Capacité" link="optionsFeatures"/>
             <MenuDivider/>
             <MenuLink system={base} name="Stat Generator" link="#Unknown"/>
             <MenuDivider/>

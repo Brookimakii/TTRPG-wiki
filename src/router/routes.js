@@ -15,6 +15,7 @@ import {Changelog} from "../ChangeLog/Changelog";
 import {DnDCheatsheet} from "../5etoolLayout/dnd/Cheatsheet";
 import FilterDialog from "../5etoolLayout/FilterDialog";
 import ParentComponent from "../5etoolLayout/FilterDialogManager";
+import Report from "../ChangeLog/ReportSystem";
 
 const routes = [
   {
@@ -107,6 +108,11 @@ const routes = [
         id: "changelog",
         path: "changelog",
         element: <Changelog/>
+      },
+      {
+        id: "report",
+        path: "report",
+        element: <Report/>
       }
     ]
   },

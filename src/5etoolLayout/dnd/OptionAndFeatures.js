@@ -1,9 +1,32 @@
 import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
-import React from "react";
+import React, {useEffect} from "react";
 import type {PlayerOptionNFeature} from "../../layout/5e/Models";
 import {Armor, Weapon} from "../../layout/5e/Models";
+import FilterDialogManager, {getOptionId} from "../FilterDialogManager";
+import {loadFromLocalStorage, saveToLocalStorage} from "../PersistData";
+import Filters from "../FilterDialog";
+
+
+const FILTER_OPTIONS = [
+  {category: "featureType", value:"AI", label: "Infusion d'Artificier"},
+  {category: "featureType", value:"EI", label: "Invocation Occulte"},
+  {category: "featureType", value:"TA", label: "Tir Arcanique"},
+  {category: "featureType", value:"P", label: "Pacte"},
+  {category: "featureType", value:"MV:MdG", label: "Manœuvres"},
+  {category: "featureType", value:"MM", label: "Métamagie"},
+  {category: "featureType", value:"SC:R", label: "Style de Combat: Rôdeur"},
+  {category: "featureType", value:"SC:P", label: "Style de Combat: Paladin"},
+  {category: "featureType", value:"SC:B", label: "Style de Combat: Barde"},
+  {category: "featureType", value:"SC:G", label: "Style de Combat: Guerrier"},
+  {category: "featureType", value:"DE", label: "Discipline Élémentaire"}
+];
+const FILTER_OPTIONS_ALIAS_LABELS = {
+  "featureType": "Type de Feature"
+}
+const FILTER_OPTION_KEY = "optionFilters"
+const SAVED_OPTION_KEY = "optionPinned"
 
 export const Dnd5eOptionFeatures = () => {
 
@@ -131,7 +154,17 @@ export const Dnd5eOptionFeatures = () => {
     return textA < textB ? -1 : textA > textB ? 1 : 0
   }), columns, "name", tableDisplayOption);
 
-  const {filters, toggleFilter} = FilterManager(setElements, updateSortElementsState, features)
+  const {
+    isDialogOpen,
+    filterResults,
+    filterState,
+    openDialog,
+    closeDialog,
+    saveFilterResults,
+    resetFilter
+  } = FilterDialogManager(FILTER_OPTIONS, loadFromLocalStorage(FILTER_OPTION_KEY))
+
+  const {setFilters, toggleFilter} = FilterManager(setElements, updateSortElementsState, features)
 
   const casters = {}
   const casterObj = {
@@ -175,18 +208,40 @@ export const Dnd5eOptionFeatures = () => {
     return list.join(", ").trim().replaceAll(/,$/g,"")
   }
 
+
+  useEffect(() => {
+    setFilters(filterState)
+    saveToLocalStorage(FILTER_OPTION_KEY, filterState)
+  }, [filterState]);
+
+  useEffect(() => {
+    const newPinned = [...pinnedElements]
+    // console.log(pinnedElements)
+    newPinned.sort((a, b) => a.pinnedAt - b.pinnedAt)
+    // console.log(newPinned)
+    saveToLocalStorage(SAVED_OPTION_KEY, newPinned)
+  }, [pinnedElements]);
+
+  // {console.log(features)}
+  const togglePin = (item) => {
+    if (pinnedElements.some((i) => i.id === item.id)) {
+      setPinnedElements(pinnedElements.filter((i) => i.id !== item.id))
+    } else {
+      setPinnedElements([...pinnedElements, {...item, pinnedAt: Date.now()}]);
+    }
+  }
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
-        <TableHeader/>
+        <TableHeader filterOpen={openDialog}/>
         <div className="fltr__mini-view ve-btn-group">
-          {Object.keys(casters).map((caster, idx) => {
-            const path = casters[caster]
+          {FILTER_OPTIONS.map((option, idx) => {
+            const id = getOptionId(option)
             return <div className="fltr__mini-pill"
-                        data-state={filters[path + "-" + caster] ?? "disabled"}
-                        onClick={() => toggleFilter(path + "-" + caster)}
+                        data-state={filterState[id]}
+                        onClick={() => resetFilter(id)}
             >
-              {caster}
+              {option.label ?? option.value}
             </div>
           })}
         </div>
@@ -197,7 +252,7 @@ export const Dnd5eOptionFeatures = () => {
       {!selectedOptionFeature || Object.keys(selectedOptionFeature).length === 0 ?
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
-            <table id="pagecontent" className="w-100 stats">
+          <table id="pagecontent" className="w-100 stats">
               <tbody>
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
@@ -268,5 +323,7 @@ export const Dnd5eOptionFeatures = () => {
         </div>
       }
     </div>
+    {isDialogOpen ? <Filters filterOptionsLabelAlias={FILTER_OPTIONS_ALIAS_LABELS} filterOptions={FILTER_OPTIONS} defaultState={filterState} onClose={closeDialog}
+                             onSave={saveFilterResults}/> : ""}
   </div>)
 }

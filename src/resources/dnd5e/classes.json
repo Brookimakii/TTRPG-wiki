@@ -3580,12 +3580,12 @@
               {
                 "type": "abilityDc",
                 "name": "Spell",
-                "attribute": "cha"
+                "attribute": "sag"
               },
               {
                 "type": "abilityAttackMod",
                 "name": "Spell",
-                "attribute": "cha"
+                "attribute": "sag"
               }
             ]
           },
@@ -7752,10 +7752,10 @@
         "page": 0,
         "subclassFeatures": [
           "Maître de guerre|Guerrier|PHB|Maître de guerre|PHB|3",
-          "Étudiant de guerre|Guerrier|PHB|Maître de guerre|PHB|7",
-          "Connaître son ennemi|Guerrier|PHB|Maître de guerre|PHB|10",
-          "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|15",
-          "Implacable|Guerrier|PHB|Maître de guerre|PHB|18"
+          "Observer son ennemi|Guerrier|PHB|Maître de guerre|PHB|7",
+          "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|10",
+          "Implacable|Guerrier|PHB|Maître de guerre|PHB|15",
+          "Supériorité au combat améliorée|Guerrier|PHB|Maître de guerre|PHB|18"
         ]
       },
       {
@@ -9145,7 +9145,7 @@
         ]
       },
       {
-        "name": "Connaître son ennemi",
+        "name": "Observer son ennemi",
         "source": "PHB",
         "page": 0,
         "className": "Guerrier",
@@ -9196,6 +9196,20 @@
         "header": 2,
         "entries": [
           "À partir du niveau 15, si lorsque vous lancez votre jet d’initiative vous n’avez plus de dés de supériorité disponibles, vous en regagnez un."
+        ]
+      },
+      {
+        "name": "Supériorité au combat améliorée",
+        "source": "PHB",
+        "page": 0,
+        "className": "Guerrier",
+        "classSource": "PHB",
+        "subclassShortName": "Maître de guerre",
+        "subclassSource": "PHB",
+        "level": 18,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 10, vos dés de supériorité deviennent des d10. À partir du niveau 18 ils deviennent des d12."
         ]
       },
       {},

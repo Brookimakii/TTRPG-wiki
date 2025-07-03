@@ -39,7 +39,7 @@ function tableDisplayOption(column, string, element) {
 
 const FILTER_OPTIONS = [
   {category: "casters", subcategory: "classes", label: "Artificier"},
-  {category: "casters", subcategory: "classes", label: "Bard"},
+  {category: "casters", subcategory: "classes", label: "Barde"},
   {category: "casters", subcategory: "classes", label: "Clerc"},
   {category: "casters", subcategory: "classes", label: "Druide"},
   {category: "casters", subcategory: "classes", label: "Ensorceleur"},
@@ -70,7 +70,7 @@ const FILTER_OPTIONS = [
   // {category: "castingTime", value: "1hour", label: "1 Hour"}
 ];
 const FILTER_OPTIONS_ALIAS_LABELS = {
-  "":""
+  "": ""
 }
 
 const FILTER_SPELL_KEY = "spellFilters"
@@ -288,7 +288,7 @@ export const Dnd5eSpells = () => {
         <div className="view-col" id="contentwrapper">
           <div id="wrp-pagecontent" className="relative wrp-stats-table placeholder">
             <table id="pagecontent" className="w-100 stats">
-            <tbody>
+              <tbody>
               <tr>
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
@@ -305,7 +305,7 @@ export const Dnd5eSpells = () => {
           </div>
         </div> :
         <div className="view-col" id="contentwrapper">
-          {pinnedElements.length > 0 ? DisplayListPinned(pinnedElements): <>
+          {pinnedElements.length > 0 ? DisplayListPinned(pinnedElements) : <>
             {/*<div className="pt-2 ve-flex-col no-print">*/}
             {/*  <div className="ve-flex-col my-2 w-100">*/}
             {/*    <div className="ve-flex-v-center">*/}
@@ -349,7 +349,9 @@ export const Dnd5eSpells = () => {
           <div className="w-100 ve-flex" id="stat-tabs">
             <div className="ml-auto ve-flex" id="tabs-right">
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
-                      onClick={() => togglePin(selectedSpell)} title="Pin (Toggle) (Hotkey: p/P)">
+                      onClick={() => togglePin(selectedSpell)} title="Pin (Toggle) (Hotkey: p/P)"
+                      style={{background: pinnedElements.filter(s => s.id === selectedSpell.id).length > 0 ? "lime" : ""}}
+              >
                 <span className="glyphicon glyphicon-pushpin"></span>
               </button>
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
