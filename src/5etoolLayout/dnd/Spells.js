@@ -9,6 +9,11 @@ import {loadFromLocalStorage, saveToLocalStorage} from "../PersistData";
 
 function tableDisplayOption(column, string, element) {
   switch (column.sortId) {
+    case "name": {
+      return (
+        <span className={column.colClass}>{element.new?"⭐":""}{string}</span>
+      )
+    }
     case "school": {
       return (
         <span
@@ -65,8 +70,9 @@ const FILTER_OPTIONS = [
   {category: "level", label: "7"},
   {category: "level", label: "8"},
   {category: "level", label: "9"},
-  // {category: "castingTime", value: "action", label: "Action"},
-  // {category: "castingTime", value: "reaction", label: "Reaction"},
+  // {category: "castingTime", value: "1 action", label: "Action"},
+  // {category: "castingTime", value: "1 action bonus", label: "Action Bonus"},
+  // {category: "castingTime", value: "1 réaction", label: "Reaction"},
   // {category: "castingTime", value: "1hour", label: "1 Hour"}
 ];
 const FILTER_OPTIONS_ALIAS_LABELS = {
