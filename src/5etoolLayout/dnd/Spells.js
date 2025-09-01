@@ -11,7 +11,7 @@ function tableDisplayOption(column, string, element) {
   switch (column.sortId) {
     case "name": {
       return (
-        <span className={column.colClass}>{element.new?"⭐":""}{string}</span>
+        <span className={column.colClass}>{element.new?"⭐ ":""}{string}</span>
       )
     }
     case "school": {
