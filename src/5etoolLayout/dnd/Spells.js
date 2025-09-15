@@ -56,7 +56,7 @@ const FILTER_OPTIONS = [
   {category: "school", value: "C", label: "Conjuration"},
   {category: "school", value: "D", label: "Divination"},
   {category: "school", value: "En", label: "Enchantment"},
-  {category: "school", value: "Ev", label: "Enchantment"},
+  {category: "school", value: "Ev", label: "Evocation"},
   {category: "school", value: "I", label: "Illusion"},
   {category: "school", value: "N", label: "Necromancy"},
   {category: "school", value: "T", label: "Transmutation"},
