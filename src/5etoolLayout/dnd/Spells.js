@@ -10,14 +10,15 @@ import {loadFromLocalStorage, saveToLocalStorage} from "../PersistData";
 const DEFAULT_ICON_OPTIONS = ["⭐", "🔥", "❄️", "⚡", "💀"];
 const SPELL_ICONS_KEY = "spellIcons";
 const CUSTOM_EMOJIS_KEY = "customEmojis";
+const SHOW_EMPTY_ICONS_KEY = "showEmptySpellIcons";
 
-function tableDisplayOption(column, string, element, spellIcons, onIconClick) {
+function tableDisplayOption(column, string, element, spellIcons, onIconClick, showEmptyIcons) {
   switch (column.sortId) {
     case "name": {
       const userIcon = spellIcons?.[element.id];
       return (
         <span className={column.colClass}>
-          {element.new && "🆕 "}
+          {element.new && "🆕"}
           <span 
             className="spell-icon-picker"
             onClick={(e) => {
@@ -27,7 +28,7 @@ function tableDisplayOption(column, string, element, spellIcons, onIconClick) {
             title="Click to set icon"
             style={{cursor: "pointer", marginRight: "4px"}}
           >
-            {userIcon || "◯"}
+            {userIcon || (showEmptyIcons ? "◯" : "")}
           </span>
           {string}
         </span>
@@ -106,9 +107,21 @@ export const Dnd5eSpells = () => {
   // Icon picker state
   const [spellIcons, setSpellIcons] = useState(loadFromLocalStorage(SPELL_ICONS_KEY) || {});
   const [customEmojis, setCustomEmojis] = useState(loadFromLocalStorage(CUSTOM_EMOJIS_KEY) || []);
+  const [showEmptyIcons, setShowEmptyIcons] = useState(() => {
+    const stored = loadFromLocalStorage(SHOW_EMPTY_ICONS_KEY);
+    return stored === true || stored === 'true';
+  });
   const [isIconPickerOpen, setIsIconPickerOpen] = useState(false);
   const [selectedSpellForIcon, setSelectedSpellForIcon] = useState(null);
   const [customEmojiInput, setCustomEmojiInput] = useState("");
+
+  console.log(showEmptyIcons)
+
+  const toggleShowEmptyIcons = () => {
+    const newState = !showEmptyIcons;
+    setShowEmptyIcons(newState);
+    saveToLocalStorage(SHOW_EMPTY_ICONS_KEY, newState);
+  };
 
   // Build dynamic icon options
   const iconOptions = [...DEFAULT_ICON_OPTIONS];
@@ -219,7 +232,7 @@ export const Dnd5eSpells = () => {
 
   // Create a wrapped version of tableDisplayOption with access to state
   const wrappedTableDisplayOption = (column, string, element) => {
-    return tableDisplayOption(column, string, element, spellIcons, openIconPicker);
+    return tableDisplayOption(column, string, element, spellIcons, openIconPicker, showEmptyIcons);
   };
 
   const {
@@ -435,8 +448,27 @@ export const Dnd5eSpells = () => {
             {/*  </div>*/}
             {/*</div>*/}
           </>}
+          
           <div className="w-100 ve-flex" id="stat-tabs">
             <div className="ml-auto ve-flex" id="tabs-right">
+              <button
+            onClick={toggleShowEmptyIcons}
+            style={{
+              // padding: '6px 12px',
+              backgroundColor: showEmptyIcons ? '#667eea' : '#f3f4f6',
+              color: showEmptyIcons ? 'white' : '#333',
+              border: '1px solid ' + (showEmptyIcons ? '#667eea' : '#d1d5db'),
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '12px',
+              fontWeight: '500',
+              transition: 'all 0.2s',
+              marginLeft: 'auto'
+            }}
+            title="Toggle empty icon placeholders (◯)"
+          >
+            {showEmptyIcons ? '◯ Masquer' : '◯ Afficher'}
+          </button>
               <button className="ui-tab__btn-tab-head ve-btn ve-btn-default pt-2p px-4p pb-0"
                       onClick={() => togglePin(selectedSpell)} title="Pin (Toggle) (Hotkey: p/P)"
                       style={{background: pinnedElements.filter(s => s.id === selectedSpell.id).length > 0 ? "lime" : ""}}
