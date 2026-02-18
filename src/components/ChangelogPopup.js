@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 import { loadFromLocalStorage, saveToLocalStorage } from '../5etoolLayout/PersistData';
 
 const LAST_SEEN_CHANGELOG_KEY = 'lastSeenChangelog';
@@ -8,6 +9,8 @@ export const ChangelogPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [latestChangelog, setLatestChangelog] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLinkHovered, setIsLinkHovered] = useState(false);
+  const [isCloseButtonHovered, setIsCloseButtonHovered] = useState(false);
 
   useEffect(() => {
     const checkForNewChangelog = async () => {
@@ -103,10 +106,11 @@ export const ChangelogPopup = () => {
             color: 'white',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            gap: '15px'
           }}
         >
-          <div>
+          <div style={{ flex: 1 }}>
             <h2 style={{ margin: '0 0 5px 0', fontSize: '24px' }}>
               ✨ Nouvelles mises à jour !
             </h2>
@@ -114,27 +118,52 @@ export const ChangelogPopup = () => {
               Une nouvelle version est disponible
             </p>
           </div>
-          <button
-            onClick={closePopup}
-            style={{
-              background: 'rgba(255, 255, 255, 0.2)',
-              border: 'none',
-              color: 'white',
-              fontSize: '28px',
-              cursor: 'pointer',
-              width: '40px',
-              height: '40px',
-              borderRadius: '4px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s'
-            }}
-            onMouseOver={(e) => (e.target.style.background = 'rgba(255, 255, 255, 0.3)')}
-            onMouseOut={(e) => (e.target.style.background = 'rgba(255, 255, 255, 0.2)')}
-          >
-            ×
-          </button>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <Link
+              to="/TTRPG-wiki/changelog"
+              onClick={closePopup}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: isLinkHovered ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '12px',
+                fontWeight: '500',
+                transition: 'all 0.2s',
+                textDecoration: 'none',
+                display: 'inline-block',
+                whiteSpace: 'nowrap'
+              }}
+              onMouseEnter={() => setIsLinkHovered(true)}
+              onMouseLeave={() => setIsLinkHovered(false)}
+            >
+              Voir tous
+            </Link>
+            <button
+              onClick={closePopup}
+              style={{
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: 'white',
+                fontSize: '28px',
+                cursor: 'pointer',
+                width: '40px',
+                height: '40px',
+                borderRadius: '4px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.2s',
+                padding: 0
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)')}
+            >
+              ×
+            </button>
+          </div>
         </div>
 
         <div style={{ padding: '30px' }}>
@@ -189,7 +218,7 @@ export const ChangelogPopup = () => {
             onClick={closePopup}
             style={{
               padding: '10px 24px',
-              backgroundColor: '#f3f4f6',
+              backgroundColor: isCloseButtonHovered ? '#e5e7eb' : '#f3f4f6',
               border: '1px solid #d1d5db',
               borderRadius: '6px',
               cursor: 'pointer',
@@ -197,8 +226,8 @@ export const ChangelogPopup = () => {
               fontWeight: '500',
               transition: 'all 0.2s'
             }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#e5e7eb')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = '#f3f4f6')}
+            onMouseEnter={() => setIsCloseButtonHovered(true)}
+            onMouseLeave={() => setIsCloseButtonHovered(false)}
           >
             Fermer
           </button>

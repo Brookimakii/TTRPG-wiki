@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, Outlet, useLocation, useOutletContext} from "react-router-dom";
 import NavMenu, {MenuDivider, MenuLink, SubMenu} from "../layout/5e/NavMenu";
+import { ChangelogPopup } from "../components/ChangelogPopup";
 import "./css/fontawesome.css"
 import "./scss/bootstrap.scss"
 import "./scss/import.scss"
@@ -237,6 +238,7 @@ export const LayoutHeader = () => {
   const _handleTitleUpdate = (str) => setTitle(str)
 
   return (<>
+    <ChangelogPopup />
     <script type="text/javascript" src="../layout/5e/js/navigation.js"></script>
     <div className="viewport-wrapper">
       <div className="cancer__wrp-leaderboard cancer__anchor">
