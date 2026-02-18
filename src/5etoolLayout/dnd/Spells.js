@@ -115,7 +115,7 @@ export const Dnd5eSpells = () => {
   const [selectedSpellForIcon, setSelectedSpellForIcon] = useState(null);
   const [customEmojiInput, setCustomEmojiInput] = useState("");
 
-  console.log(showEmptyIcons)
+  // console.log(showEmptyIcons)
 
   const toggleShowEmptyIcons = () => {
     const newState = !showEmptyIcons;
