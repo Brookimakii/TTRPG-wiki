@@ -7,11 +7,30 @@ import FilterDialogManager, {getOptionId} from "../FilterDialogManager";
 import Filters from "../FilterDialog";
 import {loadFromLocalStorage, saveToLocalStorage} from "../PersistData";
 
-function tableDisplayOption(column, string, element) {
+const DEFAULT_ICON_OPTIONS = ["⭐", "🔥", "❄️", "⚡", "💀"];
+const SPELL_ICONS_KEY = "spellIcons";
+const CUSTOM_EMOJIS_KEY = "customEmojis";
+
+function tableDisplayOption(column, string, element, spellIcons, onIconClick) {
   switch (column.sortId) {
     case "name": {
+      const userIcon = spellIcons?.[element.id];
       return (
-        <span className={column.colClass}>{element.new?"⭐ ":""}{string}</span>
+        <span className={column.colClass}>
+          {element.new && "🆕 "}
+          <span 
+            className="spell-icon-picker"
+            onClick={(e) => {
+              e.stopPropagation();
+              onIconClick?.(element);
+            }}
+            title="Click to set icon"
+            style={{cursor: "pointer", marginRight: "4px"}}
+          >
+            {userIcon || "◯"}
+          </span>
+          {string}
+        </span>
       )
     }
     case "school": {
@@ -84,6 +103,64 @@ const SAVED_SPELL_KEY = "spellPinned"
 
 export const Dnd5eSpells = () => {
 
+  // Icon picker state
+  const [spellIcons, setSpellIcons] = useState(loadFromLocalStorage(SPELL_ICONS_KEY) || {});
+  const [customEmojis, setCustomEmojis] = useState(loadFromLocalStorage(CUSTOM_EMOJIS_KEY) || []);
+  const [isIconPickerOpen, setIsIconPickerOpen] = useState(false);
+  const [selectedSpellForIcon, setSelectedSpellForIcon] = useState(null);
+  const [customEmojiInput, setCustomEmojiInput] = useState("");
+
+  // Build dynamic icon options
+  const iconOptions = [...DEFAULT_ICON_OPTIONS];
+  if (customEmojis.length > 0) {
+    customEmojis.forEach(emoji => {
+      if (!iconOptions.includes(emoji)) {
+        iconOptions.push(emoji);
+      }
+    });
+  }
+
+  const openIconPicker = (spell) => {
+    setSelectedSpellForIcon(spell);
+    setIsIconPickerOpen(true);
+    setCustomEmojiInput("");
+  };
+
+  const closeIconPicker = () => {
+    setIsIconPickerOpen(false);
+    setSelectedSpellForIcon(null);
+    setCustomEmojiInput("");
+  };
+
+  const assignIcon = (spellId, iconEmoji) => {
+    const updated = { ...spellIcons, [spellId]: iconEmoji };
+    setSpellIcons(updated);
+    saveToLocalStorage(SPELL_ICONS_KEY, updated);
+    
+    // Add to custom emojis if not in default list
+    if (!DEFAULT_ICON_OPTIONS.includes(iconEmoji) && !customEmojis.includes(iconEmoji)) {
+      const newCustom = [...customEmojis, iconEmoji];
+      setCustomEmojis(newCustom);
+      saveToLocalStorage(CUSTOM_EMOJIS_KEY, newCustom);
+    }
+    
+    closeIconPicker();
+  };
+
+  const addCustomEmoji = () => {
+    if (customEmojiInput.trim()) {
+      assignIcon(selectedSpellForIcon.id, customEmojiInput.trim());
+    }
+  };
+
+  const removeIcon = (spellId) => {
+    const updated = { ...spellIcons };
+    delete updated[spellId];
+    setSpellIcons(updated);
+    saveToLocalStorage(SPELL_ICONS_KEY, updated);
+    closeIconPicker();
+  };
+
   const columns = [
     {
       id: "Nom",
@@ -139,6 +216,12 @@ export const Dnd5eSpells = () => {
   // const [selectedSpell, setSelected] = useState(
   //   // setSelectFromHash([...spells], useLocation().hash)
   // )
+
+  // Create a wrapped version of tableDisplayOption with access to state
+  const wrappedTableDisplayOption = (column, string, element) => {
+    return tableDisplayOption(column, string, element, spellIcons, openIconPicker);
+  };
+
   const {
     selected,
     elements,
@@ -151,7 +234,7 @@ export const Dnd5eSpells = () => {
     DisplayList,
     DetailsHeader,
     TempFilters
-  } = Selector5e(spells, columns, "name", tableDisplayOption, loadFromLocalStorage(SAVED_SPELL_KEY));
+  } = Selector5e(spells, columns, "name", wrappedTableDisplayOption, loadFromLocalStorage(SAVED_SPELL_KEY));
 
   const {setFilters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)
 
@@ -461,6 +544,133 @@ export const Dnd5eSpells = () => {
     </div>
     {isDialogOpen ? <Filters filterOptions={FILTER_OPTIONS} defaultState={filterState} onClose={closeDialog}
                              onSave={saveFilterResults}/> : ""}
+    
+    {isIconPickerOpen && selectedSpellForIcon && (
+      <div 
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 1000
+        }}
+        onClick={closeIconPicker}
+      >
+        <div 
+          style={{
+            backgroundColor: "white",
+            padding: "20px",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            maxWidth: "500px",
+            width: "90%",
+            maxHeight: "80vh",
+            overflowY: "auto"
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h3 style={{marginTop: 0, marginBottom: "15px"}}>
+            Select Icon for: <i>{selectedSpellForIcon.name}</i>
+          </h3>
+          
+          <div style={{marginBottom: "20px"}}>
+            <label style={{display: "block", marginBottom: "8px", fontWeight: "500"}}>
+              Add Custom Emoji:
+            </label>
+            <div style={{display: "flex", gap: "8px"}}>
+              <input
+                type="text"
+                value={customEmojiInput}
+                onChange={(e) => setCustomEmojiInput(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && addCustomEmoji()}
+                placeholder="Paste emoji here (e.g., 🌟)"
+                style={{
+                  flex: 1,
+                  padding: "8px",
+                  fontSize: "16px",
+                  border: "1px solid #d1d5db",
+                  borderRadius: "4px"
+                }}
+              />
+              <button
+                onClick={addCustomEmoji}
+                style={{
+                  padding: "8px 16px",
+                  backgroundColor: "#3b82f6",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  fontWeight: "500"
+                }}
+              >
+                Use
+              </button>
+            </div>
+          </div>
+          
+          <div style={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "10px", marginBottom: "20px"}}>
+            {iconOptions.map((icon) => (
+              <button
+                key={icon}
+                onClick={() => assignIcon(selectedSpellForIcon.id, icon)}
+                style={{
+                  padding: "10px",
+                  fontSize: "24px",
+                  border: "2px solid #ddd",
+                  borderRadius: "4px",
+                  backgroundColor: spellIcons[selectedSpellForIcon.id] === icon ? "#e0f2fe" : "white",
+                  cursor: "pointer",
+                  transition: "all 0.2s"
+                }}
+                onMouseOver={(e) => e.target.style.borderColor = "#999"}
+                onMouseOut={(e) => e.target.style.borderColor = "#ddd"}
+                title={!DEFAULT_ICON_OPTIONS.includes(icon) ? "Custom emoji" : ""}
+              >
+                {icon}
+              </button>
+            ))}
+          </div>
+          
+          <div style={{display: "flex", gap: "10px", justifyContent: "flex-end"}}>
+            {spellIcons[selectedSpellForIcon.id] && (
+              <button
+                onClick={() => removeIcon(selectedSpellForIcon.id)}
+                style={{
+                  padding: "8px 16px",
+                  backgroundColor: "#fee2e2",
+                  border: "1px solid #fca5a5",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontSize: "14px"
+                }}
+              >
+                Remove Icon
+              </button>
+            )}
+            <button
+              onClick={closeIconPicker}
+              style={{
+                padding: "8px 16px",
+                backgroundColor: "#f3f4f6",
+                border: "1px solid #d1d5db",
+                borderRadius: "4px",
+                cursor: "pointer",
+                fontSize: "14px"
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
   </div>)
 
 }

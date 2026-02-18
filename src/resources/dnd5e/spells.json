@@ -16693,7 +16693,7 @@
     "shortDesc": "Les créatures dans un cylindre de 12 x 6 m (visibilité nulle) doivent réussir un JdS de Dex. ou tomber à terre.",
     "entries": [
       "Jusqu'à la fin du sort, de la neige fondue tombe dans un cylindre de 12 mètres de haut et de 6 mètres de rayon, centré sur un point que vous choisissez à portée. La zone est fortement obscurcie et les flammes exposées sont éteintes.",
-      "Le sol du cylindre est un terrain difficile. Lorsqu'une créature pénètre dans le cylindre pour la première fois au cours d'un tour ou y commence son tour, elle doit réussir un jet de sauvegarde de Dextérité ou avoir la condition « À terre » et la concentration de José."
+      "Le sol du cylindre est un terrain difficile. Lorsqu'une créature pénètre dans le cylindre pour la première fois au cours d'un tour ou y commence son tour, elle doit réussir un jet de sauvegarde de Dextérité ou avoir la condition « À terre » et perdre la concentration."
     ],
     "upCast": "",
     "source": "PHB",
