@@ -577,7 +577,13 @@ export const ToggleState = () => {
     }
   }
 
-  return {toggleStateChange, getToggleState, addToggleableState}
+  const setToggleState = (id, value) => {
+    setToggleStates((prevStates) => ({
+      ...prevStates, [id]: value,
+    }));
+  }
+
+  return {toggleStateChange, getToggleState, addToggleableState, setToggleState}
 }
 
 // Combine helper for a single category: how do multiple selected "yes"/"no"

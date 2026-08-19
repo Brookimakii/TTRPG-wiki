@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex Forge — 5etools Importer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15130f; --panel:#1d1a14; --panel-2:#241f17; --panel-3:#2a251b;
+    --border:#3a3324; --border-soft:#2c2719;
+    --text:#ece4d1; --text-dim:#a99d84; --text-faint:#786c56;
+    --brass:#c9a227; --brass-bright:#e0bc4a; --brass-dim:rgba(201,162,39,.14);
+    --teal:#5a9d92; --teal-dim:rgba(90,157,146,.16);
+    --amber:#d68a3c; --amber-dim:rgba(214,138,60,.14);
+    --danger:#b8543f; --danger-dim:rgba(184,84,63,.14);
+    --display:'Cinzel',serif; --body:'Inter',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:13.5px;line-height:1.5;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(circle at 20% 15%, rgba(201,162,39,.04), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(214,138,60,.05), transparent 45%);}
+  ::selection{background:var(--brass-dim);color:var(--brass-bright);}
+  input,textarea,select,button{font-family:inherit;color:inherit;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:var(--panel);}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--brass);}
+
+  .app-shell{position:relative;z-index:1;display:grid;grid-template-columns:300px 1fr;height:100vh;}
+
+  .sidebar{background:var(--panel);border-right:1px solid var(--border-soft);display:flex;flex-direction:column;overflow:hidden;}
+  .brand{padding:20px 18px 14px;border-bottom:1px solid var(--border-soft);}
+  .brand .mark{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.04em;color:var(--brass-bright);display:flex;align-items:center;gap:8px;}
+  .brand .sub{margin-top:3px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);}
+
+  .input-area{padding:14px 16px;border-bottom:1px solid var(--border-soft);}
+  .input-area label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);display:block;margin-bottom:6px;}
+  .input-area textarea{
+    width:100%;min-height:160px;background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);
+    color:#d9cf9c;font-family:var(--mono);font-size:11.5px;padding:9px;resize:vertical;line-height:1.5;
+  }
+  .input-area textarea:focus{outline:none;border-color:var(--brass);}
+  .row{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+  .btn{
+    appearance:none;border:1px solid var(--border);background:var(--panel-2);color:var(--text);
+    font-size:11.5px;font-weight:500;padding:7px 11px;border-radius:var(--radius);cursor:pointer;
+    display:inline-flex;align-items:center;gap:5px;transition:border-color .12s,color .12s,background .12s;
+  }
+  .btn:hover{border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary{background:var(--brass-dim);border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary:hover{background:rgba(201,162,39,.24);}
+  .btn.full{width:100%;justify-content:center;}
+  .btn.small{padding:5px 9px;font-size:10.5px;}
+  .btn:disabled{opacity:.4;cursor:not-allowed;}
+  input[type="file"]{display:none;}
+
+  select.type-select{
+    width:100%;background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);
+    color:var(--text);padding:7px 9px;font-size:12px;margin-top:4px;
+  }
+
+  .detect-banner{
+    margin-top:8px;font-size:11px;padding:7px 10px;border-radius:var(--radius);
+    background:var(--teal-dim);border:1px solid var(--teal);color:#a9d8cf;
+  }
+  .detect-banner.warn{background:var(--amber-dim);border-color:var(--amber);color:#e8b985;}
+
+  .results-head{padding:10px 16px;border-bottom:1px solid var(--border-soft);display:flex;justify-content:space-between;align-items:center;}
+  .results-head h2{font-family:var(--display);font-size:13px;margin:0;font-weight:600;color:var(--text-dim);}
+  .results-head .count{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);}
+  .results-list{flex:1;overflow-y:auto;padding:6px;}
+  .result-row{
+    display:flex;align-items:center;justify-content:space-between;gap:6px;padding:8px 10px;border-radius:var(--radius);
+    cursor:pointer;margin-bottom:2px;border:1px solid transparent;
+  }
+  .result-row:hover{background:var(--panel-2);}
+  .result-row.active{background:var(--teal-dim);border-color:var(--teal);}
+  .result-row .name{font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .result-row .badge{
+    font-family:var(--mono);font-size:9.5px;padding:1px 6px;border-radius:20px;flex:none;
+  }
+  .result-row .badge.clean{color:var(--teal);background:rgba(90,157,146,.14);}
+  .result-row .badge.warn{color:var(--amber);background:var(--amber-dim);}
+  .empty-list{padding:26px 18px;text-align:center;color:var(--text-faint);font-size:12px;line-height:1.7;}
+
+  .main{overflow-y:auto;}
+  .main-inner{max-width:920px;margin:0 auto;padding:26px 36px 80px;}
+
+  .no-selection{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-faint);text-align:center;padding:40px;}
+  .no-selection .glyph{font-size:34px;color:var(--border);font-family:var(--display);}
+  .no-selection h2{font-family:var(--display);color:var(--text-dim);font-weight:600;font-size:16px;margin:0;}
+  .no-selection p{font-size:12.5px;max-width:420px;margin:0;}
+
+  .top-notice{
+    background:var(--amber-dim);border:1px solid var(--amber);border-radius:var(--radius);
+    padding:12px 14px;font-size:12px;line-height:1.6;color:#e8b985;margin-bottom:20px;
+  }
+  .top-notice b{color:var(--brass-bright);}
+
+  .item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border-soft);}
+  .item-head .eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:4px;}
+  .item-head h2{font-family:var(--display);font-size:20px;font-weight:600;margin:0;}
+
+  .warnings-box{background:var(--amber-dim);border:1px solid var(--amber);border-radius:var(--radius);padding:12px 14px;margin-bottom:18px;}
+  .warnings-box .wb-title{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;font-weight:600;}
+  .warnings-box ul{margin:0;padding-left:18px;}
+  .warnings-box li{font-size:12px;color:#e8b985;margin-bottom:5px;line-height:1.5;}
+  .warnings-box.clean{background:var(--teal-dim);border-color:var(--teal);}
+  .warnings-box.clean .wb-title{color:var(--teal);}
+
+  .section-title{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:13px;color:var(--text-dim);margin:20px 0 10px;}
+  .section-title::after{content:"";flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+
+  pre.json-view{
+    background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);
+    padding:14px;font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#d9cf9c;
+    overflow-x:auto;white-space:pre;
+  }
+
+  .toast{
+    position:fixed;bottom:18px;right:18px;background:var(--panel-3);border:1px solid var(--brass);color:var(--brass-bright);
+    padding:10px 16px;border-radius:var(--radius);font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:100;
+    opacity:0;transform:translateY(6px);transition:opacity .18s,transform .18s;pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateY(0);}
+
+  .sidebar-foot{padding:12px 16px;border-top:1px solid var(--border-soft);font-size:10.5px;color:var(--text-faint);line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar">
+    <div class="brand">
+      <div class="mark">🜛 5etools Importer</div>
+      <div class="sub">Convert to site resources</div>
+    </div>
+    <div class="input-area">
+      <label>Paste raw 5etools JSON (single object or array)</label>
+      <textarea id="rawInput" placeholder='{"spell": [...]}  or  [{...}, {...}]  or a single item object'></textarea>
+      <div class="row">
+        <button class="btn small" id="btnUpload">Upload file</button>
+        <button class="btn small" id="btnClear">Clear</button>
+      </div>
+      <label style="margin-top:10px;">Resource type</label>
+      <select class="type-select" id="typeSelect">
+        <option value="auto">Auto-detect</option>
+        <option value="spell">Spells</option>
+        <option value="item">Items</option>
+        <option value="feat">Feats</option>
+        <option value="background">Backgrounds</option>
+        <option value="condition">Conditions</option>
+        <option value="rule">Rules (variant rules)</option>
+        <option value="monster">Bestiary</option>
+        <option value="race">Races</option>
+      </select>
+      <div id="detectBanner"></div>
+      <div class="row">
+        <button class="btn primary full" id="btnConvert">Convert</button>
+      </div>
+      <input type="file" id="fileInput" accept="application/json">
+    </div>
+    <div class="results-head">
+      <h2>Converted</h2>
+      <span class="count" id="resultCount">0</span>
+    </div>
+    <div class="results-list" id="resultsList">
+      <div class="empty-list">Paste 5etools JSON above and click Convert.</div>
+    </div>
+    <div class="row" style="padding:10px 16px;">
+      <button class="btn full" id="btnExportAll" disabled>Export converted JSON</button>
+    </div>
+    <div class="sidebar-foot">
+      Handles: spells, items, feats, backgrounds, conditions, rules, bestiary, races.<br>
+      Classes aren't supported here — real 5etools class data is split across multiple linked files. Use Class Lab instead.
+    </div>
+  </div>
+
+  <div class="main" id="main"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   CONVERSION LOGIC
+   (verified against this site's existing races.json/spells.json/items.json —
+   see inline comments; anything unverified is flagged in each item's warnings)
+   ============================================================ */
+
+function slug(name){ return (name||"").trim().replace(/\s+/g,"_"); }
+function warn(warnings,msg){ warnings.push(msg); }
+function frNum(n){
+  if(Number.isInteger(n)) return String(n);
+  const rounded = Math.round(n*100)/100;
+  return String(rounded).replace(".", ",");
+}
+const FEET_TO_M = 0.3;
+const MILES_TO_KM = 1.5;
+
+const CASTING_UNIT_FR = {action:"action",bonus:"action bonus",reaction:"réaction",round:"round",minute:"minute",hour:"heure",day:"jour"};
+function pluralizeFr(word,n){
+  if(word==="round"||word==="action"||word==="action bonus"||word==="réaction") return word;
+  return n===1 ? word : word+"s";
+}
+function formatTime(timeArr,warnings){
+  if(!Array.isArray(timeArr)||!timeArr.length) return {text:"",addition:""};
+  if(timeArr.length>1) warn(warnings,"Spell has multiple casting-time options — only the first was converted; check the source for the rest.");
+  const t=timeArr[0];
+  const unitWord=CASTING_UNIT_FR[t.unit]||t.unit;
+  return {text:`${t.number} ${pluralizeFr(unitWord,t.number)}`, addition:t.condition||""};
+}
+const RANGE_SPECIAL_FR={self:"personnelle",touch:"contact",sight:"champ de vision",unlimited:"illimitée",special:"spéciale",plane:"plan"};
+const SHAPE_WORD_FR={radius:"rayon",sphere:"sphère",cone:"cône",line:"ligne",cube:"cube",hemisphere:"hémisphère"};
+function convertDistance(d,abbreviated){
+  if(d.type==="feet"){ const m=frNum(d.amount*FEET_TO_M); return abbreviated?`${m} m`:`${m} mètres`; }
+  if(d.type==="miles"){ const km=frNum(d.amount*MILES_TO_KM); return `${km} km`; }
+  return null;
+}
+function formatRange(range,warnings){
+  if(!range) return "";
+  if(range.type==="point"){
+    const d=range.distance||{};
+    if(RANGE_SPECIAL_FR[d.type]) return RANGE_SPECIAL_FR[d.type];
+    const conv=convertDistance(d,false);
+    if(conv) return conv;
+    warn(warnings,`Unrecognized range distance type "${d.type}" — left blank.`);
+    return "";
+  }
+  if(["radius","sphere","cone","line","cube","hemisphere"].includes(range.type)){
+    const d=range.distance||{};
+    const shape=SHAPE_WORD_FR[range.type]||range.type;
+    const conv=convertDistance(d,true);
+    if(!conv){ warn(warnings,`Unrecognized shaped-range distance for "${range.type}" — left blank.`); return ""; }
+    return `personnelle (${shape} de ${conv})`;
+  }
+  if(range.type==="special") return "spéciale";
+  warn(warnings,`Unrecognized range type "${range.type}" — left blank.`);
+  return "";
+}
+function formatComponents(components){
+  if(!components) return "";
+  const parts=[];
+  if(components.v) parts.push("V");
+  if(components.s) parts.push("S");
+  if(components.m){
+    if(typeof components.m==="string") parts.push(`M (${components.m})`);
+    else if(components.m.text) parts.push(`M (${components.m.text})`);
+    else parts.push("M");
+  }
+  return parts.join(", ");
+}
+const DURATION_UNIT_FR={round:"round",minute:"minute",hour:"heure",day:"jour"};
+function formatDuration(durationArr,warnings){
+  if(!Array.isArray(durationArr)||!durationArr.length) return {text:"",concentration:false};
+  if(durationArr.length>1) warn(warnings,"Spell has multiple duration options — only the first was converted; check the source for the rest.");
+  const concentration=durationArr.some(d=>d.concentration);
+  const d=durationArr[0];
+  let text;
+  switch(d.type){
+    case "instant": text="instantanée"; break;
+    case "permanent":
+      text="jusqu'à dissipation";
+      if(Array.isArray(d.ends)&&d.ends.includes("trigger")) text+=" ou déclenchement";
+      break;
+    case "special": text="spéciale"; break;
+    case "timed": {
+      const dur=d.duration||{};
+      const unitWord=DURATION_UNIT_FR[dur.type]||dur.type;
+      text=`${dur.amount} ${pluralizeFr(unitWord,dur.amount)}`;
+      break;
+    }
+    default:
+      warn(warnings,`Unrecognized duration type "${d.type}" — left blank.`);
+      text="";
+  }
+  return {text,concentration};
+}
+const SCHOOL_MAP={A:"A",C:"C",D:"D",I:"I",N:"N",T:"T",V:"Ev",E:"En"};
+
+function convertSpell(raw,warnings){
+  const out={name:raw.name||"",id:raw.name||"",entries:raw.entries||[]};
+  const {text:castingTime,addition:castingTimeAddition}=formatTime(raw.time,warnings);
+  out.castingTime=castingTime; out.castingTimeAddition=castingTimeAddition;
+  if(!castingTime) warn(warnings,"Casting time (\"time\") missing or unrecognized — left blank.");
+  out.level = raw.level===0 ? "cantrip" : String(raw.level ?? "");
+  if(raw.level===undefined) warn(warnings,"Spell level missing.");
+  out.school = SCHOOL_MAP[raw.school] || raw.school || "";
+  if(!SCHOOL_MAP[raw.school]) warn(warnings,`Unrecognized school code "${raw.school}" — please verify.`);
+  out.range = formatRange(raw.range,warnings);
+  out.component = formatComponents(raw.components);
+  const {text:duration,concentration}=formatDuration(raw.duration,warnings);
+  out.duration=duration; out.concentration=concentration;
+  out.ritual = !!(raw.meta && raw.meta.ritual);
+  out.shortDesc="";
+  if(Array.isArray(raw.entriesHigherLevel) && raw.entriesHigherLevel[0]){
+    const hl = raw.entriesHigherLevel[0].entries || [];
+    if(hl.every(e=>typeof e==="string")) out.upCast = hl.join(" ");
+    else { out.upCast=""; warn(warnings,"\"At Higher Levels\" text has non-plain-text content — copy it manually."); }
+  } else out.upCast="";
+  out.source=raw.source||""; out.page=raw.page ?? null;
+  warn(warnings,"TRANSLATION NEEDED: \"name\" and all \"entries\" text are still in English — only mechanical fields were localized.");
+  return out;
+}
+
+const ITEM_TYPE_MAP={M:"weapon",R:"weapon",LA:"armor",MA:"armor",HA:"armor",S:"armor",G:"adventuringGear",T:"tools",AT:"artisanTools",INS:"instrument",A:"ammunition",GS:"gameSet",SCF:"spellcastingFocus"};
+const ARMOR_TYPE_MAP={LA:"light",MA:"medium",HA:"heavy",S:"shield"};
+const RARITY_MAP={"none":"common",common:"common",uncommon:"uncommon",rare:"rare","very rare":"veryRare",legendary:"legendary",artifact:"artefact",unknown:"unknown",varies:"varies",other:"other"};
+const DMG_TYPE_MAP={B:"B",P:"P",S:"T"};
+
+function convertItem(raw,warnings){
+  const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
+  const baseType=(raw.type||"").split("|")[0];
+  out.itemType=ITEM_TYPE_MAP[baseType];
+  if(!out.itemType){ out.itemType="adventuringGear"; warn(warnings,`Unrecognized item type code "${raw.type}" — defaulted to adventuringGear, please check.`); }
+  out.weight=(typeof raw.weight==="number") ? Math.round(raw.weight*0.5*100)/100 : null;
+  if(raw.weight!==undefined) warn(warnings,"Weight converted with an approximate factor — please verify against similar existing items.");
+  out.value=(typeof raw.value==="number") ? Math.round((raw.value/100)*100)/100 : null;
+  if(raw.value!==undefined && out.value!==null) warn(warnings,"Price converted from copper pieces (5etools \"value\") to gold — please verify.");
+  if(raw.wondrous!==undefined) out.wondrous=!!raw.wondrous;
+  if(raw.rarity){ out.rarity=RARITY_MAP[raw.rarity.toLowerCase()]; if(!out.rarity) warn(warnings,`Unrecognized rarity "${raw.rarity}" — left blank.`); }
+  if(out.itemType==="armor"){
+    out.armorType=ARMOR_TYPE_MAP[baseType];
+    if(raw.ac!==undefined) out.ac=raw.ac;
+    if(raw.strength!==undefined) out.strength=Number(String(raw.strength).replace(/[^\d]/g,""))||null;
+    if(raw.stealth!==undefined) out.stealth=!!raw.stealth;
+  }
+  if(out.itemType==="weapon"){
+    out.weaponCategory = baseType==="R" ? "ranged" : baseType==="M" ? "melee" : undefined;
+    out.weaponType = raw.weaponCategory || undefined;
+    out.weaponProperty = Array.isArray(raw.property) ? raw.property.map(p=>p.split("|")[0]) : [];
+    if(raw.dmg1) out.dmg1=raw.dmg1;
+    if(raw.dmg2) out.dmg2=raw.dmg2;
+    if(raw.dmgType){ out.dmgType=DMG_TYPE_MAP[raw.dmgType]||raw.dmgType; if(!DMG_TYPE_MAP[raw.dmgType]) warn(warnings,`Unrecognized damage type code "${raw.dmgType}" — copied as-is, please verify.`); }
+  }
+  out.entries=raw.entries||[];
+  warn(warnings,"TRANSLATION NEEDED: \"name\" and \"entries\" are still in English.");
+  return out;
+}
+
+function formatPrereqPart(p){
+  const bits=[];
+  if(p.level) bits.push(`Niveau ${typeof p.level==="object"?p.level.level:p.level}`);
+  if(p.race) bits.push(p.race.map(r=>r.displayEntry||r.name).join(" ou "));
+  if(p.ability) bits.push(p.ability.map(a=>Object.entries(a).map(([k,v])=>`${k.toUpperCase()} ${v}+`).join(", ")).join(" ou "));
+  if(p.spellcasting2020||p.spellcasting) bits.push("Capacité de lancer au moins un sort");
+  if(p.proficiency) bits.push(p.proficiency.map(pr=>Object.values(pr).join(", ")).join(" ou ")+" (maîtrise)");
+  if(p.feat) bits.push(p.feat.join(" ou "));
+  if(p.other) bits.push(p.other);
+  return bits.join(", ");
+}
+function convertFeat(raw,warnings){
+  const out={name:raw.name||"",id:slug(raw.name),source:raw.source||"",page:raw.page ?? null};
+  if(Array.isArray(raw.prerequisite) && raw.prerequisite.length){
+    try{ out.prerequisite = raw.prerequisite.map(formatPrereqPart).filter(Boolean).join("; "); }
+    catch(e){ out.prerequisite=""; warn(warnings,"Prerequisite has an unrecognized shape — left blank, please fill in manually."); }
+  } else out.prerequisite="";
+  out.entries=raw.entries||[];
+  warn(warnings,"TRANSLATION NEEDED: \"name\", \"prerequisite\" and \"entries\" are still in English.");
+  return out;
+}
+
+function convertCondition(raw,warnings){
+  warn(warnings,"TRANSLATION NEEDED: text is still in English.");
+  return {id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null,entries:raw.entries||[]};
+}
+function convertRule(raw,warnings){
+  warn(warnings,"TRANSLATION NEEDED: text is still in English.");
+  return {id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null,entries:raw.entries||[]};
+}
+
+function summarizeProficiencyList(list){
+  if(!Array.isArray(list)) return null;
+  const parts=[];
+  list.forEach(entry=>{
+    Object.entries(entry).forEach(([k,v])=>{
+      if(k==="choose") parts.push(`Choose ${entry.choose.count||1} from: ${(entry.choose.from||[]).join(", ")}`);
+      else if(v===true) parts.push(k);
+    });
+  });
+  return parts.length ? parts.join(", ") : null;
+}
+function convertBackground(raw,warnings){
+  const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
+  const entries=[];
+  const skillSummary=summarizeProficiencyList(raw.skillProficiencies);
+  if(skillSummary) entries.push({type:"entries",name:"Skill Proficiencies",entries:[skillSummary]});
+  const langSummary=summarizeProficiencyList(raw.languageProficiencies);
+  if(langSummary) entries.push({type:"entries",name:"Languages",entries:[langSummary]});
+  if(Array.isArray(raw.equipment)) warn(warnings,"Equipment list has a complex/varying shape in 5etools — please review manually.");
+  if(raw.feature && raw.feature.name) entries.push({type:"entries",name:raw.feature.name,entries:raw.feature.entries||[]});
+  else if(Array.isArray(raw.entries)) entries.push(...raw.entries);
+  if(entries.length===0) warn(warnings,"No entries could be synthesized — this background needs manual content.");
+  else warn(warnings,"Entries were synthesized from structured fields (skills/languages/feature) — please review.");
+  out.entries=entries;
+  warn(warnings,"TRANSLATION NEEDED: text is still in English.");
+  return out;
+}
+
+const SIZE_MAP_FR={T:"Très Petite",S:"Petite",M:"Moyenne",L:"Grande",H:"Très Grande",G:"Gigantesque"};
+const CREATURE_TYPE_FR={aberration:"Aberration",beast:"Bête",celestial:"Céleste",construct:"Créature artificielle",dragon:"Dragon",elemental:"Élémentaire",fey:"Fée",fiend:"Fielon",giant:"Géant",humanoid:"Humanoïde",monstrosity:"Monstruosité",ooze:"Vase",plant:"Plante",undead:"Mort-vivant"};
+function formatAc(acArr){
+  if(!Array.isArray(acArr)||!acArr.length) return "";
+  const a=acArr[0];
+  if(typeof a==="number") return String(a);
+  const from = Array.isArray(a.from) ? ` (${a.from.join(", ")})` : "";
+  return `${a.ac}${from}`;
+}
+function formatHp(hp){
+  if(!hp) return "";
+  if(typeof hp==="number") return String(hp);
+  if(hp.special) return hp.special;
+  const formula = hp.formula ? ` (${hp.formula})` : "";
+  return `${hp.average ?? ""}${formula}`;
+}
+const SPEED_TYPE_FR={walk:"",fly:"vol",swim:"nage",climb:"escalade",burrow:"fouissement"};
+function formatSpeedMetric(speed){
+  if(!speed) return "";
+  if(typeof speed==="number") return `${frNum(speed*FEET_TO_M)}m`;
+  const parts=[];
+  const walk=speed.walk;
+  if(walk!==undefined) parts.push(`${frNum((typeof walk==="object"?walk.number:walk)*FEET_TO_M)}m`);
+  Object.entries(speed).forEach(([k,v])=>{
+    if(k==="walk"||k==="hover"||v==null) return;
+    const n = typeof v==="object" ? v.number : v;
+    parts.push(`${SPEED_TYPE_FR[k]||k} ${frNum(n*FEET_TO_M)}m`);
+  });
+  return parts.join(", ");
+}
+function formatCreatureType(type,warnings){
+  if(!type) return "";
+  let base,tags;
+  if(typeof type==="string"){ base=type; tags=[]; }
+  else { base=type.type; tags = Array.isArray(type.tags) ? type.tags.map(t=>typeof t==="string"?t:t.tag) : []; }
+  const fr=CREATURE_TYPE_FR[base];
+  if(!fr) warn(warnings,`Unrecognized/untranslated creature type "${base}" — copied as-is.`);
+  return (fr||base) + (tags.length ? ` (${tags.join(", ")})` : "");
+}
+function convertMonster(raw,warnings){
+  const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
+  out.type=formatCreatureType(raw.type,warnings);
+  const sizeCode = Array.isArray(raw.size) ? raw.size[0] : raw.size;
+  out.size = SIZE_MAP_FR[sizeCode] || sizeCode || "";
+  out.ac=formatAc(raw.ac); out.hp=formatHp(raw.hp); out.speed=formatSpeedMetric(raw.speed);
+  out.traits=raw.trait||[]; out.actions=raw.action||[];
+  if(raw.bonusAction) out.bonusActions=raw.bonusAction;
+  if(raw.reaction) out.reactions=raw.reaction;
+  if(raw.legendary) out.legendaryActions=raw.legendary;
+  if(!out.ac) warn(warnings,"AC missing or unrecognized shape.");
+  if(!out.hp) warn(warnings,"HP missing or unrecognized shape.");
+  if(!out.speed) warn(warnings,"Speed missing or unrecognized shape.");
+  warn(warnings,"UNVERIFIED CONVENTIONS: bestiary.json has no existing populated entries on this site to confirm formatting against — double check once you have a reference monster.");
+  warn(warnings,"TRANSLATION NEEDED: name and entries text are still in English.");
+  return out;
+}
+
+const ABILITY_FR={str:"For",dex:"Dex",con:"Con",int:"Int",wis:"Sag",cha:"Cha"};
+function formatAbilityBonus(abilityArr,warnings){
+  if(!Array.isArray(abilityArr)||!abilityArr.length) return "";
+  const parts=[];
+  abilityArr.forEach(a=>{
+    Object.entries(a).forEach(([k,v])=>{
+      if(k==="choose"){
+        warn(warnings,"Ability bonus includes a \"choose\" option — this site uses idiomatic phrasing (\"tout autre +1\", \"Deux autres +1\", \"Tous +1\") that varies by case; a generic phrasing was used, please rewrite to match house style.");
+        const count=a.choose.count||1; const amount=a.choose.amount ?? 1;
+        if(count >= (a.choose.from||[]).length) parts.push(`Tous +${amount}`);
+        else if(count===1) parts.push(`tout autre +${amount}`);
+        else parts.push(`${count===2?"Deux":count} autres +${amount}`);
+      } else if(ABILITY_FR[k]) parts.push(`${ABILITY_FR[k]} +${v}`);
+    });
+  });
+  return parts.join("; ");
+}
+function convertRace(raw,warnings){
+  const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
+  out.bonus=formatAbilityBonus(raw.ability,warnings);
+  const sizeCode = Array.isArray(raw.size) ? raw.size[0] : raw.size;
+  out.size = SIZE_MAP_FR[sizeCode] || "Moyenne";
+  if(!SIZE_MAP_FR[sizeCode]) warn(warnings,`Unrecognized size code "${sizeCode}" — defaulted to Moyenne.`);
+  out.creatureType = raw.creatureTypes ? raw.creatureTypes.map(t=>CREATURE_TYPE_FR[t]||t).join(", ") : "Humanoïde";
+  out.speed=formatSpeedMetric(raw.speed);
+  out.common={age:"",alignment:"",size:"",languages:""};
+  out.traits=[]; out.info=[];
+  const NAMED_FIELD_MAP={age:"age",alignment:"alignment",size:"size",languages:"languages",language:"languages"};
+  (raw.entries||[]).forEach(e=>{
+    if(typeof e==="string") out.info.push(e);
+    else if(e && e.type==="entries" && e.name){
+      const key=NAMED_FIELD_MAP[e.name.trim().toLowerCase()];
+      if(key) out.common[key] = (e.entries||[]).filter(x=>typeof x==="string").join(" ");
+      else out.traits.push(e);
+    } else if(e) out.traits.push(e);
+  });
+  warn(warnings,"Traits vs. lore (\"info\") were split heuristically from the entries list — please review the split.");
+  warn(warnings,"TRANSLATION NEEDED: name, common.*, traits and info text are still in English. \"bonus\", \"size\", \"creatureType\" and \"speed\" were localized to French/metric.");
+  return out;
+}
+
+const CONVERTERS = {
+  spell: convertSpell, item: convertItem, feat: convertFeat, condition: convertCondition,
+  rule: convertRule, background: convertBackground, monster: convertMonster, race: convertRace,
+};
+const TYPE_LABEL = {
+  spell:"Spells", item:"Items", feat:"Feats", condition:"Conditions", rule:"Rules",
+  background:"Backgrounds", monster:"Bestiary", race:"Races",
+};
+const TYPE_FILE = {
+  spell:"spells.json", item:"items.json", feat:"feats.json", condition:"conditions.json",
+  rule:"rules.json", background:"backgrounds.json", monster:"bestiary.json", race:"races.json",
+};
+
+/* ============================================================
+   TYPE DETECTION
+   ============================================================ */
+function detectType(sample){
+  if(!sample || typeof sample !== "object") return null;
+  if(sample.level !== undefined && sample.school !== undefined && sample.components !== undefined) return "spell";
+  if(sample.ac !== undefined && sample.hp !== undefined && (sample.speed !== undefined || sample.size !== undefined) && sample.type !== undefined && !sample.weaponCategory) return "monster";
+  if(sample.ability !== undefined && sample.size !== undefined && sample.speed !== undefined) return "race";
+  if(sample.type !== undefined && /^(M|R|LA|MA|HA|S|G|T|AT|INS|A|GS|SCF)(\||$)/.test(sample.type || "")) return "item";
+  if(sample.prerequisite !== undefined && sample.entries !== undefined) return "feat";
+  if(sample.skillProficiencies !== undefined || sample.feature !== undefined) return "background";
+  if(sample.entries !== undefined && sample.name !== undefined) return "condition"; // ambiguous w/ rule — user can override
+  return null;
+}
+
+function extractArray(parsed){
+  if(Array.isArray(parsed)) return parsed;
+  if(parsed && typeof parsed === "object"){
+    // 5etools full-file exports wrap arrays under a top-level key, e.g. {"spell":[...]}
+    const knownKeys = ["spell","item","feat","background","condition","variantrule","monster","race","subrace"];
+    for(const k of knownKeys){
+      if(Array.isArray(parsed[k])) return parsed[k];
+    }
+    // single bare object
+    return [parsed];
+  }
+  return [];
+}
+
+/* ============================================================
+   STATE / UI
+   ============================================================ */
+const state = { results: [], selected: null, detectedType: null };
+
+let toastTimer=null;
+function toast(msg){
+  const el=document.getElementById("toast");
+  el.textContent=msg; el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2400);
+}
+
+function itemDisplayName(item){ return item.name || item.id || "(untitled)"; }
+
+function renderResultsList(){
+  const list=document.getElementById("resultsList");
+  const countEl=document.getElementById("resultCount");
+  countEl.textContent = state.results.length;
+  document.getElementById("btnExportAll").disabled = state.results.length === 0;
+  list.innerHTML="";
+  if(!state.results.length){
+    list.innerHTML = `<div class="empty-list">Paste 5etools JSON above and click Convert.</div>`;
+    return;
+  }
+  state.results.forEach((r, idx)=>{
+    const row=document.createElement("div");
+    row.className="result-row"+(state.selected===idx?" active":"");
+    row.innerHTML = `<span class="name"></span><span class="badge"></span>`;
+    row.querySelector(".name").textContent = itemDisplayName(r.converted);
+    const badge = row.querySelector(".badge");
+    if(r.warnings.length){ badge.textContent = r.warnings.length; badge.classList.add("warn"); }
+    else { badge.textContent = "✓"; badge.classList.add("clean"); }
+    row.addEventListener("click", ()=>{ state.selected=idx; renderResultsList(); renderMain(); });
+    list.appendChild(row);
+  });
+}
+
+function escapeHtml(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function renderMain(){
+  const main=document.getElementById("main");
+  main.innerHTML="";
+  if(state.selected==null || !state.results[state.selected]){
+    main.innerHTML = `<div class="no-selection"><div class="glyph">🜛</div><h2>Nothing selected</h2>
+      <p>Paste 5etools JSON, choose or auto-detect the resource type, then click Convert. Each converted item appears in the list on the left — click one to review its warnings and the final JSON before exporting.</p></div>`;
+    return;
+  }
+  const {raw, converted, warnings, type} = state.results[state.selected];
+  const inner=document.createElement("div");
+  inner.className="main-inner";
+
+  inner.innerHTML += `<div class="top-notice"><b>Mechanical fields only.</b> Units, codes, and structure (range, duration, dice, item type, ability abbreviations, etc.) are converted to this site's French/metric conventions. Names and descriptive prose (<code>entries</code>) are copied verbatim from the English source — you'll need to translate those by hand.</div>`;
+
+  const head=document.createElement("div");
+  head.className="item-head";
+  head.innerHTML = `<div><div class="eyebrow">${TYPE_LABEL[type]||type}</div><h2>${escapeHtml(itemDisplayName(converted))}</h2></div>`;
+  inner.appendChild(head);
+
+  const wbox=document.createElement("div");
+  wbox.className = "warnings-box" + (warnings.length ? "" : " clean");
+  if(warnings.length){
+    wbox.innerHTML = `<div class="wb-title">${warnings.length} thing${warnings.length===1?"":"s"} to review</div><ul>${warnings.map(w=>`<li>${escapeHtml(w)}</li>`).join("")}</ul>`;
+  } else {
+    wbox.innerHTML = `<div class="wb-title">Clean conversion</div><ul><li>No warnings — still check the entries translation.</li></ul>`;
+  }
+  inner.appendChild(wbox);
+
+  const convTitle=document.createElement("div");
+  convTitle.className="section-title";
+  convTitle.textContent="Converted (site format)";
+  inner.appendChild(convTitle);
+  const convPre=document.createElement("pre");
+  convPre.className="json-view";
+  convPre.textContent = JSON.stringify(converted, null, 2);
+  inner.appendChild(convPre);
+
+  const rawTitle=document.createElement("div");
+  rawTitle.className="section-title";
+  rawTitle.textContent="Original (5etools format)";
+  inner.appendChild(rawTitle);
+  const rawPre=document.createElement("pre");
+  rawPre.className="json-view";
+  rawPre.textContent = JSON.stringify(raw, null, 2);
+  inner.appendChild(rawPre);
+
+  main.appendChild(inner);
+}
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+document.getElementById("btnUpload").addEventListener("click", ()=> document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change", (e)=>{
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=()=>{ document.getElementById("rawInput").value = reader.result; };
+  reader.readAsText(file);
+  e.target.value="";
+});
+
+document.getElementById("btnClear").addEventListener("click", ()=>{
+  document.getElementById("rawInput").value="";
+  document.getElementById("detectBanner").innerHTML="";
+});
+
+document.getElementById("rawInput").addEventListener("input", ()=>{
+  const banner=document.getElementById("detectBanner");
+  const raw=document.getElementById("rawInput").value.trim();
+  if(!raw){ banner.innerHTML=""; return; }
+  try{
+    const parsed=JSON.parse(raw);
+    const arr=extractArray(parsed);
+    const type=detectType(arr[0]);
+    if(type){
+      banner.innerHTML = `<div class="detect-banner">Detected: <b>${TYPE_LABEL[type]}</b> (${arr.length} item${arr.length===1?"":"s"})</div>`;
+      document.getElementById("typeSelect").value = "auto";
+      state.detectedType = type;
+    } else {
+      banner.innerHTML = `<div class="detect-banner warn">Couldn't auto-detect the type (${arr.length} item${arr.length===1?"":"s"}) — please pick one from the dropdown.</div>`;
+      state.detectedType = null;
+    }
+  }catch(e){
+    banner.innerHTML = `<div class="detect-banner warn">Not valid JSON yet…</div>`;
+    state.detectedType = null;
+  }
+});
+
+document.getElementById("btnConvert").addEventListener("click", ()=>{
+  const raw=document.getElementById("rawInput").value.trim();
+  if(!raw){ toast("Paste some JSON first"); return; }
+  let parsed;
+  try{ parsed = JSON.parse(raw); }
+  catch(e){ alert("That's not valid JSON:\n"+e.message); return; }
+
+  const arr = extractArray(parsed);
+  if(!arr.length){ toast("No items found in that JSON"); return; }
+
+  let type = document.getElementById("typeSelect").value;
+  if(type === "auto"){
+    type = detectType(arr[0]);
+    if(!type){ alert("Couldn't auto-detect the resource type — please choose one from the dropdown."); return; }
+  }
+  const converter = CONVERTERS[type];
+  if(!converter){ alert("Unsupported type."); return; }
+
+  state.results = arr.map(raw=>{
+    const warnings=[];
+    let converted;
+    try{ converted = converter(raw, warnings); }
+    catch(e){ converted = {name: raw.name || "(conversion failed)"}; warnings.push("Conversion crashed on this item: " + e.message); }
+    return {raw, converted, warnings, type};
+  });
+  state.selected = state.results.length ? 0 : null;
+  renderResultsList();
+  renderMain();
+  toast(`Converted ${state.results.length} item${state.results.length===1?"":"s"}`);
+});
+
+document.getElementById("btnExportAll").addEventListener("click", ()=>{
+  if(!state.results.length) return;
+  const type = state.results[0].type;
+  const out = state.results.map(r=>r.converted);
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href=url; a.download = TYPE_FILE[type] || "converted.json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  toast("Exported "+(TYPE_FILE[type]||"converted.json"));
+});
+
+renderResultsList();
+renderMain();
+
+})();
+</script>
+</body>
+</html>
