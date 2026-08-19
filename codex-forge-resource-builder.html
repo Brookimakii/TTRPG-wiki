@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex Forge — TTRPG Resource Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15130f;
+    --panel:#1d1a14;
+    --panel-2:#241f17;
+    --panel-3:#2a251b;
+    --border:#3a3324;
+    --border-soft:#2c2719;
+    --text:#ece4d1;
+    --text-dim:#a99d84;
+    --text-faint:#786c56;
+    --brass:#c9a227;
+    --brass-bright:#e0bc4a;
+    --brass-dim:rgba(201,162,39,.14);
+    --teal:#5a9d92;
+    --teal-dim:rgba(90,157,146,.16);
+    --danger:#b8543f;
+    --danger-dim:rgba(184,84,63,.14);
+    --display:'Cinzel',serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:13.5px;
+    line-height:1.5;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(201,162,39,.04), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(90,157,146,.04), transparent 45%);
+    z-index:0;
+  }
+  ::selection{background:var(--brass-dim);color:var(--brass-bright);}
+  input,textarea,select,button{font-family:inherit;color:inherit;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:var(--panel);}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--brass);}
+
+  .app-shell{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:200px 300px 1fr;
+    height:100vh;
+  }
+
+  /* ---------- Rail ---------- */
+  .rail{
+    background:var(--panel);
+    border-right:1px solid var(--border-soft);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .rail-brand{
+    padding:20px 18px 14px;
+    border-bottom:1px solid var(--border-soft);
+  }
+  .rail-brand .mark{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:.04em;
+    color:var(--brass-bright);
+    display:flex;align-items:center;gap:8px;
+  }
+  .rail-brand .sub{
+    margin-top:3px;
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  .rail-nav{
+    flex:1;
+    overflow-y:auto;
+    padding:10px 0;
+  }
+  .rail-nav-label{
+    padding:10px 18px 6px;
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  .rail-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    padding:8px 18px;
+    cursor:pointer;
+    border-left:2px solid transparent;
+    color:var(--text-dim);
+    font-size:13px;
+    transition:background .12s, color .12s, border-color .12s;
+  }
+  .rail-item:hover{background:var(--panel-2);color:var(--text);}
+  .rail-item.active{
+    background:var(--brass-dim);
+    color:var(--brass-bright);
+    border-left-color:var(--brass);
+  }
+  .rail-item .count{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--text-faint);
+    background:var(--panel-3);
+    border-radius:20px;
+    padding:1px 7px;
+    min-width:18px;
+    text-align:center;
+  }
+  .rail-item.active .count{color:var(--brass);background:rgba(201,162,39,.12);}
+  .rail-foot{
+    padding:12px 18px;
+    border-top:1px solid var(--border-soft);
+    font-size:10.5px;
+    color:var(--text-faint);
+    line-height:1.6;
+  }
+
+  /* ---------- List pane ---------- */
+  .list-pane{
+    background:var(--panel);
+    border-right:1px solid var(--border-soft);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  .list-head{
+    padding:16px 16px 12px;
+    border-bottom:1px solid var(--border-soft);
+  }
+  .list-head h1{
+    font-family:var(--display);
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 2px;
+    letter-spacing:.02em;
+  }
+  .list-head .file-tag{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--text-faint);
+  }
+  .list-actions{
+    display:flex;
+    gap:6px;
+    margin-top:12px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    appearance:none;
+    border:1px solid var(--border);
+    background:var(--panel-2);
+    color:var(--text);
+    font-size:11.5px;
+    font-weight:500;
+    padding:6px 10px;
+    border-radius:var(--radius);
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    transition:border-color .12s, color .12s, background .12s;
+    white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary{
+    background:var(--brass-dim);
+    border-color:var(--brass);
+    color:var(--brass-bright);
+  }
+  .btn.primary:hover{background:rgba(201,162,39,.24);}
+  .btn.danger:hover{border-color:var(--danger);color:#e07e6a;}
+  .btn.ghost{background:transparent;border-color:transparent;color:var(--text-dim);padding:6px 8px;}
+  .btn.ghost:hover{background:var(--panel-2);color:var(--text);}
+  .btn.small{padding:4px 8px;font-size:10.5px;}
+  .btn:disabled{opacity:.35;cursor:not-allowed;}
+  .btn:disabled:hover{border-color:var(--border);color:var(--text);}
+
+  .search-wrap{padding:10px 16px;border-bottom:1px solid var(--border-soft);}
+  .search-wrap input{
+    width:100%;
+    background:var(--panel-2);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    color:var(--text);
+    padding:7px 9px;
+    font-size:12.5px;
+  }
+  .search-wrap input:focus{outline:none;border-color:var(--brass);}
+
+  .item-list{flex:1;overflow-y:auto;padding:6px;}
+  .item-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    padding:8px 10px;
+    border-radius:var(--radius);
+    cursor:pointer;
+    margin-bottom:2px;
+    border:1px solid transparent;
+  }
+  .item-row:hover{background:var(--panel-2);}
+  .item-row.active{background:var(--teal-dim);border-color:var(--teal);}
+  .item-row .info{overflow:hidden;}
+  .item-row .name{
+    font-size:12.5px;
+    font-weight:500;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .item-row.active .name{color:#a9d8cf;}
+  .item-row .meta{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--text-faint);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .item-row .del{
+    opacity:0;
+    background:none;border:none;color:var(--text-faint);cursor:pointer;
+    font-size:14px;line-height:1;padding:2px 4px;flex:none;
+  }
+  .item-row:hover .del{opacity:1;}
+  .item-row .del:hover{color:var(--danger);}
+
+  .empty-list{
+    padding:30px 20px;
+    text-align:center;
+    color:var(--text-faint);
+    font-size:12px;
+    line-height:1.7;
+  }
+
+  /* ---------- Editor pane ---------- */
+  .editor-pane{overflow-y:auto;}
+  .editor-inner{max-width:920px;margin:0 auto;padding:28px 40px 80px;}
+
+  .no-selection{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    color:var(--text-faint);
+    text-align:center;
+    padding:40px;
+  }
+  .no-selection .glyph{font-size:34px;color:var(--border);font-family:var(--display);}
+  .no-selection h2{font-family:var(--display);color:var(--text-dim);font-weight:600;font-size:16px;margin:0;}
+  .no-selection p{font-size:12.5px;max-width:320px;margin:0;}
+
+  .editor-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:22px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--border-soft);
+  }
+  .editor-head .title-block{flex:1;min-width:0;}
+  .editor-head .eyebrow{
+    font-size:10.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:4px;
+  }
+  .editor-head h2{
+    font-family:var(--display);
+    font-size:22px;
+    font-weight:600;
+    margin:0;
+    color:var(--text);
+    word-break:break-word;
+  }
+  .editor-head .actions{display:flex;gap:6px;flex:none;padding-top:2px;}
+
+  .section{margin-bottom:28px;}
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--display);
+    font-size:13px;
+    letter-spacing:.03em;
+    color:var(--text-dim);
+    margin-bottom:12px;
+  }
+  .section-title::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:linear-gradient(to right, var(--border), transparent);
+  }
+
+  .field-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:12px;
+  }
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field.wide{grid-column:1/-1;}
+  .field label{
+    font-size:10.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+  }
+  .field input[type="text"],
+  .field input[type="number"],
+  .field textarea,
+  .field select{
+    background:var(--panel-2);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    color:var(--text);
+    padding:7px 9px;
+    font-size:12.5px;
+    width:100%;
+    resize:vertical;
+  }
+  .field textarea{min-height:56px;line-height:1.5;font-family:var(--body);}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--brass);}
+  .field .hint{font-size:10px;color:var(--text-faint);}
+  .field-check{
+    flex-direction:row;
+    align-items:center;
+    gap:8px;
+    padding-top:18px;
+  }
+  .field-check input{width:14px;height:14px;accent-color:var(--brass);}
+  .field-check label{text-transform:none;font-size:12px;letter-spacing:0;color:var(--text-dim);}
+
+  /* entry blocks */
+  .entries-toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .entry-block{
+    background:var(--panel-2);
+    border:1px solid var(--border-soft);
+    border-radius:var(--radius);
+    padding:10px 12px;
+    margin-bottom:8px;
+    position:relative;
+  }
+  .entry-block .eb-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+  }
+  .entry-block .eb-type{
+    font-family:var(--mono);
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--teal);
+  }
+  .entry-block .eb-tools{display:flex;gap:3px;}
+  .entry-block .eb-tools button{
+    background:none;border:none;color:var(--text-faint);cursor:pointer;
+    font-size:12px;padding:2px 5px;border-radius:2px;
+  }
+  .entry-block .eb-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
+  .entry-block .eb-tools button.del:hover{color:var(--danger);}
+  .entry-block textarea{
+    width:100%;
+    background:var(--panel);
+    border:1px solid var(--border-soft);
+    border-radius:var(--radius);
+    color:var(--text);
+    padding:7px 9px;
+    font-size:12.5px;
+    min-height:44px;
+    line-height:1.5;
+  }
+  .entry-block input[type="text"]{
+    width:100%;
+    background:var(--panel);
+    border:1px solid var(--border-soft);
+    border-radius:var(--radius);
+    color:var(--text);
+    padding:6px 8px;
+    font-size:12px;
+    margin-bottom:6px;
+  }
+  .entry-block .list-line{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;}
+  .entry-block .list-line textarea{min-height:34px;}
+  .entry-block .list-line button{
+    background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:4px;flex:none;
+  }
+  .entry-block .list-line button:hover{color:var(--danger);}
+  .add-line-btn{
+    font-size:11px;color:var(--teal);background:none;border:1px dashed var(--border);
+    border-radius:var(--radius);padding:4px 8px;cursor:pointer;
+  }
+  .add-line-btn:hover{border-color:var(--teal);}
+  .entries-empty{
+    font-size:11.5px;color:var(--text-faint);font-style:italic;
+    border:1px dashed var(--border-soft);border-radius:var(--radius);
+    padding:14px;text-align:center;
+  }
+
+  details.raw-json{
+    border:1px solid var(--border-soft);
+    border-radius:var(--radius);
+    background:var(--panel-2);
+  }
+  details.raw-json summary{
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  details.raw-json summary:hover{color:var(--brass);}
+  .raw-json-body{padding:0 14px 14px;}
+  .raw-json-body textarea{
+    width:100%;
+    min-height:260px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    color:#d9cf9c;
+    font-family:var(--mono);
+    font-size:12px;
+    line-height:1.55;
+    padding:12px;
+    tab-size:2;
+  }
+  .raw-json-body .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px;}
+  .raw-json-body .err{color:#e07e6a;font-size:11px;font-family:var(--mono);}
+  .raw-json-body .ok{color:var(--teal);font-size:11px;font-family:var(--mono);}
+
+  .toast{
+    position:fixed;
+    bottom:18px;right:18px;
+    background:var(--panel-3);
+    border:1px solid var(--brass);
+    color:var(--brass-bright);
+    padding:10px 16px;
+    border-radius:var(--radius);
+    font-size:12.5px;
+    box-shadow:0 8px 24px rgba(0,0,0,.4);
+    z-index:100;
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .18s, transform .18s;
+    pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateY(0);}
+
+  input[type="file"]{display:none;}
+
+  @media (max-width: 980px){
+    .app-shell{grid-template-columns:64px 240px 1fr;}
+    .rail-brand .sub, .rail-item span.label-text, .rail-foot{display:none;}
+    .rail-item{justify-content:center;padding:10px 0;}
+    .rail-item .count{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <!-- RAIL: resource type navigation -->
+  <div class="rail">
+    <div class="rail-brand">
+      <div class="mark">⚔ Codex Forge</div>
+      <div class="sub">Resource Builder</div>
+    </div>
+    <div class="rail-nav" id="railNav"></div>
+    <div class="rail-foot">Everything stays on this device.<br>Export JSON to hand off to the wiki.</div>
+  </div>
+
+  <!-- LIST PANE -->
+  <div class="list-pane">
+    <div class="list-head">
+      <h1 id="listTitle">Races</h1>
+      <div class="file-tag" id="listFileTag">races.json</div>
+      <div class="list-actions">
+        <button class="btn primary small" id="btnNew">+ New</button>
+        <button class="btn small" id="btnImport">Import JSON</button>
+        <button class="btn small" id="btnExport">Export JSON</button>
+      </div>
+      <div class="list-actions">
+        <button class="btn ghost small" id="btnDuplicateAll" title="Download every non-empty type as its own file">Export all types</button>
+        <button class="btn ghost small" id="btnClearType">Clear list</button>
+      </div>
+      <input type="file" id="fileInput" accept="application/json">
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="searchBox" placeholder="Filter by name or id…">
+    </div>
+    <div class="item-list" id="itemList"></div>
+  </div>
+
+  <!-- EDITOR PANE -->
+  <div class="editor-pane" id="editorPane"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   RESOURCE TYPE DEFINITIONS
+   ============================================================ */
+
+function tpl(o){ return JSON.parse(JSON.stringify(o)); }
+
+const TYPES = [
+  {
+    key:"races", label:"Races", file:"races.json", idField:"id",
+    template:{id:"", name:"", bonus:"", size:"", creatureType:"", speed:"", source:"", page:null,
+      common:{age:"",alignment:"",size:"",languages:""}, traits:[], info:[]},
+    quickFields:[
+      {path:"id",label:"ID",type:"text",placeholder:"aarakocra",checkDuplicates:true},
+      {path:"name",label:"Name",type:"text",placeholder:"Aarakocra"},
+      {path:"bonus",label:"Ability Bonus",type:"text",placeholder:"Dex +2; Wis +1"},
+      {path:"size",label:"Size",type:"text",placeholder:"Medium"},
+      {path:"creatureType",label:"Creature Type",type:"text",placeholder:"Humanoid"},
+      {path:"speed",label:"Speed",type:"text",placeholder:"25ft, fly 50ft"},
+      {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+      {path:"page",label:"Page",type:"number"},
+      {path:"common.age",label:"Age",type:"textarea",wide:true},
+      {path:"common.alignment",label:"Alignment",type:"textarea",wide:true},
+      {path:"common.size",label:"Size (flavor)",type:"textarea",wide:true},
+      {path:"common.languages",label:"Languages",type:"textarea",wide:true},
+    ],
+    entriesFields:[
+      {path:"traits",label:"Traits",mode:"named"},
+      {path:"info",label:"Lore / Info",mode:"paragraphs"},
+    ]
+  },
+  {
+    key:"classes", label:"Classes", file:"classes.json", idField:"id",
+    template:{id:"", info:{name:"",source:"",page:null,spellcastingAbility:"",
+      hitDice:{amount:1,faces:8},
+      proficiencies:{armor:[],weapon:[],tools:[],skills:{pool:[],count:2},saves:[]},
+      startingEquipment:{goldAlternative:"",equipement:[]}},
+      subclasses:[], classFeatures:[], subclassFeatures:[]},
+    quickFields:[
+      {path:"id",label:"ID",type:"text",placeholder:"artificer",checkDuplicates:true},
+      {path:"info.name",label:"Name",type:"text",placeholder:"Artificer"},
+      {path:"info.source",label:"Source",type:"text",placeholder:"TCE"},
+      {path:"info.page",label:"Page",type:"number"},
+      {path:"info.spellcastingAbility",label:"Spellcasting Ability",type:"text",placeholder:"Intelligence"},
+      {path:"info.hitDice.amount",label:"Hit Dice Amount",type:"number"},
+      {path:"info.hitDice.faces",label:"Hit Dice Faces",type:"number"},
+      {path:"info.proficiencies.armor",label:"Armor Proficiencies",type:"list",placeholder:"light, medium, shield"},
+      {path:"info.proficiencies.weapon",label:"Weapon Proficiencies",type:"list",placeholder:"simple, martial"},
+      {path:"info.proficiencies.tools",label:"Tool Proficiencies",type:"list"},
+      {path:"info.proficiencies.saves",label:"Saving Throws",type:"list",placeholder:"con, int"},
+      {path:"info.proficiencies.skills.pool",label:"Skill Pool",type:"list"},
+      {path:"info.proficiencies.skills.count",label:"Skill Count",type:"number"},
+      {path:"info.startingEquipment.goldAlternative",label:"Starting Gold Alt.",type:"text",placeholder:"5d4 × 10"},
+      {path:"info.startingEquipment.equipement",label:"Starting Equipment",type:"list",wide:true},
+    ],
+    entriesFields:[],
+    note:"Subclasses, class features and subclass features are deeply nested — use Raw JSON below to edit those."
+  },
+  {
+    key:"spells", label:"Spells", file:"spells.json", idField:"id",
+    template:{name:"", id:"", level:"", school:"", castingTime:"", castingTimeAddition:"", range:"",
+      duration:"", component:"", concentration:false, ritual:false, shortDesc:"", entries:[],
+      upCast:"", source:"", page:null,
+      casters:{classes:[], subclasses:[], races:[], backgrounds:[], feats:[], features:[]},
+      spellAttack:false, savingThrow:[], abilityCheck:[], damageTypes:[], conditionsInflicted:[], affectsCreatureTypes:[]},
+    quickFields:[
+      {path:"name",label:"Name (display)",type:"text",placeholder:"Absorb Elements"},
+      {path:"id",label:"ID (english key)",type:"text",placeholder:"Absorb Elements",checkDuplicates:true},
+      {path:"level",label:"Level",type:"text",placeholder:"1, or cantrip"},
+      {path:"school",label:"School",type:"text",placeholder:"A"},
+      {path:"castingTime",label:"Casting Time",type:"text",placeholder:"1 action"},
+      {path:"castingTimeAddition",label:"Casting Time Note",type:"text",wide:true},
+      {path:"range",label:"Range",type:"text",placeholder:"60 feet"},
+      {path:"duration",label:"Duration",type:"text",placeholder:"Instantaneous"},
+      {path:"component",label:"Components",type:"text",placeholder:"V, S, M"},
+      {path:"concentration",label:"Concentration",type:"boolean"},
+      {path:"ritual",label:"Ritual",type:"boolean"},
+      {path:"spellAttack",label:"Spell Attack",type:"boolean"},
+      {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+      {path:"page",label:"Page",type:"number"},
+      {path:"shortDesc",label:"Short Description",type:"textarea",wide:true},
+      {path:"upCast",label:"At Higher Levels",type:"textarea",wide:true},
+      {type:"divider",label:"Casters (for filtering)"},
+      {path:"casters.classes",label:"Classes",type:"list",wide:true,placeholder:"Magicien, Ensorceleur"},
+      {path:"casters.subclasses",label:"Subclasses",type:"list",wide:true},
+      {path:"casters.races",label:"Races",type:"list",wide:true},
+      {path:"casters.backgrounds",label:"Backgrounds",type:"list",wide:true},
+      {path:"casters.feats",label:"Feats",type:"list",wide:true},
+      {path:"casters.features",label:"Optional/Class Features",type:"list",wide:true},
+      {type:"divider",label:"Effects (for filtering)"},
+      {path:"savingThrow",label:"Saving Throw",type:"list",wide:true,placeholder:"Dex, Con"},
+      {path:"abilityCheck",label:"Ability Check",type:"list",wide:true},
+      {path:"damageTypes",label:"Damage",type:"list",wide:true,placeholder:"Feu, Froid"},
+      {path:"conditionsInflicted",label:"Condition Inflicted",type:"list",wide:true,placeholder:"Empoisonné"},
+      {path:"affectsCreatureTypes",label:"Affects Creature Types",type:"list",wide:true},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}],
+    note:"Range/Duration determine Area Style and Component & Miscellaneous filters automatically — no separate field needed for those."
+  },
+  {
+    key:"feats", label:"Feats", file:"feats.json", idField:"id",
+    template:{name:"", id:"", prerequisite:"", entries:[], source:"", page:null},
+    quickFields:[
+      {path:"name",label:"Name",type:"text",placeholder:"Metamagic Adept"},
+      {path:"id",label:"ID",type:"text",placeholder:"Metamagic_Adept",checkDuplicates:true},
+      {path:"prerequisite",label:"Prerequisite",type:"text",wide:true},
+      {path:"source",label:"Source",type:"text",placeholder:"TCE"},
+      {path:"page",label:"Page",type:"number"},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}]
+  },
+  {
+    key:"items", label:"Items", file:"items.json", idField:"id",
+    template:{id:"", name:"", source:"", page:null, itemType:"weapon", wondrous:false, rarity:"", weight:null, value:null,
+      weaponType:"", weaponCategory:"", weaponProperty:[], dmg1:"", dmg2:"", dmgType:"", entries:[]},
+    quickFields:[
+      {path:"id",label:"ID",type:"text",placeholder:"quarterstaff",checkDuplicates:true},
+      {path:"name",label:"Name",type:"text",placeholder:"Quarterstaff"},
+      {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+      {path:"page",label:"Page",type:"number"},
+
+      {type:"divider"},
+      {path:"itemType",label:"Item Type",type:"select",clearable:true,options:[
+        {value:"weapon",label:"Weapon"},{value:"armor",label:"Armor"},{value:"adventuringGear",label:"Adventuring Gear"},
+        {value:"tools",label:"Tools"},{value:"artisanTools",label:"Artisan Tools"},{value:"spellcastingFocus",label:"Spellcasting Focus"},
+        {value:"instrument",label:"Instrument"},{value:"ammunition",label:"Ammunition"},{value:"gameSet",label:"Gaming Set"},
+        {value:"separator",label:"Separator (section header)"},
+      ]},
+      {path:"weight",label:"Weight",type:"number"},
+      {path:"value",label:"Value (gp)",type:"number"},
+
+      {type:"divider"},
+      {path:"wondrous",label:"Magic Item",type:"boolean"},
+      {path:"rarity",label:"Rarity",type:"select",clearable:true,showIf:{field:"wondrous",equals:true,hideMode:"reserve"},options:[
+        {value:"common",label:"Common"},{value:"uncommon",label:"Uncommon"},{value:"rare",label:"Rare"},
+        {value:"veryRare",label:"Very Rare"},{value:"legendary",label:"Legendary"},{value:"artefact",label:"Artifact"},
+        {value:"varies",label:"Varies"},{value:"unknown",label:"Unknown"},{value:"other",label:"Other"},
+      ]},
+
+      {path:"armorType",label:"Armor Type",type:"select",clearable:true,showIf:{field:"itemType",equals:"armor"},options:[
+        {value:"light",label:"Light"},{value:"medium",label:"Medium"},{value:"heavy",label:"Heavy"},{value:"shield",label:"Shield"},
+      ]},
+      {path:"ac",label:"Armor Class",type:"number",showIf:{field:"itemType",equals:"armor"}},
+      {path:"strength",label:"Strength Req.",type:"number",showIf:{field:"itemType",equals:"armor"},hint:"Leave blank if none"},
+      {path:"stealth",label:"Stealth Disadvantage",type:"boolean",showIf:{field:"itemType",equals:"armor"}},
+
+      {path:"weaponType",label:"Weapon Type",type:"select",clearable:true,showIf:{field:"itemType",equals:"weapon"},options:[
+        {value:"simple",label:"Simple"},{value:"martial",label:"Martial"},
+      ]},
+      {path:"weaponCategory",label:"Weapon Category",type:"select",clearable:true,showIf:{field:"itemType",equals:"weapon"},options:[
+        {value:"melee",label:"Melee"},{value:"ranged",label:"Ranged"},
+      ]},
+      {path:"weaponProperty",label:"Weapon Properties",type:"tags",wide:true,showIf:{field:"itemType",equals:"weapon"},options:[
+        {value:"2H",label:"2H — Two-Handed"},{value:"A",label:"A — Ammunition"},{value:"AF",label:"AF — Ammunition (Firearm)"},
+        {value:"F",label:"F — Finesse"},{value:"H",label:"H — Heavy"},{value:"L",label:"L — Light"},
+        {value:"LD",label:"LD — Loading"},{value:"R",label:"R — Reach"},{value:"RLD",label:"RLD — Reload"},
+        {value:"S",label:"S — Special"},{value:"T",label:"T — Thrown"},{value:"V",label:"V — Versatile"},
+      ]},
+      {path:"dmg1",label:"Damage",type:"text",placeholder:"1d6",showIf:{field:"itemType",equals:"weapon"}},
+      {path:"dmg2",label:"Damage (2H)",type:"text",placeholder:"1d8",showIf:{field:"weaponProperty",includes:"V",hideMode:"reserve"},
+        hint:"Shown because Versatile (V) is set above.",
+        impliesTag:{field:"weaponProperty", tag:"V"}},
+      {path:"dmgType",label:"Damage Type",type:"text",placeholder:"B / P / S",showIf:{field:"itemType",equals:"weapon"}},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}],
+    note:"Use “+ Table” in Description for activity/DC tables like tool kits (e.g. Outils de Voleur)."
+  },
+  {
+    key:"bestiary", label:"Bestiary", file:"bestiary.json", idField:"id",
+    template:{id:"", name:"", source:"", page:null, type:"", size:"", ac:"", hp:"", speed:"",
+      traits:[], actions:[]},
+    quickFields:[
+      {path:"name",label:"Name",type:"text",placeholder:"Goblin"},
+      {path:"id",label:"ID",type:"text",placeholder:"goblin",checkDuplicates:true},
+      {path:"type",label:"Creature Type",type:"text",placeholder:"humanoid (goblinoid)"},
+      {path:"size",label:"Size",type:"text",placeholder:"Small"},
+      {path:"ac",label:"Armor Class",type:"text",placeholder:"15 (leather armor, shield)"},
+      {path:"hp",label:"Hit Points",type:"text",placeholder:"7 (2d6)"},
+      {path:"speed",label:"Speed",type:"text",placeholder:"30 ft."},
+      {path:"source",label:"Source",type:"text",placeholder:"MM"},
+      {path:"page",label:"Page",type:"number"},
+    ],
+    entriesFields:[
+      {path:"traits",label:"Traits",mode:"named"},
+      {path:"actions",label:"Actions",mode:"named"},
+    ]
+  },
+  {
+    key:"backgrounds", label:"Backgrounds", file:"backgrounds.json", idField:"id",
+    template:{id:"", name:"", source:"", page:null, entries:[]},
+    quickFields:[
+      {path:"name",label:"Name",type:"text",placeholder:"Acolyte"},
+      {path:"id",label:"ID",type:"text",placeholder:"acolyte",checkDuplicates:true},
+      {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+      {path:"page",label:"Page",type:"number"},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}],
+    note:"Backgrounds in the site use HTML entry blocks — use the “+ HTML block” option below."
+  },
+  {
+    key:"conditions", label:"Conditions", file:"conditions.json", idField:"id",
+    template:{id:"", name:"", source:"", page:null, entries:[]},
+    quickFields:[
+      {path:"name",label:"Name",type:"text",placeholder:"Poisoned"},
+      {path:"id",label:"ID",type:"text",placeholder:"poisoned",checkDuplicates:true},
+      {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+      {path:"page",label:"Page",type:"number"},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}]
+  },
+  {
+    key:"features", label:"Features", file:"features.json", idField:"id",
+    template:{id:"", name:"", source:"", page:null, featureType:[], prerequisiteItems:[], entries:[]},
+    quickFields:[
+      {path:"name",label:"Name",type:"text",placeholder:"Mind Sharpener"},
+      {path:"id",label:"ID",type:"text",placeholder:"mindSharpener",checkDuplicates:true},
+      {path:"source",label:"Source",type:"text",placeholder:"TCE"},
+      {path:"page",label:"Page",type:"number"},
+      {path:"featureType",label:"Feature Type(s)",type:"list",placeholder:"AI"},
+      {path:"prerequisiteItems",label:"Prerequisite Item(s)",type:"list",placeholder:"armor, shield"},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}],
+    note:"On export, Prerequisite Item(s) is written as prerequisite: [{item:[…]}] to match the site format."
+  },
+  {
+    key:"rules", label:"Rules", file:"rules.json", idField:"id",
+    template:{id:"", name:"", source:"", page:null, entries:[]},
+    quickFields:[
+      {path:"name",label:"Name",type:"text",placeholder:"Advantage and Disadvantage"},
+      {path:"id",label:"ID",type:"text",placeholder:"advantage",checkDuplicates:true},
+      {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+      {path:"page",label:"Page",type:"number"},
+    ],
+    entriesFields:[{path:"entries",label:"Description",mode:"mixed"}]
+  },
+];
+
+const TYPE_MAP = {};
+TYPES.forEach(t => TYPE_MAP[t.key] = t);
+
+/* ============================================================
+   PATH HELPERS
+   ============================================================ */
+
+function getPath(obj, path){
+  return path.split(".").reduce((o,k)=> (o==null? undefined : o[k]), obj);
+}
+function setPath(obj, path, value){
+  const parts = path.split(".");
+  let cur = obj;
+  for(let i=0;i<parts.length-1;i++){
+    const k = parts[i];
+    if(cur[k]==null || typeof cur[k] !== "object") cur[k] = {};
+    cur = cur[k];
+  }
+  cur[parts[parts.length-1]] = value;
+}
+
+/* ============================================================
+   STATE
+   ============================================================ */
+
+const STORAGE_PREFIX = "codexforge:v1:";
+
+const state = {
+  activeType: "races",
+  data: {},          // { typeKey: [items] }
+  selected: {},       // { typeKey: index }
+  search: "",
+};
+
+function loadType(key){
+  if(state.data[key]) return state.data[key];
+  let arr = [];
+  try{
+    const raw = localStorage.getItem(STORAGE_PREFIX + key);
+    if(raw) arr = JSON.parse(raw);
+  }catch(e){ arr = []; }
+  state.data[key] = Array.isArray(arr) ? arr : [];
+  return state.data[key];
+}
+function persist(key){
+  try{
+    localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(state.data[key]));
+  }catch(e){ /* storage full or unavailable — silently skip */ }
+}
+
+TYPES.forEach(t => loadType(t.key));
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer = null;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove("show"), 2200);
+}
+
+/* ============================================================
+   RAIL RENDER
+   ============================================================ */
+function renderRail(){
+  const nav = document.getElementById("railNav");
+  nav.innerHTML = "";
+  const label = document.createElement("div");
+  label.className = "rail-nav-label";
+  label.textContent = "Resource Types";
+  nav.appendChild(label);
+  TYPES.forEach(t=>{
+    const row = document.createElement("div");
+    row.className = "rail-item" + (t.key===state.activeType ? " active":"");
+    row.innerHTML = `<span class="label-text">${t.label}</span><span class="count">${loadType(t.key).length}</span>`;
+    row.addEventListener("click", ()=>{
+      state.activeType = t.key;
+      state.search = "";
+      state.selectedIndex = state.selected[t.key] ?? null;
+      renderAll();
+    });
+    nav.appendChild(row);
+  });
+}
+
+/* ============================================================
+   LIST PANE RENDER
+   ============================================================ */
+function currentItems(){ return loadType(state.activeType); }
+function currentType(){ return TYPE_MAP[state.activeType]; }
+
+function itemLabel(item, type){
+  const idf = type.idField;
+  return getPath(item, "name") || getPath(item, idf) || "(untitled)";
+}
+function itemSub(item, type){
+  const bits = [];
+  if(item.source) bits.push(item.source);
+  else if(item.info && item.info.source) bits.push(item.info.source);
+  const idVal = getPath(item, type.idField);
+  if(idVal) bits.push(idVal);
+  return bits.join(" · ");
+}
+
+function renderListPane(){
+  const type = currentType();
+  document.getElementById("listTitle").textContent = type.label;
+  document.getElementById("listFileTag").textContent = type.file;
+
+  const listEl = document.getElementById("itemList");
+  listEl.innerHTML = "";
+  const items = currentItems();
+  const q = state.search.trim().toLowerCase();
+
+  const filtered = [];
+  items.forEach((it, idx)=>{
+    const lbl = (itemLabel(it, type) || "").toLowerCase();
+    const idv = (getPath(it, type.idField) || "").toLowerCase();
+    if(!q || lbl.includes(q) || idv.includes(q)) filtered.push(idx);
+  });
+
+  if(items.length === 0){
+    listEl.innerHTML = `<div class="empty-list">No ${type.label.toLowerCase()} in this workspace yet.<br><br>Click <strong>+ New</strong> to create one, or <strong>Import JSON</strong> to load an existing ${type.file}.</div>`;
+    return;
+  }
+  if(filtered.length === 0){
+    listEl.innerHTML = `<div class="empty-list">No matches for “${state.search}”.</div>`;
+    return;
+  }
+
+  filtered.forEach(idx=>{
+    const it = items[idx];
+    const row = document.createElement("div");
+    row.className = "item-row" + (state.selected[type.key]===idx ? " active":"");
+    row.innerHTML = `<div class="info"><div class="name"></div><div class="meta"></div></div><button class="del" title="Delete">×</button>`;
+    row.querySelector(".name").textContent = itemLabel(it, type);
+    row.querySelector(".meta").textContent = itemSub(it, type);
+    row.addEventListener("click", (e)=>{
+      if(e.target.classList.contains("del")) return;
+      state.selected[type.key] = idx;
+      renderAll();
+    });
+    row.querySelector(".del").addEventListener("click", (e)=>{
+      e.stopPropagation();
+      if(!confirm(`Delete "${itemLabel(it,type)}"? This can't be undone.`)) return;
+      items.splice(idx,1);
+      if(state.selected[type.key]===idx) delete state.selected[type.key];
+      else if(state.selected[type.key] > idx) state.selected[type.key]--;
+      persist(type.key);
+      renderAll();
+    });
+    listEl.appendChild(row);
+  });
+}
+
+/* ============================================================
+   ENTRIES BUILDERS
+   ============================================================ */
+
+// --- paragraphs mode: array of plain strings ---
+function renderParagraphsEditor(container, item, field){
+  container.innerHTML = "";
+  let arr = getPath(item, field.path);
+  if(!Array.isArray(arr)){ arr = []; setPath(item, field.path, arr); }
+
+  const toolbar = document.createElement("div");
+  toolbar.className = "entries-toolbar";
+  const addBtn = document.createElement("button");
+  addBtn.className = "btn small";
+  addBtn.textContent = "+ Paragraph";
+  addBtn.addEventListener("click", ()=>{
+    arr.push("");
+    renderParagraphsEditor(container, item, field);
+    autosave();
+  });
+  toolbar.appendChild(addBtn);
+  container.appendChild(toolbar);
+
+  if(arr.length===0){
+    const empty = document.createElement("div");
+    empty.className = "entries-empty";
+    empty.textContent = "No paragraphs yet.";
+    container.appendChild(empty);
+  }
+
+  arr.forEach((val, i)=>{
+    const block = document.createElement("div");
+    block.className = "entry-block";
+    block.innerHTML = `<div class="eb-head"><span class="eb-type">Paragraph ${i+1}</span><div class="eb-tools"></div></div>`;
+    const tools = block.querySelector(".eb-tools");
+    tools.appendChild(moveBtn("↑", ()=>{ if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; renderParagraphsEditor(container,item,field); autosave(); }}));
+    tools.appendChild(moveBtn("↓", ()=>{ if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; renderParagraphsEditor(container,item,field); autosave(); }}));
+    tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderParagraphsEditor(container,item,field); autosave(); }, "del"));
+
+    const ta = document.createElement("textarea");
+    ta.value = val || "";
+    ta.addEventListener("input", ()=>{ arr[i] = ta.value; autosave(); });
+    block.appendChild(ta);
+    container.appendChild(block);
+  });
+}
+
+function moveBtn(txt, fn, cls){
+  const b = document.createElement("button");
+  b.textContent = txt;
+  if(cls) b.classList.add(cls);
+  b.addEventListener("click", fn);
+  return b;
+}
+
+// --- named mode: array of {type:"entries", name, entries:[strings]} ---
+function renderNamedEntriesEditor(container, item, field){
+  container.innerHTML = "";
+  let arr = getPath(item, field.path);
+  if(!Array.isArray(arr)){ arr = []; setPath(item, field.path, arr); }
+
+  const toolbar = document.createElement("div");
+  toolbar.className = "entries-toolbar";
+  const addBtn = document.createElement("button");
+  addBtn.className = "btn small";
+  addBtn.textContent = "+ Named Block";
+  addBtn.addEventListener("click", ()=>{
+    arr.push({type:"entries", name:"", entries:[""]});
+    renderNamedEntriesEditor(container, item, field);
+    autosave();
+  });
+  toolbar.appendChild(addBtn);
+  container.appendChild(toolbar);
+
+  if(arr.length===0){
+    const empty = document.createElement("div");
+    empty.className = "entries-empty";
+    empty.textContent = "No entries yet.";
+    container.appendChild(empty);
+  }
+
+  arr.forEach((blockData, i)=>{
+    if(typeof blockData !== "object" || blockData===null) blockData = {type:"entries", name:"", entries:[String(blockData)]};
+    arr[i] = blockData;
+    if(!Array.isArray(blockData.entries)) blockData.entries = [];
+
+    const block = document.createElement("div");
+    block.className = "entry-block";
+    block.innerHTML = `<div class="eb-head"><span class="eb-type">Named Block ${i+1}</span><div class="eb-tools"></div></div>`;
+    const tools = block.querySelector(".eb-tools");
+    tools.appendChild(moveBtn("↑", ()=>{ if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; renderNamedEntriesEditor(container,item,field); autosave(); }}));
+    tools.appendChild(moveBtn("↓", ()=>{ if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; renderNamedEntriesEditor(container,item,field); autosave(); }}));
+    tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderNamedEntriesEditor(container,item,field); autosave(); }, "del"));
+
+    const nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.placeholder = "Block name (e.g. Flight, Multiattack)";
+    nameInput.value = blockData.name || "";
+    nameInput.addEventListener("input", ()=>{ blockData.name = nameInput.value; autosave(); });
+    block.appendChild(nameInput);
+
+    blockData.entries.forEach((line, li)=>{
+      const lineWrap = document.createElement("div");
+      lineWrap.className = "list-line";
+      const ta = document.createElement("textarea");
+      ta.value = line || "";
+      ta.addEventListener("input", ()=>{ blockData.entries[li] = ta.value; autosave(); });
+      const del = document.createElement("button");
+      del.textContent = "×";
+      del.addEventListener("click", ()=>{ blockData.entries.splice(li,1); renderNamedEntriesEditor(container,item,field); autosave(); });
+      lineWrap.appendChild(ta);
+      lineWrap.appendChild(del);
+      block.appendChild(lineWrap);
+    });
+
+    const addLine = document.createElement("button");
+    addLine.className = "add-line-btn";
+    addLine.textContent = "+ line";
+    addLine.addEventListener("click", ()=>{ blockData.entries.push(""); renderNamedEntriesEditor(container,item,field); autosave(); });
+    block.appendChild(addLine);
+
+    container.appendChild(block);
+  });
+}
+
+// --- mixed mode: strings | {type:"list",entries:[]} | {type:"entries",name,entries:[]} | {html:""} ---
+function detectMixedType(b){
+  if(typeof b === "string") return "text";
+  if(b && b.html !== undefined) return "html";
+  if(!b || typeof b !== "object" || !b.type) return "text";
+  switch(b.type){
+    case "list": return "list";
+    case "entries": return "named";
+    case "table": return "table";
+    case "hr": return "hr";
+    case "quote": return "quote";
+    case "inset": return "inset";
+    case "insetReadaloud": return "insetReadaloud";
+    case "image": return "image";
+    default: return "raw"; // section, variant, abilityGeneric, gallery, tableGroup, optfeature, etc. — still fully editable as JSON
+  }
+}
+
+function renderMixedEntriesEditor(container, item, field){
+  container.innerHTML = "";
+  let arr = getPath(item, field.path);
+  if(!Array.isArray(arr)){ arr = []; setPath(item, field.path, arr); }
+
+  const toolbar = document.createElement("div");
+  toolbar.className = "entries-toolbar";
+  const addOpts = [
+    ["+ Paragraph", ()=> ""],
+    ["+ List", ()=> ({type:"list", entries:[""]})],
+    ["+ Named Block", ()=> ({type:"entries", name:"", entries:[""]})],
+    ["+ Table", ()=> ({type:"table", caption:"", colLabels:["", ""], colStyles:["", ""], rows:[["", ""]]})],
+    ["+ Inset Box", ()=> ({type:"inset", name:"", entries:[""]})],
+    ["+ Read-aloud Box", ()=> ({type:"insetReadaloud", name:"", entries:[""]})],
+    ["+ Quote", ()=> ({type:"quote", entries:[""], by:"", from:""})],
+    ["+ Horizontal Rule", ()=> ({type:"hr"})],
+    ["+ Image", ()=> ({type:"image", href:{type:"external", url:""}, title:"", credit:""})],
+    ["+ HTML Block", ()=> ({html:"<p></p>"})],
+    ["+ Other (raw JSON)", ()=> ({type:"section", name:"", entries:[""]})],
+  ];
+  addOpts.forEach(([txt, make])=>{
+    const b = document.createElement("button");
+    b.className = "btn small";
+    b.textContent = txt;
+    b.addEventListener("click", ()=>{
+      arr.push(make());
+      renderMixedEntriesEditor(container, item, field);
+      autosave();
+    });
+    toolbar.appendChild(b);
+  });
+  container.appendChild(toolbar);
+
+  if(arr.length===0){
+    const empty = document.createElement("div");
+    empty.className = "entries-empty";
+    empty.textContent = "No content yet — add a paragraph, list, named block, or HTML block.";
+    container.appendChild(empty);
+  }
+
+  arr.forEach((b, i)=>{
+    const kind = detectMixedType(b);
+    const block = document.createElement("div");
+    block.className = "entry-block";
+    block.innerHTML = `<div class="eb-head"><span class="eb-type">${kind}</span><div class="eb-tools"></div></div>`;
+    const tools = block.querySelector(".eb-tools");
+    tools.appendChild(moveBtn("↑", ()=>{ if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; renderMixedEntriesEditor(container,item,field); autosave(); }}));
+    tools.appendChild(moveBtn("↓", ()=>{ if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; renderMixedEntriesEditor(container,item,field); autosave(); }}));
+    tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderMixedEntriesEditor(container,item,field); autosave(); }, "del"));
+
+    if(kind === "text"){
+      const ta = document.createElement("textarea");
+      ta.value = b || "";
+      ta.addEventListener("input", ()=>{ arr[i] = ta.value; autosave(); });
+      block.appendChild(ta);
+
+    } else if(kind === "html"){
+      const ta = document.createElement("textarea");
+      ta.value = b.html || "";
+      ta.placeholder = "<p>Raw HTML…</p>";
+      ta.addEventListener("input", ()=>{ b.html = ta.value; autosave(); });
+      block.appendChild(ta);
+
+    } else if(kind === "list"){
+      if(!Array.isArray(b.entries)) b.entries = [];
+
+      const optionsRow = document.createElement("div");
+      optionsRow.style.display = "flex";
+      optionsRow.style.gap = "8px";
+      optionsRow.style.marginBottom = "8px";
+      optionsRow.style.flexWrap = "wrap";
+
+      const styleSelect = document.createElement("select");
+      styleSelect.style.flex = "1";
+      styleSelect.style.minWidth = "160px";
+      [
+        {value:"", label:"Style — default (bulleted)"},
+        {value:"list-hang-notitle", label:"Hanging, no title indent"},
+        {value:"list-hang", label:"Hanging indent"},
+        {value:"list-decimal", label:"Numbered (1, 2, 3…)"},
+        {value:"list-lower-roman", label:"Lower roman (i, ii, iii…)"},
+        {value:"list-upper-roman", label:"Upper roman (I, II, III…)"},
+        {value:"list-no-bullets", label:"No bullets"},
+        {value:"list-italic", label:"Italic"},
+      ].forEach(opt=>{
+        const o = document.createElement("option");
+        o.value = opt.value; o.textContent = opt.label;
+        if((b.style||"") === opt.value) o.selected = true;
+        styleSelect.appendChild(o);
+      });
+      styleSelect.addEventListener("change", ()=>{
+        if(styleSelect.value) b.style = styleSelect.value; else delete b.style;
+        autosave();
+      });
+      optionsRow.appendChild(styleSelect);
+
+      const colsWrap = document.createElement("div");
+      colsWrap.style.display = "flex";
+      colsWrap.style.alignItems = "center";
+      colsWrap.style.gap = "5px";
+      const colsLabel = document.createElement("span");
+      colsLabel.style.fontSize = "11px";
+      colsLabel.style.color = "var(--text-dim)";
+      colsLabel.textContent = "Columns:";
+      const colsInput = document.createElement("input");
+      colsInput.type = "number";
+      colsInput.min = "1";
+      colsInput.style.width = "60px";
+      colsInput.placeholder = "1";
+      colsInput.value = b.columns || "";
+      colsInput.addEventListener("input", ()=>{
+        const n = colsInput.value === "" ? null : Number(colsInput.value);
+        if(n && n > 1) b.columns = n; else delete b.columns;
+        autosave();
+      });
+      colsWrap.appendChild(colsLabel);
+      colsWrap.appendChild(colsInput);
+      optionsRow.appendChild(colsWrap);
+      block.appendChild(optionsRow);
+
+      b.entries.forEach((line, li)=>{
+        const isNamed = line && typeof line === "object" && line.type === "item";
+        const lineWrap = document.createElement("div");
+        lineWrap.className = "list-line";
+        lineWrap.style.flexDirection = "column";
+        lineWrap.style.alignItems = "stretch";
+
+        const headRow = document.createElement("div");
+        headRow.style.display = "flex";
+        headRow.style.justifyContent = "space-between";
+        headRow.style.alignItems = "center";
+        headRow.style.marginBottom = "4px";
+        const namedToggle = document.createElement("label");
+        namedToggle.style.display = "flex";
+        namedToggle.style.alignItems = "center";
+        namedToggle.style.gap = "5px";
+        namedToggle.style.fontSize = "10.5px";
+        namedToggle.style.color = "var(--text-faint)";
+        const namedCb = document.createElement("input");
+        namedCb.type = "checkbox";
+        namedCb.checked = !!isNamed;
+        namedCb.addEventListener("change", ()=>{
+          if(namedCb.checked){
+            b.entries[li] = {type:"item", name:"", entry: (typeof line === "string" ? line : "")};
+          } else {
+            b.entries[li] = (isNamed ? (line.entry || "") : "");
+          }
+          renderMixedEntriesEditor(container, item, field);
+          autosave();
+        });
+        namedToggle.appendChild(namedCb);
+        namedToggle.appendChild(document.createTextNode("Named item (bold label + text)"));
+        headRow.appendChild(namedToggle);
+        const del = document.createElement("button");
+        del.textContent = "× remove";
+        del.style.fontSize = "10.5px";
+        del.style.background = "none";
+        del.style.border = "none";
+        del.style.color = "var(--text-faint)";
+        del.style.cursor = "pointer";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
+        headRow.appendChild(del);
+        lineWrap.appendChild(headRow);
+
+        if(isNamed){
+          const nameInput = document.createElement("input");
+          nameInput.type = "text";
+          nameInput.placeholder = "Label (e.g. a weapon or tool name)";
+          nameInput.value = line.name || "";
+          nameInput.addEventListener("input", ()=>{ line.name = nameInput.value; autosave(); });
+          lineWrap.appendChild(nameInput);
+          const entryTa = document.createElement("textarea");
+          entryTa.placeholder = "Text after the label";
+          entryTa.value = line.entry || "";
+          entryTa.addEventListener("input", ()=>{ line.entry = entryTa.value; autosave(); });
+          lineWrap.appendChild(entryTa);
+        } else {
+          const ta = document.createElement("textarea");
+          ta.value = line || "";
+          ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
+          lineWrap.appendChild(ta);
+        }
+        block.appendChild(lineWrap);
+      });
+      const addLine = document.createElement("button");
+      addLine.className = "add-line-btn";
+      addLine.textContent = "+ list item";
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
+      block.appendChild(addLine);
+
+    } else if(kind === "table"){
+      if(!Array.isArray(b.colLabels)) b.colLabels = ["", ""];
+      if(!Array.isArray(b.colStyles)) b.colStyles = b.colLabels.map(()=>"");
+      if(!Array.isArray(b.rows)) b.rows = [b.colLabels.map(()=>"")];
+
+      const captionInput = document.createElement("input");
+      captionInput.type = "text";
+      captionInput.placeholder = "Table caption (optional)";
+      captionInput.value = b.caption || "";
+      captionInput.addEventListener("input", ()=>{ b.caption = captionInput.value; autosave(); });
+      block.appendChild(captionInput);
+
+      const tableWrap = document.createElement("div");
+      tableWrap.style.overflowX = "auto";
+      const tableEl = document.createElement("table");
+      tableEl.style.width = "100%";
+      tableEl.style.borderCollapse = "collapse";
+      tableEl.style.fontSize = "12px";
+
+      // header row: column label + style inputs, plus remove-column button
+      const theadRow = document.createElement("tr");
+      b.colLabels.forEach((label, ci)=>{
+        const th = document.createElement("th");
+        th.style.border = "1px solid var(--border-soft)";
+        th.style.padding = "4px";
+        th.style.verticalAlign = "top";
+        const labelInput = document.createElement("input");
+        labelInput.type = "text";
+        labelInput.placeholder = "Column label";
+        labelInput.value = label || "";
+        labelInput.style.marginBottom = "3px";
+        labelInput.addEventListener("input", ()=>{ b.colLabels[ci] = labelInput.value; autosave(); });
+        const styleInput = document.createElement("input");
+        styleInput.type = "text";
+        styleInput.placeholder = "col style (optional)";
+        styleInput.style.fontFamily = "var(--mono)";
+        styleInput.style.fontSize = "10.5px";
+        styleInput.value = b.colStyles[ci] || "";
+        styleInput.addEventListener("input", ()=>{ b.colStyles[ci] = styleInput.value; autosave(); });
+        const rmColBtn = document.createElement("button");
+        rmColBtn.textContent = "× remove column";
+        rmColBtn.style.fontSize = "10px";
+        rmColBtn.style.marginTop = "3px";
+        rmColBtn.style.background = "none";
+        rmColBtn.style.border = "none";
+        rmColBtn.style.color = "var(--text-faint)";
+        rmColBtn.style.cursor = "pointer";
+        rmColBtn.addEventListener("click", ()=>{
+          b.colLabels.splice(ci,1);
+          b.colStyles.splice(ci,1);
+          b.rows.forEach(r=> r.splice(ci,1));
+          renderMixedEntriesEditor(container, item, field);
+          autosave();
+        });
+        th.appendChild(labelInput);
+        th.appendChild(document.createElement("br"));
+        th.appendChild(styleInput);
+        th.appendChild(document.createElement("br"));
+        th.appendChild(rmColBtn);
+        theadRow.appendChild(th);
+      });
+      const addColTh = document.createElement("th");
+      addColTh.style.border = "none";
+      const addColBtn = document.createElement("button");
+      addColBtn.className = "add-line-btn";
+      addColBtn.textContent = "+ column";
+      addColBtn.addEventListener("click", ()=>{
+        b.colLabels.push("");
+        b.colStyles.push("");
+        b.rows.forEach(r=> r.push(""));
+        renderMixedEntriesEditor(container, item, field);
+        autosave();
+      });
+      addColTh.appendChild(addColBtn);
+      theadRow.appendChild(addColTh);
+      tableEl.appendChild(theadRow);
+
+      // data rows
+      b.rows.forEach((row, ri)=>{
+        while(row.length < b.colLabels.length) row.push("");
+        const tr = document.createElement("tr");
+        row.forEach((cell, ci)=>{
+          const td = document.createElement("td");
+          td.style.border = "1px solid var(--border-soft)";
+          td.style.padding = "4px";
+          const cellInput = document.createElement("input");
+          cellInput.type = "text";
+          cellInput.value = cell ?? "";
+          cellInput.style.width = "100%";
+          cellInput.addEventListener("input", ()=>{ b.rows[ri][ci] = cellInput.value; autosave(); });
+          td.appendChild(cellInput);
+          tr.appendChild(td);
+        });
+        const rmTd = document.createElement("td");
+        rmTd.style.border = "none";
+        const rmRowBtn = document.createElement("button");
+        rmRowBtn.textContent = "× row";
+        rmRowBtn.style.fontSize = "10px";
+        rmRowBtn.style.background = "none";
+        rmRowBtn.style.border = "none";
+        rmRowBtn.style.color = "var(--text-faint)";
+        rmRowBtn.style.cursor = "pointer";
+        rmRowBtn.addEventListener("click", ()=>{
+          b.rows.splice(ri,1);
+          renderMixedEntriesEditor(container, item, field);
+          autosave();
+        });
+        rmTd.appendChild(rmRowBtn);
+        tr.appendChild(rmTd);
+        tableEl.appendChild(tr);
+      });
+
+      tableWrap.appendChild(tableEl);
+      block.appendChild(tableWrap);
+
+      const addRowBtn = document.createElement("button");
+      addRowBtn.className = "add-line-btn";
+      addRowBtn.style.marginTop = "8px";
+      addRowBtn.textContent = "+ row";
+      addRowBtn.addEventListener("click", ()=>{
+        b.rows.push(b.colLabels.map(()=>""));
+        renderMixedEntriesEditor(container, item, field);
+        autosave();
+      });
+      block.appendChild(addRowBtn);
+
+    } else if(kind === "hr"){
+      const note = document.createElement("div");
+      note.className = "raw-note";
+      note.textContent = "A plain horizontal divider — no fields needed.";
+      block.appendChild(note);
+
+    } else if(kind === "quote"){
+      if(!Array.isArray(b.entries)) b.entries = [""];
+      b.entries.forEach((line, li)=>{
+        const w = document.createElement("div");
+        w.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.placeholder = "Quote line";
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
+        const del = document.createElement("button");
+        del.textContent = "×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
+        w.appendChild(ta); w.appendChild(del);
+        block.appendChild(w);
+      });
+      const addLine = document.createElement("button");
+      addLine.className = "add-line-btn";
+      addLine.textContent = "+ line";
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
+      block.appendChild(addLine);
+
+      const byRow = document.createElement("div");
+      byRow.style.display = "flex";
+      byRow.style.gap = "6px";
+      byRow.style.marginTop = "8px";
+      const byInput = document.createElement("input");
+      byInput.type = "text";
+      byInput.placeholder = "Attributed to (optional)";
+      byInput.value = b.by || "";
+      byInput.style.marginBottom = "0";
+      byInput.addEventListener("input", ()=>{ b.by = byInput.value; autosave(); });
+      const fromInput = document.createElement("input");
+      fromInput.type = "text";
+      fromInput.placeholder = "Source (optional)";
+      fromInput.value = b.from || "";
+      fromInput.style.marginBottom = "0";
+      fromInput.addEventListener("input", ()=>{ b.from = fromInput.value; autosave(); });
+      byRow.appendChild(byInput);
+      byRow.appendChild(fromInput);
+      block.appendChild(byRow);
+
+    } else if(kind === "inset" || kind === "insetReadaloud"){
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.placeholder = "Box title (optional)";
+      nameInput.value = b.name || "";
+      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; autosave(); });
+      block.appendChild(nameInput);
+
+      if(!Array.isArray(b.entries)) b.entries = [""];
+      b.entries.forEach((line, li)=>{
+        const w = document.createElement("div");
+        w.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.placeholder = "Box text (paragraph)";
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
+        const del = document.createElement("button");
+        del.textContent = "×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
+        w.appendChild(ta); w.appendChild(del);
+        block.appendChild(w);
+      });
+      const addLine = document.createElement("button");
+      addLine.className = "add-line-btn";
+      addLine.textContent = "+ paragraph";
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
+      block.appendChild(addLine);
+      const hint = document.createElement("div");
+      hint.className = "hint";
+      hint.textContent = "Need a list or table inside this box? Switch this block to raw JSON by editing its \"type\" isn't supported here — use the Other (raw JSON) block instead for mixed content.";
+      block.appendChild(hint);
+
+    } else if(kind === "image"){
+      if(!b.href || typeof b.href !== "object") b.href = {type:"external", url:""};
+      const urlInput = document.createElement("input");
+      urlInput.type = "text";
+      urlInput.placeholder = "Image URL (https://…)";
+      urlInput.value = b.href.url || "";
+      urlInput.addEventListener("input", ()=>{ b.href.type = "external"; b.href.url = urlInput.value; autosave(); });
+      block.appendChild(urlInput);
+
+      const titleInput = document.createElement("input");
+      titleInput.type = "text";
+      titleInput.placeholder = "Title / caption (optional)";
+      titleInput.value = b.title || "";
+      titleInput.addEventListener("input", ()=>{ b.title = titleInput.value; autosave(); });
+      block.appendChild(titleInput);
+
+      const creditInput = document.createElement("input");
+      creditInput.type = "text";
+      creditInput.placeholder = "Credit (optional)";
+      creditInput.value = b.credit || "";
+      creditInput.addEventListener("input", ()=>{ b.credit = creditInput.value; autosave(); });
+      block.appendChild(creditInput);
+
+      if(urlInput.value){
+        const preview = document.createElement("img");
+        preview.src = urlInput.value;
+        preview.style.maxWidth = "100%";
+        preview.style.maxHeight = "160px";
+        preview.style.display = "block";
+        preview.style.marginTop = "6px";
+        preview.style.borderRadius = "3px";
+        block.appendChild(preview);
+      }
+
+    } else if(kind === "raw"){
+      const note = document.createElement("div");
+      note.className = "raw-note";
+      note.textContent = `Not a standard block-builder type (type: "${b.type || "?"}") — edit the JSON directly. This covers section, variant, abilityGeneric, gallery, tableGroup, optfeature, and anything else from 5etools.`;
+      block.appendChild(note);
+      const ta = document.createElement("textarea");
+      ta.className = "raw-json-ta";
+      ta.style.fontFamily = "var(--mono)";
+      ta.style.background = "var(--panel-2)";
+      ta.style.color = "#d9cf9c";
+      ta.value = JSON.stringify(b, null, 2);
+      ta.addEventListener("input", ()=>{
+        try{ arr[i] = JSON.parse(ta.value); ta.style.borderColor = ""; autosave(); }
+        catch(e){ ta.style.borderColor = "var(--danger)"; }
+      });
+      block.appendChild(ta);
+
+    } else if(kind === "named"){
+      if(!Array.isArray(b.entries)) b.entries = [];
+      const nameInput = document.createElement("input");
+      nameInput.type = "text";
+      nameInput.placeholder = "Block name";
+      nameInput.value = b.name || "";
+      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; autosave(); });
+      block.appendChild(nameInput);
+
+      b.entries.forEach((line, li)=>{
+        const lineWrap = document.createElement("div");
+        lineWrap.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
+        const del = document.createElement("button");
+        del.textContent = "×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
+        lineWrap.appendChild(ta);
+        lineWrap.appendChild(del);
+        block.appendChild(lineWrap);
+      });
+      const addLine = document.createElement("button");
+      addLine.className = "add-line-btn";
+      addLine.textContent = "+ line";
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
+      block.appendChild(addLine);
+    }
+
+    container.appendChild(block);
+  });
+}
+
+/* ============================================================
+   EDITOR PANE RENDER
+   ============================================================ */
+
+function autosave(){
+  persist(state.activeType);
+  refreshRawJson();
+  refreshListLabelsOnly();
+}
+
+// Update just the list-pane text (name/meta) without full re-render / focus loss,
+// called on every keystroke of a quick field.
+function refreshListLabelsOnly(){
+  const type = currentType();
+  const idx = state.selected[type.key];
+  if(idx==null) return;
+  const rows = document.querySelectorAll("#itemList .item-row");
+  // Since filtering may shift indices, simplest safe approach: re-render list pane.
+  renderListPane();
+  document.getElementById("editorHeadTitle") && (document.getElementById("editorHeadTitle").textContent = itemLabel(currentItems()[idx], type));
+}
+
+let rawJsonTextareaRef = null;
+function refreshRawJson(){
+  if(!rawJsonTextareaRef) return;
+  const type = currentType();
+  const idx = state.selected[type.key];
+  if(idx==null) return;
+  const item = currentItems()[idx];
+  if(document.activeElement === rawJsonTextareaRef) return; // don't clobber while user is typing raw JSON
+  rawJsonTextareaRef.value = JSON.stringify(item, null, 2);
+}
+
+function setFieldVisibility(wrapEl, show, hideMode){
+  if(hideMode === "reserve"){
+    wrapEl.style.display = "";
+    wrapEl.style.visibility = show ? "visible" : "hidden";
+    wrapEl.style.pointerEvents = show ? "" : "none";
+  } else {
+    wrapEl.style.visibility = "";
+    wrapEl.style.pointerEvents = "";
+    wrapEl.style.display = show ? "" : "none";
+  }
+}
+
+function applyVisibility(ctx, controllerPath, item){
+  const watchers = ctx.visibilityRegistry[controllerPath];
+  if(!watchers) return;
+  watchers.forEach(({wrapEl, showIf})=>{
+    const val = getPath(item, showIf.field);
+    let match;
+    if(showIf.includes !== undefined){
+      match = Array.isArray(val) && val.includes(showIf.includes);
+    } else if(showIf.equals !== undefined){
+      match = val === showIf.equals;
+    } else {
+      match = !!val;
+    }
+    setFieldVisibility(wrapEl, match, showIf.hideMode);
+  });
+}
+
+function buildQuickField(item, field, ctx){
+  ctx = ctx || {fieldRefreshers:{}, visibilityRegistry:{}, items:[], currentIndex:null, type:null};
+  const fieldRefreshers = ctx.fieldRefreshers;
+  const wrap = document.createElement("div");
+  wrap.className = "field" + (field.wide ? " wide":"");
+
+  if(field.showIf){
+    const initialVal = getPath(item, field.showIf.field);
+    let initialMatch;
+    if(field.showIf.includes !== undefined) initialMatch = Array.isArray(initialVal) && initialVal.includes(field.showIf.includes);
+    else if(field.showIf.equals !== undefined) initialMatch = (initialVal === field.showIf.equals);
+    else initialMatch = !!initialVal;
+    setFieldVisibility(wrap, initialMatch, field.showIf.hideMode);
+    ctx.visibilityRegistry[field.showIf.field] = ctx.visibilityRegistry[field.showIf.field] || [];
+    ctx.visibilityRegistry[field.showIf.field].push({wrapEl: wrap, showIf: field.showIf});
+  }
+
+  if(field.type === "divider"){
+    wrap.className = "field wide";
+    wrap.style.margin = "4px 0 2px";
+    const hr = document.createElement("div");
+    hr.style.height = "1px";
+    hr.style.background = "var(--border-soft)";
+    if(field.label){
+      const lbl = document.createElement("div");
+      lbl.style.fontSize = "10px";
+      lbl.style.letterSpacing = ".08em";
+      lbl.style.textTransform = "uppercase";
+      lbl.style.color = "var(--text-faint)";
+      lbl.style.marginBottom = "6px";
+      lbl.textContent = field.label;
+      wrap.appendChild(lbl);
+    }
+    wrap.appendChild(hr);
+    return wrap;
+  }
+
+  if(field.type === "boolean"){
+    wrap.classList.add("field-check");
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = !!getPath(item, field.path);
+    const id = "cb_"+field.path.replace(/\./g,"_");
+    cb.id = id;
+    cb.addEventListener("change", ()=>{
+      setPath(item, field.path, cb.checked);
+      applyVisibility(ctx, field.path, item);
+      autosave();
+    });
+    const lbl = document.createElement("label");
+    lbl.htmlFor = id;
+    lbl.textContent = field.label;
+    wrap.appendChild(cb);
+    wrap.appendChild(lbl);
+    return wrap;
+  }
+
+  if(field.type === "select"){
+    const lbl = document.createElement("label");
+    lbl.textContent = field.label;
+    wrap.appendChild(lbl);
+    const row = document.createElement("div");
+    row.style.display = "flex";
+    row.style.gap = "6px";
+    const select = document.createElement("select");
+    const blank = document.createElement("option");
+    blank.value = "";
+    blank.textContent = "— none —";
+    select.appendChild(blank);
+    (field.options||[]).forEach(opt=>{
+      const o = document.createElement("option");
+      o.value = opt.value;
+      o.textContent = opt.label || opt.value;
+      select.appendChild(o);
+    });
+    select.value = getPath(item, field.path) || "";
+    select.addEventListener("change", ()=>{
+      setPath(item, field.path, select.value || (field.emptyAsNull ? null : ""));
+      applyVisibility(ctx, field.path, item);
+      autosave();
+    });
+    row.appendChild(select);
+    if(field.clearable){
+      const clearBtn = document.createElement("button");
+      clearBtn.type = "button";
+      clearBtn.className = "btn ghost small";
+      clearBtn.textContent = "×";
+      clearBtn.title = "Clear selection";
+      clearBtn.addEventListener("click", ()=>{
+        select.value = "";
+        setPath(item, field.path, field.emptyAsNull ? null : "");
+        applyVisibility(ctx, field.path, item);
+        autosave();
+      });
+      row.appendChild(clearBtn);
+    }
+    wrap.appendChild(row);
+    if(field.hint){
+      const hint = document.createElement("div");
+      hint.className = "hint";
+      hint.textContent = field.hint;
+      wrap.appendChild(hint);
+    }
+    return wrap;
+  }
+
+  if(field.type === "tags"){
+    const lbl = document.createElement("label");
+    lbl.textContent = field.label;
+    wrap.appendChild(lbl);
+
+    const chipsRow = document.createElement("div");
+    chipsRow.style.display = "flex";
+    chipsRow.style.flexWrap = "wrap";
+    chipsRow.style.gap = "5px";
+    chipsRow.style.marginBottom = "6px";
+
+    function renderChips(){
+      chipsRow.innerHTML = "";
+      const current = getPath(item, field.path);
+      const arr = Array.isArray(current) ? current : [];
+      if(arr.length === 0){
+        const none = document.createElement("span");
+        none.style.fontSize = "11px";
+        none.style.color = "var(--text-faint)";
+        none.style.fontStyle = "italic";
+        none.textContent = "None selected";
+        chipsRow.appendChild(none);
+      }
+      arr.forEach((val, i)=>{
+        const opt = (field.options||[]).find(o=>o.value===val);
+        const chip = document.createElement("span");
+        chip.style.display = "inline-flex";
+        chip.style.alignItems = "center";
+        chip.style.gap = "5px";
+        chip.style.background = "var(--panel-3)";
+        chip.style.border = "1px solid var(--border)";
+        chip.style.borderRadius = "20px";
+        chip.style.padding = "2px 4px 2px 9px";
+        chip.style.fontSize = "11px";
+        chip.style.fontFamily = "var(--mono)";
+        const span = document.createElement("span");
+        span.textContent = opt ? opt.value : val;
+        span.title = opt ? opt.label : val;
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.textContent = "×";
+        rm.style.background = "none";
+        rm.style.border = "none";
+        rm.style.color = "var(--text-faint)";
+        rm.style.cursor = "pointer";
+        rm.style.fontSize = "12px";
+        rm.style.padding = "2px 5px";
+        rm.addEventListener("click", ()=>{
+          arr.splice(i,1);
+          setPath(item, field.path, arr);
+          renderChips();
+          applyVisibility(ctx, field.path, item);
+          autosave();
+        });
+        chip.appendChild(span);
+        chip.appendChild(rm);
+        chipsRow.appendChild(chip);
+      });
+    }
+    renderChips();
+    fieldRefreshers[field.path] = renderChips;
+    wrap.appendChild(chipsRow);
+
+    const addRow = document.createElement("div");
+    addRow.style.display = "flex";
+    addRow.style.gap = "6px";
+    const select = document.createElement("select");
+    const blank = document.createElement("option");
+    blank.value = "";
+    blank.textContent = "+ add property…";
+    select.appendChild(blank);
+    (field.options||[]).forEach(opt=>{
+      const o = document.createElement("option");
+      o.value = opt.value;
+      o.textContent = opt.label || opt.value;
+      select.appendChild(o);
+    });
+    select.addEventListener("change", ()=>{
+      if(!select.value) return;
+      const current = getPath(item, field.path);
+      const arr = Array.isArray(current) ? current : [];
+      if(!arr.includes(select.value)) arr.push(select.value);
+      setPath(item, field.path, arr);
+      select.value = "";
+      renderChips();
+      applyVisibility(ctx, field.path, item);
+      autosave();
+    });
+    addRow.appendChild(select);
+    wrap.appendChild(addRow);
+    if(field.hint){
+      const hint = document.createElement("div");
+      hint.className = "hint";
+      hint.textContent = field.hint;
+      wrap.appendChild(hint);
+    }
+    return wrap;
+  }
+
+  const lbl = document.createElement("label");
+  lbl.textContent = field.label;
+  wrap.appendChild(lbl);
+
+  let input;
+  if(field.type === "textarea"){
+    input = document.createElement("textarea");
+    input.value = getPath(item, field.path) || "";
+    input.addEventListener("input", ()=>{ setPath(item, field.path, input.value); autosave(); });
+  } else if(field.type === "list"){
+    input = document.createElement("input");
+    input.type = "text";
+    const val = getPath(item, field.path);
+    input.value = Array.isArray(val) ? val.join(", ") : "";
+    input.placeholder = field.placeholder ? field.placeholder + "  (comma-separated)" : "comma-separated";
+    input.addEventListener("input", ()=>{
+      const arr = input.value.split(",").map(s=>s.trim()).filter(s=>s.length);
+      setPath(item, field.path, arr);
+      autosave();
+    });
+  } else if(field.type === "number"){
+    input = document.createElement("input");
+    input.type = "number";
+    const val = getPath(item, field.path);
+    input.value = (val===null || val===undefined) ? "" : val;
+    input.addEventListener("input", ()=>{
+      const v = input.value === "" ? null : Number(input.value);
+      setPath(item, field.path, v);
+      autosave();
+    });
+  } else {
+    input = document.createElement("input");
+    input.type = "text";
+    input.value = getPath(item, field.path) || "";
+    if(field.placeholder) input.placeholder = field.placeholder;
+    input.addEventListener("input", ()=>{ setPath(item, field.path, input.value); autosave(); });
+  }
+
+  // Cross-field implication, e.g. Damage (2H) implies the Versatile (V) weapon property.
+  if(field.impliesTag){
+    input.addEventListener("change", ()=>{
+      const target = getPath(item, field.impliesTag.field);
+      const arr = Array.isArray(target) ? target : [];
+      const hasValue = (input.value || "").trim().length > 0;
+      const tagIdx = arr.indexOf(field.impliesTag.tag);
+      if(hasValue && tagIdx === -1) arr.push(field.impliesTag.tag);
+      else if(!hasValue && tagIdx !== -1) arr.splice(tagIdx, 1);
+      setPath(item, field.impliesTag.field, arr);
+      fieldRefreshers[field.impliesTag.field] && fieldRefreshers[field.impliesTag.field]();
+      autosave();
+    });
+  }
+
+  wrap.appendChild(input);
+  if(field.hint){
+    const hint = document.createElement("div");
+    hint.className = "hint";
+    hint.textContent = field.hint;
+    wrap.appendChild(hint);
+  }
+
+  if(field.checkDuplicates){
+    const warn = document.createElement("div");
+    warn.className = "hint";
+    warn.style.color = "var(--danger)";
+    warn.style.display = "none";
+    wrap.appendChild(warn);
+    function checkDup(){
+      const val = (input.value || "").trim();
+      const items = ctx.items || [];
+      if(!val){ warn.style.display = "none"; return; }
+      const dupIdx = items.findIndex((other, i)=> i !== ctx.currentIndex && (getPath(other, field.path) || "").trim() === val);
+      if(dupIdx !== -1){
+        const dupItem = items[dupIdx];
+        const dupLabel = (ctx.type && itemLabel(dupItem, ctx.type)) || val;
+        warn.textContent = `⚠ Duplicate — already used by "${dupLabel}"`;
+        warn.style.display = "";
+      } else {
+        warn.style.display = "none";
+      }
+    }
+    input.addEventListener("input", checkDup);
+    checkDup();
+  }
+
+  return wrap;
+}
+
+function renderEditorPane(){
+  const pane = document.getElementById("editorPane");
+  pane.innerHTML = "";
+  rawJsonTextareaRef = null;
+  const type = currentType();
+  const idx = state.selected[type.key];
+  const items = currentItems();
+
+  if(idx == null || !items[idx]){
+    const empty = document.createElement("div");
+    empty.className = "no-selection";
+    empty.innerHTML = `<div class="glyph">§</div><h2>Nothing selected</h2><p>Choose a ${type.label.toLowerCase().slice(0,-1)} from the list, or click “+ New” to start one from scratch.</p>`;
+    pane.appendChild(empty);
+    return;
+  }
+
+  const item = items[idx];
+  const inner = document.createElement("div");
+  inner.className = "editor-inner";
+
+  // head
+  const head = document.createElement("div");
+  head.className = "editor-head";
+  head.innerHTML = `
+    <div class="title-block">
+      <div class="eyebrow">${type.label.slice(0,-1) || type.label}</div>
+      <h2 id="editorHeadTitle">${escapeHtml(itemLabel(item,type))}</h2>
+    </div>
+    <div class="actions">
+      <button class="btn small" id="dupBtn">Duplicate</button>
+      <button class="btn danger small" id="delBtn">Delete</button>
+    </div>`;
+  inner.appendChild(head);
+
+  // quick fields
+  const qSection = document.createElement("div");
+  qSection.className = "section";
+  qSection.innerHTML = `<div class="section-title">Core Fields</div>`;
+  const grid = document.createElement("div");
+  grid.className = "field-grid";
+  const ctx = {fieldRefreshers:{}, visibilityRegistry:{}, items, currentIndex: idx, type};
+  type.quickFields.forEach(f=> grid.appendChild(buildQuickField(item, f, ctx)));
+  qSection.appendChild(grid);
+  if(type.note){
+    const note = document.createElement("div");
+    note.className = "field hint";
+    note.style.marginTop = "10px";
+    note.textContent = type.note;
+    qSection.appendChild(note);
+  }
+  inner.appendChild(qSection);
+
+  // entries fields
+  type.entriesFields.forEach(ef=>{
+    const sec = document.createElement("div");
+    sec.className = "section";
+    sec.innerHTML = `<div class="section-title">${ef.label}</div>`;
+    const holder = document.createElement("div");
+    sec.appendChild(holder);
+    inner.appendChild(sec);
+    if(ef.mode === "paragraphs") renderParagraphsEditor(holder, item, ef);
+    else if(ef.mode === "named") renderNamedEntriesEditor(holder, item, ef);
+    else renderMixedEntriesEditor(holder, item, ef);
+  });
+
+  // raw json
+  const rawSection = document.createElement("div");
+  rawSection.className = "section";
+  const details = document.createElement("details");
+  details.className = "raw-json";
+  details.innerHTML = `<summary>Raw JSON (advanced) <span>▾</span></summary>`;
+  const body = document.createElement("div");
+  body.className = "raw-json-body";
+  const ta = document.createElement("textarea");
+  ta.spellcheck = false;
+  ta.value = JSON.stringify(item, null, 2);
+  rawJsonTextareaRef = ta;
+  const row = document.createElement("div");
+  row.className = "row";
+  const applyBtn = document.createElement("button");
+  applyBtn.className = "btn small primary";
+  applyBtn.textContent = "Apply JSON";
+  const status = document.createElement("span");
+  applyBtn.addEventListener("click", ()=>{
+    try{
+      const parsed = JSON.parse(ta.value);
+      items[idx] = parsed;
+      persist(type.key);
+      status.textContent = "Applied.";
+      status.className = "ok";
+      renderAll();
+      toast("Changes applied");
+    }catch(e){
+      status.textContent = "Invalid JSON: " + e.message;
+      status.className = "err";
+    }
+  });
+  row.appendChild(applyBtn);
+  row.appendChild(status);
+  body.appendChild(ta);
+  body.appendChild(row);
+  details.appendChild(body);
+  rawSection.appendChild(details);
+  inner.appendChild(rawSection);
+
+  pane.appendChild(inner);
+
+  document.getElementById("delBtn").addEventListener("click", ()=>{
+    if(!confirm(`Delete "${itemLabel(item,type)}"? This can't be undone.`)) return;
+    items.splice(idx,1);
+    delete state.selected[type.key];
+    persist(type.key);
+    renderAll();
+  });
+  document.getElementById("dupBtn").addEventListener("click", ()=>{
+    const copy = tpl(item);
+    const idv = getPath(copy, type.idField);
+    if(idv) setPath(copy, type.idField, idv + "-copy");
+    items.splice(idx+1, 0, copy);
+    state.selected[type.key] = idx+1;
+    persist(type.key);
+    renderAll();
+    toast("Duplicated");
+  });
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+/* ============================================================
+   TOP-LEVEL ACTIONS
+   ============================================================ */
+
+document.getElementById("btnNew").addEventListener("click", ()=>{
+  const type = currentType();
+  const items = currentItems();
+  const item = tpl(type.template);
+  const stamp = Math.random().toString(36).slice(2,6);
+  const idv = "new-" + stamp;
+  if(getPath(item, type.idField) !== undefined) setPath(item, type.idField, idv);
+  if(item.name !== undefined) item.name = "New " + type.label.slice(0,-1);
+  if(item.info && item.info.name !== undefined) item.info.name = "New " + type.label.slice(0,-1);
+  items.unshift(item);
+  state.selected[type.key] = 0;
+  persist(type.key);
+  renderAll();
+});
+
+document.getElementById("btnImport").addEventListener("click", ()=>{
+  document.getElementById("fileInput").click();
+});
+document.getElementById("fileInput").addEventListener("change", (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    try{
+      const parsed = JSON.parse(reader.result);
+      const arr = Array.isArray(parsed) ? parsed : [parsed];
+      const type = currentType();
+      const items = currentItems();
+      const mode = items.length
+        ? prompt(`Replace the current ${items.length} ${type.label.toLowerCase()} with the ${arr.length} imported, or append them? Type "replace" or "append".`, "append")
+        : "replace";
+      if(mode === "replace"){
+        state.data[type.key] = arr;
+      } else if(mode === "append"){
+        state.data[type.key] = items.concat(arr);
+      } else {
+        return; // cancelled
+      }
+      delete state.selected[type.key];
+      persist(type.key);
+      renderAll();
+      toast(`Imported ${arr.length} ${type.label.toLowerCase()}`);
+    }catch(err){
+      alert("Couldn't parse that file as JSON:\n" + err.message);
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+});
+
+function downloadType(type){
+  const items = tpl(state.data[type.key] || []);
+  // Features: convert prerequisiteItems -> prerequisite:[{item:[...]}] to match site format
+  if(type.key === "features"){
+    items.forEach(it=>{
+      if(Array.isArray(it.prerequisiteItems) && it.prerequisiteItems.length){
+        it.prerequisite = [{item: it.prerequisiteItems}];
+      }
+      delete it.prerequisiteItems;
+    });
+  }
+  const blob = new Blob([JSON.stringify(items, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = type.file;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 4000);
+}
+
+document.getElementById("btnExport").addEventListener("click", ()=>{
+  const type = currentType();
+  if(!(state.data[type.key]||[]).length){
+    alert(`There's nothing in ${type.label} to export yet.`);
+    return;
+  }
+  downloadType(type);
+  toast(`Exported ${type.file}`);
+});
+
+document.getElementById("btnDuplicateAll").addEventListener("click", ()=>{
+  const nonEmpty = TYPES.filter(t => (state.data[t.key]||[]).length);
+  if(!nonEmpty.length){ alert("Nothing to export yet."); return; }
+  if(!confirm(`This will trigger ${nonEmpty.length} separate downloads (one per type). Continue?`)) return;
+  nonEmpty.forEach((t, i)=> setTimeout(()=> downloadType(t), i*350));
+});
+
+document.getElementById("btnClearType").addEventListener("click", ()=>{
+  const type = currentType();
+  const items = currentItems();
+  if(!items.length){ return; }
+  if(!confirm(`Clear all ${items.length} ${type.label.toLowerCase()} from this workspace? Export first if you want to keep them.`)) return;
+  state.data[type.key] = [];
+  delete state.selected[type.key];
+  persist(type.key);
+  renderAll();
+});
+
+document.getElementById("searchBox").addEventListener("input", (e)=>{
+  state.search = e.target.value;
+  renderListPane();
+});
+
+/* ============================================================
+   RENDER ALL
+   ============================================================ */
+function renderAll(){
+  renderRail();
+  renderListPane();
+  renderEditorPane();
+}
+
+renderAll();
+
+})();
+</script>
+</body>
+</html>

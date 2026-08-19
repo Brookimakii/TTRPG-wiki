@@ -83,7 +83,7 @@ export const DnDCheatsheet = () => {
 
       reference: "PHB, pg. 182.",
       bullets: [
-        "Vous sautez en l'air d'un nombre de mètres égal à {@b votre valeur de Force divisée par 3 + 1} si vous prenez un élan d'au moins 3 mètres.",
+        "Vous sautez en l'air d'un nombre de mètres égal à {@b 90cm + (30cm x votre mod. de Force)} si vous prenez un élan d'au moins 3 mètres.",
         "Lorsque vous faites un saut sans élan, vous ne pouvez sauter que la moitié de cette distance.",
         "Vous pouvez étendre vos bras à la moitié de votre taille au-dessus de vous pendant le saut. Cela vous permet d'atteindre une hauteur égale à la hauteur du saut plus une fois et demi votre taille.",
         "Dans certaines circonstances, votre MD peut vous permettre de faire un test de Force (Athlétisme) pour sauter plus haut que vous ne le pouvez normalement."
@@ -96,7 +96,7 @@ export const DnDCheatsheet = () => {
       description: "Coût de déplacement : 1m50 par 1m50 sautés",
       reference: "PHB, pg. 182.",
       bullets: [
-        "Vous couvrez un certain nombre de mètres jusqu'à votre {@b valeur de force divisée par 3} si vous prenez un élan d'au moins 3 mètres",
+        "Vous couvrez un certain nombre de mètres jusqu'à votre {@b 30cm x valeur de Force} si vous prenez un élan d'au moins 3 mètres",
         "Lorsque vous faites un saut en longueur sans élan, vous ne pouvez sauter que la moitié de cette distance",
         "Peut impliquer un test de Force (Athlétisme) DD 10 pour franchir un obstacle bas (pas plus haut qu'un quart de la distance du saut). Vous percutez l'obstacle lors d'un test raté.",
         "Peut impliquer un test de Dextérité (Acrobatie) DD 10 pour atterrir sur vos pieds en terrain difficile. Vous atterrissez à terre sur un test raté."

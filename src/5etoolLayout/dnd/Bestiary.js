@@ -34,6 +34,21 @@ export const Dnd5eBestiary = () => {
 
   const selectedMonster: Monster = {...selected}
 
+  const renderEntries = (entry, toggle, depth) => {
+    return <div className="rd__b rd__b--3">
+      <p>
+        <span className="rd__h rd__h--3" data-title-index="1">
+          <span className="entry-title-inner">{entry.name}. </span>
+        </span>
+        {RenderModule({...renderProps, defaultString: (string) => string,}).render(entry.entries)}
+      </p>
+    </div>
+  }
+
+  const renderProps = {
+    renderEntries: renderEntries
+  }
+
   const buttonTab = "ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0"
 
   function formatElement(value) {
@@ -476,7 +491,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.traits)}
+                      {RenderModule(renderProps).render(selectedMonster.traits)}
                     </td>
                   </tr>
                 </> : ""}
@@ -486,7 +501,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.actions)}
+                      {RenderModule(renderProps).render(selectedMonster.actions)}
                     </td>
                   </tr>
                 </> : ""}
@@ -496,7 +511,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.bonusActions)}
+                      {RenderModule(renderProps).render(selectedMonster.bonusActions)}
                     </td>
                   </tr>
                 </> : ""}
@@ -506,7 +521,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.reactions)}
+                      {RenderModule(renderProps).render(selectedMonster.reactions)}
                     </td>
                   </tr>
                 </> : ""}
@@ -516,7 +531,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.legendaryActions)}
+                      {RenderModule(renderProps).render(selectedMonster.legendaryActions)}
                     </td>
                   </tr>
                 </> : ""}
@@ -526,7 +541,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.lairAction)}
+                      {RenderModule(renderProps).render(selectedMonster.lairAction)}
                     </td>
                   </tr>
                 </> : ""}
@@ -536,7 +551,7 @@ export const Dnd5eBestiary = () => {
                   </tr>
                   <tr>
                     <td colSpan="6" className="stats__sect-row-inner">
-                      {RenderModule().render(selectedMonster.regionEffects)}
+                      {RenderModule(renderProps).render(selectedMonster.regionEffects)}
                     </td>
                   </tr>
                 </> : ""}
@@ -576,7 +591,7 @@ export const Dnd5eBestiary = () => {
               <td colSpan={6} className="pt-3">
                 <div className="rd__b rd__b--1">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedMonster.info)}
+                    {RenderModule(renderProps).render(selectedMonster.info)}
                   </div>
                 </div>
               </td>

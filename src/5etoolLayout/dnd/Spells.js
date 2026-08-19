@@ -1,5 +1,5 @@
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {Parser} from "../../layout/5e/js/parser";
 import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {Entry, Spell} from "../../layout/5e/Models";
@@ -62,16 +62,8 @@ function tableDisplayOption(column, string, element, spellIcons, onIconClick, sh
   }
 }
 
-const FILTER_OPTIONS = [
-  {category: "casters", subcategory: "classes", label: "Artificier"},
-  {category: "casters", subcategory: "classes", label: "Barde"},
-  {category: "casters", subcategory: "classes", label: "Clerc"},
-  {category: "casters", subcategory: "classes", label: "Druide"},
-  {category: "casters", subcategory: "classes", label: "Ensorceleur"},
-  {category: "casters", subcategory: "classes", label: "Magicien"},
-  {category: "casters", subcategory: "classes", label: "Occultiste"},
-  {category: "casters", subcategory: "classes", label: "Paladin"},
-  {category: "casters", subcategory: "classes", label: "Rôdeur"},
+// Fixed/enum categories — these don't change as data grows.
+const STATIC_FILTER_OPTIONS = [
   {category: "school", value: "A", label: "Abjuration"},
   {category: "school", value: "C", label: "Conjuration"},
   {category: "school", value: "D", label: "Divination"},
@@ -90,13 +82,79 @@ const FILTER_OPTIONS = [
   {category: "level", label: "7"},
   {category: "level", label: "8"},
   {category: "level", label: "9"},
-  // {category: "castingTime", value: "1 action", label: "Action"},
-  // {category: "castingTime", value: "1 action bonus", label: "Action Bonus"},
-  // {category: "castingTime", value: "1 réaction", label: "Reaction"},
-  // {category: "castingTime", value: "1hour", label: "1 Hour"}
+  // Component & Miscellaneous — derived per-spell onto filterMeta.components / filterMeta.flags.
+  {category: "filterMeta", subcategory: "components", value: "V", label: "V (Verbal)"},
+  {category: "filterMeta", subcategory: "components", value: "S", label: "S (Somatic)"},
+  {category: "filterMeta", subcategory: "components", value: "M", label: "M (Material)"},
+  {category: "filterMeta", subcategory: "flags", value: "concentration", label: "Concentration"},
+  {category: "filterMeta", subcategory: "flags", value: "ritual", label: "Ritual"},
+  {category: "filterMeta", subcategory: "flags", value: "spellAttack", label: "Spell Attack"},
 ];
 const FILTER_OPTIONS_ALIAS_LABELS = {
-  "": ""
+  "": "",
+  filterMeta: "Component & Miscellaneous",
+  casters: "Casters",
+  savingThrow: "Saving Throw",
+  abilityCheck: "Ability Check",
+  damageTypes: "Damage",
+  conditionsInflicted: "Condition Inflicted",
+  affectsCreatureTypes: "Affects Creature Types",
+}
+
+const AREA_SHAPE_WORDS = ["cône", "rayon", "sphère", "ligne", "cube", "hémisphère"];
+
+// Derive per-spell virtual fields the filter UI can reference (parsed component
+// letters, concentration/ritual/spellAttack flags, and area shape parsed out of
+// the already-formatted range string) without touching the stored schema.
+function withFilterMeta(spell) {
+  const componentLetters = ["V", "S", "M"].filter(l => (spell.component || "").toUpperCase().includes(l));
+  const flags = [];
+  if (spell.concentration) flags.push("concentration");
+  if (spell.ritual) flags.push("ritual");
+  if (spell.spellAttack) flags.push("spellAttack");
+  const areaStyle = AREA_SHAPE_WORDS.filter(w => (spell.range || "").toLowerCase().includes(w));
+  return {
+    ...spell,
+    filterMeta: {components: componentLetters, flags, areaStyle},
+  };
+}
+
+// Build the data-driven filter categories fresh from whatever spells actually exist:
+// Sources, Casters (classes/subclasses/races/backgrounds/feats/features), Casting Time,
+// Duration, Range, Area Style, Damage, Condition Inflicted, Saving Throw, Ability Check,
+// Affects Creature Types. Categories with zero real values are omitted rather than shown empty.
+function buildDynamicFilterOptions(spellsWithMeta) {
+  const options = [];
+  const addFromValues = (values, category, subcategory) => {
+    [...new Set(values.filter(Boolean))].sort().forEach(v => {
+      options.push(subcategory ? {category, subcategory, label: v} : {category, label: v});
+    });
+  };
+
+  addFromValues(spellsWithMeta.map(s => s.source), "source");
+
+  const casterFields = [
+    ["classes", "classes"], ["subclasses", "subclasses"], ["races", "races"],
+    ["backgrounds", "backgrounds"], ["feats", "feats"], ["features", "features"],
+  ];
+  casterFields.forEach(([field, subcategory]) => {
+    addFromValues(spellsWithMeta.flatMap(s => s.casters?.[field] || []), "casters", subcategory);
+  });
+
+  addFromValues(spellsWithMeta.map(s => s.castingTime), "castingTime");
+  addFromValues(spellsWithMeta.map(s => s.duration), "duration");
+  addFromValues(spellsWithMeta.map(s => s.range), "range");
+  addFromValues(spellsWithMeta.flatMap(s => s.filterMeta.areaStyle), "filterMeta", "areaStyle");
+
+  // Scaffolded fields — empty until populated via the resource builder, same pattern
+  // already established by casters.subclasses/races/backgrounds/feats.
+  addFromValues(spellsWithMeta.flatMap(s => s.damageTypes || []), "damageTypes");
+  addFromValues(spellsWithMeta.flatMap(s => s.conditionsInflicted || []), "conditionsInflicted");
+  addFromValues(spellsWithMeta.flatMap(s => s.savingThrow || []), "savingThrow");
+  addFromValues(spellsWithMeta.flatMap(s => s.abilityCheck || []), "abilityCheck");
+  addFromValues(spellsWithMeta.flatMap(s => s.affectsCreatureTypes || []), "affectsCreatureTypes");
+
+  return options;
 }
 
 const FILTER_SPELL_KEY = "spellFilters"
@@ -224,6 +282,8 @@ export const Dnd5eSpells = () => {
   ]
 
   const spells: [] = getResource(Resources.spell)
+  const spellsWithMeta = useMemo(() => spells.map(withFilterMeta), [spells]);
+  const FILTER_OPTIONS = useMemo(() => STATIC_FILTER_OPTIONS.concat(buildDynamicFilterOptions(spellsWithMeta)), [spellsWithMeta]);
   // const [elements, setElements] = useState(spells)
   // const [sorting, setSorting] = useState("")
   // const [selectedSpell, setSelected] = useState(
@@ -247,19 +307,21 @@ export const Dnd5eSpells = () => {
     DisplayList,
     DetailsHeader,
     TempFilters
-  } = Selector5e(spells, columns, "name", wrappedTableDisplayOption, loadFromLocalStorage(SAVED_SPELL_KEY));
+  } = Selector5e(spellsWithMeta, columns, "name", wrappedTableDisplayOption, loadFromLocalStorage(SAVED_SPELL_KEY));
 
-  const {setFilters, toggleFilter} = FilterManager(setElements, updateSortElementsState, spells)
+  const {setFilters, toggleFilter, setCategoryMeta, setOverallMode} = FilterManager(setElements, updateSortElementsState, spellsWithMeta)
 
   const {
     isDialogOpen,
     filterResults,
     filterState,
+    categoryMeta,
+    overallMode,
     openDialog,
     closeDialog,
     saveFilterResults,
     resetFilter
-  } = FilterDialogManager(FILTER_OPTIONS, loadFromLocalStorage(FILTER_SPELL_KEY))
+  } = FilterDialogManager(FILTER_OPTIONS, loadFromLocalStorage(FILTER_SPELL_KEY), loadFromLocalStorage(FILTER_SPELL_KEY + "Meta") || {}, loadFromLocalStorage(FILTER_SPELL_KEY + "OverallMode") || "and")
 
   const togglePin = (item) => {
     if (pinnedElements.some((i) => i.id === item.id)) {
@@ -340,6 +402,16 @@ export const Dnd5eSpells = () => {
     setFilters(filterState)
     saveToLocalStorage(FILTER_SPELL_KEY, filterState)
   }, [filterState]);
+
+  useEffect(() => {
+    setCategoryMeta(categoryMeta)
+    saveToLocalStorage(FILTER_SPELL_KEY + "Meta", categoryMeta)
+  }, [categoryMeta]);
+
+  useEffect(() => {
+    setOverallMode(overallMode)
+    saveToLocalStorage(FILTER_SPELL_KEY + "OverallMode", overallMode)
+  }, [overallMode]);
 
   useEffect(() => {
     const newPinned = [...pinnedElements]
@@ -574,8 +646,9 @@ export const Dnd5eSpells = () => {
         </div>
       }
     </div>
-    {isDialogOpen ? <Filters filterOptions={FILTER_OPTIONS} defaultState={filterState} onClose={closeDialog}
-                             onSave={saveFilterResults}/> : ""}
+    {isDialogOpen ? <Filters filterOptions={FILTER_OPTIONS} filterOptionsLabelAlias={FILTER_OPTIONS_ALIAS_LABELS}
+                             defaultState={filterState} defaultCategoryMeta={categoryMeta} defaultOverallMode={overallMode}
+                             onClose={closeDialog} onSave={saveFilterResults}/> : ""}
     
     {isIconPickerOpen && selectedSpellForIcon && (
       <div 

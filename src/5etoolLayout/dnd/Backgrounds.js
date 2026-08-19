@@ -42,6 +42,21 @@ export const Dnd5eBackgrounds = () => {
   } = Selector5e(background, columns, "name");
 
   const selectedBackground: PlayerBackground = {...selected}
+
+  const renderEntries = (entry, toggle, depth) => {
+    return <div className="rd__b rd__b--3">
+      <p>
+        <span className="rd__h rd__h--3" data-title-index="1">
+          <span className="entry-title-inner">{entry.name}. </span>
+        </span>
+        {RenderModule({...renderProps, defaultString: (string) => string,}).render(entry.entries)}
+      </p>
+    </div>
+  }
+
+  const renderProps = {
+    renderEntries: renderEntries
+  }
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
       <div className="view-col" id="listcontainer">
@@ -96,7 +111,7 @@ export const Dnd5eBackgrounds = () => {
                   <div className="rd__b rd__b--2">
                     {selectedBackground.entries[0].html?
                       <p dangerouslySetInnerHTML={{__html:selectedBackground.entries[0].html}}></p>:
-                      RenderModule().render(selectedBackground.entries)}
+                      RenderModule(renderProps).render(selectedBackground.entries)}
                   </div>
                 </td>
               </tr>

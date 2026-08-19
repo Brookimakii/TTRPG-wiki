@@ -366,7 +366,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
       </div>
       <div id="list" className="list list--stats">
         {/*{console.log(elements)}*/}
-        {elementsToShow?.map((elem) =>
+        {elementsToShow?.filter((elem) => elem?.id).map((elem) =>
           <div
             className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
             onClick={() => handleClickSelection(elem)}
@@ -449,7 +449,7 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
         </div>
         <div id="list" className="list">
           {/*{console.log(elements)}*/}
-          {elementsToShow?.map((elem) =>
+          {elementsToShow?.filter((elem) => elem?.id).map((elem) =>
             <div
               className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
               onClick={() => handleClickSelection(elem)}
@@ -580,92 +580,86 @@ export const ToggleState = () => {
   return {toggleStateChange, getToggleState, addToggleableState}
 }
 
+// Combine helper for a single category: how do multiple selected "yes"/"no"
+// pills within one category combine? "or" = any selected value matches,
+// "and" = every selected value must be present, "xor" = exactly one matches.
+function combineFilterMode(mode, matchCount, totalCount) {
+  if (totalCount === 0) return null; // no constraint from this side
+  switch (mode) {
+    case "and": return matchCount === totalCount;
+    case "xor": return matchCount === 1;
+    case "or":
+    default: return matchCount > 0;
+  }
+}
+
+// fieldValue: raw value(s) on the element. positives/negatives: selected pill values (lowercased).
+function categoryMatches(fieldValue, positives, negatives, posMode, negMode) {
+  let values = Array.isArray(fieldValue) ? fieldValue : [fieldValue];
+  values = values.filter(v => v != null).map(v => String(v).toLowerCase());
+
+  const posMatchCount = positives.filter(p => values.includes(p)).length;
+  const negMatchCount = negatives.filter(n => values.includes(n)).length;
+
+  const posResult = combineFilterMode(posMode, posMatchCount, positives.length);
+  const negResult = combineFilterMode(negMode, negMatchCount, negatives.length);
+
+  if (posResult === false) return false;
+  if (negResult === true) return false;
+  return true;
+}
+
+// categories: [{active, matches, combineAs}]
+function overallMatches(categories, overallMode) {
+  const active = categories.filter(c => c.active);
+  if (active.length === 0) return true;
+  if (overallMode === "and") return active.every(c => c.matches);
+  if (overallMode === "or") return active.some(c => c.matches);
+  // custom: AND-flagged categories must ALL match; OR-flagged categories need >=1 match (if any exist)
+  const andGroup = active.filter(c => c.combineAs !== "or");
+  const orGroup = active.filter(c => c.combineAs === "or");
+  const andOk = andGroup.every(c => c.matches);
+  const orOk = orGroup.length === 0 || orGroup.some(c => c.matches);
+  return andOk && orOk;
+}
+
+export const DEFAULT_CATEGORY_META = {posMode: "or", negMode: "or", combineAs: "and", hidden: false};
+
 export const FilterManager = (setElements: function, updateSortElementsState: function, elements: [] = []) => {
   const [filters, setFilters] = useState({});
-
-  // function doFilter(key, element, state) {
-  //   const [nestedKey, expectedValue] = key.split("-");
-  //
-  //   // console.log(key, nestedKey, expectedValue, element)
-  //
-  //   const nestedValue = extractNestedValue(element, nestedKey);
-  //   // console.log(nestedKey, expectedValue, nestedValue)
-  //
-  //   if (state === 'yes') {
-  //     // console.log(state, Array.isArray(nestedValue) ? nestedValue.includes(expectedValue) : nestedValue === expectedValue)
-  //     return Array.isArray(nestedValue)
-  //       ? nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
-  //       : nestedValue === expectedValue;
-  //   } else if (state === 'negative') {
-  //     // console.log(state, Array.isArray(nestedValue) ? !nestedValue.includes(expectedValue) : nestedValue !== expectedValue)
-  //     return Array.isArray(nestedValue)
-  //       ? !nestedValue.map(a => a.toLowerCase()).includes(expectedValue.toLowerCase())
-  //       : nestedValue !== expectedValue;
-  //   }
-  //   return true;
-  // }
-
-  // useEffect(() => {
-  //   // console.log("filters", filters)
-  //   const activeFilters = Object.entries(filters).filter(
-  //     ([, state]) => state !== 'neutral'
-  //   );
-  //   // console.log("activeFilters", activeFilters)
-  //   let updatedElements = [...elements]
-  //   // console.log(elements)
-  //   if (activeFilters.length > 0) {
-  //     updatedElements = [...elements].filter((element) => {
-  //       return activeFilters.some(([key, state]) => doFilter(key, element, state));
-  //     });
-  //   }
-  //   // console.log(sorting)
-  //   updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
-  //   setElements(updatedElements)
-  // }, [filters, setElements]);
+  const [categoryMeta, setCategoryMeta] = useState({});
+  const [overallMode, setOverallMode] = useState("and");
 
   useEffect(() => {
     let updatedElements = [...elements];
 
-    // Group filters by category
-    const categorizedFilters = {};
-
+    // Group filter selections by their FULL id (e.g. "casters.classes", "casters.subclasses",
+    // "school") — not just the leading segment — so sibling subcategories under the same
+    // top-level category don't collapse into one bucket and match the wrong field.
+    const categorized = {};
     for (const [key, state] of Object.entries(filters)) {
-      if (state === "neutral") continue; // Ignore neutral filters
-
-      const [id, value] = key.split("-");
-      const [category,] = id.includes(".") ? id.split(".") : [id, undefined];
-      // const categoryKey = subcategory ? `${category}-${subcategory}` : category;
-      // console.log(category, subcategory, value)
-      if (!categorizedFilters[category]) {
-        categorizedFilters[category] = {yes: [], negative: [], id: id};
-      }
-
-      categorizedFilters[category][state].push(value.toLowerCase());
+      if (state === "neutral" || state === "disabled") continue;
+      const dashIdx = key.lastIndexOf("-");
+      const id = dashIdx === -1 ? key : key.slice(0, dashIdx);
+      const value = dashIdx === -1 ? "" : key.slice(dashIdx + 1);
+      if (!categorized[id]) categorized[id] = {yes: [], no: []};
+      categorized[id][state].push(String(value).toLowerCase());
     }
+
     updatedElements = updatedElements.filter((element) => {
-      return Object.entries(categorizedFilters).every(([_, {yes, negative, id}]) => {
-        let nestedValues = extractNestedValue(element, id);
-        if (!Array.isArray(nestedValues)) nestedValues = [nestedValues];
+      const categoryResults = Object.entries(categorized).map(([id, {yes, no}]) => {
+        const meta = categoryMeta[id] || DEFAULT_CATEGORY_META;
+        const nestedValues = extractNestedValue(element, id);
+        const matches = categoryMatches(nestedValues, yes, no, meta.posMode, meta.negMode);
+        return {active: true, matches, combineAs: meta.combineAs};
+      });
+      return overallMatches(categoryResults, overallMode);
+    });
 
-        // console.log("nestedValues", nestedValues)
-        // console.log("negative", negative)
-        // console.log("yes", yes)
-        if (negative.length > 0 && nestedValues.some((val) => negative.includes(val.toLowerCase()))) {
-          return false
-        }
-
-        if (yes.length > 0) {
-          return nestedValues.some((val) => yes.includes(val.toLowerCase()));
-        }
-
-        return true; // If no yes filters exist, do not filter this category
-      })
-    })
-    // console.log("updatedElements", updatedElements)
     updatedElements = updateSortElementsState("", updatedElements, false); // Pass a flag to prevent state updates
     setElements(updatedElements)
 
-  }, [filters]);
+  }, [filters, categoryMeta, overallMode]);
 
 
   // Function to toggle a filter
@@ -682,6 +676,8 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   return {
     setFilters,
     toggleFilter,
+    setCategoryMeta,
+    setOverallMode,
   };
 }
 
@@ -785,7 +781,42 @@ export const RenderModule = (props: {}) => {
       case "@u2":
       case "@underlineDouble":
         return <u className="ve-underline-double">{string}</u>
-      default:
+      case "@h":
+        // 5etools shorthand: {@h} auto-inserts a bolded "Touché : " lead-in before attack damage text.
+        return <i><b>Touché : </b></i>
+      case "@dice":
+      case "@damage":
+      case "@scaledice":
+      case "@scaledamage":
+      case "@d20":
+      case "@hitYourSpellAttack": {
+        const [expr] = string.split("|");
+        return <span className="render-roller ve-flex-vh-center" title="Formule de dés">{expr}</span>
+      }
+      case "@hit": {
+        const [n] = string.split("|");
+        const num = Number(n);
+        return <span className="render-roller">{(Number.isFinite(num) && num >= 0 ? "+" : "") + n}</span>
+      }
+      case "@dc": {
+        const [n] = string.split("|");
+        return <span className="render-roller">DD {n}</span>
+      }
+      case "@ac": {
+        const [n] = string.split("|");
+        return <span>CA {n}</span>
+      }
+      case "@recharge": {
+        const [n] = string.split("|");
+        return <span>{n ? `(Rechargement ${n}-6)` : "(Rechargement 6)"}</span>
+      }
+      case "@chance": {
+        const [n] = string.split("|");
+        return <span>{n}% de chances</span>
+      }
+      case "@note":
+        return <i className="ve-muted">{string}</i>
+      default: {
         const {
           name,
           _source,
@@ -804,7 +835,12 @@ export const RenderModule = (props: {}) => {
           _isFauxPage
         } = getTagMeta(tag, string)
 
+        // Tags we don't have a dedicated resource lookup for (or that failed to resolve one)
+        // still render their display text instead of crashing the page.
+        if (!page) return <span title={tag}>{name}</span>
+
         return <Link to={page + (hash ? "#" + hash : "")}>{name}</Link>
+      }
     }
   }
 
@@ -885,10 +921,87 @@ export const RenderModule = (props: {}) => {
         out.page = "/TTRPG-wiki/spells";
         break;
       }
+      case "@item": {
+        const found = getResource(Resources.item).filter(i => i.name && i.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/items";
+        break;
+      }
+      case "@creature": {
+        const found = getResource(Resources.bestiary).filter(m => m.name && m.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/bestiary";
+        break;
+      }
+      case "@class": {
+        const found = getResource(Resources.clazz).filter(c => c.info?.name && c.info.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/classes";
+        break;
+      }
+      case "@background": {
+        const found = getResource(Resources.background).filter(b => b.name && b.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/backgrounds";
+        break;
+      }
+      case "@feat": {
+        const found = getResource(Resources.feat).filter(f => f.name && f.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/feats";
+        break;
+      }
+      case "@race": {
+        const found = getResource(Resources.race).filter(r => r.name && r.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/races";
+        break;
+      }
+      case "@condition": {
+        const found = getResource(Resources.condition).filter(c => c.name && c.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/conditions";
+        break;
+      }
+      case "@variantrule":
+      case "@quickref": {
+        const found = getResource(Resources.rule).filter(r => r.name && r.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/rules";
+        break;
+      }
+      case "@optfeature": {
+        const found = getResource(Resources.feature).filter(f => f.name && f.name.toLowerCase() === out.name.toLowerCase())[0]
+        out.hash = encodeForHash(found?.id ?? out.name)
+        out.page = "/TTRPG-wiki/optionsFeatures";
+        break;
+      }
       default:
-        throw new Error(`Unhandled tag "${tag}"`);
+        // Unrecognized/unhandled tag — don't crash the page. Render it as plain,
+        // non-linkable display text instead (handled by the caller when page is null).
+        out.page = null;
+        break;
     }
     return out
+  }
+
+  function renderInline(entry) {
+    let str = []
+    const tagSplit = splitByTags(entry)
+    const len = tagSplit.length;
+    for (let i = 0; i < len; ++i) {
+      const s = tagSplit[i];
+      if (!s) continue;
+
+      if (!s.startsWith("{@")) {
+        str.push(s);
+        continue;
+      }
+
+      const [tag, text] = splitFirstSpace(s.slice(1, -1));
+      str.push(renderString_renderTag(tag, text));
+    }
+    return str
   }
 
   const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
@@ -951,8 +1064,20 @@ export const RenderModule = (props: {}) => {
         }
         case "list": {
           // console.log(entry)
-          return <ul className={"rd__list " + entry.style ?? ""}>
+          return <ul
+            className={"rd__list" + (entry.style ? " rd__" + entry.style : "")}
+            style={entry.columns ? {columnCount: entry.columns} : undefined}
+          >
             {entry.entries.map((item, idx) => {
+              if (item && typeof item === "object" && item.type === "item") {
+                return <li key={idx} className="rd__li">
+                  {item.name ? <span className="bold">{item.name}</span> : ""}
+                  {item.name && (item.entry !== undefined || item.entries !== undefined) ? " " : ""}
+                  {item.entry !== undefined ? renderInline(item.entry)
+                    : item.entries !== undefined ? item.entries.map((e, i) => <React.Fragment
+                      key={i}>{typeof e === "string" ? renderInline(e) : render(e, depth + 1, toggle)}</React.Fragment>) : ""}
+                </li>
+              }
               return <li key={idx} className="rd__li">{render(item, depth++, toggle)}</li>
             })}
           </ul>
@@ -991,27 +1116,83 @@ export const RenderModule = (props: {}) => {
             modificateur {"aeiouy".includes(entry.attribute.toLowerCase().at(0)) ? "d'" : "de "}{Parser.attAbvToFull(entry.attribute.toLowerCase())} +
             bonus de maîtrise
           </div>
+        case "abilityGeneric":
+          return <div className={"rd__wrp-centered-ability"}>
+            {entry.name ? <b>{entry.name}</b> : ""} {entry.name ? "= " : ""}{typeof entry.text === "string" ? renderInline(entry.text) : render(entry.text, depth, toggle)}
+            {entry.attributes?.length ?
+              <> ({entry.attributes.map((att, i) => <span key={i}>{Parser.attAbvToFull(att.toLowerCase())}</span>)})</> : ""}
+          </div>
+        case "hr":
+          return <hr className={"rd__hr"}/>
+        case "quote": {
+          const lines = Array.isArray(entry.entries) ? entry.entries : [entry.entries]
+          return <p className={"rd__quote"}>
+            {lines.map((line, idx) => <span key={idx}
+                                             className={"rd__quote-line" + (idx === lines.length - 1 ? " rd__quote-line--last" : "")}>
+              {typeof line === "string" ? renderInline(line) : render(line, depth, toggle)}{idx === lines.length - 1 ? "" : <br/>}
+            </span>)}
+            {entry.by || entry.from ?
+              <span className={"rd__quote-by"}>— {entry.by}{entry.by && entry.from ? ", " : ""}{entry.from}</span> : ""}
+          </p>
+        }
+        case "inset":
+        case "insetReadaloud":
+          return <div className={"rd__b-inset" + (entry.type === "insetReadaloud" ? " rd__b-inset--readaloud" : "")}>
+            {entry.name ? <span className={"rd__h rd__h--2"}><span
+              className={"entry-title-inner"}>{entry.name}</span></span> : ""}
+            <div className={"rd__b-inset-inner"}>{render(entry.entries, depth + 1, toggle)}</div>
+          </div>
+        case "variant":
+        case "variantSub":
+          return <div className={"rd__b-inset"}>
+            {entry.name ?
+              <span className={"rd__h rd__h--2"}><span className={"entry-title-inner"}>Variante : {entry.name}</span></span> : ""}
+            <div className={"rd__b-inset-inner"}>{render(entry.entries, depth + 1, toggle)}</div>
+          </div>
+        case "optfeature":
+          return <div className={"rd__b rd__b--2"}>
+            {entry.name ? <h3 className={"rd__h rd__h--2"}>
+              <span className={"entry-title-inner"}>{entry.name}</span>
+            </h3> : ""}
+            {render(entry.entries, depth + 1, toggle)}
+          </div>
+        case "section":
+          return <>
+            <hr className={"rd__hr rd__hr--section"}/>
+            <div className={"rd__b rd__b--1"}>
+              {entry.name ? <h2 className={"rd__h rd__h--1"}>
+                <span className={"entry-title-inner"}>{entry.name}</span>
+              </h2> : ""}
+              {render(entry.entries, depth, toggle)}
+            </div>
+          </>
+        case "tableGroup":
+          return <>
+            {entry.caption ? <p><b>{entry.caption}</b></p> : ""}
+            {entry.tables?.map((t, idx) => <React.Fragment key={idx}>{render(t, depth, toggle)}</React.Fragment>)}
+          </>
+        case "image": {
+          const url = entry.href?.type === "external" ? entry.href.url
+            : entry.href?.path ? entry.href.path
+              : entry.href?.url
+          return <div className={"rd__wrp-image"}>
+            {url ? <img className={"rd__image"} src={url} alt={entry.title ?? ""}/> :
+              <i>Image manquante{entry.title ? `: ${entry.title}` : ""}</i>}
+            {entry.title ? <div className={"rd__image-title"}>
+              <span className={"rd__image-title-inner"}>{entry.title}</span>
+            </div> : ""}
+            {entry.credit ? <div className={"rd__image-credit"}>{entry.credit}</div> : ""}
+          </div>
+        }
+        case "gallery":
+          return <div className={"rd__wrp-gallery"}>
+            {entry.images?.map((img, idx) => <React.Fragment key={idx}>{render({...img, type: "image"}, depth, toggle)}</React.Fragment>)}
+          </div>
         default:
           return <><br/>Not yet implemented: "{entry.type}".</>
       }
     } else if (typeof entry === "string") {
-      let str = []
-      const tagSplit = splitByTags(entry)
-      const len = tagSplit.length;
-      for (let i = 0; i < len; ++i) {
-        const s = tagSplit[i];
-        if (!s) continue;
-
-        if (!s.startsWith("{@")) {
-          str.push(s);
-          continue;
-        }
-
-        const [tag, text] = splitFirstSpace(s.slice(1, -1));
-        // console.log(tag, text)
-        str.push(renderString_renderTag(tag, text));
-
-      }
+      const str = renderInline(entry)
       // console.log("HERE:", str)
 
       return props?.defaultString ? props.defaultString(str) : <p>{str}</p>

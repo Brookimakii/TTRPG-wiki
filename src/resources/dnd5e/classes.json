@@ -2209,6 +2209,1069 @@
     ]
   },
   {
+    "id": "barbarian",
+    "info": {
+      "name": "Barbare",
+      "source": "PHB24",
+      "page": 0,
+      "hitDice": {
+        "amount": 1,
+        "faces": 12
+      },
+      "proficiencies": {
+        "armor": ["light", "medium", "shield"],
+        "weapon": ["simple", "martial"],
+        "skills": {
+          "pool": ["Athlétisme", "Dressage", "Intimidation", "Nature", "Perception", "Survie"],
+          "count": 2
+        },
+        "saves": ["for", "con"]
+      },
+      "startingEquipment": {
+        "goldAlternative": "2d4 × 10",
+        "equipement": [
+          "(a) une hache à deux mains ou (b) n'importe quelle arme de guerre de corps à corps",
+          "(a) deux hachettes ou (b) n'importe quelle arme courante",
+          "un sac d'explorateur et quatre javelines"
+        ]
+      },
+      "multiclass": {
+        "requirements": {
+          "str": 13
+        },
+        "proficiencies": {
+          "armor": ["shields"],
+          "weapon": ["simple", "martial"]
+        }
+      },
+      "tableGroup": [
+        {
+          "colLabels": [
+            "Rages",
+            "Dégâts de Rage",
+            "Maitrise des armes"
+          ],
+          "rows": [
+            [2, "+2", 2],
+            [2, "+2", 2],
+            [3, "+2", 2],
+            [3, "+2", 3],
+            [3, "+2", 3],
+            [4, "+2", 3],
+            [4, "+2", 3],
+            [4, "+2", 3],
+            [4, "+6", 3],
+            [4, "+6", 4],
+            [4, "+6", 4],
+            [5, "+6", 4],
+            [5, "+6", 4],
+            [5, "+6", 4],
+            [5, "+6", 4],
+            [5, "+4", 4],
+            [6, "+4", 4],
+            [6, "+4", 4],
+            [6, "+4", 4],
+            [6, "+4", 4]
+          ]
+        }
+      ],
+      "classFeatures": [
+        "Rage|Barbare|PHB|1",
+        "Défense sans armure|Barbare|PHB|1",
+        "Maitrise des armes|Barbare|PHB|1",
+        "Attaque téméraire|Barbare|PHB|2",
+        "Sens du danger|Barbare|PHB|2",
+        {
+          "classFeature": "Voie Primale|Barbare|PHB|3",
+          "gainSubClassFeature": true
+        },
+        "Amélioration du score de capacité|Barbare|PHB|4",
+        "Attaque supplémentaire|Barbare|PHB|5",
+        "Déplacement rapide|Barbare|PHB|5",
+        {
+          "classFeature": "Capacité de voie|Barbare|PHB|6",
+          "gainSubClassFeature": true
+        },
+        "Instinct sauvage|Barbare|PHB|7",
+        "Critique brutal (1 dé)|Barbare|PHB|9",
+        "Amélioration du score de capacité|Barbare|PHB|8",
+        "Critique brutal (2 dés)|Barbare|PHB|13",
+        {
+          "classFeature": "Capacité de voie|Barbare|PHB|10",
+          "gainSubClassFeature": true
+        },
+        "Rage implacable|Barbare|PHB|11",
+        "Amélioration du score de capacité|Barbare|PHB|12",
+        {
+          "classFeature": "Capacité de voie|Barbare|PHB|14",
+          "gainSubClassFeature": true
+        },
+        "Rage persistante|Barbare|PHB|15",
+        "Amélioration du score de capacité|Barbare|PHB|16",
+        "Critique brutal (3 dés)|Barbare|PHB|17",
+        "Puissance indomptable|Barbare|PHB|18",
+        "Amélioration du score de capacité|Barbare|PHB|19",
+        "Champion primitif|Barbare|PHB|20"
+      ]
+    },
+    "subclasses": [
+      {
+        "name": "Voie du Berserker",
+        "shortName": "Berserker",
+        "source": "PHB",
+        "page": 0,
+        "subclassFeatures": [
+          "Voie du Berserker|Barbare|PHB|Berserker|PHB|3",
+          "Rage aveugle|Barbare|PHB|Berserker|PHB|6",
+          "Présence intimidante|Barbare|PHB|Berserker|PHB|10",
+          "Représailles|Barbare|PHB|Berserker|PHB|14"
+        ]
+      },
+      {
+        "name": "Voie du Guerrier Totem",
+        "shortName": "Guerrier Totem",
+        "source": "PHB",
+        "page": 0,
+        "subclassFeatures": [
+          "Voie du Guerrier Totem|Barbare|PHB|Guerrier Totem|PHB|3",
+          "Aspect de la bête|Barbare|PHB|Guerrier Totem|PHB|6",
+          "Marcheur spirituel|Barbare|PHB|Guerrier Totem|PHB|10",
+          "Lien totémique|Barbare|PHB|Guerrier Totem|PHB|14"
+        ]
+      },
+      {
+        "name": "Voie de la Magie Sauvage",
+        "shortName": "Magie Sauvage",
+        "source": "TCE",
+        "page": 0,
+        "subclassFeatures": [
+          "Voie de la Magie Sauvage|Barbare|PHB|Magie Sauvage|TCE|3",
+          "Reserve de magie|Barbare|PHB|Magie Sauvage|TCE|6",
+          "Réaction instable|Barbare|PHB|Magie Sauvage|TCE|10",
+          "Sursaut contrôlé|Barbare|PHB|Magie Sauvage|TCE|14"
+        ]
+      },
+      {
+        "name": "Voie du Géant",
+        "shortName": "Géant",
+        "source": "BGG",
+        "page": 0,
+        "subclassFeatures": [
+          "Voie du Géant|Barbare|PHB|Géant|BGG|3",
+          "Couperet élémentaire|Barbare|PHB|Géant|BGG|6",
+          "Impultion Puissante|Barbare|PHB|Géant|BGG|10",
+          "Colosse démiurgique|Barbare|PHB|Géant|BGG|14"
+        ]
+      }
+    ],
+    "classFeatures": [
+      {
+        "name": "Rage",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 1,
+        "entries": [
+          "En combat, vous vous battez avec une férocité bestiale. Durant votre tour, vous pouvez entrer en rage en utilisant une action bonus. En rage, vous gagnez les bénéfices suivants si vous ne portez pas d'armure lourde :-Vous avez un avantage aux jets de Force et aux jets de sauvegarde de Force.-Quand vous effectuez une attaque au corps à corps avec une arme utilisant la Force, vous gagnez un bonus aux jets de dégâts qui dépend de votre niveau de barbare, comme indiqué dans la colonne Dégâts de la table ci-dessus.-Vous avez la résistance aux dégâts contondants, perforants et tranchants.",
+          "Si vous êtes capable de lancer des sorts, vous ne pouvez les lancer ou vous concentrer sur eux pour toute la durée de la rage.",
+          "Votre rage dure 1 minute. Elle finit prématurément si vous devenez inconscient, ou si votre tour se termine et que vous n'avez ni attaqué une créature hostile, ni subi des dégâts, depuis votre précédent tour. Vous pouvez également mettre fin à votre rage durant votre tour par une action bonus. Vous récupérez les utilisations de rage dépensées après avoir terminé un repos long."
+        ]
+      },
+      {
+        "name": "Défense sans armure",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 1,
+        "entries": [
+          "Tant que vous ne portez pas d'armure, votre classe d'armure est égale à 10 + votre modificateur de Dextérité + votre modificateur de Constitution. Vous pouvez utiliser un bouclier et continuer de profiter de cette capacité."
+        ]
+      },
+      {
+        "name": "Attaque téméraire",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 2,
+        "entries": [
+          "À partir du niveau 2, vous pouvez mettre de côté votre défense pour attaquer avec toute la violence du désespoir. Lorsque vous effectuez la première attaque de votre tour, vous pouvez décider d'effectuer une Attaque téméraire. Vous obtenez ainsi un avantage aux jets d'attaque au corps à corps avec une arme utilisant la Force durant ce tour, mais les attaques effectuées contre vous ont également un avantage jusqu'à votre prochain tour."
+        ]
+      },
+      {
+        "name": "Sens du danger",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 2,
+        "entries": [
+          "Au niveau 2, vous ressentez une sensation étrange lorsque les choses qui vous entourent ne sont pas comme elles devraient être, vous donnant un avantage lorsque vous tentez de vous extirper du danger. Vous avez un avantage aux jets de sauvegarde de Dextérité contre les effets que vous pouvez voir, comme les pièges ou les sorts. Pour bénéficier de cet effet vous ne devez pas être aveuglé, assourdi ou incapable d'agir."
+        ]
+      },
+      {
+        "name": "Voie Primale",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 3,
+        "entries": [
+          "Au niveau 3, vous choisissez la voie par laquelle s'exprime votre rage. Choisissez la berserker ou la guerrier totem, chacune étant détaillée ci-dessous. Votre choix vous accorde des capacités aux niveaux 3, 6, 10 et 14."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 4,
+        "entries": [
+          "Au niveau 4, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Attaque supplémentaire",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 5,
+        "entries": [
+          "À partir du niveau 5, vous pouvez attaquer deux fois, au lieu d'une seule, chaque fois que vous réalisez l'action Attaquer durant votre tour."
+        ]
+      },
+      {
+        "name": "Déplacement rapide",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 5,
+        "entries": ["Au niveau 5, votre vitesse augmente de 3 mètres tant que vous ne portez pas d'armure lourde."]
+      },
+      {
+        "name": "Instinct sauvage",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 7,
+        "entries": [
+          "Au niveau 7, vos instincts sont si aiguisés que vous obtenez un avantage aux jets d'initiative. De plus, si vous êtes surpris au début du combat et que vous n'êtes pas incapable d'agir, vous pouvez jouer normalement durant votre premier tour, mais seulement si vous entrez en rage avant de faire quoique ce soit d'autre à ce tour."
+        ]
+      },
+      {
+        "name": "Critique brutal",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 9,
+        "entries": [
+          "À partir du niveau 9, vous pouvez lancer un dé de dégâts de votre arme en plus lorsque vous déterminez les dégâts supplémentaires que vous infligez sur un coup critique réussi avec une attaque au corps à corps. Ce bonus aux dégâts passe à deux dés au niveau 13 et à trois dés au niveau 17."
+        ]
+      },
+      {
+        "name": "Rage implacable",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 11,
+        "entries": [
+          "À partir du niveau 11, votre rage vous permet de continuer à combattre en dépit des graves blessures qui vous affectent. Si vous tombez à 0 point de vie pendant votre rage et que vous ne mourrez pas sur le coup, vous pouvez faire un jet de sauvegarde de Constitution DD 10. Si vous le réussissez, vous retournez immédiatement à 1 point de vie. Chaque fois que vous utilisez cette capacité après la première, le DD augmente de 5. Quand vous terminez un repos court ou long le DD retombe à 10."
+        ]
+      },
+      {
+        "name": "Rage persistante",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 15,
+        "entries": [
+          "En atteignant le niveau 15, votre rage est si intense qu'elle ne s'arrête prématurément qu'à la condition que vous tombiez inconscient ou que vous choisissiez de l'arrêter."
+        ]
+      },
+      {
+        "name": "Puissance indomptable",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 18,
+        "entries": [
+          "Au niveau 18, si le résultat d'un de vos jets de Force est inférieur à votre valeur de Force, vous pouvez utiliser votre valeur de Force à la place de votre résultat."
+        ]
+      },
+      {
+        "name": "Champion primitif",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "level": 20,
+        "entries": [
+          "Au niveau 20, vous êtes l'incarnation de la puissance du monde sauvage. Vos valeurs de Force et de Constitution augmentent de 4. Votre maximum dans ces valeurs de caractéristique est maintenant de 24."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 8,
+        "entries": [
+          "Au niveau 8, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 12,
+        "entries": [
+          "Au niveau 12, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 16,
+        "entries": [
+          "Au niveau 16, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      },
+      {
+        "name": "Amélioration du score de capacité",
+        "source": "PHB",
+        "page": 0,
+        "className": "Ensorceleur",
+        "classSource": "PHB",
+        "level": 19,
+        "entries": [
+          "Au niveau 19, vous pouvez augmenter une valeur de caractéristique de votre choix de +2, ou bien augmenter deux valeurs de caractéristique de votre choix de +1. Vous ne pouvez cependant pas augmenter une caractéristique au-delà de 20 par ce biais.",
+          "Si votre MD autorise l'utilisation de don, vous pouvez à la place prendre un don."
+        ]
+      }
+    ],
+    "subclassFeatures": [
+      {
+        "name": "Voie du Berserker",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Berserker",
+        "subclassSource": "PHB",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Frénésie|Barbare|PHB|Berserker|PHB|3"
+          }
+        ]
+      },
+      {
+        "name": "Frénésie",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Berserker",
+        "subclassSource": "PHB",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "Dès que vous choisissez cette voie au niveau 3, vous pouvez choisir de sombrer dans un état de frénésie au cours de votre rage. Si vous le faites, pour la durée de votre rage, vous pouvez effectuer une unique attaque au corps à corps avec une arme en utilisant une action bonus à chacun de vos tours après celui-ci. Lorsque votre rage se termine, vous subissez un niveau d'épuisement."
+        ]
+      },
+      {
+        "name": "Rage aveugle",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Berserker",
+        "subclassSource": "PHB",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 6, vous ne pouvez pas être charmé ou effrayé tant que vous êtes en rage. Si vous êtes déjà charmé ou effrayé lorsque vous entrez en rage, l'effet est suspendu le temps de votre rage."
+        ]
+      },
+      {
+        "name": "Présence intimidante",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Berserker",
+        "subclassSource": "PHB",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 10, vous pouvez utiliser votre action pour effrayer quelqu'un avec votre présence effrayante. Pour ce faire, choisissez une créature que vous pouvez voir à 9 mètres maximum de vous. Si la créature peut vous voir ou vous entendre, elle doit réussir un jet de sauvegarde de Sagesse (DD égal à 8 + votre bonus de maîtrise + votre modificateur de Charisme) ou vous l'effrayez jusqu'à la fin de votre prochain tour. Aux tours suivants, vous pouvez utiliser votre action pour augmenter d'un tour supplémentaire la durée de cet effet sur la créature effrayée. Cet effet se termine si la créature finit son tour hors de votre ligne de vue ou qu'elle se trouve à plus de 18 mètres de vous. Si la créature réussit son jet de sauvegarde, vous ne pouvez plus utiliser cette capacité contre elle durant 24 heures."
+        ]
+      },
+      {
+        "name": "Représailles",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Berserker",
+        "subclassSource": "PHB",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 14, lorsque vous subissez des dégâts d'une créature située à 1,50 mètre de vous, vous pouvez utiliser votre réaction pour effectuer une attaque au corps à corps avec une arme contre cette créature."
+        ]
+      },
+      {},
+      {
+        "name": "Subclass",
+        "source": "PHB",
+        "page": 0,
+        "className": "Class",
+        "classSource": "PHB",
+        "subclassShortName": "",
+        "subclassSource": "PHB",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
+          }
+        ]
+      },
+      {
+        "name": "Forme de la bête",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Beast",
+        "subclassSource": "TCE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "En commençant quand vous choisissez ce chemin au 3ème niveau, quand vous entrez dans votre rage, vous pouvez vous transformer, révélant le pouvoir bestial en vous. Jusqu’à la fin de la rage, vous manifestez une arme naturelle. Il compte comme une arme de mêlée simple pour vous, et vous ajoutez votre modificateur de force à l’attaque et les dégâts roule lorsque vous attaquez avec elle, comme d’habitude.",
+          "Vous choisissez la forme de l’arme chaque fois que vous rage:**Morsure.",
+"** Votre bouche se transforme en une muselière bestiale ou de grandes mandibules (votre choix). Il inflige 1d8 dommages perçants sur un coup. Une fois sur chacun de vos tours lorsque vous endommagez une créature avec cette morsure, vous retrouvez un nombre de points de frappe égal à votre bonus de maîtrise, à condition que vous avez moins de la moitié de vos points de frappe lorsque vous frappez.",
+"**Griffes.",
+"** Chacune de vos mains se transforme en une griffe, que vous pouvez utiliser comme une arme si elle est vide. Il inflige 1d6 coupant les dégâts sur un coup. Une fois sur chacun de vos tours lorsque vous attaquez avec une griffe en utilisant l’action Attack, vous pouvez faire une attaque supplémentaire de griffe dans le cadre de la même action.",
+"**Queue.",
+"** Vous faites pousser un fouet, queue épineuse, qui inflige 1d8 dommages perçants sur un coup et a la propriété de portée. Si une créature que vous pouvez voir à moins de 10 pieds de vous frappe avec un rouleau d’attaque, vous pouvez utiliser votre réaction pour glisser votre queue et rouler un d8, appliquer un bonus à votre AC égal au nombre roulé, potentiellement causer l’attaque de vous manquer."
+        ]
+      },
+      {
+        "name": "Âme de la bête",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Beast",
+        "subclassSource": "TCE",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 6, le pouvoir sauvage en vous augmente, ce qui fait que les armes naturelles de votre forme de la bête sont considérées comme magiques dans le but de surmonter la résistance et l'immunité aux attaques et aux dégâts non magiques.",
+          "Vous pouvez également modifier votre forme pour vous aider à vous adapter à votre environnement. Lorsque vous terminez un repos court ou long, choisissez l'un des avantages suivants, qui dure jusqu'à ce que vous terminiez un repos court ou long :-Vous gagnez une vitesse de nage égale à votre vitesse de marche et vous pouvez respirer sous l'eau.-Vous gagnez une vitesse d'escalade égale à votre vitesse de marche, et vous pouvez escalader des surfaces difficiles, y compris à l'envers sur des plafonds, sans avoir besoin de faire un jet de caractéristique.-Lorsque vous sautez, vous pouvez effectuer un test de Force (Athlétisme) et prolonger votre saut d'un nombre de pieds égal au total du test. Vous ne pouvez faire ce test spécial qu'une seule fois par tour."
+        ]
+      },
+      {
+        "name": "Furie contagieurse",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Beast",
+        "subclassSource": "TCE",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "Au niveau 10, lorsque vous touchez une créature avec vos armes naturelles alors que vous êtes en rage, la bête en vous peut maudire votre cible avec une fureur enragée. La cible doit réussir un jet de sauvegarde de Sagesse (DD égal à 8 + votre modificateur de Constitution + votre bonus de maîtrise) ou subir l'un des effets suivants (au choix) :-La cible doit utiliser sa réaction pour effectuer une attaque au corps à corps contre une autre créature de votre choix que vous pouvez voir.-La cible subit 2d12 dégâts psychiques.",
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+        ]
+      },
+      {
+        "name": "Appel de la chasse",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Beast",
+        "subclassSource": "TCE",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "Au niveau 14, la bête en vous devient si puissante que vous pouvez répandre sa férocité sur les autres et gagner en résilience lorsqu'ils se joignent à votre chasse. Lorsque vous entrez dans votre rage, vous pouvez choisir un nombre d'autres créatures consentantes que vous pouvez voir dans un rayon de 9 mètres autour de vous égal à votre modificateur de Constitution (minimum d'une créature). Vous gagnez 5 points de vie temporaires pour chaque créature qui accepte cette fonctionnalité. Jusqu'à la fin de la rage, les créatures choisies peuvent utiliser l'avantage suivant une fois à chacun de leurs tours : lorsque la créature touche une cible avec un jet d'attaque et lui inflige des dégâts, la créature peut lancer un d6 et gagner un bonus aux dégâts égal à au nombre obtenu.",
+          "Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+        ]
+      },
+      {},
+      {
+        "name": "Subclass",
+        "source": "PHB",
+        "page": 0,
+        "className": "Class",
+        "classSource": "PHB",
+        "subclassShortName": "",
+        "subclassSource": "PHB",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
+          }
+        ]
+      },
+      {
+        "name": "Protecteur ancestraux",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Ancestral Guardian",
+        "subclassSource": "XGE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "À partir du moment où vous choisissez cette voie au niveau 3, des guerriers spectraux apparaissent lorsque vous entrez dans votre rage. Pendant que vous êtes en rage, la première créature que vous touchez avec une attaque à votre tour devient la cible des guerriers, qui entravent ses attaques. Jusqu'au début de votre prochain tour, cette cible a un désavantage sur tout jet d'attaque qui n'est pas contre vous, et quand la cible touche une créature autre que vous avec une attaque, cette créature a une résistance aux dégâts des attaques de la cible."
+        ]
+      },
+      {
+        "name": "Bouclier des esprit",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Ancestral Guardian",
+        "subclassSource": "XGE",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 6, les esprits gardiens qui vous aident peuvent fournir une protection surnaturelle à ceux que vous défendez. Si vous êtes en rage et qu'une créature que vous pouvez voir dans un rayon de 9 mètres autour de vous subit des dégâts, vous pouvez utiliser votre réaction pour réduire ces dégâts de 2d6.",
+          "Lorsque vous atteignez certains niveaux dans cette classe, vous pouvez réduire davantage les dégâts : de 3d6 au niveau 10 et de 4d6 au niveau 14."
+        ]
+      },
+      {
+        "name": "Consulter les esprit",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Ancestral Guardian",
+        "subclassSource": "XGE",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "Au niveau 10, vous gagnez la capacité de consulter vos esprits ancestraux. Lorsque vous le faites, vous lancez le sort Augure ou Clairvoyance , sans utiliser d'emplacement de sort ou de composants matériels. Plutôt que de créer un capteur sphérique, cette utilisation de la voyance invoque de manière invisible l'un de vos esprits ancestraux à l'endroit choisi. La sagesse est votre capacité d'incantation pour ces sorts.",
+          "Après avoir lancé l'un ou l'autre des sorts de cette manière, vous ne pouvez plus utiliser cette capacité tant que vous n'avez pas terminé un repos court ou long."
+        ]
+      },
+      {
+        "name": "Ancêtres Vangeurs",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Ancestral Guardian",
+        "subclassSource": "XGE",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "Au niveau 14, vos esprits ancestraux deviennent suffisamment puissants pour riposter. Lorsque vous utilisez votre bouclier spirituel pour réduire les dégâts d'une attaque, l'attaquant subit une quantité de dégâts de force que votre bouclier spirituel empêche."
+        ]
+      },
+      {},
+      {
+        "name": "Voie du Guerrier Totem",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Guerrier Totem",
+        "subclassSource": "PHB",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Quêteur spirituel|Barbare|PHB|Guerrier Totem|PHB|3"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Esprit totem|Barbare|PHB|Guerrier Totem|PHB|3"
+          }
+        ]
+      },
+      {
+        "name": "Quêteur spirituel",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Guerrier Totem",
+        "subclassSource": "PHB",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "Une voie qui cherche à vous initier au monde naturel, vous affiliant aux bêtes, est faite pour vous. Au niveau 3, lorsque vous adoptez cette voie, vous obtenez la capacité de lancer les sorts communication avec les animaux et sens animal, mais seulement en tant que rituels."
+        ]
+      },
+      {
+        "name": "Esprit totem",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Guerrier Totem",
+        "subclassSource": "PHB",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "Au niveau 3, lorsque vous adoptez cette voie, vous choisissez un esprit totem et obtenez les avantages associés. Vous devez fabriquer ou obtenir un objet totem -une amulette ou un ornement similaire -constitué d'os, de poils, de griffes, de plumes ou de dents de votre animal totem. Si vous le souhaitez, vous pouvez également obtenir un attribut physique mineur qui rappelle votre esprit totem. Par exemple, si vous avez choisi l'ours comme esprit totem, vous pourriez être incroyablement poilu et avoir la peau épaisse, ou si votre totem est l'aigle, vos yeux pourraient virer au jaune. Votre animal totem devrait être un animal correspondant à l'un de ceux listés ci-dessous ou s'en approchant mais dont l'espèce est plus appropriée à votre pays d'origine (un vautour ou un faucon à la place d'un aigle par exemple).",
+"**Aigle.",
+"** Lorsque vous êtes en rage et ne portez pas d'armure lourde, les autres créatures ont un désavantage lors des attaques d'opportunité qu'elles effectuent contre vous, et vous pouvez utiliser l'action Foncer en tant qu'action bonus lors de votre tour. L'esprit de l'aigle fait de vous un prédateur capable de circuler dans la mêlée avec aisance.",
+"**Loup.",
+"** Lorsque vous êtes en rage, vos alliés ont un avantage aux jets d'attaque au corps à corps effectués contre toute créature située à 1,50 mètre de vous et qui vous sont hostiles. L'esprit du loup fait de vous le chef des chasseurs.",
+"**Ours.",
+"** Lorsque vous êtes en rage, vous avez la résistance à tous les types de dégâts sauf aux dégâts psychiques. L'esprit de l'ours vous rend suffisamment coriace pour résister à n'importe quel châtiment."
+        ]
+      },
+      {
+        "name": "Aspect de la bête",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Guerrier Totem",
+        "subclassSource": "PHB",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "Au niveau 6, vous obtenez un bénéfice magique dépendant de l'animal totem de votre choix. Vous pouvez choisir le même animal que celui sélectionné au niveau 3 ou en prendre un différent.",
+"**Aigle.",
+"** Vous gagnez la vision de l'aigle. Vous pouvez voir jusqu'à 1,5 kilomètre sans difficulté, capable de discerner même les plus fins détails comme si vous regardiez quelque chose à 30 m de vous. De plus, une faible luminosité n'impose pas un désavantage à vos jets de Sagesse (Perception).",
+"**Loup.",
+"** Vous gagnez les sens de chasseur d'un loup. Vous pouvez pister les autres créatures lorsque vous voyagez à un rythme rapide et vous pouvez vous déplacer discrètement lorsque vous voyagez à un rythme normal (voir Partir à l'aventure).",
+"**Ours.",
+"** Vous gagnez la puissance de l'ours. Votre capacité de charge (dont votre chargement maximal et votre capacité à soulever des objets) est doublée et vous obtenez un avantage aux jets de Force effectués pour pousser, soulever, tirer ou briser des objets."
+        ]
+      },
+      {
+        "name": "Marcheur spirituel",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Guerrier Totem",
+        "subclassSource": "PHB",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "Au niveau 10, vous pouvez lancer le sort communion avec la nature, mais seulement en tant que rituel. Lorsque vous le lancez, une version spirituelle de l'un des animaux que vous avez choisis avec Esprit totem ou Aspect de la bête apparaît et vous donne l'information que vous recherchez."
+        ]
+      },
+      {
+        "name": "Lien totémique",
+        "source": "PHB",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Guerrier Totem",
+        "subclassSource": "PHB",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "Au niveau 14, vous obtenez un bénéfice magique correspondant à l'animal totem de votre choix. Vous pouvez choisir un animal que vous avez précédemment sélectionné ou en prendre un nouveau.",
+"**Aigle.",
+"** Lorsque vous êtes en rage, vous obtenez une vitesse de vol égale à votre vitesse actuelle de déplacement à pied. Cette capacité fonctionne uniquement sur de cours déplacements ; vous tombez si vous terminez votre tour dans les airs et que rien d'autre ne vous maintient en hauteur.",
+"**Loup.",
+"** Lorsque vous êtes en rage vous pouvez utiliser une action bonus lors de votre tour pour mettre à terre une créature de taille G ou inférieure que vous avez touchée lors d'une attaque au corps à corps avec une arme.",
+"**Ours.",
+"** Lorsque vous êtes en rage, toute créature située à 1,50 mètre de vous, et qui vous est hostile, a un désavantage aux jets d'attaque effectué contre une cible autre que vous, ou tout personnage avec cette capacité. Un ennemi est immunisé à cet effet s'il ne peut pas vous voir ou vous entendre ou qu'il ne peut pas être effrayé."
+        ]
+      },
+      {},
+      {
+        "name": "Subclass",
+        "source": "PHB",
+        "page": 0,
+        "className": "Class",
+        "classSource": "PHB",
+        "subclassShortName": "",
+        "subclassSource": "PHB",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
+          }
+        ]
+      },
+      {
+        "name": "Aura de tempête",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Storm Herald",
+        "subclassSource": "XGE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "Lorsque vous sélectionnez cette voie au niveau 3, vous dégagez une aura orageuse et magique pendant votre rage. L'aura s'étend à 10 pieds de vous dans toutes les directions, mais pas à travers une couverture totale.",
+          "Votre aura a un effet qui s'active lorsque vous entrez dans votre rage, et vous pouvez réactiver l'effet à chacun de vos tours en tant qu'action bonus. Choisissez le désert, la mer ou la toundra. L'effet de votre aura dépend de l'environnement choisi, comme détaillé ci-dessous. Vous pouvez changer votre choix d'environnement chaque fois que vous gagnez un niveau dans cette classe.",
+          "Si les effets de votre aura nécessitent un jet de sauvegarde, le DD est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution.",
+"**Désert.",
+"** Lorsque cet effet est activé, toutes les autres créatures de votre aura subissent chacune 2 dégâts de feu. Les dégâts augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à 3 au niveau 5, 4 au niveau 10, 5 au niveau 15 et 6 au niveau 20.",
+"**Mer.",
+"** Lorsque cet effet est activé, vous pouvez choisir une autre créature que vous pouvez voir dans votre aura. La cible doit effectuer un jet de sauvegarde de Dextérité. La cible subit 1d6 dégâts de foudre en cas d'échec, ou la moitié de ces dégâts en cas de réussite. Les dégâts augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à 2d6 au niveau 10, 3d6 au niveau 15 et 4d6 au niveau 20.",
+"**Toundra.",
+"** Lorsque cet effet est activé, chaque créature de votre choix dans votre aura gagne 2 points de vie temporaires, les esprits glacés l'endurcissant à la souffrance. Les points de vie temporaires augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à 3 au niveau 5, 4 au niveau 10, 5 au niveau 15 et 6 au niveau 20."
+        ]
+      },
+      {
+        "name": "Âme des tempêtes",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Storm Herald",
+        "subclassSource": "XGE",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "Au niveau 6, la tempête vous confère des avantages même lorsque votre aura n'est pas active. Les avantages sont basés sur l'environnement que vous avez choisi pour votre Storm Aura.",
+"**Désert.",
+"** Vous gagnez une résistance aux dégâts de feu et vous ne subissez pas les effets de la chaleur extrême, comme décrit dans le Dungeon Master's Guide. De plus, en tant qu'action, vous pouvez toucher un objet inflammable qui n'est pas porté ou transporté par quelqu'un d'autre et y mettre le feu.",
+"**Mer.",
+"** Vous gagnez en résistance aux dégâts de foudre et vous pouvez respirer sous l'eau. Vous gagnez également une vitesse de nage de 9 mètres.",
+"**Toundra.",
+"** Vous gagnez en résistance aux dégâts de froid et vous ne subissez pas les effets du froid extrême, comme décrit dans le Dungeon Master's Guide. De plus, par une action, vous pouvez toucher de l'eau et en transformer un cube de 1,50 mètre en glace, qui fond après 1 minute. Cette action échoue si une créature se trouve dans le cube."
+        ]
+      },
+      {
+        "name": "Tempête protectrice",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Storm Herald",
+        "subclassSource": "XGE",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "Au niveau 10, vous apprenez à utiliser votre maîtrise de la tempête pour protéger les autres. Chaque créature de votre choix a la résistance aux dégâts que vous avez gagnée grâce à la fonction Storm Soul pendant que la créature est dans votre aura de tempête."
+        ]
+      },
+      {
+        "name": "Tempête déchaînée",
+        "source": "XGE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Storm Herald",
+        "subclassSource": "XGE",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "Au niveau 14, la puissance de la tempête que vous canalisez devient plus puissante et s'abat sur vos ennemis. L'effet est basé sur l'environnement que vous avez choisi pour votre Storm Aura.",
+"**Désert.",
+"** Immédiatement après qu'une créature dans votre aura vous a frappé avec une attaque, vous pouvez utiliser votre réaction pour forcer cette créature à effectuer un jet de sauvegarde de Dextérité. En cas d'échec, la créature subit des dégâts de feu égaux à votre niveau de barbare.",
+"**Mer.",
+"** Lorsque vous touchez une créature dans votre aura avec une attaque, vous pouvez utiliser votre réaction pour forcer cette créature à effectuer un jet de sauvegarde de Force. En cas d'échec, la créature est projetée à terre, comme si elle avait été frappée par une vague.",
+"**Toundra.",
+"** Chaque fois que l'effet de votre aura de tempête est activé, vous pouvez choisir une créature que vous pouvez voir dans l'aura. Cette créature doit réussir un jet de sauvegarde de Force, sinon sa vitesse est réduite à 0 jusqu'au début de votre prochain tour, car le givre magique la recouvre."
+        ]
+      },
+      {},
+      {
+        "name": "Voie de la Magie Sauvage",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Magie Sauvage",
+        "subclassSource": "TCE",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sens de la magie|Barbare|PHB|Magie Sauvage|TCE|3"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Sursaut sauvage|Barbare|PHB|Magie Sauvage|TCE|3"
+          }
+        ]
+      },
+      {
+        "name": "Sens de la magie",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Magie Sauvage",
+        "subclassSource": "TCE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "Par une action, vous pouvez ouvrir votre conscience à la présence de magie concentrée. Jusqu'à la fin de votre prochain tour, vous connaissez l'emplacement de tout sort ou objet magique dans un rayon de 18 m autour de vous et qui n'est pas caché par un abri total. Lorsque vous sentez un sort, vous reconnaissez à quelle école de magie il appartient. Vous pouvez utiliser cette capacité un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+        ]
+      },
+      {
+        "name": "Sursaut sauvage",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Magie Sauvage",
+        "subclassSource": "TCE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "L'énergie magique qui coule en vous jaillit parfois. Lorsque vous entrez en rage, lancez 1d8 sur la table de Magie sauvage pour déterminer l'effet magique produit. Si l'effet requiert un jet de sauvegarde, le DD est égal à 8 + votre bonus de maîtrise + votre modificateur de Constitution.",
+          "Magie sauvage|d8 |Effet||:---:|:----||1| Toute créature de votre choix que vous pouvez voir à 9 mètres ou moins de vous doit réussir un jet de sauvegarde de Constitution ou subir 1d12 dégâts nécrotiques. Vous gagnez également des points de vie temporaires égaux à 1d12 plus votre niveau de barbare.||2| Vous vous téléportez dans un espace inoccupé que vous pouvez voir dans un rayon de 9 mètres. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet à chacun de vos tours.||3| Un esprit intangible, ressemblant à un flumph ou à une pixie (selon votre choix), apparaît à 1,50 m d'une créature de votre choix que vous pouvez voir dans un rayon de 9 mètres autour de vous. À la fin de ce tour, l'esprit explose et toute créature à 1,50 mètre ou moins de lui doit réussir un jet de sauvegarde de Dextérité ou subir 1d6 dégâts de force. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet en invoquant un autre esprit à chacun de vos tours.||4| Un éclair de lumière jaillit de votre poitrine. Une autre créature de votre choix que vous pouvez voir 9 mètres ou moins de vous doit réussir un jet de sauvegarde de Constitution ou subir 1d6 dégâts radiants et être aveuglée jusqu'au début de votre prochain tour. Jusqu'à la fin de votre rage, vous pouvez, par une action bonus, activer à nouveau cet effet à chacun de vos tours.||5| Chaque fois qu'une créature vous touche avec un jet d'attaque avant la fin de votre rage, cette créature subit 1d6 dégâts de force, la magie se déchaînant en représailles.||6| Vous êtes entouré de lumières protectrices multicolores. Vous gagnez un bonus de +1 à la CA, et vos alliés à 3 mètres ou moins de vous gagnent le même bonus.||7| Des fleurs et des plantes poussent temporairement autour de vous. Jusqu'à ce que votre rage se termine, le sol dans un rayon de 4,50 mètres autour de vous est un terrain difficile pour vos ennemis.||8| La magie imprègne une arme de votre choix que vous tenez. Jusqu'à ce que votre rage se termine, le type de dégâts de l'arme est de force, et elle acquiert les propriétés légère et lancer, avec une portée nominale de 6 mètres et une longue portée de 18 mètres. Si l'arme quitte votre main, elle réapparaît dans votre main à la fin du tour en cours.|"
+        ]
+      },
+      {
+        "name": "Reserve de magie",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Magie Sauvage",
+        "subclassSource": "TCE",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "Vous pouvez exploiter votre magie sauvage pour vous renforcer ou renforcer un compagnon. Par une action, vous pouvez toucher une créature (y compris vous-même) et lui conférer l'un des avantages suivants de votre choix :-Durant 10 minutes, la créature peut lancer un d3 à chaque fois qu'elle effectue un jet d'attaque ou un jet de caractéristique, et ajouter le nombre obtenu au d20.-Lancez un d3. La créature regagne un emplacement de sort dépensé d'un niveau égal ou inférieur au nombre obtenu (au choix de la créature). Une fois qu'une créature a reçu cet avantage, elle ne peut plus en bénéficier avant d'avoir terminé un repos long.",
+          "Vous pouvez effectuer cette action un nombre de fois égal à votre bonus de maîtrise, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un repos long."
+        ]
+      },
+      {
+        "name": "Réaction instable",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Magie Sauvage",
+        "subclassSource": "TCE",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "Lorsque vous êtes en danger pendant votre rage, votre magie intérieure peut se déchaîner. Immédiatement après avoir subi des dégâts ou échoué à un jet de sauvegarde pendant que vous êtes en rage, vous pouvez utiliser votre réaction pour lancer un dé sur la table de Magie sauvage et l'effet obtenu se produit immédiatement. Cet effet remplace votre effet de Magie sauvage en cours."
+        ]
+      },
+      {
+        "name": "Sursaut contrôlé",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Magie Sauvage",
+        "subclassSource": "TCE",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "Chaque fois que vous lancez un dé sur la table de Magie sauvage, vous pouvez lancer le dé deux fois et choisir lequel des deux effets se déclenche. Si vous lancez le même nombre sur les deux dés, vous pouvez ignorer le dé et choisir n'importe quel effet sur la table."
+        ]
+      },
+      {},
+      {
+        "name": "Subclass",
+        "source": "PHB",
+        "page": 0,
+        "className": "Class",
+        "classSource": "PHB",
+        "subclassShortName": "",
+        "subclassSource": "PHB",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Feature|Class|PHB|SubClass|PHB|3"
+          }
+        ]
+      },
+      {
+        "name": "Fureur divine",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Zealot",
+        "subclassSource": "TCE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "À partir du moment où vous choisissez cette voie au niveau 3, vous pouvez canaliser la fureur divine dans vos coups d'arme. Pendant que vous êtes en rage, la première créature que vous touchez à chacun de vos tours avec une attaque avec une arme subit des dégâts supplémentaires égaux à 1d6 + la moitié de votre niveau de barbare. Les dégâts supplémentaires sont nécrotiques ou radiants ; vous choisissez le type de dégâts lorsque vous gagnez cette fonctionnalité."
+        ]
+      },
+      {
+        "name": "Guerrier des dieux",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Zealot",
+        "subclassSource": "TCE",
+        "level": 3,
+        "header": 2,
+        "entries": [
+          "Au niveau 3, votre âme est marquée pour un combat sans fin. Si un sort, tel que Raise Dead , a pour seul effet de vous rendre la vie (mais pas la non-mort), le lanceur n'a pas besoin de composants matériels pour lancer le sort sur vous."
+        ]
+      },
+      {
+        "name": "Obstination fanatique",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Zealot",
+        "subclassSource": "TCE",
+        "level": 6,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 6, le pouvoir divin qui alimente votre rage peut vous protéger. Si vous échouez à un jet de sauvegarde alors que vous êtes en rage, vous pouvez le relancer et vous devez utiliser le nouveau jet. Vous ne pouvez utiliser cette capacité qu'une seule fois par rage."
+        ]
+      },
+      {
+        "name": "Présence zélatrice",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Zealot",
+        "subclassSource": "TCE",
+        "level": 10,
+        "header": 2,
+        "entries": [
+          "Au niveau 10, vous apprenez à canaliser le pouvoir divin pour inspirer le fanatisme chez les autres. Par une action bonus, vous lancez un cri de guerre imprégné d'énergie divine. Jusqu'à dix autres créatures de votre choix dans un rayon de 18 mètres autour de vous qui peuvent vous entendre bénéficient d'un avantage aux jets d'attaque et de sauvegarde jusqu'au début de votre prochain tour.",
+          "Une fois que vous avez utilisé cette fonctionnalité, vous ne pouvez plus l'utiliser tant que vous n'avez pas terminé un repos long."
+        ]
+      },
+      {
+        "name": "Enragé par-delà la mort",
+        "source": "TCE",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Zealot",
+        "subclassSource": "TCE",
+        "level": 14,
+        "header": 2,
+        "entries": [
+          "À partir du niveau 14, le pouvoir divin qui alimente votre rage vous permet d'ignorer les coups fatals.",
+          "Pendant que vous êtes en rage, avoir 0 points de vie ne vous assomme pas. Vous devez toujours effectuer des jets de sauvegarde contre la mort et vous subissez les effets normaux des dégâts subis alors que vous êtes à 0 point de vie. Cependant, si vous deviez mourir à cause d'un jet de sauvegarde contre la mort raté, vous ne mourrez pas avant la fin de votre rage, et vous ne mourrez alors que si vous avez encore 0 points de vie."
+        ]
+      },
+      {},
+      {
+        "name": "Voie du Géant",
+        "source": "BGG",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Géant",
+        "subclassSource": "BGG",
+        "level": 3,
+        "entries": [
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Puissance Géante|Barbare|PHB|Géant|BGG|3"
+          },
+          {
+            "type": "refSubclassFeature",
+            "subclassFeature": "Ravage du Géant|Barbare|PHB|Géant|BGG|3"
+          }
+        ]
+      },
+      {
+        "name": "Puissance Géante",
+        "source": "BGG",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Géant",
+        "subclassSource": "BGG",
+        "level": 3,
+        "header": 2,
+        "entries": [
+        ]
+      },
+      {
+        "name": "Ravage du Géant",
+        "source": "BGG",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Géant",
+        "subclassSource": "BGG",
+        "level": 3,
+        "header": 2,
+        "entries": [
+        ]
+      },
+      {
+        "name": "Couperet élémentaire",
+        "source": "BGG",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Géant",
+        "subclassSource": "BGG",
+        "level": 6,
+        "header": 2,
+        "entries": [
+        ]
+      },
+      {
+        "name": "Impultion Puissante",
+        "source": "BGG",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Géant",
+        "subclassSource": "BGG",
+        "level": 10,
+        "header": 2,
+        "entries": [
+        ]
+      },
+      {
+        "name": "Colosse démiurgique",
+        "source": "BGG",
+        "page": 0,
+        "className": "Barbare",
+        "classSource": "PHB",
+        "subclassShortName": "Géant",
+        "subclassSource": "BGG",
+        "level": 14,
+        "header": 2,
+        "entries": [
+        ]
+      }
+    ]
+  },
+  {
     "id": "bard",
     "info": {
       "name": "Barde",

@@ -1,1 +1,59 @@
-[{}]
+[
+  {
+    "id": "action",
+    "name": "Action",
+    "source": "PHB",
+    "page": 360,
+    "entries": [
+      "A votre tour, vous pouvez entreprendre un action. Choisissez l'action à entreprendre parmi celles ci-dessous ou parmi les actions spéciales fournies par vos aptitudes.",
+      {
+        "type": "list",
+        "entries": [
+          "Attaque",
+          "Désengagement",
+          "Esquive",
+          "Étude",
+          "Furtivité",
+          "Influence",
+          "Intention",
+          "Magie",
+          "Observation",
+          "Pointe",
+          "Soutien",
+          "Utilisation"
+        ]
+      }
+    ]
+  },
+  {
+    "entries": [
+      "L'abri fournit un degré de protection à la cible située derrière. Il existe 3 niveaux d'abriqui octroient chacun un bénéfice distinc aux cible abbritées:",
+      {
+        "type": "entries",
+        "name": "Abri partiel",
+        "entries": [
+          "Bonus de +2 à la CA et aux jets de sauvegarde de Dextérité"
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Abri supérieur",
+        "entries": [
+          "Bonus de +5 à la CA et aux jets de sauvegarde de Dextérité"
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Abri total",
+        "entries": [
+          "le sujet ne peux pas être pris pour cible dirrectement"
+        ]
+      },
+      "Une cible qui se trouve derrière plus d'un type d'abris ne bénéficie que du degré le plus protecteur."
+    ],
+    "name": "Abri",
+    "id": "cover",
+    "source": "PHB",
+    "page": 360
+  }
+]

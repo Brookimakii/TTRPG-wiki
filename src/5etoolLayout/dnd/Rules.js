@@ -2,7 +2,7 @@ import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {RenderModule, Selector5e} from "../5eLayoutModules";
 import {Parser} from "../../layout/5e/js/parser";
 import React from "react";
-import type {Rule} from "../../layout/5e/Models";
+import type {Rule, Entry} from "../../layout/5e/Models";
 
 
 export const Dnd5eRules = () => {
@@ -33,6 +33,21 @@ export const Dnd5eRules = () => {
   } = Selector5e(rules, columns, "name");
 
   const selectedRule: Rule = {...selected}
+
+  const renderEntries = (entry: Entry, toggle, depth) => {
+    return <div className="rd__b rd__b--3">
+      <p>
+        <span className="rd__h rd__h--3" data-title-index="1">
+          <span className="entry-title-inner">{entry.name}. </span>
+        </span>
+        {RenderModule({...renderProps, defaultString: (string) => string,}).render(entry.entries)}
+      </p>
+    </div>
+  }
+
+  const renderProps = {
+    renderEntries: renderEntries
+  }
   
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
@@ -40,7 +55,7 @@ export const Dnd5eRules = () => {
         <TableHeader/>
         <div className="fltr__mini-view ve-btn-group">
         </div>
-        <DisplayList/>
+        {DisplayList(elements)}
       </div>
       <div className="cancer__wrp-mobile-1 cancer__anchor"></div>
       {/*TODO: Create tabs here original tab id: 'stat-tabs'*/}
@@ -89,7 +104,7 @@ export const Dnd5eRules = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedRule.entries)}
+                    {RenderModule(renderProps).render(selectedRule.entries)}
                   </div>
                 </td>
               </tr>

@@ -230,10 +230,29 @@ export const Layout5eHome = () => {
 }
 
 
+const NIGHT_MODE_KEY = "ttrpg-wiki-night-mode"
+
 export const LayoutHeader = () => {
 
   const [title, setTitle] = useState("Test")
   const [homeLink, _setHomeLink] = useState("TTRPG-wiki")
+  const [isNightMode, setIsNightMode] = useState(() => {
+    try {
+      return localStorage.getItem(NIGHT_MODE_KEY) === "true"
+    } catch (e) {
+      return false
+    }
+  })
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("ve-night-mode", isNightMode)
+    document.documentElement.classList.toggle("ve-night-mode--standard", isNightMode)
+    try {
+      localStorage.setItem(NIGHT_MODE_KEY, String(isNightMode))
+    } catch (e) {
+      // localStorage unavailable — preference just won't persist across reloads
+    }
+  }, [isNightMode]);
 
   const _handleTitleUpdate = (str) => setTitle(str)
 
@@ -241,6 +260,7 @@ export const LayoutHeader = () => {
     <ChangelogPopup />
     <script type="text/javascript" src="../layout/5e/js/navigation.js"></script>
     <div className="viewport-wrapper">
+      <div className="overlay-noise"></div>
       <div className="cancer__wrp-leaderboard cancer__anchor">
         <div className="cancer__disp-cancer"></div>
         <div className="cancer__wrp-leaderboard-inner" style={{height: "0px"}}>
@@ -256,6 +276,15 @@ export const LayoutHeader = () => {
           <p className="page__subtitle no-wrap my-0" id="page__subtitle">
             This is a test to see the site appearance.
           </p>
+          <button
+            type="button"
+            onClick={() => setIsNightMode(prev => !prev)}
+            className="ve-btn ve-btn-default page__btn-toggle-night"
+            title={isNightMode ? "Passer en thème clair" : "Passer en thème sombre"}
+            style={{marginLeft: "auto"}}
+          >
+            <span className={isNightMode ? "fal fa-sun" : "fal fa-moon"}></span>
+          </button>
         </div>
       </header>
       <Outlet context={[setTitle]}/>
@@ -409,5 +438,3 @@ export const Layout5e2 = () => {
     </div>
   </div>)
 }
-
-

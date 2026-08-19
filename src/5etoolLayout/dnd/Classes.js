@@ -229,7 +229,7 @@ export const Dnd5eClasses = () => {
           <span className={"rd__h rd__h--3"}>{feature.name}. </span>
           {feature.entries[0]}
         </p>
-        {getToggleState(toggle) && feature.entries.length > 1 ? RenderModule().render([...feature.entries].slice(1, feature.entries.length), ++depth, toggle) : ""}
+        {getToggleState(toggle) && feature.entries.length > 1 ? RenderModule(props).render([...feature.entries].slice(1, feature.entries.length), ++depth, toggle) : ""}
       </div>
     }
     return <div className="rd__b rd__b--2" ref={refs[toggle]}>
@@ -239,7 +239,7 @@ export const Dnd5eClasses = () => {
                 <span className="">[{getToggleState(toggle) ? "–" : "+"}]</span>
               </span>
       </h3>
-      {getToggleState(toggle) ? RenderModule().render(feature.entries, ++depth, toggle) : ""}
+      {getToggleState(toggle) ? RenderModule(props).render(feature.entries, ++depth, toggle) : ""}
     </div>
   }
 

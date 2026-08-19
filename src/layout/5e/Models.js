@@ -175,8 +175,19 @@ export class Spell {
   source: string
   page: number
   casters: {
-    classes: [string]
+    classes: [string],
+    subclasses: [string],
+    races: [string],
+    backgrounds: [string],
+    feats: [string],
+    features: [string],
   }
+  spellAttack: boolean
+  savingThrow: [string]
+  abilityCheck: [string]
+  damageTypes: [string]
+  conditionsInflicted: [string]
+  affectsCreatureTypes: [string]
 }
 
 class Dice {

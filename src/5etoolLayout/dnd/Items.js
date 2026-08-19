@@ -403,7 +403,7 @@ export const Dnd5eItems = () => {
         </span>
         {feature.entries[0]}
       </p>
-      {feature.entries > 1 ? RenderModule().render([feature.entries].splice(0, 1), depth++, toggle) : ""}
+      {feature.entries > 1 ? RenderModule(props).render([feature.entries].splice(0, 1), depth++, toggle) : ""}
     </div>
   }
 

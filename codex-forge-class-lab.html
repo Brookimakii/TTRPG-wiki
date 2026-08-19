@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex Forge — Class Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15130f;
+    --panel:#1d1a14;
+    --panel-2:#241f17;
+    --panel-3:#2a251b;
+    --border:#3a3324;
+    --border-soft:#2c2719;
+    --text:#ece4d1;
+    --text-dim:#a99d84;
+    --text-faint:#786c56;
+    --brass:#c9a227;
+    --brass-bright:#e0bc4a;
+    --brass-dim:rgba(201,162,39,.14);
+    --teal:#5a9d92;
+    --teal-dim:rgba(90,157,146,.16);
+    --violet:#9b86c4;
+    --violet-dim:rgba(155,134,196,.14);
+    --danger:#b8543f;
+    --danger-dim:rgba(184,84,63,.14);
+    --display:'Cinzel',serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:13.5px;line-height:1.5;}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(201,162,39,.04), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(155,134,196,.05), transparent 45%);
+  }
+  ::selection{background:var(--brass-dim);color:var(--brass-bright);}
+  input,textarea,select,button{font-family:inherit;color:inherit;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:var(--panel);}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--brass);}
+
+  .app-shell{position:relative;z-index:1;display:grid;grid-template-columns:260px 1fr;height:100vh;}
+
+  /* ---------- Sidebar: class list ---------- */
+  .sidebar{background:var(--panel);border-right:1px solid var(--border-soft);display:flex;flex-direction:column;overflow:hidden;}
+  .brand{padding:20px 18px 14px;border-bottom:1px solid var(--border-soft);}
+  .brand .mark{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.04em;color:var(--brass-bright);display:flex;align-items:center;gap:8px;}
+  .brand .sub{margin-top:3px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);}
+
+  .actions-bar{padding:12px 16px;border-bottom:1px solid var(--border-soft);display:flex;gap:6px;flex-wrap:wrap;}
+  .btn{
+    appearance:none;border:1px solid var(--border);background:var(--panel-2);color:var(--text);
+    font-size:11.5px;font-weight:500;padding:6px 10px;border-radius:var(--radius);cursor:pointer;
+    display:inline-flex;align-items:center;gap:5px;transition:border-color .12s,color .12s,background .12s;
+    white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary{background:var(--brass-dim);border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary:hover{background:rgba(201,162,39,.24);}
+  .btn.violet{background:var(--violet-dim);border-color:var(--violet);color:#c9bce6;}
+  .btn.violet:hover{background:rgba(155,134,196,.24);}
+  .btn.danger:hover{border-color:var(--danger);color:#e07e6a;}
+  .btn.ghost{background:transparent;border-color:transparent;color:var(--text-dim);}
+  .btn.ghost:hover{background:var(--panel-2);color:var(--text);}
+  .btn.small{padding:4px 8px;font-size:10.5px;}
+  .btn.full{width:100%;justify-content:center;}
+  input[type="file"]{display:none;}
+
+  .class-list{flex:1;overflow-y:auto;padding:8px;}
+  .class-row{
+    display:flex;align-items:center;justify-content:space-between;gap:6px;
+    padding:10px 12px;border-radius:var(--radius);cursor:pointer;margin-bottom:3px;border:1px solid transparent;
+  }
+  .class-row:hover{background:var(--panel-2);}
+  .class-row.active{background:var(--teal-dim);border-color:var(--teal);}
+  .class-row .name{font-size:13px;font-weight:600;}
+  .class-row.active .name{color:#a9d8cf;}
+  .class-row .meta{font-family:var(--mono);font-size:10px;color:var(--text-faint);margin-top:2px;}
+  .class-row .del{opacity:0;background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:14px;padding:2px 4px;}
+  .class-row:hover .del{opacity:1;}
+  .class-row .del:hover{color:var(--danger);}
+  .empty-list{padding:26px 18px;text-align:center;color:var(--text-faint);font-size:12px;line-height:1.7;}
+
+  .sidebar-foot{padding:12px 16px;border-top:1px solid var(--border-soft);font-size:10.5px;color:var(--text-faint);line-height:1.6;}
+
+  /* ---------- Main ---------- */
+  .main{overflow-y:auto;}
+  .main-inner{max-width:980px;margin:0 auto;padding:28px 40px 100px;}
+
+  .no-selection{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-faint);text-align:center;padding:40px;}
+  .no-selection .glyph{font-size:34px;color:var(--border);font-family:var(--display);}
+  .no-selection h2{font-family:var(--display);color:var(--text-dim);font-weight:600;font-size:16px;margin:0;}
+  .no-selection p{font-size:12.5px;max-width:340px;margin:0;}
+
+  .class-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border-soft);}
+  .class-head .eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:4px;}
+  .class-head h2{font-family:var(--display);font-size:24px;font-weight:600;margin:0;word-break:break-word;}
+  .class-head .actions{display:flex;gap:6px;flex:none;padding-top:2px;}
+
+  .section{margin-bottom:30px;}
+  .section-title{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:14px;letter-spacing:.03em;color:var(--text-dim);margin-bottom:12px;}
+  .section-title::after{content:"";flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+  .section-title .tag{
+    font-family:var(--mono);font-size:10px;color:var(--text-faint);background:var(--panel-2);
+    border:1px solid var(--border-soft);border-radius:20px;padding:1px 8px;
+  }
+
+  .field-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field.wide{grid-column:1/-1;}
+  .field label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
+  .field input[type="text"],.field input[type="number"],.field textarea,.field select{
+    background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);
+    padding:7px 9px;font-size:12.5px;width:100%;resize:vertical;
+  }
+  .field textarea{min-height:52px;line-height:1.5;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--brass);}
+
+  /* feature cards */
+  .feature-list{display:flex;flex-direction:column;gap:8px;}
+  .feature-card{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);overflow:hidden;}
+  .feature-card > summary{
+    list-style:none;cursor:pointer;padding:10px 14px;display:flex;align-items:center;gap:10px;
+    justify-content:space-between;
+  }
+  .feature-card > summary::-webkit-details-marker{display:none;}
+  .feature-card .fc-left{display:flex;align-items:center;gap:10px;min-width:0;}
+  .feature-card .lvl-badge{
+    font-family:var(--mono);font-size:10.5px;color:var(--brass);background:rgba(201,162,39,.12);
+    border:1px solid rgba(201,162,39,.3);border-radius:20px;padding:2px 8px;flex:none;
+  }
+  .feature-card .fc-name{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .feature-card .fc-name:empty::before{content:"Untitled feature";color:var(--text-faint);font-weight:400;font-style:italic;}
+  .feature-card .fc-tools{display:flex;gap:3px;flex:none;}
+  .feature-card .fc-tools button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:3px 6px;border-radius:2px;}
+  .feature-card .fc-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
+  .feature-card .fc-tools button.del:hover{color:var(--danger);}
+  .feature-card .fc-body{padding:0 14px 14px;border-top:1px solid var(--border-soft);padding-top:12px;}
+
+  .entries-toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .entry-block{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;}
+  .entry-block .eb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .entry-block .eb-type{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);}
+  .entry-block .eb-tools{display:flex;gap:3px;}
+  .entry-block .eb-tools button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:12px;padding:2px 5px;border-radius:2px;}
+  .entry-block .eb-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
+  .entry-block .eb-tools button.del:hover{color:var(--danger);}
+  .entry-block textarea{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:7px 9px;font-size:12.5px;min-height:44px;line-height:1.5;}
+  .entry-block input[type="text"]{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:6px;}
+  .entry-block .list-line{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;}
+  .entry-block .list-line textarea{min-height:34px;}
+  .entry-block .list-line button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:4px;flex:none;}
+  .entry-block .list-line button:hover{color:var(--danger);}
+  .entry-block .raw-note{font-size:10.5px;color:var(--text-faint);margin-bottom:6px;font-style:italic;}
+  .entry-block textarea.raw-json-ta{font-family:var(--mono);color:#d9cf9c;background:var(--bg);}
+  .add-line-btn{font-size:11px;color:var(--teal);background:none;border:1px dashed var(--border);border-radius:var(--radius);padding:4px 8px;cursor:pointer;}
+  .add-line-btn:hover{border-color:var(--teal);}
+  .entries-empty{font-size:11.5px;color:var(--text-faint);font-style:italic;border:1px dashed var(--border-soft);border-radius:var(--radius);padding:14px;text-align:center;}
+
+  /* subclass cards */
+  .subclass-card{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;}
+  .subclass-card-head{padding:12px 14px;border-bottom:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel-3);}
+  .subclass-card-head .sc-title{font-family:var(--display);font-size:14px;color:var(--brass-bright);}
+  .subclass-card-head .sc-title:empty::before{content:"Unnamed subclass";color:var(--text-faint);font-style:italic;font-family:var(--body);}
+  .subclass-card-body{padding:14px;}
+
+  .empty-state-inline{font-size:12px;color:var(--text-faint);font-style:italic;padding:8px 0;}
+
+  details.raw-preview{border:1px solid var(--border-soft);border-radius:var(--radius);background:var(--panel-2);}
+  details.raw-preview summary{padding:10px 14px;cursor:pointer;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-dim);display:flex;align-items:center;justify-content:space-between;}
+  details.raw-preview summary:hover{color:var(--brass);}
+  .raw-preview-body{padding:0 14px 14px;}
+  .raw-preview-body textarea{width:100%;min-height:280px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:#d9cf9c;font-family:var(--mono);font-size:11.5px;line-height:1.55;padding:12px;}
+  .raw-preview-body .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px;flex-wrap:wrap;}
+  .raw-preview-body .err{color:#e07e6a;font-size:11px;font-family:var(--mono);}
+  .raw-preview-body .ok{color:var(--teal);font-size:11px;font-family:var(--mono);}
+  .raw-preview-body .hint{font-size:10.5px;color:var(--text-faint);}
+
+  .toast{
+    position:fixed;bottom:18px;right:18px;background:var(--panel-3);border:1px solid var(--brass);color:var(--brass-bright);
+    padding:10px 16px;border-radius:var(--radius);font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:100;
+    opacity:0;transform:translateY(6px);transition:opacity .18s,transform .18s;pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <div class="sidebar">
+    <div class="brand">
+      <div class="mark">⚙ Class Lab</div>
+      <div class="sub">Classes &amp; Subclasses</div>
+    </div>
+    <div class="actions-bar">
+      <button class="btn primary small" id="btnNewClass">+ New Class</button>
+      <button class="btn small" id="btnImport">Import classes.json</button>
+      <button class="btn small" id="btnExportAll">Export all</button>
+    </div>
+    <div class="class-list" id="classList"></div>
+    <div class="sidebar-foot">Saved to this browser automatically.<br>Export writes a ready-to-use <code>classes.json</code>.</div>
+    <input type="file" id="fileInput" accept="application/json">
+  </div>
+
+  <div class="main" id="main"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function tpl(o){ return JSON.parse(JSON.stringify(o)); }
+function uid(){ return Math.random().toString(36).slice(2,9); }
+function escapeHtml(s){
+  return String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function getPath(obj, path){ return path.split(".").reduce((o,k)=> (o==null?undefined:o[k]), obj); }
+function setPath(obj, path, value){
+  const parts = path.split(".");
+  let cur = obj;
+  for(let i=0;i<parts.length-1;i++){
+    const k = parts[i];
+    if(cur[k]==null || typeof cur[k] !== "object") cur[k] = {};
+    cur = cur[k];
+  }
+  cur[parts[parts.length-1]] = value;
+}
+
+/* ============================================================
+   INTERNAL DATA MODEL (friendly — no reference strings)
+
+   classWorking = {
+     id, info:{ name, source, page, spellcastingAbility, hitDice:{amount,faces},
+                 proficiencies:{armor,weapon,tools,skills:{pool,count},saves},
+                 startingEquipment:{goldAlternative,equipement} },
+     classFeatures: [ {_uid, level, name, source, page, entries:[]} ],
+     subclasses: [ {_uid, name, shortName, source, page,
+                     features:[ {_uid, level, name, source, page, header, entries:[]} ]} ]
+   }
+   ============================================================ */
+
+const CLASS_QUICK_FIELDS = [
+  {path:"id",label:"ID",type:"text",placeholder:"artificer"},
+  {path:"info.name",label:"Name",type:"text",placeholder:"Artificer"},
+  {path:"info.source",label:"Source",type:"text",placeholder:"TCE"},
+  {path:"info.page",label:"Page",type:"number"},
+  {path:"info.spellcastingAbility",label:"Spellcasting Ability",type:"text",placeholder:"Intelligence"},
+  {path:"info.hitDice.amount",label:"Hit Dice Amount",type:"number"},
+  {path:"info.hitDice.faces",label:"Hit Dice Faces",type:"number"},
+  {path:"info.proficiencies.armor",label:"Armor Proficiencies",type:"list"},
+  {path:"info.proficiencies.weapon",label:"Weapon Proficiencies",type:"list"},
+  {path:"info.proficiencies.tools",label:"Tool Proficiencies",type:"list"},
+  {path:"info.proficiencies.saves",label:"Saving Throws",type:"list",placeholder:"con, int"},
+  {path:"info.proficiencies.skills.pool",label:"Skill Pool",type:"list"},
+  {path:"info.proficiencies.skills.count",label:"Skill Count",type:"number"},
+  {path:"info.startingEquipment.goldAlternative",label:"Starting Gold Alt.",type:"text",placeholder:"5d4 × 10"},
+  {path:"info.startingEquipment.equipement",label:"Starting Equipment",type:"list",wide:true},
+];
+
+function newFeature(level){
+  return {_uid:uid(), level: level||1, name:"", source:"", page:null, entries:[]};
+}
+function newSubclassFeature(level){
+  return {_uid:uid(), level: level||3, name:"", source:"", page:null, header:null, topLevel:true, entries:[]};
+}
+function newSubclass(){
+  return {_uid:uid(), name:"", shortName:"", source:"", page:null, features:[newSubclassFeature(3)]};
+}
+function newClass(){
+  return {
+    id:"new-class-"+uid().slice(0,4),
+    info:{name:"New Class", source:"", page:null, spellcastingAbility:"",
+      hitDice:{amount:1,faces:8},
+      proficiencies:{armor:[],weapon:[],tools:[],skills:{pool:[],count:2},saves:[]},
+      startingEquipment:{goldAlternative:"",equipement:[]}},
+    classFeatures:[newFeature(1)],
+    subclasses:[]
+  };
+}
+
+/* ---------- import: raw site-format class object -> friendly working model ---------- */
+function importClassObject(raw){
+  const info = raw.info || {};
+  const working = {
+    id: raw.id || "",
+    info: {
+      name: info.name || "",
+      source: info.source || "",
+      page: info.page ?? null,
+      spellcastingAbility: info.spellcastingAbility || "",
+      hitDice: {amount: (info.hitDice && info.hitDice.amount) ?? 1, faces: (info.hitDice && info.hitDice.faces) ?? 8},
+      proficiencies: {
+        armor: (info.proficiencies && info.proficiencies.armor) || [],
+        weapon: (info.proficiencies && info.proficiencies.weapon) || [],
+        tools: (info.proficiencies && info.proficiencies.tools) || [],
+        skills: {
+          pool: (info.proficiencies && info.proficiencies.skills && info.proficiencies.skills.pool) || [],
+          count: (info.proficiencies && info.proficiencies.skills && info.proficiencies.skills.count) ?? 2,
+        },
+        saves: (info.proficiencies && info.proficiencies.saves) || [],
+      },
+      startingEquipment: {
+        goldAlternative: (info.startingEquipment && info.startingEquipment.goldAlternative) || "",
+        equipement: (info.startingEquipment && info.startingEquipment.equipement) || [],
+      }
+    },
+    classFeatures: (raw.classFeatures||[]).map(f=>({
+      _uid:uid(), level:f.level??1, name:f.name||"", source:f.source||"", page:f.page??null, entries:f.entries||[]
+    })),
+    subclasses: []
+  };
+
+  const allFull = raw.subclassFeatures || [];
+
+  // Some source files contain subclassFeatures whose (subclassShortName, subclassSource)
+  // pair has no matching entry in raw.subclasses at all (an incomplete/orphaned subclass).
+  // Build synthetic subclass buckets for those so nothing is silently dropped.
+  const declaredList = raw.subclasses || [];
+  const keyOf = (sn, so) => (sn||"") + "\u241F" + (so||"");
+  const declaredKeys = new Set(declaredList.map(sc => keyOf(sc.shortName, sc.source)));
+  const extra = new Map();
+  allFull.forEach(f=>{
+    const k = keyOf(f.subclassShortName, f.subclassSource);
+    if(!declaredKeys.has(k) && !extra.has(k)){
+      extra.set(k, {name: f.subclassShortName || "(unlabeled subclass features)", shortName: f.subclassShortName || "", source: f.subclassSource || "", page:null, subclassFeatures:[]});
+    }
+  });
+  const subclassDescriptors = declaredList.concat(Array.from(extra.values()));
+
+  subclassDescriptors.forEach(sc=>{
+    // Which keys are the subclass's own top-level list (rendered as separate sections)?
+    const topLevelKeys = new Set(sc.subclassFeatures||[]);
+    const noDeclaredList = !sc.subclassFeatures || sc.subclassFeatures.length === 0;
+
+    // Gather EVERY full feature object that belongs to this subclass — not just the
+    // ones listed in sc.subclassFeatures — so detail blocks referenced only via
+    // {type:"refSubclassFeature",...} inside another feature's entries aren't lost.
+    const owned = allFull.filter(f => keyOf(f.subclassShortName, f.subclassSource) === keyOf(sc.shortName, sc.source));
+
+    const features = owned.map(full=>{
+      const key = [full.name, full.className, full.classSource, full.subclassShortName, full.subclassSource, full.level].join("|");
+      return {
+        _uid:uid(), level: full.level ?? sc.level ?? 3, name: full.name||"", source: full.source||"",
+        page: full.page ?? null, header: (full.header===undefined ? null : full.header),
+        topLevel: noDeclaredList ? true : topLevelKeys.has(key), entries: full.entries||[]
+      };
+    });
+
+    // In case a ref string in sc.subclassFeatures didn't resolve to any full object
+    // (malformed data), still surface it as a stub so nothing silently disappears.
+    topLevelKeys.forEach(refStr=>{
+      const matched = owned.some(full => [full.name, full.className, full.classSource, full.subclassShortName, full.subclassSource, full.level].join("|") === refStr);
+      if(!matched){
+        const parts = String(refStr).split("|");
+        features.push({_uid:uid(), level:Number(parts[5])||3, name:parts[0]||"", source:sc.source||"", page:null, header:null, topLevel:true, entries:[]});
+      }
+    });
+
+    working.subclasses.push({
+      _uid:uid(), name:sc.name||"", shortName:sc.shortName||"", source:sc.source||"", page:sc.page??null,
+      features: features.length ? features : [newSubclassFeature(3)]
+    });
+  });
+
+  return working;
+}
+
+/* ---------- export: friendly working model -> raw site-format class object ---------- */
+function exportClassObject(w){
+  const out = {
+    id: w.id,
+    info: {
+      name: w.info.name,
+      source: w.info.source,
+      page: w.info.page,
+      spellcastingAbility: w.info.spellcastingAbility,
+      hitDice: {amount: w.info.hitDice.amount, faces: w.info.hitDice.faces},
+      proficiencies: {
+        armor: w.info.proficiencies.armor,
+        weapon: w.info.proficiencies.weapon,
+        tools: w.info.proficiencies.tools,
+        skills: {pool: w.info.proficiencies.skills.pool, count: w.info.proficiencies.skills.count},
+        saves: w.info.proficiencies.saves,
+      },
+      startingEquipment: {
+        goldAlternative: w.info.startingEquipment.goldAlternative,
+        equipement: w.info.startingEquipment.equipement,
+      }
+    },
+    subclasses: [],
+    classFeatures: (w.classFeatures||[]).map(f=>({
+      name:f.name, source: f.source || w.info.source, page: f.page,
+      className: w.info.name, classSource: w.info.source, level: f.level, entries: f.entries
+    })),
+    subclassFeatures: []
+  };
+
+  (w.subclasses||[]).forEach(sc=>{
+    const refs = [];
+    (sc.features||[]).forEach(f=>{
+      const key = [f.name, w.info.name, w.info.source, sc.shortName, sc.source, f.level].join("|");
+      // Every feature is written to the full subclassFeatures array (so refSubclassFeature
+      // links from other features can resolve it), but only "top-level" features are listed
+      // in the subclass's own index — detail blocks stay reachable only by reference.
+      if(f.topLevel !== false) refs.push(key);
+      out.subclassFeatures.push({
+        name: f.name, source: f.source || sc.source, page: f.page,
+        className: w.info.name, classSource: w.info.source,
+        subclassShortName: sc.shortName, subclassSource: sc.source,
+        level: f.level, header: f.header ?? undefined, entries: f.entries
+      });
+    });
+    out.subclasses.push({
+      name: sc.name, shortName: sc.shortName, source: sc.source, page: sc.page,
+      subclassFeatures: refs
+    });
+  });
+
+  return out;
+}
+
+/* ============================================================
+   STATE + PERSISTENCE
+   ============================================================ */
+const STORAGE_KEY = "codexforge:classlab:v1";
+const state = { classes: [], selected: null };
+
+function load(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    state.classes = raw ? JSON.parse(raw) : [];
+  }catch(e){ state.classes = []; }
+}
+function persist(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state.classes)); }catch(e){}
+}
+load();
+
+let toastTimer=null;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove("show"), 2200);
+}
+
+/* ============================================================
+   MIXED ENTRIES EDITOR (paragraph / list / named / html / raw-fallback)
+   ============================================================ */
+function buildFeatureIndex(c){
+  // Every feature in this class that can be pointed at via a reference block.
+  const groups = [];
+  const classGroup = {label: c.info.name || "Class Features", options: []};
+  (c.classFeatures||[]).forEach(f=>{
+    if(!f.name) return;
+    const key = [f.name, c.info.name, c.info.source, f.level].join("|");
+    classGroup.options.push({key, kind:"refClassFeature", label:`Lvl ${f.level ?? "?"} — ${f.name}`});
+  });
+  if(classGroup.options.length) groups.push(classGroup);
+
+  (c.subclasses||[]).forEach(sc=>{
+    const g = {label: (sc.name || sc.shortName || "Subclass") + " (subclass)", options: []};
+    (sc.features||[]).forEach(f=>{
+      if(!f.name) return;
+      const key = [f.name, c.info.name, c.info.source, sc.shortName, sc.source, f.level].join("|");
+      g.options.push({key, kind:"refSubclassFeature", label:`Lvl ${f.level ?? "?"} — ${f.name}`});
+    });
+    if(g.options.length) groups.push(g);
+  });
+  return groups;
+}
+
+function detectMixedType(b){
+  if(typeof b === "string") return "text";
+  if(b && b.html !== undefined) return "html";
+  if(b && b.type === "list") return "list";
+  if(b && b.type === "entries") return "named";
+  if(b && b.type === "table") return "table";
+  if(b && b.type === "hr") return "hr";
+  if(b && b.type === "quote") return "quote";
+  if(b && (b.type === "inset" || b.type === "insetReadaloud")) return "inset";
+  if(b && b.type === "image") return "image";
+  if(b && b.type === "refClassFeature") return "refClassFeature";
+  if(b && b.type === "refSubclassFeature") return "refSubclassFeature";
+  return "raw";
+}
+function moveBtn(txt, fn, cls){
+  const b = document.createElement("button");
+  b.textContent = txt;
+  if(cls) b.classList.add(cls);
+  b.addEventListener("click", fn);
+  return b;
+}
+
+function renderMixedEntries(container, arr, onChange, classRef){
+  container.innerHTML = "";
+  const toolbar = document.createElement("div");
+  toolbar.className = "entries-toolbar";
+  [
+    ["+ Paragraph", ()=> ""],
+    ["+ List", ()=> ({type:"list", entries:[""]})],
+    ["+ Named Block", ()=> ({type:"entries", name:"", entries:[""]})],
+    ["+ Table", ()=> ({type:"table", caption:"", colLabels:["", ""], colStyles:["", ""], rows:[["", ""]]})],
+    ["+ Inset Box", ()=> ({type:"inset", name:"", entries:[""]})],
+    ["+ Quote", ()=> ({type:"quote", entries:[""], by:"", from:""})],
+    ["+ Horizontal Rule", ()=> ({type:"hr"})],
+    ["+ Image", ()=> ({type:"image", href:{type:"external", url:""}, title:"", credit:""})],
+    ["+ HTML Block", ()=> ({html:"<p></p>"})],
+    ["+ Other (raw JSON)", ()=> ({type:"section", name:"", entries:[""]})],
+  ].forEach(([txt, make])=>{
+    const b = document.createElement("button");
+    b.className = "btn small";
+    b.textContent = txt;
+    b.addEventListener("click", ()=>{ arr.push(make()); renderMixedEntries(container, arr, onChange, classRef); onChange(); });
+    toolbar.appendChild(b);
+  });
+  if(classRef){
+    const refBtn = document.createElement("button");
+    refBtn.className = "btn small violet";
+    refBtn.textContent = "+ Reference Feature";
+    refBtn.addEventListener("click", ()=>{
+      arr.push({type:"refClassFeature", classFeature:""});
+      renderMixedEntries(container, arr, onChange, classRef);
+      onChange();
+    });
+    toolbar.appendChild(refBtn);
+  }
+  container.appendChild(toolbar);
+
+  if(arr.length===0){
+    const empty = document.createElement("div");
+    empty.className = "entries-empty";
+    empty.textContent = "No content yet.";
+    container.appendChild(empty);
+  }
+
+  arr.forEach((b, i)=>{
+    const kind = detectMixedType(b);
+    const block = document.createElement("div");
+    block.className = "entry-block";
+    block.innerHTML = `<div class="eb-head"><span class="eb-type">${kind}${kind==="raw" && b.type ? " · "+escapeHtml(b.type) : ""}</span><div class="eb-tools"></div></div>`;
+    const tools = block.querySelector(".eb-tools");
+    tools.appendChild(moveBtn("↑", ()=>{ if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; renderMixedEntries(container,arr,onChange,classRef); onChange(); }}));
+    tools.appendChild(moveBtn("↓", ()=>{ if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; renderMixedEntries(container,arr,onChange,classRef); onChange(); }}));
+    tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); }, "del"));
+
+    if(kind === "text"){
+      const ta = document.createElement("textarea");
+      ta.value = b || "";
+      ta.addEventListener("input", ()=>{ arr[i] = ta.value; onChange(); });
+      block.appendChild(ta);
+    } else if(kind === "html"){
+      const ta = document.createElement("textarea");
+      ta.value = b.html || "";
+      ta.placeholder = "<p>Raw HTML…</p>";
+      ta.addEventListener("input", ()=>{ b.html = ta.value; onChange(); });
+      block.appendChild(ta);
+    } else if(kind === "list"){
+      if(!Array.isArray(b.entries)) b.entries = [];
+
+      const optionsRow = document.createElement("div");
+      optionsRow.style.display = "flex";
+      optionsRow.style.gap = "8px";
+      optionsRow.style.marginBottom = "8px";
+      const styleSelect = document.createElement("select");
+      styleSelect.style.flex = "1";
+      [
+        {value:"", label:"Style — default (bulleted)"},
+        {value:"list-hang-notitle", label:"Hanging, no title indent"},
+        {value:"list-hang", label:"Hanging indent"},
+        {value:"list-decimal", label:"Numbered (1, 2, 3…)"},
+        {value:"list-lower-roman", label:"Lower roman"},
+        {value:"list-upper-roman", label:"Upper roman"},
+        {value:"list-no-bullets", label:"No bullets"},
+        {value:"list-italic", label:"Italic"},
+      ].forEach(opt=>{
+        const o = document.createElement("option");
+        o.value = opt.value; o.textContent = opt.label;
+        if((b.style||"") === opt.value) o.selected = true;
+        styleSelect.appendChild(o);
+      });
+      styleSelect.addEventListener("change", ()=>{
+        if(styleSelect.value) b.style = styleSelect.value; else delete b.style;
+        onChange();
+      });
+      optionsRow.appendChild(styleSelect);
+      const colsInput = document.createElement("input");
+      colsInput.type = "number"; colsInput.min = "1"; colsInput.style.width = "70px";
+      colsInput.placeholder = "Columns";
+      colsInput.value = b.columns || "";
+      colsInput.addEventListener("input", ()=>{
+        const n = colsInput.value === "" ? null : Number(colsInput.value);
+        if(n && n > 1) b.columns = n; else delete b.columns;
+        onChange();
+      });
+      optionsRow.appendChild(colsInput);
+      block.appendChild(optionsRow);
+
+      b.entries.forEach((line, li)=>{
+        const w = document.createElement("div");
+        w.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li]=ta.value; onChange(); });
+        const del = document.createElement("button");
+        del.textContent="×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+        w.appendChild(ta); w.appendChild(del);
+        block.appendChild(w);
+      });
+      const addLine = document.createElement("button");
+      addLine.className="add-line-btn"; addLine.textContent="+ list item";
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+      block.appendChild(addLine);
+    } else if(kind === "named"){
+      if(!Array.isArray(b.entries)) b.entries = [];
+      const nameInput = document.createElement("input");
+      nameInput.type="text"; nameInput.placeholder="Block name";
+      nameInput.value = b.name || "";
+      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; onChange(); });
+      block.appendChild(nameInput);
+      b.entries.forEach((line, li)=>{
+        const w = document.createElement("div");
+        w.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li]=ta.value; onChange(); });
+        const del = document.createElement("button");
+        del.textContent="×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+        w.appendChild(ta); w.appendChild(del);
+        block.appendChild(w);
+      });
+      const addLine = document.createElement("button");
+      addLine.className="add-line-btn"; addLine.textContent="+ line";
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+      block.appendChild(addLine);
+    } else if(kind === "table"){
+      if(!Array.isArray(b.colLabels)) b.colLabels = ["", ""];
+      if(!Array.isArray(b.colStyles)) b.colStyles = b.colLabels.map(()=>"");
+      if(!Array.isArray(b.rows)) b.rows = [b.colLabels.map(()=>"")];
+
+      const captionInput = document.createElement("input");
+      captionInput.type = "text";
+      captionInput.placeholder = "Table caption (optional)";
+      captionInput.value = b.caption || "";
+      captionInput.addEventListener("input", ()=>{ b.caption = captionInput.value; onChange(); });
+      block.appendChild(captionInput);
+
+      const tableEl = document.createElement("table");
+      tableEl.style.width = "100%";
+      tableEl.style.borderCollapse = "collapse";
+      tableEl.style.fontSize = "12px";
+
+      const theadRow = document.createElement("tr");
+      b.colLabels.forEach((label, ci)=>{
+        const th = document.createElement("th");
+        th.style.border = "1px solid var(--border-soft)";
+        th.style.padding = "4px";
+        const labelInput = document.createElement("input");
+        labelInput.type = "text";
+        labelInput.placeholder = "Column";
+        labelInput.value = label || "";
+        labelInput.addEventListener("input", ()=>{ b.colLabels[ci] = labelInput.value; onChange(); });
+        const rmColBtn = document.createElement("button");
+        rmColBtn.textContent = "× col";
+        rmColBtn.style.fontSize = "10px";
+        rmColBtn.style.background = "none";
+        rmColBtn.style.border = "none";
+        rmColBtn.style.color = "var(--text-faint)";
+        rmColBtn.style.cursor = "pointer";
+        rmColBtn.addEventListener("click", ()=>{
+          b.colLabels.splice(ci,1); b.colStyles.splice(ci,1); b.rows.forEach(r=>r.splice(ci,1));
+          renderMixedEntries(container, arr, onChange, classRef); onChange();
+        });
+        th.appendChild(labelInput); th.appendChild(document.createElement("br")); th.appendChild(rmColBtn);
+        theadRow.appendChild(th);
+      });
+      const addColTh = document.createElement("th");
+      addColTh.style.border = "none";
+      const addColBtn = document.createElement("button");
+      addColBtn.className = "add-line-btn"; addColBtn.textContent = "+ column";
+      addColBtn.addEventListener("click", ()=>{
+        b.colLabels.push(""); b.colStyles.push(""); b.rows.forEach(r=>r.push(""));
+        renderMixedEntries(container, arr, onChange, classRef); onChange();
+      });
+      addColTh.appendChild(addColBtn);
+      theadRow.appendChild(addColTh);
+      tableEl.appendChild(theadRow);
+
+      b.rows.forEach((row, ri)=>{
+        while(row.length < b.colLabels.length) row.push("");
+        const tr = document.createElement("tr");
+        row.forEach((cell, ci)=>{
+          const td = document.createElement("td");
+          td.style.border = "1px solid var(--border-soft)";
+          td.style.padding = "4px";
+          const cellInput = document.createElement("input");
+          cellInput.type = "text";
+          cellInput.value = cell ?? "";
+          cellInput.style.width = "100%";
+          cellInput.addEventListener("input", ()=>{ b.rows[ri][ci] = cellInput.value; onChange(); });
+          td.appendChild(cellInput);
+          tr.appendChild(td);
+        });
+        const rmTd = document.createElement("td");
+        rmTd.style.border = "none";
+        const rmRowBtn = document.createElement("button");
+        rmRowBtn.textContent = "× row";
+        rmRowBtn.style.fontSize = "10px";
+        rmRowBtn.style.background = "none"; rmRowBtn.style.border = "none";
+        rmRowBtn.style.color = "var(--text-faint)"; rmRowBtn.style.cursor = "pointer";
+        rmRowBtn.addEventListener("click", ()=>{ b.rows.splice(ri,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+        rmTd.appendChild(rmRowBtn);
+        tr.appendChild(rmTd);
+        tableEl.appendChild(tr);
+      });
+      block.appendChild(tableEl);
+
+      const addRowBtn = document.createElement("button");
+      addRowBtn.className = "add-line-btn"; addRowBtn.style.marginTop = "8px"; addRowBtn.textContent = "+ row";
+      addRowBtn.addEventListener("click", ()=>{ b.rows.push(b.colLabels.map(()=>"")); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+      block.appendChild(addRowBtn);
+
+    } else if(kind === "hr"){
+      const note = document.createElement("div");
+      note.className = "raw-note";
+      note.textContent = "A plain horizontal divider — no fields needed.";
+      block.appendChild(note);
+
+    } else if(kind === "quote"){
+      if(!Array.isArray(b.entries)) b.entries = [""];
+      b.entries.forEach((line, li)=>{
+        const w = document.createElement("div");
+        w.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.placeholder = "Quote line";
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; onChange(); });
+        const del = document.createElement("button");
+        del.textContent = "×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+        w.appendChild(ta); w.appendChild(del);
+        block.appendChild(w);
+      });
+      const addLineQ = document.createElement("button");
+      addLineQ.className = "add-line-btn"; addLineQ.textContent = "+ line";
+      addLineQ.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+      block.appendChild(addLineQ);
+      const byInput = document.createElement("input");
+      byInput.type = "text"; byInput.placeholder = "Attributed to (optional)";
+      byInput.value = b.by || "";
+      byInput.addEventListener("input", ()=>{ b.by = byInput.value; onChange(); });
+      block.appendChild(byInput);
+      const fromInput = document.createElement("input");
+      fromInput.type = "text"; fromInput.placeholder = "Source (optional)";
+      fromInput.value = b.from || "";
+      fromInput.addEventListener("input", ()=>{ b.from = fromInput.value; onChange(); });
+      block.appendChild(fromInput);
+
+    } else if(kind === "inset"){
+      const nameInput = document.createElement("input");
+      nameInput.type = "text"; nameInput.placeholder = "Box title (optional)";
+      nameInput.value = b.name || "";
+      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; onChange(); });
+      block.appendChild(nameInput);
+      if(!Array.isArray(b.entries)) b.entries = [""];
+      b.entries.forEach((line, li)=>{
+        const w = document.createElement("div");
+        w.className = "list-line";
+        const ta = document.createElement("textarea");
+        ta.placeholder = "Box text (paragraph)";
+        ta.value = line || "";
+        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; onChange(); });
+        const del = document.createElement("button");
+        del.textContent = "×";
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+        w.appendChild(ta); w.appendChild(del);
+        block.appendChild(w);
+      });
+      const addLineI = document.createElement("button");
+      addLineI.className = "add-line-btn"; addLineI.textContent = "+ paragraph";
+      addLineI.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
+      block.appendChild(addLineI);
+      const readaloudRow = document.createElement("div");
+      readaloudRow.style.display = "flex"; readaloudRow.style.alignItems = "center"; readaloudRow.style.gap = "8px"; readaloudRow.style.marginTop = "6px";
+      const raCheck = document.createElement("input");
+      raCheck.type = "checkbox";
+      raCheck.checked = b.type === "insetReadaloud";
+      raCheck.addEventListener("change", ()=>{ b.type = raCheck.checked ? "insetReadaloud" : "inset"; onChange(); });
+      const raLabel = document.createElement("span");
+      raLabel.style.fontSize = "11.5px";
+      raLabel.textContent = "Read-aloud style (italic box, for narration text)";
+      readaloudRow.appendChild(raCheck); readaloudRow.appendChild(raLabel);
+      block.appendChild(readaloudRow);
+
+    } else if(kind === "image"){
+      if(!b.href || typeof b.href !== "object") b.href = {type:"external", url:""};
+      const urlInput = document.createElement("input");
+      urlInput.type = "text"; urlInput.placeholder = "Image URL (https://…)";
+      urlInput.value = b.href.url || "";
+      urlInput.addEventListener("input", ()=>{ b.href.type = "external"; b.href.url = urlInput.value; onChange(); });
+      block.appendChild(urlInput);
+      const titleInput = document.createElement("input");
+      titleInput.type = "text"; titleInput.placeholder = "Title / caption (optional)";
+      titleInput.value = b.title || "";
+      titleInput.addEventListener("input", ()=>{ b.title = titleInput.value; onChange(); });
+      block.appendChild(titleInput);
+
+    } else if(kind === "refClassFeature" || kind === "refSubclassFeature"){
+      const groups = classRef ? buildFeatureIndex(classRef) : [];
+      const currentKey = kind === "refClassFeature" ? (b.classFeature||"") : (b.subclassFeature||"");
+
+      const select = document.createElement("select");
+      select.style.width = "100%";
+      select.style.background = "var(--panel-2)";
+      select.style.border = "1px solid var(--border)";
+      select.style.borderRadius = "3px";
+      select.style.color = "var(--text)";
+      select.style.padding = "7px 9px";
+      select.style.fontSize = "12.5px";
+      select.style.marginBottom = "6px";
+
+      const blank = document.createElement("option");
+      blank.value = "";
+      blank.textContent = "— choose a feature —";
+      select.appendChild(blank);
+
+      let found = false;
+      groups.forEach(g=>{
+        const og = document.createElement("optgroup");
+        og.label = g.label;
+        g.options.forEach(opt=>{
+          const o = document.createElement("option");
+          o.value = opt.kind + "::" + opt.key;
+          o.textContent = opt.label;
+          if(opt.key === currentKey && opt.kind === kind){ o.selected = true; found = true; }
+          og.appendChild(o);
+        });
+        select.appendChild(og);
+      });
+
+      select.addEventListener("change", ()=>{
+        const [newKind, ...rest] = select.value.split("::");
+        const newKey = rest.join("::");
+        // block may switch between referencing a class feature and a subclass feature
+        delete b.classFeature; delete b.subclassFeature;
+        b.type = newKind || "refClassFeature";
+        if(newKind === "refClassFeature") b.classFeature = newKey;
+        else if(newKind === "refSubclassFeature") b.subclassFeature = newKey;
+        renderMixedEntries(container, arr, onChange, classRef);
+        onChange();
+      });
+      block.appendChild(select);
+
+      const status = document.createElement("div");
+      status.style.fontSize = "10.5px";
+      if(!currentKey){
+        status.style.color = "var(--text-faint)";
+        status.textContent = "No feature selected yet.";
+      } else if(found){
+        status.style.color = "var(--teal)";
+        status.textContent = "✓ resolved";
+      } else {
+        status.style.color = "var(--danger)";
+        status.textContent = "⚠ target not found — it may have been renamed, re-leveled, or removed.";
+      }
+      block.appendChild(status);
+
+      const hint = document.createElement("div");
+      hint.style.fontSize = "10px";
+      hint.style.color = "var(--text-faint)";
+      hint.style.marginTop = "4px";
+      hint.textContent = "References are matched by name + level. Renaming the target later won't update this automatically.";
+      block.appendChild(hint);
+
+    } else {
+      // raw fallback: tables, spellList, abilityDc, refSubclassFeature, or anything unrecognized
+      const note = document.createElement("div");
+      note.className = "raw-note";
+      note.textContent = "Not a standard block — edit the JSON directly:";
+      block.appendChild(note);
+      const ta = document.createElement("textarea");
+      ta.className = "raw-json-ta";
+      ta.value = JSON.stringify(b, null, 2);
+      ta.addEventListener("input", ()=>{
+        try{ arr[i] = JSON.parse(ta.value); ta.style.borderColor=""; onChange(); }
+        catch(e){ ta.style.borderColor = "#b8543f"; }
+      });
+      block.appendChild(ta);
+    }
+    container.appendChild(block);
+  });
+}
+
+/* ============================================================
+   QUICK FIELD BUILDER
+   ============================================================ */
+function buildQuickField(obj, field, onChange){
+  const wrap = document.createElement("div");
+  wrap.className = "field" + (field.wide ? " wide":"");
+  const lbl = document.createElement("label");
+  lbl.textContent = field.label;
+  wrap.appendChild(lbl);
+
+  let input;
+  if(field.type === "list"){
+    input = document.createElement("input");
+    input.type = "text";
+    const val = getPath(obj, field.path);
+    input.value = Array.isArray(val) ? val.join(", ") : "";
+    input.placeholder = (field.placeholder ? field.placeholder+"  " : "") + "(comma-separated)";
+    input.addEventListener("input", ()=>{
+      setPath(obj, field.path, input.value.split(",").map(s=>s.trim()).filter(s=>s.length));
+      onChange();
+    });
+  } else if(field.type === "number"){
+    input = document.createElement("input");
+    input.type = "number";
+    const val = getPath(obj, field.path);
+    input.value = (val===null||val===undefined) ? "" : val;
+    input.addEventListener("input", ()=>{
+      setPath(obj, field.path, input.value==="" ? null : Number(input.value));
+      onChange();
+    });
+  } else {
+    input = document.createElement("input");
+    input.type = "text";
+    input.value = getPath(obj, field.path) || "";
+    if(field.placeholder) input.placeholder = field.placeholder;
+    input.addEventListener("input", ()=>{ setPath(obj, field.path, input.value); onChange(); });
+  }
+  wrap.appendChild(input);
+  return wrap;
+}
+
+/* ============================================================
+   FEATURE CARD (used for both class features & subclass features)
+   ============================================================ */
+function renderFeatureCard(feature, opts){
+  // opts: {onChange, onDelete, onMoveUp, onMoveDown, includeHeader}
+  const card = document.createElement("details");
+  card.className = "feature-card";
+  const summary = document.createElement("summary");
+  summary.innerHTML = `
+    <div class="fc-left">
+      <span class="lvl-badge">Lvl ${feature.level ?? "?"}</span>
+      <span class="fc-name"></span>
+    </div>
+    <div class="fc-tools"></div>`;
+  summary.querySelector(".fc-name").textContent = feature.name || "";
+  const tools = summary.querySelector(".fc-tools");
+  tools.appendChild(moveBtn("↑", (e)=>{ e.preventDefault(); e.stopPropagation(); opts.onMoveUp(); }));
+  tools.appendChild(moveBtn("↓", (e)=>{ e.preventDefault(); e.stopPropagation(); opts.onMoveDown(); }));
+  tools.appendChild(moveBtn("×", (e)=>{ e.preventDefault(); e.stopPropagation(); opts.onDelete(); }, "del"));
+  card.appendChild(summary);
+
+  const body = document.createElement("div");
+  body.className = "fc-body";
+
+  const grid = document.createElement("div");
+  grid.className = "field-grid";
+
+  const levelField = document.createElement("div");
+  levelField.className = "field";
+  levelField.innerHTML = `<label>Level</label>`;
+  const levelInput = document.createElement("input");
+  levelInput.type = "number";
+  levelInput.value = feature.level ?? "";
+  levelInput.addEventListener("input", ()=>{
+    feature.level = levelInput.value==="" ? null : Number(levelInput.value);
+    summary.querySelector(".lvl-badge").textContent = "Lvl " + (feature.level ?? "?");
+    opts.onChange();
+  });
+  levelField.appendChild(levelInput);
+  grid.appendChild(levelField);
+
+  const nameField = document.createElement("div");
+  nameField.className = "field wide";
+  nameField.innerHTML = `<label>Name</label>`;
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "Feature name";
+  nameInput.value = feature.name || "";
+  nameInput.addEventListener("input", ()=>{
+    feature.name = nameInput.value;
+    summary.querySelector(".fc-name").textContent = feature.name;
+    opts.onChange();
+  });
+  nameField.appendChild(nameInput);
+  grid.appendChild(nameField);
+
+  const sourceField = document.createElement("div");
+  sourceField.className = "field";
+  sourceField.innerHTML = `<label>Source</label>`;
+  const sourceInput = document.createElement("input");
+  sourceInput.type = "text";
+  sourceInput.placeholder = "defaults to class/subclass source";
+  sourceInput.value = feature.source || "";
+  sourceInput.addEventListener("input", ()=>{ feature.source = sourceInput.value; opts.onChange(); });
+  sourceField.appendChild(sourceInput);
+  grid.appendChild(sourceField);
+
+  const pageField = document.createElement("div");
+  pageField.className = "field";
+  pageField.innerHTML = `<label>Page</label>`;
+  const pageInput = document.createElement("input");
+  pageInput.type = "number";
+  pageInput.value = feature.page ?? "";
+  pageInput.addEventListener("input", ()=>{ feature.page = pageInput.value==="" ? null : Number(pageInput.value); opts.onChange(); });
+  pageField.appendChild(pageInput);
+  grid.appendChild(pageField);
+
+  if(opts.includeHeader){
+    const headerField = document.createElement("div");
+    headerField.className = "field";
+    headerField.innerHTML = `<label>Header Level</label>`;
+    const headerInput = document.createElement("input");
+    headerInput.type = "number";
+    headerInput.value = feature.header ?? "";
+    headerInput.placeholder = "e.g. 2 for a sub-block";
+    headerInput.addEventListener("input", ()=>{ feature.header = headerInput.value==="" ? null : Number(headerInput.value); opts.onChange(); });
+    headerField.appendChild(headerInput);
+    grid.appendChild(headerField);
+
+    const topLevelField = document.createElement("div");
+    topLevelField.className = "field wide";
+    topLevelField.innerHTML = `<label>Listing</label>`;
+    const tlWrap = document.createElement("div");
+    tlWrap.style.display = "flex";
+    tlWrap.style.alignItems = "center";
+    tlWrap.style.gap = "8px";
+    tlWrap.style.paddingTop = "2px";
+    const tlCheck = document.createElement("input");
+    tlCheck.type = "checkbox";
+    tlCheck.checked = feature.topLevel !== false;
+    tlCheck.style.width = "14px";
+    tlCheck.style.height = "14px";
+    tlCheck.style.accentColor = "var(--brass)";
+    const tlLabel = document.createElement("span");
+    tlLabel.style.fontSize = "12px";
+    tlLabel.style.color = "var(--text-dim)";
+    tlLabel.textContent = "Top-level (shown as its own section at this level). Uncheck for a detail block that's only reached by reference from another feature.";
+    tlCheck.addEventListener("change", ()=>{ feature.topLevel = tlCheck.checked; opts.onChange(); });
+    tlWrap.appendChild(tlCheck);
+    tlWrap.appendChild(tlLabel);
+    topLevelField.appendChild(tlWrap);
+    grid.appendChild(topLevelField);
+  }
+
+  body.appendChild(grid);
+
+  const entriesWrap = document.createElement("div");
+  entriesWrap.style.marginTop = "12px";
+  if(!Array.isArray(feature.entries)) feature.entries = [];
+  renderMixedEntries(entriesWrap, feature.entries, opts.onChange, opts.classRef);
+  body.appendChild(entriesWrap);
+
+  card.appendChild(body);
+  return card;
+}
+
+function renderFeatureList(container, features, opts){
+  // opts: {onChange, includeHeader}
+  container.innerHTML = "";
+  if(!features.length){
+    const empty = document.createElement("div");
+    empty.className = "empty-state-inline";
+    empty.textContent = "No features yet.";
+    container.appendChild(empty);
+  }
+  features.forEach((f, i)=>{
+    const card = renderFeatureCard(f, {
+      includeHeader: opts.includeHeader,
+      classRef: opts.classRef,
+      onChange: opts.onChange,
+      onDelete: ()=>{ features.splice(i,1); renderFeatureList(container, features, opts); opts.onChange(); },
+      onMoveUp: ()=>{ if(i>0){ [features[i-1],features[i]]=[features[i],features[i-1]]; renderFeatureList(container,features,opts); opts.onChange(); }},
+      onMoveDown: ()=>{ if(i<features.length-1){ [features[i+1],features[i]]=[features[i],features[i+1]]; renderFeatureList(container,features,opts); opts.onChange(); }},
+    });
+    container.appendChild(card);
+  });
+}
+
+/* ============================================================
+   SIDEBAR RENDER
+   ============================================================ */
+function renderSidebar(){
+  const listEl = document.getElementById("classList");
+  listEl.innerHTML = "";
+  if(!state.classes.length){
+    listEl.innerHTML = `<div class="empty-list">No classes in this workspace yet.<br><br>Click <strong>+ New Class</strong>, or <strong>Import classes.json</strong> to load your existing file.</div>`;
+    return;
+  }
+  state.classes.forEach((c, idx)=>{
+    const row = document.createElement("div");
+    row.className = "class-row" + (state.selected===idx ? " active":"");
+    const scCount = (c.subclasses||[]).length;
+    row.innerHTML = `<div class="info"><div class="name"></div><div class="meta"></div></div><button class="del" title="Delete">×</button>`;
+    row.querySelector(".name").textContent = c.info.name || c.id || "(untitled class)";
+    row.querySelector(".meta").textContent = `${(c.classFeatures||[]).length} features · ${scCount} subclass${scCount===1?"":"es"}`;
+    row.addEventListener("click", (e)=>{
+      if(e.target.classList.contains("del")) return;
+      state.selected = idx;
+      renderMain();
+      renderSidebar();
+    });
+    row.querySelector(".del").addEventListener("click", (e)=>{
+      e.stopPropagation();
+      if(!confirm(`Delete "${c.info.name || c.id}"? This can't be undone.`)) return;
+      state.classes.splice(idx,1);
+      if(state.selected===idx) state.selected=null;
+      else if(state.selected>idx) state.selected--;
+      persist(); renderSidebar(); renderMain();
+    });
+    listEl.appendChild(row);
+  });
+}
+
+/* ============================================================
+   MAIN PANE RENDER
+   ============================================================ */
+function onChange(){ persist(); refreshPreview(); renderSidebar(); }
+
+let previewTa = null;
+function refreshPreview(){
+  if(!previewTa) return;
+  const c = state.classes[state.selected];
+  if(!c) return;
+  if(document.activeElement === previewTa) return;
+  previewTa.value = JSON.stringify(exportClassObject(c), null, 2);
+}
+
+function renderMain(){
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  previewTa = null;
+  const c = state.classes[state.selected];
+
+  if(!c){
+    main.innerHTML = `<div class="no-selection"><div class="glyph">⚙</div><h2>No class selected</h2><p>Pick a class from the list, or click “+ New Class” to build one from scratch — spellcasting, proficiencies, class features by level, and full subclasses with their own feature progressions.</p></div>`;
+    return;
+  }
+
+  const inner = document.createElement("div");
+  inner.className = "main-inner";
+
+  // head
+  const head = document.createElement("div");
+  head.className = "class-head";
+  head.innerHTML = `
+    <div>
+      <div class="eyebrow">Class</div>
+      <h2 id="classTitle">${escapeHtml(c.info.name || c.id || "Untitled")}</h2>
+    </div>
+    <div class="actions">
+      <button class="btn small" id="dupClass">Duplicate</button>
+      <button class="btn danger small" id="delClass">Delete</button>
+    </div>`;
+  inner.appendChild(head);
+
+  // core fields
+  const coreSection = document.createElement("div");
+  coreSection.className = "section";
+  coreSection.innerHTML = `<div class="section-title">Core Fields</div>`;
+  const grid = document.createElement("div");
+  grid.className = "field-grid";
+  CLASS_QUICK_FIELDS.forEach(f=>{
+    const field = buildQuickField(c, f, ()=>{
+      if(f.path==="id" || f.path==="info.name") document.getElementById("classTitle").textContent = c.info.name || c.id || "Untitled";
+      onChange();
+    });
+    grid.appendChild(field);
+  });
+  coreSection.appendChild(grid);
+  inner.appendChild(coreSection);
+
+  // class features
+  const cfSection = document.createElement("div");
+  cfSection.className = "section";
+  cfSection.innerHTML = `<div class="section-title">Class Features <span class="tag">${(c.classFeatures||[]).length}</span></div>`;
+  const cfAddBtn = document.createElement("button");
+  cfAddBtn.className = "btn small primary";
+  cfAddBtn.style.marginBottom = "10px";
+  cfAddBtn.textContent = "+ Add Class Feature";
+  cfSection.appendChild(cfAddBtn);
+  const cfListEl = document.createElement("div");
+  cfListEl.className = "feature-list";
+  cfSection.appendChild(cfListEl);
+  if(!Array.isArray(c.classFeatures)) c.classFeatures = [];
+  renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
+  cfAddBtn.addEventListener("click", ()=>{
+    const lastLvl = c.classFeatures.length ? c.classFeatures[c.classFeatures.length-1].level : 1;
+    c.classFeatures.push(newFeature(lastLvl));
+    renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
+    onChange();
+  });
+  inner.appendChild(cfSection);
+
+  // subclasses
+  const scSection = document.createElement("div");
+  scSection.className = "section";
+  scSection.innerHTML = `<div class="section-title">Subclasses <span class="tag">${(c.subclasses||[]).length}</span></div>`;
+  const scAddBtn = document.createElement("button");
+  scAddBtn.className = "btn small violet";
+  scAddBtn.style.marginBottom = "12px";
+  scAddBtn.textContent = "+ Add Subclass";
+  scSection.appendChild(scAddBtn);
+  const scListEl = document.createElement("div");
+  scSection.appendChild(scListEl);
+  if(!Array.isArray(c.subclasses)) c.subclasses = [];
+  renderSubclassList(scListEl, c);
+  scAddBtn.addEventListener("click", ()=>{
+    c.subclasses.push(newSubclass());
+    renderSubclassList(scListEl, c);
+    onChange();
+  });
+  inner.appendChild(scSection);
+
+  // export preview
+  const prevSection = document.createElement("div");
+  prevSection.className = "section";
+  const details = document.createElement("details");
+  details.className = "raw-preview";
+  details.innerHTML = `<summary>Export Preview — final classes.json shape <span>▾</span></summary>`;
+  const pbody = document.createElement("div");
+  pbody.className = "raw-preview-body";
+  const ta = document.createElement("textarea");
+  ta.readOnly = true;
+  ta.value = JSON.stringify(exportClassObject(c), null, 2);
+  previewTa = ta;
+  const row = document.createElement("div");
+  row.className = "row";
+  const hint = document.createElement("span");
+  hint.className = "hint";
+  hint.textContent = "Reference strings between subclasses and their features are generated automatically.";
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "btn small";
+  copyBtn.textContent = "Copy JSON";
+  copyBtn.addEventListener("click", ()=>{
+    navigator.clipboard.writeText(ta.value).then(()=> toast("Copied to clipboard"));
+  });
+  row.appendChild(hint);
+  row.appendChild(copyBtn);
+  pbody.appendChild(ta);
+  pbody.appendChild(row);
+  details.appendChild(pbody);
+  prevSection.appendChild(details);
+  inner.appendChild(prevSection);
+
+  main.appendChild(inner);
+
+  document.getElementById("delClass").addEventListener("click", ()=>{
+    if(!confirm(`Delete "${c.info.name||c.id}"? This can't be undone.`)) return;
+    state.classes.splice(state.selected,1);
+    state.selected = null;
+    persist(); renderSidebar(); renderMain();
+  });
+  document.getElementById("dupClass").addEventListener("click", ()=>{
+    const copy = tpl(c);
+    copy.id = (copy.id||"class") + "-copy";
+    state.classes.splice(state.selected+1, 0, copy);
+    state.selected = state.selected+1;
+    persist(); renderSidebar(); renderMain();
+    toast("Duplicated");
+  });
+}
+
+function renderSubclassList(container, c){
+  container.innerHTML = "";
+  if(!c.subclasses.length){
+    const empty = document.createElement("div");
+    empty.className = "empty-state-inline";
+    empty.textContent = "No subclasses yet.";
+    container.appendChild(empty);
+    return;
+  }
+  c.subclasses.forEach((sc, idx)=>{
+    const card = document.createElement("div");
+    card.className = "subclass-card";
+    const headEl = document.createElement("div");
+    headEl.className = "subclass-card-head";
+    headEl.innerHTML = `<span class="sc-title"></span><div class="fc-tools"></div>`;
+    headEl.querySelector(".sc-title").textContent = sc.name || "";
+    const tools = headEl.querySelector(".fc-tools");
+    tools.appendChild(moveBtn("↑", ()=>{ if(idx>0){ [c.subclasses[idx-1],c.subclasses[idx]]=[c.subclasses[idx],c.subclasses[idx-1]]; renderSubclassList(container,c); onChange(); }}));
+    tools.appendChild(moveBtn("↓", ()=>{ if(idx<c.subclasses.length-1){ [c.subclasses[idx+1],c.subclasses[idx]]=[c.subclasses[idx],c.subclasses[idx+1]]; renderSubclassList(container,c); onChange(); }}));
+    tools.appendChild(moveBtn("×", ()=>{
+      if(!confirm(`Delete subclass "${sc.name||"(unnamed)"}"?`)) return;
+      c.subclasses.splice(idx,1); renderSubclassList(container,c); onChange();
+    }, "del"));
+    card.appendChild(headEl);
+
+    const body = document.createElement("div");
+    body.className = "subclass-card-body";
+
+    const grid = document.createElement("div");
+    grid.className = "field-grid";
+    [
+      {path:"name",label:"Subclass Name",placeholder:"Alchemist"},
+      {path:"shortName",label:"Short Name",placeholder:"Alchemist"},
+      {path:"source",label:"Source",placeholder:"TCE"},
+      {path:"page",label:"Page",type:"number"},
+    ].forEach(f=>{
+      const field = buildQuickField(sc, f, ()=>{
+        headEl.querySelector(".sc-title").textContent = sc.name || "";
+        onChange();
+      });
+      grid.appendChild(field);
+    });
+    body.appendChild(grid);
+
+    const featTitle = document.createElement("div");
+    featTitle.className = "section-title";
+    featTitle.style.marginTop = "16px";
+    featTitle.innerHTML = `Features <span class="tag">${(sc.features||[]).length}</span>`;
+    body.appendChild(featTitle);
+
+    const addFeatBtn = document.createElement("button");
+    addFeatBtn.className = "btn small primary";
+    addFeatBtn.style.marginBottom = "10px";
+    addFeatBtn.textContent = "+ Add Feature";
+    body.appendChild(addFeatBtn);
+
+    const featListEl = document.createElement("div");
+    featListEl.className = "feature-list";
+    body.appendChild(featListEl);
+    if(!Array.isArray(sc.features)) sc.features = [];
+    renderFeatureList(featListEl, sc.features, {includeHeader:true, onChange, classRef:c});
+    addFeatBtn.addEventListener("click", ()=>{
+      const lastLvl = sc.features.length ? sc.features[sc.features.length-1].level : 3;
+      sc.features.push(newSubclassFeature(lastLvl));
+      renderFeatureList(featListEl, sc.features, {includeHeader:true, onChange, classRef:c});
+      onChange();
+    });
+
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+}
+
+/* ============================================================
+   TOP-LEVEL ACTIONS
+   ============================================================ */
+document.getElementById("btnNewClass").addEventListener("click", ()=>{
+  state.classes.unshift(newClass());
+  state.selected = 0;
+  persist(); renderSidebar(); renderMain();
+});
+
+document.getElementById("btnImport").addEventListener("click", ()=> document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change", (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ()=>{
+    try{
+      const parsed = JSON.parse(reader.result);
+      const arr = Array.isArray(parsed) ? parsed : [parsed];
+      const imported = arr.map(importClassObject);
+      const mode = state.classes.length
+        ? prompt(`Replace the current ${state.classes.length} class(es) with the ${imported.length} imported, or append them? Type "replace" or "append".`, "append")
+        : "replace";
+      if(mode === "replace") state.classes = imported;
+      else if(mode === "append") state.classes = state.classes.concat(imported);
+      else return;
+      state.selected = null;
+      persist(); renderSidebar(); renderMain();
+      toast(`Imported ${imported.length} class(es)`);
+    }catch(err){
+      alert("Couldn't parse that file as JSON:\n" + err.message);
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+});
+
+document.getElementById("btnExportAll").addEventListener("click", ()=>{
+  if(!state.classes.length){ alert("Nothing to export yet."); return; }
+  const out = state.classes.map(exportClassObject);
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "classes.json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 4000);
+  toast("Exported classes.json");
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderSidebar();
+renderMain();
+
+})();
+</script>
+</body>
+</html>

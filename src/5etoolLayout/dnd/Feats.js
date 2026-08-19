@@ -65,6 +65,21 @@ export const Dnd5eFeats = () => {
 
   const selectedFeat: PlayerFeat = {...selected}
 
+  const renderEntries = (entry, toggle, depth) => {
+    return <div className="rd__b rd__b--3">
+      <p>
+        <span className="rd__h rd__h--3" data-title-index="1">
+          <span className="entry-title-inner">{entry.name}. </span>
+        </span>
+        {RenderModule({...renderProps, defaultString: (string) => string,}).render(entry.entries)}
+      </p>
+    </div>
+  }
+
+  const renderProps = {
+    renderEntries: renderEntries
+  }
+
 
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
@@ -123,7 +138,7 @@ export const Dnd5eFeats = () => {
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule().render(selectedFeat.entries)}
+                    {RenderModule(renderProps).render(selectedFeat.entries)}
                   </div>
                 </td>
               </tr>

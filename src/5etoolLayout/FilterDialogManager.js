@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from "react";
-import Filters, {setFilterNeutral} from "./FilterDialog";
+import Filters from "./FilterDialog";
 import {extractNestedValue, setValueAtPath} from "./5eLayoutModules";
-// import FilterDialog from "./Tests";
 
 export const getOptionId = (option) => {
   if (option.path) return option.path
   return `${option.category}${option.subcategory ? `.${option.subcategory}` : ""}-${option.value??option.label}`;
 }
 
-const ParentComponent = (filterOptions, savedFilterState = []) => {
+const ParentComponent = (filterOptions, savedFilterState = [], savedCategoryMeta = {}, savedOverallMode = "and") => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [filterState, setFilterState] = useState(savedFilterState);
+  const [categoryMeta, setCategoryMeta] = useState(savedCategoryMeta);
+  const [overallMode, setOverallMode] = useState(savedOverallMode);
   const [filterResults, setFilterResults] = useState({positive:{}, negative: {}});
 
   const openDialog = () => {
@@ -21,9 +22,10 @@ const ParentComponent = (filterOptions, savedFilterState = []) => {
     setIsDialogOpen(false);
   };
 
-  const saveFilterState = (filters) => {
-    // console.log(filters)
-    setFilterState(filters);
+  const saveFilterState = ({filterState: fs, categoryMeta: cm, overallMode: om}) => {
+    setFilterState(fs);
+    setCategoryMeta(cm);
+    setOverallMode(om);
   };
 
   const resetFilter = (id) => {
@@ -63,17 +65,13 @@ const ParentComponent = (filterOptions, savedFilterState = []) => {
     isDialogOpen,
     filterResults,
     filterState,
+    categoryMeta,
+    overallMode,
     openDialog,
     closeDialog,
     saveFilterResults: saveFilterState,
     resetFilter
   }
-  // (<>
-  //   <span onClick={openDialog}>Open Filters</span>
-  //   {isDialogOpen? <Filters onClose={closeDialog} onSave={saveFilterResults}/>: ""}
-  //   <pre>{JSON.stringify(filterResults, null, 2)}</pre>
-  // </>)
-
 };
 
 export default ParentComponent;
