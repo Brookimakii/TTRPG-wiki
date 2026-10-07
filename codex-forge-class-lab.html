@@ -139,13 +139,16 @@
   }
   .feature-card .fc-name{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .feature-card .fc-name:empty::before{content:"Untitled feature";color:var(--text-faint);font-weight:400;font-style:italic;}
-  .feature-card .fc-tools{display:flex;gap:3px;flex:none;}
-  .feature-card .fc-tools button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:3px 6px;border-radius:2px;}
-  .feature-card .fc-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
-  .feature-card .fc-tools button.del:hover{color:var(--danger);}
+  .fc-tools{display:flex;gap:3px;flex:none;}
+  .fc-tools button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:3px 6px;border-radius:2px;}
+  .fc-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
+  .fc-tools button.del:hover{color:var(--danger);}
   .feature-card .fc-body{padding:0 14px 14px;border-top:1px solid var(--border-soft);padding-top:12px;}
 
   .entries-toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .nested-entries{border-left:2px solid var(--border-soft);padding-left:12px;margin:8px 0;}
+  .nested-entries .entries-toolbar{margin-bottom:8px;}
+  .nested-entries .entry-block{margin-bottom:8px;}
   .entry-block{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;}
   .entry-block .eb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
   .entry-block .eb-type{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);}
@@ -155,6 +158,8 @@
   .entry-block .eb-tools button.del:hover{color:var(--danger);}
   .entry-block textarea{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:7px 9px;font-size:12.5px;min-height:44px;line-height:1.5;}
   .entry-block input[type="text"]{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:6px;}
+  .entry-block select, .entry-block input[type="number"]{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:6px 8px;font-size:12px;}
+  .entry-block select option{background:var(--panel-2);color:var(--text);}
   .entry-block .list-line{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;}
   .entry-block .list-line textarea{min-height:34px;}
   .entry-block .list-line button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:4px;flex:none;}
@@ -167,9 +172,15 @@
 
   /* subclass cards */
   .subclass-card{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;}
-  .subclass-card-head{padding:12px 14px;border-bottom:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel-3);}
-  .subclass-card-head .sc-title{font-family:var(--display);font-size:14px;color:var(--brass-bright);}
+  .subclass-card > summary{
+    list-style:none;cursor:pointer;padding:12px 14px;border-bottom:1px solid var(--border-soft);
+    display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel-3);
+  }
+  .subclass-card > summary::-webkit-details-marker{display:none;}
+  .subclass-card-head .sc-left{display:flex;align-items:baseline;gap:8px;min-width:0;}
+  .subclass-card-head .sc-title{font-family:var(--display);font-size:14px;color:var(--brass-bright);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .subclass-card-head .sc-title:empty::before{content:"Unnamed subclass";color:var(--text-faint);font-style:italic;font-family:var(--body);}
+  .subclass-card-head .sc-source{font-size:11px;color:var(--text-faint);flex:none;}
   .subclass-card-body{padding:14px;}
 
   .empty-state-inline{font-size:12px;color:var(--text-faint);font-style:italic;padding:8px 0;}
@@ -190,6 +201,113 @@
     opacity:0;transform:translateY(6px);transition:opacity .18s,transform .18s;pointer-events:none;
   }
   .toast.show{opacity:1;transform:translateY(0);}
+
+  /* ---------- template picker row ---------- */
+  .tpl-picker{display:flex;gap:6px;align-items:center;margin-bottom:10px;flex-wrap:wrap;}
+  .tpl-picker select{background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:11.5px;max-width:220px;}
+  .tpl-picker .btn{white-space:nowrap;}
+
+  /* ---------- templates modal ---------- */
+  .tpl-modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:200;
+    align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
+  }
+  .tpl-modal-overlay.show{display:flex;}
+  .tpl-modal{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:760px;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .tpl-modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border-soft);}
+  .tpl-modal-head h3{margin:0;font-family:var(--display);font-size:15px;color:var(--brass-bright);font-weight:600;}
+  .tpl-modal-head .sub{font-size:11px;color:var(--text-faint);margin-top:3px;}
+  .tpl-modal-close{background:none;border:none;color:var(--text-faint);font-size:20px;cursor:pointer;line-height:1;padding:2px 6px;}
+  .tpl-modal-close:hover{color:var(--danger);}
+  .tpl-modal-body{padding:16px 20px 20px;max-height:72vh;overflow-y:auto;}
+  .tpl-modal-actions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+  .tpl-empty{padding:20px;text-align:center;color:var(--text-faint);font-size:12px;}
+  .field.scope select{width:100%;}
+
+  /* ---------- in-page dialogs (replaces native alert/confirm/prompt,
+     which some embedded previews — e.g. VS Code's HTML preview — block) ---------- */
+  .ui-dialog-overlay{display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:400;align-items:center;justify-content:center;padding:20px;}
+  .ui-dialog-overlay.show{display:flex;}
+  .ui-dialog{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .ui-dialog-msg{font-size:13px;color:var(--text);margin-bottom:14px;line-height:1.5;white-space:pre-wrap;}
+  .ui-dialog input{width:100%;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:7px 9px;font-size:12.5px;margin-bottom:14px;box-sizing:border-box;}
+  .ui-dialog-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+
+  /* ---------- JSON edit/add modal ---------- */
+  .json-modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:410;align-items:center;justify-content:center;padding:30px 20px;}
+  .json-modal-overlay.show{display:flex;}
+  .json-modal{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:640px;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .json-modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border-soft);flex:none;}
+  .json-modal-title{font-family:var(--display);font-size:14px;color:var(--brass-bright);font-weight:600;}
+  .json-modal-hint{font-size:11px;color:var(--text-faint);padding:10px 18px 0;line-height:1.5;flex:none;}
+  .json-modal-overlay textarea#jsonModalTextarea{flex:1;margin:10px 18px;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:10px 12px;font-family:var(--mono);font-size:12px;line-height:1.5;resize:vertical;min-height:220px;}
+  .json-modal-status{padding:0 18px;font-size:11.5px;min-height:16px;flex:none;}
+  .json-modal-status.err{color:var(--danger);}
+  .json-modal-status.ok{color:var(--brass-bright);}
+  .json-modal-actions{display:flex;gap:8px;justify-content:flex-end;padding:12px 18px 16px;flex:none;}
+
+  /* ---------- proficiencies UI ---------- */
+  .prof-card{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:14px 16px 16px;margin-bottom:14px;}
+  .prof-card:last-child{margin-bottom:0;}
+  .prof-card > .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brass-bright);margin-bottom:12px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--border-soft);}
+  .prof-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .chk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:7px 10px;}
+  .chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-dim);cursor:pointer;user-select:none;line-height:1.3;}
+  .chk input{accent-color:var(--brass-bright);width:14px;height:14px;cursor:pointer;flex-shrink:0;}
+  .chk:hover{color:var(--text);}
+  .prof-weapon-cat{margin-bottom:12px;}
+  .prof-weapon-cat:last-child{margin-bottom:0;}
+  .prof-weapon-cat > .chk{margin-bottom:9px;font-size:12.5px;color:var(--text);font-weight:600;}
+  .prof-subcard{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:calc(var(--radius) - 2px);padding:11px 13px;}
+  .prof-sub-label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);margin-bottom:8px;font-weight:600;}
+  .prof-sub-label:not(:first-child){margin-top:12px;}
+  .prof-select{background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;min-width:170px;}
+  .prof-field{display:flex;flex-direction:column;gap:5px;}
+  .prof-field label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;}
+  .prof-other-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+  .prof-chip{display:flex;align-items:center;gap:6px;background:var(--panel-3);border:1px solid var(--border);border-radius:20px;padding:3px 6px 3px 10px;font-size:11.5px;color:var(--text-dim);}
+  .prof-chip button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;line-height:1;padding:2px;}
+  .prof-chip button:hover{color:var(--danger);}
+  .prof-other-add{display:flex;gap:6px;margin-top:9px;}
+  .prof-other-add input{background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;flex:1;min-width:120px;}
+
+  /* ---------- link-snippet button + popover ---------- */
+  .snip-btn{background:none;border:none;color:var(--teal);cursor:pointer;font-size:13px;padding:4px;flex:none;}
+  .snip-btn:hover{color:var(--brass-bright);}
+  .text-with-snip{display:flex;gap:6px;align-items:flex-start;}
+  .text-with-snip textarea{flex:1;}
+  .link-popover{
+    display:none;position:fixed;z-index:300;background:var(--panel);border:1px solid var(--border);
+    border-radius:var(--radius);box-shadow:0 12px 34px rgba(0,0,0,.5);padding:12px;width:260px;
+  }
+  .link-popover.show{display:block;}
+  .link-popover h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;}
+  .link-popover select,.link-popover input{width:100%;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:7px;}
+  .link-popover .row{display:flex;gap:6px;justify-content:flex-end;}
+  .link-popover .hint{font-size:10px;color:var(--text-faint);margin-bottom:7px;line-height:1.4;}
+
+  /* ---------- level-progression tables (tableGroup) ---------- */
+  .tg-card{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;}
+  .tg-card > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--panel-2);gap:8px;}
+  .tg-card > summary::-webkit-details-marker{display:none;}
+  .tg-card-title{font-size:12.5px;color:var(--text);font-weight:600;}
+  .tg-card-title .muted{color:var(--text-faint);font-weight:400;font-style:italic;}
+  .tg-card-body{padding:12px;}
+  .tg-title-input{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:10px;}
+  .tg-title-input::placeholder{color:var(--text-faint);}
+  .tg-cols-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px;}
+  .tg-col-chip{display:flex;align-items:center;gap:4px;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:3px;padding:2px 2px 2px 6px;}
+  .tg-col-chip input{background:none;border:none;color:var(--text);font-size:11.5px;width:90px;padding:3px 0;}
+  .tg-col-chip button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:12px;padding:2px 5px;}
+  .tg-col-chip button:hover{color:var(--danger);}
+  .tg-grid-wrap{max-height:420px;overflow:auto;border:1px solid var(--border-soft);border-radius:var(--radius);}
+  table.tg-table{border-collapse:collapse;width:100%;font-size:11.5px;}
+  table.tg-table th,table.tg-table td{border:1px solid var(--border-soft);padding:0;text-align:center;}
+  table.tg-table thead th{position:sticky;top:0;background:var(--panel-3);color:var(--text-dim);font-weight:600;padding:6px 8px;z-index:1;white-space:nowrap;}
+  table.tg-table td.tg-lvl{background:var(--panel-2);color:var(--text-faint);font-family:var(--mono);padding:0 8px;white-space:nowrap;}
+  table.tg-table td input{width:100%;box-sizing:border-box;background:transparent;border:none;color:var(--text);text-align:center;font-size:11.5px;padding:6px 4px;font-family:inherit;}
+  table.tg-table td input:focus{background:var(--brass-dim);outline:none;}
+  table.tg-table tr:nth-child(even) td.tg-lvl{background:var(--panel);}
 </style>
 </head>
 <body>
@@ -204,6 +322,7 @@
       <button class="btn primary small" id="btnNewClass">+ New Class</button>
       <button class="btn small" id="btnImport">Import classes.json</button>
       <button class="btn small" id="btnExportAll">Export all</button>
+      <button class="btn small violet" id="btnTemplates">✦ Feature Templates</button>
     </div>
     <div class="class-list" id="classList"></div>
     <div class="sidebar-foot">Saved to this browser automatically.<br>Export writes a ready-to-use <code>classes.json</code>.</div>
@@ -214,6 +333,57 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<div class="tpl-modal-overlay" id="tplModalOverlay">
+  <div class="tpl-modal">
+    <div class="tpl-modal-head">
+      <div>
+        <h3>Feature Templates</h3>
+        <div class="sub">Reusable blueprints for recurring features — insert them from any class or subclass, edit or delete them here.</div>
+      </div>
+      <button class="tpl-modal-close" id="tplModalClose">×</button>
+    </div>
+    <div class="tpl-modal-body" id="tplModalBody"></div>
+    <input type="file" id="tplFileInput" accept="application/json" style="display:none;">
+  </div>
+</div>
+
+<div class="ui-dialog-overlay" id="uiDialogOverlay">
+  <div class="ui-dialog">
+    <div class="ui-dialog-msg" id="uiDialogMsg"></div>
+    <input type="text" id="uiDialogInput" style="display:none;">
+    <div class="ui-dialog-actions" id="uiDialogActions"></div>
+  </div>
+</div>
+
+<div class="json-modal-overlay" id="jsonModalOverlay">
+  <div class="json-modal">
+    <div class="json-modal-head">
+      <div class="json-modal-title" id="jsonModalTitle">Edit as JSON</div>
+      <button class="tpl-modal-close" id="jsonModalClose">×</button>
+    </div>
+    <div class="json-modal-hint" id="jsonModalHint"></div>
+    <textarea id="jsonModalTextarea" spellcheck="false"></textarea>
+    <div class="json-modal-status" id="jsonModalStatus"></div>
+    <div class="json-modal-actions">
+      <button class="btn small" id="jsonModalCancel">Cancel</button>
+      <button class="btn small primary" id="jsonModalApply">Apply</button>
+    </div>
+  </div>
+</div>
+
+<div class="link-popover" id="linkPopover">
+  <h4>Insérer un lien</h4>
+  <div class="hint">Insère une balise <code>{@tag nom|source}</code> reconnue par le site pour créer un lien cliquable.</div>
+  <select id="linkPopTag"></select>
+  <input type="text" id="linkPopName" placeholder="Nom exact (ex. Boule de feu)">
+  <input type="text" id="linkPopSource" placeholder="Source (optionnel, ex. PHB)">
+  <input type="text" id="linkPopDisplay" placeholder="Texte affiché (optionnel)">
+  <div class="row">
+    <button class="btn small" id="linkPopCancel">Annuler</button>
+    <button class="btn small primary" id="linkPopInsert">Insérer</button>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -260,14 +430,30 @@ const CLASS_QUICK_FIELDS = [
   {path:"info.spellcastingAbility",label:"Spellcasting Ability",type:"text",placeholder:"Intelligence"},
   {path:"info.hitDice.amount",label:"Hit Dice Amount",type:"number"},
   {path:"info.hitDice.faces",label:"Hit Dice Faces",type:"number"},
-  {path:"info.proficiencies.armor",label:"Armor Proficiencies",type:"list"},
-  {path:"info.proficiencies.weapon",label:"Weapon Proficiencies",type:"list"},
   {path:"info.proficiencies.tools",label:"Tool Proficiencies",type:"list"},
-  {path:"info.proficiencies.saves",label:"Saving Throws",type:"list",placeholder:"con, int"},
-  {path:"info.proficiencies.skills.pool",label:"Skill Pool",type:"list"},
-  {path:"info.proficiencies.skills.count",label:"Skill Count",type:"number"},
   {path:"info.startingEquipment.goldAlternative",label:"Starting Gold Alt.",type:"text",placeholder:"5d4 × 10"},
   {path:"info.startingEquipment.equipement",label:"Starting Equipment",type:"list",wide:true},
+];
+
+/* ---------- French proficiency reference lists ---------- */
+const SKILL_LIST_FR = [
+  "Acrobaties","Arcanes","Athlétisme","Discrétion","Dressage","Escamotage",
+  "Histoire","Intimidation","Intuition","Investigation","Médecine","Nature",
+  "Perception","Persuasion","Religion","Représentation","Survie","Tromperie"
+];
+const SAVE_ABILITIES_FR = [
+  ["for","Force"],["dex","Dextérité"],["con","Constitution"],
+  ["int","Intelligence"],["sag","Sagesse"],["cha","Charisme"]
+];
+const WEAPON_GROUPS_FR = [
+  { key:"simple", label:"Armes courantes", groups:[
+    { label:"Mêlée", weapons:["bâton","dague","gourdin","hachette","javeline","lance","marteau léger","masse d'armes","serpe"] },
+    { label:"Distance", weapons:["arbalète légère","arc court","fléchette","fronde"] },
+  ]},
+  { key:"martial", label:"Armes de guerre", groups:[
+    { label:"Mêlée", weapons:["cimeterre","épée courte","épée longue","épée à deux mains","fléau","fouet","glaive","hache d'armes","hallebarde","lance d'arçon","marteau de guerre","masse d'armes à deux mains","morgenstern","pic de guerre","pique","rapière","trident"] },
+    { label:"Distance", weapons:["arbalète de poing","arbalète lourde","arc long","filet","sarbacane"] },
+  ]},
 ];
 
 function newFeature(level){
@@ -279,13 +465,25 @@ function newSubclassFeature(level){
 function newSubclass(){
   return {_uid:uid(), name:"", shortName:"", source:"", page:null, features:[newSubclassFeature(3)]};
 }
+function normalizeTableGroupEntry(g){
+  const colLabels = Array.isArray(g.colLabels) && g.colLabels.length ? g.colLabels.slice() : [""];
+  const rows = Array.from({length:20}, (_,lvl)=>{
+    const src = (Array.isArray(g.rows) && Array.isArray(g.rows[lvl])) ? g.rows[lvl] : [];
+    return colLabels.map((_,ci)=> src[ci] ?? 0);
+  });
+  return {_uid:uid(), title: g.title || "", before: g.before === true, colLabels, rows};
+}
+function newTableGroup(){
+  return {_uid:uid(), title:"", before:false, colLabels:["Colonne 1"], rows: Array.from({length:20}, ()=>[0])};
+}
 function newClass(){
   return {
     id:"new-class-"+uid().slice(0,4),
     info:{name:"New Class", source:"", page:null, spellcastingAbility:"",
       hitDice:{amount:1,faces:8},
       proficiencies:{armor:[],weapon:[],tools:[],skills:{pool:[],count:2},saves:[]},
-      startingEquipment:{goldAlternative:"",equipement:[]}},
+      startingEquipment:{goldAlternative:"",equipement:[]},
+      tableGroup:[]},
     classFeatures:[newFeature(1)],
     subclasses:[]
   };
@@ -315,7 +513,8 @@ function importClassObject(raw){
       startingEquipment: {
         goldAlternative: (info.startingEquipment && info.startingEquipment.goldAlternative) || "",
         equipement: (info.startingEquipment && info.startingEquipment.equipement) || [],
-      }
+      },
+      tableGroup: (info.tableGroup || []).map(normalizeTableGroupEntry),
     },
     classFeatures: (raw.classFeatures||[]).map(f=>({
       _uid:uid(), level:f.level??1, name:f.name||"", source:f.source||"", page:f.page??null, entries:f.entries||[]
@@ -398,7 +597,15 @@ function exportClassObject(w){
       startingEquipment: {
         goldAlternative: w.info.startingEquipment.goldAlternative,
         equipement: w.info.startingEquipment.equipement,
-      }
+      },
+      tableGroup: (w.info.tableGroup||[]).map(g=>{
+        const out = {};
+        if(g.title && g.title.trim()) out.title = g.title;
+        if(g.before) out.before = true;
+        out.colLabels = g.colLabels;
+        out.rows = g.rows;
+        return out;
+      }),
     },
     subclasses: [],
     classFeatures: (w.classFeatures||[]).map(f=>({
@@ -457,6 +664,430 @@ function toast(msg){
   clearTimeout(toastTimer);
   toastTimer = setTimeout(()=> el.classList.remove("show"), 2200);
 }
+
+/* ============================================================
+   IN-PAGE DIALOGS — some embedded HTML previews (notably VS
+   Code's built-in HTML preview) block window.alert/confirm/
+   prompt entirely, so every confirmation/prompt in this tool
+   goes through this instead. Promise-based; await it.
+   ============================================================ */
+function uiDialog({message, type, defaultValue, choices}){
+  return new Promise((resolve)=>{
+    const overlay = document.getElementById("uiDialogOverlay");
+    const msgEl = document.getElementById("uiDialogMsg");
+    const inputEl = document.getElementById("uiDialogInput");
+    const actionsEl = document.getElementById("uiDialogActions");
+    msgEl.textContent = message;
+    actionsEl.innerHTML = "";
+    inputEl.style.display = "none";
+    inputEl.value = "";
+
+    function close(result){
+      overlay.classList.remove("show");
+      document.removeEventListener("keydown", onKey);
+      resolve(result);
+    }
+    function onKey(e){
+      if(e.key === "Escape"){ e.preventDefault(); close(type==="prompt" ? null : (type==="choice" ? null : false)); }
+      else if(e.key === "Enter" && type!=="choice"){ e.preventDefault(); close(type==="prompt" ? inputEl.value : true); }
+    }
+
+    function addBtn(label, value, primary){
+      const b = document.createElement("button");
+      b.className = "btn small" + (primary ? " primary" : "");
+      b.textContent = label;
+      b.addEventListener("click", ()=> close(value));
+      actionsEl.appendChild(b);
+      return b;
+    }
+
+    let focusTarget = null;
+    if(type === "alert"){
+      focusTarget = addBtn("OK", true, true);
+    } else if(type === "confirm"){
+      addBtn("Cancel", false, false);
+      focusTarget = addBtn("OK", true, true);
+    } else if(type === "prompt"){
+      inputEl.style.display = "block";
+      inputEl.value = defaultValue || "";
+      addBtn("Cancel", null, false);
+      const ok = document.createElement("button");
+      ok.className = "btn small primary";
+      ok.textContent = "OK";
+      ok.addEventListener("click", ()=> close(inputEl.value));
+      actionsEl.appendChild(ok);
+      focusTarget = inputEl;
+    } else if(type === "choice"){
+      (choices||[]).forEach(c=> addBtn(c.label, c.value, !!c.primary));
+    }
+    overlay.classList.add("show");
+    document.addEventListener("keydown", onKey);
+    setTimeout(()=>{ if(focusTarget) focusTarget.focus(); }, 0);
+  });
+}
+function uiAlert(message){ return uiDialog({message, type:"alert"}); }
+function uiConfirm(message){ return uiDialog({message, type:"confirm"}); }
+function uiPrompt(message, defaultValue){ return uiDialog({message, type:"prompt", defaultValue}); }
+function uiChoice(message, choices){ return uiDialog({message, type:"choice", choices}); }
+
+/* ============================================================
+   JSON EDIT/ADD MODAL — lets a power user paste or edit raw
+   JSON for a whole class, or for a new feature/subclass/table
+   to add, instead of going through the form UI. onApply
+   receives the parsed JSON and does whatever it needs (throw
+   to show an error without closing the modal).
+   ============================================================ */
+let jsonModalOnApply = null;
+function openJsonModal({title, hint, value, onApply}){
+  jsonModalOnApply = onApply;
+  document.getElementById("jsonModalTitle").textContent = title || "Edit as JSON";
+  const hintEl = document.getElementById("jsonModalHint");
+  hintEl.textContent = hint || "";
+  hintEl.style.display = hint ? "block" : "none";
+  const ta = document.getElementById("jsonModalTextarea");
+  ta.value = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+  const statusEl = document.getElementById("jsonModalStatus");
+  statusEl.textContent = ""; statusEl.className = "json-modal-status";
+  document.getElementById("jsonModalOverlay").classList.add("show");
+  setTimeout(()=> ta.focus(), 0);
+}
+function closeJsonModal(){
+  document.getElementById("jsonModalOverlay").classList.remove("show");
+  jsonModalOnApply = null;
+}
+document.getElementById("jsonModalClose").addEventListener("click", closeJsonModal);
+document.getElementById("jsonModalCancel").addEventListener("click", closeJsonModal);
+document.getElementById("jsonModalOverlay").addEventListener("click", (e)=>{ if(e.target.id==="jsonModalOverlay") closeJsonModal(); });
+document.addEventListener("keydown", (e)=>{
+  if(e.key==="Escape" && document.getElementById("jsonModalOverlay").classList.contains("show")) closeJsonModal();
+});
+document.getElementById("jsonModalApply").addEventListener("click", ()=>{
+  const ta = document.getElementById("jsonModalTextarea");
+  const statusEl = document.getElementById("jsonModalStatus");
+  let parsed;
+  try{ parsed = JSON.parse(ta.value); }
+  catch(e){ statusEl.textContent = "Invalid JSON: " + e.message; statusEl.className = "json-modal-status err"; return; }
+  try{
+    jsonModalOnApply(parsed);
+    closeJsonModal();
+  }catch(e){
+    statusEl.textContent = "Couldn't apply: " + e.message; statusEl.className = "json-modal-status err";
+  }
+});
+
+/* ============================================================
+   LINK SNIPPETS — insert {@tag Name|Source} cross-reference
+   tags (spell/item/creature/class/background/feat/race/
+   condition/variantrule/optfeature) into any prose textarea,
+   matching the site's own {@...} renderer.
+   ============================================================ */
+const LINK_TAG_TYPES = [
+  ["@spell","Sort (page Sorts)"],
+  ["@item","Objet (page Objets)"],
+  ["@creature","Créature (Bestiaire)"],
+  ["@class","Classe"],
+  ["@background","Historique"],
+  ["@feat","Don"],
+  ["@race","Espèce"],
+  ["@condition","État"],
+  ["@variantrule","Règle / encart"],
+  ["@optfeature","Option de classe"],
+];
+
+let linkPopTargetTa = null;
+function setupLinkPopover(){
+  const pop = document.getElementById("linkPopover");
+  const tagSelect = document.getElementById("linkPopTag");
+  LINK_TAG_TYPES.forEach(([val,txt])=>{
+    const o = document.createElement("option");
+    o.value = val; o.textContent = txt;
+    tagSelect.appendChild(o);
+  });
+  document.getElementById("linkPopCancel").addEventListener("click", closeLinkPopover);
+  document.getElementById("linkPopInsert").addEventListener("click", ()=>{
+    if(!linkPopTargetTa) return;
+    const tag = tagSelect.value;
+    const name = document.getElementById("linkPopName").value.trim();
+    const source = document.getElementById("linkPopSource").value.trim();
+    const display = document.getElementById("linkPopDisplay").value.trim();
+    if(!name){ toast("Entre un nom d'abord"); return; }
+    let snippet = tag + " " + name;
+    if(display) snippet += "|" + source + "|" + display;
+    else if(source) snippet += "|" + source;
+    snippet = "{" + snippet + "}";
+    insertAtCursor(linkPopTargetTa, snippet);
+    closeLinkPopover();
+  });
+  document.addEventListener("click", (e)=>{
+    if(pop.classList.contains("show") && !pop.contains(e.target) && !e.target.classList.contains("snip-btn")){
+      closeLinkPopover();
+    }
+  });
+  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeLinkPopover(); });
+}
+function openLinkPopover(ta, anchorBtn){
+  linkPopTargetTa = ta;
+  const pop = document.getElementById("linkPopover");
+  document.getElementById("linkPopName").value = "";
+  document.getElementById("linkPopSource").value = "";
+  document.getElementById("linkPopDisplay").value = "";
+  pop.classList.add("show");
+  const r = anchorBtn.getBoundingClientRect();
+  const popW = 260;
+  let left = r.left;
+  if(left + popW > window.innerWidth - 12) left = window.innerWidth - popW - 12;
+  pop.style.left = Math.max(8,left) + "px";
+  let top = r.bottom + 6;
+  if(top + 260 > window.innerHeight) top = Math.max(8, r.top - 266);
+  pop.style.top = top + "px";
+  setTimeout(()=> document.getElementById("linkPopName").focus(), 0);
+}
+function closeLinkPopover(){
+  document.getElementById("linkPopover").classList.remove("show");
+  linkPopTargetTa = null;
+}
+function insertAtCursor(ta, text){
+  const start = ta.selectionStart ?? ta.value.length;
+  const end = ta.selectionEnd ?? ta.value.length;
+  ta.value = ta.value.slice(0,start) + text + ta.value.slice(end);
+  ta.focus();
+  const newPos = start + text.length;
+  ta.setSelectionRange(newPos, newPos);
+  ta.dispatchEvent(new Event("input", {bubbles:true}));
+}
+function linkSnippetBtn(ta){
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "snip-btn";
+  btn.title = "Insérer un lien vers une autre page (sort, objet, créature…)";
+  btn.textContent = "🔗";
+  btn.addEventListener("click", (e)=>{ e.preventDefault(); e.stopPropagation(); openLinkPopover(ta, btn); });
+  return btn;
+}
+setupLinkPopover();
+
+/* ============================================================
+   FEATURE TEMPLATES (recurring features: Spellcasting, ASI,
+   Subclass choice, generic Subclass Feature, or anything custom)
+
+   template = {_uid, scope: "class"|"subclass"|"both",
+               level, name, source, page, header, topLevel, entries}
+   Same shape as a feature, plus "scope" which controls where the
+   "+ From Template" picker offers it.
+   ============================================================ */
+const TEMPLATES_STORAGE_KEY = "codexforge:classlab:templates:v1";
+
+function defaultTemplates(){
+  return [
+    { _uid:uid(), scope:"class", level:1, name:"Spellcasting", source:"", page:null, header:null, topLevel:true,
+      entries:[
+        "You have learned to cast spells. See {@book Spellcasting|XPHB|5|spells} for the general rules, and the class table for what you learn or prepare at each level.",
+        {type:"entries", name:"Cantrips", entries:["You know a number of cantrips, shown in the class table."]},
+        {type:"entries", name:"Spell Slots", entries:["The class table shows how many spell slots you have to cast your spells. You regain all expended spell slots when you finish a long rest."]},
+        {type:"entries", name:"Spellcasting Ability", entries:["Your spellcasting ability for these spells is listed on the class table. You use this ability whenever a spell refers to your spellcasting ability, and when setting the saving throw DC and attack bonus for a spell you cast."]}
+      ]},
+    { _uid:uid(), scope:"class", level:4, name:"Ability Score Improvement", source:"", page:null, header:null, topLevel:true,
+      entries:[
+        "You can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1 each. As normal, you can't increase an ability score above 20 using this feature.",
+        "Alternatively, you can choose a feat instead of increasing ability scores."
+      ]},
+    { _uid:uid(), scope:"class", level:3, name:"Subclass", source:"", page:null, header:null, topLevel:true,
+      entries:[
+        "You gain a subclass of your choice. Your subclass grants you features at the levels noted in the subclass's description, and again at certain later levels."
+      ]},
+    { _uid:uid(), scope:"subclass", level:3, name:"", source:"", page:null, header:null, topLevel:true,
+      entries:[""] }
+  ];
+}
+
+const state_templates_holder = { templates: [] };
+function loadTemplates(){
+  try{
+    const raw = localStorage.getItem(TEMPLATES_STORAGE_KEY);
+    if(raw){ state_templates_holder.templates = JSON.parse(raw); return; }
+  }catch(e){}
+  state_templates_holder.templates = defaultTemplates();
+  persistTemplates();
+}
+function persistTemplates(){
+  try{ localStorage.setItem(TEMPLATES_STORAGE_KEY, JSON.stringify(state_templates_holder.templates)); }catch(e){}
+}
+loadTemplates();
+
+function newTemplate(scope){
+  return {_uid:uid(), scope: scope||"class", level:1, name:"", source:"", page:null, header:null, topLevel:true, entries:[]};
+}
+
+function templatesForScope(scope){
+  // "class" picker shows scope class+both; "subclass" picker shows subclass+both
+  return state_templates_holder.templates.filter(t => t.scope === scope || t.scope === "both");
+}
+
+function templateToFeature(t){
+  const copy = JSON.parse(JSON.stringify(t));
+  delete copy.scope;
+  copy._uid = uid();
+  return copy;
+}
+
+/* ---------- "+ From Template" picker row, used in class-feature and subclass-feature sections ---------- */
+function renderTemplatePicker(scope, onInsert){
+  const wrap = document.createElement("div");
+  wrap.className = "tpl-picker";
+  const opts = templatesForScope(scope);
+  if(!opts.length){
+    return wrap; // nothing to offer, stay empty
+  }
+  const select = document.createElement("select");
+  opts.forEach(t=>{
+    const o = document.createElement("option");
+    o.value = t._uid;
+    o.textContent = (t.name || "(untitled template)") + (t.level!=null ? ` — Lvl ${t.level}` : "");
+    select.appendChild(o);
+  });
+  const btn = document.createElement("button");
+  btn.className = "btn small violet";
+  btn.textContent = "+ From Template";
+  btn.addEventListener("click", ()=>{
+    const t = state_templates_holder.templates.find(t=>t._uid===select.value);
+    if(!t) return;
+    onInsert(templateToFeature(t));
+  });
+  wrap.appendChild(select);
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+/* ---------- templates modal ---------- */
+function renderTemplatesModal(){
+  const body = document.getElementById("tplModalBody");
+  body.innerHTML = "";
+
+  const actions = document.createElement("div");
+  actions.className = "tpl-modal-actions";
+  [
+    ["+ Class Feature Template", "class"],
+    ["+ Subclass Feature Template", "subclass"],
+  ].forEach(([txt, scope])=>{
+    const b = document.createElement("button");
+    b.className = "btn small primary";
+    b.textContent = txt;
+    b.addEventListener("click", ()=>{
+      state_templates_holder.templates.push(newTemplate(scope));
+      persistTemplates();
+      renderTemplatesModal();
+    });
+    actions.appendChild(b);
+  });
+  const exportBtn = document.createElement("button");
+  exportBtn.className = "btn small";
+  exportBtn.textContent = "Export Templates";
+  exportBtn.addEventListener("click", exportTemplates);
+  actions.appendChild(exportBtn);
+  const importBtn = document.createElement("button");
+  importBtn.className = "btn small";
+  importBtn.textContent = "Import Templates";
+  importBtn.addEventListener("click", ()=> document.getElementById("tplFileInput").click());
+  actions.appendChild(importBtn);
+  body.appendChild(actions);
+
+  const list = document.createElement("div");
+  list.className = "feature-list";
+  body.appendChild(list);
+  renderTemplateList(list);
+}
+
+function renderTemplateList(container){
+  container.innerHTML = "";
+  const templates = state_templates_holder.templates;
+  if(!templates.length){
+    const empty = document.createElement("div");
+    empty.className = "tpl-empty";
+    empty.textContent = "No templates yet. Add one above.";
+    container.appendChild(empty);
+    return;
+  }
+  templates.forEach((t, i)=>{
+    const card = renderFeatureCard(t, {
+      includeHeader: t.scope !== "class",
+      isTemplate: true,
+      onChange: ()=>{ persistTemplates(); },
+      onScopeChange: ()=>{ persistTemplates(); renderTemplateList(container); },
+      onDelete: async ()=>{
+        if(!await uiConfirm(`Delete template "${t.name||"(untitled)"}"?`)) return;
+        templates.splice(i,1); persistTemplates(); renderTemplateList(container);
+      },
+      onMoveUp: ()=>{ if(i>0){ [templates[i-1],templates[i]]=[templates[i],templates[i-1]]; persistTemplates(); renderTemplateList(container); }},
+      onMoveDown: ()=>{ if(i<templates.length-1){ [templates[i+1],templates[i]]=[templates[i],templates[i+1]]; persistTemplates(); renderTemplateList(container); }},
+    });
+    container.appendChild(card);
+  });
+}
+
+function openTemplatesModal(){
+  renderTemplatesModal();
+  document.getElementById("tplModalOverlay").classList.add("show");
+}
+function closeTemplatesModal(){
+  document.getElementById("tplModalOverlay").classList.remove("show");
+  // template edits may change what pickers offer — refresh current class view
+  renderMain();
+}
+document.getElementById("btnTemplates").addEventListener("click", openTemplatesModal);
+document.getElementById("tplModalClose").addEventListener("click", closeTemplatesModal);
+document.getElementById("tplModalOverlay").addEventListener("click", (e)=>{
+  if(e.target.id === "tplModalOverlay") closeTemplatesModal();
+});
+
+function exportTemplates(){
+  if(!state_templates_holder.templates.length){ uiAlert("No templates to export yet."); return; }
+  const blob = new Blob([JSON.stringify(state_templates_holder.templates, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "feature-templates.json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 4000);
+  toast("Exported feature-templates.json");
+}
+document.getElementById("tplFileInput").addEventListener("change", (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = async ()=>{
+    try{
+      const parsed = JSON.parse(reader.result);
+      const arr = Array.isArray(parsed) ? parsed : [parsed];
+      const cleaned = arr.map(t=>({
+        _uid: uid(),
+        scope: t.scope==="subclass"||t.scope==="both" ? t.scope : "class",
+        level: t.level ?? null,
+        name: t.name || "",
+        source: t.source || "",
+        page: t.page ?? null,
+        header: t.header ?? null,
+        topLevel: t.topLevel !== false,
+        entries: Array.isArray(t.entries) ? t.entries : []
+      }));
+      let mode = "replace";
+      if(state_templates_holder.templates.length){
+        mode = await uiChoice(
+          `Replace the current ${state_templates_holder.templates.length} template(s) with the ${cleaned.length} imported, or append them?`,
+          [{label:"Cancel", value:null}, {label:"Replace", value:"replace"}, {label:"Append", value:"append", primary:true}]
+        );
+      }
+      if(mode === "replace") state_templates_holder.templates = cleaned;
+      else if(mode === "append") state_templates_holder.templates = state_templates_holder.templates.concat(cleaned);
+      else return;
+      persistTemplates();
+      renderTemplatesModal();
+      toast(`Imported ${cleaned.length} template(s)`);
+    }catch(err){
+      uiAlert("Couldn't parse that file as JSON:\n" + err.message);
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+});
 
 /* ============================================================
    MIXED ENTRIES EDITOR (paragraph / list / named / html / raw-fallback)
@@ -539,6 +1170,24 @@ function renderMixedEntries(container, arr, onChange, classRef){
     });
     toolbar.appendChild(refBtn);
   }
+  const addJsonBtn = document.createElement("button");
+  addJsonBtn.className = "btn small";
+  addJsonBtn.textContent = "+ Add via JSON";
+  addJsonBtn.addEventListener("click", ()=>{
+    openJsonModal({
+      title: "Add Entries via JSON",
+      hint: 'Paste one entry, or an array of entries. A plain string is a paragraph; use the typed shapes for lists/tables/etc — e.g. "A paragraph." or {"type":"list","entries":["..."]} or {"type":"entries","name":"...","entries":["..."]}',
+      value: ["A paragraph of text."],
+      onApply: (parsed)=>{
+        const items = Array.isArray(parsed) ? parsed : [parsed];
+        items.forEach(it=> arr.push(it));
+        renderMixedEntries(container, arr, onChange, classRef);
+        onChange();
+        toast(`Added ${items.length} entr${items.length===1?"y":"ies"}`);
+      },
+    });
+  });
+  toolbar.appendChild(addJsonBtn);
   container.appendChild(toolbar);
 
   if(arr.length===0){
@@ -559,10 +1208,14 @@ function renderMixedEntries(container, arr, onChange, classRef){
     tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); }, "del"));
 
     if(kind === "text"){
+      const wrap = document.createElement("div");
+      wrap.className = "text-with-snip";
       const ta = document.createElement("textarea");
       ta.value = b || "";
       ta.addEventListener("input", ()=>{ arr[i] = ta.value; onChange(); });
-      block.appendChild(ta);
+      wrap.appendChild(ta);
+      wrap.appendChild(linkSnippetBtn(ta));
+      block.appendChild(wrap);
     } else if(kind === "html"){
       const ta = document.createElement("textarea");
       ta.value = b.html || "";
@@ -610,22 +1263,11 @@ function renderMixedEntries(container, arr, onChange, classRef){
       optionsRow.appendChild(colsInput);
       block.appendChild(optionsRow);
 
-      b.entries.forEach((line, li)=>{
-        const w = document.createElement("div");
-        w.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li]=ta.value; onChange(); });
-        const del = document.createElement("button");
-        del.textContent="×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-        w.appendChild(ta); w.appendChild(del);
-        block.appendChild(w);
-      });
-      const addLine = document.createElement("button");
-      addLine.className="add-line-btn"; addLine.textContent="+ list item";
-      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-      block.appendChild(addLine);
+      if(!Array.isArray(b.entries)) b.entries = [];
+      const listNested = document.createElement("div");
+      listNested.className = "nested-entries";
+      block.appendChild(listNested);
+      renderMixedEntries(listNested, b.entries, onChange, classRef);
     } else if(kind === "named"){
       if(!Array.isArray(b.entries)) b.entries = [];
       const nameInput = document.createElement("input");
@@ -633,22 +1275,10 @@ function renderMixedEntries(container, arr, onChange, classRef){
       nameInput.value = b.name || "";
       nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; onChange(); });
       block.appendChild(nameInput);
-      b.entries.forEach((line, li)=>{
-        const w = document.createElement("div");
-        w.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li]=ta.value; onChange(); });
-        const del = document.createElement("button");
-        del.textContent="×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-        w.appendChild(ta); w.appendChild(del);
-        block.appendChild(w);
-      });
-      const addLine = document.createElement("button");
-      addLine.className="add-line-btn"; addLine.textContent="+ line";
-      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-      block.appendChild(addLine);
+      const namedNested = document.createElement("div");
+      namedNested.className = "nested-entries";
+      block.appendChild(namedNested);
+      renderMixedEntries(namedNested, b.entries, onChange, classRef);
     } else if(kind === "table"){
       if(!Array.isArray(b.colLabels)) b.colLabels = ["", ""];
       if(!Array.isArray(b.colStyles)) b.colStyles = b.colLabels.map(()=>"");
@@ -681,7 +1311,7 @@ function renderMixedEntries(container, arr, onChange, classRef){
         rmColBtn.style.fontSize = "10px";
         rmColBtn.style.background = "none";
         rmColBtn.style.border = "none";
-        rmColBtn.style.color = "var(--text-faint)";
+        rmColBtn.style.color = "var(--text-dim)";
         rmColBtn.style.cursor = "pointer";
         rmColBtn.addEventListener("click", ()=>{
           b.colLabels.splice(ci,1); b.colStyles.splice(ci,1); b.rows.forEach(r=>r.splice(ci,1));
@@ -723,7 +1353,7 @@ function renderMixedEntries(container, arr, onChange, classRef){
         rmRowBtn.textContent = "× row";
         rmRowBtn.style.fontSize = "10px";
         rmRowBtn.style.background = "none"; rmRowBtn.style.border = "none";
-        rmRowBtn.style.color = "var(--text-faint)"; rmRowBtn.style.cursor = "pointer";
+        rmRowBtn.style.color = "var(--text-dim)"; rmRowBtn.style.cursor = "pointer";
         rmRowBtn.addEventListener("click", ()=>{ b.rows.splice(ri,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
         rmTd.appendChild(rmRowBtn);
         tr.appendChild(rmTd);
@@ -744,23 +1374,10 @@ function renderMixedEntries(container, arr, onChange, classRef){
 
     } else if(kind === "quote"){
       if(!Array.isArray(b.entries)) b.entries = [""];
-      b.entries.forEach((line, li)=>{
-        const w = document.createElement("div");
-        w.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.placeholder = "Quote line";
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; onChange(); });
-        const del = document.createElement("button");
-        del.textContent = "×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-        w.appendChild(ta); w.appendChild(del);
-        block.appendChild(w);
-      });
-      const addLineQ = document.createElement("button");
-      addLineQ.className = "add-line-btn"; addLineQ.textContent = "+ line";
-      addLineQ.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-      block.appendChild(addLineQ);
+      const quoteNested = document.createElement("div");
+      quoteNested.className = "nested-entries";
+      block.appendChild(quoteNested);
+      renderMixedEntries(quoteNested, b.entries, onChange, classRef);
       const byInput = document.createElement("input");
       byInput.type = "text"; byInput.placeholder = "Attributed to (optional)";
       byInput.value = b.by || "";
@@ -779,23 +1396,10 @@ function renderMixedEntries(container, arr, onChange, classRef){
       nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; onChange(); });
       block.appendChild(nameInput);
       if(!Array.isArray(b.entries)) b.entries = [""];
-      b.entries.forEach((line, li)=>{
-        const w = document.createElement("div");
-        w.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.placeholder = "Box text (paragraph)";
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; onChange(); });
-        const del = document.createElement("button");
-        del.textContent = "×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-        w.appendChild(ta); w.appendChild(del);
-        block.appendChild(w);
-      });
-      const addLineI = document.createElement("button");
-      addLineI.className = "add-line-btn"; addLineI.textContent = "+ paragraph";
-      addLineI.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container,arr,onChange,classRef); onChange(); });
-      block.appendChild(addLineI);
+      const insetNested = document.createElement("div");
+      insetNested.className = "nested-entries";
+      block.appendChild(insetNested);
+      renderMixedEntries(insetNested, b.entries, onChange, classRef);
       const readaloudRow = document.createElement("div");
       readaloudRow.style.display = "flex"; readaloudRow.style.alignItems = "center"; readaloudRow.style.gap = "8px"; readaloudRow.style.marginTop = "6px";
       const raCheck = document.createElement("input");
@@ -910,6 +1514,490 @@ function renderMixedEntries(container, arr, onChange, classRef){
 /* ============================================================
    QUICK FIELD BUILDER
    ============================================================ */
+/* ---------- small checkbox helper ---------- */
+function chk(labelText, checked, onToggle){
+  const lbl = document.createElement("label");
+  lbl.className = "chk";
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.checked = checked;
+  input.addEventListener("change", ()=> onToggle(input.checked));
+  const span = document.createElement("span");
+  span.textContent = labelText;
+  lbl.appendChild(input);
+  lbl.appendChild(span);
+  return lbl;
+}
+
+/* ============================================================
+   PROFICIENCIES SECTION — armor (dropdown+shield), weapons
+   (category checkboxes + specific weapon checklist + free-text
+   extras), saving throws (6 checkboxes), skill pool (checkbox
+   list, French SRD skill names) + skill choice count.
+   ============================================================ */
+function renderProficienciesSection(c, onChange){
+  const prof = c.info.proficiencies;
+  if(!Array.isArray(prof.armor)) prof.armor = [];
+  if(!Array.isArray(prof.weapon)) prof.weapon = [];
+  if(!Array.isArray(prof.saves)) prof.saves = [];
+  if(!prof.skills) prof.skills = {pool:[], count:2};
+  if(!Array.isArray(prof.skills.pool)) prof.skills.pool = [];
+
+  const section = document.createElement("div");
+  section.className = "section";
+  section.innerHTML = `<div class="section-title">Proficiencies</div>`;
+
+  /* ---- ARMOR ---- */
+  const armorBlock = document.createElement("div");
+  armorBlock.className = "prof-card";
+  armorBlock.innerHTML = `<div class="lbl">Armures</div>`;
+  const armorRow = document.createElement("div");
+  armorRow.className = "prof-row";
+
+  const ARMOR_TIERS = ["light","medium","heavy"];
+  const armorSelect = document.createElement("select");
+  armorSelect.className = "prof-select";
+  [["none","Aucune"],["light","Légères"],["medium","Intermédiaires"],["heavy","Lourdes"]].forEach(([val,txt])=>{
+    const o = document.createElement("option");
+    o.value = val; o.textContent = txt;
+    armorSelect.appendChild(o);
+  });
+  // current tier = highest tier present
+  let curTier = "none";
+  for(const t of ARMOR_TIERS){ if(prof.armor.includes(t)) curTier = t; }
+  armorSelect.value = curTier;
+  armorSelect.addEventListener("change", ()=>{
+    const idx = ARMOR_TIERS.indexOf(armorSelect.value);
+    const hadShield = prof.armor.includes("shield");
+    prof.armor = idx === -1 ? [] : ARMOR_TIERS.slice(0, idx+1);
+    if(hadShield) prof.armor.push("shield");
+    onChange();
+  });
+  armorRow.appendChild(armorSelect);
+  armorRow.appendChild(chk("Bouclier", prof.armor.includes("shield"), (on)=>{
+    prof.armor = prof.armor.filter(a=>a!=="shield");
+    if(on) prof.armor.push("shield");
+    onChange();
+  }));
+  armorBlock.appendChild(armorRow);
+  section.appendChild(armorBlock);
+
+  /* ---- WEAPONS ---- */
+  const weaponBlock = document.createElement("div");
+  weaponBlock.className = "prof-card";
+  weaponBlock.innerHTML = `<div class="lbl">Armes</div>`;
+  WEAPON_GROUPS_FR.forEach(cat=>{
+    const catWrap = document.createElement("div");
+    catWrap.className = "prof-weapon-cat";
+    catWrap.appendChild(chk(cat.label, prof.weapon.includes(cat.key), (on)=>{
+      prof.weapon = prof.weapon.filter(w=>w!==cat.key);
+      if(on) prof.weapon.push(cat.key);
+      onChange();
+    }));
+    const subcard = document.createElement("div");
+    subcard.className = "prof-subcard";
+    cat.groups.forEach(g=>{
+      const sub = document.createElement("div");
+      sub.className = "prof-sub-label";
+      sub.textContent = g.label;
+      subcard.appendChild(sub);
+      const grid = document.createElement("div");
+      grid.className = "chk-grid";
+      g.weapons.forEach(w=>{
+        grid.appendChild(chk(w, prof.weapon.includes(w), (on)=>{
+          prof.weapon = prof.weapon.filter(x=>x!==w);
+          if(on) prof.weapon.push(w);
+          onChange();
+        }));
+      });
+      subcard.appendChild(grid);
+    });
+    catWrap.appendChild(subcard);
+    weaponBlock.appendChild(catWrap);
+  });
+  // free-text extras: anything in prof.weapon that isn't a known key/specific weapon
+  const KNOWN_WEAPONS = new Set(WEAPON_GROUPS_FR.flatMap(cat=>[cat.key, ...cat.groups.flatMap(g=>g.weapons)]));
+  const otherCard = document.createElement("div");
+  otherCard.className = "prof-subcard";
+  const otherWrap = document.createElement("div");
+  otherWrap.className = "prof-sub-label";
+  otherWrap.textContent = "Autre (texte libre)";
+  otherCard.appendChild(otherWrap);
+  const chipList = document.createElement("div");
+  chipList.className = "prof-other-list";
+  function renderWeaponChips(){
+    chipList.innerHTML = "";
+    prof.weapon.filter(w=>!KNOWN_WEAPONS.has(w)).forEach(w=>{
+      const chip = document.createElement("span");
+      chip.className = "prof-chip";
+      chip.textContent = w;
+      const rm = document.createElement("button");
+      rm.textContent = "×";
+      rm.addEventListener("click", ()=>{
+        prof.weapon = prof.weapon.filter(x=>x!==w);
+        renderWeaponChips();
+        onChange();
+      });
+      chip.appendChild(rm);
+      chipList.appendChild(chip);
+    });
+  }
+  renderWeaponChips();
+  otherCard.appendChild(chipList);
+  const addRow = document.createElement("div");
+  addRow.className = "prof-other-add";
+  const addInput = document.createElement("input");
+  addInput.type = "text";
+  addInput.placeholder = "ex. arme naturelle, arme d'artificier…";
+  const addBtn = document.createElement("button");
+  addBtn.className = "btn small";
+  addBtn.textContent = "+ Ajouter";
+  function addOther(){
+    const v = addInput.value.trim();
+    if(!v) return;
+    if(!prof.weapon.includes(v)) prof.weapon.push(v);
+    addInput.value = "";
+    renderWeaponChips();
+    onChange();
+  }
+  addBtn.addEventListener("click", addOther);
+  addInput.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); addOther(); } });
+  addRow.appendChild(addInput);
+  addRow.appendChild(addBtn);
+  otherCard.appendChild(addRow);
+  weaponBlock.appendChild(otherCard);
+  section.appendChild(weaponBlock);
+
+  /* ---- SAVING THROWS ---- */
+  const savesBlock = document.createElement("div");
+  savesBlock.className = "prof-card";
+  savesBlock.innerHTML = `<div class="lbl">Jets de sauvegarde</div>`;
+  const savesGrid = document.createElement("div");
+  savesGrid.className = "chk-grid";
+  SAVE_ABILITIES_FR.forEach(([abv,label])=>{
+    savesGrid.appendChild(chk(label, prof.saves.includes(abv), (on)=>{
+      prof.saves = prof.saves.filter(s=>s!==abv);
+      if(on) prof.saves.push(abv);
+      onChange();
+    }));
+  });
+  savesBlock.appendChild(savesGrid);
+  section.appendChild(savesBlock);
+
+  /* ---- SKILL PROFICIENCY POOL ---- */
+  const skillsBlock = document.createElement("div");
+  skillsBlock.className = "prof-card";
+  skillsBlock.innerHTML = `<div class="lbl">Compétences</div>`;
+  const countRow = document.createElement("div");
+  countRow.className = "prof-row";
+  countRow.style.marginBottom = "14px";
+  const countField = document.createElement("div");
+  countField.className = "prof-field";
+  countField.style.maxWidth = "160px";
+  countField.innerHTML = `<label>Nombre à choisir</label>`;
+  const countInput = document.createElement("input");
+  countInput.type = "number";
+  countInput.min = "0";
+  countInput.className = "prof-select";
+  countInput.value = prof.skills.count ?? 2;
+  countInput.addEventListener("input", ()=>{
+    prof.skills.count = countInput.value === "" ? null : Number(countInput.value);
+    onChange();
+  });
+  countField.appendChild(countInput);
+  countRow.appendChild(countField);
+  skillsBlock.appendChild(countRow);
+
+  const skillsSubcard = document.createElement("div");
+  skillsSubcard.className = "prof-subcard";
+  const poolLbl = document.createElement("div");
+  poolLbl.className = "prof-sub-label";
+  poolLbl.textContent = "Choix possibles";
+  skillsSubcard.appendChild(poolLbl);
+  const skillsGrid = document.createElement("div");
+  skillsGrid.className = "chk-grid";
+  SKILL_LIST_FR.forEach(sk=>{
+    skillsGrid.appendChild(chk(sk, prof.skills.pool.includes(sk), (on)=>{
+      prof.skills.pool = prof.skills.pool.filter(s=>s!==sk);
+      if(on) prof.skills.pool.push(sk);
+      onChange();
+    }));
+  });
+  skillsSubcard.appendChild(skillsGrid);
+  skillsBlock.appendChild(skillsSubcard);
+  section.appendChild(skillsBlock);
+
+  return section;
+}
+
+/* ============================================================
+   LEVEL PROGRESSION TABLES (info.tableGroup) — one or more
+   column-groups appended to the class table (Niveau / Bonus de
+   Maîtrise / Capacité), each with its own labels and one row
+   per character level (1–20). A group with no title renders as
+   independent columns; a group with a title spans a shared
+   header over its columns (e.g. "Emplacements de sorts").
+   ============================================================ */
+/* ---------- built-in spell-slot table presets ---------- */
+const SPELL_SLOT_LABELS_9 = ["1er","2e","3e","4e","5e","6e","7e","8e","9e"];
+const SPELL_SLOT_LABELS_5 = ["1er","2e","3e","4e","5e"];
+const FULL_CASTER_SLOTS = [
+  [2,0,0,0,0,0,0,0,0],[3,0,0,0,0,0,0,0,0],[4,2,0,0,0,0,0,0,0],[4,3,0,0,0,0,0,0,0],
+  [4,3,2,0,0,0,0,0,0],[4,3,3,0,0,0,0,0,0],[4,3,3,1,0,0,0,0,0],[4,3,3,2,0,0,0,0,0],
+  [4,3,3,3,1,0,0,0,0],[4,3,3,3,2,0,0,0,0],[4,3,3,3,2,1,0,0,0],[4,3,3,3,2,1,0,0,0],
+  [4,3,3,3,2,1,1,0,0],[4,3,3,3,2,1,1,0,0],[4,3,3,3,2,1,1,1,0],[4,3,3,3,2,1,1,1,0],
+  [4,3,3,3,2,1,1,1,1],[4,3,3,3,3,1,1,1,1],[4,3,3,3,3,2,1,1,1],[4,3,3,3,3,2,2,1,1],
+];
+const HALF_CASTER_SLOTS = [
+  [0,0,0,0,0],[2,0,0,0,0],[3,0,0,0,0],[3,0,0,0,0],[4,2,0,0,0],[4,2,0,0,0],[4,3,0,0,0],[4,3,0,0,0],
+  [4,3,2,0,0],[4,3,2,0,0],[4,3,3,0,0],[4,3,3,0,0],[4,3,3,1,0],[4,3,3,1,0],[4,3,3,2,0],[4,3,3,2,0],
+  [4,3,3,3,1],[4,3,3,3,1],[4,3,3,3,2],[4,3,3,3,2],
+];
+function newSpellSlotTable(kind){
+  const isFull = kind === "full";
+  return {
+    _uid: uid(),
+    title: "Emplacements de sorts",
+    before: false,
+    colLabels: (isFull ? SPELL_SLOT_LABELS_9 : SPELL_SLOT_LABELS_5).slice(),
+    rows: (isFull ? FULL_CASTER_SLOTS : HALF_CASTER_SLOTS).map(r=>r.slice()),
+  };
+}
+
+function renderTableGroupsSection(c, onChange){
+  if(!Array.isArray(c.info.tableGroup)) c.info.tableGroup = [];
+
+  const section = document.createElement("div");
+  section.className = "section";
+  section.innerHTML = `<div class="section-title">Level Progression Tables <span class="tag">${c.info.tableGroup.length}</span></div>`;
+
+  const addBtn = document.createElement("button");
+  addBtn.className = "btn small primary";
+  addBtn.style.marginBottom = "10px";
+  addBtn.textContent = "+ Add Table";
+  section.appendChild(addBtn);
+
+  const addJsonBtn = document.createElement("button");
+  addJsonBtn.className = "btn small";
+  addJsonBtn.style.marginBottom = "10px";
+  addJsonBtn.style.marginLeft = "6px";
+  addJsonBtn.textContent = "+ Add via JSON";
+  section.appendChild(addJsonBtn);
+  addJsonBtn.addEventListener("click", ()=>{
+    openJsonModal({
+      title: "Add Table(s) via JSON",
+      hint: 'Paste one table-group object, or an array of them: {"title":"...","before":false,"colLabels":["1er","2e"],"rows":[[..20 rows..]]}. Rows are padded/truncated to exactly 20.',
+      value: [{title:"", before:false, colLabels:["Colonne 1"], rows:[[0]]}],
+      onApply: (parsed)=>{
+        const arr = Array.isArray(parsed) ? parsed : [parsed];
+        arr.forEach(g=> c.info.tableGroup.push(normalizeTableGroupEntry(g)));
+        renderList();
+        onChange();
+        section.querySelector(".section-title .tag").textContent = c.info.tableGroup.length;
+        toast(`Added ${arr.length} table(s)`);
+      },
+    });
+  });
+
+  const presetRow = document.createElement("div");
+  presetRow.className = "tpl-picker";
+  presetRow.style.marginBottom = "10px";
+  [
+    ["+ Emplacements — Lanceur complet","full"],
+    ["+ Emplacements — Lanceur partiel","half"],
+  ].forEach(([txt,kind])=>{
+    const b = document.createElement("button");
+    b.className = "btn small violet";
+    b.textContent = txt;
+    b.addEventListener("click", ()=>{
+      c.info.tableGroup.push(newSpellSlotTable(kind));
+      renderList();
+      onChange();
+      section.querySelector(".section-title .tag").textContent = c.info.tableGroup.length;
+    });
+    presetRow.appendChild(b);
+  });
+  section.appendChild(presetRow);
+
+  const listEl = document.createElement("div");
+  section.appendChild(listEl);
+
+  function renderList(){
+    listEl.innerHTML = "";
+    if(!c.info.tableGroup.length){
+      const empty = document.createElement("div");
+      empty.className = "entries-empty";
+      empty.textContent = "No progression tables yet — e.g. spell slots, ki points, infusions known.";
+      listEl.appendChild(empty);
+      return;
+    }
+    c.info.tableGroup.forEach((g,i)=>{
+      listEl.appendChild(renderTableGroupCard(g, i, c.info.tableGroup, ()=>{ onChange(); }, renderList));
+    });
+  }
+  addBtn.addEventListener("click", ()=>{
+    c.info.tableGroup.push(newTableGroup());
+    renderList();
+    onChange();
+    section.querySelector(".section-title .tag").textContent = c.info.tableGroup.length;
+  });
+  renderList();
+
+  return section;
+}
+
+function renderTableGroupCard(g, i, arr, onChange, rerenderList){
+  const card = document.createElement("details");
+  card.className = "tg-card";
+  card.open = false;
+
+  const summary = document.createElement("summary");
+  summary.innerHTML = `
+    <span class="tg-card-title"></span>
+    <div class="fc-tools"></div>`;
+  const titleSpan = summary.querySelector(".tg-card-title");
+  function refreshTitle(){
+    titleSpan.textContent = "";
+    const strong = document.createElement("span");
+    strong.textContent = g.title && g.title.trim() ? g.title : "(colonnes indépendantes)";
+    if(!(g.title && g.title.trim())) strong.className = "muted";
+    titleSpan.appendChild(strong);
+    const count = document.createElement("span");
+    count.className = "muted";
+    count.textContent = `  · ${g.colLabels.length} colonne${g.colLabels.length>1?"s":""}`;
+    titleSpan.appendChild(count);
+    if(g.before){
+      const badge = document.createElement("span");
+      badge.className = "muted";
+      badge.textContent = "  · avant Capacité";
+      titleSpan.appendChild(badge);
+    }
+  }
+  refreshTitle();
+  const tools = summary.querySelector(".fc-tools");
+  tools.appendChild(moveBtn("↑", (e)=>{ e.preventDefault(); e.stopPropagation(); if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; rerenderList(); onChange(); }}));
+  tools.appendChild(moveBtn("↓", (e)=>{ e.preventDefault(); e.stopPropagation(); if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; rerenderList(); onChange(); }}));
+  tools.appendChild(moveBtn("×", async (e)=>{ e.preventDefault(); e.stopPropagation(); if(await uiConfirm("Delete this table?")){ arr.splice(i,1); rerenderList(); onChange(); } }, "del"));
+  card.appendChild(summary);
+
+  const body = document.createElement("div");
+  body.className = "tg-card-body";
+
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  titleInput.className = "tg-title-input";
+  titleInput.placeholder = "Titre du groupe (optionnel — ex. « Emplacements de sorts ». Laisser vide pour des colonnes indépendantes)";
+  titleInput.value = g.title || "";
+  titleInput.addEventListener("input", ()=>{ g.title = titleInput.value; refreshTitle(); onChange(); });
+  body.appendChild(titleInput);
+
+  const posField = document.createElement("div");
+  posField.className = "prof-field";
+  posField.style.maxWidth = "260px";
+  posField.style.marginBottom = "12px";
+  posField.innerHTML = `<label>Position dans le tableau de classe</label>`;
+  const posSelect = document.createElement("select");
+  posSelect.className = "prof-select";
+  [["after","Après la colonne Capacité (défaut)"],["before","Avant la colonne Capacité"]].forEach(([val,txt])=>{
+    const o = document.createElement("option");
+    o.value = val; o.textContent = txt;
+    if((g.before?"before":"after")===val) o.selected = true;
+    posSelect.appendChild(o);
+  });
+  posSelect.addEventListener("change", ()=>{ g.before = posSelect.value==="before"; refreshTitle(); onChange(); });
+  posField.appendChild(posSelect);
+  body.appendChild(posField);
+
+  const colsRow = document.createElement("div");
+  colsRow.className = "tg-cols-row";
+  let gridWrap; // forward ref, rebuilt below
+
+  function renderColsRow(){
+    colsRow.innerHTML = "";
+    g.colLabels.forEach((label, ci)=>{
+      const chip = document.createElement("span");
+      chip.className = "tg-col-chip";
+      const inp = document.createElement("input");
+      inp.type = "text";
+      inp.value = label || "";
+      inp.placeholder = `Col. ${ci+1}`;
+      inp.addEventListener("input", ()=>{ g.colLabels[ci] = inp.value; renderGrid(); onChange(); });
+      const rm = document.createElement("button");
+      rm.textContent = "×";
+      rm.title = "Remove column";
+      rm.addEventListener("click", ()=>{
+        if(g.colLabels.length <= 1) return;
+        g.colLabels.splice(ci,1);
+        g.rows.forEach(row=> row.splice(ci,1));
+        renderColsRow(); renderGrid(); refreshTitle(); onChange();
+      });
+      chip.appendChild(inp); chip.appendChild(rm);
+      colsRow.appendChild(chip);
+    });
+    const addCol = document.createElement("button");
+    addCol.className = "btn small";
+    addCol.textContent = "+ Colonne";
+    addCol.addEventListener("click", ()=>{
+      g.colLabels.push("");
+      g.rows.forEach(row=> row.push(0));
+      renderColsRow(); renderGrid(); refreshTitle(); onChange();
+    });
+    colsRow.appendChild(addCol);
+  }
+
+  function renderGrid(){
+    if(gridWrap) gridWrap.remove();
+    gridWrap = document.createElement("div");
+    gridWrap.className = "tg-grid-wrap";
+    const table = document.createElement("table");
+    table.className = "tg-table";
+    const thead = document.createElement("thead");
+    const htr = document.createElement("tr");
+    htr.innerHTML = `<th>Niveau</th>`;
+    g.colLabels.forEach((label,ci)=>{
+      const th = document.createElement("th");
+      th.textContent = label || `Col. ${ci+1}`;
+      htr.appendChild(th);
+    });
+    thead.appendChild(htr);
+    table.appendChild(thead);
+    const tbody = document.createElement("tbody");
+    for(let lvl=0; lvl<20; lvl++){
+      if(!Array.isArray(g.rows[lvl])) g.rows[lvl] = g.colLabels.map(()=>0);
+      const tr = document.createElement("tr");
+      const lvlTd = document.createElement("td");
+      lvlTd.className = "tg-lvl";
+      lvlTd.textContent = lvl+1;
+      tr.appendChild(lvlTd);
+      g.colLabels.forEach((_,ci)=>{
+        const td = document.createElement("td");
+        const inp = document.createElement("input");
+        inp.type = "text";
+        inp.inputMode = "numeric";
+        inp.value = g.rows[lvl][ci] ?? 0;
+        inp.addEventListener("input", ()=>{
+          const raw = inp.value.trim();
+          const n = Number(raw);
+          g.rows[lvl][ci] = (raw!=="" && Number.isFinite(n)) ? n : raw;
+          onChange();
+        });
+        td.appendChild(inp);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    gridWrap.appendChild(table);
+    body.appendChild(gridWrap);
+  }
+
+  body.appendChild(colsRow);
+  renderColsRow();
+  renderGrid();
+  card.appendChild(body);
+  return card;
+}
+
 function buildQuickField(obj, field, onChange){
   const wrap = document.createElement("div");
   wrap.className = "field" + (field.wide ? " wide":"");
@@ -966,6 +2054,29 @@ function renderFeatureCard(feature, opts){
   const tools = summary.querySelector(".fc-tools");
   tools.appendChild(moveBtn("↑", (e)=>{ e.preventDefault(); e.stopPropagation(); opts.onMoveUp(); }));
   tools.appendChild(moveBtn("↓", (e)=>{ e.preventDefault(); e.stopPropagation(); opts.onMoveDown(); }));
+  tools.appendChild(moveBtn("📄", (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    const exportShape = {level:feature.level, name:feature.name, source:feature.source, page:feature.page, entries:feature.entries};
+    if(opts.includeHeader){ exportShape.header = feature.header; exportShape.topLevel = feature.topLevel; }
+    openJsonModal({
+      title: `Edit "${feature.name||"feature"}" as JSON`,
+      hint: "Applies to this feature only — level/name/source/page" + (opts.includeHeader ? "/header/topLevel" : "") + "/entries.",
+      value: exportShape,
+      onApply: (parsed)=>{
+        feature.level = parsed.level ?? null;
+        feature.name = parsed.name || "";
+        feature.source = parsed.source || "";
+        feature.page = parsed.page ?? null;
+        feature.entries = Array.isArray(parsed.entries) ? parsed.entries : [];
+        if(opts.includeHeader){
+          feature.header = parsed.header ?? null;
+          feature.topLevel = parsed.topLevel !== false;
+        }
+        opts.onChange();
+        card.replaceWith(renderFeatureCard(feature, opts));
+      },
+    });
+  }, "json-edit-btn"));
   tools.appendChild(moveBtn("×", (e)=>{ e.preventDefault(); e.stopPropagation(); opts.onDelete(); }, "del"));
   card.appendChild(summary);
 
@@ -974,6 +2085,26 @@ function renderFeatureCard(feature, opts){
 
   const grid = document.createElement("div");
   grid.className = "field-grid";
+
+  if(opts.isTemplate){
+    const scopeField = document.createElement("div");
+    scopeField.className = "field scope";
+    scopeField.innerHTML = `<label>Applies To</label>`;
+    const scopeSelect = document.createElement("select");
+    [["class","Class Features"],["subclass","Subclass Features"],["both","Both"]].forEach(([val,txt])=>{
+      const o = document.createElement("option");
+      o.value = val; o.textContent = txt;
+      if((feature.scope||"class")===val) o.selected = true;
+      scopeSelect.appendChild(o);
+    });
+    scopeSelect.addEventListener("change", ()=>{
+      feature.scope = scopeSelect.value;
+      opts.onChange();
+      if(opts.onScopeChange) opts.onScopeChange();
+    });
+    scopeField.appendChild(scopeSelect);
+    grid.appendChild(scopeField);
+  }
 
   const levelField = document.createElement("div");
   levelField.className = "field";
@@ -1119,9 +2250,9 @@ function renderSidebar(){
       renderMain();
       renderSidebar();
     });
-    row.querySelector(".del").addEventListener("click", (e)=>{
+    row.querySelector(".del").addEventListener("click", async (e)=>{
       e.stopPropagation();
-      if(!confirm(`Delete "${c.info.name || c.id}"? This can't be undone.`)) return;
+      if(!await uiConfirm(`Delete "${c.info.name || c.id}"? This can't be undone.`)) return;
       state.classes.splice(idx,1);
       if(state.selected===idx) state.selected=null;
       else if(state.selected>idx) state.selected--;
@@ -1168,6 +2299,7 @@ function renderMain(){
       <h2 id="classTitle">${escapeHtml(c.info.name || c.id || "Untitled")}</h2>
     </div>
     <div class="actions">
+      <button class="btn small" id="editClassJson">Edit as JSON</button>
       <button class="btn small" id="dupClass">Duplicate</button>
       <button class="btn danger small" id="delClass">Delete</button>
     </div>`;
@@ -1189,6 +2321,12 @@ function renderMain(){
   coreSection.appendChild(grid);
   inner.appendChild(coreSection);
 
+  // proficiencies (armor/weapons/saves/skills)
+  inner.appendChild(renderProficienciesSection(c, onChange));
+
+  // level progression tables (spell slots, class resources, etc.)
+  inner.appendChild(renderTableGroupsSection(c, onChange));
+
   // class features
   const cfSection = document.createElement("div");
   cfSection.className = "section";
@@ -1198,16 +2336,44 @@ function renderMain(){
   cfAddBtn.style.marginBottom = "10px";
   cfAddBtn.textContent = "+ Add Class Feature";
   cfSection.appendChild(cfAddBtn);
+  const cfAddJsonBtn = document.createElement("button");
+  cfAddJsonBtn.className = "btn small";
+  cfAddJsonBtn.style.marginBottom = "10px";
+  cfAddJsonBtn.style.marginLeft = "6px";
+  cfAddJsonBtn.textContent = "+ Add via JSON";
+  cfSection.appendChild(cfAddJsonBtn);
   const cfListEl = document.createElement("div");
   cfListEl.className = "feature-list";
-  cfSection.appendChild(cfListEl);
   if(!Array.isArray(c.classFeatures)) c.classFeatures = [];
+  const cfPicker = renderTemplatePicker("class", (feat)=>{
+    c.classFeatures.push(feat);
+    renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
+    onChange();
+  });
+  cfSection.appendChild(cfPicker);
+  cfSection.appendChild(cfListEl);
   renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
   cfAddBtn.addEventListener("click", ()=>{
     const lastLvl = c.classFeatures.length ? c.classFeatures[c.classFeatures.length-1].level : 1;
     c.classFeatures.push(newFeature(lastLvl));
     renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
     onChange();
+  });
+  cfAddJsonBtn.addEventListener("click", ()=>{
+    openJsonModal({
+      title: "Add Class Feature(s) via JSON",
+      hint: 'Paste one feature object, or an array of them: {"level":1,"name":"...","source":"...","page":null,"entries":["..."]}',
+      value: [{level:1, name:"", source:c.info.source||"", page:null, entries:[]}],
+      onApply: (parsed)=>{
+        const arr = Array.isArray(parsed) ? parsed : [parsed];
+        arr.forEach(f=>{
+          c.classFeatures.push({_uid:uid(), level:f.level??1, name:f.name||"", source:f.source||"", page:f.page??null, entries:Array.isArray(f.entries)?f.entries:[]});
+        });
+        renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
+        onChange();
+        toast(`Added ${arr.length} feature(s)`);
+      },
+    });
   });
   inner.appendChild(cfSection);
 
@@ -1220,6 +2386,12 @@ function renderMain(){
   scAddBtn.style.marginBottom = "12px";
   scAddBtn.textContent = "+ Add Subclass";
   scSection.appendChild(scAddBtn);
+  const scAddJsonBtn = document.createElement("button");
+  scAddJsonBtn.className = "btn small";
+  scAddJsonBtn.style.marginBottom = "12px";
+  scAddJsonBtn.style.marginLeft = "6px";
+  scAddJsonBtn.textContent = "+ Add via JSON";
+  scSection.appendChild(scAddJsonBtn);
   const scListEl = document.createElement("div");
   scSection.appendChild(scListEl);
   if(!Array.isArray(c.subclasses)) c.subclasses = [];
@@ -1228,6 +2400,26 @@ function renderMain(){
     c.subclasses.push(newSubclass());
     renderSubclassList(scListEl, c);
     onChange();
+  });
+  scAddJsonBtn.addEventListener("click", ()=>{
+    openJsonModal({
+      title: "Add Subclass(es) via JSON",
+      hint: 'Paste one subclass object, or an array of them: {"name":"...","shortName":"...","source":"...","page":null,"features":[{"level":3,"name":"...","header":null,"entries":["..."]}]}',
+      value: [{name:"", shortName:"", source:c.info.source||"", page:null, features:[{level:3, name:"", source:c.info.source||"", page:null, header:null, entries:[]}]}],
+      onApply: (parsed)=>{
+        const arr = Array.isArray(parsed) ? parsed : [parsed];
+        arr.forEach(sc=>{
+          const features = (Array.isArray(sc.features) ? sc.features : (Array.isArray(sc.subclassFeatures) ? sc.subclassFeatures : [])).map(f=>({
+            _uid:uid(), level:f.level??3, name:f.name||"", source:f.source||sc.source||"", page:f.page??null,
+            header:f.header??null, topLevel:f.topLevel!==false, entries:Array.isArray(f.entries)?f.entries:[],
+          }));
+          c.subclasses.push({_uid:uid(), name:sc.name||"", shortName:sc.shortName||"", source:sc.source||"", page:sc.page??null, features});
+        });
+        renderSubclassList(scListEl, c);
+        onChange();
+        toast(`Added ${arr.length} subclass(es)`);
+      },
+    });
   });
   inner.appendChild(scSection);
 
@@ -1264,8 +2456,21 @@ function renderMain(){
 
   main.appendChild(inner);
 
-  document.getElementById("delClass").addEventListener("click", ()=>{
-    if(!confirm(`Delete "${c.info.name||c.id}"? This can't be undone.`)) return;
+  document.getElementById("editClassJson").addEventListener("click", ()=>{
+    openJsonModal({
+      title: `Edit "${c.info.name || c.id}" as JSON`,
+      hint: "This is the exact classes.json shape for this class (same as Export Preview below, but editable). Apply re-imports it, replacing this class in place — internal ids are regenerated.",
+      value: exportClassObject(c),
+      onApply: (parsed)=>{
+        const imported = importClassObject(parsed);
+        state.classes[state.selected] = imported;
+        persist(); renderSidebar(); renderMain();
+        toast("Class updated from JSON");
+      },
+    });
+  });
+  document.getElementById("delClass").addEventListener("click", async ()=>{
+    if(!await uiConfirm(`Delete "${c.info.name||c.id}"? This can't be undone.`)) return;
     state.classes.splice(state.selected,1);
     state.selected = null;
     persist(); renderSidebar(); renderMain();
@@ -1290,17 +2495,23 @@ function renderSubclassList(container, c){
     return;
   }
   c.subclasses.forEach((sc, idx)=>{
-    const card = document.createElement("div");
+    const card = document.createElement("details");
     card.className = "subclass-card";
-    const headEl = document.createElement("div");
+    card.open = false;
+    const headEl = document.createElement("summary");
     headEl.className = "subclass-card-head";
-    headEl.innerHTML = `<span class="sc-title"></span><div class="fc-tools"></div>`;
-    headEl.querySelector(".sc-title").textContent = sc.name || "";
+    headEl.innerHTML = `<span class="sc-left"><span class="sc-title"></span><span class="sc-source"></span></span><div class="fc-tools"></div>`;
+    function refreshHead(){
+      headEl.querySelector(".sc-title").textContent = sc.name || "";
+      headEl.querySelector(".sc-source").textContent = sc.source ? `(${sc.source})` : "";
+    }
+    refreshHead();
     const tools = headEl.querySelector(".fc-tools");
-    tools.appendChild(moveBtn("↑", ()=>{ if(idx>0){ [c.subclasses[idx-1],c.subclasses[idx]]=[c.subclasses[idx],c.subclasses[idx-1]]; renderSubclassList(container,c); onChange(); }}));
-    tools.appendChild(moveBtn("↓", ()=>{ if(idx<c.subclasses.length-1){ [c.subclasses[idx+1],c.subclasses[idx]]=[c.subclasses[idx],c.subclasses[idx+1]]; renderSubclassList(container,c); onChange(); }}));
-    tools.appendChild(moveBtn("×", ()=>{
-      if(!confirm(`Delete subclass "${sc.name||"(unnamed)"}"?`)) return;
+    tools.appendChild(moveBtn("↑", (e)=>{ e.preventDefault(); e.stopPropagation(); if(idx>0){ [c.subclasses[idx-1],c.subclasses[idx]]=[c.subclasses[idx],c.subclasses[idx-1]]; renderSubclassList(container,c); onChange(); }}));
+    tools.appendChild(moveBtn("↓", (e)=>{ e.preventDefault(); e.stopPropagation(); if(idx<c.subclasses.length-1){ [c.subclasses[idx+1],c.subclasses[idx]]=[c.subclasses[idx],c.subclasses[idx+1]]; renderSubclassList(container,c); onChange(); }}));
+    tools.appendChild(moveBtn("×", async (e)=>{
+      e.preventDefault(); e.stopPropagation();
+      if(!await uiConfirm(`Delete subclass "${sc.name||"(unnamed)"}"?`)) return;
       c.subclasses.splice(idx,1); renderSubclassList(container,c); onChange();
     }, "del"));
     card.appendChild(headEl);
@@ -1317,7 +2528,7 @@ function renderSubclassList(container, c){
       {path:"page",label:"Page",type:"number"},
     ].forEach(f=>{
       const field = buildQuickField(sc, f, ()=>{
-        headEl.querySelector(".sc-title").textContent = sc.name || "";
+        refreshHead();
         onChange();
       });
       grid.appendChild(field);
@@ -1338,8 +2549,14 @@ function renderSubclassList(container, c){
 
     const featListEl = document.createElement("div");
     featListEl.className = "feature-list";
-    body.appendChild(featListEl);
     if(!Array.isArray(sc.features)) sc.features = [];
+    const scPicker = renderTemplatePicker("subclass", (feat)=>{
+      sc.features.push(feat);
+      renderFeatureList(featListEl, sc.features, {includeHeader:true, onChange, classRef:c});
+      onChange();
+    });
+    body.appendChild(scPicker);
+    body.appendChild(featListEl);
     renderFeatureList(featListEl, sc.features, {includeHeader:true, onChange, classRef:c});
     addFeatBtn.addEventListener("click", ()=>{
       const lastLvl = sc.features.length ? sc.features[sc.features.length-1].level : 3;
@@ -1367,14 +2584,18 @@ document.getElementById("fileInput").addEventListener("change", (e)=>{
   const file = e.target.files[0];
   if(!file) return;
   const reader = new FileReader();
-  reader.onload = ()=>{
+  reader.onload = async ()=>{
     try{
       const parsed = JSON.parse(reader.result);
       const arr = Array.isArray(parsed) ? parsed : [parsed];
       const imported = arr.map(importClassObject);
-      const mode = state.classes.length
-        ? prompt(`Replace the current ${state.classes.length} class(es) with the ${imported.length} imported, or append them? Type "replace" or "append".`, "append")
-        : "replace";
+      let mode = "replace";
+      if(state.classes.length){
+        mode = await uiChoice(
+          `Replace the current ${state.classes.length} class(es) with the ${imported.length} imported, or append them?`,
+          [{label:"Cancel", value:null}, {label:"Replace", value:"replace"}, {label:"Append", value:"append", primary:true}]
+        );
+      }
       if(mode === "replace") state.classes = imported;
       else if(mode === "append") state.classes = state.classes.concat(imported);
       else return;
@@ -1382,7 +2603,7 @@ document.getElementById("fileInput").addEventListener("change", (e)=>{
       persist(); renderSidebar(); renderMain();
       toast(`Imported ${imported.length} class(es)`);
     }catch(err){
-      alert("Couldn't parse that file as JSON:\n" + err.message);
+      uiAlert("Couldn't parse that file as JSON:\n" + err.message);
     }
   };
   reader.readAsText(file);
@@ -1390,7 +2611,7 @@ document.getElementById("fileInput").addEventListener("change", (e)=>{
 });
 
 document.getElementById("btnExportAll").addEventListener("click", ()=>{
-  if(!state.classes.length){ alert("Nothing to export yet."); return; }
+  if(!state.classes.length){ uiAlert("Nothing to export yet."); return; }
   const out = state.classes.map(exportClassObject);
   const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
   const url = URL.createObjectURL(blob);

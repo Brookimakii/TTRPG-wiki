@@ -142,7 +142,7 @@
     </div>
     <div class="input-area">
       <label>Paste raw 5etools JSON (single object or array)</label>
-      <textarea id="rawInput" placeholder='{"spell": [...]}  or  [{...}, {...}]  or a single item object'></textarea>
+      <textarea id="rawInput" placeholder='{"spell": [...]}  or  [{...}, {...}]  or a single item object  or a full class bundle {"class":[...],"subclass":[...],"classFeature":[...],"subclassFeature":[...]}'></textarea>
       <div class="row">
         <button class="btn small" id="btnUpload">Upload file</button>
         <button class="btn small" id="btnClear">Clear</button>
@@ -158,6 +158,7 @@
         <option value="rule">Rules (variant rules)</option>
         <option value="monster">Bestiary</option>
         <option value="race">Races</option>
+        <option value="class">Classes</option>
       </select>
       <div id="detectBanner"></div>
       <div class="row">
@@ -176,8 +177,8 @@
       <button class="btn full" id="btnExportAll" disabled>Export converted JSON</button>
     </div>
     <div class="sidebar-foot">
-      Handles: spells, items, feats, backgrounds, conditions, rules, bestiary, races.<br>
-      Classes aren't supported here — real 5etools class data is split across multiple linked files. Use Class Lab instead.
+      Handles: spells, items, feats, backgrounds, conditions, rules, bestiary, races, classes.<br>
+      Classes are special — paste the whole file (class + subclass + classFeature + subclassFeature together); each class's features/subclasses get resolved from those linked arrays automatically.
     </div>
   </div>
 
@@ -503,17 +504,222 @@ function convertRace(raw,warnings){
   return out;
 }
 
+/* ============================================================
+   CLASSES — unlike every other type above, a raw 5etools class
+   isn't self-contained: its features/subclasses live in sibling
+   arrays (classFeature/subclass/subclassFeature) referenced by
+   "Name|Class|Source|Level"-style strings. So class conversion
+   works on the whole pasted bundle at once (see
+   convertClassBundle below) rather than one raw item at a time
+   like the CONVERTERS map — it's wired in separately in the
+   Convert button handler.
+   ============================================================ */
+const ABILITY_ABV_LC_FR = {str:"for", dex:"dex", con:"con", int:"int", wis:"sag", cha:"cha"};
+const ABILITY_FULL_FR = {str:"Force", dex:"Dextérité", con:"Constitution", int:"Intelligence", wis:"Sagesse", cha:"Charisme"};
+const SKILL_EN_TO_FR = {
+  "acrobatics":"Acrobaties","animal handling":"Dressage","arcana":"Arcanes","athletics":"Athlétisme",
+  "deception":"Tromperie","history":"Histoire","insight":"Intuition","intimidation":"Intimidation",
+  "investigation":"Investigation","medicine":"Médecine","nature":"Nature","perception":"Perception",
+  "performance":"Représentation","persuasion":"Persuasion","religion":"Religion",
+  "sleight of hand":"Escamotage","stealth":"Discrétion","survival":"Survie",
+};
+const ALL_SKILLS_FR = Object.values(SKILL_EN_TO_FR);
+
+function refKey(parts){ return parts.map(p=>String(p??"").trim().toLowerCase()).join("|"); }
+function buildFeatureIndex(list){
+  const byFullKey=new Map(), byName=new Map();
+  (list||[]).forEach(f=>{
+    byFullKey.set(refKey([f.name,f.className,f.classSource,f.level]), f);
+    const nk=String(f.name||"").trim().toLowerCase();
+    if(!byName.has(nk)) byName.set(nk,[]);
+    byName.get(nk).push(f);
+  });
+  return {byFullKey,byName};
+}
+function resolveClassFeatureRef(ref, index){
+  const parts=String(ref).split("|");
+  const [name,className,classSource,level]=parts;
+  const full=refKey([name,className,classSource,level]);
+  if(index.byFullKey.has(full)) return index.byFullKey.get(full);
+  const candidates=index.byName.get(String(name||"").trim().toLowerCase())||[];
+  if(candidates.length===1) return candidates[0];
+  if(candidates.length>1 && level){ const byLvl=candidates.find(c=>String(c.level)===String(level)); if(byLvl) return byLvl; }
+  return null;
+}
+function normalizeTableRows(rows,colCount){
+  return Array.from({length:20},(_,lvl)=>{
+    const src=Array.isArray(rows)&&Array.isArray(rows[lvl]) ? rows[lvl] : [];
+    return Array.from({length:colCount},(_,ci)=>(src[ci]??0));
+  });
+}
+function convertClassSaves(profArr,warnings){
+  return (profArr||[]).map(a=>{
+    const abv=String(a).toLowerCase();
+    if(ABILITY_ABV_LC_FR[abv]) return ABILITY_ABV_LC_FR[abv];
+    warn(warnings,`Unrecognized saving-throw ability "${a}" — copied through as-is.`);
+    return a;
+  });
+}
+function convertClassArmor(armorArr){
+  return (armorArr||[]).map(a=>{ const s=String(a).toLowerCase(); return s==="shields" ? "shield" : s; });
+}
+function convertClassWeapon(weaponArr, className, warnings){
+  const out=[];
+  (weaponArr||[]).forEach(w=>{
+    if(typeof w==="string"){ out.push(w.toLowerCase()); return; }
+    if(w && typeof w==="object"){
+      if(w.item){ out.push(String(w.item).split("|")[0].toLowerCase()); return; }
+      if(w.proficiency){ out.push(String(w.proficiency).toLowerCase()); return; }
+    }
+    warn(warnings,`[${className}] unrecognized weapon proficiency entry ${JSON.stringify(w)} — skipped, add manually via the Class Lab's weapon checklist.`);
+  });
+  return out;
+}
+function convertClassTools(toolsArr, className, warnings){
+  const out=[];
+  (toolsArr||[]).forEach(t=>{
+    if(typeof t==="string"){ out.push(t); return; }
+    if(t && typeof t==="object"){
+      if(t.choose && Array.isArray(t.choose.from)){
+        out.push(`un outil au choix parmi : ${t.choose.from.join(", ")}`);
+        warn(warnings,`[${className}] flattened a tool "choose" list into free text — reword to match house style.`);
+        return;
+      }
+      if(t.any){ out.push("un outil au choix"); warn(warnings,`[${className}] flattened a tool "any" entry into free text.`); return; }
+    }
+    warn(warnings,`[${className}] unrecognized tool proficiency entry ${JSON.stringify(t)} — skipped, add manually.`);
+  });
+  return out;
+}
+function convertClassSkills(skillsArr, className, warnings){
+  const entry=Array.isArray(skillsArr) ? skillsArr[0] : skillsArr;
+  if(!entry) return {pool:[],count:0};
+  if(entry.any) return {pool:ALL_SKILLS_FR.slice(), count:Number(entry.any)||0};
+  const choose=entry.choose||entry;
+  const from=choose.from||[];
+  const pool=from.map(s=>{
+    const key=String(s).trim().toLowerCase();
+    if(SKILL_EN_TO_FR[key]) return SKILL_EN_TO_FR[key];
+    if(ALL_SKILLS_FR.includes(s)) return s;
+    warn(warnings,`[${className}] unrecognized skill name "${s}" — copied through as-is.`);
+    return s;
+  });
+  return {pool, count:Number(choose.count)||1};
+}
+function convertClassStartingEquipment(se){
+  if(!se) return {goldAlternative:"", equipement:[]};
+  const goldAlternative = Array.isArray(se.goldAlternative) ? se.goldAlternative.join(" ") : (se.goldAlternative||"");
+  return {goldAlternative, equipement: se.default || se.equipement || []};
+}
+function convertClassTableGroups(groups, className, warnings){
+  return (groups||[]).map(g=>{
+    const colLabels = Array.isArray(g.colLabels)&&g.colLabels.length ? g.colLabels.slice() : ["Col. 1"];
+    const rows = normalizeTableRows(g.rows, colLabels.length);
+    if(Array.isArray(g.rows) && g.rows.length!==20) warn(warnings,`[${className}] table group "${g.title||"(untitled)"}" had ${g.rows.length} rows — padded/truncated to 20.`);
+    const out={colLabels, rows};
+    if(g.title) out.title=g.title;
+    if(g.before) out.before=true;
+    return out;
+  });
+}
+function convertClassMulticlass(mc){
+  if(!mc) return undefined;
+  const out={};
+  if(mc.requirements){
+    out.requirements={};
+    Object.entries(mc.requirements).forEach(([abv,val])=>{ out.requirements[ABILITY_ABV_LC_FR[abv.toLowerCase()]||abv]=val; });
+  }
+  const gained = mc.proficienciesGained || mc.proficiencies;
+  if(gained){
+    out.proficiencies={};
+    if(gained.armor) out.proficiencies.armor=convertClassArmor(gained.armor);
+    if(gained.weapons||gained.weapon) out.proficiencies.weapon=convertClassWeapon(gained.weapons||gained.weapon, mc.name||"multiclass", []);
+    if(gained.tools) out.proficiencies.tools=convertClassTools(gained.tools, mc.name||"multiclass", []);
+  }
+  return out;
+}
+function convertOneClass(cls, classFeatureIdx, subclassList, subclassFeatureAll, usedIds, warnings){
+  const name=cls.name||"Unnamed Class";
+  const source=cls.source||"";
+  let id=slug(name).toLowerCase();
+  if(usedIds.has(id)) id=slug(name+"-"+source).toLowerCase();
+  usedIds.add(id);
+
+  const prof=cls.startingProficiencies||{};
+  const info={
+    name, source, page: cls.page ?? null,
+    spellcastingAbility: cls.spellcastingAbility ? (ABILITY_FULL_FR[String(cls.spellcastingAbility).toLowerCase()] || cls.spellcastingAbility) : "",
+    hitDice: {amount:(cls.hd&&cls.hd.number)??1, faces:(cls.hd&&cls.hd.faces)??8},
+    proficiencies: {
+      armor: convertClassArmor(prof.armor),
+      weapon: convertClassWeapon(prof.weapons, name, warnings),
+      tools: convertClassTools(prof.tools, name, warnings),
+      skills: convertClassSkills(prof.skills, name, warnings),
+      saves: convertClassSaves(cls.proficiency, warnings),
+    },
+    startingEquipment: convertClassStartingEquipment(cls.startingEquipment),
+    tableGroup: convertClassTableGroups(cls.classTableGroups, name, warnings),
+  };
+  if(cls.spellcastingAbility && !ABILITY_FULL_FR[String(cls.spellcastingAbility).toLowerCase()]) warn(warnings,`Unrecognized spellcastingAbility "${cls.spellcastingAbility}" — copied through as-is.`);
+  const multiclass = convertClassMulticlass(cls.multiclassing);
+  if(multiclass) info.multiclass = multiclass;
+
+  const classFeatures=[];
+  (cls.classFeatures||[]).forEach(ref=>{
+    const refStr = typeof ref==="string" ? ref : (ref && ref.classFeature);
+    if(!refStr) return;
+    const full=resolveClassFeatureRef(refStr, classFeatureIdx);
+    if(!full){ warn(warnings,`Could not resolve classFeature ref "${refStr}" — skipped.`); return; }
+    classFeatures.push({name:full.name||"", source:full.source||source, page:full.page??null, className:name, classSource:source, level:full.level??1, entries:full.entries||[]});
+  });
+  if(!classFeatures.length) warn(warnings,`Ended up with 0 class features — check the pasted JSON includes a matching "classFeature" array.`);
+
+  const ownSubclasses=(subclassList||[]).filter(sc=>(sc.className||"").toLowerCase()===name.toLowerCase() && (sc.classSource||"").toLowerCase()===source.toLowerCase());
+  const subclasses=[]; const subclassFeatures=[];
+  ownSubclasses.forEach(sc=>{
+    const scShort=sc.shortName||sc.name||""; const scSource=sc.source||source;
+    const owned=(subclassFeatureAll||[]).filter(f=>(f.subclassShortName||"").toLowerCase()===scShort.toLowerCase() && (f.subclassSource||"").toLowerCase()===scSource.toLowerCase());
+    owned.forEach(f=>{
+      const entry={name:f.name||"", source:f.source||scSource, page:f.page??null, className:name, classSource:source, subclassShortName:scShort, subclassSource:scSource, level:f.level??3, entries:f.entries||[]};
+      if(f.header!==undefined) entry.header=f.header;
+      subclassFeatures.push(entry);
+    });
+    if(!owned.length) warn(warnings,`Subclass "${sc.name}" has 0 matching entries in "subclassFeature" — check source/shortName spelling.`);
+    subclasses.push({name:sc.name||"", shortName:scShort, source:scSource, page:sc.page??null,
+      subclassFeatures:(sc.subclassFeatures||[]).map(r=> typeof r==="string" ? r : ((r&&r.subclassFeature)||"")) });
+  });
+
+  warn(warnings,"TRANSLATION NEEDED: feature/subclass \"entries\" text is copied verbatim — translate by hand (skip this if the source was already French homebrew).");
+  return {id, info, subclasses, classFeatures, subclassFeatures};
+}
+function convertClassBundle(parsed){
+  const classList = parsed.class || parsed.classes || [];
+  const classFeatureAll = parsed.classFeature || [];
+  const subclassList = parsed.subclass || [];
+  const subclassFeatureAll = parsed.subclassFeature || [];
+  const classFeatureIdx = buildFeatureIndex(classFeatureAll);
+  const usedIds = new Set();
+  return classList.map(cls=>{
+    const warnings=[];
+    let converted;
+    try{ converted = convertOneClass(cls, classFeatureIdx, subclassList, subclassFeatureAll, usedIds, warnings); }
+    catch(e){ converted={id:slug(cls.name||"class").toLowerCase(), info:{name:cls.name||"(conversion failed)"}}; warnings.push("Conversion crashed on this class: "+e.message); }
+    return {raw:cls, converted, warnings, type:"class"};
+  });
+}
+
 const CONVERTERS = {
   spell: convertSpell, item: convertItem, feat: convertFeat, condition: convertCondition,
   rule: convertRule, background: convertBackground, monster: convertMonster, race: convertRace,
 };
 const TYPE_LABEL = {
   spell:"Spells", item:"Items", feat:"Feats", condition:"Conditions", rule:"Rules",
-  background:"Backgrounds", monster:"Bestiary", race:"Races",
+  background:"Backgrounds", monster:"Bestiary", race:"Races", class:"Classes",
 };
 const TYPE_FILE = {
   spell:"spells.json", item:"items.json", feat:"feats.json", condition:"conditions.json",
   rule:"rules.json", background:"backgrounds.json", monster:"bestiary.json", race:"races.json",
+  class:"classes.json",
 };
 
 /* ============================================================
@@ -558,7 +764,7 @@ function toast(msg){
   toastTimer=setTimeout(()=>el.classList.remove("show"),2400);
 }
 
-function itemDisplayName(item){ return item.name || item.id || "(untitled)"; }
+function itemDisplayName(item){ return item.name || (item.info && item.info.name) || item.id || "(untitled)"; }
 
 function renderResultsList(){
   const list=document.getElementById("resultsList");
@@ -658,6 +864,12 @@ document.getElementById("rawInput").addEventListener("input", ()=>{
   if(!raw){ banner.innerHTML=""; return; }
   try{
     const parsed=JSON.parse(raw);
+    if(parsed && typeof parsed==="object" && !Array.isArray(parsed) && Array.isArray(parsed.class)){
+      banner.innerHTML = `<div class="detect-banner">Detected: <b>Classes</b> (${parsed.class.length} class${parsed.class.length===1?"":"es"})</div>`;
+      document.getElementById("typeSelect").value = "auto";
+      state.detectedType = "class";
+      return;
+    }
     const arr=extractArray(parsed);
     const type=detectType(arr[0]);
     if(type){
@@ -681,14 +893,30 @@ document.getElementById("btnConvert").addEventListener("click", ()=>{
   try{ parsed = JSON.parse(raw); }
   catch(e){ alert("That's not valid JSON:\n"+e.message); return; }
 
+  let type = document.getElementById("typeSelect").value;
+  if(type === "auto"){
+    if(parsed && typeof parsed==="object" && !Array.isArray(parsed) && Array.isArray(parsed.class)) type = "class";
+    else type = detectType(extractArray(parsed)[0]);
+    if(!type){ alert("Couldn't auto-detect the resource type — please choose one from the dropdown."); return; }
+  }
+
+  if(type === "class"){
+    if(!parsed || typeof parsed!=="object" || Array.isArray(parsed) || !Array.isArray(parsed.class)){
+      alert("For classes, paste the whole bundle object — it needs a top-level \"class\" array (plus \"subclass\"/\"classFeature\"/\"subclassFeature\" siblings).");
+      return;
+    }
+    state.results = convertClassBundle(parsed);
+    if(!state.results.length){ toast("No classes found in that JSON"); return; }
+    state.selected = 0;
+    renderResultsList();
+    renderMain();
+    toast(`Converted ${state.results.length} class${state.results.length===1?"":"es"}`);
+    return;
+  }
+
   const arr = extractArray(parsed);
   if(!arr.length){ toast("No items found in that JSON"); return; }
 
-  let type = document.getElementById("typeSelect").value;
-  if(type === "auto"){
-    type = detectType(arr[0]);
-    if(!type){ alert("Couldn't auto-detect the resource type — please choose one from the dropdown."); return; }
-  }
   const converter = CONVERTERS[type];
   if(!converter){ alert("Unsupported type."); return; }
 

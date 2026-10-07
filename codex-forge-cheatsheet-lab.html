@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex Forge — Cheatsheet Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg:#15130f;
+    --panel:#1d1a14;
+    --panel-2:#241f17;
+    --panel-3:#2a251b;
+    --border:#3a3324;
+    --border-soft:#2c2719;
+    --text:#ece4d1;
+    --text-dim:#a99d84;
+    --text-faint:#786c56;
+    --brass:#c9a227;
+    --brass-bright:#e0bc4a;
+    --brass-dim:rgba(201,162,39,.14);
+    --teal:#5a9d92;
+    --teal-dim:rgba(90,157,146,.16);
+    --violet:#9b86c4;
+    --violet-dim:rgba(155,134,196,.14);
+    --danger:#b8543f;
+    --danger-dim:rgba(184,84,63,.14);
+    --display:'Cinzel',serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:13.5px;line-height:1.5;}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(201,162,39,.04), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(155,134,196,.05), transparent 45%);
+  }
+  ::selection{background:var(--brass-dim);color:var(--brass-bright);}
+  input,textarea,select,button{font-family:inherit;color:inherit;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-track{background:var(--panel);}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:5px;}
+  ::-webkit-scrollbar-thumb:hover{background:var(--brass);}
+
+  .app-shell{position:relative;z-index:1;display:grid;grid-template-columns:260px 1fr;height:100vh;}
+
+  /* ---------- Sidebar: class list ---------- */
+  .sidebar{background:var(--panel);border-right:1px solid var(--border-soft);display:flex;flex-direction:column;overflow:hidden;}
+  .brand{padding:20px 18px 14px;border-bottom:1px solid var(--border-soft);}
+  .brand .mark{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.04em;color:var(--brass-bright);display:flex;align-items:center;gap:8px;}
+  .brand .sub{margin-top:3px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);}
+
+  .actions-bar{padding:12px 16px;border-bottom:1px solid var(--border-soft);display:flex;gap:6px;flex-wrap:wrap;}
+  .btn{
+    appearance:none;border:1px solid var(--border);background:var(--panel-2);color:var(--text);
+    font-size:11.5px;font-weight:500;padding:6px 10px;border-radius:var(--radius);cursor:pointer;
+    display:inline-flex;align-items:center;gap:5px;transition:border-color .12s,color .12s,background .12s;
+    white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary{background:var(--brass-dim);border-color:var(--brass);color:var(--brass-bright);}
+  .btn.primary:hover{background:rgba(201,162,39,.24);}
+  .btn.violet{background:var(--violet-dim);border-color:var(--violet);color:#c9bce6;}
+  .btn.violet:hover{background:rgba(155,134,196,.24);}
+  .btn.danger:hover{border-color:var(--danger);color:#e07e6a;}
+  .btn.ghost{background:transparent;border-color:transparent;color:var(--text-dim);}
+  .btn.ghost:hover{background:var(--panel-2);color:var(--text);}
+  .btn.small{padding:4px 8px;font-size:10.5px;}
+  .btn.full{width:100%;justify-content:center;}
+  input[type="file"]{display:none;}
+
+  .class-list{flex:1;overflow-y:auto;padding:8px;}
+  .class-row{
+    display:flex;align-items:center;justify-content:space-between;gap:6px;
+    padding:10px 12px;border-radius:var(--radius);cursor:pointer;margin-bottom:3px;border:1px solid transparent;
+  }
+  .class-row:hover{background:var(--panel-2);}
+  .class-row.active{background:var(--teal-dim);border-color:var(--teal);}
+  .class-row .name{font-size:13px;font-weight:600;}
+  .class-row.active .name{color:#a9d8cf;}
+  .class-row .meta{font-family:var(--mono);font-size:10px;color:var(--text-faint);margin-top:2px;}
+  .class-row .del{opacity:0;background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:14px;padding:2px 4px;}
+  .class-row:hover .del{opacity:1;}
+  .class-row .del:hover{color:var(--danger);}
+  .empty-list{padding:26px 18px;text-align:center;color:var(--text-faint);font-size:12px;line-height:1.7;}
+
+  .sidebar-foot{padding:12px 16px;border-top:1px solid var(--border-soft);font-size:10.5px;color:var(--text-faint);line-height:1.6;}
+
+  /* ---------- Main ---------- */
+  .main{overflow-y:auto;}
+  .main-inner{max-width:980px;margin:0 auto;padding:28px 40px 100px;}
+
+  .no-selection{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-faint);text-align:center;padding:40px;}
+  .no-selection .glyph{font-size:34px;color:var(--border);font-family:var(--display);}
+  .no-selection h2{font-family:var(--display);color:var(--text-dim);font-weight:600;font-size:16px;margin:0;}
+  .no-selection p{font-size:12.5px;max-width:340px;margin:0;}
+
+  .class-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--border-soft);}
+  .class-head .eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:4px;}
+  .class-head h2{font-family:var(--display);font-size:24px;font-weight:600;margin:0;word-break:break-word;}
+  .class-head .actions{display:flex;gap:6px;flex:none;padding-top:2px;}
+
+  .section{margin-bottom:30px;}
+  .section-title{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:14px;letter-spacing:.03em;color:var(--text-dim);margin-bottom:12px;}
+  .section-title::after{content:"";flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);}
+  .section-title .tag{
+    font-family:var(--mono);font-size:10px;color:var(--text-faint);background:var(--panel-2);
+    border:1px solid var(--border-soft);border-radius:20px;padding:1px 8px;
+  }
+
+  .field-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;}
+  .field{display:flex;flex-direction:column;gap:5px;}
+  .field.wide{grid-column:1/-1;}
+  .field label{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);}
+  .field input[type="text"],.field input[type="number"],.field textarea,.field select{
+    background:var(--panel-2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);
+    padding:7px 9px;font-size:12.5px;width:100%;resize:vertical;
+  }
+  .field textarea{min-height:52px;line-height:1.5;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--brass);}
+
+  /* feature cards */
+  .feature-list{display:flex;flex-direction:column;gap:8px;}
+  .feature-card{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);overflow:hidden;}
+  .feature-card > summary{
+    list-style:none;cursor:pointer;padding:10px 14px;display:flex;align-items:center;gap:10px;
+    justify-content:space-between;
+  }
+  .feature-card > summary::-webkit-details-marker{display:none;}
+  .feature-card .fc-left{display:flex;align-items:center;gap:10px;min-width:0;}
+  .feature-card .lvl-badge{
+    font-family:var(--mono);font-size:10.5px;color:var(--brass);background:rgba(201,162,39,.12);
+    border:1px solid rgba(201,162,39,.3);border-radius:20px;padding:2px 8px;flex:none;
+  }
+  .feature-card .fc-name{font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .feature-card .fc-name:empty::before{content:"Untitled feature";color:var(--text-faint);font-weight:400;font-style:italic;}
+  .feature-card .fc-tools{display:flex;gap:3px;flex:none;}
+  .feature-card .fc-tools button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:3px 6px;border-radius:2px;}
+  .feature-card .fc-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
+  .feature-card .fc-tools button.del:hover{color:var(--danger);}
+  .feature-card .fc-body{padding:0 14px 14px;border-top:1px solid var(--border-soft);padding-top:12px;}
+
+  .entries-toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .entry-block{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;}
+  .entry-block .eb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .entry-block .eb-type{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);}
+  .entry-block .eb-tools{display:flex;gap:3px;}
+  .entry-block .eb-tools button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:12px;padding:2px 5px;border-radius:2px;}
+  .entry-block .eb-tools button:hover{color:var(--brass-bright);background:var(--panel-3);}
+  .entry-block .eb-tools button.del:hover{color:var(--danger);}
+  .entry-block textarea{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:7px 9px;font-size:12.5px;min-height:44px;line-height:1.5;}
+  .entry-block input[type="text"]{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:6px;}
+  .entry-block .list-line{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start;}
+  .entry-block .list-line textarea{min-height:34px;}
+  .entry-block .list-line button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;padding:4px;flex:none;}
+  .entry-block .list-line button:hover{color:var(--danger);}
+  .entry-block .raw-note{font-size:10.5px;color:var(--text-faint);margin-bottom:6px;font-style:italic;}
+  .entry-block textarea.raw-json-ta{font-family:var(--mono);color:#d9cf9c;background:var(--bg);}
+  .add-line-btn{font-size:11px;color:var(--teal);background:none;border:1px dashed var(--border);border-radius:var(--radius);padding:4px 8px;cursor:pointer;}
+  .add-line-btn:hover{border-color:var(--teal);}
+  .entries-empty{font-size:11.5px;color:var(--text-faint);font-style:italic;border:1px dashed var(--border-soft);border-radius:var(--radius);padding:14px;text-align:center;}
+
+  /* subclass cards */
+  .subclass-card{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);margin-bottom:14px;overflow:hidden;}
+  .subclass-card-head{padding:12px 14px;border-bottom:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--panel-3);}
+  .subclass-card-head .sc-title{font-family:var(--display);font-size:14px;color:var(--brass-bright);}
+  .subclass-card-head .sc-title:empty::before{content:"Unnamed subclass";color:var(--text-faint);font-style:italic;font-family:var(--body);}
+  .subclass-card-body{padding:14px;}
+
+  .empty-state-inline{font-size:12px;color:var(--text-faint);font-style:italic;padding:8px 0;}
+
+  details.raw-preview{border:1px solid var(--border-soft);border-radius:var(--radius);background:var(--panel-2);}
+  details.raw-preview summary{padding:10px 14px;cursor:pointer;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-dim);display:flex;align-items:center;justify-content:space-between;}
+  details.raw-preview summary:hover{color:var(--brass);}
+  .raw-preview-body{padding:0 14px 14px;}
+  .raw-preview-body textarea{width:100%;min-height:280px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:#d9cf9c;font-family:var(--mono);font-size:11.5px;line-height:1.55;padding:12px;}
+  .raw-preview-body .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:10px;flex-wrap:wrap;}
+  .raw-preview-body .err{color:#e07e6a;font-size:11px;font-family:var(--mono);}
+  .raw-preview-body .ok{color:var(--teal);font-size:11px;font-family:var(--mono);}
+  .raw-preview-body .hint{font-size:10.5px;color:var(--text-faint);}
+
+  .toast{
+    position:fixed;bottom:18px;right:18px;background:var(--panel-3);border:1px solid var(--brass);color:var(--brass-bright);
+    padding:10px 16px;border-radius:var(--radius);font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:100;
+    opacity:0;transform:translateY(6px);transition:opacity .18s,transform .18s;pointer-events:none;
+  }
+  .toast.show{opacity:1;transform:translateY(0);}
+
+  /* ---------- template picker row ---------- */
+  .tpl-picker{display:flex;gap:6px;align-items:center;margin-bottom:10px;flex-wrap:wrap;}
+  .tpl-picker select{background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:11.5px;max-width:220px;}
+  .tpl-picker .btn{white-space:nowrap;}
+
+  /* ---------- templates modal ---------- */
+  .tpl-modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:200;
+    align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
+  }
+  .tpl-modal-overlay.show{display:flex;}
+  .tpl-modal{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:760px;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .tpl-modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border-soft);}
+  .tpl-modal-head h3{margin:0;font-family:var(--display);font-size:15px;color:var(--brass-bright);font-weight:600;}
+  .tpl-modal-head .sub{font-size:11px;color:var(--text-faint);margin-top:3px;}
+  .tpl-modal-close{background:none;border:none;color:var(--text-faint);font-size:20px;cursor:pointer;line-height:1;padding:2px 6px;}
+  .tpl-modal-close:hover{color:var(--danger);}
+  .tpl-modal-body{padding:16px 20px 20px;max-height:72vh;overflow-y:auto;}
+  .tpl-modal-actions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+  .tpl-empty{padding:20px;text-align:center;color:var(--text-faint);font-size:12px;}
+  .field.scope select{width:100%;}
+
+  /* ---------- in-page dialogs (replaces native alert/confirm/prompt,
+     which some embedded previews — e.g. VS Code's HTML preview — block) ---------- */
+  .ui-dialog-overlay{display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:400;align-items:center;justify-content:center;padding:20px;}
+  .ui-dialog-overlay.show{display:flex;}
+  .ui-dialog{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .ui-dialog-msg{font-size:13px;color:var(--text);margin-bottom:14px;line-height:1.5;white-space:pre-wrap;}
+  .ui-dialog input{width:100%;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:7px 9px;font-size:12.5px;margin-bottom:14px;box-sizing:border-box;}
+  .ui-dialog-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+
+  /* ---------- JSON edit/add modal ---------- */
+  .json-modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:410;align-items:center;justify-content:center;padding:30px 20px;}
+  .json-modal-overlay.show{display:flex;}
+  .json-modal{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:640px;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .json-modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border-soft);flex:none;}
+  .json-modal-title{font-family:var(--display);font-size:14px;color:var(--brass-bright);font-weight:600;}
+  .json-modal-hint{font-size:11px;color:var(--text-faint);padding:10px 18px 0;line-height:1.5;flex:none;}
+  .json-modal-overlay textarea#jsonModalTextarea{flex:1;margin:10px 18px;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:10px 12px;font-family:var(--mono);font-size:12px;line-height:1.5;resize:vertical;min-height:220px;}
+  .json-modal-status{padding:0 18px;font-size:11.5px;min-height:16px;flex:none;}
+  .json-modal-status.err{color:var(--danger);}
+  .json-modal-status.ok{color:var(--brass-bright);}
+  .json-modal-actions{display:flex;gap:8px;justify-content:flex-end;padding:12px 18px 16px;flex:none;}
+
+  /* ---------- proficiencies UI ---------- */
+  .prof-card{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:14px 16px 16px;margin-bottom:14px;}
+  .prof-card:last-child{margin-bottom:0;}
+  .prof-card > .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brass-bright);margin-bottom:12px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--border-soft);}
+  .prof-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .chk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:7px 10px;}
+  .chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-dim);cursor:pointer;user-select:none;line-height:1.3;}
+  .chk input{accent-color:var(--brass-bright);width:14px;height:14px;cursor:pointer;flex-shrink:0;}
+  .chk:hover{color:var(--text);}
+  .prof-weapon-cat{margin-bottom:12px;}
+  .prof-weapon-cat:last-child{margin-bottom:0;}
+  .prof-weapon-cat > .chk{margin-bottom:9px;font-size:12.5px;color:var(--text);font-weight:600;}
+  .prof-subcard{background:var(--panel-2);border:1px solid var(--border-soft);border-radius:calc(var(--radius) - 2px);padding:11px 13px;}
+  .prof-sub-label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);margin-bottom:8px;font-weight:600;}
+  .prof-sub-label:not(:first-child){margin-top:12px;}
+  .prof-select{background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;min-width:170px;}
+  .prof-field{display:flex;flex-direction:column;gap:5px;}
+  .prof-field label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;}
+  .prof-other-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+  .prof-chip{display:flex;align-items:center;gap:6px;background:var(--panel-3);border:1px solid var(--border);border-radius:20px;padding:3px 6px 3px 10px;font-size:11.5px;color:var(--text-dim);}
+  .prof-chip button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:13px;line-height:1;padding:2px;}
+  .prof-chip button:hover{color:var(--danger);}
+  .prof-other-add{display:flex;gap:6px;margin-top:9px;}
+  .prof-other-add input{background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;flex:1;min-width:120px;}
+
+  /* ---------- link-snippet button + popover ---------- */
+  .snip-btn{background:none;border:none;color:var(--teal);cursor:pointer;font-size:13px;padding:4px;flex:none;}
+  .snip-btn:hover{color:var(--brass-bright);}
+  .text-with-snip{display:flex;gap:6px;align-items:flex-start;}
+  .text-with-snip textarea{flex:1;}
+  .link-popover{
+    display:none;position:fixed;z-index:300;background:var(--panel);border:1px solid var(--border);
+    border-radius:var(--radius);box-shadow:0 12px 34px rgba(0,0,0,.5);padding:12px;width:260px;
+  }
+  .link-popover.show{display:block;}
+  .link-popover h4{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;}
+  .link-popover select,.link-popover input{width:100%;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:7px;}
+  .link-popover .row{display:flex;gap:6px;justify-content:flex-end;}
+  .link-popover .hint{font-size:10px;color:var(--text-faint);margin-bottom:7px;line-height:1.4;}
+
+  /* ---------- level-progression tables (tableGroup) ---------- */
+  .tg-card{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;}
+  .tg-card > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--panel-2);gap:8px;}
+  .tg-card > summary::-webkit-details-marker{display:none;}
+  .tg-card-title{font-size:12.5px;color:var(--text);font-weight:600;}
+  .tg-card-title .muted{color:var(--text-faint);font-weight:400;font-style:italic;}
+  .tg-card-body{padding:12px;}
+  .tg-title-input{width:100%;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:6px 8px;font-size:12px;margin-bottom:10px;}
+  .tg-title-input::placeholder{color:var(--text-faint);}
+  .tg-cols-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px;}
+  .tg-col-chip{display:flex;align-items:center;gap:4px;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:3px;padding:2px 2px 2px 6px;}
+  .tg-col-chip input{background:none;border:none;color:var(--text);font-size:11.5px;width:90px;padding:3px 0;}
+  .tg-col-chip button{background:none;border:none;color:var(--text-faint);cursor:pointer;font-size:12px;padding:2px 5px;}
+  .tg-col-chip button:hover{color:var(--danger);}
+  .tg-grid-wrap{max-height:420px;overflow:auto;border:1px solid var(--border-soft);border-radius:var(--radius);}
+  table.tg-table{border-collapse:collapse;width:100%;font-size:11.5px;}
+  table.tg-table th,table.tg-table td{border:1px solid var(--border-soft);padding:0;text-align:center;}
+  table.tg-table thead th{position:sticky;top:0;background:var(--panel-3);color:var(--text-dim);font-weight:600;padding:6px 8px;z-index:1;white-space:nowrap;}
+  table.tg-table td.tg-lvl{background:var(--panel-2);color:var(--text-faint);font-family:var(--mono);padding:0 8px;white-space:nowrap;}
+  table.tg-table td input{width:100%;box-sizing:border-box;background:transparent;border:none;color:var(--text);text-align:center;font-size:11.5px;padding:6px 4px;font-family:inherit;}
+  table.tg-table td input:focus{background:var(--brass-dim);outline:none;}
+  table.tg-table tr:nth-child(even) td.tg-lvl{background:var(--panel);}
+
+  /* ---------- cheatsheet-lab specific ---------- */
+  .swatch{display:inline-block;width:16px;height:16px;border-radius:3px;border:1px solid var(--border);vertical-align:middle;margin-right:6px;}
+  .icon-preview{width:28px;height:28px;background:var(--panel-3);border:1px solid var(--border-soft);border-radius:3px;background-size:20px 20px;background-repeat:no-repeat;background-position:center;flex:none;}
+  .entry-row-head{display:flex;align-items:center;gap:8px;}
+  .group-card{background:var(--panel);border:1px solid var(--border-soft);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;}
+  .group-card > .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--brass-bright);margin-bottom:10px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--border-soft);display:flex;justify-content:space-between;align-items:center;}
+  textarea.intro-input{width:100%;min-height:44px;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);color:var(--text);padding:8px 10px;font-size:12.5px;margin-bottom:12px;resize:vertical;}
+  .bullets-list{display:flex;flex-direction:column;gap:6px;margin-top:6px;}
+  .bullet-row{display:flex;gap:6px;align-items:flex-start;}
+  .bullet-row textarea{flex:1;min-height:38px;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:3px;color:var(--text);padding:6px 8px;font-size:12px;resize:vertical;}
+  .empty-hint{padding:18px;text-align:center;color:var(--text-faint);font-size:12px;border:1px dashed var(--border-soft);border-radius:var(--radius);}
+
+  /* ---------- drag & drop reordering ---------- */
+  .drag-handle{cursor:grab;color:var(--text-faint);flex:none;padding:4px 6px;font-size:13px;user-select:none;touch-action:none;line-height:1;}
+  .drag-handle:hover{color:var(--brass-bright);}
+  .drag-handle:active{cursor:grabbing;}
+  .dragging{opacity:.35;}
+  .drag-over-top{box-shadow:inset 0 2px 0 var(--brass-bright);}
+  .drag-over-bottom{box-shadow:inset 0 -2px 0 var(--brass-bright);}
+
+  /* ---------- icon picker ---------- */
+  .icon-picker-overlay{display:none;position:fixed;inset:0;background:rgba(10,9,6,.65);z-index:420;align-items:center;justify-content:center;padding:30px 20px;}
+  .icon-picker-overlay.show{display:flex;}
+  .icon-picker-modal{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:760px;max-height:82vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+  .icon-picker-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border-soft);flex:none;gap:10px;}
+  .icon-picker-head input{flex:1;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:8px 10px;font-size:13px;}
+  .icon-picker-count{font-size:10.5px;color:var(--text-faint);padding:10px 18px 0;flex:none;}
+  .icon-picker-grid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px;padding:12px 18px 18px;align-content:start;}
+  .icon-picker-cell{display:flex;flex-direction:column;align-items:center;gap:5px;background:var(--panel-2);border:1px solid var(--border-soft);border-radius:var(--radius);padding:8px 4px 6px;cursor:pointer;text-align:center;}
+  .icon-picker-cell:hover{border-color:var(--brass-bright);background:var(--panel-3);}
+  .icon-picker-cell.selected{border-color:var(--brass-bright);box-shadow:0 0 0 1px var(--brass-bright);}
+  .icon-picker-cell img{width:32px;height:32px;object-fit:contain;background:var(--panel-3);border-radius:3px;}
+  .icon-picker-cell .icon-name{font-size:9.5px;color:var(--text-faint);line-height:1.25;word-break:break-word;max-width:100%;}
+  .icon-picker-empty{grid-column:1/-1;text-align:center;color:var(--text-faint);font-size:12px;padding:30px;}
+  .icon-field-row{display:flex;align-items:center;gap:8px;}
+  .icon-field-row input[type="text"]{flex:1;}
+  .icon-pick-btn{width:36px;height:36px;flex:none;background:var(--panel-2);border:1px solid var(--border);border-radius:3px;background-size:22px 22px;background-repeat:no-repeat;background-position:center;cursor:pointer;}
+  .icon-pick-btn:hover{border-color:var(--brass-bright);}
+
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <div class="sidebar">
+    <div class="sidebar-head" style="padding:16px 16px 12px;border-bottom:1px solid var(--border-soft);">
+      <div style="font-family:var(--display);font-size:16px;color:var(--brass-bright);font-weight:600;">&#9881; Cheatsheet Lab</div>
+      <div style="font-size:10.5px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;">Segments &amp; entries</div>
+    </div>
+    <div class="actions-bar">
+      <button class="btn small primary" id="btnNewSegment">+ New Segment</button>
+      <button class="btn small" id="btnImport">Import cheatsheet.json</button>
+      <button class="btn small" id="btnExportAll">Export all</button>
+    </div>
+    <div class="class-list" id="segmentList"></div>
+    <div style="padding:10px 16px;border-top:1px solid var(--border-soft);font-size:10.5px;color:var(--text-faint);line-height:1.5;">
+      Saved to this browser automatically.<br>Export writes a ready-to-use cheatsheet.json.
+    </div>
+    <input type="file" id="fileInput" accept="application/json" style="display:none;">
+  </div>
+  <div class="main" id="main"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="ui-dialog-overlay" id="uiDialogOverlay">
+  <div class="ui-dialog">
+    <div class="ui-dialog-msg" id="uiDialogMsg"></div>
+    <input type="text" id="uiDialogInput" style="display:none;">
+    <div class="ui-dialog-actions" id="uiDialogActions"></div>
+  </div>
+</div>
+
+<div class="json-modal-overlay" id="jsonModalOverlay">
+  <div class="json-modal">
+    <div class="json-modal-head">
+      <div class="json-modal-title" id="jsonModalTitle">Edit as JSON</div>
+      <button class="tpl-modal-close" id="jsonModalClose">&times;</button>
+    </div>
+    <div class="json-modal-hint" id="jsonModalHint"></div>
+    <textarea id="jsonModalTextarea" spellcheck="false"></textarea>
+    <div class="json-modal-status" id="jsonModalStatus"></div>
+    <div class="json-modal-actions">
+      <button class="btn small" id="jsonModalCancel">Cancel</button>
+      <button class="btn small primary" id="jsonModalApply">Apply</button>
+    </div>
+  </div>
+</div>
+
+<div class="icon-picker-overlay" id="iconPickerOverlay">
+  <div class="icon-picker-modal">
+    <div class="icon-picker-head">
+      <input type="text" id="iconPickerSearch" placeholder="Search icons… (e.g. sword, run, fire, shield)">
+      <button class="tpl-modal-close" id="iconPickerClose">&times;</button>
+    </div>
+    <div class="icon-picker-count" id="iconPickerCount"></div>
+    <div class="icon-picker-grid" id="iconPickerGrid"></div>
+  </div>
+</div>
+
+<datalist id="iconNames"></datalist>
+
+<script>
+const ICON_NAMES = ["ace","acid","acid-blob","acid-tube","acorn","aerial-signal","aerosol","afterburn","alien-skull","alien-stare","all-for-one","alligator-clip","ammo-box","ammonite","ammonite-fossil","amphora","anatomy","anchor","andromeda-chain","angel-outfit","angel-wings","angler-fish","angular-spider","animal-hide","animal-skull","ankh","anthem","anvil","anvil-impact","apple-maggot","apple-seeds","aquarius","archery-target","architect-mask","arcing-bolt","arena","aries","armadillo-tail","armoured-shell","arrow-cluster","arrow-flights","arrowed","arrowhead","arrows-shield","arson","artificial-hive","at-sea","atomic-slashes","aubergine","aura","auto-repair","autogun","awareness","axe-in-stump","axe-swing","back-forth","back-pain","backstab","backup","balloons","bandage-roll","bandaged","barbed-arrow","barbed-spear","barbed-wire","barbute","barefoot","bat-blade","bat-wing","battered-axe","batteries","battery-0","battery-100","battery-25","battery-50","battery-75","battery-minus","battery-pack","battery-pack-alt","battery-plus","battle-axe","battle-gear","batwing-emblem","beam-wake","beams-aura","beanstalk","beard","beast-eye","bee","beech","beer-stein","beetle-shell","behold","belt-buckles","bestial-fangs","beveled-star","big-egg","big-wave","biohazard","bird-claw","bird-limb","bird-mask","bird-twitter","black-bar","black-book","black-cat","black-flag","black-hole-bolas","blackball","blackcurrant","blade-bite","blade-fall","blast","blaster","bleeding-eye","bleeding-heart","bloody-stash","blunderbuss","boar-tusks","boiling-bubbles","bolas","bolt-shield","bolter-gun","bombing-run","bone-gnawer","bone-knife","book-aura","book-cover","book-storm","bookmark","bookmarklet","boomerang","boot-prints","boot-stomp","boots","bordered-shield","bottle-vapors","bottled-bolt","bottom-right-3d-arrow","bowie-knife","bowl-spiral","bowling-pin","bowling-propulsion","bowman","boxing-glove","boxing-glove-surprise","brain","brain-freeze","brain-stem","brainstorm","branch-arrow","brandy-bottle","brass-eye","breastplate","brick-pile","bridge","broadhead-arrow","broadsword","broken-bone","broken-bottle","broken-heart","broken-shield","broken-skull","broken-tablet","brutal-helm","bubble-field","bubbling-flask","bud","bugle-call","bulb","bull","bull-horns","bullets","burn","burning-book","burning-dot","burning-embers","burning-eye","burning-meteor","burning-passion","burning-round-shot","burning-tree","burst-blob","butterfly","butterfly-warning","caged-ball","cake-slice","caldera","campfire","cancel","cancer","candle-flame","candle-holder","candle-light","candle-skull","candlebright","cannister","cannon","cannon-ball","cannon-shot","capitol","capricorn","cargo-crane","carillon","carrion","carrot","cartwheel","cash","castle","cauldron","cctv-camera","centipede","chain-lightning","chain-mail","chained-heart","chaingun","chalice-drops","charm","checkbox-tree","checked-shield","cheerful","cheese-wedge","chemical-arrow","chemical-bolt","chemical-drop","chemical-tank","chicken-leg","circuitry","circular-saw","circular-sawblade","claw","claw-hammer","cloak-dagger","clockwork","clout","clover","clover-spiked","cluster-bomb","cobweb","coffee-mug","coffin","cog","cog-lock","cogsplosion","coiling-curl","cold-heart","coma","comb","compass","concentration-orb","condor-emblem","condylura-skull","conversation","cool-spices","corked-tube","cowled","crab","crab-claw","cracked-ball-dunk","cracked-disc","cracked-glass","cracked-helm","cracked-mask","cracked-saber","cracked-shield","crags","crawl","crenulated-shield","crescent-blade","crested-helmet","croc-jaws","croc-sword","crossbow","crossed-air-flows","crossed-axes","crossed-bones","crossed-chains","crossed-claws","crossed-pistols","crossed-sabres","crossed-slashes","crossed-swords","crow-dive","crown","crown-coin","crown-of-thorns","crowned-explosion","crowned-heart","crowned-skull","crush","crystal-ball","crystal-bars","crystal-cluster","crystal-eye","crystal-growth","crystal-shine","crystal-wand","crystalize","cubeforce","cubes","cupidon-arrow","curled-leaf","curled-tentacle","curling-vines","curly-wing","curvy-knife","cut-diamond","cut-palm","cycle","cyclops","daggers","daisy","dark-squad","dead-eye","dead-wood","death-note","death-skull","death-zone","deathcab","decapitation","defibrilate","demolish","dervish-swords","desert-skull","desk-lamp","despair","diablo-skull","diamond-hard","dice-six-faces-five","dice-six-faces-four","dice-six-faces-one","dice-six-faces-six","dice-six-faces-three","dice-six-faces-two","dig-dug","dinosaur-bones","dinosaur-egg","dinosaur-rex","disintegrate","distraction","divergence","divert","diving-dagger","dna1","dna2","doctor-face","dodge","dodging","domino-mask","double-dragon","double-quaver","double-shot","doubled","dove","dozen","dragon-balls","dragon-breath","dragon-head","dragon-spiral","dragonfly","drama-masks","drill","drink-me","dripping-blade","dripping-goo","dripping-honey","dripping-knife","dripping-stone","dripping-sword","drop","droplet-splash","droplets","drowning","duality","duel","eagle-emblem","earth-crack","earth-spit","eclipse","edge-crack","edged-shield","egg-clutch","egg-pod","egyptian-pyramids","elderberry","electric","electric-whip","elf-ear","ember-shot","embrassed-energy","embryo","emerald","empty-chessboard","empty-hourglass","energise","energy-arrow","energy-shield","energy-sword","engagement-ring","ent-mouth","envelope","erlenmeyer","eruption","eskimo","evil-book","evil-fork","evil-moon","evil-tree","evil-wings","expander","explosive-materials","extra-lucid","eye-shield","eyeball","eyedropper","eyestalk","fairy","fairy-wand","fall-down","falling","falling-eye","falling-leaf","falling-ovoid","fanged-skull","feather","feathered-wing","fedora","female","fez","field","fire","fire-ace","fire-axe","fire-bomb","fire-bottle","fire-bowl","fire-breath","fire-punch","fire-ring","fire-shield","fire-wave","fireball","fireflake","firework-rocket","fish-corpse","fishbone","fishing-hook","fishing-net","fist","fizzing-flask","flake","flame","flame-spin","flame-tunnel","flamer","flaming-arrow","flaming-claw","flaming-trident","flash-grenade","flat-hammer","fleshy-mass","flexible-star","floating-crystal","flower-pot","flowers","fluffy-cloud","fluffy-swirl","fluffy-wing","flying-dagger","flying-flag","foam","focused-lightning","folded-paper","food-chain","foot-trip","footprint","forward-field","fossil","fountain","fountain-pen","fox-head","fragrance","frankenstein-creature","freedom-dove","frog","front-teeth","frontal-lobe","frostfire","frozen-arrow","frozen-block","frozen-orb","fruiting","fulguro-punch","galleon","gamepad-cross","gas-mask","gavel","gaze","gear-hammer","gears","gecko","gem-chain","gem-necklace","gem-pendant","gemini","gems","ghost","gibbet","gift-of-knowledge","gift-trap","glass-heart","glass-shot","globe","gloop","glowing-hands","gluttonous-smile","gluttony","gold-bar","gold-scarab","goo-explosion","goo-skull","goo-spurt","gooey-daemon","gooey-eyed-sun","gooey-impact","gooey-sword","grab","grapes","grasping-claws","grass","grease-trap","grenade","grim-reaper","groundbreaker","guarded-tower","guillotine","guitar","gunshot","halberd","halberd-shuriken","half-heart","hammer-drop","hammer-nails","hand","hand-of-god","hand-saw","handcuffs","hanging-spider","harpoon-chain","harpoon-trident","harpy","hatchets","haunting","hazard-sign","head-shot","headshot","health-decrease","health-increase","health-normal","heart-bottle","heart-drop","heart-inside","heart-organ","heart-tower","heartburn","heat-haze","heavy-arrow","heavy-helm","heavy-rain","helmet","help","hidden","high-grass","high-shot","hive","hole-ladder","holy-grail","holy-symbol","honeycomb","honeypot","hood","hoof","horn-internal","horned-helm","horned-skull","horse-head","horseshoe","hospital-cross","hot-spices","hot-surface","hound","hourglass","human-ear","hunting-horn","hydra","hydra-shot","hypersonic-bolt","hypodermic-test","ice-bolt","ice-bomb","ice-cube","ice-shield","ice-spear","icebergs","ifrit","imbricated-arrows","imp","imp-laugh","impact-point","implosion","imprisoned","incense","incisors","infested-mass","ink-swirl","inner-self","insect-jaws","interdiction","internal-injury","internal-organ","interstellar-path","invisible","invisible-face","iron-mask","james-bond-aperture","jawbone","jellyfish","jet-pack","jetpack","jeweled-chalice","jigsaw-box","jigsaw-piece","journey","juggler","justice-star","kaleidoscope-pearls","kevlar","key","kindle","king","kitchen-knives","knapsack","knife-fork","knife-thrust","lamellar","lamprey-mouth","land-mine","lantern","lantern-flame","laser-blast","laser-gun","laser-sparks","laser-warning","laserburn","lasso","laurel-crown","laurels","lava","law-star","layered-armor","leaf-skeleton","leaf-swirl","leaky-skull","leather-boot","leather-vest","leeching-worm","leo","letter-bomb","level-four","level-four-advanced","level-three","level-three-advanced","level-two","level-two-advanced","lever","libra","life-in-the-balance","life-support","life-tap","lift","light-bulb","lightning-arc","lightning-bow","lightning-branches","lightning-frequency","lightning-helix","lightning-shield","lightning-shout","lightning-storm","lightning-tear","linked-rings","lion","lips","lit-candelabra","lizard-tongue","lizardman","lob-arrow","locked-chest","locked-fortress","lotus","lotus-flower","love-howl","love-song","lucifer-cannon","lyre","mace-head","machete","mad-scientist","maggot","magic-gate","magic-lamp","magic-palm","magic-portal","magic-shield","magic-swirl","magnet","magnet-blast","magnifying-glass","mail-shirt","mailed-fist","male","manacles","mantrap","maple-leaf","marrow-drain","martini","masked-spider","mass-driver","match-head","materials-science","maze","meat","meat-cleaver","meat-hook","mechanical-arm","medal","medal-skull","medical-pack","medical-pack-alt","meditation","mesh-ball","metal-bar","metal-disc","metal-hand","meteor-impact","microchip","microscope-lens","mighty-boosh","mine-wagon","mineral-heart","minigun","mining","minions","minotaur","miracle-medecine","mirror-mirror","missile-mech","missile-pod","missile-swarm","mite","mite-alt","mixed-swords","moebius-star","moebius-triangle","molecule","molotov","monkey","moon","morbid-humour","mountain-cave","mountains","mountaintop","mouse","mouth-watering","movement-sensor","mucous-pillar","muscle-fat","muscle-up","mushroom","mushroom-cloud","mushroom-gills","nailed-foot","nailed-head","nails","needle-drill","needle-jaws","night-sky","ninja-mask","nodular","nothing-to-say","nuclear","oak","ocarina","octopus","omega","on-target","one-eyed","open-book","open-wound","ophiuchus","oppression","orb-direction","orb-wand","orbital","ouroboros","over-infinity","overdose","overdrive","overhead","overkill","overmind","owl","padlock","palm","palm-tree","paper","paper-bomb","paper-lantern","papers","parachute","paranoia","parmecia","parrot-head","paw","paw-front","paw-heart","pawn","pawprint","perfume-bottle","perspective-dice-six-faces-five","perspective-dice-six-faces-four","perspective-dice-six-faces-one","perspective-dice-six-faces-random","perspective-dice-six-faces-six","perspective-dice-six-faces-three","perspective-dice-six-faces-two","pie-slice","pierced-body","pierced-heart","pill","pill-drop","pincers","pine-tree","ping-pong-bat","pirate-grave","pirate-skull","pisces","pistol-gun","pizza-cutter","plain-dagger","planks","plasma-bolt","plastron","pocket-bow","podium","pointing","pointy-hat","poison","poison-bottle","poison-cloud","poison-gas","poker-hand","pollen-dust","portculis","potion-ball","pounce","pouring-chalice","powder","prayer","pretty-fangs","profit","psychic-waves","pulse","pummeled","pumpkin-lantern","pumpkin-mask","punch","puppet","pyromaniac","quake-stomp","queen-crown","quick-slash","quicksand","quill","quill-ink","rabbit","radar-dish","radar-sweep","radial-balance","radioactive","ragged-wound","rainbow-star","raining","rally-the-troops","ram","rapidshare-arrow","raven","ray-gun","razor-blade","reactor","reaper-scythe","recycle","regeneration","relic-blade","reticule","revolt","ribbon","ribcage","rifle","ringed-planet","ringing-bell","riot-shield","roast-chicken","robe","robot-golem","rock","rocket","rocket-flight","rogue","rolling-bomb","rose","round-bottom-flask","round-shield","rss","run","rune-stone","rune-sword","saber-slash","saber-tooth","sacrificial-dagger","sad-crab","sagittarius","salamander","salt-shaker","sands-of-time","saphir","sattelite","saw-claw","scale-mail","scales","scallop","scalpel","scalpel-strike","scarab-beetle","scarecrow","scissors","scorpio","scorpion","scorpion-tail","screaming","screwdriver","scroll-unfurled","scythe","sea-dragon","sea-serpent","seated-mouse","select","semi-closed-eye","sentry-gun","serrated-slash","sewing-needle","shard-sword","shark-jaws","sharp-crown","sharp-smile","shatter","shattered-glass","shattered-sword","sheikah-eye","shield","shield-echoes","shield-reflect","shieldcomb","shining-claw","shining-heart","shining-sword","shiny-apple","shiny-iris","shiny-purse","shotgun","shoulder-scales","shouting","shuriken","sickle","sideswipe","silence","sing","six-eyes","skeleton-inside","skeleton-key","skid-mark","skull-bolt","skull-crack","skull-crossed-bones","skull-in-jar","skull-mask","skull-ring","skull-shield","skull-signet","slap","slashed-shield","slavery-whip","sleepy","sliced-bread","slow-blob","sly","small-fire","smitten","smoking-finger","snail","snake","snake-bite","snake-totem","snatch","snorkel","snow-bottle","snowflake-1","snowflake-2","snowing","snowman","soccer-ball","sonic-boom","sonic-screech","sonic-shout","space-suit","spade","spade-skull","spanner","sparkling-sabre","sparky-bomb","sparrow","spartan","spatter","spawn-node","spears","spectacle-lenses","spectacles","spectre","spider-alt","spider-face","spikeball","spiked-armor","spiked-collar","spiked-fence","spiked-mace","spiked-shell","spiked-snail","spiked-tentacle","spikes","spikes-full","spikes-half","spikes-init","spill","spinal-coil","spine-arrow","spinning-blades","spinning-sword","spiral-arrow","spiral-bloom","spiral-bottle","spiral-shell","spiral-thrust","splash","split-body","split-cross","splurt","spoon","spoted-flower","spotted-mushroom","spotted-wound","spoutnik","spray","sprint","sprout","sprout-disc","spyglass","square-bottle","squid","squid-head","stag-head","stalagtite","star-prominences","star-pupil","star-sattelites","star-swirl","staryu","static","steel-claws","steeltoe-boots","steelwing-emblem","stick-splitting","sticking-plaster","stigmata","stiletto","stitched-wound","stomp","stone-axe","stone-block","stone-crafting","stone-pile","stone-spear","stone-sphere","stone-tablet","stone-throne","stone-tower","stopwatch","strafe","striking-balls","striking-diamonds","strong","suckered-tentacle","suicide","suits","sun","sunbeams","sundial","sunken-eye","sunrise","super-mushroom","supersonic-arrow","supersonic-bullet","surprised","surprised-skull","suspicious","swallow","swamp","swan","swap-bag","sword-array","sword-break","sword-clash","sword-hilt","sword-in-stone","sword-slice","sword-smithing","sword-spade","sword-spin","syringe","tank","target-arrows","target-dummy","target-laser","target-shot","targeted","targeting","tattered-banner","taurus","teapot","tear-tracks","techno-heart","telefrag","telepathy","teleport","templar-heart","temptation","tennis-ball","tentacle-strike","tentacurl","terror","tesla","tesla-coil","tesla-turret","test-tubes","thermometer-scale","third-eye","thor-fist","thorn-helix","thorned-arrow","thorny-vine","three-keys","three-leaves","thrown-charcoal","thrown-daggers","thrown-knife","thrown-spear","thrust","thunder-skull","thunder-struck","thunderball","tic-tac-toe","tick","tied-scroll","time-bomb","time-trap","tinker","toad-teeth","tombstone","tooth","top-hat","top-paw","torch","tornado","totem-head","tower-fall","trade","trample","transfuse","transportation-rings","tread","treasure-map","tree-branch","trefoil-lily","trefoil-shuriken","tribal-mask","trident","trigger-hurt","trilobite","triorb","triple-claws","triple-corn","triple-lock","triple-needle","triple-skulls","tripwire","tron-arrow","trophy","trousers","tune-pitch","turd","turret","turtle","turtle-shell","twirly-flower","twister","two-feathers","two-shadows","tyre","ubisoft-sun","udder","ultrasound","umbrella","uncertainty","underhand","unfriendly-fire","unlit-bomb","unlit-candelabra","unplugged","unstable-projectile","usable","valley","vanilla-flower","vial","vile-fluid","vine-flower","vine-leaf","vine-whip","vintage-robot","viola","virgo","virus","visored-helm","volcano","vomiting","voodoo-doll","vortex","vulture","walking-boot","wasp-sting","water-bolt","water-drop","water-splash","wave-crest","wave-strike","wavy-chains","wavy-itinerary","wax-seal","web-spit","weight-crush","wheat","whip","whiplash","whirlwind","white-book","white-tower","wildfires","william-tell","windmill","wine-glass","wing-cloak","winged-arrow","winged-emblem","winged-shield","winged-sword","wingfoot","witch-flight","wizard-staff","wolf-head","wolf-howl","wolf-trap","wolverine-claws","wood-axe","wood-pile","wooden-door","wooden-sign","world","worm-mouth","worried-eyes","wrapped-heart","wrapped-sweet","wrecking-ball","wrench","wyvern","zebra-shield","zeus-sword","zigzag-leaf","zigzag-tune"];
+const ICON_BASE = "https://raw.githubusercontent.com/Brookimakii/TTRPG-wiki/master/src/5etoolLayout/img/quickref/";
+(function(){
+  const dl = document.getElementById("iconNames");
+  ICON_NAMES.forEach(n => { const o=document.createElement("option"); o.value=n; dl.appendChild(o); });
+})();
+
+/* ============================================================
+   ICON PICKER — a visual grid of every icon (thumbnail + name),
+   searchable, so you don't have to guess a name from text alone.
+   ============================================================ */
+let iconPickerOnSelect = null;
+function escapeHtml_iconpicker(s){
+  return String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function renderIconPickerGrid(filter, currentValue){
+  const grid = document.getElementById("iconPickerGrid");
+  const q = (filter||"").trim().toLowerCase();
+  const filtered = q ? ICON_NAMES.filter(n=> n.includes(q)) : ICON_NAMES;
+  document.getElementById("iconPickerCount").textContent =
+    q ? `${filtered.length} of ${ICON_NAMES.length} icons match "${filter}"` : `${ICON_NAMES.length} icons — start typing to narrow it down`;
+  grid.innerHTML = "";
+  if(!filtered.length){
+    grid.innerHTML = `<div class="icon-picker-empty">No icons match "${escapeHtml_iconpicker(filter)}"</div>`;
+    return;
+  }
+  filtered.forEach(name=>{
+    const cell = document.createElement("div");
+    cell.className = "icon-picker-cell" + (name===currentValue ? " selected" : "");
+    cell.title = name;
+    const img = document.createElement("img");
+    img.src = ICON_BASE + name + ".png";
+    img.loading = "lazy";
+    img.alt = name;
+    const label = document.createElement("div");
+    label.className = "icon-name";
+    label.textContent = name;
+    cell.appendChild(img); cell.appendChild(label);
+    cell.addEventListener("click", ()=>{
+      if(iconPickerOnSelect) iconPickerOnSelect(name);
+      closeIconPicker();
+    });
+    grid.appendChild(cell);
+  });
+}
+function openIconPicker(currentValue, onSelect){
+  iconPickerOnSelect = onSelect;
+  const search = document.getElementById("iconPickerSearch");
+  search.value = "";
+  renderIconPickerGrid("", currentValue);
+  document.getElementById("iconPickerOverlay").classList.add("show");
+  setTimeout(()=> search.focus(), 0);
+  search.oninput = ()=> renderIconPickerGrid(search.value, currentValue);
+}
+function closeIconPicker(){
+  document.getElementById("iconPickerOverlay").classList.remove("show");
+  iconPickerOnSelect = null;
+}
+document.getElementById("iconPickerClose").addEventListener("click", closeIconPicker);
+document.getElementById("iconPickerOverlay").addEventListener("click", (e)=>{ if(e.target.id==="iconPickerOverlay") closeIconPicker(); });
+document.addEventListener("keydown", (e)=>{
+  if(e.key==="Escape" && document.getElementById("iconPickerOverlay").classList.contains("show")) closeIconPicker();
+});
+</script>
+<script>
+/* ============================================================
+   STATE + PERSISTENCE
+   ============================================================ */
+const STORAGE_KEY = "codexforge:cheatsheetlab:v1";
+const state = { segments: [], selected: null };
+function uid(){ return Math.random().toString(36).slice(2,9); }
+function replaceArrayContents(arr, newItems){
+  arr.length = 0;
+  newItems.forEach(x=> arr.push(x));
+}
+
+function newEntry(){
+  return {_uid:uid(), icon:"", title:"", subtitle:"", description:"", reference:"", bullets:[]};
+}
+function newGroup(){
+  return {_uid:uid(), intro:"", entries:[newEntry()]};
+}
+function newSegment(){
+  return {_uid:uid(), key:"segment-"+uid().slice(0,4), title:"New Segment", badge:"", color:"black", groups:[newGroup()]};
+}
+
+function importEntry(e){
+  return {_uid:uid(), icon:e.icon||"", title:e.title||"", subtitle:e.subtitle||"", description:e.description||"", reference:e.reference||"", bullets:Array.isArray(e.bullets)?e.bullets.slice():[]};
+}
+function importGroup(g){
+  return {_uid:uid(), intro:g.intro||"", entries:(g.entries||[]).map(importEntry)};
+}
+function importSegment(s){
+  return {_uid:uid(), key:s.key||("segment-"+uid().slice(0,4)), title:s.title||"", badge:s.badge||"", color:s.color||"black", groups:(g=>g.length?g:[newGroup()])((s.groups||[]).map(importGroup))};
+}
+function exportEntry(e){
+  const out = {icon:e.icon, title:e.title, subtitle:e.subtitle};
+  if(e.description) out.description = e.description;
+  if(e.reference) out.reference = e.reference;
+  out.bullets = e.bullets || [];
+  return out;
+}
+function exportGroup(g){
+  const out = {};
+  if(g.intro) out.intro = g.intro;
+  out.entries = (g.entries||[]).map(exportEntry);
+  return out;
+}
+function exportSegment(s){
+  return { key:s.key, title:s.title, badge:s.badge||"", color:s.color||"black", groups:(s.groups||[]).map(exportGroup) };
+}
+
+function persist(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state.segments.map(exportSegment))); }catch(e){}
+}
+function load(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){ replaceArrayContents(state.segments, JSON.parse(raw).map(importSegment)); }
+  }catch(e){}
+}
+load();
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer=null;
+function toast(msg){
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove("show"), 2200);
+}
+
+/* ============================================================
+   IN-PAGE DIALOGS (see other Codex Forge tools for why: some
+   embedded HTML previews block native alert/confirm/prompt)
+   ============================================================ */
+function uiDialog({message, type, choices}){
+  return new Promise((resolve)=>{
+    const overlay = document.getElementById("uiDialogOverlay");
+    const msgEl = document.getElementById("uiDialogMsg");
+    const inputEl = document.getElementById("uiDialogInput");
+    const actionsEl = document.getElementById("uiDialogActions");
+    msgEl.textContent = message;
+    actionsEl.innerHTML = "";
+    inputEl.style.display = "none";
+    function close(result){
+      overlay.classList.remove("show");
+      document.removeEventListener("keydown", onKey);
+      resolve(result);
+    }
+    function onKey(e){
+      if(e.key === "Escape"){ e.preventDefault(); close(type==="confirm" ? false : null); }
+      else if(e.key === "Enter" && type!=="choice"){ e.preventDefault(); close(true); }
+    }
+    function addBtn(label, value, primary){
+      const b = document.createElement("button");
+      b.className = "btn small" + (primary ? " primary" : "");
+      b.textContent = label;
+      b.addEventListener("click", ()=> close(value));
+      actionsEl.appendChild(b);
+      return b;
+    }
+    let focusTarget = null;
+    if(type === "alert"){ focusTarget = addBtn("OK", true, true); }
+    else if(type === "confirm"){ addBtn("Cancel", false, false); focusTarget = addBtn("OK", true, true); }
+    else if(type === "choice"){ (choices||[]).forEach(c=> addBtn(c.label, c.value, !!c.primary)); }
+    overlay.classList.add("show");
+    document.addEventListener("keydown", onKey);
+    setTimeout(()=>{ if(focusTarget) focusTarget.focus(); }, 0);
+  });
+}
+function uiAlert(message){ return uiDialog({message, type:"alert"}); }
+function uiConfirm(message){ return uiDialog({message, type:"confirm"}); }
+function uiChoice(message, choices){ return uiDialog({message, type:"choice", choices}); }
+
+/* ============================================================
+   JSON EDIT/ADD MODAL
+   ============================================================ */
+let jsonModalOnApply = null;
+function openJsonModal({title, hint, value, onApply}){
+  jsonModalOnApply = onApply;
+  document.getElementById("jsonModalTitle").textContent = title || "Edit as JSON";
+  const hintEl = document.getElementById("jsonModalHint");
+  hintEl.textContent = hint || "";
+  hintEl.style.display = hint ? "block" : "none";
+  const ta = document.getElementById("jsonModalTextarea");
+  ta.value = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+  const statusEl = document.getElementById("jsonModalStatus");
+  statusEl.textContent = ""; statusEl.className = "json-modal-status";
+  document.getElementById("jsonModalOverlay").classList.add("show");
+  setTimeout(()=> ta.focus(), 0);
+}
+function closeJsonModal(){
+  document.getElementById("jsonModalOverlay").classList.remove("show");
+  jsonModalOnApply = null;
+}
+document.getElementById("jsonModalClose").addEventListener("click", closeJsonModal);
+document.getElementById("jsonModalCancel").addEventListener("click", closeJsonModal);
+document.getElementById("jsonModalOverlay").addEventListener("click", (e)=>{ if(e.target.id==="jsonModalOverlay") closeJsonModal(); });
+document.addEventListener("keydown", (e)=>{
+  if(e.key==="Escape" && document.getElementById("jsonModalOverlay").classList.contains("show")) closeJsonModal();
+});
+document.getElementById("jsonModalApply").addEventListener("click", ()=>{
+  const ta = document.getElementById("jsonModalTextarea");
+  const statusEl = document.getElementById("jsonModalStatus");
+  let parsed;
+  try{ parsed = JSON.parse(ta.value); }
+  catch(e){ statusEl.textContent = "Invalid JSON: " + e.message; statusEl.className = "json-modal-status err"; return; }
+  try{ jsonModalOnApply(parsed); closeJsonModal(); }
+  catch(e){ statusEl.textContent = "Couldn't apply: " + e.message; statusEl.className = "json-modal-status err"; }
+});
+
+/* ============================================================
+   SMALL HELPERS
+   ============================================================ */
+function escapeHtml(s){
+  return String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function moveBtn(txt, fn, cls){
+  const b = document.createElement("button");
+  b.innerHTML = txt;
+  if(cls) b.className = cls;
+  b.addEventListener("click", fn);
+  return b;
+}
+function onChange(){ persist(); renderSidebar(); }
+
+/* ============================================================
+   DRAG & DROP REORDERING — attach once per list container.
+   itemSelector matches the draggable row/card elements, each of
+   which must carry a data-idx attribute (its index in `arr` at
+   render time). Dragging over live-reorders the DOM for visual
+   feedback; dropping reads the final DOM order back into `arr`
+   and calls rerenderFn() + onChangeFn().
+   ============================================================ */
+function makeReorderable(containerEl, itemSelector, arr, rerenderFn, onChangeFn, onBeforeCommit){
+  let draggingEl = null;
+  containerEl.addEventListener("dragstart", (e)=>{
+    const item = e.target.closest(itemSelector);
+    if(!item || !containerEl.contains(item)) return;
+    draggingEl = item;
+    e.dataTransfer.effectAllowed = "move";
+    try{ e.dataTransfer.setData("text/plain", ""); }catch(err){}
+    setTimeout(()=> item.classList.add("dragging"), 0);
+  });
+  containerEl.addEventListener("dragend", ()=>{
+    if(draggingEl) draggingEl.classList.remove("dragging");
+    draggingEl = null;
+  });
+  containerEl.addEventListener("dragover", (e)=>{
+    if(!draggingEl) return;
+    const item = e.target.closest(itemSelector);
+    if(!item || item===draggingEl || !containerEl.contains(item)) return;
+    e.preventDefault();
+    const rect = item.getBoundingClientRect();
+    const before = (e.clientY - rect.top) < rect.height/2;
+    containerEl.insertBefore(draggingEl, before ? item : item.nextSibling);
+  });
+  containerEl.addEventListener("drop", (e)=>{
+    if(!draggingEl) return;
+    e.preventDefault();
+    const items = Array.from(containerEl.querySelectorAll(itemSelector));
+    const newOrder = items.map(it => Number(it.dataset.idx)).map(i => arr[i]);
+    if(typeof onBeforeCommit === "function") onBeforeCommit(arr, newOrder);
+    arr.length = 0;
+    newOrder.forEach(x=> arr.push(x));
+    rerenderFn();
+    onChangeFn();
+  });
+}
+function dragHandle(){
+  const h = document.createElement("span");
+  h.className = "drag-handle";
+  h.draggable = true;
+  h.title = "Drag to reorder";
+  h.textContent = "\u22ee\u22ee";
+  return h;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+function renderSidebar(){
+  const list = document.getElementById("segmentList");
+  list.innerHTML = "";
+  if(!state.segments.length){
+    const empty = document.createElement("div");
+    empty.className = "empty-hint";
+    empty.style.margin = "8px";
+    empty.innerHTML = "No segments in this workspace yet.<br><br>Click <strong>+ New Segment</strong>, or <strong>Import cheatsheet.json</strong> to load your existing file.";
+    list.appendChild(empty);
+    return;
+  }
+  state.segments.forEach((s, idx)=>{
+    const row = document.createElement("div");
+    row.className = "class-row" + (state.selected===idx ? " active" : "");
+    row.dataset.idx = idx;
+    const entryCount = (s.groups||[]).reduce((n,g)=> n + (g.entries||[]).length, 0);
+    row.innerHTML = `
+      <span class="drag-handle" draggable="true" title="Drag to reorder">&#8942;&#8942;</span>
+      <div style="flex:1;min-width:0;">
+        <div class="name">${escapeHtml(s.title || s.key)}</div>
+        <div class="meta">${(s.groups||[]).length} group${(s.groups||[]).length===1?"":"s"} &middot; ${entryCount} entr${entryCount===1?"y":"ies"}</div>
+      </div>
+      <button class="del" title="Delete">&times;</button>`;
+    row.addEventListener("click", (e)=>{
+      if(e.target.classList.contains("del")) return;
+      state.selected = idx;
+      renderSidebar(); renderMain();
+    });
+    row.querySelector(".del").addEventListener("click", async (e)=>{
+      e.stopPropagation();
+      if(!await uiConfirm(`Delete "${s.title||s.key}"? This can't be undone.`)) return;
+      state.segments.splice(idx,1);
+      if(state.selected===idx) state.selected=null;
+      else if(state.selected>idx) state.selected--;
+      persist(); renderSidebar(); renderMain();
+    });
+    list.appendChild(row);
+  });
+}
+
+/* ============================================================
+   MAIN — segment editor
+   ============================================================ */
+function renderMain(){
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  if(state.selected===null || !state.segments[state.selected]){
+    main.innerHTML = `
+      <div style="height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;">
+        <div>
+          <div style="font-size:40px;opacity:.3;margin-bottom:14px;">&#9881;</div>
+          <h2 style="font-family:var(--display);color:var(--text-dim);font-weight:600;">No segment selected</h2>
+          <p style="color:var(--text-faint);max-width:420px;">Pick a segment from the list, or click "+ New Segment" to add a block to the cheatsheet — a title, a badge, a color, and one or more groups of entries.</p>
+        </div>
+      </div>`;
+    return;
+  }
+  const s = state.segments[state.selected];
+  const inner = document.createElement("div");
+  inner.className = "main-inner";
+  inner.style.padding = "28px 34px 60px";
+  inner.style.maxWidth = "980px";
+
+  // head
+  const head = document.createElement("div");
+  head.style.display = "flex";
+  head.style.justifyContent = "space-between";
+  head.style.alignItems = "flex-start";
+  head.style.marginBottom = "20px";
+  head.innerHTML = `
+    <div>
+      <div class="eyebrow" style="font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);">Segment</div>
+      <h2 id="segTitle" style="font-family:var(--display);font-size:22px;color:var(--text);margin:2px 0 0;">${escapeHtml(s.title || s.key)}</h2>
+    </div>
+    <div class="actions" style="display:flex;gap:6px;">
+      <button class="btn small" id="editSegJson">Edit as JSON</button>
+      <button class="btn small" id="dupSeg">Duplicate</button>
+      <button class="btn danger small" id="delSeg">Delete</button>
+    </div>`;
+  inner.appendChild(head);
+
+  // core fields
+  const core = document.createElement("div");
+  core.className = "section";
+  core.innerHTML = `<div class="section-title">Core Fields</div>`;
+  const grid = document.createElement("div");
+  grid.className = "field-grid";
+  grid.appendChild(makeField("Key", s.key, v=>{ s.key=v; onChange(); }, "unique-id, e.g. movement"));
+  grid.appendChild(makeField("Title", s.title, v=>{ s.title=v; document.getElementById("segTitle").textContent=v||s.key; onChange(); }));
+  grid.appendChild(makeField("Badge (optional)", s.badge, v=>{ s.badge=v; onChange(); }, "e.g. 1/turn"));
+  grid.appendChild(makeColorField(s));
+  core.appendChild(grid);
+  inner.appendChild(core);
+
+  // groups
+  const groupsSection = document.createElement("div");
+  groupsSection.className = "section";
+  groupsSection.innerHTML = `<div class="section-title">Groups <span class="tag">${(s.groups||[]).length}</span></div>`;
+  const addGroupBtn = document.createElement("button");
+  addGroupBtn.className = "btn small primary";
+  addGroupBtn.style.marginBottom = "10px";
+  addGroupBtn.textContent = "+ Add Group";
+  groupsSection.appendChild(addGroupBtn);
+  const addGroupJsonBtn = document.createElement("button");
+  addGroupJsonBtn.className = "btn small";
+  addGroupJsonBtn.style.marginBottom = "10px";
+  addGroupJsonBtn.style.marginLeft = "6px";
+  addGroupJsonBtn.textContent = "+ Add via JSON";
+  groupsSection.appendChild(addGroupJsonBtn);
+
+  const groupsListEl = document.createElement("div");
+  groupsSection.appendChild(groupsListEl);
+  if(!Array.isArray(s.groups)) s.groups = [];
+
+  function renderGroups(){
+    groupsListEl.innerHTML = "";
+    if(!s.groups.length){
+      const empty = document.createElement("div");
+      empty.className = "empty-hint";
+      empty.textContent = "No groups yet — a group is an optional intro line plus a list of entries.";
+      groupsListEl.appendChild(empty);
+      return;
+    }
+    s.groups.forEach((g, gi)=> groupsListEl.appendChild(renderGroupCard(g, gi, s, renderGroups)));
+  }
+  makeReorderable(groupsListEl, ".group-card", s.groups, renderGroups, onChange);
+  addGroupBtn.addEventListener("click", ()=>{ s.groups.push(newGroup()); renderGroups(); onChange(); groupsSection.querySelector(".tag").textContent = s.groups.length; });
+  addGroupJsonBtn.addEventListener("click", ()=>{
+    openJsonModal({
+      title: "Add Group(s) via JSON",
+      hint: 'Paste one group object, or an array: {"intro":"...","entries":[{"icon":"run","title":"...","subtitle":"...","description":"...","reference":"...","bullets":["..."]}]}',
+      value: [{intro:"", entries:[{icon:"", title:"", subtitle:"", description:"", reference:"", bullets:[]}]}],
+      onApply: (parsed)=>{
+        const arr = Array.isArray(parsed) ? parsed : [parsed];
+        arr.forEach(g=> s.groups.push(importGroup(g)));
+        renderGroups(); onChange(); groupsSection.querySelector(".tag").textContent = s.groups.length;
+        toast(`Added ${arr.length} group(s)`);
+      },
+    });
+  });
+  renderGroups();
+  inner.appendChild(groupsSection);
+
+  // export preview
+  const prevSection = document.createElement("div");
+  prevSection.className = "section";
+  prevSection.innerHTML = `<div class="section-title">Export Preview — this segment</div>`;
+  const details = document.createElement("details");
+  details.innerHTML = `<summary style="cursor:pointer;color:var(--text-faint);font-size:11.5px;">EXPORT PREVIEW — FINAL CHEATSHEET.JSON SHAPE &#9662;</summary>`;
+  const pbody = document.createElement("div");
+  pbody.style.marginTop = "10px";
+  const ta = document.createElement("textarea");
+  ta.readOnly = true;
+  ta.spellcheck = false;
+  ta.style.width = "100%";
+  ta.style.minHeight = "220px";
+  ta.style.background = "var(--panel-2)";
+  ta.style.border = "1px solid var(--border-soft)";
+  ta.style.borderRadius = "3px";
+  ta.style.color = "var(--text)";
+  ta.style.padding = "10px 12px";
+  ta.style.fontFamily = "var(--mono)";
+  ta.style.fontSize = "12px";
+  ta.value = JSON.stringify(exportSegment(s), null, 2);
+  pbody.appendChild(ta);
+  details.appendChild(pbody);
+  prevSection.appendChild(details);
+  inner.appendChild(prevSection);
+
+  main.appendChild(inner);
+
+  document.getElementById("editSegJson").addEventListener("click", ()=>{
+    openJsonModal({
+      title: `Edit "${s.title||s.key}" as JSON`,
+      hint: "This is the exact cheatsheet.json shape for this segment. Apply re-imports it, replacing this segment in place.",
+      value: exportSegment(s),
+      onApply: (parsed)=>{
+        const imported = importSegment(parsed);
+        state.segments[state.selected] = imported;
+        persist(); renderSidebar(); renderMain();
+        toast("Segment updated from JSON");
+      },
+    });
+  });
+  document.getElementById("delSeg").addEventListener("click", async ()=>{
+    if(!await uiConfirm(`Delete "${s.title||s.key}"? This can't be undone.`)) return;
+    state.segments.splice(state.selected,1);
+    state.selected = null;
+    persist(); renderSidebar(); renderMain();
+  });
+  document.getElementById("dupSeg").addEventListener("click", ()=>{
+    const copy = importSegment(exportSegment(s));
+    copy.key = (copy.key||"segment") + "-copy";
+    state.segments.splice(state.selected+1, 0, copy);
+    state.selected = state.selected+1;
+    persist(); renderSidebar(); renderMain();
+    toast("Duplicated");
+  });
+}
+
+function makeField(label, value, onInput, placeholder){
+  const wrap = document.createElement("div");
+  wrap.className = "field";
+  const lbl = document.createElement("label");
+  lbl.textContent = label;
+  lbl.style.fontSize = "10px";
+  lbl.style.textTransform = "uppercase";
+  lbl.style.letterSpacing = ".05em";
+  lbl.style.color = "var(--text-faint)";
+  lbl.style.fontWeight = "600";
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = value || "";
+  if(placeholder) input.placeholder = placeholder;
+  input.style.background = "var(--panel-2)";
+  input.style.border = "1px solid var(--border)";
+  input.style.borderRadius = "3px";
+  input.style.color = "var(--text)";
+  input.style.padding = "7px 9px";
+  input.style.fontSize = "12.5px";
+  input.addEventListener("input", ()=> onInput(input.value));
+  wrap.appendChild(lbl); wrap.appendChild(input);
+  return wrap;
+}
+function cssColorToHex(colorStr){
+  if(!colorStr) return "#000000";
+  const el = document.createElement("div");
+  el.style.color = colorStr;
+  document.body.appendChild(el);
+  const computed = getComputedStyle(el).color;
+  document.body.removeChild(el);
+  const m = computed.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if(!m) return "#000000";
+  const toHex = n => Number(n).toString(16).padStart(2,"0");
+  return "#" + toHex(m[1]) + toHex(m[2]) + toHex(m[3]);
+}
+const COLOR_PRESETS = ["rgb(128, 0, 0)","black","indigo","DarkOliveGreen","FireBrick","ForestGreen","#5a9d92","#9b86c4","#c9a227","#b8543f","#3a7ca5","#7a4f9c"];
+
+function makeColorField(s){
+  const wrap = document.createElement("div");
+  wrap.className = "field";
+  wrap.innerHTML = `<label style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;">Color</label>`;
+  const row = document.createElement("div");
+  row.style.display = "flex";
+  row.style.alignItems = "center";
+  row.style.gap = "6px";
+
+  const colorInput = document.createElement("input");
+  colorInput.type = "color";
+  colorInput.style.width = "36px";
+  colorInput.style.height = "31px";
+  colorInput.style.padding = "2px";
+  colorInput.style.background = "var(--panel-2)";
+  colorInput.style.border = "1px solid var(--border)";
+  colorInput.style.borderRadius = "3px";
+  colorInput.style.cursor = "pointer";
+  colorInput.value = cssColorToHex(s.color || "black");
+  colorInput.title = "Pick a color";
+
+  const textInput = document.createElement("input");
+  textInput.type = "text";
+  textInput.value = s.color || "";
+  textInput.placeholder = "e.g. ForestGreen, #b8543f, rgb(128,0,0)";
+  textInput.style.flex = "1";
+  textInput.style.background = "var(--panel-2)";
+  textInput.style.border = "1px solid var(--border)";
+  textInput.style.borderRadius = "3px";
+  textInput.style.color = "var(--text)";
+  textInput.style.padding = "7px 9px";
+  textInput.style.fontSize = "12.5px";
+
+  function applyColor(val){
+    s.color = val;
+    textInput.value = val;
+    colorInput.value = cssColorToHex(val);
+    onChange();
+  }
+  colorInput.addEventListener("input", ()=> applyColor(colorInput.value));
+  textInput.addEventListener("input", ()=>{
+    s.color = textInput.value;
+    colorInput.value = cssColorToHex(textInput.value);
+    onChange();
+  });
+
+  row.appendChild(colorInput); row.appendChild(textInput);
+  wrap.appendChild(row);
+
+  const presetRow = document.createElement("div");
+  presetRow.style.display = "flex";
+  presetRow.style.flexWrap = "wrap";
+  presetRow.style.gap = "5px";
+  presetRow.style.marginTop = "7px";
+  COLOR_PRESETS.forEach(p=>{
+    const sw = document.createElement("button");
+    sw.type = "button";
+    sw.title = p;
+    sw.style.width = "18px";
+    sw.style.height = "18px";
+    sw.style.borderRadius = "3px";
+    sw.style.border = "1px solid var(--border)";
+    sw.style.background = p;
+    sw.style.cursor = "pointer";
+    sw.style.padding = "0";
+    sw.addEventListener("click", ()=> applyColor(p));
+    presetRow.appendChild(sw);
+  });
+  wrap.appendChild(presetRow);
+
+  return wrap;
+}
+
+/* ---------- group card ---------- */
+function renderGroupCard(g, gi, s, rerenderGroups){
+  const card = document.createElement("div");
+  card.className = "group-card";
+  card.dataset.idx = gi;
+  const head = document.createElement("div");
+  head.className = "lbl";
+  const headLeft = document.createElement("div");
+  headLeft.style.display = "flex";
+  headLeft.style.alignItems = "center";
+  headLeft.appendChild(dragHandle());
+  const titleSpan = document.createElement("span");
+  titleSpan.textContent = `Group ${gi+1} \u00b7 ${(g.entries||[]).length} entr${(g.entries||[]).length===1?"y":"ies"}`;
+  headLeft.appendChild(titleSpan);
+  head.appendChild(headLeft);
+  const tools = document.createElement("div");
+  tools.style.display = "flex"; tools.style.gap = "3px";
+  tools.appendChild(moveBtn("&uarr;", ()=>{ if(gi>0){ [s.groups[gi-1],s.groups[gi]]=[s.groups[gi],s.groups[gi-1]]; rerenderGroups(); onChange(); }}));
+  tools.appendChild(moveBtn("&darr;", ()=>{ if(gi<s.groups.length-1){ [s.groups[gi+1],s.groups[gi]]=[s.groups[gi],s.groups[gi+1]]; rerenderGroups(); onChange(); }}));
+  tools.appendChild(moveBtn("&times;", async ()=>{ if(await uiConfirm("Delete this group and all its entries?")){ s.groups.splice(gi,1); rerenderGroups(); onChange(); } }));
+  head.appendChild(tools);
+  card.appendChild(head);
+
+  const introTa = document.createElement("textarea");
+  introTa.className = "intro-input";
+  introTa.placeholder = "Optional intro line shown above this group's entries";
+  introTa.value = g.intro || "";
+  introTa.addEventListener("input", ()=>{ g.intro = introTa.value; onChange(); });
+  card.appendChild(introTa);
+
+  const entryListEl = document.createElement("div");
+  card.appendChild(entryListEl);
+  if(!Array.isArray(g.entries)) g.entries = [];
+
+  function renderEntries(){
+    entryListEl.innerHTML = "";
+    g.entries.forEach((e, ei)=> entryListEl.appendChild(renderEntryCard(e, ei, g, renderEntries, head)));
+  }
+  renderEntries();
+  makeReorderable(entryListEl, ".feature-card", g.entries, renderEntries, onChange);
+
+  const btnRow = document.createElement("div");
+  btnRow.style.marginTop = "8px";
+  const addEntryBtn = document.createElement("button");
+  addEntryBtn.className = "btn small primary";
+  addEntryBtn.textContent = "+ Add Entry";
+  addEntryBtn.addEventListener("click", ()=>{ g.entries.push(newEntry()); renderEntries(); onChange(); head.querySelector("span").textContent = `Group ${gi+1} \u00b7 ${g.entries.length} entr${g.entries.length===1?"y":"ies"}`; });
+  const addEntryJsonBtn = document.createElement("button");
+  addEntryJsonBtn.className = "btn small";
+  addEntryJsonBtn.style.marginLeft = "6px";
+  addEntryJsonBtn.textContent = "+ Add via JSON";
+  addEntryJsonBtn.addEventListener("click", ()=>{
+    openJsonModal({
+      title: "Add Entry(ies) via JSON",
+      hint: 'Paste one entry object, or an array: {"icon":"run","title":"...","subtitle":"...","description":"...","reference":"PHB, pg. 190.","bullets":["..."]}',
+      value: [{icon:"", title:"", subtitle:"", description:"", reference:"", bullets:[]}],
+      onApply: (parsed)=>{
+        const arr = Array.isArray(parsed) ? parsed : [parsed];
+        arr.forEach(e=> g.entries.push(importEntry(e)));
+        renderEntries(); onChange();
+        head.querySelector("span").textContent = `Group ${gi+1} \u00b7 ${g.entries.length} entr${g.entries.length===1?"y":"ies"}`;
+        toast(`Added ${arr.length} entr${arr.length===1?"y":"ies"}`);
+      },
+    });
+  });
+  btnRow.appendChild(addEntryBtn); btnRow.appendChild(addEntryJsonBtn);
+  card.appendChild(btnRow);
+
+  return card;
+}
+
+/* ---------- entry card ---------- */
+function renderEntryCard(e, ei, g, rerenderEntries, groupHeadEl){
+  const card = document.createElement("details");
+  card.className = "feature-card";
+  card.style.marginBottom = "10px";
+  card.dataset.idx = ei;
+  card.open = false;
+  const summary = document.createElement("summary");
+  summary.style.display = "flex";
+  summary.style.alignItems = "center";
+  summary.style.gap = "8px";
+  summary.style.padding = "8px 10px";
+  summary.style.cursor = "pointer";
+  summary.style.listStyle = "none";
+  summary.appendChild(dragHandle());
+  const iconPrev = document.createElement("div");
+  iconPrev.className = "icon-preview";
+  function refreshIconPreview(){ iconPrev.style.backgroundImage = e.icon ? `url(${ICON_BASE}${e.icon}.png)` : "none"; }
+  refreshIconPreview();
+  const titleSpan = document.createElement("span");
+  titleSpan.style.flex = "1";
+  titleSpan.style.fontSize = "12.5px";
+  function refreshTitle(){ titleSpan.textContent = e.title || "(untitled entry)"; }
+  refreshTitle();
+  const tools = document.createElement("div");
+  tools.className = "fc-tools";
+  tools.appendChild(moveBtn("&uarr;", (ev)=>{ ev.preventDefault(); ev.stopPropagation(); if(ei>0){ [g.entries[ei-1],g.entries[ei]]=[g.entries[ei],g.entries[ei-1]]; rerenderEntries(); onChange(); }}));
+  tools.appendChild(moveBtn("&darr;", (ev)=>{ ev.preventDefault(); ev.stopPropagation(); if(ei<g.entries.length-1){ [g.entries[ei+1],g.entries[ei]]=[g.entries[ei],g.entries[ei+1]]; rerenderEntries(); onChange(); }}));
+  tools.appendChild(moveBtn("&#128196;", (ev)=>{
+    ev.preventDefault(); ev.stopPropagation();
+    openJsonModal({
+      title: `Edit "${e.title||"entry"}" as JSON`,
+      hint: "Applies to this entry only.",
+      value: exportEntry(e),
+      onApply:(parsed)=>{
+        const imp = importEntry(parsed);
+        Object.assign(e, imp, {_uid:e._uid});
+        rerenderEntries(); onChange();
+      },
+    });
+  }, "json-edit-btn"));
+  tools.appendChild(moveBtn("&times;", async (ev)=>{
+    ev.preventDefault(); ev.stopPropagation();
+    if(!await uiConfirm(`Delete entry "${e.title||"(untitled)"}"?`)) return;
+    g.entries.splice(ei,1); rerenderEntries(); onChange();
+    if(groupHeadEl) groupHeadEl.querySelector("span").textContent = groupHeadEl.querySelector("span").textContent.replace(/\\d+ entr\\w+$/, g.entries.length + " entr" + (g.entries.length===1?"y":"ies"));
+  }, "del"));
+  summary.appendChild(iconPrev); summary.appendChild(titleSpan); summary.appendChild(tools);
+  card.appendChild(summary);
+
+  const body = document.createElement("div");
+  body.style.padding = "12px";
+  body.style.borderTop = "1px solid var(--border-soft)";
+
+  const grid = document.createElement("div");
+  grid.className = "field-grid";
+
+  // icon field with datalist + live preview
+  const iconField = document.createElement("div");
+  iconField.className = "field";
+  iconField.innerHTML = `<label style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;">Icon</label>`;
+  const iconRow = document.createElement("div");
+  iconRow.className = "icon-field-row";
+
+  const pickBtn = document.createElement("button");
+  pickBtn.type = "button";
+  pickBtn.className = "icon-pick-btn";
+  pickBtn.title = "Browse icons";
+  function refreshPickBtn(){ pickBtn.style.backgroundImage = e.icon ? `url(${ICON_BASE}${e.icon}.png)` : "none"; }
+  refreshPickBtn();
+
+  const iconInput = document.createElement("input");
+  iconInput.type = "text";
+  iconInput.setAttribute("list", "iconNames");
+  iconInput.value = e.icon || "";
+  iconInput.placeholder = "e.g. run, crossed-swords — or click the icon to browse";
+  iconInput.style.background = "var(--panel-2)"; iconInput.style.border = "1px solid var(--border)";
+  iconInput.style.borderRadius = "3px"; iconInput.style.color = "var(--text)";
+  iconInput.style.padding = "7px 9px"; iconInput.style.fontSize = "12.5px";
+  function setIcon(name){
+    e.icon = name;
+    iconInput.value = name;
+    refreshPickBtn();
+    refreshIconPreview();
+    onChange();
+  }
+  iconInput.addEventListener("input", ()=> setIcon(iconInput.value));
+  pickBtn.addEventListener("click", ()=> openIconPicker(e.icon, setIcon));
+
+  iconRow.appendChild(pickBtn);
+  iconRow.appendChild(iconInput);
+  iconField.appendChild(iconRow);
+  grid.appendChild(iconField);
+
+  grid.appendChild(makeField("Title", e.title, v=>{ e.title=v; refreshTitle(); onChange(); }));
+  grid.appendChild(makeField("Subtitle", e.subtitle, v=>{ e.subtitle=v; onChange(); }, "short line shown in the list"));
+  grid.appendChild(makeField("Reference", e.reference, v=>{ e.reference=v; onChange(); }, "e.g. PHB, pg. 190."));
+  body.appendChild(grid);
+
+  const descField = document.createElement("div");
+  descField.className = "field";
+  descField.style.marginTop = "12px";
+  descField.innerHTML = `<label style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;">Description</label>`;
+  const descTa = document.createElement("textarea");
+  descTa.className = "intro-input";
+  descTa.style.marginBottom = "0";
+  descTa.value = e.description || "";
+  descTa.addEventListener("input", ()=>{ e.description = descTa.value; onChange(); });
+  descField.appendChild(descTa);
+  body.appendChild(descField);
+
+  const bulletsWrap = document.createElement("div");
+  bulletsWrap.style.marginTop = "12px";
+  bulletsWrap.innerHTML = `<label style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);font-weight:600;">Bullets</label>`;
+  const bulletsList = document.createElement("div");
+  bulletsList.className = "bullets-list";
+  if(!Array.isArray(e.bullets)) e.bullets = [];
+  function renderBullets(){
+    bulletsList.innerHTML = "";
+    e.bullets.forEach((b, bi)=>{
+      const row = document.createElement("div");
+      row.className = "bullet-row";
+      row.dataset.idx = bi;
+      const handle = dragHandle();
+      const ta = document.createElement("textarea");
+      ta.value = b || "";
+      ta.addEventListener("input", ()=>{ e.bullets[bi] = ta.value; onChange(); });
+      const tools = document.createElement("div");
+      tools.className = "fc-tools";
+      tools.style.flexDirection = "column";
+      const up = document.createElement("button");
+      up.innerHTML = "&uarr;";
+      up.disabled = bi===0;
+      up.style.opacity = bi===0 ? ".3" : "1";
+      up.addEventListener("click", ()=>{ if(bi>0){ [e.bullets[bi-1],e.bullets[bi]]=[e.bullets[bi],e.bullets[bi-1]]; renderBullets(); onChange(); } });
+      const down = document.createElement("button");
+      down.innerHTML = "&darr;";
+      down.disabled = bi===e.bullets.length-1;
+      down.style.opacity = bi===e.bullets.length-1 ? ".3" : "1";
+      down.addEventListener("click", ()=>{ if(bi<e.bullets.length-1){ [e.bullets[bi+1],e.bullets[bi]]=[e.bullets[bi],e.bullets[bi+1]]; renderBullets(); onChange(); } });
+      const del = document.createElement("button");
+      del.textContent = "\u00d7";
+      del.className = "del";
+      del.addEventListener("click", ()=>{ e.bullets.splice(bi,1); renderBullets(); onChange(); });
+      tools.appendChild(up); tools.appendChild(down); tools.appendChild(del);
+      row.appendChild(handle); row.appendChild(ta); row.appendChild(tools);
+      bulletsList.appendChild(row);
+    });
+  }
+  renderBullets();
+  makeReorderable(bulletsList, ".bullet-row", e.bullets, renderBullets, onChange);
+  bulletsWrap.appendChild(bulletsList);
+  const addBulletBtn = document.createElement("button");
+  addBulletBtn.className = "btn small";
+  addBulletBtn.style.marginTop = "6px";
+  addBulletBtn.textContent = "+ Bullet";
+  addBulletBtn.addEventListener("click", ()=>{ e.bullets.push(""); renderBullets(); onChange(); });
+  bulletsWrap.appendChild(addBulletBtn);
+  body.appendChild(bulletsWrap);
+
+  card.appendChild(body);
+  return card;
+}
+
+/* ============================================================
+   TOP-LEVEL ACTIONS
+   ============================================================ */
+document.getElementById("btnNewSegment").addEventListener("click", ()=>{
+  state.segments.push(newSegment());
+  state.selected = state.segments.length-1;
+  persist(); renderSidebar(); renderMain();
+});
+
+document.getElementById("btnImport").addEventListener("click", ()=> document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change", (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = async ()=>{
+    try{
+      const parsed = JSON.parse(reader.result);
+      const arr = Array.isArray(parsed) ? parsed : (parsed.segments || [parsed]);
+      const imported = arr.map(importSegment);
+      let mode = "replace";
+      if(state.segments.length){
+        mode = await uiChoice(
+          `Replace the current ${state.segments.length} segment(s) with the ${imported.length} imported, or append them?`,
+          [{label:"Cancel", value:null}, {label:"Replace", value:"replace"}, {label:"Append", value:"append", primary:true}]
+        );
+      }
+      if(mode === "replace") replaceArrayContents(state.segments, imported);
+      else if(mode === "append") imported.forEach(x=> state.segments.push(x));
+      else return;
+      state.selected = null;
+      persist(); renderSidebar(); renderMain();
+      toast(`Imported ${imported.length} segment(s)`);
+    }catch(err){
+      uiAlert("Couldn't parse that file as JSON:\\n" + err.message);
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = "";
+});
+
+document.getElementById("btnExportAll").addEventListener("click", ()=>{
+  if(!state.segments.length){ uiAlert("Nothing to export yet."); return; }
+  const out = { segments: state.segments.map(exportSegment) };
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "cheatsheet.json";
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 4000);
+  toast("Exported cheatsheet.json");
+});
+
+renderSidebar();
+renderMain();
+makeReorderable(
+  document.getElementById("segmentList"), ".class-row", state.segments,
+  ()=>{ renderSidebar(); renderMain(); },
+  persist,
+  (oldArr, newOrder)=>{
+    if(state.selected!=null){
+      const selectedObj = oldArr[state.selected];
+      state.selected = newOrder.indexOf(selectedObj);
+    }
+  }
+);
+
+</script>
+</body>
+</html>
