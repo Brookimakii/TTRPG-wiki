@@ -8,6 +8,7 @@ import bestiary from "./dnd5e/bestiary.json"
 import feat from "./dnd5e/feats.json"
 import condition from "./dnd5e/conditions.json"
 import rule from "./dnd5e/rules.json"
+import cheatsheet from "./dnd5e/cheatsheet.json"
 
 export class Resources {
 }
@@ -51,6 +52,10 @@ Resources.condition = {
 Resources.bestiary = {
   dev: bestiary,
   prod: "https://raw.githubusercontent.com/Brookimakii/TTRPG-wiki/refs/heads/master/src/resources/bestiary.json?token=GHSAT0AAAAAACZTRR2NZ5JFMX3I7PH3CY3KZ2TMQUQ"
+}
+Resources.cheatsheet = {
+  dev: cheatsheet,
+  prod: "https://raw.githubusercontent.com/Brookimakii/TTRPG-wiki/refs/heads/master/src/resources/dnd5e/cheatsheet.json"
 }
 
 

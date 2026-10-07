@@ -1,0 +1,910 @@
+{
+  "segments": [
+    {
+      "key": "movement",
+      "title": "Mouvement",
+      "badge": "limited by movement speed",
+      "color": "rgb(128, 0, 0)",
+      "groups": [
+        {
+          "intro": "Vous pouvez vous déplacer à tout moment pendant votre tour (avant, après, ou pendant les actions).",
+          "entries": [
+            {
+              "icon": "run",
+              "title": "Se déplacer",
+              "subtitle": "Coût : 1m50 par 1m50",
+              "description": "Coût de déplacement : 1m50 par 1m50 déplacés",
+              "reference": "PHB, pg. 190.",
+              "bullets": [
+                "Si vous avez plus d'une vitesse, comme votre vitesse de marche et une vitesse de vol, vous pouvez basculer entre vos vitesses pendant votre mouvement. Chaque fois que vous changez de vitesse, soustrayez la distance que vous avez déjà parcourue de la nouvelle vitesse.",
+                "Vous pouvez vous déplacer dans l'espace d'une créature non hostile.",
+                "Vous ne pouvez vous déplacer dans l'espace d'une créature hostile que si la créature est au moins deux tailles plus grande ou plus petite que vous.",
+                "L'espace d'une autre créature est un terrain difficile pour vous.",
+                "Qu'une créature soit un ami ou un ennemi, vous ne pouvez pas volontairement terminer votre mouvement dans son espace."
+              ]
+            },
+            {
+              "icon": "crags",
+              "title": "Escalade",
+              "subtitle": "Coût : 3m par 1m50",
+              "description": "Toute distance parcourue vous coûte le double de déplacement (triple en Terrain difficile).",
+              "reference": "PHB, pg. 182.",
+              "bullets": [
+                "Vous ignoré ce coût supplémentaire si vous disposez d'une vitesse d'escalade et y recourez pour grimper.",
+                "À la discretion du MJ, gravir une surface glissante ou présentant peu de prises peut nécessiter de réussir un un test de Force (Athlétisme) DD 15."
+              ]
+            },
+            {
+              "icon": "at-sea",
+              "title": "Nager",
+              "subtitle": "Coût : 3m par 1m50",
+              "description": "Toute distance parcourue vous coûte le double de déplacement (triple en Terrain difficile).",
+              "reference": "PHB, pg. 182.",
+              "bullets": [
+                "Vous ignoré ce coût supplémentaire si vous disposez d'une vitesse de nage et y recourez pour grimper.",
+                "À la discretion du MJ, se déplacer une certaine distance dans des eaux agitée peut nécessiter de réussir un test de Force (Athlétisme) DD 15."
+              ]
+            },
+            {
+              "icon": "wingfoot",
+              "title": "Saut en hauteur",
+              "subtitle": "Coût : 1m50 par 1m50",
+              "description": "Coût de déplacement : 1m50 par 1m50 sautés",
+              "reference": "PHB, pg. 182.",
+              "bullets": [
+                "Vous sautez en l'air d'un nombre de mètres égal à {@b 90cm + (30cm x votre mod. de Force)} si vous prenez un élan d'au moins 3 mètres.",
+                "Lorsque vous faites un saut sans élan, vous ne pouvez sauter que la moitié de cette distance.",
+                "Vous pouvez étendre vos bras à la moitié de votre taille au-dessus de vous pendant le saut. Cela vous permet d'atteindre une hauteur égale à la hauteur du saut plus une fois et demi votre taille.",
+                "Dans certaines circonstances, votre MD peut vous permettre de faire un test de Force (Athlétisme) pour sauter plus haut que vous ne le pouvez normalement."
+              ]
+            },
+            {
+              "icon": "wingfoot",
+              "title": "Saut en longueur",
+              "subtitle": "Coût : 1m50 par 1m50",
+              "description": "Coût de déplacement : 1m50 par 1m50 sautés",
+              "reference": "PHB, pg. 182.",
+              "bullets": [
+                "Vous couvrez un certain nombre de mètres jusqu'à votre {@b 30cm x valeur de Force} si vous prenez un élan d'au moins 3 mètres",
+                "Lorsque vous faites un saut en longueur sans élan, vous ne pouvez sauter que la moitié de cette distance",
+                "Peut impliquer un test de Force (Athlétisme) DD 10 pour franchir un obstacle bas (pas plus haut qu'un quart de la distance du saut). Vous percutez l'obstacle lors d'un test raté.",
+                "Peut impliquer un test de Dextérité (Acrobatie) DD 10 pour atterrir sur vos pieds en terrain difficile. Vous atterrissez à terre sur un test raté."
+              ]
+            },
+            {
+              "icon": "falling",
+              "title": "Tomber au sol",
+              "subtitle": "Coût : 0m",
+              "description": "Coût de déplacement : 0m (gratuit)",
+              "reference": "PHB, pgs. 190-191,292.",
+              "bullets": [
+                "Vous pouvez tomber à plat ventre sans utiliser votre vitesse.",
+                "Pour vous déplacer en position couchée, vous devez ramper ou utiliser la magie comme la téléportation.",
+                "Tomber à terre ajoute la condition {@i À Terre} (les attaques de mêlée contre vous ont un avantage, les attaques à distance contre vous ont un désavantage, vos propres attaques ont un désavantage)"
+              ]
+            },
+            {
+              "icon": "crawl",
+              "title": "Ramper",
+              "subtitle": "Coût : 3m par 1m50",
+              "description": "Coût de déplacement : 3m par 1m50 rampés",
+              "reference": "PHB, pg. 182.",
+              "bullets": []
+            },
+            {
+              "icon": "strong",
+              "title": "Se lever",
+              "subtitle": "Coût : moitié de la vitesse de déplacement",
+              "description": "Movement cost: half of your speed",
+              "reference": "PHB, pg. 190-191.",
+              "bullets": [
+                "Vous ne pouvez pas vous lever si vous n'avez plus assez de mouvement ou si votre vitesse est de 0"
+              ]
+            },
+            {
+              "icon": "juggler",
+              "title": "Improviser",
+              "subtitle": "Toute cascade ne figurant pas sur cette liste",
+              "description": "Effectuez n'importe quel mouvement ou cascade que vous pouvez imaginer",
+              "bullets": [
+                "Lorsque vous décrivez un type de mouvement qui n'est pas détaillé ailleurs dans les règles, le MD vous indique si c'est possible et quel type de jet vous devez faire, le cas échéant, pour déterminer le succès ou l'échec."
+              ]
+            },
+            {
+              "icon": "stone-pile",
+              "title": "Terrain difficile",
+              "subtitle": "Modificateur de coût : +1m50 par 1m50",
+              "description": "Se déplacer en terrain difficile coûte 1m50 supplémentaires par 1m50 de mouvement",
+              "reference": "PHB, pg. 182.",
+              "bullets": []
+            },
+            {
+              "icon": "grab",
+              "title": "Mouvement en empoignade",
+              "subtitle": "Modificateur : vitesse réduite de moitié",
+              "description": "Traînez ou portez la créature que vous avez empoigné",
+              "reference": "PHB, pg. 195.",
+              "bullets": [
+                "Si vous vous déplacez tout en agrippant une autre créature, votre vitesse est réduite de moitié, à moins que la créature ne soit deux tailles ou plus plus petite que vous.",
+                "Voir l'action d'attaque pour savoir comment agripper une créature."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "action",
+      "title": "Action",
+      "badge": "1/turn",
+      "color": "black",
+      "groups": [
+        {
+          "intro": "À votre tour, vous pouvez entreprendre un action. Choisissez l'action à entreprendre parmi celles ci-dessous ou parmi les actions spéciales fournies par vos aptitudes.",
+          "entries": [
+            {
+              "icon": "crossed-swords",
+              "title": "Attack",
+              "subtitle": "Attaque au corps à corps ou à distance",
+              "description": "Lorsque vous entreprenez l'action Attaque, vous effectuez un jet d'attaque avec une arme ou à mains nues.",
+              "reference": "PHB, pgs. 192,194-195.",
+              "bullets": [
+                "{@b L'équipement.} Vous pouvez vous équiper ou vous déséquiper d'une arme avant ou après l'attaque dans le cadre de cette action. Si vous vosu équiper avant une attaque, vous n'êtes pas tenue de l'utiliser lors de cette attaque. ",
+                "{@b Déplacement.} Si vous vous déplacez pendant votre tour et disposez d'une aptitude, telle qu'{@i Attaque supplémentaire}, qui vous octroie plusieurs attaques dans le cadre de l'action Attaquer, vous pouvez consacrer tout ou partie de ce déplacement pour vous mouvoir entre ces attaques.",
+                "Certaines conditions donnent un avantage à l'attaque : attaques contre des cibles aveuglées, paralysées, pétrifiées, entravées, étourdies ou inconscientes ; attaques de mêlée contre des cibles à terre ; attaques d'attaquants invisibles ou cachés.",
+                "Certaines conditions donnent un désavantage à l'attaque : attaques contre des cibles invisibles ou cachées ; attaques à distance contre des cibles couchées ; attaque à distance contre une cible à moins d'1,5m n'étant pas {@i Neutralisé} ; attaques par des attaquants aveuglés, effrayés, empoisonnés ou retenus."
+              ]
+            },
+            {
+              "icon": "hand",
+              "title": "Attaque à mains nues",
+              "subtitle": "Attaque sans armes",
+              "description": "Au lieu d'utiliser une arme pour une attaque au corps à corps, vous pouvez donner un coup de poing, un coup de pied, un coup de tête ou tout autre coup puissant. Dans le jeu, il s'agit d'une Frappe à mains nues : une attaque au corps à corps qui consiste à utiliser son corps pour infliger des dégâts, agripper ou bousculer une cible située à moins de 1,5 mètre.",
+              "bullets": [
+                "{@b Bousculade.} La cible doit réussir un JdS de For ou de Dex (à son choix), sinon vous la repoussez de 1,5 mètre ou la mettez à terre. Le DD du JdS est égal à {@b 8 + votre mod. de For + votre bonus de maîtrise}. Cette bousculade n'est possible que si la catégorie de taille de la cible n'est pas supérieur à la votre de plus d'un cran.",
+                "{@b Dégâts.} Vous effectuez un jet d'attaque contre la cible. Votre bonus au jet est égal à {@b votre mod. de For + votre bonus de maîtrise}. Si l'attaque touche, la cible subit un montant de dégâts contondants égal à {@b 1 + votre mod. de For}.",
+                "{@b Lutte.} La cible doit réussir un JdS de For ou de Dex (à son choix), sous peine d'être de subir l'état Agrippé. Le DD du JdS et des tentatives d'évasion est égal à {@b 8 + votre mod. de For + votre bonus de maîtrise}. Cette lutte n'est possible que si la catégorie de taille de la cible n'est pas supérieur à la votre de plus d'un cran et si vous disposez d'une main libre pour vous saisir d'elle."
+              ]
+            },
+            {
+              "icon": "journey",
+              "title": "Désengagement",
+              "subtitle": "Évite les attaques d'opportunité",
+              "description": "Si vous entreprenez l'action Désengagement, votre déplacement ne provoque pas d'attaque d'Opportunité jusqu'à la fin du tour.",
+              "reference": "PHB, pg. 192.",
+              "bullets": []
+            },
+            {
+              "icon": "dodging",
+              "title": "Esquiver",
+              "subtitle": "Améliore vos défenses",
+              "description": "Se concentrer entièrement sur la prévention des attaques",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "Jusqu'au début de votre prochain tour, tout jet d'attaque effectué contre vous par un assaillant que vous voyez subit un Désavantage, et vos JdS de Dextérité ont l'Avantage.",
+                "Vous perdez cet avantage si vous subissez l'état Neutralisé ou si votre vitesse tombe à 0."
+              ]
+            },
+            {
+              "icon": "open-book",
+              "title": "Étude",
+              "subtitle": "Étudiez votre environnement.",
+              "description": "Lorsque vous effectuez l'action Étude, vous effectuez un test d'Intelligence en consultant votre mémoire, un livre, un indice ou une autre source de savoir et à la recherche d'une information importante sur une sujet donné.",
+              "bullets": [
+                "{@b Arcanes.} Sorts, objets magiques, symboles occultes, traditions magiques, plans d'existance et certaines créatures (Aberrations, Artificels, Élémentaires, Fées et Monstruosités).",
+                "{@b Histoire.} Évènements et personnages historiques, civilisations anciennes, guerres et certaines créatures (Géants et Humanoïdes).",
+                "{@b Investigation.} Piège, énigmes, messages cryptés et gadgets divers.",
+                "{@b Nature.} Terrain, flore, climat, et certaines créatures (Bêtes, Dragons, Plantes et Vases).",
+                "{@b Religion.} Divinités, hiérarchies et rites religieux, symboles sacrés, cultes et certaines créatures (Célestes, Fiélons et Mort-Vivants)."
+              ]
+            },
+            {
+              "icon": "hood",
+              "title": "Furtivité",
+              "subtitle": "",
+              "description": "L'action Furtivité vous permet d'essayer de vous cacher. Pour ce faire effectuer un test de Dextérité (Discrétion) DD 15 à condition d'être dans une zone de Visibilité nulle, derrière un Abri supérieur ou un Abris total et de ne pas être dans le champ de vision d'un ennemi; si vous voyez une créature, vous savez si elle vous voit ou non.",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "En cas de réussite vous bénéficiez de l'état Invisible tant que vous êtes caché.",
+                "Le résultat du test correspond au DD à atteindre pour qu'une créature vous localise au moyen d'un test de Sagesse (Perception)",
+                "Vous cessez d'être caché aussitôt après l'un des évènement suivants:\n• Vous émettez un son plus fort qu'un murmure,\n• Un ennemi vous détecte,\n• Vous effectuez un jet d'attaque ou\n• Vous lancez un sort à composante verbale."
+              ]
+            },
+            {
+              "icon": "armadillo-tail",
+              "title": "Influence",
+              "subtitle": "",
+              "description": "Par l'action Influence, vous incitez une créature à agir. Décrivez ou incarnez la façon dont vous communiquez avec la créature. Essayez-vous de tromper, l'intimider, l'amuser ou le persuader en douceur ? Le MJ détermine alors si la créature se sent disposé, réticent ou hésitant suite à votre interaction ; ce jugement détermine si un test de caractéristique est nécessaire, comme expliqué ci-dessous.",
+              "bullets": [
+                "{@b Desposé.} Si votre requête est en accord avec les désirs de la créature, aucun test de caractéristique n'est nécessaire ; il accède à votre demande de la manière qu'il préfère.",
+                "{@b Réticent.} Si votre requête est répugne à la créature ou est contraire à son alignement, aucun test de caractéristique n'est nécessaire ; il vous oppose un refus.",
+                "{@b Hésitant.} Si vous incitez la créature à faire quelque chose et qu'il se montre hésitant, vous devez en passer par un test de caractéristique, lequel est affecter par l'attitude de la créature: Indifférent, Amical ou Hostile.\n\nLe tableau des test d'Influence suggère quel test de caractéristique à entreprendre en fonction de al façon dont vous interaction avec la créature. Le MJ choisit le test, dont le DD par défaut est égal à 15 ou au score d'Intelligence de la créature, selon la valeur la plus élevée. En cas de réussite, la créature accomplit ce qui lui ai demandé. En cas d'échec, vous devez attendre 24 heures (ou une durée définie par le MJ) avant de pouvoir l'inciter à nouveau de la même manière.",
+                "",
+                "{@b Charisme (Intimidation).} Intimider une créature.",
+                "{@b Charisme (Persuasion).} Convaincre une créature qui vous comprend.",
+                "{@b Charisme (Representation).} Amusez une créature.",
+                "{@b Charisme (Tromperie).} Tromper une créature qui vous comprend.",
+                "{@b Sagesse (Dressage).} Amadouer une Bête ou une Monstruosité."
+              ]
+            },
+            {
+              "icon": "stopwatch",
+              "title": "Intention",
+              "subtitle": "Choisissez le déclencheur et l'action",
+              "description": "L'action Intention consiste à attendre une circonstance particulière avant d'agir. Pour ce faire, vous entreprenez cette action à votre tour, ce qui vous permet de jouer votre Réaction avant le début de votre tour suivant.",
+              "reference": "PHB, pg. 193.",
+              "bullets": [
+                "Commencez par décider quelles circonstances perceptibles déclancheront votre Réaction. Puis choisissez l'action qui vous entreprendrez en réponse à ce déclanchur (ou optez pour un déplacement n'excédant pas votre Vitesse).",
+                "Lorsque le déclancheur intervient, vous avez le choix entre jouer votre Réaction juste après la fin du déclancheur et ne pas tenir compte de celui-ci.",
+                "Lorsque votre Intention concerne l'incantation d'un sort, vous le lancer normalement (ce qui requiert de dépenser les éventuelles ressources nécessaires) mais retenez les énergies magiques, que vous ne libérez qu'à l'interventiondu déclencheur en jouant votre Réaction. Pour pouvoir s'anticiper ainsi, le sort doit avoir un temps d'incantation d'une action, sachant que retenir ses énergies vous demande de maintenir votre {@b Concentration}, ce que vous ne pouvez faire que jusqu'au début de votre tour suivant. Si votre Concentration est rompue, le sort se dissipe dans prendre effet."
+              ]
+            },
+            {
+              "icon": "magic-swirl",
+              "title": "Magie",
+              "subtitle": "",
+              "description": "Lorsque vous entreprenez l'action Magie, vous lancez un sort dont le temps d'incantation est une action ou recourez à une aptitude ou à un objet magique dont l'activation se fait au prix de l'action Magie.",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "Si vous lancez un sort dont le temps d'incanttion est de 1 minute ou plus, vous devez entreprendre l'action Magie à chaque tour de l'incantation, et devez maintenir votre Concentration tout du long. Si cette Concentration est rompue, le sort échoue, mais vous ne dépensez aucun emplacement de sort."
+              ]
+            },
+            {
+              "icon": "eyeball",
+              "title": "Observation",
+              "subtitle": "",
+              "description": "Lorsque vous entreprenez l'action Observation, vous effectuer un test de Sagesse visant à discerner ce qui n'est pas évident.",
+              "bullets": [
+                "{@b Intuition/Perspicacité.} État d'esprit d'une créature.",
+                "{@b Médecine.} Mal dont souffre une créature ou cause de sa mort.",
+                "{@b Perception.} Créature ou objet dissimulé.",
+                "{@b Survie.} Trace ou nourriture."
+              ]
+            },
+            {
+              "icon": "sprint",
+              "title": "Pointe",
+              "subtitle": "Double vitesse de déplacement",
+              "description": "Recevez du mouvement supplémentaire pour le tour en cours",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "Cet augmentation est égale à votre vitesse, après application des modificateurs."
+              ]
+            },
+            {
+              "icon": "telepathy",
+              "title": "Soutien",
+              "subtitle": "Accorder l'avantage à un allié",
+              "description": "Confère un avantage à un allié lors d'un test de caractéristique ou d'une attaque",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "Choisissez l'une de vos maîtrises de compétence ou d'outil, ainsi qu'un allié suffisamment proche pour l'assistier verbalement ou physiquement lorsqu'il entreprend un test de caractéristique. Cet allié a l'Avantage au prochain test de caractéristique qu'il entreprend avec la compétence ou l'outil choisis. C'est le MJ qui décide si votre assistance est possible ou non.",
+                "Alternativement, vous distrayez momentanément un ennemi dans un rayon de 1,50m ce qui octroie l'Avantage au jet d'attaque suivant de l'un de vos allié contre cet ennemi.",
+                "Ces bénéfices expire si l'allié n'y recourt pas avant le début de votre tout suivant."
+              ]
+            },
+            {
+              "icon": "swap-bag",
+              "title": "Utilisation",
+              "subtitle": "Interagir, utiliser des capacités spéciales",
+              "description": "Interagissez avec un deuxième objet ou utilisez des capacités d'objet spéciales",
+              "reference": "PHB, pg. 193.",
+              "bullets": [
+                "Vous interagissez souvent avec un objet tout en faisant autre chose, comme lorsque vous dégainez votre épée dans le cadre de votre Action",
+                "Lorsqu'un objet requiert spécifiquement votre action, vous entreprenez l'action Utilisation."
+              ]
+            },
+            {
+              "icon": "handcuffs",
+              "title": "Lutte",
+              "subtitle": "Se libérer d'une empoignade",
+              "description": "Se libérer d'une empoignade",
+              "reference": "PHB, pg. 195.",
+              "bullets": [
+                "Pour échapper à une empoignade, vous devez réussir un test de Force (Athlétisme) ou de Dextérité (Acrobatie) contesté par le test de Force (Athlétisme) de l'adversaire.",
+                "Échapper à d'autres conditions qui vous retiennent (comme les menottes) peut nécessiter un test de Dextérité ou de Force, comme spécifié par la condition."
+              ]
+            },
+            {
+              "icon": "embrassed-energy",
+              "title": "Utiliser une capacité de classe",
+              "subtitle": "Certaines capacités utilisent des actions",
+              "description": "Utiliser une capacité raciale ou de classe qui utilise une action",
+              "reference": "Voir la page de votre classe pour plus d'informations.",
+              "bullets": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "bonus-action",
+      "title": "Action Bonus",
+      "badge": "max. 1/turn",
+      "color": "indigo",
+      "groups": [
+        {
+          "intro": "Une action bonus est une action spéciale que vous pouvez entreprendre au même au même tour qu'une action. Vous ne pouvez pas entreprendre plus d'une action Bonus par tour, et ne jouissez d'une action Bonus  que si une règle le stipule explicitement.",
+          "entries": [
+            {
+              "icon": "crossed-swords",
+              "title": "Attaque seconde main",
+              "subtitle": "À utiliser avec l'action attaquer",
+              "description": "Attaquez avec votre main libre",
+              "reference": "PHB, pgs. 192,194-195.",
+              "bullets": [
+                "Utilisable uniquement si vous prenez l'action {@i Attaquer} et attaquez avec une arme de mêlée légère que vous tenez dans une main.",
+                "Effectuez une seule attaque avec une arme de mêlée légère différente que vous tenez dans l'autre main.",
+                "Vous n'ajoutez pas votre modificateur de capacité aux dégâts de l'attaque bonus, sauf si ce modificateur est négatif.",
+                "Si l'une des armes a la propriété de lancer, vous pouvez lancer l'arme au lieu de faire une attaque au corps à corps avec elle."
+              ]
+            },
+            {
+              "icon": "magic-swirl",
+              "title": "Lancer un sort",
+              "subtitle": "Temps d'incantation de 1 action bonus",
+              "description": "Lancer un sort avec un temps d'incantation de 1 action bonus",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "Vous ne pouvez pas lancer un sort avec votre action et un sort différent avec votre action bonus dans le même tour, sauf si l'action est utilisée pour lancer un sort mineur.",
+                "Pour plus de détails, voir l'action {@i Lancer un sort}."
+              ]
+            },
+            {
+              "icon": "embrassed-energy",
+              "title": "Utiliser une capacité de classe",
+              "subtitle": "Certaines capacités utilisent des actions bonus",
+              "description": "Utiliser une caractéristique raciale ou de classe qui utilise une action bonus",
+              "reference": "Voir la page de classe pour plus d'informations.",
+              "bullets": []
+            },
+            {
+              "icon": "foot-trip",
+              "title": "Plaquer",
+              "subtitle": "À utiliser avec l'action foncer",
+              "description": "Plaquer une cible à terre en utilisant l'élan généré par l'action Foncer",
+              "reference": "Homebrew (Martial Prowess, pg. 6.)",
+              "bullets": [
+                "Vous chargez un adversaire en essayant de le maîtriser en utilisant votre élan et votre poids. Lorsque vous utilisez votre action pour foncer et que vous vous déplacez d'au moins 3 mètres en ligne droite vers une créature, vous pouvez tenter de l'agripper ou de la pousser en tant qu'action bonus.",
+                "Si vous gagnez le test opposé, la cible est jetée à terre et est soit agrippée, soit poussée de 1,50 mètre (votre choix). Sinon, la cible n'est pas affectée.",
+                "Dans les deux cas, vous tombez à terre avec la cible et votre vitesse devient 0 jusqu'à la fin de votre tour."
+              ]
+            },
+            {
+              "icon": "charging-bull",
+              "title": "Charger",
+              "subtitle": "À utiliser avec l'action foncer",
+              "description": "Attaquer une cible à terre en utilisant l'élan généré par l'action Foncer",
+              "reference": "Homebrew (Martial Prowess, pg. 6.)",
+              "bullets": [
+                "Vous pouvez utiliser votre élan pour attaquer une créature. Lorsque vous utilisez une action pour foncer et que vous vous déplacez d'au moins 3 mètres en ligne droite vers une créature, vous pouvez effectuer une attaque au corps à corps contre elle en tant qu'action bonus.",
+                "Si vous touchez, vous infligez vos dégâts habituels et vous pouvez choisir de repousser la créature à 1,50 mètre de vous.",
+                "Que vous touchiez ou non, votre vitesse devient 0 jusqu'à la fin de votre tour."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "reaction",
+      "title": "Reaction",
+      "badge": "max. 1/round",
+      "color": "DarkOliveGreen",
+      "groups": [
+        {
+          "entries": [
+            {
+              "icon": "crossed-swords",
+              "title": "Attaque d'opportunité",
+              "subtitle": "L'ennemi quitte votre allonge",
+              "description": "Vous pouvez rarement dépasser vos ennemis sans vous mettre en danger",
+              "reference": "PHB, pg. 195.",
+              "bullets": [
+                "Déclencheur : la créature ennemie que vous pouvez voir quitte votre zone d'allonge en recourant à son action, à une action Bonus, à sa Réaction ou à l'une de ses Vitesse.",
+                "Effectuez une attaque au corps à corps contre la créature provoquante.",
+                "L'attaque interviens juste avant que la créature soit sortie de votre zone d'allonge.",
+                "Les créatures ne provoquent pas d'attaque d'opportunité lorsqu'elles se téléportent ou lorsque quelqu'un ou quelque chose les déplace sans utiliser leur mouvement, action ou réaction."
+              ]
+            },
+            {
+              "icon": "stopwatch",
+              "title": "Action préparée",
+              "subtitle": "Fait partie de l'action Se tenir prêt",
+              "description": "Exécutez la réaction spécifiée par votre action Se tenir prêt",
+              "reference": "PHB, pg. 193.",
+              "bullets": [
+                "Déclencheur : spécifié par votre action {@i Se tenir prêt}."
+              ]
+            },
+            {
+              "icon": "magic-swirl",
+              "title": "Lancer un sort",
+              "subtitle": "Temps d'incantation de 1 réaction",
+              "description": "Lancer un sort avec un temps d'incantation de 1 réaction",
+              "reference": "PHB, pg. 192.",
+              "bullets": [
+                "Déclencheur : spécifié par le sort.",
+                "Pour plus de détails, consultez l'action {@i Lancer un sort}."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "condition",
+      "title": "États",
+      "badge": "",
+      "color": "FireBrick",
+      "groups": [
+        {
+          "intro": "Un état est une situation de jeu temporaire qui vos affecte.",
+          "entries": [
+            {
+              "icon": "crawl",
+              "title": "À terre",
+              "subtitle": "Vous êtes à terre",
+              "description": "Vous êtes à terre",
+              "reference": "PHB, pg. 292. & Homebrew (The Warrior's Codex, pg. 89.)",
+              "bullets": [
+                "Votre seule option de mouvement est de ramper.",
+                "Pour mettre fin à l'état, vous devez vous relever en dépenssant la moitié de votre Vitesse (arrondie à l'inferieur).",
+                "Vous avez un désavantage aux jets d'attaque.",
+                "Les jets d'attaque au corps à corps contre vous ont un Avantage, sinon l'attaque subis un Désaventage"
+              ]
+            },
+            {
+              "icon": "grab",
+              "title": "Agrippé",
+              "subtitle": "Vous êtes agrippé",
+              "description": "Vous êtes agrippé",
+              "reference": "PHB, pg. 290.",
+              "bullets": [
+                "Votre vitesse devient 0, et ne peux pas augmenter.",
+                "Vous subissez un Désaventage à tous vos jets d'Attaque contre toute cibles hormis l'aggripeur.",
+                "L'aggripeur peut vous tirer ou vous porter lorsqu'il se déplace, mais ses cout de déplacement sont doublés, sauf si vous êtes de taille TP ou que votre catégorie est inférieur d'au moins deux crans à la sienne.",
+                "L'état prend fin si la créature qui agrippe est incapable d'agir."
+              ]
+            },
+            {
+              "icon": "elf-ear",
+              "title": "Assourdi",
+              "subtitle": "Vous ne pouvez pas entendre",
+              "description": "Vous ne pouvez pas entendre",
+              "reference": "PHB, pg. 290.",
+              "bullets": [
+                "Vous échouez automatiquement à tout jet de caractéristique qui nécessite de l'ouïe."
+              ]
+            },
+            {
+              "icon": "one-eyed",
+              "title": "Aveuglé",
+              "subtitle": "Vous ne pouvez pas voir",
+              "description": "Vous ne pouvez pas voir",
+              "reference": "PHB, pg. 290.",
+              "bullets": [
+                "Vous échouez automatiquement à tout test de caractéristique qui nécessite la vue.",
+                "Vous avez un désavantage aux jets d'attaque.",
+                "Les jets d'attaque contre vous ont un avantage."
+              ]
+            },
+            {
+              "icon": "smitten",
+              "title": "Charmé",
+              "subtitle": "Vous êtes charmé",
+              "description": "Vous êtes charmé par une autre créature",
+              "reference": "PHB, pg. 290.",
+              "bullets": [
+                "Vous ne pouvez pas attaquer votre \"charmeur\" ou le cibler avec des aptitudes ou effets magique qui infligent des dégâts.",
+                "Votre charmeur a un avantage sur les jets de caractéristiques pour interagir socialement avec vous."
+              ]
+            },
+            {
+              "icon": "sharp-smile",
+              "title": "Effrayé",
+              "subtitle": "Vous êtes effrayé",
+              "description": "Vous êtes effrayé",
+              "reference": "PHB, pg. 290.",
+              "bullets": [
+                "Vous avez un désavantage aux jets de caractéristique et aux jets d'attaque tant que la source de votre effroi est dans votre champ de vision.",
+                "Vous ne pouvez pas vous rapprocher volontairement de la source de votre peur."
+              ]
+            },
+            {
+              "icon": "poison-bottle",
+              "title": "Empoisonné",
+              "subtitle": "Vous êtes empoisonné",
+              "description": "Vous êtes empoisonné",
+              "reference": "PHB, pg. 292.",
+              "bullets": [
+                "Vous avez un désavantage aux jets d'attaque et aux jets de caractéristique."
+              ]
+            },
+            {
+              "icon": "imprisoned",
+              "title": "Entravé",
+              "subtitle": "Vous êtes entravé",
+              "description": "Vous êtes entravé",
+              "reference": "PHB, pg. 292.",
+              "bullets": [
+                "Votre vitesse devient 0 et ne peux augmenter.",
+                "Vous avez un désavantage aux jets d'attaque.",
+                "Les jets d'attaque contre vous ont l'Avantage.",
+                "Vous avez un désavantage aux jets de sauvegarde de Dextérité."
+              ]
+            },
+            {
+              "icon": "despair",
+              "title": "Épuisement",
+              "subtitle": "Vous êtes épuisé",
+              "description": "Cet état est cumulatif. Chaque fois que vous le recevez, vous subissez 1 niveau d'Épuisement.",
+              "reference": "PHB, pg. 291.",
+              "bullets": [
+                "Vous mourez quand votre niveau d'Épuisement atteint 6.",
+                "Lors d'un Test d20, le résultat est réduit de 2 fois votre niveau actuel d'Épuisement.",
+                "Votre vitesse est réduite de 1,50m x votre niveau actuel d'Épuisement.",
+                "Terminer un repos long réduit votre niveau d'épuisement de 1, sauf si une autre règle ne vous l'interdit.",
+                "De plus, être ressuscité d'entre les morts réduit le niveau d'épuisement d'une créature de 1."
+              ]
+            },
+            {
+              "icon": "star-swirl",
+              "title": "Étourdi",
+              "subtitle": "Vous êtes étourdi",
+              "description": "Vous êtes étourdi",
+              "reference": "PHB, pg. 292 & Homebrew (The Warrior's Codex, pg. 89.).",
+              "bullets": [
+                "Vous subissez l'état Neutralisé",
+                "Vous échouez automatiquement aux jets de sauvegarde et de compétence de Force et de Dextérité.",
+                "Les jets d'attaque contre vous ont l'Avantage."
+              ]
+            },
+            {
+              "icon": "coma",
+              "title": "Inconscient",
+              "subtitle": "Vous êtes inconscient",
+              "description": "Vous êtes inconscient",
+              "reference": "PHB, pg. 292. & Homebrew (The Warrior's Codex, pg. 89.)",
+              "bullets": [
+                "Vous subissez les états À terre et Neutralisé et laissez choire tout ce que vous tenez. Lorsque cet état prend fin, vous êtes toujours À terre.",
+                "Votre vitesse devient 0 et ne peux augmenter.",
+                "Les jets d'attaque contre vous ont l'Avantage.",
+                "Vous ratez automatiquement aux JdS et de Force et de Dextérité.",
+                "Tout jets d'attaque qui vous touche est un coup critique si l'assaillant qui la porte se trouve dans un rayon de 1,50m."
+              ]
+            },
+            {
+              "icon": "invisible",
+              "title": "Invisible",
+              "subtitle": "Vous ne pouvez pas être vu",
+              "description": "Vous ne pouvez pas être vu sans l'aide de la magie ou d'un sens spécial",
+              "reference": "PHB, pg. 291.",
+              "bullets": [
+                "Si vous êtes Invisible au moment de jouer l'Initiative, vous avez l'Avantage à ce jet.",
+                "Vous n'êtes pas affecté par les effets qui exigent que la cible soit vue, sauf si la créature de l'effet vous \"voit\" par un biais pu un autre. Tout l'équipement que vous portez est lui aussi dissimulé.",
+                "Vos jets d'attaque ont l'Avantage.",
+                "Les jets d'attaque contre vous subissent le Désavantage.",
+                "Si une créature vous voit par un biais ou un autre vous ne recevez pas ce bénéfice contre elle."
+              ]
+            },
+            {
+              "icon": "internal-injury",
+              "title": "Neutralisé",
+              "subtitle": "Vous êtes là en effet... Peut-être.... ou pas....",
+              "description": "Vous êtes là en effet... Peut-être.... ou pas....",
+              "reference": "PHB, pg. 290.",
+              "bullets": [
+                "Vous ne pouvez pas entreprendre ni d'Actions, ni action Bonus ni Réactions.",
+                "Votre concentration est brisé.",
+                "Vous ne pouvez pas parler",
+                "Si vous être neutralisé au moment de jouer l'Initiative, vous subissez le Désavantage à ce jet."
+              ]
+            },
+            {
+              "icon": "internal-injury",
+              "title": "Paralysé",
+              "subtitle": "Vous êtes paralysé",
+              "description": "Vous ne pouvez rien faire",
+              "reference": "PHB, pg. 291. & Homebrew (The Warrior's Codex, pg. 89.)",
+              "bullets": [
+                "Vous subissez l'état Neutralisé",
+                "Votre vitesse devient 0 et ne peux augmenter.",
+                "Vous échouez automatiquement aux jets de sauvegarde de Force et de Dextérité.",
+                "Les jets d'attaque contre vous ont l'Avantage.",
+                "Tout jets d'attaque qui vous touche est un coup critique si l'assaillant qui la porte se trouve dans un rayon de 1,50m."
+              ]
+            },
+            {
+              "icon": "stone-pile",
+              "title": "Pétrifié",
+              "subtitle": "Vous êtes transformé en pierre",
+              "description": "Vous êtes transformé, avec tous les objets non magiques que vous portez ou transportez, en une substance solide inanimée (généralement de la pierre).",
+              "reference": "PHB, pg. 291. & Homebrew (The Warrior's Codex, pg. 89.)",
+              "bullets": [
+                "Votre poids augmente d'un facteur dix et vous cessez de vieillir.",
+                "Votre vitesse devient 0 et ne peux augmenter.",
+                "Les jets d'attaque contre vous ont l'Avantage.",
+                "Vous échouez automatiquement aux jets de sauvegarde de Force et de Dextérité.",
+                "Vous avez la Résistance à tous les dégâts.",
+                "Vous avez l'Immunisé contre l'état Empoisonnement."
+              ]
+            },
+            {
+              "icon": "dead-head",
+              "title": "Mourant",
+              "subtitle": "Vous êtes mourant",
+              "description": "Vous êtes tombé à zéro point de vie et vous êtes en train de mourir",
+              "reference": "PHB, pg. 197.",
+              "bullets": [
+                "Si vous êtes réduit à 0 points de vie par des dégâts qui ne vous tuent pas, vous tombez inconscient et êtes mourant.",
+                "Si vous recevez une guérison, vous reprenez immédiatement conscience et ne mourez plus.",
+                "Lorsque vous mourez, au début de chacun de vos tours, vous effectuez un jet de sauvegarde contre la mort. Lancez un d20 et n'ajoutez aucun modificateur.",
+                "Un 10 ou plus est un succès, 9 ou moins est un échec.",
+                "À votre troisième succès, vous devenez stable.",
+                "À votre troisième échec, vous mourez.",
+                "Lancer un 1 compte comme deux échecs.",
+                "Lancer un 20 vous fait immédiatement regagner 1 point de vie.",
+                "Vous pouvez également être stabilisé par un allié effectuant l'action Stabiliser et réussissant un test de Sagesse (Médecine) DD 10.",
+                "Une fois stable, vous regagnez 1 point de vie après 1d4 heures."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "environment",
+      "title": "Environmental Effects",
+      "badge": "",
+      "color": "ForestGreen",
+      "groups": [
+        {
+          "intro": "Effects that obscure vision can prove a significant hindrance to most adventuring tasks.",
+          "entries": [
+            {
+              "icon": "bleeding-eye",
+              "title": "Légèrement obscurci",
+              "subtitle": "Désavantage sur la perception",
+              "description": "Lumière tamisée, brouillard épars, feuillage modéré",
+              "reference": "PHB, pg. 183.",
+              "bullets": [
+                "Les créatures ont un {@b désavantage sur les jets de Sagesse (Perception)} qui dépendent de la vue"
+              ]
+            },
+            {
+              "icon": "sight-disabled",
+              "title": "Très obscurci",
+              "subtitle": "Impossible de voir",
+              "description": "Obscurité, brouillard opaque, feuillage dense",
+              "reference": "PHB, pg. 183.",
+              "bullets": [
+                "Une créature dans une zone fortement obscurcie souffre de la {@b condition Aveuglé}."
+              ]
+            }
+          ]
+        },
+        {
+          "intro": "The presence or absence of light in an environment creates three categories of illumination.",
+          "entries": [
+            {
+              "icon": "star-pupil",
+              "title": "Lumière vive",
+              "subtitle": "Vision normale",
+              "description": "La lumière vive permet à la plupart des créatures de voir normalement",
+              "reference": "PHB, pg. 183.",
+              "bullets": [
+                "Même les jours sombres fournissent une lumière vive, tout comme les torches, les lanternes, les feux et autres sources d'éclairage dans un rayon spécifique."
+              ]
+            },
+            {
+              "icon": "semi-closed-eye",
+              "title": "Lumière faible",
+              "subtitle": "Légèrement obscurci",
+              "description": "Lumière faible, également appelée ombres",
+              "reference": "PHB, pg. 183.",
+              "bullets": [
+                "Crée une zone {@b légèrement obscurcie}.",
+                "Une zone de faible lumière est généralement une frontière entre une source de lumière vive, telle qu'une torche, et l'obscurité environnante.",
+                "La douce lumière du crépuscule et de l'aube compte également comme une faible lumière. Une pleine lune particulièrement brillante pourrait baigner la terre dans une lumière faible."
+              ]
+            },
+            {
+              "icon": "worried-eyes",
+              "title": "Ténèbre",
+              "subtitle": "Très obscurci",
+              "description": "L'obscurité crée une zone fortement obscurcie",
+              "reference": "PHB, pg. 183.",
+              "bullets": [
+                "Crée une zone {@b fortement obscurcie}.",
+                "Les personnages font face à l'obscurité à l'extérieur la nuit (même la plupart des nuits éclairées par la lune), dans les confins d'un donjon non éclairé ou d'un caveau souterrain, ou dans une zone d'obscurité magique."
+              ]
+            }
+          ]
+        },
+        {
+          "intro": "Some creatures have extraordinary senses that allow them to perceive their environment.",
+          "entries": [
+            {
+              "icon": "one-eyed",
+              "title": "Vision aveugle",
+              "subtitle": "Percevoir sans voir",
+              "description": "Percevez votre environnement sans vous fier à la vue, dans un certain rayon",
+              "reference": "PHB, pg. 183.",
+              "bullets": [
+                "Les créatures sans yeux, comme les vases, et les créatures avec une écholocation ou des sens accrus, comme les chauves-souris et les vrais dragons, ont ce sens."
+              ]
+            },
+            {
+              "icon": "night-vision",
+              "title": "Vision dans le noir",
+              "subtitle": "Vision limitée dans l'obscurité",
+              "description": "Une créature avec la vision dans le noir peut mieux voir dans l'obscurité ou dans des conditions de faible luminosité, dans un certain rayon",
+              "reference": "PHB, pgs. 183-184.",
+              "bullets": [
+                "Dans une plage spécifiée, une créature dotée de la vision dans le noir peut {@b voir dans l'obscurité comme si l'obscurité était une lumière faible}, de sorte que les zones d'obscurité ne sont que légèrement obscurcies en ce qui concerne cette créature.",
+                "Cependant, la créature ne peut pas discerner la couleur dans l'obscurité, seulement des nuances de gris.",
+                "De nombreuses créatures dans les mondes de D&D, en particulier celles qui vivent sous terre, ont une vision dans le noir."
+              ]
+            },
+            {
+              "icon": "eye-shield",
+              "title": "Vision véritable",
+              "subtitle": "Vision dans les ténèbres",
+              "description": "Une créature avec une vision véritable peut tout voir sous sa vraie forme, indépendamment de l'environnement",
+              "reference": "PHB, pg. 184.",
+              "bullets": [
+                "Une créature avec la vision véritable peut, à une distance spécifique, voir dans l'obscurité normale et magique, voir des créatures et des objets invisibles, détecter automatiquement des illusions visuelles et réussir des jets de sauvegarde contre elles, et percevoir la forme originale d'un métamorphe ou d'une créature qui est transformé par magie.",
+                "De plus, la créature peut voir dans le plan éthéré."
+              ]
+            }
+          ]
+        },
+        {
+          "intro": "Obstacles can provide cover during combat, making a target more difficult to harm.",
+          "entries": [
+            {
+              "icon": "broken-shield",
+              "title": "Abri partiel",
+              "subtitle": "Muret, mobilier, créatures",
+              "description": "Une cible bénéficie d'un abri partiel si un obstacle bloque au moins la moitié de son corps",
+              "reference": "PHB, pg. 196.",
+              "bullets": [
+                "L'obstacle peut être un muret, un gros meuble, un tronc d'arbre étroit ou une créature, que cette créature soit un ennemi ou un ami.",
+                "Une cible à moitié couverte bénéficie d'un {@b bonus de +2 à la CA et aux jets de sauvegarde de Dextérité}.",
+                "Si une cible se trouve derrière plusieurs sources de couverture, seul le degré de couverture le plus protecteur s'applique."
+              ]
+            },
+            {
+              "icon": "cracked-shield",
+              "title": "Abri important",
+              "subtitle": "Herse, meurtrière",
+              "description": "Une cible bénéficie d'un abri important si environ les trois quarts de celle-ci sont couverts par un obstacle",
+              "reference": "PHB, pg. 196.",
+              "bullets": [
+                "L'obstacle peut être une herse, une meurtrière ou un gros tronc d'arbre.",
+                "Une cible ayant un abri important bénéficie d'un {@b bonus de +5 à la CA et aux jets de sauvegarde de Dextérité}.",
+                "Si une cible se trouve derrière plusieurs sources de couverture, seul le degré de couverture le plus protecteur s'applique."
+              ]
+            },
+            {
+              "icon": "shield",
+              "title": "Abri total",
+              "subtitle": "Complètement dissimulé",
+              "description": "Une cible a un abri total si elle est complètement cachée par un obstacle",
+              "reference": "PHB, pg. 196.",
+              "bullets": [
+                "Une cible avec un abri total {@b ne peut pas être ciblée directement} par une attaque ou un sort, bien que certains sorts puissent atteindre une telle cible en l'incluant dans une zone d'effet.",
+                "Si une cible se trouve derrière plusieurs sources de couverture, seul le degré de couverture le plus protecteur s'applique."
+              ]
+            }
+          ]
+        },
+        {
+          "intro": "Un danger est un péril lié à l'environnement.",
+          "entries": [
+            {
+              "icon": "gas-mask",
+              "title": "Asphyxie",
+              "subtitle": "Retenir sa respiration avant de mourir",
+              "bullets": [
+                "Une créature peut retenir son souffle pendant un nombre de minute égal à 1 + son mod. de Con (minimum 30s).",
+                "Lorsqu'une créature est à bout de souffle, elle gagne 1 niveau d'Épuisement à la fin de chaqu'un de ses tours.",
+                "Lorsque la créature peux de nouveau respirer, elle supprime tous les niveau d'Épuisemententraînés par l'asphyxie"
+              ]
+            },
+            {
+              "icon": "falling",
+              "title": "Chute",
+              "subtitle": "",
+              "bullets": [
+                "Subit 1d6 dégâts contondants par tranchede 3m de chute, jusqu'à un meximum de 20d6. ",
+                "La créature subit alors l'état À terre sauf si la chute ne lui a infligé aucun dégâts.",
+                "Une créature tombant dans l'eau ou un autre liquide peut jouer sa réaction pour effectuerun test de Force (Athlétisme) ou Dextérité (Acrobatie) DD15, afin d'y rentrer par les pieds ou la tête. Réduisant les dégâts de chute de moitier en cas de réussite."
+              ]
+            },
+            {
+              "icon": "drop",
+              "title": "Déshydratation",
+              "subtitle": "Sans eau, tu meur.",
+              "description": "Une créature a besoin d'une certaine quantité d'eau par jour en fonction de sa catégorie de taille. Une creature buvant moins de la moitié de ses besoin quotidien en eau reçoit 1 niveau d'Épuisement à la fin de la journée considérée. L'Épuisement provoqué par la déshydratation ne peut pas être dissipé tant que la créature n'as pas bu son quota d'eau pour une une journée.",
+              "bullets": [
+                "TP - 1L",
+                "P - 4L",
+                "M - 4L",
+                "G - 16L",
+                "TG - 64L",
+                "Gig - 256L"
+              ]
+            },
+            {
+              "icon": "flame",
+              "title": "Embrasement",
+              "subtitle": "\"The house is on FIRE!!!\"",
+              "description": "Une créature ou un objet victime de l'Embrasement subit 1d4 dégâts de feu au début de chacun de ses tours.",
+              "bullets": [
+                " Au prix d'une Action, vous pouvez éteindre le feu sur vous-même en vous donnant l'état À terre et en vous roulant au sol. ",
+                "Les flames s'éteignent également si elles sont suffisamment arrosées ou plongées dans l'eau,ou étouffées d'une autre manière."
+              ]
+            },
+            {
+              "icon": "desert-skull",
+              "title": "Malnutrition",
+              "subtitle": "Go miam miam or die.",
+              "description": "Une créature a besoin d'une certaine quantité de nourriture par jour en fonction de sa catégorie de taille, comme indiqué ci-dessous. Une créature qui s'alimente, mais absorbe moins de la moitié de la nourriture nécessaire pour une journée doit réussir un JdS de Constitution DD 10, sous peine de recevoir 1 niveau d'Épuisement à la fin de la journée. Une créature qui ne mange rien pendant 5 jours reçoit automatiquement 1 niveau d'Épuisement à la fin du cinquième jour, ainsi qu'un niveau supplémentaire à la fin de chaque jour suivant sans nourriture.",
+              "bullets": [
+                "L'Épuisement provoqué par la malnutrition ne peut pas être éliminé tant que la créature n'a pas absorbé la totalité besoin quota pour une journée.",
+                "TP - 250g",
+                "P - 1kg",
+                "M - 1kg",
+                "G - 4kg",
+                "TG - 16kg",
+                "Gig - 64kg",
+                "Poids doublé pour logique."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "rules",
+      "title": "Règles Spéciales",
+      "badge": "",
+      "color": "#",
+      "groups": [
+        {
+          "entries": [
+            {
+              "icon": "sword-break",
+              "title": "Bris des objets",
+              "subtitle": "Endommagés des objets non porté",
+              "description": "Les objets peuvent être endommagés par des attaques et par certains sorts, selon les règles ci-dessous. Si un objet est extrêmement fragile, le MJ peut autoriser une créature à le briser automatiquement par l'action Attaque ou Utilisation.",
+              "bullets": [
+                "{@b Classe d'armure.} Selon les matériaux le composant, un objet possède une classe d'armure variable:\n• Tissu, papier, corde → 11\n• Cristal, verre, glace → 13\n• Bois → 15\n• Pierre → 17\n• Fer, Acier → 19\n• Mithral → 21\n• Adamantium → 23",
+                "{@ Points de vie.} Un objet est détruit lorsqu'il tombe à 0 point de vie. Le tableau des points de vie des objets indique les valeurs de points de vie pour les objets fragiles et résistants de taille Grande ou inférieure. Pour suivre les points de vie d'un objet Gigantesque ou Gargantuesque, divisez-le en sections de taille Grande ou inférieure et suivez les points de vie de chaque section séparément. Le MJ détermine si la destruction d'une partie d'un objet entraîne l'effondrement dfe la structure.\n\n                 Taille                       | Fragile  |  Robuste   |\n• TP (bouteille, cadenas)       | 2 (1d4)  |   5 (2d4)   |\n• P (coffre, luth)                     |  3 (1d6)  | 10 (3d6)   |\n• M (tonneau, lustre)              | 4 (1d8)  |  18 (4d8)  |\n• G (charrette, grande table) | 5 (1d10) | 27 (4d10) |",
+                "{@b Types de dégâts et objets.} Les objets ont l'Immunité contre les dégâts psychiques et de poison. Le MJ peut décider que certains types de dégâts sont plus ou moins efficaces contre un objet donné. Les dégâts contondants, par exemple, exellent lorsqu'il s'agit de fracasser quelque chose, mais ses même dégâts sont inopérants pour les couper quelque chose. Les objets en papier ou en tissu peuvent ont la Vulnérabilité aux dégâts de feu.",
+                "{@b Seuil de dégâts.} Les objets imposant comme les murs d'un château montre souvant une résistance accrue, représentée par un seuil de dégâts.",
+                "{@b Absence de valeurs de caractéristique.} Un objet n'a pas de valeurs de caractéristique, sauf si une règle lui en attribue. Sans scores de caractéristiques, un objet ne peut effectuer aucun test de caractéristique et échoue à tous ses jets de sauvegarde."
+              ]
+            },
+            {
+              "icon": "",
+              "title": "Catégories de tailles",
+              "subtitle": "",
+              "description": "Une créature ou un objet appartient à une catégorie de taille",
+              "bullets": [
+                "Très Petite (TP)",
+                "Petite (P)",
+                "Moyenne (M)",
+                "Grande (G)",
+                "Très Grande (TG)",
+                "Gigantesque (Gig)"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
