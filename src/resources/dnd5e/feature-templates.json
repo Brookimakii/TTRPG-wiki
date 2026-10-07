@@ -1,0 +1,99 @@
+[
+  {
+    "_uid": "xkvmj7d",
+    "scope": "class",
+    "level": 1,
+    "name": "Sorts",
+    "source": "PHB24",
+    "page": null,
+    "header": null,
+    "topLevel": true,
+    "entries": [
+      "En tant qu'utilisateur de magie [phrase d'accroche], vous avez appris à lancer des sorts. Voir {@book Spellcasting|XPHB|5|spells} pour les règles générales. Les informations ci après expliquent comment utiliser ces règles avec les sorts de [Classe], qui figure dans votre liste de Sorts de [Classe], plus loin dans le descriptif de  cette classe.",
+      {
+        "type": "entries",
+        "name": "Sort Mineurs",
+        "entries": [
+          "Vous connaissez trois sorts mineurs de [classe] de votre choix. [Liste de sorts] sont recommandés. Après chaque repos long , vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur de [classe] de votre choix.\n",
+          "Lorsque vous atteignez le niveau 4 de [classe], puis le niveau 10, vous apprenez un autre sort mineur de [classe] de votre choix issue de la liste du [classe], comme indiqué dans la colonne Sorts mineurs dude la table Aptitude du [classe]."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Emplacements de sorts.",
+        "entries": [
+          "La table Aptitude du [classe] indique le nombre d'emplacements de sorts dont vous disposez pour lancer vos sorts de niveau 1 et supérieur. Vous récupérez tous vos emplacements dépensés en terminant repos long."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Sorts préparés du 1er niveau et plus",
+        "entries": [
+          "Vous préparez la liste des sorts de niveau 1 et supérieur que cette aptitude vous permet de lancer. À cette fin, choisissez quatre sorts [dans votre grimoire]. Ces sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts.\n",
+          "Le nombre de sorts de votre liste augmente à mesure que vous gagnez des niveaux de [classe], comme indiqué dans la colonne \"Sorts préparés\" de la table Aptitude de [classe]. À chaque augmentation de ce nombre, choisissez des sorts de magicien supplémentaires jusqu'à ce que votre liste contienne le nombre indiqué dans la table. Ces sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts. Si par exemple, vous êtes un [classe] de niveau 3, votre liste de sorts préparés peut inclure [nombre] sorts du 1er et 2e niveau choisis, choisis dans [votre grimoire], répartis à votre guise.\n",
+          "Si une autre capacité de [classe] vous octrois des sorts toujours préparés, ces sorts ne sont pas decomptés du nombre de sorts que vous pouvez préparer avec la présente aptitude, mais ils sont considérés pour vous comme des sorts de [classe]."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Modifier vos sorts préparés",
+        "entries": [
+          "Chaque fois que vous gagnez un niveau de [classe], vous pouvez remplacer un sort de votre liste par un autre sort de [classe] pour lequel vous disposez d'au moins un emplacement."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Caractéristique d'incantation",
+        "entries": [
+          "L'[Caractéristique] est votre capacité d'incantation pour vos sorts de [classe]."
+        ]
+      },
+      {
+        "type": "entries",
+        "name": "Focalisation de sorts",
+        "entries": [
+          "Vous pouvez utiliser un [focaliseur arcanique ou votre grimoire|druidique|symbol sacré] comme focaliseur de sorts pour vos sorts de [classe]."
+        ]
+      }
+    ]
+  },
+  {
+    "_uid": "u3na0p5",
+    "scope": "class",
+    "level": 4,
+    "name": "Amélioration de caractéristique",
+    "source": "",
+    "page": null,
+    "header": null,
+    "topLevel": true,
+    "entries": [
+      "Vous recevez le don Amélioration de caractéristique ou un autre don de votre choix pour lequel vous remplissez les conditions. Vous recevez de nouveau cette aptitude aux niveau de [classe] 8, 12 et 16."
+    ]
+  },
+  {
+    "_uid": "nj9r12l",
+    "scope": "class",
+    "level": 3,
+    "name": "Sous-Classe de [classe]",
+    "source": "",
+    "page": null,
+    "header": null,
+    "topLevel": true,
+    "entries": [
+      "Vous recevez la sous-classe de [classe] de votre choix. Les sous-classes sont détaillées ci-après. Une sous-classe est une spécialisation qui vous octroie des aptitudes à certains niveau de [classe]. Pour le reste de votre carrière, vous bénéficiez de chacune des aptitudes de la sous-classe choisie, à concurrence de votre niveau actuel de [classe]."
+    ]
+  },
+  {
+    "_uid": "ceissg2",
+    "scope": "class",
+    "level": null,
+    "name": "Aptitude de sous-classe",
+    "source": "",
+    "page": null,
+    "header": null,
+    "topLevel": true,
+    "entries": [
+      "Vous obtenez une aptitude grâce à votre sous-classe de [classe]."
+    ]
+  }
+]
