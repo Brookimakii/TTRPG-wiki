@@ -50,8 +50,8 @@
           "colLabels": [
             "Plan connu",
             "Objets Magique",
-            "{@filter Sorts Mineur|spells|level=0|class=artificer}",
-            "{@filter Sorts Préparé|spells|level=!0|class=artificer}"
+            "Sorts Mineur",
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -179,11 +179,11 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=artificer}",
-            "{@filter 2e|spells|level=2|class=artificer}",
-            "{@filter 3e|spells|level=3|class=artificer}",
-            "{@filter 4e|spells|level=4|class=artificer}",
-            "{@filter 5e|spells|level=5|class=artificer}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e"
           ],
           "rows": [
             [
@@ -1114,7 +1114,7 @@
         "classSource": "EFA",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de résistance à l'énergie|PHB24} est recommandé."
+          "Vous obtenez un don de Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de résistance à l'énergie|PHB24} est recommandé."
         ]
       },
       {
@@ -1932,7 +1932,7 @@
             "type": "entries",
             "name": "Ranged Weaponry",
             "entries": [
-              "You gain proficiency with {@filter Martial Ranged weapons|items|type=martial weapon;ranged weapon=sand}."
+              "You gain proficiency with Martial Ranged weapons."
             ]
           },
           {
@@ -1962,7 +1962,7 @@
         "level": 5,
         "header": 2,
         "entries": [
-          "When you finish a {@variantrule Repos Long|PHB24}, you can use {@item Woodcarver's Tools|PHB24} to carve special sigils into a {@item Rod|PHB24}, {@item Staff|PHB24}, {@item Wand|PHB24}, or {@filter Martial Ranged weapon|items|type=martial weapon;ranged weapon=sand} and thereby turn it into your Arcane Firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely.",
+          "When you finish a {@variantrule Repos Long|PHB24}, you can use {@item Woodcarver's Tools|PHB24} to carve special sigils into a {@item Rod|PHB24}, {@item Staff|PHB24}, {@item Wand|PHB24}, or Martial Ranged weapon and thereby turn it into your Arcane Firearm. The sigils disappear from the object if you later carve them on a different item. The sigils otherwise last indefinitely.",
           "You can use your Arcane Firearm as a {@variantrule Focaliseur d'incantation|PHB24} for your Artificer spells. When you cast an Artificer spell through the firearm, roll {@damage 1d8}, and you gain a bonus to one of the spell's damage rolls equal to the number rolled."
         ]
       },
@@ -2119,7 +2119,7 @@
             "type": "entries",
             "name": "Weapon Knowledge",
             "entries": [
-              "You gain proficiency with {@filter armes de guerre|items|type=arme de guerre}. You can use a weapon with which you have proficiency as a {@variantrule Focaliseur d'incantation|PHB24} for your Artificer spells."
+              "You gain proficiency with armes de guerre. You can use a weapon with which you have proficiency as a {@variantrule Focaliseur d'incantation|PHB24} for your Artificer spells."
             ]
           }
         ]
@@ -2544,7 +2544,7 @@
         ],
         "weapon": [
           "simple",
-          "martial weapons that have the {@filter finesse or light|items|type=martial weapon|property=finesse;light} property"
+          "martial weapons that have the finesse or light property"
         ],
         "tools": [
           "{@item outils de voleur|PHB24}"
@@ -3054,7 +3054,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de l'Esprit de la Nuit|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de l'Esprit de la Nuit|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -3122,7 +3122,7 @@
             "type": "entries",
             "name": "Sorts Mineur",
             "entries": [
-              "Vous connaissez trois sorts mineurs: {@spell main du mage|PHB24} et deux autres sorts mineurs de votre choix dans la {@filter liste des sorts de Magicien|spells|class=Magicien}. {@spell Piqûre mentale|PHB24} et {@spell illusion mineure|PHB24} sont recommandés.",
+              "Vous connaissez trois sorts mineurs: {@spell main du mage|PHB24} et deux autres sorts mineurs de votre choix dans la liste des sorts de Magicien. {@spell Piqûre mentale|PHB24} et {@spell illusion mineure|PHB24} sont recommandés.",
               "Chaque fois que vous gagnez un niveau de Roublard, vous pouvez remplacer l'un de vos sorts mineurs (à l'exception de {@spell main du mage|PHB24}), par un autre sort mineur de Magicien de votre choix.",
               "Lorsque vous atteignez le niveau 10 de Roublard, vous apprenez un autre sort mineur de Magicien de votre choix"
             ]
@@ -3840,7 +3840,7 @@
         },
         {
           "colLabels": [
-            "{@filter Sorts Préparé|spells|level=!0|class=Ranger}"
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -3908,11 +3908,11 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=ranger}",
-            "{@filter 2e|spells|level=2|class=ranger}",
-            "{@filter 3e|spells|level=3|class=ranger}",
-            "{@filter 4e|spells|level=4|class=ranger}",
-            "{@filter 5e|spells|level=5|class=ranger}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e"
           ],
           "rows": [
             [
@@ -4461,7 +4461,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Voyage Dimensionnel|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Voyage Dimensionnel|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -5118,7 +5118,7 @@
         {
           "colLabels": [
             "Canalisation Divine",
-            "{@filter Sorts Préparé|spells|level=!0|class=Paladin}"
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -5206,11 +5206,11 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=Paladin}",
-            "{@filter 2e|spells|level=2|class=Paladin}",
-            "{@filter 3e|spells|level=3|class=Paladin}",
-            "{@filter 4e|spells|level=4|class=Paladin}",
-            "{@filter 5e|spells|level=5|class=Paladin}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e"
           ],
           "rows": [
             [
@@ -5752,7 +5752,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de clairvoyance|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de clairvoyance|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -6454,9 +6454,9 @@
       "tableGroup": [
         {
           "colLabels": [
-            "{@filter Invocations|optionalfeatures|feature type=ei}",
-            "{@filter Sorts Mineur|spells|level=0|class=Occultiste}",
-            "{@filter Sorts Préparé|spells|level=!0|class=Occultiste}",
+            "Invocations",
+            "Sorts Mineur",
+            "Sorts Préparé",
             "Emplacements de sort",
             "Slot Level"
           ],
@@ -7153,7 +7153,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don du Destin|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don du Destin|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -7680,7 +7680,7 @@
         "level": 3,
         "header": 1,
         "entries": [
-          "Lorsque vous lancez un sort d'Occultiste qui inflige des dégâts, vous pouvez changer son type de dégâts en « psychiques ». Chaque fois que vous lancez un sort d'Occultiste qui est un {@filter Enchantement|spells|class=Occultiste|school=E} ou une {@filter Illusion|spells|class=Occultiste|school=I}, vous pouvez en outre le lancer sans composante verbale ni somatique."
+          "Lorsque vous lancez un sort d'Occultiste qui inflige des dégâts, vous pouvez changer son type de dégâts en « psychiques ». Chaque fois que vous lancez un sort d'Occultiste qui est un Enchantement ou une Illusion, vous pouvez en outre le lancer sans composante verbale ni somatique."
         ]
       },
       {
@@ -7758,7 +7758,7 @@
         "armor": [],
         "weapon": [
           "simple",
-          "martial weapons that have the {@filter light|items|type=martial weapon|property=light} property"
+          "martial weapons that have the light property"
         ],
         "tools": [
           "Choose one type of {@item outils d'artisan|PHB24} ou {@item Musical Instrument|PHB24}"
@@ -8060,8 +8060,8 @@
           {
             "type": "list",
             "items": [
-              "{@filter Simple Melee Weapons|items|type=simple weapon;melee weapon=sand}",
-              "{@filter Martial Melee Weapons that have the Light property|items|type=martial weapon;melee weapon=sand|property=light}"
+              "Simple Melee Weapons",
+              "Martial Melee Weapons that have the Light property"
             ],
             "entries": [
               "Armes de mêlée simples",
@@ -8425,7 +8425,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don d'Offensive Irrésistible|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don d'Offensive Irrésistible|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -9006,8 +9006,8 @@
       "tableGroup": [
         {
           "colLabels": [
-            "{@filter Sorts Mineur|spells|level=0|class=Magicien}",
-            "{@filter Sorts Préparé|spells|level=!0|class=Magicien}"
+            "Sorts Mineur",
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -9095,15 +9095,15 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=Magicien}",
-            "{@filter 2e|spells|level=2|class=Magicien}",
-            "{@filter 3e|spells|level=3|class=Magicien}",
-            "{@filter 4e|spells|level=4|class=Magicien}",
-            "{@filter 5e|spells|level=5|class=Magicien}",
-            "{@filter 6e|spells|level=6|class=Magicien}",
-            "{@filter 7e|spells|level=7|class=Magicien}",
-            "{@filter 8e|spells|level=8|class=Magicien}",
-            "{@filter 9e|spells|level=9|class=Magicien}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e",
+            "6e",
+            "7e",
+            "8e",
+            "9e"
           ],
           "rows": [
             [
@@ -9639,7 +9639,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Rappel de sorts|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Rappel de sorts|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -9689,7 +9689,7 @@
         "level": 3,
         "header": 1,
         "entries": [
-          "Choisissez deux sorts de {@filter Magicien de l'école de l'Abjuration|spells|level=0;1;2|class=Magicien|school=A}, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
+          "Choisissez deux sorts de Magicien de l'école de l'Abjuration, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
           "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe, vous pouvez ajouter gratuitement à votre grimoire un sort de Magicien de l'école de l'Abjuration. Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
         ]
       },
@@ -9786,8 +9786,8 @@
         "level": 3,
         "header": 1,
         "entries": [
-          "Choisissez deux sorts {@filter Magicien de l'école de la Divination|spells|level=0;1;2|class=Magicien|school=D}, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
-          "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe. vous pouvez ajouter gratuitement à votre grimoire un sort de {@filter Magicien de l'école de la Divination|spells|class=Magicien|school=D} Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
+          "Choisissez deux sorts Magicien de l'école de la Divination, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
+          "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe. vous pouvez ajouter gratuitement à votre grimoire un sort de Magicien de l'école de la Divination Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
         ]
       },
       {
@@ -9907,8 +9907,8 @@
         "level": 3,
         "header": 1,
         "entries": [
-          "Choisissez deux sorts de {@filter Magicien de l'école d'Évocation|spells|level=0;1;2|class=Magicien|school=V}, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
-          "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe. vous pouvez ajouter gratuitement à votre grimoire un sort de {@filter Magicien de l'école d'Évocation|spells|class=Magicien|school=V} Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
+          "Choisissez deux sorts de Magicien de l'école d'Évocation, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
+          "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe. vous pouvez ajouter gratuitement à votre grimoire un sort de Magicien de l'école d'Évocation Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
         ]
       },
       {
@@ -10003,8 +10003,8 @@
         "level": 3,
         "header": 1,
         "entries": [
-          "Choisissez deux sorts de {@filter Magicien de l'école d'Illusion|spells|level=0;1;2|class=Magicien|school=I}, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
-          "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe. vous pouvez ajouter gratuitement à votre grimoire un sort de {@filter Magicien de l'école d'Illusion|spells|class=Magicien|school=I} Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
+          "Choisissez deux sorts de Magicien de l'école d'Illusion, chacun du 2e niveau au maximum, et ajoutez-les gratuitement à votre grimoire.",
+          "En outre, chaque fois que vous recevez l'accès à un nouveau niveau d'emplacements de sort dans cette classe. vous pouvez ajouter gratuitement à votre grimoire un sort de Magicien de l'école d'Illusion Le sort choisi doit être d'un niveau pour lequel vous disposez d'emplacements de sort."
         ]
       },
       {
@@ -10311,8 +10311,8 @@
         "classSource": "PHB24",
         "level": 1,
         "entries": [
-          "Vous avez perfectionné vos compétences martiales et obtenez un don de {@filter style de combat feat|feats|category=FS} de votre choix. La {@feat Défense|PHB24} est recommandée.",
-          "Chaque fois que vous gagnez un niveau de Guerrier, vous pouvez remplacer le don que vous avez choisi par un don de {@filter style de combat feat|feats|category=FS} différent."
+          "Vous avez perfectionné vos compétences martiales et obtenez un don de style de combat feat de votre choix. La {@feat Défense|PHB24} est recommandée.",
+          "Chaque fois que vous gagnez un niveau de Guerrier, vous pouvez remplacer le don que vous avez choisi par un don de style de combat feat différent."
         ]
       },
       {
@@ -10595,7 +10595,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat don de Prouesse au combat|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat don de Prouesse au combat|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -10654,7 +10654,7 @@
             "type": "entries",
             "name": "Manœuvres",
             "entries": [
-              "Vous apprenez trois manœuvres à choisir dans la section \"{@filter Options de manœuvres|optionalfeatures|feature type=MV:B|source=PHB24}\"section later in this subclass's description. de la description de cette sous-classe. Nombre d'entre elles améliorent vos attaques. Vous ne pouvez pas recourir à plus d'une manœuvre par attaque.",
+              "Vous apprenez trois manœuvres à choisir dans la section \"Options de manœuvres\"section later in this subclass's description. de la description de cette sous-classe. Nombre d'entre elles améliorent vos attaques. Vous ne pouvez pas recourir à plus d'une manœuvre par attaque.",
               "Vous apprenez deux nouvelles manœuvres de votre choix aux niveaux 7, 10 et 15 de Guerrier. À chacune de ces étapes, vous pouvez également remplacer une manœuvre connue par une autre."
             ]
           },
@@ -10909,7 +10909,7 @@
         "level": 7,
         "header": 2,
         "entries": [
-          "Vous recevez un autre {@filter don de Style de combat|feats|category=FS} de votre choix."
+          "Vous recevez un autre don de Style de combat de votre choix."
         ]
       },
       {
@@ -11007,7 +11007,7 @@
             "type": "entries",
             "name": "Sorts Mineur",
             "entries": [
-              "Vous connaissez deux sorts mineurs de votre choix dans la {@filter liste de sorts de Magicien|spells|class=Magicien}. {@spell Poigne électrique|PHB24} et {@spell rayon de givre|PHB24} sont recommandés. Chaque fois que vous gagnez un niveau de Guerrier, vous pouvez remplacer l'un de vos sorts mineurs par un autre sort mineur de votre choix dans la {@filter liste de sorts de Magicien|spells|class=Magicien}.",
+              "Vous connaissez deux sorts mineurs de votre choix dans la liste de sorts de Magicien. {@spell Poigne électrique|PHB24} et {@spell rayon de givre|PHB24} sont recommandés. Chaque fois que vous gagnez un niveau de Guerrier, vous pouvez remplacer l'un de vos sorts mineurs par un autre sort mineur de votre choix dans la liste de sorts de Magicien.",
               "Lorsque vous atteignez le niveau 10 de Guerrier, vous apprenez un autre sort mineur de Magicien de votre choix."
             ]
           },
@@ -11030,8 +11030,8 @@
                 "type": "entries",
                 "name": "Sorts préparés du 1er niveau et plus",
                 "entries": [
-                  "Vous devez préparer la liste des sorts du 1er niveau et supérieur que cette aptitude vous permet de lancer. Pour commencer, choisissez trois sorts du 1er niveau dans la {@filter liste de sorts de Magicien|spells|class=Magicien}. {@spell Bouclier|PHB24}, {@spell mains brûlantes|PHB24}, et {@spell saut|PHB24} sont recommandés.",
-                  "Le nombre de sorts de votre liste augmente à mesure que vous recevez des niveaux de Guerrier, comme l'indique la colonne Sorts préparés de la table Sorts et emplacements de sorts du Chevalier occulte. Chaque fois que ce nombre augmente, choisissez des sorts de la {@filter liste de sorts de Magicien|spells|class=Magicien} jusqu'à ce que le nombre de sorts de votre liste corresponde au nombre indiqué dans la table. Ces sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sort. Si, par exemple, vous êtes un Guerrier de niveau 7, votre liste de sorts préparés peut inclure cinq sorts de Magicien du 1er ou 2e niveau, répartis à votre guise."
+                  "Vous devez préparer la liste des sorts du 1er niveau et supérieur que cette aptitude vous permet de lancer. Pour commencer, choisissez trois sorts du 1er niveau dans la liste de sorts de Magicien. {@spell Bouclier|PHB24}, {@spell mains brûlantes|PHB24}, et {@spell saut|PHB24} sont recommandés.",
+                  "Le nombre de sorts de votre liste augmente à mesure que vous recevez des niveaux de Guerrier, comme l'indique la colonne Sorts préparés de la table Sorts et emplacements de sorts du Chevalier occulte. Chaque fois que ce nombre augmente, choisissez des sorts de la liste de sorts de Magicien jusqu'à ce que le nombre de sorts de votre liste corresponde au nombre indiqué dans la table. Ces sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sort. Si, par exemple, vous êtes un Guerrier de niveau 7, votre liste de sorts préparés peut inclure cinq sorts de Magicien du 1er ou 2e niveau, répartis à votre guise."
                 ]
               }
             ]
@@ -11484,8 +11484,8 @@
         },
         {
           "colLabels": [
-            "{@filter Sorts Mineur|spells|level=0|class=sorcerer}",
-            "{@filter Sorts Préparé|spells|level=!0|class=sorcerer}"
+            "Sorts Mineur",
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -11573,15 +11573,15 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=sorcerer}",
-            "{@filter 2e|spells|level=2|class=sorcerer}",
-            "{@filter 3e|spells|level=3|class=sorcerer}",
-            "{@filter 4e|spells|level=4|class=sorcerer}",
-            "{@filter 5e|spells|level=5|class=sorcerer}",
-            "{@filter 6e|spells|level=6|class=sorcerer}",
-            "{@filter 7e|spells|level=7|class=sorcerer}",
-            "{@filter 8e|spells|level=8|class=sorcerer}",
-            "{@filter 9e|spells|level=9|class=sorcerer}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e",
+            "6e",
+            "7e",
+            "8e",
+            "9e"
           ],
           "rows": [
             [
@@ -12285,7 +12285,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Voyage Dimensionnel|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Voyage Dimensionnel|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -13057,8 +13057,8 @@
         {
           "colLabels": [
             "Wild Shape",
-            "{@filter Sorts Mineur|spells|level=0|class=Druid}",
-            "{@filter Sorts Préparé|spells|level=!0|class=Druid}"
+            "Sorts Mineur",
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -13166,15 +13166,15 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=Druid}",
-            "{@filter 2e|spells|level=2|class=Druid}",
-            "{@filter 3e|spells|level=3|class=Druid}",
-            "{@filter 4e|spells|level=4|class=Druid}",
-            "{@filter 5e|spells|level=5|class=Druid}",
-            "{@filter 6e|spells|level=6|class=Druid}",
-            "{@filter 7e|spells|level=7|class=Druid}",
-            "{@filter 8e|spells|level=8|class=Druid}",
-            "{@filter 9e|spells|level=9|class=Druid}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e",
+            "6e",
+            "7e",
+            "8e",
+            "9e"
           ],
           "rows": [
             [
@@ -13859,7 +13859,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Voyage Dimensionnel|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Voyage Dimensionnel|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -14725,7 +14725,7 @@
         "equipement": [
           "(a) a {@item mace|phb} or (b) a {@item warhammer|phb} (if proficient)",
           "(a) {@item scale mail|phb}, (b) {@item leather armor|phb}, or (c) {@item chain mail|phb} (if proficient)",
-          "(a) a {@item light crossbow|phb} et {@item Crossbow Bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+          "(a) a {@item light crossbow|phb} et {@item Crossbow Bolts (20)|phb|20 bolts} or (b) any simple weapon",
           "(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
           "A {@item shield|phb} et a {@item holy symbol|phb}"
         ]
@@ -14733,7 +14733,7 @@
       "tableGroup": [
         {
           "colLabels": [
-            "{@filter Sorts Mineur Known|spells|level=0|class=Clerc}"
+            "Sorts Mineur Known"
           ],
           "rows": [
             [
@@ -14801,15 +14801,15 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=Clerc}",
-            "{@filter 2e|spells|level=2|class=Clerc}",
-            "{@filter 3e|spells|level=3|class=Clerc}",
-            "{@filter 4e|spells|level=4|class=Clerc}",
-            "{@filter 5e|spells|level=5|class=Clerc}",
-            "{@filter 6e|spells|level=6|class=Clerc}",
-            "{@filter 7e|spells|level=7|class=Clerc}",
-            "{@filter 8e|spells|level=8|class=Clerc}",
-            "{@filter 9e|spells|level=9|class=Clerc}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e",
+            "6e",
+            "7e",
+            "8e",
+            "9e"
           ],
           "rows": [
             [
@@ -15377,7 +15377,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don du Destin|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don du Destin|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -16007,8 +16007,8 @@
         {
           "colLabels": [
             "Bardic Die",
-            "{@filter Sorts Mineur|spells|level=0|class=bard}",
-            "{@filter Sorts Préparé|spells|level=!0|class=bard}"
+            "Sorts Mineur",
+            "Sorts Préparé"
           ],
           "rows": [
             [
@@ -16116,15 +16116,15 @@
         {
           "title": "Emplacement par Niveau de sort",
           "colLabels": [
-            "{@filter 1er|spells|level=1|class=bard}",
-            "{@filter 2e|spells|level=2|class=bard}",
-            "{@filter 3e|spells|level=3|class=bard}",
-            "{@filter 4e|spells|level=4|class=bard}",
-            "{@filter 5e|spells|level=5|class=bard}",
-            "{@filter 6e|spells|level=6|class=bard}",
-            "{@filter 7e|spells|level=7|class=bard}",
-            "{@filter 8e|spells|level=8|class=bard}",
-            "{@filter 9e|spells|level=9|class=bard}"
+            "1er",
+            "2e",
+            "3e",
+            "4e",
+            "5e",
+            "6e",
+            "7e",
+            "8e",
+            "9e"
           ],
           "rows": [
             [
@@ -16691,7 +16691,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Rappel|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don de Rappel|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -17003,7 +17003,7 @@
         "level": 6,
         "header": 2,
         "entries": [
-          "Vous apprenez deux sorts de votre choix. Chacun de ces sorts peut être issu de la liste du {@filter Clerc|spells|class=Clerc}, du {@filter Druide|spells|class=Druide}, or {@filter Magicien|spells|class=Magicien} (ces listes se trouvent chacune dans la section de chaque classe correspondante). Chaque sort retenu doit être un sort mineur ou d’un niveau pour lequel vous disposez d’au moins un emplacement, comme indiqué dans la table « Aptitudes du Barde ».",
+          "Vous apprenez deux sorts de votre choix. Chacun de ces sorts peut être issu de la liste du Clerc, du Druide, or Magicien (ces listes se trouvent chacune dans la section de chaque classe correspondante). Chaque sort retenu doit être un sort mineur ou d’un niveau pour lequel vous disposez d’au moins un emplacement, comme indiqué dans la table « Aptitudes du Barde ».",
           "Ces sorts sont toujours préparés en ce qui vous concerne. Chaque fois que vous gagnez un niveau de Barde, vous pouvez remplacer l’un des sorts par un autre sort remplissant ces conditions."
         ]
       },
@@ -17083,8 +17083,8 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Vous recevez la maîtrise des {@filter armes de guerre|items|type=arme de guerre} ainsi que la formation aux {@filter armures intermédiaires|items|type=armure intermédiaire} et le port des {@item Boucliers|PHB24|Boucliers}.",
-          "De plus, vous pouvez vous servir d'une arme courante ou de guerre comme {@variantrule Focaliseur d'incantation|PHB24} pour lancer vos sorts de {@filter Barde|spells|class=Barde} (ou vos sorts considérés comme tels)."
+          "Vous recevez la maîtrise des armes de guerre ainsi que la formation aux armures intermédiaires et le port des {@item Boucliers|PHB24|Boucliers}.",
+          "De plus, vous pouvez vous servir d'une arme courante ou de guerre comme {@variantrule Focaliseur d'incantation|PHB24} pour lancer vos sorts de Barde (ou vos sorts considérés comme tels)."
         ]
       },
       {
@@ -17774,7 +17774,7 @@
         "classSource": "PHB24",
         "level": 19,
         "entries": [
-          "Vous obtenez un don de  {@filter Don épique feat|feats|category=EB} ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don d'Offensive Irrésistible|PHB24} de sorts est recommandé."
+          "Vous obtenez un don de  Don épique feat ou un autre {@5etools don|feats.html}de votre choix pour lequel vous remplissez les conditions requises. Le {@feat Don d'Offensive Irrésistible|PHB24} de sorts est recommandé."
         ]
       },
       {
@@ -18100,7 +18100,7 @@
         "level": 10,
         "header": 2,
         "entries": [
-          "Durant votre tour, votre allonge est augmentée de 3 mètres avec toute {@filter arme de corps à corps possédant la propriété Lourde ou Polyvalente|items|type=melee weapon|property=heavy;versatile}, grâce aux vrilles de l'Arbre-Monde qui émanent de vous. Lorsque vous touchez avec une telle arme durant votre tour, vous pouvez activer la botte {@itemMastery Poussée|PHB24} ou {@itemMastery Renversement|PHB24} en plus d'une autre botte que vous utilisez avec cette arme."
+          "Durant votre tour, votre allonge est augmentée de 3 mètres avec toute arme de corps à corps possédant la propriété Lourde ou Polyvalente, grâce aux vrilles de l'Arbre-Monde qui émanent de vous. Lorsque vous touchez avec une telle arme durant votre tour, vous pouvez activer la botte {@itemMastery Poussée|PHB24} ou {@itemMastery Renversement|PHB24} en plus d'une autre botte que vous utilisez avec cette arme."
         ]
       },
       {
