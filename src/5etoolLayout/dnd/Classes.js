@@ -47,7 +47,7 @@ export const Dnd5eClasses = () => {
   //      Pour les titres: "*idFeature*-*NomEntrée*"
 
   const selectedClass: PlayerClass = {...selected}
-  const features: [] = selectedClass?.info?.classFeatures.map(feature => {
+  const features: [] = selectedClass?.info?.classFeatures?.map(feature => {
     if (typeof feature === "string") return feature.split("|");
     return feature.classFeature.split("|")
   })
@@ -316,67 +316,68 @@ export const Dnd5eClasses = () => {
             </div> :
             <table className="cls-tbl shadow-big w-100 mb-2">
               <tbody>
-              <tr>
-                <th className="ve-tbl-border" colSpan="15"></th>
-              </tr>
-              <tr>
-                <th className="ve-text-left cls-tbl__disp-name" colSpan="15">{selectedClass.info.name}</th>
-              </tr>
-              <tr>
-                <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
-                <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
-                <th className="ve-text-left" rowSpan="2">Capacité</th>
-                {selectedClass.info.tableGroup?.map((groups) => {
-                  if (!groups.title) {
-                    return groups.colLabels.map((title) => {
-                      return <th className="cls-tbl__col-generic-center" rowSpan={2}>
-                        <div className="cls__squash_header">{title}</div>
-                      </th>
-                    })
-                  } else {
-                    return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{groups.title}</th>
-                  }
-                })}
-              </tr>
-              <tr>
-                {selectedClass.info.tableGroup?.map((groups) => {
-                  if (groups.title) {
-                    return groups.colLabels.map((label) => {
-                      return <th className="cls-tbl__col-generic-center">{label}</th>
-                    })
-                  }
-                })}
-              </tr>
-              {/*TODO: SPAGHETTI FOR EVERYONE. To clean up.*/}
-              {[...Array(20).keys()].map((level) => {
-                const featurePerLevel = features.filter(f => Number(f[3]) === level + 1)
-                return <tr className="cls-tbl__stripe-odd">
-                  <td className="cls-tbl__col-level">{level + 1}e{level + 1 === 1 ? "r" : ""}</td>
-                  <td className="cls-tbl__col-prof-bonus">+{Math.floor(2 + (level) / 4)}</td>
-                  <td>
-                    {featurePerLevel.length === 0 ? "—" : selectedClass.info.classFeatures.map((feature, idx) => {
-                      const [featureName, className, sourceName, featureLevel] = (feature.classFeature ?? feature).split("|")
-                      const currentFeature = featurePerLevel.indexOf(featurePerLevel.find(f => featureName === f[0]))
-                      if (Number(featureLevel) === level + 1) {
-                        return <div className="inline-block"
-                                    onClick={() => executeScroll(feature.classFeature ?? feature)}>
-                          <Link to={location.href}>{featureName}</Link>
-                          <span className="mr-1">
-                            {featurePerLevel.length > 1 ? (currentFeature + 1 !== featurePerLevel.length ? ", " : "") : ""}
-                          </span>
-                        </div>
-                      }
-                    })}
-                  </td>
-                  {selectedClass.info.tableGroup?.map((group) => {
-                    return group.rows[level].map(cell => {
-                      return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : cell}</td>
-                    })
+                <tr>
+                  <th className="ve-tbl-border" colSpan="15"></th>
+                </tr>
+                <tr>
+                  <th className="ve-text-left cls-tbl__disp-name" colSpan="15">{selectedClass.info.name}</th>
+                </tr>
+                <tr>
+                  <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
+                  <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
+                  <th className="ve-text-left" rowSpan="2">Capacité</th>
+                  {selectedClass.info.tableGroup?.map((groups) => {
+                    if (!groups.title) {
+                      return groups.colLabels.map((title) => {
+                        return <th className="cls-tbl__col-generic-center" rowSpan={2}>
+                          <div className="cls__squash_header">{title}</div>
+                        </th>
+                      })
+                    } else {
+                      return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{groups.title}</th>
+                    }
                   })}
                 </tr>
-              })}
+                <tr>
+                  {selectedClass.info.tableGroup?.map((groups) => {
+                    if (groups.title) {
+                      return groups.colLabels.map((label) => {
+                        return <th className="cls-tbl__col-generic-center">{label}</th>
+                      })
+                    }
+                  })}
+                </tr>
+                {/*TODO: SPAGHETTI FOR EVERYONE. To clean up.*/}
+                {[...Array(20).keys()].map((level) => {
+                  const featurePerLevel = features.filter(f => Number(f[3]) === level + 1)
+                  return <tr className="cls-tbl__stripe-odd">
+                    <td className="cls-tbl__col-level">{level + 1}e{level + 1 === 1 ? "r" : ""}</td>
+                    <td className="cls-tbl__col-prof-bonus">+{Math.floor(2 + (level) / 4)}</td>
+                    <td>
+                      {featurePerLevel.length === 0 ? "—" : selectedClass.info.classFeatures.map((feature, idx) => {
+                        const [featureName, className, sourceName, featureLevel] = (feature.classFeature ?? feature).split("|")
+                        const currentFeature = featurePerLevel.indexOf(featurePerLevel.find(f => featureName === f[0]))
+                        if (Number(featureLevel) === level + 1) {
+                          return <div className="inline-block"
+                                      onClick={() => executeScroll(feature.classFeature ?? feature)}>
+                            <Link to={location.href}>{featureName}</Link>
+                            <span className="mr-1">
+                              {featurePerLevel.length > 1 ? (currentFeature + 1 !== featurePerLevel.length ? ", " : "") : ""}
+                            </span>
+                          </div>
+                        }
+                      })}
+                    </td>
+                    {selectedClass.info.tableGroup?.map((group) => {
+                      return group.rows[level].map(cell => {
+                        return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : cell}</td>
+                      })
+                    })}
+                  </tr>
+                })}
               </tbody>
-            </table>}
+            </table>
+          }
         </div>
       </div>
       <hr className="mt-0"/>
@@ -520,6 +521,7 @@ export const Dnd5eClasses = () => {
                       </p>
                     </td>
                   </tr>
+                  {selectedClass.info.multiclass ?
                   <tr className="">
                     <td className="cls-side__section" colSpan="6">
                       <h5 className="cls-side__section-head">Multiclassage</h5>
@@ -527,18 +529,18 @@ export const Dnd5eClasses = () => {
                         <div className="rd__b  rd__b--0">
                           <p>
                             <b>Score de capacité Minium:</b>
-                            {selectedClass.info.multiclass.requirements.or ?
-                              Object.entries(selectedClass.info.multiclass.requirements.or).map(([ability, amount], idx) => {
+                            {selectedClass.info.multiclass?.requirements.or ?
+                              Object.entries(selectedClass.info.multiclass?.requirements.or).map(([ability, amount], idx) => {
                                 return <>
                                   {" "}{Parser.attAbvToFull(ability)} {amount}
-                                  {Object.entries(selectedClass.info.multiclass.requirements.or).length - 1 === idx ? "" : " or"}
+                                  {Object.entries(selectedClass.info.multiclass?.requirements.or).length - 1 === idx ? "" : " or"}
                                 </>
                               })
                               :
-                              Object.entries(selectedClass.info.multiclass.requirements).map(([ability, amount], idx) => {
+                              Object.entries(selectedClass.info.multiclass?.requirements).map(([ability, amount], idx) => {
                                 return <>
                                   {" "}{Parser.attAbvToFull(ability)} {amount}
-                                  {Object.entries(selectedClass.info.multiclass.requirements).length - 1 === idx ? "" : ","}
+                                  {Object.entries(selectedClass.info.multiclass?.requirements).length - 1 === idx ? "" : ","}
                                 </>
                               })
                             }
@@ -587,6 +589,7 @@ export const Dnd5eClasses = () => {
                       </div> : ""}
                     </td>
                   </tr>
+                  :<></>}
                 </>}
                 <tr>
                   <th className="ve-tbl-border" colSpan="6"></th>

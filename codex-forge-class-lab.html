@@ -457,7 +457,7 @@ const WEAPON_GROUPS_FR = [
 ];
 
 function newFeature(level){
-  return {_uid:uid(), level: level||1, name:"", source:"", page:null, entries:[]};
+  return {_uid:uid(), level: level||1, name:"", source:"", page:null, gainSubClassFeature:false, entries:[]};
 }
 function newSubclassFeature(level){
   return {_uid:uid(), level: level||3, name:"", source:"", page:null, header:null, topLevel:true, entries:[]};
@@ -522,7 +522,32 @@ function importClassObject(raw){
     subclasses: []
   };
 
-  const allFull = raw.subclassFeatures || [];
+  // info.classFeatures is the ordered index the site builds the class table and the feature
+  // descriptions from. An entry is a "Name|Class|Source|Level" string, or
+  // {classFeature, gainSubClassFeature:true} when the subclass features of that level are shown
+  // right after it. Entries with no feature object behind them (placeholders such as
+  // "Capacité de voie") are legitimate, so the whole index is kept (in its original order) and
+  // reconciled with the feature list on export — see buildClassFeatureIndex.
+  if(Array.isArray(info.classFeatures)){
+    const byKey = new Map();
+    working.classFeatures.forEach(f=>{ const k = f.name + "|" + f.level; if(!byKey.has(k)) byKey.set(k, f); });
+    working._classIndex = info.classFeatures.map(e=>{
+      const ref = typeof e === "string" ? e : String((e && e.classFeature) || "");
+      const flag = !!(e && typeof e === "object" && e.gainSubClassFeature);
+      const parts = ref.split("|");
+      const feat = parts.length === 4 ? byKey.get(parts[0] + "|" + Number(parts[3])) : null;
+      if(feat){ if(flag) feat.gainSubClassFeature = true; return {uid: feat._uid}; }
+      return {ref, flag};
+    });
+    // Feature objects the imported index doesn't list are left out on purpose (they may only be
+    // reached through a reference block); only features added later in the Lab join the index.
+    const listed = new Set(working._classIndex.filter(e=>e.uid).map(e=>e.uid));
+    working.classFeatures.forEach(f=>{ if(!listed.has(f._uid)) working._classIndex.push({uid: f._uid, skip: true}); });
+  }
+
+  // The exported file has a plain-string separator (the subclass name) before each
+  // subclass's features, purely for human readability — skip those on import.
+  const allFull = (raw.subclassFeatures || []).filter(f => f && typeof f === "object");
 
   // Some source files contain subclassFeatures whose (subclassShortName, subclassSource)
   // pair has no matching entry in raw.subclasses at all (an incomplete/orphaned subclass).
@@ -578,6 +603,55 @@ function importClassObject(raw){
 }
 
 /* ---------- export: friendly working model -> raw site-format class object ---------- */
+// Builds info.classFeatures (see importClassObject for the format).
+//  - A class with an imported index keeps it as it was, in the same order; features added since
+//    are slotted in after the last entry of the same or an earlier level, deleted ones drop out,
+//    and refs are rebuilt from the current class name/source so renames stay consistent.
+//  - A class without one gets every named feature, sorted by level.
+//  - Subclass features are only displayed after a flagged entry of the same level, so a level
+//    that has listed (top-level) subclass features but no flagged entry gets its last entry flagged.
+function buildClassFeatureIndex(w){
+  const cn = w.info.name, cs = w.info.source;
+  const mk = (name, level) => [name, cn, cs, level].join("|");
+  const lvl = e => Number(String(e.ref).split("|").pop()) || 0;
+  const feats = w.classFeatures || [];
+  const byUid = new Map(feats.map(f => [f._uid, f]));
+  const stored = Array.isArray(w._classIndex);
+  const entries = [];
+  const used = new Set();
+  if(stored){
+    w._classIndex.forEach(e=>{
+      if(e.uid){
+        const f = byUid.get(e.uid);
+        if(!f) return;
+        used.add(e.uid);
+        if(e.skip || !f.name) return;
+        entries.push({ref: mk(f.name, f.level), flag: !!f.gainSubClassFeature});
+      } else {
+        const parts = String(e.ref).split("|");
+        entries.push({ref: parts.length === 4 ? mk(parts[0], parts[3]) : e.ref, flag: !!e.flag});
+      }
+    });
+  }
+  feats.forEach(f=>{
+    if(used.has(f._uid) || !f.name) return;
+    const entry = {ref: mk(f.name, f.level), flag: !!f.gainSubClassFeature};
+    if(stored){
+      let pos = 0;
+      entries.forEach((x, i)=>{ if(lvl(x) <= lvl(entry)) pos = i + 1; });
+      entries.splice(pos, 0, entry);
+    } else entries.push(entry);
+  });
+  if(!stored) entries.sort((a, b)=> lvl(a) - lvl(b));
+  const subLevels = new Set();
+  (w.subclasses||[]).forEach(sc => (sc.features||[]).forEach(f => { if(f.level != null && f.topLevel !== false) subLevels.add(Number(f.level)); }));
+  subLevels.forEach(L=>{
+    const atLevel = entries.filter(x => lvl(x) === L);
+    if(atLevel.length && !atLevel.some(x => x.flag)) atLevel[atLevel.length - 1].flag = true;
+  });
+  return entries.map(x => x.flag ? {classFeature: x.ref, gainSubClassFeature: true} : x.ref);
+}
+
 function exportClassObject(w){
   const out = {
     id: w.id,
@@ -614,9 +688,14 @@ function exportClassObject(w){
     })),
     subclassFeatures: []
   };
+  out.info.classFeatures = buildClassFeatureIndex(w);
 
   (w.subclasses||[]).forEach(sc=>{
     const refs = [];
+    // Plain-string separator (the subclass name) before this subclass's features, so the
+    // flat subclassFeatures array is easy to read. The site only ever looks entries up by
+    // property match, so a string is simply skipped; importClassObject ignores it too.
+    if((sc.features||[]).length) out.subclassFeatures.push(sc.name || sc.shortName || "(unnamed subclass)");
     (sc.features||[]).forEach(f=>{
       const key = [f.name, w.info.name, w.info.source, sc.shortName, sc.source, f.level].join("|");
       // Every feature is written to the full subclassFeatures array (so refSubclassFeature
@@ -1066,6 +1145,7 @@ document.getElementById("tplFileInput").addEventListener("change", (e)=>{
         page: t.page ?? null,
         header: t.header ?? null,
         topLevel: t.topLevel !== false,
+        gainSubClassFeature: t.gainSubClassFeature === true,
         entries: Array.isArray(t.entries) ? t.entries : []
       }));
       let mode = "replace";
@@ -2058,6 +2138,7 @@ function renderFeatureCard(feature, opts){
     e.preventDefault(); e.stopPropagation();
     const exportShape = {level:feature.level, name:feature.name, source:feature.source, page:feature.page, entries:feature.entries};
     if(opts.includeHeader){ exportShape.header = feature.header; exportShape.topLevel = feature.topLevel; }
+    else { exportShape.gainSubClassFeature = !!feature.gainSubClassFeature; }
     openJsonModal({
       title: `Edit "${feature.name||"feature"}" as JSON`,
       hint: "Applies to this feature only — level/name/source/page" + (opts.includeHeader ? "/header/topLevel" : "") + "/entries.",
@@ -2071,6 +2152,8 @@ function renderFeatureCard(feature, opts){
         if(opts.includeHeader){
           feature.header = parsed.header ?? null;
           feature.topLevel = parsed.topLevel !== false;
+        } else {
+          feature.gainSubClassFeature = parsed.gainSubClassFeature === true;
         }
         opts.onChange();
         card.replaceWith(renderFeatureCard(feature, opts));
@@ -2191,6 +2274,31 @@ function renderFeatureCard(feature, opts){
     tlWrap.appendChild(tlLabel);
     topLevelField.appendChild(tlWrap);
     grid.appendChild(topLevelField);
+  } else {
+    // Class features only: where the subclass features of this level are displayed.
+    const gainField = document.createElement("div");
+    gainField.className = "field wide";
+    gainField.innerHTML = `<label>Subclass features</label>`;
+    const gainWrap = document.createElement("div");
+    gainWrap.style.display = "flex";
+    gainWrap.style.alignItems = "center";
+    gainWrap.style.gap = "8px";
+    gainWrap.style.paddingTop = "2px";
+    const gainCheck = document.createElement("input");
+    gainCheck.type = "checkbox";
+    gainCheck.checked = !!feature.gainSubClassFeature;
+    gainCheck.style.width = "14px";
+    gainCheck.style.height = "14px";
+    gainCheck.style.accentColor = "var(--brass)";
+    const gainLabel = document.createElement("span");
+    gainLabel.style.fontSize = "12px";
+    gainLabel.style.color = "var(--text-dim)";
+    gainLabel.textContent = "Show this level's subclass features right after this feature. If no feature is checked for a level that has subclass features, the last feature of that level is checked automatically on export.";
+    gainCheck.addEventListener("change", ()=>{ feature.gainSubClassFeature = gainCheck.checked; opts.onChange(); });
+    gainWrap.appendChild(gainCheck);
+    gainWrap.appendChild(gainLabel);
+    gainField.appendChild(gainWrap);
+    grid.appendChild(gainField);
   }
 
   body.appendChild(grid);
@@ -2367,7 +2475,7 @@ function renderMain(){
       onApply: (parsed)=>{
         const arr = Array.isArray(parsed) ? parsed : [parsed];
         arr.forEach(f=>{
-          c.classFeatures.push({_uid:uid(), level:f.level??1, name:f.name||"", source:f.source||"", page:f.page??null, entries:Array.isArray(f.entries)?f.entries:[]});
+          c.classFeatures.push({_uid:uid(), level:f.level??1, name:f.name||"", source:f.source||"", page:f.page??null, gainSubClassFeature:f.gainSubClassFeature===true, entries:Array.isArray(f.entries)?f.entries:[]});
         });
         renderFeatureList(cfListEl, c.classFeatures, {includeHeader:false, onChange, classRef:c});
         onChange();

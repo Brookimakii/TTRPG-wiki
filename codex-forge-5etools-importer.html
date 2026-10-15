@@ -553,15 +553,23 @@ function normalizeTableRows(rows,colCount){
   });
 }
 function convertClassSaves(profArr,warnings){
-  return (profArr||[]).map(a=>{
-    const abv=String(a).toLowerCase();
-    if(ABILITY_ABV_LC_FR[abv]) return ABILITY_ABV_LC_FR[abv];
+  const out = [];
+  (profArr||[]).forEach(a=>{
+    if(typeof a !== "string"){ warn(warnings,`Unrecognized saving-throw ability ${JSON.stringify(a)} — skipped, add manually.`); return; }
+    const abv=a.toLowerCase();
+    if(ABILITY_ABV_LC_FR[abv]){ out.push(ABILITY_ABV_LC_FR[abv]); return; }
     warn(warnings,`Unrecognized saving-throw ability "${a}" — copied through as-is.`);
-    return a;
+    out.push(a);
   });
+  return out;
 }
-function convertClassArmor(armorArr){
-  return (armorArr||[]).map(a=>{ const s=String(a).toLowerCase(); return s==="shields" ? "shield" : s; });
+function convertClassArmor(armorArr, className, warnings){
+  const out = [];
+  (armorArr||[]).forEach(a=>{
+    if(typeof a === "string"){ const s=a.toLowerCase(); out.push(s==="shields" ? "shield" : s); return; }
+    if(warnings) warn(warnings, `[${className||"?"}] unrecognized armor proficiency entry ${JSON.stringify(a)} — skipped, add manually via the Class Lab's armor picker.`);
+  });
+  return out;
 }
 function convertClassWeapon(weaponArr, className, warnings){
   const out=[];
@@ -597,12 +605,14 @@ function convertClassSkills(skillsArr, className, warnings){
   if(entry.any) return {pool:ALL_SKILLS_FR.slice(), count:Number(entry.any)||0};
   const choose=entry.choose||entry;
   const from=choose.from||[];
-  const pool=from.map(s=>{
-    const key=String(s).trim().toLowerCase();
-    if(SKILL_EN_TO_FR[key]) return SKILL_EN_TO_FR[key];
-    if(ALL_SKILLS_FR.includes(s)) return s;
+  const pool=[];
+  from.forEach(s=>{
+    if(typeof s !== "string"){ warn(warnings,`[${className}] unrecognized skill entry ${JSON.stringify(s)} — skipped, add manually.`); return; }
+    const key=s.trim().toLowerCase();
+    if(SKILL_EN_TO_FR[key]){ pool.push(SKILL_EN_TO_FR[key]); return; }
+    if(ALL_SKILLS_FR.includes(s)){ pool.push(s); return; }
     warn(warnings,`[${className}] unrecognized skill name "${s}" — copied through as-is.`);
-    return s;
+    pool.push(s);
   });
   return {pool, count:Number(choose.count)||1};
 }
@@ -632,7 +642,7 @@ function convertClassMulticlass(mc){
   const gained = mc.proficienciesGained || mc.proficiencies;
   if(gained){
     out.proficiencies={};
-    if(gained.armor) out.proficiencies.armor=convertClassArmor(gained.armor);
+    if(gained.armor) out.proficiencies.armor=convertClassArmor(gained.armor, mc.name||"multiclass", []);
     if(gained.weapons||gained.weapon) out.proficiencies.weapon=convertClassWeapon(gained.weapons||gained.weapon, mc.name||"multiclass", []);
     if(gained.tools) out.proficiencies.tools=convertClassTools(gained.tools, mc.name||"multiclass", []);
   }
@@ -651,7 +661,7 @@ function convertOneClass(cls, classFeatureIdx, subclassList, subclassFeatureAll,
     spellcastingAbility: cls.spellcastingAbility ? (ABILITY_FULL_FR[String(cls.spellcastingAbility).toLowerCase()] || cls.spellcastingAbility) : "",
     hitDice: {amount:(cls.hd&&cls.hd.number)??1, faces:(cls.hd&&cls.hd.faces)??8},
     proficiencies: {
-      armor: convertClassArmor(prof.armor),
+      armor: convertClassArmor(prof.armor, name, warnings),
       weapon: convertClassWeapon(prof.weapons, name, warnings),
       tools: convertClassTools(prof.tools, name, warnings),
       skills: convertClassSkills(prof.skills, name, warnings),
@@ -664,14 +674,24 @@ function convertOneClass(cls, classFeatureIdx, subclassList, subclassFeatureAll,
   const multiclass = convertClassMulticlass(cls.multiclassing);
   if(multiclass) info.multiclass = multiclass;
 
-  const classFeatures=[];
+  // classFeatures = the full feature objects; info.classFeatures = the ordered index of refs the site
+  // builds the class table and descriptions from ("Name|Class|Source|Level", or
+  // {classFeature, gainSubClassFeature:true} where the subclass features of that level are shown).
+  // 5etools often leaves the class source empty in refs ("Rage|Barbarian||1"), but the site matches
+  // refs against className/classSource exactly, so every ref is rebuilt with the class's name/source.
+  const classFeatures=[]; const classFeatureIndex=[];
   (cls.classFeatures||[]).forEach(ref=>{
     const refStr = typeof ref==="string" ? ref : (ref && ref.classFeature);
     if(!refStr) return;
     const full=resolveClassFeatureRef(refStr, classFeatureIdx);
-    if(!full){ warn(warnings,`Could not resolve classFeature ref "${refStr}" — skipped.`); return; }
+    const parts=String(refStr).split("|");
+    const gain = !!(ref && typeof ref==="object" && (ref.gainSubclassFeature || ref.gainSubClassFeature));
+    const canonical=[(full&&full.name)||parts[0], name, source, full ? (full.level??1) : parts[3]].join("|");
+    classFeatureIndex.push(gain ? {classFeature:canonical, gainSubClassFeature:true} : canonical);
+    if(!full){ warn(warnings,`Could not resolve classFeature ref "${refStr}" — kept in info.classFeatures but no feature object was created, so the site will show it as missing.`); return; }
     classFeatures.push({name:full.name||"", source:full.source||source, page:full.page??null, className:name, classSource:source, level:full.level??1, entries:full.entries||[]});
   });
+  info.classFeatures = classFeatureIndex;
   if(!classFeatures.length) warn(warnings,`Ended up with 0 class features — check the pasted JSON includes a matching "classFeature" array.`);
 
   const ownSubclasses=(subclassList||[]).filter(sc=>(sc.className||"").toLowerCase()===name.toLowerCase() && (sc.classSource||"").toLowerCase()===source.toLowerCase());
@@ -685,8 +705,17 @@ function convertOneClass(cls, classFeatureIdx, subclassList, subclassFeatureAll,
       subclassFeatures.push(entry);
     });
     if(!owned.length) warn(warnings,`Subclass "${sc.name}" has 0 matching entries in "subclassFeature" — check source/shortName spelling.`);
+    // same normalisation as the class index: the site looks these refs up with exact class/subclass sources
+    const ownedByKey=new Map(); owned.forEach(f=> ownedByKey.set(String(f.name||"").toLowerCase()+"|"+(f.level??3), f));
+    const normSubRef=r=>{
+      const refStr = typeof r==="string" ? r : ((r&&r.subclassFeature)||"");
+      const p=refStr.split("|");
+      if(p.length<6) return refStr;
+      const f=ownedByKey.get(p[0].toLowerCase()+"|"+Number(p[5]));
+      return [(f&&f.name)||p[0], name, source, scShort, scSource, f ? (f.level??3) : p[5]].join("|");
+    };
     subclasses.push({name:sc.name||"", shortName:scShort, source:scSource, page:sc.page??null,
-      subclassFeatures:(sc.subclassFeatures||[]).map(r=> typeof r==="string" ? r : ((r&&r.subclassFeature)||"")) });
+      subclassFeatures:(sc.subclassFeatures||[]).map(normSubRef) });
   });
 
   warn(warnings,"TRANSLATION NEEDED: feature/subclass \"entries\" text is copied verbatim — translate by hand (skip this if the source was already French homebrew).");
