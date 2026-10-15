@@ -52,20 +52,24 @@ export const Dnd5eClasses = () => {
     return feature.classFeature.split("|")
   })
 
+  // Feature ids look like:
+  //   class:    "name|className|classSource|level[|source]"
+  //   subclass: "name|className|classSource|subclassShortName|subclassSource|level[|source]"
+  // className/classSource are NOT compared: nested refs sometimes use the English class name
+  // ("Barbarian") while the feature objects use the translated one ("Barbare"), and the lookup
+  // is already restricted to the selected class. Trailing extra parts are ignored.
   function findFeatureInClass(values: string): Feature | undefined {
     values = values.split("|")
-    if (values.length === 4) {
-      const [featureName, className, classSource, level] = values
-      return selectedClass.classFeatures.find((feature) => {
-        return (feature.name === featureName && feature.className === className && feature.classSource === classSource && feature.level === Number(level))
+    if (values.length < 6) {
+      const [featureName, , , level] = values
+      return selectedClass.classFeatures?.find((feature) => {
+        return (feature?.name === featureName && feature.level === Number(level))
       })
-    } else if (values.length === 6) {
-      const [featureName, className, classSource, subClassName, subClassSource, level] = values
-      return selectedClass.subclassFeatures.find((feature) => {
+    } else {
+      const [featureName, , , subClassName, subClassSource, level] = values
+      return selectedClass.subclassFeatures?.find((feature) => {
         return (
-          feature.name === featureName &&
-          feature.className === className &&
-          feature.classSource === classSource &&
+          feature?.name === featureName &&
           feature.subclassShortName === subClassName &&
           feature.subclassSource === subClassSource &&
           feature.level === Number(level)
@@ -81,6 +85,21 @@ export const Dnd5eClasses = () => {
     refSubclassFeature: renderRefSubclassFeature,
     renderEntries: renderEntry
   };
+
+  // Strings outside of feature entries (table headers, proficiencies, equipment...) can hold
+  // 5etools tags like {@filter ...}/{@item ...}: run them through the tag renderer, inline only.
+  const inlineRenderer = RenderModule({...props, defaultString: (s) => <>{s}</>})
+  const renderInline = (value) => typeof value === "string" ? inlineRenderer.render(value) : value
+
+  // Translate "simple"/"martial" only in the plain text before any {@tag}, never inside it.
+  const translateWeapon = (weapon, withMartial = true) => {
+    const tagStart = weapon.indexOf("{@")
+    const plain = tagStart === -1 ? weapon : weapon.slice(0, tagStart)
+    const rest = tagStart === -1 ? "" : weapon.slice(tagStart)
+    let out = plain.replace("simple", "armes courantes")
+    if (withMartial) out = out.replace("martial", "armes de guerre")
+    return out + rest
+  }
 
   function renderFeature(featureStringId: string, header: number = 1) {
     const featureObject = findFeatureInClass(featureStringId)
@@ -224,12 +243,18 @@ export const Dnd5eClasses = () => {
 
   function renderEntry(feature, toggle, depth) {
     if (depth === 3) {
+      const [first, ...rest] = feature.entries ?? []
+      // First entry can be a string OR an object (nested entries, table...).
+      // Strings go inline after the title; objects must go through the renderer.
+      const firstIsText = typeof first === "string"
+      const inlineRenderer = RenderModule({...props, defaultString: (s) => <>{s}</>})
       return <div className={"rd__b rd__b--3"}>
         <p>
           <span className={"rd__h rd__h--3"}>{feature.name}. </span>
-          {feature.entries[0]}
+          {firstIsText ? inlineRenderer.render(first, depth, toggle) : ""}
         </p>
-        {getToggleState(toggle) && feature.entries.length > 1 ? RenderModule(props).render([...feature.entries].slice(1, feature.entries.length), ++depth, toggle) : ""}
+        {!firstIsText && first ? RenderModule(props).render(first, depth + 1, toggle) : ""}
+        {getToggleState(toggle) && rest.length > 0 ? RenderModule(props).render(rest, depth + 1, toggle) : ""}
       </div>
     }
     return <div className="rd__b rd__b--2" ref={refs[toggle]}>
@@ -324,17 +349,17 @@ export const Dnd5eClasses = () => {
                 </tr>
                 <tr>
                   <th className="cls-tbl__col-level" rowSpan="2">Niveau</th>
-                  <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
+                  <th className="cls-tbl__col-prof-bonus" rowSpan="2">Bonus de Maîtrise</th>
                   <th className="ve-text-left" rowSpan="2">Capacité</th>
                   {selectedClass.info.tableGroup?.map((groups) => {
                     if (!groups.title) {
                       return groups.colLabels.map((title) => {
                         return <th className="cls-tbl__col-generic-center" rowSpan={2}>
-                          <div className="cls__squash_header">{title}</div>
+                          <div className="cls__squash_header">{renderInline(title)}</div>
                         </th>
                       })
                     } else {
-                      return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{groups.title}</th>
+                      return <th className="cls-tbl__col-group" colSpan={groups.colLabels.length}>{renderInline(groups.title)}</th>
                     }
                   })}
                 </tr>
@@ -342,7 +367,7 @@ export const Dnd5eClasses = () => {
                   {selectedClass.info.tableGroup?.map((groups) => {
                     if (groups.title) {
                       return groups.colLabels.map((label) => {
-                        return <th className="cls-tbl__col-generic-center">{label}</th>
+                        return <th className="cls-tbl__col-generic-center">{renderInline(label)}</th>
                       })
                     }
                   })}
@@ -370,7 +395,7 @@ export const Dnd5eClasses = () => {
                     </td>
                     {selectedClass.info.tableGroup?.map((group) => {
                       return group.rows[level].map(cell => {
-                        return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : cell}</td>
+                        return <td className="cls-tbl__col-generic-center">{cell === 0 ? "—" : typeof cell === "object" && cell !== null ? inlineRenderer.render(cell) : renderInline(cell)}</td>
                       })
                     })}
                   </tr>
@@ -460,7 +485,7 @@ export const Dnd5eClasses = () => {
                           <span>
                         {Array.isArray(selectedClass.info.proficiencies.weapon) ? selectedClass.info.proficiencies.weapon.map((weapon, idx) => {
                           return <>
-                            {weapon.replace("simple", "armes courantes").replace("martial", "armes de guerre")}
+                            {renderInline(translateWeapon(weapon))}
                             {idx !== selectedClass.info.proficiencies.weapon.length - 1 ? ", " : ""}
                           </>
                         }) : "armes courantes" + (selectedClass.info.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
@@ -472,7 +497,7 @@ export const Dnd5eClasses = () => {
                         <span>
                         {selectedClass.info.proficiencies.tools?.length > 1 ?
                           selectedClass.info.proficiencies.tools.map((tool, idx) => {
-                            return <>{tool}{idx !== selectedClass.info.proficiencies.tools.length - 1 ? ", " : "."}</>
+                            return <>{renderInline(tool)}{idx !== selectedClass.info.proficiencies.tools.length - 1 ? ", " : "."}</>
                           }) : "Aucun"}
                     </span>
                       </div>
@@ -508,14 +533,14 @@ export const Dnd5eClasses = () => {
                         historique:</p>
                       <ul className="pl-4">
                         {selectedClass.info.startingEquipment.equipement.map((items, idx) => {
-                          return <li>{items}</li>
+                          return <li>{renderInline(items)}</li>
                         })}
                       </ul>
                       <p>
                         Si vous renoncez à cet équipement de départ ainsi qu'à celui accordé par votre historique, vous
                         commencez avec
                         <span className="roller render-roller">
-                        {" " + selectedClass.info.startingEquipment.goldAlternative + " "}
+                        {" "}{renderInline(String(selectedClass.info.startingEquipment.goldAlternative))}{" "}
                       </span>
                         po pour acheter votre équipement.
                       </p>
@@ -559,14 +584,14 @@ export const Dnd5eClasses = () => {
                       {selectedClass.info.multiclass.proficiencies?.weapon ? <div>
                         <b>Maîtrise d'Armes: </b>
                         {Array.isArray(selectedClass.info.multiclass.proficiencies.weapon) ? selectedClass.info.multiclass.proficiencies.weapon.map((weapon, idx) => {
-                          return <>{weapon.replace("simple", "armes courantes")}{idx !== selectedClass.info.multiclass.proficiencies.weapon.length - 1 ? ", " : ""}</>
+                          return <>{renderInline(translateWeapon(weapon, false))}{idx !== selectedClass.info.multiclass.proficiencies.weapon.length - 1 ? ", " : ""}</>
                         }) : "armes courantes" + (selectedClass.info.multiclass.proficiencies.weapon === "martial" ? ", armes de guerre" : "")}
                       </div> : ""}
                       {selectedClass.info.multiclass.proficiencies?.tools ? <div>
                         <b>Maîtrise d'Outils: </b>
                         {selectedClass.info.multiclass.proficiencies.tools.map((tool, idx) => {
                           return <>
-                            {tool}
+                            {renderInline(tool)}
                             {idx === selectedClass.info.multiclass.proficiencies.tools.length - 1 ? "." : idx === selectedClass.info.multiclass.proficiencies.tools.length - 2 ? " et " : ", "}
                           </>
                         })}

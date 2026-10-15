@@ -687,6 +687,22 @@ export const FilterManager = (setElements: function, updateSortElementsState: fu
   };
 }
 
+// 5etools page name (as used in {@filter ...|page|...} and {@5etools ...|page.html}) -> wiki route.
+const TAG_PAGE_ROUTES = {
+  spells: "/TTRPG-wiki/dnd5e/spells",
+  items: "/TTRPG-wiki/dnd5e/items",
+  feats: "/TTRPG-wiki/dnd5e/feats",
+  bestiary: "/TTRPG-wiki/dnd5e/bestiary",
+  classes: "/TTRPG-wiki/dnd5e/classes",
+  races: "/TTRPG-wiki/dnd5e/races",
+  backgrounds: "/TTRPG-wiki/dnd5e/backgrounds",
+  conditionsdiseases: "/TTRPG-wiki/dnd5e/conditions",
+  conditions: "/TTRPG-wiki/dnd5e/conditions",
+  optionalfeatures: "/TTRPG-wiki/dnd5e/optionsFeatures",
+  variantrules: "/TTRPG-wiki/dnd5e/rules",
+  quickreference: "/TTRPG-wiki/dnd5e/rules",
+}
+
 export const RenderModule = (props: {}) => {
   const _SPLIT_BY_TAG_LEADING_CHARS = new Set(["@", "="])
   // const TAG_LOOKUP = {
@@ -822,6 +838,53 @@ export const RenderModule = (props: {}) => {
       }
       case "@note":
         return <i className="ve-muted">{string}</i>
+      case "@filter": {
+        // {@filter text|page|filterName=value;value|filterName=value...}
+        const [text, page, ...filters] = string.split("|")
+        const route = TAG_PAGE_ROUTES[(page ?? "").trim().toLowerCase().replace(/\.html$/, "")]
+        const filterText = filters
+          .map(f => f.trim())
+          .filter(Boolean)
+          .map(f => f.replace("=", " : ").replaceAll(";", ", "))
+          .join(" | ")
+        if (!route) return <span title={filterText || tag}>{text}</span>
+        return <Link to={route} title={filterText || undefined}>{text}</Link>
+      }
+      case "@5etools": {
+        // {@5etools text|feats.html} : link to a page of the wiki.
+        const [text, page] = string.split("|")
+        const route = TAG_PAGE_ROUTES[(page ?? "").trim().toLowerCase().replace(/\.html$/, "")]
+        if (!route) return <span title={tag}>{text}</span>
+        return <Link to={route}>{text}</Link>
+      }
+      // Tags without a dedicated page: show the display text (last piece when given), no crash.
+      case "@action":
+      case "@skill":
+      case "@status":
+      case "@sense":
+      case "@itemMastery":
+      case "@object":
+      case "@table":
+      case "@itemProperty": {
+        // name|source|displayText
+        const [name, , displayText] = string.split("|")
+        return <span title={tag.slice(1)}>{(displayText ?? name).trim()}</span>
+      }
+      case "@book": {
+        // name|source|page|displayText
+        const [name, , , displayText] = string.split("|")
+        return <i title="Livre">{(displayText ?? name).trim()}</i>
+      }
+      case "@classFeature": {
+        // name|class|classSource|level|source|displayText
+        const [name, , , , , displayText] = string.split("|")
+        return <span title="Capacité de classe">{(displayText ?? name).trim()}</span>
+      }
+      case "@subclassFeature": {
+        // name|class|classSource|subclass|subclassSource|level|source|displayText
+        const [name, , , , , , , displayText] = string.split("|")
+        return <span title="Capacité de sous-classe">{(displayText ?? name).trim()}</span>
+      }
       default: {
         const {
           name,
@@ -1091,11 +1154,11 @@ export const RenderModule = (props: {}) => {
         case "table": {
           return <>
             <table className={"w-100 rd__table" + (entry.isStriped === false ? "" : " stripe-odd-table")}>
-              {entry.caption ? <caption>{entry.caption}</caption> : ""}
+              {entry.caption ? <caption>{typeof entry.caption === "string" ? renderInline(entry.caption) : entry.caption}</caption> : ""}
               <thead>
               <tr>
-                {entry.colLabels.map((label, idx) => <th className={entry.colStyles[idx]}>
-                  {label}
+                {entry.colLabels.map((label, idx) => <th className={entry.colStyles?.[idx]}>
+                  {typeof label === "string" ? renderInline(label) : label}
                 </th>)}
               </tr>
               </thead>
@@ -1128,6 +1191,15 @@ export const RenderModule = (props: {}) => {
             {entry.attributes?.length ?
               <> ({entry.attributes.map((att, i) => <span key={i}>{Parser.attAbvToFull(att.toLowerCase())}</span>)})</> : ""}
           </div>
+        // Table cell objects (class tables, feature tables).
+        case "bonus":
+          return <>{(Number(entry.value) >= 0 ? "+" : "") + entry.value}</>
+        case "bonusSpeed":
+          return <>{Number(entry.value) === 0 ? "—" : (Number(entry.value) > 0 ? "+" : "") + entry.value + " ft."}</>
+        case "dice":
+          return <>{(entry.toRoll ?? []).map(r => r.number + "d" + r.faces + (r.modifier ? (r.modifier > 0 ? "+" : "") + r.modifier : "")).join(" + ")}</>
+        case "cell":
+          return render(entry.entry ?? entry.roll ?? entry.value ?? "", depth, toggle)
         case "hr":
           return <hr className={"rd__hr"}/>
         case "quote": {
