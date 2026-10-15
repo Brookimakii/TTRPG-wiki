@@ -368,14 +368,16 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
         {/*{console.log(elements)}*/}
         {elementsToShow?.filter((elem) => elem?.id).map((elem) =>
           <div
-            className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
+            className={"lst__row ve-flex-col" + (selected?.id === elem.id ? " list-multi-selected" : "")}
             onClick={() => handleClickSelection(elem)}
             key={elem.id}>
             <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
                   className="lst__row-border lst__row-inner">
               {columns.map(column => {
                 const string = Object.byString(elem, column.sortId)
+                {console.info(column.sortId)}
                 switch (column.sortId) {
+                  case "info.source":
                   case "source":
                     return (
                       <span
@@ -813,7 +815,9 @@ export const RenderModule = (props: {}) => {
       case "@d20":
       case "@hitYourSpellAttack": {
         const [expr] = string.split("|");
-        return <span className="render-roller ve-flex-vh-center" title="Formule de dés">{expr}</span>
+        // return <span className="render-roller ve-flex-vh-center" title="Formule de dés">{expr}</span>
+        return expr
+      // }
       }
       case "@hit": {
         const [n] = string.split("|");
@@ -1073,7 +1077,8 @@ export const RenderModule = (props: {}) => {
     return str
   }
 
-  const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
+  const render = (entry: string | Entry, depth: number = 1, toggle: string = "", should_render_p:boolean = true) => {
+    // console.info(should_render_p)
     if (!entry) return;
     // console.log(entry, depth, toggle)
 
@@ -1165,7 +1170,8 @@ export const RenderModule = (props: {}) => {
               <tbody>
               {entry.rows.map(row => <tr>
                 {row.map((cell, idx) => <td className={"td__th " + entry.colStyles[idx]}>
-                  {typeof cell === "number" ? render(String(cell)) : render(cell)}
+                  {/* {console.log("---------------------------------------")} */}
+                  {typeof cell === "number" ? render(String(cell), depth, toggle, false) : render(cell, depth, toggle, false)}
                 </td>)}
               </tr>)}
               </tbody>
@@ -1272,8 +1278,8 @@ export const RenderModule = (props: {}) => {
     } else if (typeof entry === "string") {
       const str = renderInline(entry)
       // console.log("HERE:", str)
-
-      return props?.defaultString ? props.defaultString(str) : <p>{str}</p>
+      // console.log(should_render_p, str)
+      return props?.defaultString ? props.defaultString(str) : should_render_p ? <p>{str}</p>: str
     } else return false;
   }
 

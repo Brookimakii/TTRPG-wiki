@@ -242,6 +242,11 @@ export const Dnd5eClasses = () => {
   }
 
   function renderEntry(feature, toggle, depth) {
+    // An `entries` block without a name is only a wrapper: render its content in place,
+    // at the same level the wrapper itself was reached (render() already did ++depth).
+    if (!feature.name) {
+      return <>{RenderModule(props).render(feature.entries, depth - 1, toggle)}</>
+    }
     if (depth === 3) {
       const [first, ...rest] = feature.entries ?? []
       // First entry can be a string OR an object (nested entries, table...).
@@ -250,7 +255,7 @@ export const Dnd5eClasses = () => {
       const inlineRenderer = RenderModule({...props, defaultString: (s) => <>{s}</>})
       return <div className={"rd__b rd__b--3"}>
         <p>
-          <span className={"rd__h rd__h--3"}>{feature.name}. </span>
+          <span className={"rd__h rd__h--3"}><span className={"entry-title-inner"}>{feature.name}.</span> </span>
           {firstIsText ? inlineRenderer.render(first, depth, toggle) : ""}
         </p>
         {!firstIsText && first ? RenderModule(props).render(first, depth + 1, toggle) : ""}
@@ -296,11 +301,19 @@ export const Dnd5eClasses = () => {
 
   function getTitles(feature: Feature) {
     const titles = []
-    feature?.entries.map(entry => {
-      if (entry.type && entriesTypeTitle.includes(entry.type)) {
-        titles.push(entry.name ?? entry.subFeature ?? ("UnableToFind:" + entry.type))
-      }
-    })
+    const collect = (entries) => {
+      entries?.forEach(entry => {
+        if (!entry || typeof entry !== "object") return
+        if (entry.type && entriesTypeTitle.includes(entry.type)) {
+          if (entry.type === "entries" && !entry.name) {
+            collect(entry.entries) // unnamed wrapper: its named children are the titles
+          } else {
+            titles.push(entry.name ?? entry.subFeature ?? ("UnableToFind:" + entry.type))
+          }
+        }
+      })
+    }
+    collect(feature?.entries)
     return titles
   }
 

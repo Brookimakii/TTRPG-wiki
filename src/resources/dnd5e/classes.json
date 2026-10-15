@@ -1191,8 +1191,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-3 text-center",
-              "col-9"
+              "ve-col-3 ve-text-center",
+              "ve-col-9"
             ],
             "rows": [
               [
@@ -1254,8 +1254,8 @@
               "Effect"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -1533,8 +1533,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-3 text-center",
-              "col-9"
+              "ve-col-3 ve-text-center",
+              "ve-col-9"
             ],
             "rows": [
               [
@@ -1875,8 +1875,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-3 text-center",
-              "col-9"
+              "ve-col-3 ve-text-center",
+              "ve-col-9"
             ],
             "rows": [
               [
@@ -2144,8 +2144,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-3 text-center",
-              "col-9"
+              "ve-col-3 ve-text-center",
+              "ve-col-9"
             ],
             "rows": [
               [
@@ -2386,8 +2386,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-3 text-center",
-              "col-9"
+              "ve-col-3 ve-text-center",
+              "ve-col-9"
             ],
             "rows": [
               [
@@ -3259,6 +3259,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Initiative",
@@ -3382,9 +3383,9 @@
               "Nombre"
             ],
             "colStyles": [
-              "col-4 text-center",
-              "col-4 text-center",
-              "col-4 text-center"
+              "ve-col-4 ve-text-center",
+              "ve-col-4 ve-text-center",
+              "ve-col-4 ve-text-center"
             ],
             "rows": [
               [
@@ -4635,8 +4636,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -4670,8 +4671,8 @@
               "Présent"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -4842,8 +4843,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -5821,8 +5822,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -5996,8 +5997,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -6167,8 +6168,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -6311,8 +6312,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -7212,8 +7213,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -7376,8 +7377,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -7515,8 +7516,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -7645,8 +7646,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -8525,6 +8526,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Main meurtrissante",
@@ -8771,6 +8773,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Allonge",
@@ -9834,6 +9837,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Vision dans le noir",
@@ -11014,6 +11018,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Emplacements de sort",
@@ -11026,6 +11031,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Sorts préparés du 1er niveau et plus",
@@ -11039,6 +11045,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Modification des sorts préparés",
@@ -11051,6 +11058,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Caractéristique d'incantation",
@@ -11063,6 +11071,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Focaliseur d'incantation",
@@ -11185,9 +11194,9 @@
               "Nombre"
             ],
             "colStyles": [
-              "col-4 text-center",
-              "col-4 text-center",
-              "col-4 text-center"
+              "ve-col-4 ve-text-center",
+              "ve-col-4 ve-text-center",
+              "ve-col-4 ve-text-center"
             ],
             "rows": [
               [
@@ -12345,8 +12354,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -12427,6 +12436,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Adaptation aquatique",
@@ -12517,8 +12527,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -12548,8 +12558,8 @@
               "Manifestation"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -12640,6 +12650,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Guérison",
@@ -12708,8 +12719,8 @@
               "Sorts"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -12851,8 +12862,8 @@
               "Effect"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -13938,8 +13949,8 @@
               "Sorts de cercle"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -13968,8 +13979,8 @@
               "Sorts de cercle"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -13998,8 +14009,8 @@
               "Sorts de cercle"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -14028,8 +14039,8 @@
               "Sorts de cercle"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -14104,8 +14115,8 @@
                   "Résistance"
                 ],
                 "colStyles": [
-                  "col-6",
-                  "col-6"
+                  "ve-col-6",
+                  "ve-col-6"
                 ],
                 "rows": [
                   [
@@ -14183,6 +14194,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Facteur de puissance",
@@ -14228,8 +14240,8 @@
               "Sorts Préparé"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -14267,6 +14279,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Radiance lunaire",
@@ -14315,6 +14328,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Radiance lunaire améliorée",
@@ -14375,8 +14389,8 @@
               "Sorts Préparé"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -14516,8 +14530,8 @@
               "Forme de la carte"
             ],
             "colStyles": [
-              "col-2 text-center",
-              "col-10"
+              "ve-col-2 ve-text-center",
+              "ve-col-10"
             ],
             "rows": [
               [
@@ -15455,8 +15469,8 @@
               "Sorts préparés"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -15569,8 +15583,8 @@
               "Sorts préparés"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -15749,8 +15763,8 @@
               "Sorts préparés"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -15802,6 +15816,7 @@
           {
             "type": "entries",
             "entries": [
+
               {
                 "type": "entries",
                 "name": "Distraction partagée",
@@ -15882,8 +15897,8 @@
               "Sorts préparés"
             ],
             "colStyles": [
-              "col-1 text-center",
-              "col-11"
+              "ve-col-1 ve-text-center",
+              "ve-col-11"
             ],
             "rows": [
               [
@@ -18038,12 +18053,12 @@
           "Les barbares qui suivent la Voie de l'Arbre-Monde se connectent à l'arbre cosmique Yggdrasil grâce à leur Rage. Cet arbre pousse parmi les plans Extérieurs, les reliant entre eux et au plan Matériel. Ces barbares puisent dans la magie de l'arbre leur vitalité et l'utilisent comme moyen de voyage dimensionnel.",
           {
             "type": "refSubclassFeature",
-            "subclassFeature": "Vitality of the Tree|Barbarian|PHB24|Arbre-Monde|PHB24|3"
+            "subclassFeature": "Vitalité de l'Arbre|Barbarian|PHB24|Arbre-Monde|PHB24|3"
           }
         ]
       },
       {
-        "name": "Vitality of the Tree",
+        "name": "Vitalité de l'Arbre",
         "source": "PHB24",
         "page": 56,
         "className": "Barbare",
@@ -18057,7 +18072,7 @@
           {
             "type": "entries",
             "entries": [
-              {
+          {
                 "type": "entries",
                 "name": "Sève cosmique",
                 "entries": [
