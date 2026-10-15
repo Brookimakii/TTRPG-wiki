@@ -116,7 +116,7 @@ export const DnDCheatsheet = () => {
                       onChange={(e) => setQuery(e.target.value)}
                       style={{
                         background: "var(--ve-bg-panel, #1d1a14)",
-                        border: "1px solid var(--ve-border, #3a3324)",
+                        border: "1px solid var(--ve-border, #3a3324) ",
                         borderRadius: "3px",
                         color: "white",
                         padding: "5px 9px",
