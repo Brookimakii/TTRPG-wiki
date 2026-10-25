@@ -37,7 +37,7 @@ function tableDisplayOption(column, string, element, spellIcons, onIconClick, sh
     case "school": {
       return (
         <span
-          className={column.colClass + " sp__school-" + string}
+          className={column.colClass + " ve-sp__school--" + string}
           title={Parser.SP_SCHOOL_ABV_TO_FULL[string]}>
           {Parser.SP_SCHOOL_ABV_TO_SHORT[string]}
         </span>
