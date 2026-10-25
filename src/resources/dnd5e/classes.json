@@ -458,7 +458,7 @@
             "type": "entries",
             "name": "Sorts mineurs",
             "entries": [
-              "Vous connaissez deux sorts mineurs d'Artificier de votre choix. {@spell Aspertion d'acide} et {@spell Prestidigitation} sont recommandés.\n\nLorsque vous terminez un repos long , vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur d'artificier de votre choix.",
+              "Vous connaissez deux sorts mineurs d'Artificier de votre choix. {@spell Aspersion d'acide} et {@spell Prestidigitation} sont recommandés.\n\nLorsque vous terminez un repos long , vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur d'artificier de votre choix.",
               "Lorsque vous atteignez les niveaux 10 et 14 d'Artificier, vous apprenez un autre sort mineur d'Artificier de votre choix, comme indiqué dans la colonne Sorts mineurs du tableau des caractéristiques d'Artificier."
             ]
           },
@@ -835,11 +835,11 @@
                 "Non"
               ],
               [
-                "Anneau de chute de plumes",
+                "Anneau de Feuille morte",
                 "Oui"
               ],
               [
-                "Anneau de chute de plumes",
+                "Anneau de Saut",
                 "Oui"
               ],
               [
@@ -1209,7 +1209,7 @@
               ],
               [
                 "13",
-                "{@spell Death Guerred|PHB24}, {@spell Vitriolic Sphere|PHB24}"
+                "{@spell Protection contre la mort|PHB24}, {@spell Vitriolic Sphere|PHB24}"
               ],
               [
                 "17",
@@ -1551,7 +1551,7 @@
               ],
               [
                 "13",
-                "{@spell bouclier de feu|PHB24}, {@spell invisibilité suprême|PHB24}"
+                "{@spell bouclier de feu|PHB24}, {@spell Invisibilité supérieure|PHB24}"
               ],
               [
                 "17",
@@ -2154,7 +2154,7 @@
               ],
               [
                 "5",
-                "{@spell Shining Smite|PHB24}, {@spell Guerreding Bond|PHB24}"
+                "{@spell Shining Smite|PHB24}, {@spell Lien de protection|PHB24}"
               ],
               [
                 "9",
@@ -3104,7 +3104,7 @@
         "subclassSource": "PHB24",
         "level": 3,
         "entries": [
-          "Lorsque vous lancez {@spell main du mage|PHB24}, vous pouvez la lancer par une {@variantrule Action Bonus|PHB24}, et octroyer à la main spectrale l'état {@condition Invisible|PHB24}. Vous contrôlez la main par une {@variantrule Action Bonus|PHB24}, et et par son biais, vous pouvez effectuer des tests de Dextérité ({@skill Escamotage|PHB24})."
+          "Lorsque vous lancez {@spell main de mage|PHB24}, vous pouvez la lancer par une {@variantrule Action Bonus|PHB24}, et octroyer à la main spectrale l'état {@condition Invisible|PHB24}. Vous contrôlez la main par une {@variantrule Action Bonus|PHB24}, et et par son biais, vous pouvez effectuer des tests de Dextérité ({@skill Escamotage|PHB24})."
         ]
       },
       {
@@ -3122,8 +3122,8 @@
             "type": "entries",
             "name": "Sorts Mineur",
             "entries": [
-              "Vous connaissez trois sorts mineurs: {@spell main du mage|PHB24} et deux autres sorts mineurs de votre choix dans la liste des sorts de Magicien. {@spell Piqûre mentale|PHB24} et {@spell illusion mineure|PHB24} sont recommandés.",
-              "Chaque fois que vous gagnez un niveau de Roublard, vous pouvez remplacer l'un de vos sorts mineurs (à l'exception de {@spell main du mage|PHB24}), par un autre sort mineur de Magicien de votre choix.",
+              "Vous connaissez trois sorts mineurs: {@spell main de mage|PHB24} et deux autres sorts mineurs de votre choix dans la liste des sorts de Magicien. {@spell Piqûre mentale|PHB24} et {@spell illusion mineure|PHB24} sont recommandés.",
+              "Chaque fois que vous gagnez un niveau de Roublard, vous pouvez remplacer l'un de vos sorts mineurs (à l'exception de {@spell main de mage|PHB24}), par un autre sort mineur de Magicien de votre choix.",
               "Lorsque vous atteignez le niveau 10 de Roublard, vous apprenez un autre sort mineur de Magicien de votre choix"
             ]
           },
@@ -3138,7 +3138,7 @@
             "type": "entries",
             "name": "Sorts préparés du 1er niveau et plus",
             "entries": [
-              "Vous devez préparer la liste des sorts du 1er niveau et supérieur que cette aptitude vous permet de lancer. Pour commencer, choisissez trois sorts du 1er niveau du Magicien. {@spell charme-personne|PHB24}, {@spell déguisement|PHB24}, et {@spell nappe de brouilland|PHB24} sont recommandés.",
+              "Vous devez préparer la liste des sorts du 1er niveau et supérieur que cette aptitude vous permet de lancer. Pour commencer, choisissez trois sorts du 1er niveau du Magicien. {@spell charme-personne|PHB24}, {@spell déguisement|PHB24}, et {@spell Nappe de brouillard|PHB24} sont recommandés.",
               "Le nombre de sorts de votre liste augmente à mesure que vous recevez des niveaux de Roublard, comme l'indique la colonne Sorts préparés de la table Sorts de l'Arnaqueur arcanique. Chaque fois que ce nombre augmente, choisissez des sorts de Magicien supplémentaires jusqu'à ce que le nombre de sorts de votre liste corresponde au nombre indiqué dans la table Sorts de l'Arnaqueur arcanique. Ces sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sort. Si, par exemple, vous êtes un Roublard de niveau 7, votre liste de sorts préparés peut inclure cinq sorts de Magicien du 1er ou 2e niveau, répartis à votre guise."
             ]
           },
@@ -3190,7 +3190,7 @@
         "level": 13,
         "header": 2,
         "entries": [
-          "Vous recevez l'art de détourner l'attention de votre cible à l'aide de votre {@spell main du mage|PHB24}. Lorsque vous recourez à l'option Croc-en-jambe de Frappe malicieuse sur une créature, vous pouvez également utiliser cette option sur une autre créature située dans un rayon de 1,50 m de la main spectrale."
+          "Vous recevez l'art de détourner l'attention de votre cible à l'aide de votre {@spell main de mage|PHB24}. Lorsque vous recourez à l'option Croc-en-jambe de Frappe malicieuse sur une créature, vous pouvez également utiliser cette option sur une autre créature située dans un rayon de 1,50 m de la main spectrale."
         ]
       },
       {
@@ -4168,7 +4168,7 @@
             "type": "entries",
             "name": "Sorts préparés de niveau 1 et plus",
             "entries": [
-              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez deux sorts de rôdeur de niveau 1. {@spell Soins} et {@spell Frappe envoûtante} sont recommandés.",
+              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez deux sorts de rôdeur de niveau 1. {@spell Soins} et {@spell Frappe piégeuse} sont recommandés.",
               "Le nombre de sorts de votre liste augmente à mesure que vous gagnez des niveaux de rôdeur, comme indiqué dans la colonne « Sorts préparés » du tableau des aptitudes de rôdeur. À chaque augmentation de ce nombre, choisissez des sorts de rôdeur supplémentaires jusqu'à ce que votre liste contienne le nombre indiqué dans le tableau des aptitudes de rôdeur. Les sorts choisis doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts. Par exemple, si vous êtes un rôdeur de niveau 5, votre liste de sorts préparés peut inclure six sorts de rôdeur de niveau 1 ou 2, dans n'importe quelle combinaison.",
               "Si une autre capacité de rôdeur vous donne des sorts que vous avez toujours préparés, ces sorts ne sont pas comptabilisés dans le nombre de sorts que vous pouvez préparer avec cette capacité, mais ils sont par ailleurs considérés comme des sorts de rôdeur."
             ]
@@ -4257,7 +4257,7 @@
           {
             "type": "entries",
             "entries": [
-              "Vous apprenez deux sorts mineurs de druide de votre choix. {@spell Guidance} et {@spell Feu follet} étoilé sont recommandés. Ces sorts mineurs comptent comme des sorts de rôdeur, et votre Sagesse est votre caractéristique d'incantation pour les lancer. À chaque fois que vous gagnez un niveau de rôdeur, vous pouvez remplacer l'un de ces sorts mineurs par un autre sort mineur de druide."
+              "Vous apprenez deux sorts mineurs de druide de votre choix. {@spell Guidance} et {@spell Feu follet étoilé} étoilé sont recommandés. Ces sorts mineurs comptent comme des sorts de rôdeur, et votre Sagesse est votre caractéristique d'incantation pour les lancer. À chaque fois que vous gagnez un niveau de rôdeur, vous pouvez remplacer l'un de ces sorts mineurs par un autre sort mineur de druide."
             ],
             "name": "Guerrier druidique"
           }
@@ -4861,7 +4861,7 @@
               ],
               [
                 "13",
-                "{@spell invisibilité suprême|PHB24}"
+                "{@spell Invisibilité supérieure|PHB24}"
               ],
               [
                 "17",
@@ -5479,7 +5479,7 @@
             "type": "entries",
             "name": "Sorts préparés de niveau 1 et plus",
             "entries": [
-              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez deux sorts de paladin de niveau 1. {@spell Héroïsme} et {@spell Châtiment brûlant} sont recommandés.",
+              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez deux sorts de paladin de niveau 1. {@spell Héroïsme} et {@spell Châtiment calcinant} sont recommandés.",
               "Le nombre de sorts de votre liste augmente à mesure que vous gagnez des niveaux de paladin, comme indiqué dans la colonne « Sorts préparés » du tableau des aptitudes du paladin. À chaque augmentation de ce nombre, choisissez des sorts de paladin supplémentaires jusqu'à ce que votre liste contienne autant de sorts que celle du tableau. Les sorts choisis doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts. Par exemple, si vous êtes un paladin de niveau 5, votre liste de sorts préparés peut inclure six sorts de paladin de niveau 1 ou 2, dans n'importe quelle combinaison.",
               "Si une autre capacité de paladin vous donne des sorts que vous avez toujours préparés, ces sorts ne sont pas comptabilisés dans le nombre de sorts que vous pouvez préparer avec cette capacité, mais ils sont par ailleurs considérés comme des sorts de paladin."
             ]
@@ -6019,7 +6019,7 @@
               ],
               [
                 "17",
-                "{@spell mythes et légendes|PHB24}, {@spell présence royale|PHB24}"
+                "{@spell mythes et légendes|PHB24}, {@spell Présence Royale de Yolande|PHB24}"
               ]
             ]
           }
@@ -6190,7 +6190,7 @@
               ],
               [
                 "17",
-                "{@spell communion avec la nature|PHB24}, {@spell  passage par les arbres|PHB24}"
+                "{@spell communion avec la nature|PHB24}, {@spellPassage par les arbres|PHB24}"
               ]
             ]
           }
@@ -6334,7 +6334,7 @@
               ],
               [
                 "17",
-                "{@spell {@spell immobilisation de monstre|PHB24}|PHB24}, {@spell scrutation|PHB24}"
+                "{@spell Immobilisation de monstre|PHB24}|PHB24}, {@spell scrutation|PHB24}"
               ]
             ]
           }
@@ -7227,7 +7227,7 @@
               ],
               [
                 "7",
-                "{@spell domination de bête|PHB24}, {@spell invisibilité suprême|PHB24}"
+                "{@spell domination de bête|PHB24}, {@spell Invisibilité supérieure|PHB24}"
               ],
               [
                 "9",
@@ -7652,11 +7652,11 @@
             "rows": [
               [
                 "3",
-                "{@spell détection des pensées|PHB24}, {@spell force fantasmagorique|PHB24}, {@spell fou rire|PHB24}, {@spell murmures dissonants|PHB24}"
+                "{@spell détection des pensées|PHB24}, {@spell force fantasmagorique|PHB24}, {@spell Fou rire de Tasha|PHB24}, {@spell murmures dissonants|PHB24}"
               ],
               [
                 "5",
-                "{@spell Clairvoyance|PHB24}, {@spell voracité aberrante|PHB24}"
+                "{@spell Clairvoyance|PHB24}, {@spell Voracité de Hadar|PHB24}"
               ],
               [
                 "7",
@@ -9427,7 +9427,7 @@
             "type": "entries",
             "name": "Sorts mineurs",
             "entries": [
-              "Vous connaissez trois sorts mineurs de magicien de votre choix. {@spell Lumière}, {@spell Main du mage} et {@spell Rayon de givre} sont recommandés. Après chaque repos long, vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur de magicien de votre choix.",
+              "Vous connaissez trois sorts mineurs de magicien de votre choix. {@spell Lumière}, {@spell main de mage} et {@spell Rayon de givre} sont recommandés. Après chaque repos long, vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur de magicien de votre choix.",
               "Lorsque vous atteignez les niveaux 4 et 10 de magicien, vous apprenez un autre sort mineur de magicien de votre choix, comme indiqué dans la colonne Sorts mineurs du tableau des caractéristiques de magicien."
             ]
           },
@@ -9436,7 +9436,7 @@
             "name": "Grimoire",
             "entries": [
               "Votre apprentissage de sorcier a abouti à la création d'un livre unique : votre grimoire. C'est un objet minuscule pesant 1,4 kg, contenant 100 pages et lisible uniquement par vous ou par une personne ayant lancé le sort {@spell Identification}. Vous déterminez l'apparence et les matériaux du livre, comme un grimoire aux tranches dorées ou un recueil de parchemin relié de ficelle.",
-              "Ce livre contient les sorts de niveau 1 et plus que vous connaissez. Il commence par six sorts de magicien de niveau 1 de votre choix. {@spell Détection de la magie}, {@spell Chute de plumes}, {@spell Armure de mage}, {@spell Projectile magique}, {@spell Sommeil} et {@spell Onde de choc} sont recommandés.",
+              "Ce livre contient les sorts de niveau 1 et plus que vous connaissez. Il commence par six sorts de magicien de niveau 1 de votre choix. {@spell Détection de la magie}, {@spell Feuille morte}, {@spell Armure de mage}, {@spell Projectile magique}, {@spell Sommeil} et {@spell Vague tonnante} sont recommandés.",
               "À chaque fois que vous gagnez un niveau de magicien après le niveau 1, ajoutez deux sorts de magicien de votre choix à votre grimoire. Chacun de ces sorts doit être d'un niveau pour lequel vous disposez d'emplacements de sorts, comme indiqué dans le tableau des capacités de magicien. Ces sorts sont l'aboutissement de vos recherches arcaniques régulières."
             ]
           },
@@ -11915,7 +11915,7 @@
             "type": "entries",
             "name": "Sorts mineurs",
             "entries": [
-              "Vous connaissez quatre sorts mineurs d'Ensorceleur de votre choix. {@spell Lumière}, {@spell Prestidigitation}, {@spell Emprise électrique} et {@spell Explosion magique} sont recommandés. À chaque fois que vous gagnez un niveau d'Ensorceleur, vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur d'Ensorceleur de votre choix.",
+              "Vous connaissez quatre sorts mineurs d'Ensorceleur de votre choix. {@spell Lumière}, {@spell Prestidigitation}, {@spell Poigne électrique} et {@spell Explosion de Sorcellerie} sont recommandés. À chaque fois que vous gagnez un niveau d'Ensorceleur, vous pouvez remplacer l'un de vos sorts mineurs de cette capacité par un autre sort mineur d'Ensorceleur de votre choix.",
               "Lorsque vous atteignez les niveaux 4 et 10 d'Ensorceleur, vous apprenez un autre sort mineur d'Ensorceleur de votre choix, comme indiqué dans la colonne Sorts mineurs du tableau des caractéristiques de l'Ensorceleur."
             ]
           },
@@ -12360,19 +12360,19 @@
             "rows": [
               [
                 "3",
-                "{@spell apaisement des émotions|PHB24}, {@spell détection des pensées|PHB24}, {@spell murmures dissonants|PHB24}, {@spell piqûre mentale|PHB24}, {@spell tentacules aberrants|PHB24}"
+                "{@spell apaisement des émotions|PHB24}, {@spell détection des pensées|PHB24}, {@spell murmures dissonants|PHB24}, {@spell piqûre mentale|PHB24}, {@spell Tentacules de Hadar|PHB24}"
               ],
               [
                 "5",
-                "{@spell communication à distance|PHB24}, {@spell voracité aberrante|PHB24}"
+                "{@spell communication à distance|PHB24}, {@spell Voracité de Hadar|PHB24}"
               ],
               [
                 "7",
-                "{@spell convocation d'aberration|PHB24}, {@spell tentacules noirs|PHB24}"
+                "{@spell convocation d'aberration|PHB24}, {@spell Tentacules noirs d'Evard|PHB24}"
               ],
               [
                 "9",
-                "{@spell lien télépathique|PHB24}, {@spell télékinésie|PHB24}"
+                "{@spell Lien télépathique de Rary|PHB24}, {@spell télékinésie|PHB24}"
               ]
             ]
           }
@@ -12733,7 +12733,7 @@
               ],
               [
                 "7",
-                "{@spell charme-monstre|PHB24}, {@spell œil du mage|PHB24}"
+                "{@spell charme-monstre|PHB24}, {@spell Oeil magique|PHB24}"
               ],
               [
                 "9",
@@ -12884,7 +12884,7 @@
               ],
               [
                 "17-20",
-                "Vous êtes soumis à un effet qui persiste 1 minute sauf si sa description indique autre chose. Lancez {@dice 1d8} pour déterminer l'effet : sur un résultat de 1, vous êtes entouré d'une musique douce et éthérée que seuls vous-même et les créatures situées dans un rayon de 1,50 m entendez ; sur un résultat de 2, votre catégorie de taille augmente d'un cran ; sur un résultat de 3, il vous pousse une longue barbe faite de plumes qui persiste jusqu'à ce que vous éternuiez. Les plumes explosent alors et disparaissent ; sur un résultat de 4, vous criez lorsque vous parlez ; sur un résultat de 5, des papillons illusoires voltigent dans un rayon de 3 m autour de vous ; sur un résultat de 6, un œil apparaît au beau milieu de votre front, vous octroyant l'{@variantrule Avantage|PHB24} aux tests de Sagesse ({@skill Perception|PHB24}) ; sur un résultat de 7, des bulles roses sortent de votre bouche lorsque vous parlez ; sur un résultat de 8, votre peau devient bleu vif pendant 24 heures ou jusqu'à ce que l'effet soit réprimé par le sort {@spell delivrance des malédictions|PHB24}."
+                "Vous êtes soumis à un effet qui persiste 1 minute sauf si sa description indique autre chose. Lancez {@dice 1d8} pour déterminer l'effet : sur un résultat de 1, vous êtes entouré d'une musique douce et éthérée que seuls vous-même et les créatures situées dans un rayon de 1,50 m entendez ; sur un résultat de 2, votre catégorie de taille augmente d'un cran ; sur un résultat de 3, il vous pousse une longue barbe faite de plumes qui persiste jusqu'à ce que vous éternuiez. Les plumes explosent alors et disparaissent ; sur un résultat de 4, vous criez lorsque vous parlez ; sur un résultat de 5, des papillons illusoires voltigent dans un rayon de 3 m autour de vous ; sur un résultat de 6, un œil apparaît au beau milieu de votre front, vous octroyant l'{@variantrule Avantage|PHB24} aux tests de Sagesse ({@skill Perception|PHB24}) ; sur un résultat de 7, des bulles roses sortent de votre bouche lorsque vous parlez ; sur un résultat de 8, votre peau devient bleu vif pendant 24 heures ou jusqu'à ce que l'effet soit réprimé par le sort {@spell Délivrance des malédictions|PHB24}."
               ],
               [
                 "21-24",
@@ -12924,7 +12924,7 @@
               ],
               [
                 "57-60",
-                "Vous lancez un sort déterminé aléatoirement. Si le sort nécessite normalement la {@status Concentration|PHB24}, il ne la nécessite pas dans ce cas ; le sort persiste pendant toute sa durée. Lancez 1d10 pour determiner le sort : sur un résultat de 1, {@spell confusion|PHB24} ; sur un résultat de 2, {@spell boule de feu|PHB24} ; sur un résultat de 3, {@spell nappe de brouilland|PHB24} ; sur un résultat de 4, {@spell vol|PHB24} (lancé sur une créature aléatoire dans un rayon de 18 m), sur un résultat de 5, {@spell graisse|PHB24} ; sur un résultat de 6, {@spell lévitation|PHB24} (lancé sur vous-même); sur un résultat de 7, {@spell projectile magique|PHB24} (lancé comme un sort de 5e niveau); sur un résultat de 8, {@spell image miroir|PHB24} ; sur un résultat de 9, {@spell métamorphose|PHB24} (lancé sur vous-même). Si vous ratez le jet de sauvegarde, vous êtes transformé en chèvre; sur un résultat de 10, {@spell détection de l'invisibilité|PHB24}."
+                "Vous lancez un sort déterminé aléatoirement. Si le sort nécessite normalement la {@status Concentration|PHB24}, il ne la nécessite pas dans ce cas ; le sort persiste pendant toute sa durée. Lancez 1d10 pour determiner le sort : sur un résultat de 1, {@spell confusion|PHB24} ; sur un résultat de 2, {@spell boule de feu|PHB24} ; sur un résultat de 3, {@spell Nappe de brouillard|PHB24} ; sur un résultat de 4, {@spell vol|PHB24} (lancé sur une créature aléatoire dans un rayon de 18 m), sur un résultat de 5, {@spell graisse|PHB24} ; sur un résultat de 6, {@spell lévitation|PHB24} (lancé sur vous-même); sur un résultat de 7, {@spell projectile magique|PHB24} (lancé comme un sort de 5e niveau); sur un résultat de 8, {@spell image miroir|PHB24} ; sur un résultat de 9, {@spell métamorphose|PHB24} (lancé sur vous-même). Si vous ratez le jet de sauvegarde, vous êtes transformé en chèvre; sur un résultat de 10, {@spell détection de l'invisibilité|PHB24}."
               ],
               [
                 "61-64",
@@ -13546,7 +13546,7 @@
             "type": "entries",
             "name": "Sorts mineurs",
             "entries": [
-              "Vous connaissez deux sorts mineurs de votre choix parmi la liste des sorts de druide. {@spell Artisanat druidique} et {@spell Production de flammes} sont recommandés.",
+              "Vous connaissez deux sorts mineurs de votre choix parmi la liste des sorts de druide. {@spell Druidisme} et {@spell Flammes} sont recommandés.",
               "Chaque fois que vous gagnez un niveau de druide, vous pouvez remplacer l'un de vos sorts mineurs par un autre sort mineur de votre choix dans la liste des sorts de druide.",
               "Lorsque vous atteignez les niveaux 4 et 10 de druide, vous apprenez un autre sort mineur de votre choix dans la liste des sorts de druide, comme indiqué dans la colonne Sorts mineurs du tableau des caractéristiques du druide."
             ]
@@ -13562,7 +13562,7 @@
             "type": "entries",
             "name": "Sorts préparés de niveau 1 et plus",
             "entries": [
-              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez quatre sorts de niveau 1 dans la liste des sorts de druide. {@spell Amitié animale}, {@spell Soins des blessures}, {@spell Feu féerique} et {@spell Onde de choc} sont recommandés.",
+              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez quatre sorts de niveau 1 dans la liste des sorts de druide. {@spell Amitié avec les animaux}, {@spell Soins}, {@spell Lueurs féeriques} et {@spell Vague tonnante} sont recommandés.",
               "Le nombre de sorts de votre liste augmente à mesure que vous gagnez des niveaux de druide, comme indiqué dans la colonne « Sorts préparés » du tableau des aptitudes de druide. À chaque augmentation de ce nombre, choisissez des sorts supplémentaires dans la liste de sorts de druide jusqu'à ce que votre liste de sorts corresponde à celle du tableau. Les sorts choisis doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts. Par exemple, si vous êtes un druide de niveau 3, votre liste de sorts préparés peut inclure six sorts de niveaux 1 et 2, dans n'importe quelle combinaison.",
               "Si une autre capacité de druide vous donne des sorts que vous avez toujours préparés, ces sorts ne sont pas comptabilisés dans le nombre de sorts que vous pouvez préparer avec cette capacité, mais ils sont par ailleurs considérés comme des sorts de druide pour vous."
             ]
@@ -14027,7 +14027,7 @@
               ],
               [
                 "9",
-                "{@spell passage par les arbres|PHB24}"
+                "{@spell Passage par les arbres|PHB24}"
               ]
             ]
           },
@@ -14045,7 +14045,7 @@
             "rows": [
               [
                 "3",
-                "{@spell aspersion acide|PHB24}, {@spell rayon empoisonné|PHB24}, {@spell toile d'araignée|PHB24}"
+                "{@spell Aspersion d'acide|PHB24}, {@spell rayon empoisonné|PHB24}, {@spell toile d'araignée|PHB24}"
               ],
               [
                 "5",
@@ -14246,15 +14246,15 @@
             "rows": [
               [
                 "3",
-                "{@spell poussière d'étoile|PHB24}, {@spell rayon de lune|PHB24}, {@spell soins|PHB24}"
+                "{@spell Feu follet étoilé étoilé|PHB24}, {@spell rayon de lune|PHB24}, {@spell soins|PHB24}"
               ],
               [
                 "5",
-                "{@spell invocation d'animau|PHB24}"
+                "{@spell Invocation d'animaux|PHB24}"
               ],
               [
                 "7",
-                "{@spell fontaine de lune|PHB24}"
+                "{@spell Source de Clair de Lune|PHB24}"
               ],
               [
                 "9",
@@ -14407,7 +14407,7 @@
               ],
               [
                 "9",
-                "{@spell immobilisation de monstre|PHB24}, {@spell invocation d'élémentaire|PHB24}"
+                "{@spell Immobilisation de monstre|PHB24}, {@spell invocation d'élémentaire|PHB24}"
               ]
             ]
           }
@@ -15153,7 +15153,7 @@
             "type": "entries",
             "name": "Sorts préparés de niveau 1 et plus",
             "entries": [
-              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez quatre sorts de niveau 1 dans la liste des sorts de clerc. {@spell Bénédiction}, {@spell Soins des blessures}, {@spell Trait de lumière} et {@spell Bouclier de la foi} sont recommandés.",
+              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez quatre sorts de niveau 1 dans la liste des sorts de clerc. {@spell Bénédiction}, {@spell Soins}, {@spell Rayon traçant} et {@spell Bouclier de la foi} sont recommandés.",
               "Le nombre de sorts de votre liste augmente à mesure que vous gagnez des niveaux de clerc, comme indiqué dans la colonne « Sorts préparés » du tableau des aptitudes de clerc. À chaque augmentation de ce nombre, choisissez des sorts supplémentaires dans la liste de sorts de clerc jusqu'à ce que votre liste de sorts corresponde à celle du tableau. Les sorts choisis doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts. Par exemple, si vous êtes un clerc de niveau 3, votre liste de sorts préparés peut inclure six sorts de niveaux 1 et 2, dans n'importe quelle combinaison.",
               "Si une autre capacité de clerc vous donne des sorts que vous avez toujours préparés, ces sorts ne sont pas comptabilisés dans le nombre de sorts que vous pouvez préparer avec cette capacité, mais ils sont par ailleurs considérés comme des sorts de clerc."
             ]
@@ -15597,7 +15597,7 @@
               ],
               [
                 "7",
-                "{@spell mur de feu|PHB24}, {@spell œil du mage|PHB24}"
+                "{@spell mur de feu|PHB24}, {@spell Oeil magique|PHB24}"
               ],
               [
                 "9",
@@ -15915,7 +15915,7 @@
               ],
               [
                 "9",
-                "{@spell immobilisation de monstre|PHB24}, {@spell frappe du vent d'acier|PHB24}"
+                "{@spell Immobilisation de monstre|PHB24}, {@spell frappe du vent d'acier|PHB24}"
               ]
             ]
           }
@@ -16505,7 +16505,7 @@
             "type": "entries",
             "name": "Sorts préparés de niveau 1 et plus",
             "entries": [
-              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez quatre sorts de niveau 1 dans la liste des sorts de barde. {@spell Charme-personne}, {@spell Nuage de couleurs}, {@spell Murmures dissonants} et {@spell Mot de guérison} sont recommandés.",
+              "Vous préparez la liste des sorts de niveau 1 et plus que vous pouvez lancer grâce à cette capacité. Pour commencer, choisissez quatre sorts de niveau 1 dans la liste des sorts de barde. {@spell Charme-personne}, {@spell Couleurs dansantes}, {@spell Murmures dissonants} et {@spell Mot de guérison} sont recommandés.",
               "Le nombre de sorts de votre liste augmente à mesure que vous gagnez des niveaux de barde, comme indiqué dans la colonne « Sorts préparés » du tableau des aptitudes de barde. À chaque augmentation de ce nombre, choisissez des sorts supplémentaires dans la liste de sorts de Barde jusqu'à ce que votre liste corresponde à celle du tableau. Les sorts choisis doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts. Par exemple, si vous êtes un Barde de niveau 3, votre liste de sorts préparés peut inclure six sorts de niveaux 1 et 2, dans n'importe quelle combinaison.",
               "Si une autre capacité de Barde vous donne des sorts que vous avez toujours préparés, ces sorts ne sont pas comptabilisés dans le nombre de sorts que vous pouvez préparer avec cette capacité, mais ils sont par ailleurs considérés comme des sorts de barde."
             ]
@@ -16717,7 +16717,7 @@
         "classSource": "PHB24",
         "level": 20,
         "entries": [
-          "Vous maîtrisez deux des Mots de la Création : les mots de vie et de mort. Vous avez donc toujours les sorts {@spell Mot de pouvoir Guérison} et {@spell Mot de pouvoir Mort} prêts. Lorsque vous lancez l'un ou l'autre de ces sorts, vous pouvez cibler une seconde créature si celle-ci se trouve à moins de 3 mètres de la première cible."
+          "Vous maîtrisez deux des Mots de la Création : les mots de vie et de mort. Vous avez donc toujours les sorts {@spell Mot de pouvoir guérisseur} et {@spell Mot de pouvoir mortel} prêts. Lorsque vous lancez l'un ou l'autre de ces sorts, vous pouvez cibler une seconde créature si celle-ci se trouve à moins de 3 mètres de la première cible."
         ]
       }
     ],
@@ -17916,7 +17916,7 @@
         "level": 3,
         "header": 2,
         "entries": [
-          "Vous pouvez lancer les sorts {@spell perception bestiale|PHB24} et {@spell communication avec les animaux|PHB24} mais uniquement sous forme de rituels. La Sagesse est votre caractéristique d'incantation pour ces sorts."
+          "Vous pouvez lancer les sorts {@spell Sens animal|PHB24} et {@spell communication avec les animaux|PHB24} mais uniquement sous forme de rituels. La Sagesse est votre caractéristique d'incantation pour ces sorts."
         ]
       },
       {

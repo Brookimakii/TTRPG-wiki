@@ -998,14 +998,15 @@ export const RenderModule = (props: {}) => {
           spellName = string.toLowerCase()
         }
         const spell = getResource(Resources.spell).filter(s => s.name.toLowerCase() === spellName || s.id.toLowerCase() === spellName)[0]
+        // console.info(getResource(Resources.spell))
         if (!spell) {
-          console.error("Unknown spell: " + string)
+          console.error("Unknown spell: " + spellName + " - " +spell)
         }else{
           out.name = spell.name
+          out.hash = encodeForHash(spell.id)
         }
-        out.hash = encodeForHash(spell?.id)
         
-        console.log(spell)
+        // console.log(spell)
         out.page = "/TTRPG-wiki/spells";
         
         break;

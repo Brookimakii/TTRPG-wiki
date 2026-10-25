@@ -651,7 +651,7 @@
           "Tant que votre familier est à moins de 30 mètres de vous, vous pouvez communiquer avec lui par télépathie. De plus, par une action bonus, vous pouvez voir à travers ses yeux et entendre ce qu'il entend jusqu'au début de votre prochain tour, bénéficiant ainsi des avantages de ses sens spéciaux."
         ]
       },
-      "Enfin, lorsque vous lancez un sort à portée de contact, votre familier peut effectuer le contact. Votre familier doit se trouver à moins de 30 mètres de vous et doit effectuer une réaction pour vous toucher lorsque vous lancez le sort.",
+      "Enfin, lorsque vous lancez un sort à portée de contact, votre familier peut effectuer le contact. Votre familier doit se trouver à moins de 30 mètres de vous et doit effectuer une réaction pour appliquer le contact lors de l'incantation.",
       {
         "type": "entries",
         "name": "Combat",
@@ -1863,7 +1863,7 @@
     "shortDesc": "La cible doit réussir un JdS de Con. ou subir 1d12 dégâts de poison (dégâts/niv).",
     "entries": [
       "Vous projetez une brume toxique sur une créature à portée. Lancez une attaque à distance contre la cible. En cas de succès, la cible subit 2 dégâts de poison.",
-      "Les dégâts augmentent de 2 dégâts lorsque vous atteignez les niveaux 5 (2d12), 11 (3d12) et 17 (4d12)."
+      "Les dégâts augmentent de 1d12 dégâts lorsque vous atteignez les niveaux 5 (2d12), 11 (3d12) et 17 (4d12)."
     ],
     "upCast": "",
     "source": "PHB",
@@ -18244,7 +18244,7 @@
     "level": "0",
     "school": "Ev",
     "castingTime": "1 action",
-    "range": "instantanée",
+    "range": "18 mètres",
     "duration": "instantanée",
     "component": "V,S",
     "concentration": false,
