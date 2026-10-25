@@ -1007,14 +1007,14 @@ export const RenderModule = (props: {}) => {
         }
         
         // console.log(spell)
-        out.page = "/TTRPG-wiki/spells";
+        out.page = "/TTRPG-wiki/dnd5e/spells";
         
         break;
       }
       case "@spellen": {
         console.error("This spell is in english: " + string)
         out.hash = encodeForHash("english spell " + string)
-        out.page = "/TTRPG-wiki/spells";
+        out.page = "/TTRPG-wiki/dnd5e/spells";
         break;
       }
       case "@item": {
