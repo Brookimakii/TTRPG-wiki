@@ -368,16 +368,14 @@ export const Selector5e = (defaultElements: [{}] = [], columns: [{}], defaultSor
         {/*{console.log(elements)}*/}
         {elementsToShow?.filter((elem) => elem?.id).map((elem) =>
           <div
-            className={"lst__row ve-flex-col" + (selected?.id === elem.id ? " list-multi-selected" : "")}
+            className={selected?.id === elem.id ? "lst__row ve-flex-col list-multi-selected" : "lst__row ve-flex-col"}
             onClick={() => handleClickSelection(elem)}
             key={elem.id}>
             <Link to={"#" + elem.id.toLowerCase()} id={"#" + elem.id.toLowerCase().replace(" ", "%20")}
                   className="lst__row-border lst__row-inner">
               {columns.map(column => {
                 const string = Object.byString(elem, column.sortId)
-                {console.info(column.sortId)}
                 switch (column.sortId) {
-                  case "info.source":
                   case "source":
                     return (
                       <span
@@ -815,9 +813,7 @@ export const RenderModule = (props: {}) => {
       case "@d20":
       case "@hitYourSpellAttack": {
         const [expr] = string.split("|");
-        // return <span className="render-roller ve-flex-vh-center" title="Formule de dés">{expr}</span>
-        return expr
-      // }
+        return <span className="render-roller ve-flex-vh-center" title="Formule de dés">{expr}</span>
       }
       case "@hit": {
         const [n] = string.split("|");
@@ -842,6 +838,22 @@ export const RenderModule = (props: {}) => {
       }
       case "@note":
         return <i className="ve-muted">{string}</i>
+      case "@atkr": {
+        // 5.5e stat blocks: {@atkr m} / {@atkr r} / {@atkr m,r}
+        const kinds = string.split(",").map(k => k.trim())
+        const label = kinds.includes("m") && kinds.includes("r") ? "de corps à corps ou à distance"
+          : kinds.includes("r") ? "à distance" : "de corps à corps"
+        return <i>Jet d'attaque {label} :</i>
+      }
+      case "@atk": {
+        // 2014 stat blocks: {@atk mw} / {@atk rw} / {@atk mw,rw} / {@atk ms} ...
+        const kinds = string.split(",").map(k => k.trim())
+        const names = {
+          mw: "Attaque au corps à corps avec une arme", rw: "Attaque à distance avec une arme",
+          ms: "Attaque de sort au corps à corps", rs: "Attaque de sort à distance",
+        }
+        return <i>{kinds.map(k => names[k] ?? k).join(" ou ")} :</i>
+      }
       case "@filter": {
         // {@filter text|page|filterName=value;value|filterName=value...}
         const [text, page, ...filters] = string.split("|")
@@ -979,13 +991,23 @@ export const RenderModule = (props: {}) => {
 
     switch (tag) {
       case "@spell": {
-        const spell = getResource(Resources.spell).filter(s => s.name.toLowerCase() === string.toLowerCase())[0]
+        var spellName, spellSource
+        if (string.includes("|")){
+          [spellName, spellSource] = string.toLowerCase().split("|")
+        }else{
+          spellName = string.toLowerCase()
+        }
+        const spell = getResource(Resources.spell).filter(s => s.name.toLowerCase() === spellName || s.id.toLowerCase() === spellName)[0]
         if (!spell) {
           console.error("Unknown spell: " + string)
+        }else{
+          out.name = spell.name
         }
         out.hash = encodeForHash(spell?.id)
-
+        
+        console.log(spell)
         out.page = "/TTRPG-wiki/spells";
+        
         break;
       }
       case "@spellen": {
@@ -1077,13 +1099,21 @@ export const RenderModule = (props: {}) => {
     return str
   }
 
-  const render = (entry: string | Entry, depth: number = 1, toggle: string = "", should_render_p:boolean = true) => {
-    // console.info(should_render_p)
+  const render = (entry: string | Entry, depth: number = 1, toggle: string = "") => {
     if (!entry) return;
     // console.log(entry, depth, toggle)
 
     if (Array.isArray(entry)) return entry.map(item => render(item, depth, toggle));
-    else if (entry.type) {
+    // 5etools stat-block traits/actions are {name, entries} without a type: they are plain "entries" blocks
+    if (typeof entry === "object" && !entry.type && Array.isArray(entry.entries)) entry = {...entry, type: "entries"}
+    // Legacy objects of the old race data: {"": "text"} is a paragraph, {"Transe": "text"} a titled block.
+    if (typeof entry === "object" && !entry.type && entry.html === undefined) {
+      const blocks = Object.entries(entry)
+        .filter(([, value]) => value !== "" && value !== null && value !== undefined)
+        .map(([title, value]) => title === "" ? value : {type: "entries", name: title, entries: Array.isArray(value) ? value : [value]})
+      return blocks.length ? render(blocks, depth, toggle) : undefined
+    }
+    if (entry.type) {
       // console.log(entry, entry.header, depth)
       // depth = entry.header ?? depth
       switch (entry.type) {
@@ -1160,18 +1190,17 @@ export const RenderModule = (props: {}) => {
           return <>
             <table className={"w-100 rd__table" + (entry.isStriped === false ? "" : " stripe-odd-table")}>
               {entry.caption ? <caption>{typeof entry.caption === "string" ? renderInline(entry.caption) : entry.caption}</caption> : ""}
-              <thead>
+              {entry.colLabels?.length ? <thead>
               <tr>
                 {entry.colLabels.map((label, idx) => <th className={entry.colStyles?.[idx]}>
                   {typeof label === "string" ? renderInline(label) : label}
                 </th>)}
               </tr>
-              </thead>
+              </thead> : ""}
               <tbody>
-              {entry.rows.map(row => <tr>
-                {row.map((cell, idx) => <td className={"td__th " + entry.colStyles[idx]}>
-                  {/* {console.log("---------------------------------------")} */}
-                  {typeof cell === "number" ? render(String(cell), depth, toggle, false) : render(cell, depth, toggle, false)}
+              {(entry.rows ?? []).map(row => <tr>
+                {row.map((cell, idx) => <td className={"td__th " + (entry.colStyles?.[idx] ?? "")}>
+                  {typeof cell === "number" ? render(String(cell)) : render(cell)}
                 </td>)}
               </tr>)}
               </tbody>
@@ -1278,8 +1307,8 @@ export const RenderModule = (props: {}) => {
     } else if (typeof entry === "string") {
       const str = renderInline(entry)
       // console.log("HERE:", str)
-      // console.log(should_render_p, str)
-      return props?.defaultString ? props.defaultString(str) : should_render_p ? <p>{str}</p>: str
+
+      return props?.defaultString ? props.defaultString(str) : <p>{str}</p>
     } else return false;
   }
 

@@ -19,17 +19,19 @@ export function Dnd5eRaces() {
 
           subrace["id"] = race.id + "-(" + subrace.id + ")"
           subrace["name"] = race.name + " (" + subrace.name + ")"
-          if (subrace.bonus.startsWith(";")) {
-            subrace["bonus"] = race.bonus + "; " + subrace.bonus.replace(";", "")
+          if (subrace.bonus === undefined || subrace.bonus === null) {
+            subrace["bonus"] = race.bonus ?? ""
+          } else if (subrace.bonus.startsWith(";")) {
+            subrace["bonus"] = (race.bonus ?? "") + "; " + subrace.bonus.replace(";", "")
           }
           subrace["size"] = race.size
           subrace["creatureType"] = race.creatureType
           if (!subrace.speed) {
             subrace["speed"] = race.speed
           }
-          subrace["common"] = race.common
-          subrace["traits"] = [...race.traits, ...subrace.traits]
-          subrace["info"] = race.info.toSpliced(0, 0, subrace.info)
+          subrace["common"] = race.common ?? {}
+          subrace["traits"] = [...(race.traits ?? []), ...(subrace.traits ?? [])]
+          subrace["info"] = subrace.info ? (race.info ?? []).toSpliced(0, 0, subrace.info) : [...(race.info ?? [])]
 
           races.push(subrace)
         })
@@ -67,6 +69,14 @@ export function Dnd5eRaces() {
   ]
 
   const races = getResource(Resources.race)
+
+  function tableDisplayOption(column, string, elem) {
+    if (column.sortId === "bonus") {
+      return <span className={column.colClass}>{elem.bonus ? elem.bonus : "—"}</span>
+    }
+    return undefined
+  }
+
   const {
     selected,
     elements,
@@ -79,7 +89,7 @@ export function Dnd5eRaces() {
     DisplayList,
     DetailsHeader,
     TempFilters
-  } = Selector5e(buildRace(races), columns);
+  } = Selector5e(buildRace(races), columns, "name", tableDisplayOption);
 
   // console.log(races)
   // const [elements, setElements] = useState(buildRace(races))
@@ -184,7 +194,7 @@ export function Dnd5eRaces() {
               <tr>
                 <td colSpan={6} className="pt-0">
                   <ul className="rd__list rd__list-hang-notitle">
-                    <li key={"ability"} className="rd__li">
+                    {selectedRace.bonus ? <li key={"ability"} className="rd__li">
                       <p className="rd__p-list-item">
                         <span className="bold rd__list-item-name">Score de capacité:</span>
                         {" " + selectedRace.bonus.split(";").map(att => {
@@ -192,7 +202,7 @@ export function Dnd5eRaces() {
                           return `${Parser.attAbvToFull(elem[0])} ${elem[1]}`
                         }).join(", ")}
                       </p>
-                    </li>
+                    </li> : ""}
                     <li key={"type"} className="rd__li">
                       <p className="rd__p-list-item">
                         <span className="bold rd__list-item-name">Type de Créature:</span>
@@ -225,40 +235,40 @@ export function Dnd5eRaces() {
                       </div>
                       <hr className="rd__hr rd__hr--section"/>
                     </> : <></>}
-                    <div className="rd__b  rd__b--3">
+                    {selectedRace.common?.age ? <div className="rd__b  rd__b--3">
                       <p>
                       <span className="rd__h rd__h--3">
                         <span className="entry-title-inner">Âge.</span>
                       </span>
                         {" " + selectedRace.common.age}
                       </p>
-                    </div>
-                    <div className="rd__b  rd__b--3">
+                    </div> : ""}
+                    {selectedRace.common?.alignment ? <div className="rd__b  rd__b--3">
                       <p>
                       <span className="rd__h rd__h--3">
                         <span className="entry-title-inner">Alignement.</span>
                       </span>
                         {" " + selectedRace.common.alignment}
                       </p>
-                    </div>
-                    <div className="rd__b  rd__b--3">
+                    </div> : ""}
+                    {selectedRace.common?.size ? <div className="rd__b  rd__b--3">
                       <p>
                               <span className="rd__h rd__h--3">
                                 <span className="entry-title-inner">Taille.</span>
                               </span>
                         {" " + selectedRace.common.size}
                       </p>
-                    </div>
-                    {RenderModule({...renderProps}).render(selectedRace.traits)}
+                    </div> : ""}
+                    {RenderModule({...renderProps}).render(selectedRace.traits ?? [])}
                     {/*{Renderer({...renderProps}).recursiveRender(selectedRace.traits)}*/}
-                    <div className="rd__b  rd__b--3">
+                    {selectedRace.common?.languages ? <div className="rd__b  rd__b--3">
                       <p>
                             <span className="rd__h rd__h--3">
                             <span className="entry-title-inner">Langues.</span>
                             </span>
                         {" " + selectedRace.common.languages}
                       </p>
-                    </div>
+                    </div> : ""}
                   </div>
                 </td>
               </tr>
@@ -288,7 +298,7 @@ export function Dnd5eRaces() {
                 <td colSpan={6} className="pt-3">
                   <div className="rd__b rd__b--1">
                     <div className="rd__b rd__b--2">
-                      {RenderModule(renderProps).render(selectedRace.info)}
+                      {RenderModule(renderProps).render(selectedRace.info ?? [])}
                     </div>
                   </div>
                 </td>
@@ -299,7 +309,7 @@ export function Dnd5eRaces() {
               </tbody>
             </table>
           </TabPanel>
-            <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+            {(selectedRace.images ?? []).length > 0 ? <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
               <table className="w-100 stats">
                 <thead>
                 <tr>
@@ -308,8 +318,7 @@ export function Dnd5eRaces() {
                 <DetailsHeader selectedRace={selectedRace}/>
                 </thead>
                 <tbody>
-                {selectedRace.images.map(image => {
-                  console.log(image)
+                {(selectedRace.images ?? []).map(image => {
                   return <tr>
                     <th colSpan="6">
                       <img src={image.url} alt={image.name}/>
@@ -322,7 +331,7 @@ export function Dnd5eRaces() {
                 </tr>
                 </tbody>
               </table>
-          </TabPanel>
+          </TabPanel> : ""}
         </Tabs>
       }
     </div>

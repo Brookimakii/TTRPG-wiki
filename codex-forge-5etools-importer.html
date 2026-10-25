@@ -312,6 +312,23 @@ function convertSpell(raw,warnings){
   return out;
 }
 
+/* ============================================================
+   5.5e (2024 rules) helpers — shared by items / feats / backgrounds /
+   races / monsters. 2024 content is detected with raw.edition === "one"
+   (or an X-prefixed core source such as XPHB / XDMG / XMM).
+   ============================================================ */
+function is2024(raw){ return !!raw && (raw.edition==="one" || /^X(PHB|DMG|MM)$/i.test(raw.source||"")); }
+function titleCase(str){ return String(str||"").replace(/(^|[\s(\-])([a-zà-ÿ])/g,(m,pre,c)=>pre+c.toUpperCase()); }
+// 5etools lists store their rows in "items"; this site's renderer reads "entries".
+function normalizeEntries(node){
+  if(Array.isArray(node)) return node.map(normalizeEntries);
+  if(!node || typeof node!=="object") return node;
+  const out={};
+  Object.entries(node).forEach(([k,v])=>{ out[(k==="items" && node.type==="list") ? "entries" : k]=normalizeEntries(v); });
+  return out;
+}
+const WEAPON_MASTERIES=["cleave","graze","nick","push","sap","slow","topple","vex"];
+
 const ITEM_TYPE_MAP={M:"weapon",R:"weapon",LA:"armor",MA:"armor",HA:"armor",S:"armor",G:"adventuringGear",T:"tools",AT:"artisanTools",INS:"instrument",A:"ammunition",GS:"gameSet",SCF:"spellcastingFocus"};
 const ARMOR_TYPE_MAP={LA:"light",MA:"medium",HA:"heavy",S:"shield"};
 const RARITY_MAP={"none":"common",common:"common",uncommon:"uncommon",rare:"rare","very rare":"veryRare",legendary:"legendary",artifact:"artefact",unknown:"unknown",varies:"varies",other:"other"};
@@ -337,34 +354,67 @@ function convertItem(raw,warnings){
   if(out.itemType==="weapon"){
     out.weaponCategory = baseType==="R" ? "ranged" : baseType==="M" ? "melee" : undefined;
     out.weaponType = raw.weaponCategory || undefined;
-    out.weaponProperty = Array.isArray(raw.property) ? raw.property.map(p=>p.split("|")[0]) : [];
+    out.weaponProperty = Array.isArray(raw.property) ? raw.property.map(p=>(typeof p==="string"?p:p.uid||"").split("|")[0]) : [];
+    // 5.5e: weapon mastery ("Nick|XPHB" -> "nick")
+    if(Array.isArray(raw.mastery) && raw.mastery.length){
+      out.mastery = raw.mastery.map(m=>String(typeof m==="string"?m:m.uid||"").split("|")[0].toLowerCase()).filter(Boolean);
+      out.mastery.forEach(m=>{ if(!WEAPON_MASTERIES.includes(m)) warn(warnings,`Unrecognized weapon mastery "${m}" — kept as-is, the site will show it untranslated.`); });
+    } else out.mastery = [];
     if(raw.dmg1) out.dmg1=raw.dmg1;
     if(raw.dmg2) out.dmg2=raw.dmg2;
     if(raw.dmgType){ out.dmgType=DMG_TYPE_MAP[raw.dmgType]||raw.dmgType; if(!DMG_TYPE_MAP[raw.dmgType]) warn(warnings,`Unrecognized damage type code "${raw.dmgType}" — copied as-is, please verify.`); }
   }
-  out.entries=raw.entries||[];
+  out.entries=normalizeEntries(raw.entries||[]);
   warn(warnings,"TRANSLATION NEEDED: \"name\" and \"entries\" are still in English.");
   return out;
 }
 
+const FEAT_CAT_FR={O:"Origine",G:"Général",FS:"Style de combat",EB:"Faveur épique"};
+function formatFeatAbility(abilityArr){
+  if(!Array.isArray(abilityArr)||!abilityArr.length) return "";
+  return abilityArr.map(a=>{
+    const bits=[];
+    Object.entries(a).forEach(([k,v])=>{
+      if(k==="choose"){
+        const from=(v.from||[]).map(x=>ABILITY_FR[x]||x);
+        const amount=v.amount ?? 1, count=v.count ?? 1;
+        if(count===1) bits.push(`${from.join(" ou ")} +${amount}`);
+        else bits.push(`${count} caractéristiques parmi ${from.join(", ")} +${amount}`);
+      } else if(ABILITY_FR[k]) bits.push(`${ABILITY_FR[k]} +${v}`);
+    });
+    return bits.join(", ");
+  }).filter(Boolean).join(" ; ");
+}
 function formatPrereqPart(p){
   const bits=[];
-  if(p.level) bits.push(`Niveau ${typeof p.level==="object"?p.level.level:p.level}`);
+  if(p.level){
+    const lvl=typeof p.level==="object"?p.level.level:p.level;
+    const cls=(typeof p.level==="object" && p.level.class) ? p.level.class.name : "";
+    bits.push(`Niveau ${lvl}${cls?` de ${cls}`:""}`);
+  }
   if(p.race) bits.push(p.race.map(r=>r.displayEntry||r.name).join(" ou "));
-  if(p.ability) bits.push(p.ability.map(a=>Object.entries(a).map(([k,v])=>`${k.toUpperCase()} ${v}+`).join(", ")).join(" ou "));
+  if(p.ability) bits.push(p.ability.map(a=>Object.entries(a).map(([k,v])=>`${ABILITY_FR[k]||k.toUpperCase()} ${v}+`).join(", ")).join(" ou "));
   if(p.spellcasting2020||p.spellcasting) bits.push("Capacité de lancer au moins un sort");
   if(p.proficiency) bits.push(p.proficiency.map(pr=>Object.values(pr).join(", ")).join(" ou ")+" (maîtrise)");
-  if(p.feat) bits.push(p.feat.join(" ou "));
+  if(p.feat) bits.push(p.feat.map(f=>titleCase(String(f).split("|")[0])).join(" ou "));
   if(p.other) bits.push(p.other);
   return bits.join(", ");
 }
 function convertFeat(raw,warnings){
   const out={name:raw.name||"",id:slug(raw.name),source:raw.source||"",page:raw.page ?? null};
+  // 5.5e: category (O/G/FS/EB), ability score increase, repeatable
+  if(raw.category){
+    const code=String(raw.category).split(":")[0];
+    out.cat=FEAT_CAT_FR[code]||"";
+    if(!FEAT_CAT_FR[code]) warn(warnings,`Unrecognized feat category "${raw.category}" — "cat" left empty.`);
+  } else out.cat="";
   if(Array.isArray(raw.prerequisite) && raw.prerequisite.length){
     try{ out.prerequisite = raw.prerequisite.map(formatPrereqPart).filter(Boolean).join("; "); }
     catch(e){ out.prerequisite=""; warn(warnings,"Prerequisite has an unrecognized shape — left blank, please fill in manually."); }
   } else out.prerequisite="";
-  out.entries=raw.entries||[];
+  out.ability=formatFeatAbility(raw.ability);
+  out.repeatable=!!raw.repeatable;
+  out.entries=normalizeEntries(raw.entries||[]);
   warn(warnings,"TRANSLATION NEEDED: \"name\", \"prerequisite\" and \"entries\" are still in English.");
   return out;
 }
@@ -389,8 +439,78 @@ function summarizeProficiencyList(list){
   });
   return parts.length ? parts.join(", ") : null;
 }
+// 5.5e backgrounds: [{choose:{weighted:{from:[...],weights:[2,1]}}}, ...] -> the abilities offered
+function formatBackgroundAbility(abilityArr){
+  const names=[];
+  const add=x=>{ const n=ABILITY_FULL_FR[x]||x; if(!names.includes(n)) names.push(n); };
+  (abilityArr||[]).forEach(a=>{
+    if(a.choose && a.choose.weighted) (a.choose.weighted.from||[]).forEach(add);
+    else if(a.choose && a.choose.from) a.choose.from.forEach(add);
+    else Object.keys(a).forEach(k=>{ if(ABILITY_FULL_FR[k]) add(k); });
+  });
+  return names.join(", ");
+}
+function formatBackgroundFeat(featsArr){
+  const tags=[];
+  (featsArr||[]).forEach(f=>Object.keys(f).forEach(k=>{
+    const [name,src]=k.split("|");
+    tags.push(`{@feat ${titleCase(name)}|${(src||"XPHB").toUpperCase()}}`);
+  }));
+  return tags.join(", ");
+}
+function formatBackgroundProfs(list,mapFn){
+  if(!Array.isArray(list)) return "";
+  const parts=[];
+  list.forEach(entry=>Object.entries(entry).forEach(([k,v])=>{
+    if(k==="choose") parts.push(`Choisir ${entry.choose.count||1} parmi : ${(entry.choose.from||[]).map(mapFn).join(", ")}`);
+    else if(v===true) parts.push(mapFn(k));
+  }));
+  return parts.join(", ");
+}
+function formatEquipItem(it){
+  if(typeof it==="string") return titleCase(it.split("|")[0]);
+  if(it.value!==undefined) return `${frNum(it.value/100)} po`;
+  if(it.special) return it.special;
+  if(it.equipmentType) return titleCase(String(it.equipmentType).replace(/([A-Z])/g," $1").toLowerCase());
+  const name=it.displayName || (it.item ? String(it.item).split("|")[0] : "");
+  return (it.quantity>1 ? `${it.quantity} ` : "")+titleCase(name);
+}
+function formatBackgroundEquipment(startingEquipment){
+  const out=[];
+  (startingEquipment||[]).forEach(group=>{
+    Object.entries(group).forEach(([key,items])=>{
+      if(key==="_" || !Array.isArray(items)) return;
+      out.push(`Option ${key} : ${items.map(formatEquipItem).join(", ")}`);
+    });
+  });
+  return out;
+}
+const BG_STRUCTURED_LABELS=["ability scores","feat","skill proficiencies","tool proficiency","tool proficiencies","equipment","languages"];
+function convertBackground2024(raw,out,warnings){
+  out.ability=formatBackgroundAbility(raw.ability);
+  out.feat=formatBackgroundFeat(raw.feats);
+  out.skills=formatBackgroundProfs(raw.skillProficiencies,k=>SKILL_EN_TO_FR[k]||titleCase(k));
+  out.tools=formatBackgroundProfs(raw.toolProficiencies,k=>titleCase(k));
+  out.equipment=formatBackgroundEquipment(raw.startingEquipment);
+  if(!out.ability) warn(warnings,"No ability score options found.");
+  if(!out.feat) warn(warnings,"No origin feat found.");
+  if(out.feat) warn(warnings,"Origin feat name was taken from the 5etools key — check the exact feat/variant (e.g. Magic Initiate (Cleric)) and translate the tag text.");
+  // The structured list (Ability Scores / Feat / Skill ... ) is now in the fields above: keep only the remaining text.
+  const entries=[];
+  (raw.entries||[]).forEach(e=>{
+    if(e && e.type==="list" && Array.isArray(e.items) && e.items.some(i=>i && typeof i==="object" && BG_STRUCTURED_LABELS.includes(String(i.name||"").replace(/:$/,"").trim().toLowerCase()))) return;
+    entries.push(e);
+  });
+  out.entries=normalizeEntries(entries);
+  if(raw.languageProficiencies) warn(warnings,"languageProficiencies present — not modeled for 5.5e backgrounds, add them to the description if needed.");
+}
 function convertBackground(raw,warnings){
   const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
+  if(is2024(raw) || raw.feats || raw.startingEquipment){
+    convertBackground2024(raw,out,warnings);
+    warn(warnings,"TRANSLATION NEEDED: name, equipment option text, tool names and entries are still in English (ability and skill names were localized).");
+    return out;
+  }
   const entries=[];
   const skillSummary=summarizeProficiencyList(raw.skillProficiencies);
   if(skillSummary) entries.push({type:"entries",name:"Skill Proficiencies",entries:[skillSummary]});
@@ -401,7 +521,7 @@ function convertBackground(raw,warnings){
   else if(Array.isArray(raw.entries)) entries.push(...raw.entries);
   if(entries.length===0) warn(warnings,"No entries could be synthesized — this background needs manual content.");
   else warn(warnings,"Entries were synthesized from structured fields (skills/languages/feature) — please review.");
-  out.entries=entries;
+  out.entries=normalizeEntries(entries);
   warn(warnings,"TRANSLATION NEEDED: text is still in English.");
   return out;
 }
@@ -445,21 +565,116 @@ function formatCreatureType(type,warnings){
   if(!fr) warn(warnings,`Unrecognized/untranslated creature type "${base}" — copied as-is.`);
   return (fr||base) + (tags.length ? ` (${tags.join(", ")})` : "");
 }
+const DMG_TYPE_FR={acid:"acide",bludgeoning:"contondant",cold:"froid",fire:"feu",force:"force",lightning:"foudre",necrotic:"nécrotique",piercing:"perforant",poison:"poison",psychic:"psychique",radiant:"radiant",slashing:"tranchant",thunder:"tonnerre"};
+const CONDITION_FR={blinded:"aveuglé",charmed:"charmé",deafened:"assourdi",exhaustion:"épuisement",frightened:"effrayé",grappled:"agrippé",incapacitated:"incapable d'agir",paralyzed:"paralysé",petrified:"pétrifié",poisoned:"empoisonné",prone:"à terre",restrained:"entravé",stunned:"étourdi",unconscious:"inconscient"};
+const SENSE_FR={darkvision:"Vision dans le noir",blindsight:"Vision aveugle",tremorsense:"Perception des vibrations",truesight:"Vision parfaite"};
+const ENV_FR={arctic:"Arctique",coastal:"Côte",desert:"Désert",forest:"Forêt",grassland:"Prairie",hill:"Colline",mountain:"Montagne",swamp:"Marais",underdark:"Gouffre sans fond",underwater:"Sous l'eau",urban:"Urbain",planar:"Plans",farmland:"Terres cultivées",ruins:"Ruines"};
+const CR_XP={"0":10,"1/8":25,"1/4":50,"1/2":100,"1":200,"2":450,"3":700,"4":1100,"5":1800,"6":2300,"7":2900,"8":3900,"9":5000,"10":5900,"11":7200,"12":8400,"13":10000,"14":11500,"15":13000,"16":15000,"17":18000,"18":20000,"19":22000,"20":25000,"21":33000,"22":41000,"23":50000,"24":62000,"25":75000,"26":90000,"27":105000,"28":120000,"29":135000,"30":155000};
+function crToNumber(cr){
+  if(cr===undefined||cr===null) return null;
+  const str=String(typeof cr==="object" ? cr.cr : cr);
+  if(str.includes("/")){ const [a,b]=str.split("/").map(Number); return a/b; }
+  const n=Number(str); return Number.isFinite(n) ? n : null;
+}
+function proficiencyBonusForCr(n){ return n===null ? 2 : n<5 ? 2 : n<9 ? 3 : n<13 ? 4 : n<17 ? 5 : n<21 ? 6 : n<25 ? 7 : n<29 ? 8 : 9; }
+function abilityMod(score){ return Math.floor(((Number(score)||10)-10)/2); }
+function feetToMeters(ft){ return Math.round(Number(ft)*FEET_TO_M*10)/10; }
+function convertAlignment(al){
+  if(!Array.isArray(al)||!al.length) return "";
+  if(al.includes("U")) return "Sans alignement";
+  if(al.includes("A")) return "Tout alignement";
+  const law=al.find(x=>["L","N","C"].includes(x)) || "N";
+  const moral=al.find(x=>["G","E"].includes(x));
+  if(law==="N" && !moral) return "N";
+  return law+(moral==="G" ? "B" : moral==="E" ? "M" : "N");
+}
+function frDamageList(list){
+  const out=[];
+  (list||[]).forEach(x=>{
+    if(typeof x==="string") out.push(DMG_TYPE_FR[x]||CONDITION_FR[x]||x);
+    else if(x && typeof x==="object"){
+      const inner=x.immune||x.resist||x.vulnerable||x.conditionImmune||[];
+      const names=inner.map(y=>DMG_TYPE_FR[y]||CONDITION_FR[y]||y).join(", ");
+      out.push((names+(x.note?` (${x.note})`:"")).trim() || (x.special||""));
+    }
+  });
+  return out.filter(Boolean);
+}
+function convertSenses(senses){
+  return (senses||[]).map(str=>{
+    const m=/^(\w+)\s+(\d+)\s*ft\.?/i.exec(str);
+    if(m && SENSE_FR[m[1].toLowerCase()]) return `${SENSE_FR[m[1].toLowerCase()]} ${frNum(feetToMeters(m[2]))} m`;
+    return str;
+  });
+}
 function convertMonster(raw,warnings){
   const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
-  out.type=formatCreatureType(raw.type,warnings);
-  const sizeCode = Array.isArray(raw.size) ? raw.size[0] : raw.size;
-  out.size = SIZE_MAP_FR[sizeCode] || sizeCode || "";
-  out.ac=formatAc(raw.ac); out.hp=formatHp(raw.hp); out.speed=formatSpeedMetric(raw.speed);
-  out.traits=raw.trait||[]; out.actions=raw.action||[];
-  if(raw.bonusAction) out.bonusActions=raw.bonusAction;
-  if(raw.reaction) out.reactions=raw.reaction;
-  if(raw.legendary) out.legendaryActions=raw.legendary;
-  if(!out.ac) warn(warnings,"AC missing or unrecognized shape.");
-  if(!out.hp) warn(warnings,"HP missing or unrecognized shape.");
-  if(!out.speed) warn(warnings,"Speed missing or unrecognized shape.");
-  warn(warnings,"UNVERIFIED CONVENTIONS: bestiary.json has no existing populated entries on this site to confirm formatting against — double check once you have a reference monster.");
-  warn(warnings,"TRANSLATION NEEDED: name and entries text are still in English.");
+  // --- identity
+  const sizeCode=Array.isArray(raw.size) ? raw.size[0] : raw.size;
+  if(!SIZE_MAP_FR[sizeCode]) warn(warnings,`Unrecognized size code "${sizeCode}".`);
+  const typeStr=formatCreatureType(raw.type,warnings);
+  const tagMatch=/^(.*?)(?: \((.*)\))?$/.exec(typeStr);
+  out.identity={type:tagMatch[1],tag:tagMatch[2]||"",size:sizeCode||"M",alignment:convertAlignment(raw.alignment)};
+  // --- challenge rating / proficiency bonus
+  const crNum=crToNumber(raw.cr);
+  const crStr=raw.cr===undefined ? "" : String(typeof raw.cr==="object" ? raw.cr.cr : raw.cr);
+  const xp=(raw.cr && typeof raw.cr==="object" && raw.cr.xp) ? raw.cr.xp : CR_XP[crStr];
+  const pb=proficiencyBonusForCr(crNum);
+  if(crNum===null) warn(warnings,"Challenge rating missing — proficiency bonus defaulted to +2.");
+  // --- defense
+  const acEntry=Array.isArray(raw.ac) ? raw.ac[0] : null;
+  const dexMod=abilityMod(raw.dex);
+  let initiative=dexMod;
+  if(typeof raw.initiative==="number") initiative=raw.initiative;
+  else if(raw.initiative && typeof raw.initiative==="object"){
+    if(raw.initiative.initiative!==undefined) initiative=raw.initiative.initiative;
+    else if(raw.initiative.proficiency) initiative=dexMod+raw.initiative.proficiency*pb;
+  }
+  const hp=raw.hp||{};
+  const hpMatch=/(\d+)\s*d\s*(\d+)\s*(?:([+-])\s*(\d+))?/.exec(hp.formula||"");
+  if(!hpMatch) warn(warnings,"HP formula missing or not a dice formula — defaulted to 1d8, please set the HP dice manually.");
+  const speed=raw.speed||{};
+  const walk=typeof speed==="number" ? speed : (typeof speed.walk==="object" ? speed.walk.number : speed.walk);
+  const otherSpeed={};
+  const SPEED_KEY_FR={fly:"Vol",swim:"Nage",climb:"Escalade",burrow:"Fouissement"};
+  Object.entries(typeof speed==="object" ? speed : {}).forEach(([k,v])=>{
+    if(!SPEED_KEY_FR[k]||v==null) return;
+    otherSpeed[SPEED_KEY_FR[k]]=feetToMeters(typeof v==="object" ? v.number : v);
+  });
+  out.defense={
+    ca: typeof acEntry==="number" ? String(acEntry) : (acEntry && acEntry.ac!==undefined ? String(acEntry.ac) : ""),
+    caPrecision: acEntry && Array.isArray(acEntry.from) ? acEntry.from.join(", ") : "",
+    initiative,
+    speed: walk!==undefined ? feetToMeters(walk) : 0,
+    otherSpeed,
+    flyingBonus: speed.canHover ? "vol stationnaire" : "",
+    hpRoll:{dice:{amount:hpMatch?Number(hpMatch[1]):1,sides:hpMatch?Number(hpMatch[2]):8},bonus:hpMatch&&hpMatch[3]?Number((hpMatch[3]==="-"?"-":"")+hpMatch[4]):0},
+  };
+  if(!out.defense.ca) warn(warnings,"AC missing or unrecognized shape.");
+  // --- abilities / proficiencies
+  out.attribut={for:raw.str??10,dex:raw.dex??10,con:raw.con??10,int:raw.int??10,sag:raw.wis??10,cha:raw.cha??10};
+  const saves={};
+  Object.entries(raw.save||{}).forEach(([k,v])=>{ saves[k==="wis"?"sag":k==="str"?"for":k]=String(v); });
+  const skills={};
+  Object.entries(raw.skill||{}).forEach(([k,v])=>{ skills[(SKILL_EN_TO_FR[k]||k).toLowerCase()]=String(v); });
+  out.proficiencies={bonus:pb,saves,skills};
+  out.affinities={weakness:frDamageList(raw.vulnerable),resistance:frDamageList(raw.resist),immunity:frDamageList(raw.immune),condition:frDamageList(raw.conditionImmune)};
+  out.senses=convertSenses(raw.senses);
+  out.languages=Array.isArray(raw.languages) ? raw.languages : [];
+  out.fp=crStr ? (xp!==undefined ? `${crStr} (PX ${xp.toLocaleString("fr-FR")})` : crStr) : "";
+  out.habitat=(raw.environment||[]).map(e=>ENV_FR[e]||titleCase(e));
+  // --- text blocks
+  out.traits=normalizeEntries(raw.trait||[]);
+  out.actions=normalizeEntries(raw.action||[]);
+  out.bonusActions=normalizeEntries(raw.bonus||raw.bonusAction||[]);
+  out.reactions=normalizeEntries(raw.reaction||[]);
+  out.legendaryActions=normalizeEntries(raw.legendary||[]);
+  out.lairAction=[]; out.regionEffects=[];
+  out.info=[]; out.images=[];
+  if(raw.legendaryGroup) warn(warnings,"Lair actions / regional effects live in the legendary group (separate bestiary data) — add them manually to lairAction / regionEffects.");
+  if(raw.gear||raw.treasure) warn(warnings,"Gear / treasure are not modeled by the site stat block — add them to the description if needed.");
+  warn(warnings,"Skill bonuses are kept as given by 5etools and the saves column shows only the overrides you have — check them against the printed stat block.");
+  warn(warnings,"TRANSLATION NEEDED: name, languages and the text blocks (traits/actions/...) are still in English. Damage types, conditions, senses, habitat, alignment and speeds were localized/converted to meters.");
   return out;
 }
 
@@ -482,24 +697,36 @@ function formatAbilityBonus(abilityArr,warnings){
 }
 function convertRace(raw,warnings){
   const out={id:slug(raw.name).toLowerCase(),name:raw.name||"",source:raw.source||"",page:raw.page ?? null};
+  const species2024=is2024(raw);
   out.bonus=formatAbilityBonus(raw.ability,warnings);
-  const sizeCode = Array.isArray(raw.size) ? raw.size[0] : raw.size;
-  out.size = SIZE_MAP_FR[sizeCode] || "Moyenne";
-  if(!SIZE_MAP_FR[sizeCode]) warn(warnings,`Unrecognized size code "${sizeCode}" — defaulted to Moyenne.`);
+  const sizes=Array.isArray(raw.size) ? raw.size : [raw.size];
+  const known=sizes.filter(c=>SIZE_MAP_FR[c]);
+  // 5.5e species may offer two sizes (Medium or Small): keep all of them
+  out.size = known.length ? known.map(c=>SIZE_MAP_FR[c]).join(" ou ") : "Moyenne";
+  if(!known.length) warn(warnings,`Unrecognized size code "${sizes[0]}" — defaulted to Moyenne.`);
   out.creatureType = raw.creatureTypes ? raw.creatureTypes.map(t=>CREATURE_TYPE_FR[t]||t).join(", ") : "Humanoïde";
   out.speed=formatSpeedMetric(raw.speed);
   out.common={age:"",alignment:"",size:"",languages:""};
   out.traits=[]; out.info=[];
   const NAMED_FIELD_MAP={age:"age",alignment:"alignment",size:"size",languages:"languages",language:"languages"};
+  // 5.5e species repeat Creature Type / Size / Speed as text entries: they are already structured fields here.
+  const SKIP_2024=["creature type","size","speed"];
   (raw.entries||[]).forEach(e=>{
     if(typeof e==="string") out.info.push(e);
     else if(e && e.type==="entries" && e.name){
-      const key=NAMED_FIELD_MAP[e.name.trim().toLowerCase()];
+      const lname=e.name.trim().toLowerCase();
+      if(species2024){
+        if(SKIP_2024.includes(lname)) return;
+        out.traits.push(normalizeEntries(e));
+        return;
+      }
+      const key=NAMED_FIELD_MAP[lname];
       if(key) out.common[key] = (e.entries||[]).filter(x=>typeof x==="string").join(" ");
-      else out.traits.push(e);
-    } else if(e) out.traits.push(e);
+      else out.traits.push(normalizeEntries(e));
+    } else if(e) out.traits.push(normalizeEntries(e));
   });
-  warn(warnings,"Traits vs. lore (\"info\") were split heuristically from the entries list — please review the split.");
+  if(species2024) warn(warnings,"5.5e species: no ability bonus, and Creature Type / Size / Speed text entries were dropped (kept as structured fields). Lineage choices stay in traits as entries/tables.");
+  else warn(warnings,"Traits vs. lore (\"info\") were split heuristically from the entries list — please review the split.");
   warn(warnings,"TRANSLATION NEEDED: name, common.*, traits and info text are still in English. \"bonus\", \"size\", \"creatureType\" and \"speed\" were localized to French/metric.");
   return out;
 }
@@ -758,10 +985,10 @@ function detectType(sample){
   if(!sample || typeof sample !== "object") return null;
   if(sample.level !== undefined && sample.school !== undefined && sample.components !== undefined) return "spell";
   if(sample.ac !== undefined && sample.hp !== undefined && (sample.speed !== undefined || sample.size !== undefined) && sample.type !== undefined && !sample.weaponCategory) return "monster";
-  if(sample.ability !== undefined && sample.size !== undefined && sample.speed !== undefined) return "race";
+  if(sample.size !== undefined && sample.speed !== undefined && sample.ac === undefined && (sample.ability !== undefined || sample.creatureTypes !== undefined || sample.edition === "one" || sample.entries !== undefined)) return "race";
   if(sample.type !== undefined && /^(M|R|LA|MA|HA|S|G|T|AT|INS|A|GS|SCF)(\||$)/.test(sample.type || "")) return "item";
-  if(sample.prerequisite !== undefined && sample.entries !== undefined) return "feat";
-  if(sample.skillProficiencies !== undefined || sample.feature !== undefined) return "background";
+  if((sample.prerequisite !== undefined || sample.category !== undefined) && sample.entries !== undefined) return "feat";
+  if(sample.skillProficiencies !== undefined || sample.feature !== undefined || sample.startingEquipment !== undefined) return "background";
   if(sample.entries !== undefined && sample.name !== undefined) return "condition"; // ambiguous w/ rule — user can override
   return null;
 }

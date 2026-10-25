@@ -130,15 +130,25 @@ export const Dnd5eFeats = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               <DetailsHeader selected={selectedFeat}/>
+              {selectedFeat.cat ? <tr>
+                <td colSpan={6} className="pb-0 pt-0">
+                  <i>Don : {selectedFeat.cat}{selectedFeat.repeatable ? " (répétable)" : ""}</i>
+                </td>
+              </tr> : ""}
               {selectedFeat.prerequisite ? <tr>
                 <td colSpan={6} className="pb-2 pt-0">
                   <i>Prérequis: {selectedFeat.prerequisite}</i>
                 </td>
               </tr> : ""}
+              {selectedFeat.ability ? <tr>
+                <td colSpan={6} className="pb-2 pt-0">
+                  <b>Augmentation de caractéristique :</b> {selectedFeat.ability}
+                </td>
+              </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {RenderModule(renderProps).render(selectedFeat.entries)}
+                    {RenderModule(renderProps).render(selectedFeat.entries ?? [])}
                   </div>
                 </td>
               </tr>

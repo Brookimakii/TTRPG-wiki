@@ -280,7 +280,7 @@ export const Dnd5eClasses = () => {
   }
 
   const executeScroll = (id) => {
-    console.log(id, refs[id], refs)
+    // console.log(id, refs[id], refs)
     refs[id]?.current?.scrollIntoView()
   }
   const location = useLocation()

@@ -32,7 +32,50 @@ export const Dnd5eBestiary = () => {
     TempFilters
   } = Selector5e(bestiary, columns, "name");
 
-  const selectedMonster: Monster = {...selected}
+  // The stat block assumes every nested field exists. Fill the optional ones so that entries
+  // made with the builder / importer (5.5e stat blocks) render even when parts are missing.
+  const nonEmptyList = (list) => Array.isArray(list) && list.length > 0 ? list : undefined
+  const nonEmptyObject = (obj) => obj && typeof obj === "object" && Object.keys(obj).length > 0 ? obj : undefined
+
+  function normalizeMonster(monster) {
+    if (!monster || Object.keys(monster).length === 0) return {}
+    return {
+      ...monster,
+      identity: {type: "", size: "M", alignment: "N", ...(monster.identity ?? {})},
+      defense: {
+        ca: "", speed: 0, otherSpeed: {},
+        hpRoll: {dice: {amount: 1, sides: 8}, bonus: 0},
+        ...(monster.defense ?? {}),
+      },
+      attribut: {for: 10, dex: 10, con: 10, int: 10, sag: 10, cha: 10, ...(monster.attribut ?? {})},
+      proficiencies: {
+        bonus: 2,
+        ...(monster.proficiencies ?? {}),
+        saves: monster.proficiencies?.saves ?? {},
+        skills: nonEmptyObject(monster.proficiencies?.skills),
+      },
+      affinities: {
+        weakness: nonEmptyList(monster.affinities?.weakness),
+        resistance: nonEmptyList(monster.affinities?.resistance),
+        immunity: nonEmptyList(monster.affinities?.immunity),
+        condition: nonEmptyList(monster.affinities?.condition),
+      },
+      senses: monster.senses ?? [],
+      languages: monster.languages ?? [],
+      habitat: monster.habitat ?? [],
+      info: monster.info ?? [],
+      images: monster.images ?? [],
+      traits: nonEmptyList(monster.traits),
+      actions: nonEmptyList(monster.actions),
+      bonusActions: nonEmptyList(monster.bonusActions),
+      reactions: nonEmptyList(monster.reactions),
+      legendaryActions: nonEmptyList(monster.legendaryActions),
+      lairAction: nonEmptyList(monster.lairAction),
+      regionEffects: nonEmptyList(monster.regionEffects),
+    }
+  }
+
+  const selectedMonster: Monster = normalizeMonster({...selected})
 
   const renderEntries = (entry, toggle, depth) => {
     return <div className="rd__b rd__b--3">
@@ -51,8 +94,23 @@ export const Dnd5eBestiary = () => {
 
   const buttonTab = "ui-tab__btn-tab-head ve-btn ve-btn-default stat-tab-gen pt-2p px-4p pb-0"
 
+  // One "Label value, value" row of the stat block. Accepts arrays of strings (resistances...)
+  // or objects (skills: {"discrétion": "+6"}); renders nothing when empty.
+  function renderLabelledList(label, data) {
+    if (!data) return ""
+    const items = Array.isArray(data)
+      ? data.map(value => typeof value === "string" ? value : (value?.name ?? ""))
+      : Object.entries(data).map(([key, value]) => key + " " + (typeof value === "number" && value >= 0 ? "+" + value : value))
+    const shown = items.filter(Boolean)
+    if (shown.length === 0) return ""
+    return <tr>
+      <td colSpan="6"><strong>{label}</strong> {shown.join(", ")}</td>
+    </tr>
+  }
+
   function formatElement(value) {
-    return undefined;
+    // skill bonuses can be stored as numbers: show them signed
+    return typeof value === "number" ? (value >= 0 ? "+" : "") + value : undefined;
   }
 
   return (<div className="view-col-group--cancer h-100 mh-0">
@@ -176,7 +234,7 @@ export const Dnd5eBestiary = () => {
                       </div>
                       {selectedMonster.defense.initiative ? <div>
                         <strong>Initiative</strong>
-                        <span>{selectedMonster.defense.initiative}</span> ({10 + selectedMonster.defense.initiative})
+                        <span>{selectedMonster.defense.initiative >= 0 ? "+" : ""}{selectedMonster.defense.initiative}</span> ({10 + selectedMonster.defense.initiative})
                       </div> : ""}
                     </div>
                   </td>
@@ -186,7 +244,7 @@ export const Dnd5eBestiary = () => {
                     <div className="stats__wrp-avoid-token"><strong title="Hit Points">HP</strong>
                       <span
                         title={"Maximum: " + (selectedMonster.defense.hpRoll.dice.sides * selectedMonster.defense.hpRoll.dice.amount + selectedMonster.defense.hpRoll.bonus)}
-                        className="help-subtle">{Math.floor((selectedMonster.defense.hpRoll.dice.sides * selectedMonster.defense.hpRoll.dice.amount + selectedMonster.defense.hpRoll.bonus) / 2)}</span> (
+                        className="help-subtle">{Math.floor(selectedMonster.defense.hpRoll.dice.amount * (selectedMonster.defense.hpRoll.dice.sides + 1) / 2 + selectedMonster.defense.hpRoll.bonus)}</span> (
                       <span>
                       {selectedMonster.defense.hpRoll.dice.amount}d
                         {selectedMonster.defense.hpRoll.dice.sides}
@@ -397,73 +455,18 @@ export const Dnd5eBestiary = () => {
                     </table>
                   </td>
                 </tr>
-                {selectedMonster.proficiencies.skills ? <tr>
-                  <td colSpan="6"><strong>Compétences</strong>
-                    {Object.entries(selectedMonster.proficiencies.skills).map(([key, value], idx) => <>
-                      <span data-mon-skill={key + "|" + value}>
-                      <span>{key}</span>
-                      <span>
-                        {typeof value === "string"?<span>{value}</span>:formatElement(value)}
-                      </span>
-                    </span>{idx === Object.entries(selectedMonster.proficiencies.skills).length - 1 ? ", " : ""}
-                    </>)}
-                  </td>
-                </tr> : ""}
-                {selectedMonster.affinities.weakness ? <tr>
-                  <td colSpan="6"><strong>Faiblesses</strong>
-                    {Object.entries(selectedMonster.affinities.weakness).map(([key, value], idx) => <>
-                      <span data-mon-skill={key + "|" + value}>
-                      <span>{key}</span>
-                      <span>
-                        {typeof value === "string"?<span>{value}</span>:formatElement(value)}
-                      </span>
-                    </span>{idx === Object.entries(selectedMonster.affinities.weakness).length - 1 ? ", " : ""}
-                    </>)}
-                  </td>
-                </tr> : ""}
-                {selectedMonster.affinities.resistance ? <tr>
-                  <td colSpan="6"><strong>Faiblesses</strong>
-                    {Object.entries(selectedMonster.affinities.resistance).map(([key, value], idx) => <>
-                      <span data-mon-skill={key + "|" + value}>
-                      <span>{key}</span>
-                      <span>
-                        {typeof value === "string"?<span>{value}</span>:formatElement(value)}
-                      </span>
-                    </span>{idx === Object.entries(selectedMonster.affinities.resistance).length - 1 ? ", " : ""}
-                    </>)}
-                  </td>
-                </tr> : ""}
-                {selectedMonster.affinities.immunity ? <tr>
-                  <td colSpan="6"><strong>Faiblesses</strong>
-                    {Object.entries(selectedMonster.affinities.immunity).map(([key, value], idx) => <>
-                      <span data-mon-skill={key + "|" + value}>
-                      <span>{key}</span>
-                      <span>
-                        {typeof value === "string"?<span>{value}</span>:formatElement(value)}
-                      </span>
-                    </span>{idx === Object.entries(selectedMonster.affinities.immunity).length - 1 ? ", " : ""}
-                    </>)}
-                  </td>
-                </tr> : ""}
-                {selectedMonster.affinities.condition ? <tr>
-                  <td colSpan="6"><strong>Faiblesses</strong>
-                    {Object.entries(selectedMonster.affinities.condition).map(([key, value], idx) => <>
-                      <span data-mon-skill={key + "|" + value}>
-                      <span>{key}</span>
-                      <span>
-                        {typeof value === "string"?<span>{value}</span>:formatElement(value)}
-                      </span>
-                    </span>{idx === Object.entries(selectedMonster.affinities.condition).length - 1 ? ", " : ""}
-                    </>)}
-                  </td>
-                </tr> : ""}
+                {renderLabelledList("Compétences", selectedMonster.proficiencies.skills)}
+                {renderLabelledList("Vulnérabilités", selectedMonster.affinities.weakness)}
+                {renderLabelledList("Résistances", selectedMonster.affinities.resistance)}
+                {renderLabelledList("Immunités aux dégâts", selectedMonster.affinities.immunity)}
+                {renderLabelledList("Immunités aux états", selectedMonster.affinities.condition)}
                 <tr>
                   <td colSpan="6">
                     <strong>Senses</strong> {selectedMonster.senses.map((sens, idx) => {
                     return Parser.sensAbvToFull(sens) + ", "
                   })}
                     Perception
-                    Passive {10 + (selectedMonster.proficiencies.skills?.perception ?? Math.floor((selectedMonster.attribut.for - 10) / 2))}
+                    Passive {10 + Number(selectedMonster.proficiencies.skills?.perception ?? Math.floor((selectedMonster.attribut.sag - 10) / 2))}
                   </td>
                 </tr>
                 <tr>
@@ -602,7 +605,7 @@ export const Dnd5eBestiary = () => {
             </tbody>
           </table>
         </TabPanel>
-        <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
+        {selectedMonster.images.length > 0 ? <TabPanel id="wrp-pagecontent" className="relative wrp-stats-table">
           <table className="w-100 stats">
             <thead>
             <tr>
@@ -625,7 +628,7 @@ export const Dnd5eBestiary = () => {
             </tr>
             </tbody>
           </table>
-        </TabPanel>
+        </TabPanel> : ""}
       </Tabs>
       }
     </div>

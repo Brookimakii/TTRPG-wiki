@@ -13,7 +13,7 @@ export class Parser {
   }
 }
 Parser.attAbvToFull = function (abv) {
-  console.log(abv)
+  // console.log(abv)
   return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
 };
 
@@ -40,7 +40,12 @@ Parser._parse_bToA = function (abMap, b, fallback) {
 };
 
 Parser.SIZE_ABV_TO_FULL = {
-
+  "T": "Très Petite",
+  "S": "Petite",
+  "M": "Moyenne",
+  "L": "Grande",
+  "H": "Très Grande",
+  "G": "Gigantesque",
 }
 Parser.SENS_ABV_TO_FULL = {
 

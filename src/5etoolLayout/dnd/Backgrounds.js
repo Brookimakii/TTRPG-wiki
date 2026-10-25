@@ -11,7 +11,7 @@ export const Dnd5eBackgrounds = () => {
       id: "Nom", sortId: "name", classSize: "ve-col-2-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
     },
     {
-      id: "Ability", sortId: "bonus", classSize: "ve-col-3-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
+      id: "Caractéristiques", sortId: "ability", classSize: "ve-col-3-5", colClass: "bold ve-col-2-9 pl-0 pr-1"
     },
     {
       id: "Maîtrise de compétences", sortId: "skills", classSize: "ve-col-4", colClass: "bold ve-col-2-9 pl-0 pr-1"
@@ -22,6 +22,15 @@ export const Dnd5eBackgrounds = () => {
   ]
 
   const background = getResource(Resources.background)
+
+  // 5.5e backgrounds carry structured data (ability, feat, skills, tools, equipment).
+  // Older (2014) backgrounds only have "entries": the cells then show a dash.
+  function tableDisplayOption(column, string, elem) {
+    if (column.sortId === "ability" || column.sortId === "skills") {
+      return <span className={column.colClass}>{elem[column.sortId] ? elem[column.sortId] : "—"}</span>
+    }
+    return undefined
+  }
   // const [elements, setElements] = useState(buildRace(background))
   // const [sorting, setSorting] = useState("")
   // const [selectedBackground, setSelected] = useState(
@@ -39,7 +48,7 @@ export const Dnd5eBackgrounds = () => {
     DisplayList,
     DetailsHeader,
     TempFilters
-  } = Selector5e(background, columns, "name");
+  } = Selector5e(background, columns, "name", tableDisplayOption);
 
   const selectedBackground: PlayerBackground = {...selected}
 
@@ -56,6 +65,21 @@ export const Dnd5eBackgrounds = () => {
 
   const renderProps = {
     renderEntries: renderEntries
+  }
+
+  // Strings of the structured fields may contain tags like {@feat ...}: render them inline.
+  const inlineRenderer = RenderModule({...renderProps, defaultString: (string) => <>{string}</>})
+  const renderField = (value) => typeof value === "string" ? inlineRenderer.render(value) : value
+
+  function structuredFields(bg) {
+    const equipment = Array.isArray(bg.equipment) && bg.equipment.length ? bg.equipment.join(" ou ") : ""
+    return [
+      ["Scores de caractéristiques", bg.ability],
+      ["Don", bg.feat],
+      ["Maîtrise de compétences", bg.skills],
+      ["Maîtrise d'outils", bg.tools],
+      ["Équipement", equipment],
+    ].filter(([, value]) => value)
   }
   return (<div className="view-col-group--cancer h-100 mh-0">
     <div className="container view-col-wrapper view-col-wrapper--cancer">
@@ -106,12 +130,25 @@ export const Dnd5eBackgrounds = () => {
                 <th className="ve-tbl-border" colSpan="6"></th>
               </tr>
               <DetailsHeader selectedBackground={selectedBackground}/>
+              {structuredFields(selectedBackground).length > 0 ? <tr>
+                <td colSpan="6" className="pt-0">
+                  <ul className="rd__list rd__list-hang-notitle">
+                    {structuredFields(selectedBackground).map(([label, value]) =>
+                      <li key={label} className="rd__li">
+                        <p className="rd__p-list-item">
+                          <span className="bold rd__list-item-name">{label}:</span>
+                          {" "}{renderField(value)}
+                        </p>
+                      </li>)}
+                  </ul>
+                </td>
+              </tr> : ""}
               <tr>
                 <td colSpan="6">
                   <div className="rd__b rd__b--2">
-                    {selectedBackground.entries[0].html?
+                    {selectedBackground.entries?.[0]?.html?
                       <p dangerouslySetInnerHTML={{__html:selectedBackground.entries[0].html}}></p>:
-                      RenderModule(renderProps).render(selectedBackground.entries)}
+                      RenderModule(renderProps).render(selectedBackground.entries ?? [])}
                   </div>
                 </td>
               </tr>

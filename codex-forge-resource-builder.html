@@ -422,6 +422,17 @@
     border-radius:var(--radius);padding:4px 8px;cursor:pointer;
   }
   .add-line-btn:hover{border-color:var(--teal);}
+  .subrace-card{border:1px solid var(--border-soft);border-radius:6px;padding:10px 12px;margin-bottom:12px;}
+  .subrace-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:600;cursor:pointer;user-select:none;}
+  .subrace-head:hover .subrace-title{color:var(--brass-bright, inherit);}
+  .subrace-caret{display:inline-block;width:1.1em;color:var(--text-dim);}
+  .subrace-body{margin-top:10px;}
+  .subrace-body[hidden]{display:none;}
+  .subrace-head .subrace-actions{display:flex;gap:6px;}
+  .subrace-sub{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);margin:10px 0 4px;}
+  .nested-entries{border-left:2px solid var(--border-soft);padding-left:12px;margin:8px 0;}
+  .nested-entries .entries-toolbar{margin-bottom:8px;}
+  .nested-entries .entry-block{margin-bottom:8px;}
   .entries-empty{
     font-size:11.5px;color:var(--text-faint);font-style:italic;
     border:1px dashed var(--border-soft);border-radius:var(--radius);
@@ -550,8 +561,8 @@ const TYPES = [
     quickFields:[
       {path:"id",label:"ID",type:"text",placeholder:"aarakocra",checkDuplicates:true},
       {path:"name",label:"Name",type:"text",placeholder:"Aarakocra"},
-      {path:"bonus",label:"Ability Bonus",type:"text",placeholder:"Dex +2; Wis +1"},
-      {path:"size",label:"Size",type:"text",placeholder:"Medium"},
+      {path:"bonus",label:"Ability Bonus",type:"text",placeholder:"Dex +2; Wis +1",hint:"5.5e species have no ability bonus: leave empty and the row is hidden."},
+      {path:"size",label:"Size",type:"text",placeholder:"Medium (5.5e: Medium or Small)"},
       {path:"creatureType",label:"Creature Type",type:"text",placeholder:"Humanoid"},
       {path:"speed",label:"Speed",type:"text",placeholder:"25ft, fly 50ft"},
       {path:"source",label:"Source",type:"text",placeholder:"PHB"},
@@ -562,9 +573,11 @@ const TYPES = [
       {path:"common.languages",label:"Languages",type:"textarea",wide:true},
     ],
     entriesFields:[
-      {path:"traits",label:"Traits",mode:"named"},
-      {path:"info",label:"Lore / Info",mode:"paragraphs"},
-    ]
+      {path:"traits",label:"Traits",mode:"mixed"},
+      {path:"info",label:"Lore / Info",mode:"mixed"},
+      {path:"subraces",label:"Subraces / Lineages",mode:"subraces"},
+    ],
+    note:"5.5e species: leave Ability Bonus and the Age / Alignment / Size / Languages fields empty (empty rows are hidden on the site). Put lineage choices in Traits as named blocks (use “+ Table” for the lineage table)."
   },
   {
     key:"classes", label:"Classes", file:"classes.json", idField:"id",
@@ -636,11 +649,17 @@ const TYPES = [
   },
   {
     key:"feats", label:"Feats", file:"feats.json", idField:"id",
-    template:{name:"", id:"", prerequisite:"", entries:[], source:"", page:null},
+    template:{name:"", id:"", cat:"", prerequisite:"", ability:"", repeatable:false, entries:[], source:"", page:null},
     quickFields:[
       {path:"name",label:"Name",type:"text",placeholder:"Metamagic Adept"},
       {path:"id",label:"ID",type:"text",placeholder:"Metamagic_Adept",checkDuplicates:true},
-      {path:"prerequisite",label:"Prerequisite",type:"text",wide:true},
+      {path:"cat",label:"Category (5.5e)",type:"select",clearable:true,options:[
+        {value:"Origine",label:"Origin"},{value:"Général",label:"General"},
+        {value:"Style de combat",label:"Fighting Style"},{value:"Faveur épique",label:"Epic Boon"},
+      ]},
+      {path:"prerequisite",label:"Prerequisite",type:"text",wide:true,placeholder:"Niveau 4 ; For ou Dex 13+"},
+      {path:"ability",label:"Ability Score Increase (5.5e)",type:"text",wide:true,placeholder:"For ou Dex +1"},
+      {path:"repeatable",label:"Repeatable",type:"boolean"},
       {path:"source",label:"Source",type:"text",placeholder:"TCE"},
       {path:"page",label:"Page",type:"number"},
     ],
@@ -649,7 +668,7 @@ const TYPES = [
   {
     key:"items", label:"Items", file:"items.json", idField:"id",
     template:{id:"", name:"", source:"", page:null, itemType:"weapon", wondrous:false, rarity:"", weight:null, value:null,
-      weaponType:"", weaponCategory:"", weaponProperty:[], dmg1:"", dmg2:"", dmgType:"", entries:[]},
+      weaponType:"", weaponCategory:"", weaponProperty:[], mastery:[], dmg1:"", dmg2:"", dmgType:"", entries:[]},
     quickFields:[
       {path:"id",label:"ID",type:"text",placeholder:"quarterstaff",checkDuplicates:true},
       {path:"name",label:"Name",type:"text",placeholder:"Quarterstaff"},
@@ -693,6 +712,10 @@ const TYPES = [
         {value:"LD",label:"LD — Loading"},{value:"R",label:"R — Reach"},{value:"RLD",label:"RLD — Reload"},
         {value:"S",label:"S — Special"},{value:"T",label:"T — Thrown"},{value:"V",label:"V — Versatile"},
       ]},
+      {path:"mastery",label:"Weapon Mastery (5.5e)",type:"tags",wide:true,showIf:{field:"itemType",equals:"weapon"},options:[
+        {value:"cleave",label:"Cleave"},{value:"graze",label:"Graze"},{value:"nick",label:"Nick"},{value:"push",label:"Push"},
+        {value:"sap",label:"Sap"},{value:"slow",label:"Slow"},{value:"topple",label:"Topple"},{value:"vex",label:"Vex"},
+      ]},
       {path:"dmg1",label:"Damage",type:"text",placeholder:"1d6",showIf:{field:"itemType",equals:"weapon"}},
       {path:"dmg2",label:"Damage (2H)",type:"text",placeholder:"1d8",showIf:{field:"weaponProperty",includes:"V",hideMode:"reserve"},
         hint:"Shown because Versatile (V) is set above.",
@@ -704,35 +727,95 @@ const TYPES = [
   },
   {
     key:"bestiary", label:"Bestiary", file:"bestiary.json", idField:"id",
-    template:{id:"", name:"", source:"", page:null, type:"", size:"", ac:"", hp:"", speed:"",
-      traits:[], actions:[]},
+    template:{id:"", name:"", source:"", page:null,
+      identity:{type:"", tag:"", size:"M", alignment:"N"},
+      defense:{ca:"", caPrecision:"", initiative:0, speed:9, otherSpeed:{}, flyingBonus:"", hpRoll:{dice:{amount:1,sides:8},bonus:0}},
+      attribut:{for:10, dex:10, con:10, int:10, sag:10, cha:10},
+      proficiencies:{bonus:2, saves:{}, skills:{}},
+      affinities:{weakness:[], resistance:[], immunity:[], condition:[]},
+      senses:[], languages:[], fp:"", habitat:[],
+      traits:[], actions:[], bonusActions:[], reactions:[], legendaryActions:[], lairAction:[], regionEffects:[],
+      info:[], images:[]},
     quickFields:[
-      {path:"name",label:"Name",type:"text",placeholder:"Goblin"},
+      {path:"name",label:"Name",type:"text",placeholder:"Gobelin"},
       {path:"id",label:"ID",type:"text",placeholder:"goblin",checkDuplicates:true},
-      {path:"type",label:"Creature Type",type:"text",placeholder:"humanoid (goblinoid)"},
-      {path:"size",label:"Size",type:"text",placeholder:"Small"},
-      {path:"ac",label:"Armor Class",type:"text",placeholder:"15 (leather armor, shield)"},
-      {path:"hp",label:"Hit Points",type:"text",placeholder:"7 (2d6)"},
-      {path:"speed",label:"Speed",type:"text",placeholder:"30 ft."},
-      {path:"source",label:"Source",type:"text",placeholder:"MM"},
+      {path:"source",label:"Source",type:"text",placeholder:"XMM"},
       {path:"page",label:"Page",type:"number"},
+      {type:"divider"},
+      {path:"identity.type",label:"Creature Type",type:"text",placeholder:"Humanoïde"},
+      {path:"identity.tag",label:"Tag",type:"text",placeholder:"gobelinoïde"},
+      {path:"identity.size",label:"Size",type:"select",options:[
+        {value:"T",label:"Tiny"},{value:"S",label:"Small"},{value:"M",label:"Medium"},
+        {value:"L",label:"Large"},{value:"H",label:"Huge"},{value:"G",label:"Gargantuan"},
+      ]},
+      {path:"identity.alignment",label:"Alignment",type:"select",clearable:true,options:[
+        {value:"LB",label:"Lawful Good"},{value:"LN",label:"Lawful Neutral"},{value:"LM",label:"Lawful Evil"},
+        {value:"NB",label:"Neutral Good"},{value:"N",label:"Neutral"},{value:"NM",label:"Neutral Evil"},
+        {value:"CB",label:"Chaotic Good"},{value:"CN",label:"Chaotic Neutral"},{value:"CM",label:"Chaotic Evil"},
+        {value:"Sans alignement",label:"Unaligned"},
+      ]},
+      {path:"fp",label:"Challenge Rating (FP)",type:"text",placeholder:"1/4 (PX 50)",hint:"Free text, shown as-is next to the Proficiency Bonus."},
+      {type:"divider"},
+      {path:"defense.ca",label:"Armor Class",type:"text",placeholder:"15"},
+      {path:"defense.caPrecision",label:"AC note",type:"text",placeholder:"armure de cuir, bouclier"},
+      {path:"defense.initiative",label:"Initiative bonus",type:"number",hint:"Shown as “+X (10+X)”. Leave 0 to hide."},
+      {path:"defense.hpRoll.dice.amount",label:"HP dice (count)",type:"number"},
+      {path:"defense.hpRoll.dice.sides",label:"HP dice (sides)",type:"number"},
+      {path:"defense.hpRoll.bonus",label:"HP bonus",type:"number"},
+      {path:"defense.speed",label:"Speed (m)",type:"number",placeholder:"9"},
+      {path:"defense.flyingBonus",label:"Flying note",type:"text",placeholder:"vol stationnaire"},
+      {type:"divider"},
+      {path:"attribut.for",label:"STR (For)",type:"number"},
+      {path:"attribut.dex",label:"DEX",type:"number"},
+      {path:"attribut.con",label:"CON",type:"number"},
+      {path:"attribut.int",label:"INT",type:"number"},
+      {path:"attribut.sag",label:"WIS (Sag)",type:"number"},
+      {path:"attribut.cha",label:"CHA",type:"number"},
+      {path:"proficiencies.bonus",label:"Proficiency Bonus",type:"number"},
+      {path:"proficiencies.saves.for",label:"STR save (override)",type:"text",placeholder:"+5"},
+      {path:"proficiencies.saves.dex",label:"DEX save (override)",type:"text"},
+      {path:"proficiencies.saves.con",label:"CON save (override)",type:"text"},
+      {path:"proficiencies.saves.int",label:"INT save (override)",type:"text"},
+      {path:"proficiencies.saves.sag",label:"WIS save (override)",type:"text"},
+      {path:"proficiencies.saves.cha",label:"CHA save (override)",type:"text"},
+      {type:"divider"},
+      {path:"affinities.weakness",label:"Vulnerabilities",type:"list",wide:true},
+      {path:"affinities.resistance",label:"Resistances",type:"list",wide:true},
+      {path:"affinities.immunity",label:"Damage Immunities",type:"list",wide:true},
+      {path:"affinities.condition",label:"Condition Immunities",type:"list",wide:true},
+      {path:"senses",label:"Senses",type:"list",wide:true,placeholder:"Vision dans le noir 18 m"},
+      {path:"languages",label:"Languages",type:"list",wide:true,placeholder:"Commun, Gobelin"},
+      {path:"habitat",label:"Habitat",type:"list",wide:true,placeholder:"Forêt, Colline"},
     ],
     entriesFields:[
-      {path:"traits",label:"Traits",mode:"named"},
-      {path:"actions",label:"Actions",mode:"named"},
-    ]
+      {path:"traits",label:"Traits",mode:"mixed"},
+      {path:"actions",label:"Actions",mode:"mixed"},
+      {path:"bonusActions",label:"Bonus Actions",mode:"mixed"},
+      {path:"reactions",label:"Reactions",mode:"mixed"},
+      {path:"legendaryActions",label:"Legendary Actions",mode:"mixed"},
+      {path:"lairAction",label:"Lair Actions",mode:"mixed"},
+      {path:"regionEffects",label:"Regional Effects",mode:"mixed"},
+      {path:"info",label:"Lore / Info",mode:"mixed"},
+    ],
+    note:"Matches the site's 5.5e-style stat block. Skill bonuses (proficiencies.skills, e.g. {\"Discrétion\": 6}) and other speeds (defense.otherSpeed, e.g. {\"Vol\": 18}) are edited in Raw JSON below."
   },
   {
     key:"backgrounds", label:"Backgrounds", file:"backgrounds.json", idField:"id",
-    template:{id:"", name:"", source:"", page:null, entries:[]},
+    template:{id:"", name:"", source:"", page:null, ability:"", feat:"", skills:"", tools:"", equipment:[], entries:[]},
     quickFields:[
       {path:"name",label:"Name",type:"text",placeholder:"Acolyte"},
       {path:"id",label:"ID",type:"text",placeholder:"acolyte",checkDuplicates:true},
       {path:"source",label:"Source",type:"text",placeholder:"PHB"},
       {path:"page",label:"Page",type:"number"},
+      {type:"divider"},
+      {path:"ability",label:"Ability Scores (5.5e)",type:"text",wide:true,placeholder:"Intelligence, Sagesse, Charisme",hint:"The three abilities offered (+2/+1 or +1/+1/+1)."},
+      {path:"feat",label:"Origin Feat (5.5e)",type:"text",wide:true,placeholder:"{@feat Initié à la magie (Clerc)|XPHB}",hint:"Tags like {@feat Name|Source} are rendered as links."},
+      {path:"skills",label:"Skill Proficiencies (5.5e)",type:"text",placeholder:"Intuition, Religion"},
+      {path:"tools",label:"Tool Proficiency (5.5e)",type:"text",placeholder:"Matériel de calligraphe"},
+      {path:"equipment",label:"Equipment options (5.5e)",type:"list",wide:true,placeholder:"Option A : …, Option B : 50 po",hint:"One line per option; they are joined with “ou” on the site."},
     ],
     entriesFields:[{path:"entries",label:"Description",mode:"mixed"}],
-    note:"Backgrounds in the site use HTML entry blocks — use the “+ HTML block” option below."
+    note:"2014 backgrounds use an HTML block (+ HTML Block); 5.5e backgrounds use the structured fields above, plus named blocks / paragraphs for the flavor text."
   },
   {
     key:"conditions", label:"Conditions", file:"conditions.json", idField:"id",
@@ -1059,7 +1142,14 @@ function renderNamedEntriesEditor(container, item, field){
 function detectMixedType(b){
   if(typeof b === "string") return "text";
   if(b && b.html !== undefined) return "html";
-  if(!b || typeof b !== "object" || !b.type) return "text";
+  if(!b || typeof b !== "object") return "text";
+  if(!b.type){
+    // Legacy objects without a type. A placeholder like {"": ""} is just an empty paragraph;
+    // anything else (e.g. {"Transe": "texte…"}) must not be shown as a paragraph: edit it as JSON.
+    const values = Object.values(b);
+    const isPlaceholder = values.every(v => v === "" || v == null || (Array.isArray(v) && v.length === 0));
+    return isPlaceholder ? "text" : "raw";
+  }
   switch(b.type){
     case "list": return "list";
     case "entries": return "named";
@@ -1073,10 +1163,10 @@ function detectMixedType(b){
   }
 }
 
-function renderMixedEntriesEditor(container, item, field){
+// Recursive: blocks that contain entries (named block, inset, quote) embed this same editor,
+// so they accept every entry type, not just paragraphs. `onChange` is called after any edit.
+function renderMixedEntries(container, arr, onChange){
   container.innerHTML = "";
-  let arr = getPath(item, field.path);
-  if(!Array.isArray(arr)){ arr = []; setPath(item, field.path, arr); }
 
   const toolbar = document.createElement("div");
   toolbar.className = "entries-toolbar";
@@ -1099,8 +1189,8 @@ function renderMixedEntriesEditor(container, item, field){
     b.textContent = txt;
     b.addEventListener("click", ()=>{
       arr.push(make());
-      renderMixedEntriesEditor(container, item, field);
-      autosave();
+      renderMixedEntries(container, arr, onChange);
+      onChange();
     });
     toolbar.appendChild(b);
   });
@@ -1119,21 +1209,21 @@ function renderMixedEntriesEditor(container, item, field){
     block.className = "entry-block";
     block.innerHTML = `<div class="eb-head"><span class="eb-type">${kind}</span><div class="eb-tools"></div></div>`;
     const tools = block.querySelector(".eb-tools");
-    tools.appendChild(moveBtn("↑", ()=>{ if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; renderMixedEntriesEditor(container,item,field); autosave(); }}));
-    tools.appendChild(moveBtn("↓", ()=>{ if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; renderMixedEntriesEditor(container,item,field); autosave(); }}));
-    tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderMixedEntriesEditor(container,item,field); autosave(); }, "del"));
+    tools.appendChild(moveBtn("↑", ()=>{ if(i>0){ [arr[i-1],arr[i]]=[arr[i],arr[i-1]]; renderMixedEntries(container, arr, onChange); onChange(); }}));
+    tools.appendChild(moveBtn("↓", ()=>{ if(i<arr.length-1){ [arr[i+1],arr[i]]=[arr[i],arr[i+1]]; renderMixedEntries(container, arr, onChange); onChange(); }}));
+    tools.appendChild(moveBtn("×", ()=>{ arr.splice(i,1); renderMixedEntries(container, arr, onChange); onChange(); }, "del"));
 
     if(kind === "text"){
       const ta = document.createElement("textarea");
-      ta.value = b || "";
-      ta.addEventListener("input", ()=>{ arr[i] = ta.value; autosave(); });
+      ta.value = typeof b === "string" ? b : ""; // a legacy placeholder object shows as an empty paragraph
+      ta.addEventListener("input", ()=>{ arr[i] = ta.value; onChange(); });
       block.appendChild(ta);
 
     } else if(kind === "html"){
       const ta = document.createElement("textarea");
       ta.value = b.html || "";
       ta.placeholder = "<p>Raw HTML…</p>";
-      ta.addEventListener("input", ()=>{ b.html = ta.value; autosave(); });
+      ta.addEventListener("input", ()=>{ b.html = ta.value; onChange(); });
       block.appendChild(ta);
 
     } else if(kind === "list"){
@@ -1165,7 +1255,7 @@ function renderMixedEntriesEditor(container, item, field){
       });
       styleSelect.addEventListener("change", ()=>{
         if(styleSelect.value) b.style = styleSelect.value; else delete b.style;
-        autosave();
+        onChange();
       });
       optionsRow.appendChild(styleSelect);
 
@@ -1186,7 +1276,7 @@ function renderMixedEntriesEditor(container, item, field){
       colsInput.addEventListener("input", ()=>{
         const n = colsInput.value === "" ? null : Number(colsInput.value);
         if(n && n > 1) b.columns = n; else delete b.columns;
-        autosave();
+        onChange();
       });
       colsWrap.appendChild(colsLabel);
       colsWrap.appendChild(colsInput);
@@ -1220,8 +1310,8 @@ function renderMixedEntriesEditor(container, item, field){
           } else {
             b.entries[li] = (isNamed ? (line.entry || "") : "");
           }
-          renderMixedEntriesEditor(container, item, field);
-          autosave();
+          renderMixedEntries(container, arr, onChange);
+          onChange();
         });
         namedToggle.appendChild(namedCb);
         namedToggle.appendChild(document.createTextNode("Named item (bold label + text)"));
@@ -1233,7 +1323,7 @@ function renderMixedEntriesEditor(container, item, field){
         del.style.border = "none";
         del.style.color = "var(--text-faint)";
         del.style.cursor = "pointer";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
+        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntries(container, arr, onChange); onChange(); });
         headRow.appendChild(del);
         lineWrap.appendChild(headRow);
 
@@ -1242,17 +1332,17 @@ function renderMixedEntriesEditor(container, item, field){
           nameInput.type = "text";
           nameInput.placeholder = "Label (e.g. a weapon or tool name)";
           nameInput.value = line.name || "";
-          nameInput.addEventListener("input", ()=>{ line.name = nameInput.value; autosave(); });
+          nameInput.addEventListener("input", ()=>{ line.name = nameInput.value; onChange(); });
           lineWrap.appendChild(nameInput);
           const entryTa = document.createElement("textarea");
           entryTa.placeholder = "Text after the label";
           entryTa.value = line.entry || "";
-          entryTa.addEventListener("input", ()=>{ line.entry = entryTa.value; autosave(); });
+          entryTa.addEventListener("input", ()=>{ line.entry = entryTa.value; onChange(); });
           lineWrap.appendChild(entryTa);
         } else {
           const ta = document.createElement("textarea");
           ta.value = line || "";
-          ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
+          ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; onChange(); });
           lineWrap.appendChild(ta);
         }
         block.appendChild(lineWrap);
@@ -1260,7 +1350,7 @@ function renderMixedEntriesEditor(container, item, field){
       const addLine = document.createElement("button");
       addLine.className = "add-line-btn";
       addLine.textContent = "+ list item";
-      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
+      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntries(container, arr, onChange); onChange(); });
       block.appendChild(addLine);
 
     } else if(kind === "table"){
@@ -1272,7 +1362,7 @@ function renderMixedEntriesEditor(container, item, field){
       captionInput.type = "text";
       captionInput.placeholder = "Table caption (optional)";
       captionInput.value = b.caption || "";
-      captionInput.addEventListener("input", ()=>{ b.caption = captionInput.value; autosave(); });
+      captionInput.addEventListener("input", ()=>{ b.caption = captionInput.value; onChange(); });
       block.appendChild(captionInput);
 
       const tableWrap = document.createElement("div");
@@ -1294,14 +1384,14 @@ function renderMixedEntriesEditor(container, item, field){
         labelInput.placeholder = "Column label";
         labelInput.value = label || "";
         labelInput.style.marginBottom = "3px";
-        labelInput.addEventListener("input", ()=>{ b.colLabels[ci] = labelInput.value; autosave(); });
+        labelInput.addEventListener("input", ()=>{ b.colLabels[ci] = labelInput.value; onChange(); });
         const styleInput = document.createElement("input");
         styleInput.type = "text";
         styleInput.placeholder = "col style (optional)";
         styleInput.style.fontFamily = "var(--mono)";
         styleInput.style.fontSize = "10.5px";
         styleInput.value = b.colStyles[ci] || "";
-        styleInput.addEventListener("input", ()=>{ b.colStyles[ci] = styleInput.value; autosave(); });
+        styleInput.addEventListener("input", ()=>{ b.colStyles[ci] = styleInput.value; onChange(); });
         const rmColBtn = document.createElement("button");
         rmColBtn.textContent = "× remove column";
         rmColBtn.style.fontSize = "10px";
@@ -1314,8 +1404,8 @@ function renderMixedEntriesEditor(container, item, field){
           b.colLabels.splice(ci,1);
           b.colStyles.splice(ci,1);
           b.rows.forEach(r=> r.splice(ci,1));
-          renderMixedEntriesEditor(container, item, field);
-          autosave();
+          renderMixedEntries(container, arr, onChange);
+          onChange();
         });
         th.appendChild(labelInput);
         th.appendChild(document.createElement("br"));
@@ -1333,8 +1423,8 @@ function renderMixedEntriesEditor(container, item, field){
         b.colLabels.push("");
         b.colStyles.push("");
         b.rows.forEach(r=> r.push(""));
-        renderMixedEntriesEditor(container, item, field);
-        autosave();
+        renderMixedEntries(container, arr, onChange);
+        onChange();
       });
       addColTh.appendChild(addColBtn);
       theadRow.appendChild(addColTh);
@@ -1352,7 +1442,7 @@ function renderMixedEntriesEditor(container, item, field){
           cellInput.type = "text";
           cellInput.value = cell ?? "";
           cellInput.style.width = "100%";
-          cellInput.addEventListener("input", ()=>{ b.rows[ri][ci] = cellInput.value; autosave(); });
+          cellInput.addEventListener("input", ()=>{ b.rows[ri][ci] = cellInput.value; onChange(); });
           td.appendChild(cellInput);
           tr.appendChild(td);
         });
@@ -1367,8 +1457,8 @@ function renderMixedEntriesEditor(container, item, field){
         rmRowBtn.style.cursor = "pointer";
         rmRowBtn.addEventListener("click", ()=>{
           b.rows.splice(ri,1);
-          renderMixedEntriesEditor(container, item, field);
-          autosave();
+          renderMixedEntries(container, arr, onChange);
+          onChange();
         });
         rmTd.appendChild(rmRowBtn);
         tr.appendChild(rmTd);
@@ -1384,8 +1474,8 @@ function renderMixedEntriesEditor(container, item, field){
       addRowBtn.textContent = "+ row";
       addRowBtn.addEventListener("click", ()=>{
         b.rows.push(b.colLabels.map(()=>""));
-        renderMixedEntriesEditor(container, item, field);
-        autosave();
+        renderMixedEntries(container, arr, onChange);
+        onChange();
       });
       block.appendChild(addRowBtn);
 
@@ -1397,24 +1487,10 @@ function renderMixedEntriesEditor(container, item, field){
 
     } else if(kind === "quote"){
       if(!Array.isArray(b.entries)) b.entries = [""];
-      b.entries.forEach((line, li)=>{
-        const w = document.createElement("div");
-        w.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.placeholder = "Quote line";
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
-        const del = document.createElement("button");
-        del.textContent = "×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
-        w.appendChild(ta); w.appendChild(del);
-        block.appendChild(w);
-      });
-      const addLine = document.createElement("button");
-      addLine.className = "add-line-btn";
-      addLine.textContent = "+ line";
-      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
-      block.appendChild(addLine);
+      const quoteNested = document.createElement("div");
+      quoteNested.className = "nested-entries";
+      block.appendChild(quoteNested);
+      renderMixedEntries(quoteNested, b.entries, onChange);
 
       const byRow = document.createElement("div");
       byRow.style.display = "flex";
@@ -1425,13 +1501,13 @@ function renderMixedEntriesEditor(container, item, field){
       byInput.placeholder = "Attributed to (optional)";
       byInput.value = b.by || "";
       byInput.style.marginBottom = "0";
-      byInput.addEventListener("input", ()=>{ b.by = byInput.value; autosave(); });
+      byInput.addEventListener("input", ()=>{ b.by = byInput.value; onChange(); });
       const fromInput = document.createElement("input");
       fromInput.type = "text";
       fromInput.placeholder = "Source (optional)";
       fromInput.value = b.from || "";
       fromInput.style.marginBottom = "0";
-      fromInput.addEventListener("input", ()=>{ b.from = fromInput.value; autosave(); });
+      fromInput.addEventListener("input", ()=>{ b.from = fromInput.value; onChange(); });
       byRow.appendChild(byInput);
       byRow.appendChild(fromInput);
       block.appendChild(byRow);
@@ -1441,32 +1517,24 @@ function renderMixedEntriesEditor(container, item, field){
       nameInput.type = "text";
       nameInput.placeholder = "Box title (optional)";
       nameInput.value = b.name || "";
-      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; autosave(); });
+      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; onChange(); });
       block.appendChild(nameInput);
 
       if(!Array.isArray(b.entries)) b.entries = [""];
-      b.entries.forEach((line, li)=>{
-        const w = document.createElement("div");
-        w.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.placeholder = "Box text (paragraph)";
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
-        const del = document.createElement("button");
-        del.textContent = "×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
-        w.appendChild(ta); w.appendChild(del);
-        block.appendChild(w);
-      });
-      const addLine = document.createElement("button");
-      addLine.className = "add-line-btn";
-      addLine.textContent = "+ paragraph";
-      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
-      block.appendChild(addLine);
-      const hint = document.createElement("div");
-      hint.className = "hint";
-      hint.textContent = "Need a list or table inside this box? Switch this block to raw JSON by editing its \"type\" isn't supported here — use the Other (raw JSON) block instead for mixed content.";
-      block.appendChild(hint);
+      const insetNested = document.createElement("div");
+      insetNested.className = "nested-entries";
+      block.appendChild(insetNested);
+      renderMixedEntries(insetNested, b.entries, onChange);
+
+      const raRow = document.createElement("label");
+      raRow.style.cssText = "display:flex;align-items:center;gap:8px;margin-top:6px;font-size:11.5px;color:var(--text-dim);";
+      const raCheck = document.createElement("input");
+      raCheck.type = "checkbox";
+      raCheck.checked = b.type === "insetReadaloud";
+      raCheck.addEventListener("change", ()=>{ b.type = raCheck.checked ? "insetReadaloud" : "inset"; onChange(); });
+      raRow.appendChild(raCheck);
+      raRow.appendChild(document.createTextNode("Read-aloud style (italic box, for narration text)"));
+      block.appendChild(raRow);
 
     } else if(kind === "image"){
       if(!b.href || typeof b.href !== "object") b.href = {type:"external", url:""};
@@ -1474,21 +1542,21 @@ function renderMixedEntriesEditor(container, item, field){
       urlInput.type = "text";
       urlInput.placeholder = "Image URL (https://…)";
       urlInput.value = b.href.url || "";
-      urlInput.addEventListener("input", ()=>{ b.href.type = "external"; b.href.url = urlInput.value; autosave(); });
+      urlInput.addEventListener("input", ()=>{ b.href.type = "external"; b.href.url = urlInput.value; onChange(); });
       block.appendChild(urlInput);
 
       const titleInput = document.createElement("input");
       titleInput.type = "text";
       titleInput.placeholder = "Title / caption (optional)";
       titleInput.value = b.title || "";
-      titleInput.addEventListener("input", ()=>{ b.title = titleInput.value; autosave(); });
+      titleInput.addEventListener("input", ()=>{ b.title = titleInput.value; onChange(); });
       block.appendChild(titleInput);
 
       const creditInput = document.createElement("input");
       creditInput.type = "text";
       creditInput.placeholder = "Credit (optional)";
       creditInput.value = b.credit || "";
-      creditInput.addEventListener("input", ()=>{ b.credit = creditInput.value; autosave(); });
+      creditInput.addEventListener("input", ()=>{ b.credit = creditInput.value; onChange(); });
       block.appendChild(creditInput);
 
       if(urlInput.value){
@@ -1505,8 +1573,22 @@ function renderMixedEntriesEditor(container, item, field){
     } else if(kind === "raw"){
       const note = document.createElement("div");
       note.className = "raw-note";
-      note.textContent = `Not a standard block-builder type (type: "${b.type || "?"}") — edit the JSON directly. This covers section, variant, abilityGeneric, gallery, tableGroup, optfeature, and anything else from 5etools.`;
+      note.textContent = `${b.type ? `Not a standard block-builder type (type: "${b.type}")` : "Legacy block without a type"} — edit the JSON directly. This covers section, variant, abilityGeneric, gallery, tableGroup, optfeature, and anything else from 5etools.`;
       block.appendChild(note);
+      // legacy {"Name": "text"} (one key, string value) -> offer the standard named block
+      const legacyKeys = Object.keys(b);
+      if(!b.type && legacyKeys.length === 1 && typeof b[legacyKeys[0]] === "string"){
+        const convert = document.createElement("button");
+        convert.type = "button";
+        convert.className = "btn small";
+        convert.textContent = "Convert to named block";
+        convert.addEventListener("click", ()=>{
+          arr[i] = {type:"entries", name: legacyKeys[0], entries: [b[legacyKeys[0]]]};
+          onChange();
+          renderMixedEntries(container, arr, onChange);
+        });
+        block.appendChild(convert);
+      }
       const ta = document.createElement("textarea");
       ta.className = "raw-json-ta";
       ta.style.fontFamily = "var(--mono)";
@@ -1514,7 +1596,7 @@ function renderMixedEntriesEditor(container, item, field){
       ta.style.color = "#d9cf9c";
       ta.value = JSON.stringify(b, null, 2);
       ta.addEventListener("input", ()=>{
-        try{ arr[i] = JSON.parse(ta.value); ta.style.borderColor = ""; autosave(); }
+        try{ arr[i] = JSON.parse(ta.value); ta.style.borderColor = ""; onChange(); }
         catch(e){ ta.style.borderColor = "var(--danger)"; }
       });
       block.appendChild(ta);
@@ -1525,31 +1607,165 @@ function renderMixedEntriesEditor(container, item, field){
       nameInput.type = "text";
       nameInput.placeholder = "Block name";
       nameInput.value = b.name || "";
-      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; autosave(); });
+      nameInput.addEventListener("input", ()=>{ b.name = nameInput.value; onChange(); });
       block.appendChild(nameInput);
 
-      b.entries.forEach((line, li)=>{
-        const lineWrap = document.createElement("div");
-        lineWrap.className = "list-line";
-        const ta = document.createElement("textarea");
-        ta.value = line || "";
-        ta.addEventListener("input", ()=>{ b.entries[li] = ta.value; autosave(); });
-        const del = document.createElement("button");
-        del.textContent = "×";
-        del.addEventListener("click", ()=>{ b.entries.splice(li,1); renderMixedEntriesEditor(container,item,field); autosave(); });
-        lineWrap.appendChild(ta);
-        lineWrap.appendChild(del);
-        block.appendChild(lineWrap);
-      });
-      const addLine = document.createElement("button");
-      addLine.className = "add-line-btn";
-      addLine.textContent = "+ line";
-      addLine.addEventListener("click", ()=>{ b.entries.push(""); renderMixedEntriesEditor(container,item,field); autosave(); });
-      block.appendChild(addLine);
+      const namedNested = document.createElement("div");
+      namedNested.className = "nested-entries";
+      block.appendChild(namedNested);
+      renderMixedEntries(namedNested, b.entries, onChange);
     }
 
     container.appendChild(block);
   });
+}
+
+/* ============================================================
+   SUBRACES / LINEAGES (Races): each subrace has its own fields,
+   traits and lore, edited with the same entries editor.
+   ============================================================ */
+// Open/closed state of each subrace card, kept per subrace object so it survives re-renders.
+const SUBRACE_OPEN = new WeakMap();
+
+const SUBRACE_FIELDS = [
+  {path:"name",label:"Name",type:"text",placeholder:"Drow"},
+  {path:"id",label:"ID",type:"text",placeholder:"drow"},
+  {path:"source",label:"Source",type:"text",placeholder:"PHB"},
+  {path:"bonus",label:"Ability Bonus",type:"text",placeholder:"; Con +1",hint:"Starting with “;” adds to the race's bonus. Leave empty for 5.5e lineages."},
+  {path:"speed",label:"Speed",type:"text",placeholder:"9m (empty = same as the race)"},
+];
+
+// Old data stores lore as an object ({"": "text", "Title": "text"}); the editor needs a list of entries.
+function legacyInfoToEntries(info){
+  if(Array.isArray(info)) return info;
+  if(!info || typeof info !== "object") return [];
+  return Object.entries(info)
+    .filter(([,v]) => v !== "" && v != null)
+    .map(([k,v]) => k === "" ? v : {type:"entries", name:k, entries: Array.isArray(v) ? v : [v]});
+}
+
+function renderSubracesEditor(container, item, field){
+  container.innerHTML = "";
+  let list = getPath(item, field.path);
+  if(!Array.isArray(list)){ list = []; setPath(item, field.path, list); }
+  const rerender = () => renderSubracesEditor(container, item, field);
+
+  const toolbar = document.createElement("div");
+  toolbar.className = "entries-toolbar";
+  const addBtn = document.createElement("button");
+  addBtn.type = "button";
+  addBtn.className = "btn small";
+  addBtn.textContent = "+ Add subrace";
+  addBtn.addEventListener("click", ()=>{
+    const created = {id:"", name:"", source:"", bonus:"", traits:[], info:[], images:[]};
+    SUBRACE_OPEN.set(created, true); // a new subrace opens so it can be filled in
+    list.push(created);
+    autosave(); rerender();
+  });
+  toolbar.appendChild(addBtn);
+  if(list.length > 1){
+    const setAll = (open) => { list.forEach(sub => { if(sub && typeof sub === "object") SUBRACE_OPEN.set(sub, open); }); rerender(); };
+    [["Expand all", true], ["Collapse all", false]].forEach(([label, open]) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "btn ghost small"; b.textContent = label;
+      b.addEventListener("click", () => setAll(open));
+      toolbar.appendChild(b);
+    });
+  }
+  container.appendChild(toolbar);
+
+  if(list.length === 0){
+    const empty = document.createElement("div");
+    empty.className = "entries-empty";
+    empty.textContent = "No subrace. Use “+ Add subrace” for variants, lineages or legacies of this race/species.";
+    container.appendChild(empty);
+  }
+
+  list.forEach((sub, i)=>{
+    if(!sub || typeof sub !== "object"){ sub = list[i] = {}; }
+    if(!Array.isArray(sub.traits)) sub.traits = [];
+    sub.info = legacyInfoToEntries(sub.info);
+
+    const card = document.createElement("div");
+    card.className = "entry-block subrace-card";
+
+    const head = document.createElement("div");
+    head.className = "subrace-head";
+    head.setAttribute("role", "button");
+    head.setAttribute("tabindex", "0");
+    const titleWrap = document.createElement("span");
+    titleWrap.className = "subrace-title";
+    const caret = document.createElement("span");
+    caret.className = "subrace-caret";
+    const title = document.createElement("span");
+    const titleText = () => `${sub.name ? sub.name : "Subrace " + (i+1)}`;
+    // const titleText = () => `Subrace ${i+1}${sub.name ? " — " + sub.name : ""}`;
+    title.textContent = titleText();
+    titleWrap.appendChild(caret);
+    titleWrap.appendChild(title);
+    head.appendChild(titleWrap);
+    const actions = document.createElement("div");
+    actions.className = "subrace-actions";
+    const mk = (label, tip, fn) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "btn ghost small"; b.textContent = label; b.title = tip;
+      b.addEventListener("click", fn); actions.appendChild(b);
+    };
+    mk("↑", "Move up", ()=>{ if(i>0){ [list[i-1], list[i]] = [list[i], list[i-1]]; autosave(); rerender(); } });
+    mk("↓", "Move down", ()=>{ if(i<list.length-1){ [list[i+1], list[i]] = [list[i], list[i+1]]; autosave(); rerender(); } });
+    mk("✕", "Delete this subrace", ()=>{ if(confirm("Delete this subrace?")){ list.splice(i,1); autosave(); rerender(); } });
+    head.appendChild(actions);
+    card.appendChild(head);
+
+    const body = document.createElement("div");
+    body.className = "subrace-body";
+    card.appendChild(body);
+
+    const grid = document.createElement("div");
+    grid.className = "field-grid";
+    SUBRACE_FIELDS.forEach(f => grid.appendChild(buildQuickField(sub, f)));
+    grid.addEventListener("input", () => { title.textContent = titleText(); }); // keep the folded title in sync
+    body.appendChild(grid);
+
+    const traitsLabel = document.createElement("div");
+    traitsLabel.className = "subrace-sub";
+    traitsLabel.textContent = "Traits (added to the race's traits)";
+    body.appendChild(traitsLabel);
+    const traitsHolder = document.createElement("div");
+    body.appendChild(traitsHolder);
+    renderMixedEntries(traitsHolder, sub.traits, autosave);
+
+    const loreLabel = document.createElement("div");
+    loreLabel.className = "subrace-sub";
+    loreLabel.textContent = "Lore / Info";
+    body.appendChild(loreLabel);
+    const loreHolder = document.createElement("div");
+    body.appendChild(loreHolder);
+    renderMixedEntries(loreHolder, sub.info, autosave);
+
+    // folding: collapsed by default (open when it is the only subrace or was just added)
+    if(!SUBRACE_OPEN.has(sub)) SUBRACE_OPEN.set(sub, list.length === 1);
+    const applyOpen = () => {
+      const open = SUBRACE_OPEN.get(sub);
+      body.hidden = !open;
+      caret.textContent = open ? "▾" : "▸";
+      head.setAttribute("aria-expanded", String(open));
+    };
+    applyOpen();
+    const toggle = () => { SUBRACE_OPEN.set(sub, !SUBRACE_OPEN.get(sub)); applyOpen(); };
+    head.addEventListener("click", (e) => { if(!e.target.closest(".subrace-actions")) toggle(); });
+    head.addEventListener("keydown", (e) => {
+      if((e.key === "Enter" || e.key === " ") && !e.target.closest(".subrace-actions")){ e.preventDefault(); toggle(); }
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function renderMixedEntriesEditor(container, item, field){
+  let arr = getPath(item, field.path);
+  if(!Array.isArray(arr)){ arr = []; setPath(item, field.path, arr); }
+  renderMixedEntries(container, arr, autosave);
 }
 
 /* ============================================================
@@ -1969,6 +2185,7 @@ function renderEditorPane(){
     inner.appendChild(sec);
     if(ef.mode === "paragraphs") renderParagraphsEditor(holder, item, ef);
     else if(ef.mode === "named") renderNamedEntriesEditor(holder, item, ef);
+    else if(ef.mode === "subraces") renderSubracesEditor(holder, item, ef);
     else renderMixedEntriesEditor(holder, item, ef);
   });
 

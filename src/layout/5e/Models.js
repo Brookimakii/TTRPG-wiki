@@ -110,7 +110,7 @@ export class PlayerClass {
 export class PlayerRace {
   id: string
   name: string
-  bonus: string
+  bonus: string // optional: empty/absent for 5.5e species (no ability score bonus)
   size: string
   page: number
   reprinted: {}
@@ -137,6 +137,7 @@ export class PlayerRace {
   }]
 }
 
+// 5.5e fields (all optional): cat ("Origine"|"Général"|"Style de combat"|"Faveur épique"), ability, repeatable
 export class PlayerFeat {
   id: string
   name: string
@@ -145,6 +146,7 @@ export class PlayerFeat {
   source: string
 }
 
+// 5.5e fields (all optional): ability, feat, skills, tools, equipment ([string])
 export class PlayerBackground {
   id: string
   name: string
@@ -319,6 +321,7 @@ export class Weapon extends Item {
   weaponType: string
   weaponCategory: string
   weaponProperty: [string]
+  mastery: [string]
   special: string
   reload: number
   range: string
@@ -437,6 +440,43 @@ export class Rule {
   name: string
   entries: [string]
   source: string
+}
+
+// 5.5e (2024 rules): weapons carry a Mastery property (items.json -> "mastery": ["nick"]).
+// Names are kept next to the original English term so players can find them in the 2024 books.
+export const WeaponMastery = {
+  cleave: {
+    name: "Enchaînement (Cleave)",
+    desc: "Une fois par tour, quand vous touchez une créature avec une attaque de corps à corps utilisant cette arme, vous pouvez faire un jet d'attaque avec l'arme contre une seconde créature située à 1,5 m de la première et à votre portée. En cas de réussite, la seconde créature subit les dégâts de l'arme, sans ajouter votre modificateur de caractéristique (sauf s'il est négatif)."
+  },
+  graze: {
+    name: "Effleurement (Graze)",
+    desc: "Si votre jet d'attaque avec cette arme rate une créature, celle-ci subit quand même des dégâts égaux au modificateur de caractéristique que vous avez utilisé pour l'attaque. Ces dégâts sont du type de l'arme et ne peuvent être augmentés qu'en augmentant le modificateur."
+  },
+  nick: {
+    name: "Entaille (Nick)",
+    desc: "Quand vous faites l'attaque supplémentaire de la propriété Légère, vous pouvez la faire dans le cadre de l'action Attaquer au lieu d'une action bonus. Vous ne pouvez le faire qu'une fois par tour."
+  },
+  push: {
+    name: "Repoussement (Push)",
+    desc: "Si vous touchez une créature de taille G ou inférieure avec cette arme, vous pouvez la repousser en ligne droite de 3 m maximum."
+  },
+  sap: {
+    name: "Affaiblissement (Sap)",
+    desc: "Si vous touchez une créature avec cette arme, elle a désavantage à son prochain jet d'attaque avant le début de votre prochain tour."
+  },
+  slow: {
+    name: "Ralentissement (Slow)",
+    desc: "Si vous touchez une créature avec cette arme et lui infligez des dégâts, vous pouvez réduire sa vitesse de 3 m jusqu'au début de votre prochain tour. Plusieurs réductions ne se cumulent pas : seule la plus élevée s'applique."
+  },
+  topple: {
+    name: "Renversement (Topple)",
+    desc: "Si vous touchez une créature avec cette arme, vous pouvez la forcer à faire un jet de sauvegarde de Constitution (DD 8 + modificateur de caractéristique utilisé pour l'attaque + bonus de maîtrise). En cas d'échec, elle a l'état À terre."
+  },
+  vex: {
+    name: "Harcèlement (Vex)",
+    desc: "Si vous touchez une créature avec cette arme et lui infligez des dégâts, vous avez avantage à votre prochain jet d'attaque contre cette créature avant la fin de votre prochain tour."
+  },
 }
 
 export class PlayerOptionNFeature {

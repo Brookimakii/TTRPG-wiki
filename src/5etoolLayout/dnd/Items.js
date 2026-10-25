@@ -3,7 +3,7 @@ import {getResource, Resources} from "../../resources/ResourcesFetch";
 import {FilterManager, RenderModule, Selector5e} from "../5eLayoutModules";
 import React, {useEffect} from "react";
 import type {Item} from "../../layout/5e/Models";
-import {Armor, Weapon, WeaponProperty} from "../../layout/5e/Models";
+import {Armor, Weapon, WeaponMastery, WeaponProperty} from "../../layout/5e/Models";
 import FilterDialogManager, {getOptionId} from "../FilterDialogManager";
 import {loadFromLocalStorage, saveToLocalStorage} from "../PersistData";
 import Filters from "../FilterDialog";
@@ -279,6 +279,9 @@ export const Dnd5eItems = () => {
                     return format
                   }).join(", ")}
                 </div>
+                {Array.isArray(weapon.mastery) && weapon.mastery.length > 0 ? <div className="ve-text-wrap-balance ve-text-right">
+                  Maîtrise : {weapon.mastery.map(code => WeaponMastery[code]?.name ?? code).join(", ")}
+                </div> : ""}
               </div>
             </td>
           </tr>
@@ -324,6 +327,20 @@ export const Dnd5eItems = () => {
               </td>
             </tr>
           </> : ""}
+          {Array.isArray(weapon.mastery) && weapon.mastery.length > 0 ? <tr>
+            <td colSpan={6} className="py-0">
+              <div className="rd__b  rd__b--2">
+                {weapon.mastery.map(code => <div key={code} className="rd__b  rd__b--3">
+                  <p>
+                    <span className="rd__h rd__h--3">
+                      <span className="entry-title-inner">Maîtrise : {WeaponMastery[code]?.name ?? code}. </span>
+                    </span>
+                    {WeaponMastery[code]?.desc ?? ""}
+                  </p>
+                </div>)}
+              </div>
+            </td>
+          </tr> : ""}
         </>
       }
       case "armor": {
@@ -374,6 +391,8 @@ export const Dnd5eItems = () => {
     }
 
     function dmgAbvToFull(dmgType) {
+      // weapons that deal no damage (the net) have no damage type: show nothing instead of crashing
+      if (dmgType === undefined || dmgType === null) return ""
       let damage = null;
       switch (dmgType) {
         case "B":
@@ -389,7 +408,8 @@ export const Dnd5eItems = () => {
           damage = "";
           break;
         default:
-          throw new Error("Unexpected Value: " + dmgType)
+          // unknown code (e.g. a type typed by hand): show it as-is rather than breaking the whole page
+          damage = String(dmgType)
       }
       return damage;
     }
